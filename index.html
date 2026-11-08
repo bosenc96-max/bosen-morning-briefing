@@ -223,12 +223,21 @@
       .fin table { width: 100%; border-collapse: collapse; font-size: 14px; }
       .fin td, .fin th { padding: 6px 4px; border-bottom: 1px dashed var(--line); text-align: left; }
       .fin tr:last-child td { border-bottom: none; }
-      .fin td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+      .fin td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
       .fin td.chg { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; width: 84px; }
       .down { color: var(--down); } .up { color: var(--up); }
       .fin p { font-size: 13.5px; color: var(--ink-2); margin: 10px 0 0; }
       .fin .gold-big { font-family: "Noto Serif SC", serif; font-size: 26px; font-weight: 900; }
       .fin .gold-big small { font-size: 13px; color: var(--ink-3); font-weight: 600; }
+      /* phones: stack each finance row (label above, value below) so a long value can never crush the label column into a vertical strip */
+      @media (max-width: 640px) {
+        .fin table, .fin tbody, .fin tr, .fin td { display: block; }
+        .fin tr { padding: 7px 0; border-bottom: 1px dashed var(--line); }
+        .fin tr:last-child { border-bottom: none; }
+        .fin td { padding: 0; border-bottom: none; }
+        .fin td:first-child { font-size: 13px; color: var(--ink-3); margin-bottom: 2px; }
+        .fin td.num { text-align: left; }
+      }
 
       /* ---------- sports ---------- */
       .sport {
