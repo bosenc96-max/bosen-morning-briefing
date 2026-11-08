@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Bosen 的专属每日晨间简报（公开版）</title>
+    <style>
+      :root {
+        --bg: #fbfaf7;
+        --surface: #ffffff;
+        --surface-2: #f3f0e9;
+        --ink: #1c1e24;
+        --ink-2: #4c4f57;
+        --ink-3: #83868f;
+        --line: #e3ded2;
+        --accent: #b3351f;
+        --accent-soft: #fbeeea;
+        --gold: #9a7414;
+        --gold-soft: #f7f0da;
+        --blue: #1f4e79;
+        --blue-soft: #e8eff6;
+        --green: #2e6b3e;
+        --up: #b3351f;
+        --down: #2e6b3e;
+        --shadow: 0 1px 2px rgba(28,30,36,.05), 0 8px 24px rgba(28,30,36,.05);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #121317;
+          --surface: #1b1d23;
+          --surface-2: #23252d;
+          --ink: #ece9e2;
+          --ink-2: #b9bcc4;
+          --ink-3: #83868f;
+          --line: #2e3038;
+          --accent: #e0684a;
+          --accent-soft: #33231f;
+          --gold: #d3ab4a;
+          --gold-soft: #2f2a1c;
+          --blue: #7fa8cf;
+          --blue-soft: #1e2836;
+          --green: #7ab98a;
+          --up: #e0684a;
+          --down: #7ab98a;
+          --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Noto Sans SC", -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+        font-size: 15px;
+        line-height: 1.75;
+        -webkit-font-smoothing: antialiased;
+      }
+      .serif { font-family: "Noto Serif SC", "Songti SC", serif; }
+      a { color: var(--accent); }
+
+      /* ---------- masthead ---------- */
+      .masthead {
+        border-bottom: 3px double var(--ink);
+        padding: 28px 20px 18px;
+        text-align: center;
+      }
+      .mast-date {
+        display: flex; justify-content: space-between; align-items: center;
+        max-width: 1060px; margin: 0 auto 14px;
+        font-size: 12.5px; color: var(--ink-3); letter-spacing: .04em;
+        gap: 12px; flex-wrap: wrap;
+      }
+      .mast-date .mid { color: var(--accent); font-weight: 700; letter-spacing: .18em; }
+      .masthead h1 {
+        font-family: "Noto Serif SC", serif;
+        font-weight: 900;
+        font-size: clamp(30px, 6vw, 52px);
+        letter-spacing: .06em;
+        margin: 0 0 6px;
+        line-height: 1.25;
+      }
+      .mast-sub { color: var(--ink-2); font-size: 14px; margin: 0; }
+      .mast-sub b { color: var(--ink); }
+      .seal {
+        display: inline-block; vertical-align: 6px;
+        background: var(--accent); color: #fff;
+        font-family: "Noto Serif SC", serif; font-weight: 700;
+        font-size: 13px; letter-spacing: .3em; padding: 3px 6px 3px 9px;
+        border-radius: 3px; margin-left: 10px;
+      }
+
+      /* ---------- view tabs ---------- */
+      .tabs {
+        max-width: 1060px; margin: 0 auto; padding: 16px 20px 0;
+        display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+      }
+      .tab-btn {
+        appearance: none; border: 1px solid var(--line); background: var(--surface);
+        color: var(--ink-2); font: inherit; font-size: 14px; font-weight: 700;
+        padding: 8px 20px; border-radius: 999px; cursor: pointer;
+      }
+      .tab-btn[aria-selected="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+      .tab-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .tabs .upd { margin-left: auto; font-size: 12.5px; color: var(--ink-3); }
+
+      /* ---------- temp strip ---------- */
+      .wrap { max-width: 1060px; margin: 0 auto; padding: 18px 20px 40px; }
+      .strip {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 8px;
+      }
+      .strip .cell {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 14px 16px;
+        display: flex; align-items: center; gap: 14px;
+      }
+      .strip .big { font-family: "Noto Serif SC", serif; font-size: 34px; font-weight: 900; line-height: 1; white-space: nowrap; }
+      .strip .big small { font-size: 16px; color: var(--ink-3); font-weight: 600; }
+      .strip .meta { font-size: 13px; color: var(--ink-2); line-height: 1.55; }
+      .strip .meta b { color: var(--ink); font-size: 14px; }
+
+      /* ---------- section nav ---------- */
+      .secnav {
+        position: sticky; top: 0; z-index: 20;
+        background: var(--bg); border-bottom: 1px solid var(--line);
+        display: flex; gap: 4px; overflow-x: auto; padding: 8px 2px; margin: 14px 0 22px;
+        scrollbar-width: none;
+      }
+      .secnav::-webkit-scrollbar { display: none; }
+      .secnav a {
+        color: var(--ink-2); text-decoration: none; font-size: 13.5px; font-weight: 700;
+        padding: 5px 12px; border-radius: 999px; white-space: nowrap;
+      }
+      .secnav a:hover { background: var(--surface-2); color: var(--ink); }
+
+      section.blk { margin-bottom: 34px; scroll-margin-top: 64px; }
+      .blk-head {
+        display: flex; align-items: baseline; gap: 12px;
+        border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 16px;
+      }
+      .blk-head .no {
+        font-family: "Noto Serif SC", serif; font-weight: 900; color: var(--accent); font-size: 15px;
+      }
+      .blk-head h2 { font-family: "Noto Serif SC", serif; font-size: 24px; font-weight: 900; margin: 0; letter-spacing: .04em; }
+      .blk-head .note { margin-left: auto; font-size: 12.5px; color: var(--ink-3); text-align: right; }
+
+      /* ---------- weather cards ---------- */
+      .wx-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .wx {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 18px;
+      }
+      .wx h3 { font-family: "Noto Serif SC", serif; font-size: 19px; margin: 0 0 2px; }
+      .wx .wx-date { font-size: 12.5px; color: var(--ink-3); margin-bottom: 10px; }
+      .wx .wx-temp { font-family: "Noto Serif SC", serif; font-size: 30px; font-weight: 900; line-height: 1.15; }
+      .wx .wx-temp small { font-size: 14px; color: var(--ink-3); font-weight: 600; }
+      .wx .wx-cond { font-weight: 700; margin: 2px 0 12px; }
+      .wx dl { margin: 0; font-size: 13.5px; }
+      .wx dl div { display: flex; gap: 10px; padding: 5px 0; border-top: 1px dashed var(--line); }
+      .wx dt { color: var(--ink-3); flex: 0 0 64px; }
+      .wx dd { margin: 0; color: var(--ink-2); }
+      .wx dd b { color: var(--ink); }
+      .wx .tip {
+        margin-top: 12px; background: var(--blue-soft); color: var(--ink);
+        border-radius: 8px; padding: 10px 12px; font-size: 13.5px; line-height: 1.65;
+      }
+      .wx .warn {
+        margin-top: 10px; background: var(--gold-soft); border-radius: 8px;
+        padding: 10px 12px; font-size: 13.5px; line-height: 1.65;
+      }
+      .src { font-size: 12.5px; color: var(--ink-3); margin-top: 12px; }
+
+      /* ---------- news ---------- */
+      .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .news-col {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 18px;
+      }
+      .news-col h3 {
+        font-family: "Noto Serif SC", serif; font-size: 18px; margin: 0 0 4px;
+        padding-bottom: 8px; border-bottom: 1px solid var(--line);
+      }
+      .news-col .col-note { font-size: 12.5px; color: var(--ink-3); margin: 8px 0 0; }
+      .news-item { padding: 12px 0 2px; }
+      .news-item + .news-item { border-top: 1px dashed var(--line); }
+      .news-item h4 { margin: 0 0 4px; font-size: 15px; line-height: 1.55; font-weight: 700; }
+      .news-item .from { font-size: 12px; color: var(--accent); font-weight: 700; }
+      .news-item p { margin: 0 0 8px; font-size: 13.5px; color: var(--ink-2); }
+
+      /* ---------- highlights ---------- */
+      .hl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .hl {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 18px;
+      }
+      .hl h3 { font-family: "Noto Serif SC", serif; font-size: 17px; margin: 0 0 10px; }
+      .hl ol { margin: 0; padding-left: 20px; }
+      .hl li { margin-bottom: 10px; font-size: 14px; color: var(--ink-2); }
+      .hl li b { color: var(--ink); }
+      .hl .cal { font-size: 14.5px; color: var(--ink-2); margin: 0; }
+
+      /* ---------- finance ---------- */
+      .fin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .fin {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 18px;
+      }
+      .fin h3 { font-family: "Noto Serif SC", serif; font-size: 17px; margin: 0 0 12px; }
+      .fin table { width: 100%; border-collapse: collapse; font-size: 14px; }
+      .fin td, .fin th { padding: 6px 4px; border-bottom: 1px dashed var(--line); text-align: left; }
+      .fin tr:last-child td { border-bottom: none; }
+      .fin td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+      .fin td.chg { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; width: 84px; }
+      .down { color: var(--down); } .up { color: var(--up); }
+      .fin p { font-size: 13.5px; color: var(--ink-2); margin: 10px 0 0; }
+      .fin .gold-big { font-family: "Noto Serif SC", serif; font-size: 26px; font-weight: 900; }
+      .fin .gold-big small { font-size: 13px; color: var(--ink-3); font-weight: 600; }
+
+      /* ---------- sports ---------- */
+      .sport {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 18px; margin-bottom: 12px;
+      }
+      .sport h3 { font-family: "Noto Serif SC", serif; font-size: 18px; margin: 0 0 10px; }
+      .sport ul { margin: 0; padding-left: 20px; }
+      .sport li { margin-bottom: 9px; font-size: 14px; color: var(--ink-2); }
+      .sport li b { color: var(--ink); }
+      .score { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--ink); white-space: nowrap; }
+
+      /* ---------- astro ---------- */
+      .astro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .astro {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 18px;
+      }
+      .astro h3 { font-family: "Noto Serif SC", serif; font-size: 17px; margin: 0 0 10px; }
+      .astro dl { margin: 0; font-size: 14px; }
+      .astro dl div { display: flex; gap: 10px; padding: 5px 0; border-top: 1px dashed var(--line); }
+      .astro dl div:first-child { border-top: none; }
+      .astro dt { color: var(--ink-3); flex: 0 0 76px; }
+      .astro dd { margin: 0; color: var(--ink-2); }
+      .astro dd b { color: var(--ink); }
+      .astro p { font-size: 14px; color: var(--ink-2); margin: 0 0 10px; }
+      .astro p b { color: var(--ink); }
+      .gua-name { font-family: "Noto Serif SC", serif; font-size: 22px; font-weight: 900; }
+      .gua-quote {
+        border-left: 3px solid var(--gold); background: var(--gold-soft);
+        padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 14px; margin: 10px 0;
+        font-family: "Noto Serif SC", serif;
+      }
+      .yiji { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+      .yiji span {
+        font-size: 13px; padding: 6px 12px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2);
+      }
+      .yiji span b { color: var(--ink); }
+      .folk { font-size: 12px; color: var(--ink-3); margin-top: 12px; }
+
+      /* ---------- gossip ---------- */
+      .gossip { counter-reset: gos; }
+      .gos-item {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 16px 18px; margin-bottom: 10px;
+        display: flex; gap: 14px;
+      }
+      .gos-item .n {
+        font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 20px; color: var(--accent);
+        line-height: 1.4; flex: 0 0 auto;
+      }
+      .gos-item h4 { margin: 0 0 4px; font-size: 15px; line-height: 1.55; }
+      .gos-item .from { font-size: 12px; color: var(--accent); font-weight: 700; }
+      .gos-item p { margin: 0; font-size: 13.5px; color: var(--ink-2); }
+      .tag-unconfirmed {
+        display: inline-block; font-size: 11.5px; font-weight: 700; color: var(--gold);
+        background: var(--gold-soft); border-radius: 4px; padding: 1px 7px; margin-left: 6px; vertical-align: 2px;
+      }
+
+      /* ---------- archive ---------- */
+      #view-archive[hidden], #view-latest[hidden] { display: none; }
+      .arch-list { display: flex; flex-direction: column; gap: 10px; }
+      .arch-item {
+        appearance: none; width: 100%; text-align: left; font: inherit; cursor: pointer;
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 16px 18px;
+        display: flex; align-items: center; gap: 16px; color: var(--ink);
+      }
+      .arch-item:hover { border-color: var(--accent); }
+      .arch-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .arch-item .d {
+        font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 20px; white-space: nowrap;
+      }
+      .arch-item .sum { font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+      .arch-item .go { margin-left: auto; color: var(--accent); font-weight: 700; font-size: 13px; white-space: nowrap; }
+      .arch-item .badge {
+        font-size: 11.5px; font-weight: 700; color: #fff; background: var(--accent);
+        border-radius: 4px; padding: 2px 8px; white-space: nowrap;
+      }
+      .arch-note { font-size: 13px; color: var(--ink-3); margin-top: 14px; }
+
+      footer {
+        border-top: 3px double var(--ink); margin-top: 10px;
+        padding: 18px 20px 30px; text-align: center;
+        font-size: 12.5px; color: var(--ink-3);
+      }
+      footer .f-title { font-family: "Noto Serif SC", serif; font-weight: 700; color: var(--ink-2); font-size: 14px; letter-spacing: .1em; }
+
+      @media (max-width: 860px) {
+        .wx-grid, .news-grid { grid-template-columns: 1fr; }
+        .hl-grid, .fin-grid, .astro-grid { grid-template-columns: 1fr; }
+        .strip { grid-template-columns: 1fr; }
+        .strip .cell { padding: 12px 16px; }
+        .blk-head { flex-wrap: wrap; }
+        .blk-head .note { margin-left: 0; width: 100%; text-align: left; }
+        .tabs .upd { margin-left: 0; width: 100%; }
+        .secnav { flex-wrap: wrap; overflow-x: visible; row-gap: 2px; }
+        .arch-item { flex-wrap: wrap; gap: 8px; }
+        .arch-item .go { margin-left: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="mast-date">
+        <span>北京时间 · 每日 08:10 刊发</span>
+        <span class="mid">晨 间 简 报</span>
+        <span>沈阳 · 鞍山 · 卡尔加里</span>
+      </div>
+      <h1>Bosen 的专属每日晨间简报<span class="seal">公开版</span></h1>
+      <p class="mast-sub">最新一期：<b>2026 年 11 月 8 日（星期日）</b> · 农历丙午年九月三十 · 立冬次日，寒潮过境</p>
+    </header>
+
+    <div class="tabs" role="tablist" aria-label="简报视图">
+      <button class="tab-btn" role="tab" id="tab-latest" aria-selected="true" aria-controls="view-latest">最新简报</button>
+      <button class="tab-btn" role="tab" id="tab-archive" aria-selected="false" aria-controls="view-archive">往期归档</button>
+      <span class="upd">本期数据截至 11 月 8 日 17:00 前后</span>
+    </div>
+
+    <main class="wrap">
+      <!-- ================= 最新简报 ================= -->
+      <div id="view-latest" role="tabpanel" aria-labelledby="tab-latest">
+
+        <div class="strip" aria-label="三城气温速览">
+          <div class="cell">
+            <div class="big">1°<small> / -10°</small></div>
+            <div class="meta"><b>沈阳</b> · 多云转晴<br />体感 -5°，北风阵风 26 km/h</div>
+          </div>
+          <div class="cell">
+            <div class="big">2°<small> / -7°</small></div>
+            <div class="meta"><b>鞍山</b> · 多云转晴<br />北风 5~6 级，AQI 65</div>
+          </div>
+          <div class="cell">
+            <div class="big">14°<small> / 6°</small></div>
+            <div class="meta"><b>卡尔加里</b> · 当地 11 月 7 日<br />大风黄色预警，阵风 40 km/h</div>
+          </div>
+        </div>
+
+        <nav class="secnav" aria-label="本期栏目">
+          <a href="#s-weather">三城天气</a>
+          <a href="#s-news">三城新闻</a>
+          <a href="#s-highlights">今日看点</a>
+          <a href="#s-finance">金融市场</a>
+          <a href="#s-sports">体育速递</a>
+          <a href="#s-astro">月相 · 卦象 · 运势</a>
+          <a href="#s-gossip">娱乐圈八卦</a>
+        </nav>
+
+        <!-- 一、天气 -->
+        <section class="blk" id="s-weather">
+          <div class="blk-head">
+            <span class="no">其一</span><h2>三城天气</h2>
+            <span class="note">卡尔加里比北京晚 15 小时，当地仍是 11 月 7 日（周六）晚</span>
+          </div>
+          <div class="wx-grid">
+            <article class="wx">
+              <h3>沈阳</h3>
+              <div class="wx-date">11 月 8 日（周日）</div>
+              <div class="wx-temp">1°C <small>/ -10°C</small></div>
+              <p class="wx-cond">多云转晴 · 全天无降水</p>
+              <dl>
+                <div><dt>逐时</dt><dd>17 时 <b>-1°C</b>（体感 -5°C），20 时 -4°C，凌晨降至 -9~-10°C</dd></div>
+                <div><dt>风力</dt><dd>北风 14 km/h，阵风 26 km/h</dd></div>
+                <div><dt>湿度</dt><dd>下午约 28%，夜间升至 50%~70%</dd></div>
+                <div><dt>空气质量</dt><dd>AQI 68（中等），主要污染物 PM2.5</dd></div>
+                <div><dt>日出日落</dt><dd>06:26 / 16:32</dd></div>
+                <div><dt>明日</dt><dd>晴，5°C / -5°C，西南风微风</dd></div>
+              </dl>
+              <div class="tip">寒潮过境，白天最高仅 1°C、体感零下，昼夜温差 11°C。出门穿厚羽绒服，帽子手套围巾都带上。</div>
+            </article>
+            <article class="wx">
+              <h3>鞍山</h3>
+              <div class="wx-date">11 月 8 日（周日）</div>
+              <div class="wx-temp">1~2°C <small>/ -7°C</small></div>
+              <p class="wx-cond">多云转晴 · 降水概率 0%</p>
+              <dl>
+                <div><dt>逐时</dt><dd>17 时 <b>-1°C</b>（体感 -5°C），23 时约 -6°C，凌晨约 -8~-9°C</dd></div>
+                <div><dt>风力</dt><dd>北风 11 km/h，阵风约 26 km/h（东北风 5~6 级）</dd></div>
+                <div><dt>湿度</dt><dd>30% 左右</dd></div>
+                <div><dt>空气质量</dt><dd>AQI 65（中等）；另一监测点报 107（轻度污染），口径略有差异</dd></div>
+                <div><dt>日出日落</dt><dd>06:26 / 16:35</dd></div>
+                <div><dt>明日</dt><dd>晴，6°C / -3°C，气温小幅回升</dd></div>
+              </dl>
+              <div class="tip">与沈阳一样寒冷，风大体感更低。厚羽绒服加保暖内衣，户外注意防风。</div>
+              <div class="warn">个别来源另报“中雪 / 雨夹雪转晴”，与 Weather.com 全天降水概率 0% 的口径不一，出行请留意临近预报。</div>
+            </article>
+            <article class="wx">
+              <h3>卡尔加里</h3>
+              <div class="wx-date">当地 11 月 7 日（周六）晚</div>
+              <div class="wx-temp">14°C <small>/ 6°C</small></div>
+              <p class="wx-cond">白天多云 · 夜间转晴 · 无降水</p>
+              <dl>
+                <div><dt>逐时</dt><dd>白天最高约 14°C（机场实测 13.7°C），傍晚约 7°C，体感 2~3°C</dd></div>
+                <div><dt>风力</dt><dd>南风 20 km/h，阵风 40 km/h</dd></div>
+                <div><dt>湿度</dt><dd>44%~58%</dd></div>
+                <div><dt>空气质量</dt><dd>AQI 23（优），主要污染物为臭氧 O₃</dd></div>
+                <div><dt>日出日落</dt><dd>08:40 / 17:58</dd></div>
+                <div><dt>明日</dt><dd>当地 11 月 8 日晴朗有风，13°C / 1°C，西南风 40 km/h</dd></div>
+              </dl>
+              <div class="warn">⚠️ 加拿大环境部发布大风黄色预警，有效期至当地周日 21:30。白天不算太冷，但风大，穿防风外套；夜间外出加一件保暖层。</div>
+            </article>
+          </div>
+          <p class="src">天气来源：Weather.com、中国天气网、加拿大环境部（Environment Canada）。</p>
+        </section>
+
+        <!-- 二、新闻 -->
+        <section class="blk" id="s-news">
+          <div class="blk-head">
+            <span class="no">其二</span><h2>三城近期新闻</h2>
+            <span class="note">每条均注明来源与日期</span>
+          </div>
+          <div class="news-grid">
+            <div class="news-col">
+              <h3>沈阳</h3>
+              <article class="news-item">
+                <h4>霍步刚当选沈阳市委书记</h4>
+                <span class="from">京报网 / 中新网 · 11 月 7 日</span>
+                <p>11 月 7 日，中共沈阳市第十五届委员会第一次全体会议选举霍步刚为市委书记，马珊珊、魏红江为市委副书记。这是沈阳市领导层换届的重要人事消息。</p>
+              </article>
+              <article class="news-item">
+                <h4>沈阳新增沈阳—义乌—汕头航线，11 月 7 日已开通</h4>
+                <span class="from">沈阳发布 · 11 月 4 日</span>
+                <p>南方航空开通沈阳—义乌—汕头航线，每周二、四、六、日执飞，CZ5938 航班 17:35 从桃仙机场起飞，经停义乌后 23:05 抵达揭阳潮汕机场，打通了沈阳与粤东地区的直达通道。</p>
+              </article>
+              <article class="news-item">
+                <h4>前 10 个月沈阳关区 TIR 车辆出口汽车零部件货值猛增 5.3 倍</h4>
+                <span class="from">东北新闻网 / 新浪财经 · 11 月 6 日</span>
+                <p>一批国产汽车零部件在辽中海关完成监管放行后，搭乘 TIR 国际公路运输车辆直奔境外组装工厂。高附加值产品出海越来越青睐 TIR 运输，沈阳汽车产业链的出口通道正在提速。</p>
+              </article>
+              <article class="news-item">
+                <h4>交通运输部启动低温雨雪冰冻三级防御响应</h4>
+                <span class="from">11 月 7 日</span>
+                <p>受寒潮影响，辽宁西部、河北东北部等地部分地区有大到暴雪，局地特大暴雪，交通运输部已启动三级防御响应。东北出行请留意路况与高速管制信息。</p>
+              </article>
+              <article class="news-item">
+                <h4>大学生球员站上万人球场，首届“东北超”沈阳队获季军</h4>
+                <span class="from">11 月 8 日</span>
+                <p>首届“东北超”沈阳队在伤病满营的情况下拼到季军，主场五胜一平保持不败。沈阳体育学院灵活安排文化课、一级运动员可网课补课，赛事平台正在补齐校园足球的育人短板。</p>
+              </article>
+              <article class="news-item">
+                <h4>“八二八新政”后，沈阳改善型洋房受关注</h4>
+                <span class="from">11 月 8 日</span>
+                <p>沈阳楼市在“八二八新政”后告别规划红利、进入品质为先阶段，浑河长青板块的中天·央著 352 席限量洋房封顶，购房者正从比价格转向看土地价值和产品兑现力。</p>
+              </article>
+            </div>
+            <div class="news-col">
+              <h3>鞍山</h3>
+              <p class="col-note">近 1~2 天内鞍山本地新闻较少，以下为本周内较新的消息，均已注明日期。</p>
+              <article class="news-item">
+                <h4>鞍山与南京共商老工业基地“智改数转”</h4>
+                <span class="from">辽宁日报 / 北国网 · 11 月 4 日</span>
+                <p>宁鞍产业科技协同发展对接会在鞍山举行，双方依托“南方创新研发、北方场景落地”模式合作。鞍山冶金集团与南京钢铁现场签约，产品从单品供货拓展至“产品 + 服务”。</p>
+              </article>
+              <article class="news-item">
+                <h4>鞍山、南京签约共筑科创共同体</h4>
+                <span class="from">11 月 4 日</span>
+                <p>作为辽苏科技合作大会的落地成果，鞍山市科技局与南京市科技局签订《鞍宁科技创新合作框架协议》，围绕产业技术联合攻关、科技成果转化、人才交流等方向合作。</p>
+              </article>
+              <article class="news-item">
+                <h4>“秋菜警务”护航百姓买菜</h4>
+                <span class="from">辽宁日报 / 北国网 · 11 月 4 日</span>
+                <p>秋菜售卖点陆续开放之际，鞍山市公安局铁东分局把警务服务前移到摊点和居民楼前，为期 22 天的秋菜售卖期间民警常态化巡逻，还紧盯防火和老年人扫码支付防骗等细节。</p>
+              </article>
+              <article class="news-item">
+                <h4>景区迎来遛娃潮，秋假拉高鞍山文旅热度</h4>
+                <span class="from">新浪财经 · 11 月 3 日</span>
+                <p>秋假以来，千山景区层林尽染、二一九公园持续领跑遛娃赛道、老院子景区研学游火热，鞍山全域文旅凭借秋日限定美景和亲子玩法拿下秋日流量。</p>
+              </article>
+              <article class="news-item">
+                <h4>鞍山大孤山综合运输廊道进入主隧道掘进阶段</h4>
+                <span class="from">新华社 · 11 月 2 日</span>
+                <p>“金石号”硬岩隧道掘进机顺利始发，项目进入主隧道掘进施工阶段。TBM 掘进段位于地下 54 至 815 米、全长 7418 米，建成后将打通大孤山矿区矿石运输通道。</p>
+              </article>
+            </div>
+            <div class="news-col">
+              <h3>卡尔加里</h3>
+              <p class="col-note">当地 11 月 6~7 日消息。</p>
+              <article class="news-item">
+                <h4>供水限制仍在执行，市民用水量连续两天低于目标</h4>
+                <span class="from">卡尔加里市政府 · 11 月 6 日</span>
+                <p>Bearspaw South 新主供水管连接工程期间，全市继续实施用水限制。11 月 5 日区域用水量为 4.9 亿升，连续第二天低于 5 亿升的目标；83 Street N.W. 等路段有施工绕行。</p>
+              </article>
+              <article class="news-item">
+                <h4>市政府启动 2026 年“支持本地节日消费”活动</h4>
+                <span class="from">卡尔加里市政府 · 11 月 6 日</span>
+                <p>第八届 Support Local Holiday 活动启动，鼓励市民在节日期间光顾本地社区商铺和餐馆，提振本地小商业的假日生意。</p>
+              </article>
+              <article class="news-item">
+                <h4>“与制服喝杯咖啡”社区安全活动在东北区举行</h4>
+                <span class="from">National Times · 11 月 7 日</span>
+                <p>11 月 6 日，卡尔加里警方、执法队、公交、停车管理部门和 Ward 5 市议员 Raj Dhaliwal 在 Cornerstone 的 Denny's 餐厅与居民面对面，交流社区安全问题。</p>
+              </article>
+              <article class="news-item">
+                <h4>YYC 面条节进行中，周末美食活动丰富</h4>
+                <span class="from">YumYak · 11 月 5 日</span>
+                <p>全城市范围的 YYC Noodle Festival 于 11 月 5~15 日举行，各参与餐厅推出特色面条；11 月 7 日（周六）还有 Ottolenghi 动手烹饪课。</p>
+              </article>
+              <article class="news-item">
+                <h4>第 113 届 Grey Cup 将于 11 月 15 日在卡尔加里举行</h4>
+                <span class="from">The Canadian Wire · 11 月 7 日</span>
+                <p>CFL 季后赛分区决赛于 11 月 7 日在蒙特利尔和埃德蒙顿开打，第 113 届 Grey Cup 定于 11 月 15 日在卡尔加里 McMahon 体育场举行，11 月 11~14 日 Stampede Park 将举办 Grey Cup Festival。</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- 三、今日看点 -->
+        <section class="blk" id="s-highlights">
+          <div class="blk-head">
+            <span class="no">其三</span><h2>今日看点</h2>
+            <span class="note">热搜榜单为 11 月 8 日下午刷新数据</span>
+          </div>
+          <div class="hl-grid">
+            <div class="hl">
+              <h3>抖音热搜 <span style="font-size:12.5px;color:var(--ink-3)">截至 17:07</span></h3>
+              <ol>
+                <li><b>泰山主场迎战成都蓉城</b>（热搜第 1）—— 中超收官轮的争冠焦点战，今晚的胜负直接决定冠军归属，值得一看。</li>
+                <li><b>开拓者惨败马刺，杨瀚森首次两双</b>（热搜第 2）—— 中国球员杨瀚森在 NBA 拿到生涯首个两双，是中国篮球久违的好消息。</li>
+                <li><b>最后一位开国将军王扶之逝世</b>（热搜第 20）—— 开国将军全部离世，一代人的历史正式落幕，值得铭记。</li>
+              </ol>
+            </div>
+            <div class="hl">
+              <h3>推特热搜 · 华语地区 <span style="font-size:12.5px;color:var(--ink-3)">截至 16:03</span></h3>
+              <ol>
+                <li><b>Nasdaq 冲上中国大陆趋势第 10</b> —— 美股纳斯达克周五反弹 1.09%，但全周仍跌 3.4%，华语圈也在热议美股波动。</li>
+                <li><b>Jensen Huang 登上台湾趋势第 15</b> —— 英伟达 CEO 黄仁勋卷入美情报备忘录指称的间谍风波，芯片与地缘话题持续发酵。</li>
+                <li><b>Start of Winter（立冬）上榜中国大陆第 8</b> —— 11 月 7 日已交立冬节气，华语圈都在聊冬天来了，与今天东北的寒潮正好呼应。</li>
+              </ol>
+            </div>
+            <div class="hl">
+              <h3>全球 AI 热点资讯</h3>
+              <ol>
+                <li><b>美国人开始担忧 AI 繁荣破灭</b>（The Washington Post，11 月 8 日）—— 美国民众对 AI 热潮能否持续感到焦虑，与本周美股因 AI 估值担忧大跌直接相关。</li>
+                <li><b>Anthropic 用 AI 加速 AI 研发，报告引发研究者担忧</b>（The Verge，11 月 7 日）—— 新报告显示 Anthropic 的模型改进速度比一年前快约一倍，AI 自我加速研发的前景让研究者感到不安。</li>
+                <li><b>美情报备忘录称中国国安招募高管监视黄仁勋</b>（TechCrunch，11 月 7 日）—— 备忘录指称中国国安部门招募了 Megaspeed 公司高管监视英伟达 CEO，芯片管制话题再升温。</li>
+              </ol>
+            </div>
+            <div class="hl">
+              <h3>今日日程</h3>
+              <p class="cal">北京时间 11 月 8 日（周日）—— Google 日历上今天没有日程安排，可以安心休息或自由安排时间。</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 四、金融市场 -->
+        <section class="blk" id="s-finance">
+          <div class="blk-head">
+            <span class="no">其四</span><h2>金融市场早报</h2>
+            <span class="note">11 月 7~8 日周末休市，以下为 11 月 6 日（周五）最近交易日收盘数据</span>
+          </div>
+          <div class="fin-grid">
+            <div class="fin">
+              <h3>人民币对美元</h3>
+              <table>
+                <tr><td>中间价（11 月 6 日）</td><td class="num">6.7168</td><td class="chg down">调贬 12 基点</td></tr>
+                <tr><td>在岸收盘</td><td class="num">6.6680</td><td class="chg up">收涨 75 点</td></tr>
+                <tr><td>离岸人民币</td><td class="num">6.6646~6.6710</td><td class="chg"></td></tr>
+              </table>
+              <p>在岸人民币已连续 14 个交易日走强，先后升破 6.65，创 2022 年 6 月以来最强；但中间价与市场价的偏离仍维持在约 370 个基点，显示央行认可升值方向、同时对升值速度保持克制。</p>
+            </div>
+            <div class="fin">
+              <h3>黄金</h3>
+              <p style="margin-top:0"><span class="gold-big">873.58 <small>元/克（COMEX 期金折算）</small></span></p>
+              <table>
+                <tr><td>COMEX 12 月期金</td><td class="num">4074.90 美元/盎司</td><td class="chg down">-0.94%</td></tr>
+                <tr><td>现货金</td><td class="num">4070.59 美元/盎司</td><td class="chg down">-0.43%</td></tr>
+                <tr><td>上金所 AU9999</td><td class="num">883.99 元/克</td><td class="chg"></td></tr>
+                <tr><td>沪金主力</td><td class="num">881.64 元/克</td><td class="chg"></td></tr>
+              </table>
+              <p>按在岸价 6.6680 换算（1 盎司 = 31.1035 克）。全周金价仍涨约 4.5%~5%，为 8 月底以来最佳单周表现。央行 11 月 7 日公布：10 月末黄金储备 7830 万盎司，连续第 24 个月增持。</p>
+            </div>
+            <div class="fin">
+              <h3>A 股 · 11 月 6 日收盘</h3>
+              <table>
+                <tr><td>上证指数</td><td class="num">3649.18</td><td class="chg down">-1.10%</td></tr>
+                <tr><td>深证成指</td><td class="num">11175.78</td><td class="chg down">-2.57%</td></tr>
+                <tr><td>创业板指</td><td class="num">2465.23</td><td class="chg down">-3.96%</td></tr>
+              </table>
+              <p>三大指数集体下挫，下跌个股超 4700 只，两市成交额缩至 1.66 万亿元。当日亚太股市普遍大跌，日经 225 跌 5.96%、韩国综指跌 6.02%，市场对 AI 估值泡沫的担忧蔓延。</p>
+            </div>
+            <div class="fin">
+              <h3>美股 · 11 月 6 日收盘</h3>
+              <table>
+                <tr><td>道琼斯</td><td class="num">51285.73</td><td class="chg down">-0.46%</td></tr>
+                <tr><td>纳斯达克</td><td class="num">24579.42</td><td class="chg up">+1.09%</td></tr>
+                <tr><td>标普 500</td><td class="num">7376.86</td><td class="chg up">+0.31%</td></tr>
+              </table>
+              <p>10 月非农就业报告超预期，降息预期降温；芯片股领涨，纳指在周四暴跌 5.5% 跌入修正区间后技术性反弹。但全周标普仍跌 2.7%、纳指跌 3.4%，为 6 月以来最差一周。</p>
+            </div>
+          </div>
+          <p class="src">数据来源：新浪财经、中国外汇交易中心、路透社市场更新、上海黄金交易所、中国人民银行。</p>
+        </section>
+
+        <!-- 五、体育 -->
+        <section class="blk" id="s-sports">
+          <div class="blk-head">
+            <span class="no">其五</span><h2>体育速递</h2>
+            <span class="note">NBA 为美国当地 11 月 7 日场次（北京时间 11 月 8 日上午）</span>
+          </div>
+          <div class="sport">
+            <h3>NBA</h3>
+            <ul>
+              <li><b>勇士 <span class="score">126-119</span> 魔术（加时）</b>：库里砍下 41 分 6 篮板 6 助攻，加时赛带队取胜；库里 35 岁后第 16 次单场 40+，超越詹姆斯独居历史第一。勇士开局 0-3 后取得七连胜。</li>
+              <li><b>马刺 <span class="score">125-103</span> 开拓者</b>：文班亚马仅出战 24 分钟拿下 29 分 7 篮板，马刺八连胜（联盟最长）；<b>杨瀚森替补出战 26 分钟，拿下 12 分 10 篮板，生涯首个两双、得分篮板双新高，成为继姚明、易建联之后第三位在 NBA 常规赛拿到两双的中国球员</b>。</li>
+              <li><b>雷霆 <span class="score">114-75</span> 奇才</b>：西班牙中锋 Aday Mara 18 分 8 篮板 3 盖帽，雷霆 8 胜 2 负。</li>
+              <li><b>尼克斯 <span class="score">109-97</span> 骑士</b>：唐斯 29 分 13 篮板，米切尔空砍 37 分，尼克斯 5 胜 4 负。</li>
+              <li><b>掘金 <span class="score">114-102</span> 步行者（墨西哥城赛）</b>：约基奇 19 分 13 篮板 8 助攻，2 万球迷现场观战亡灵节主题海外赛。</li>
+              <li><b>老鹰 <span class="score">124-121</span> 篮网</b>：杰伦·约翰逊复出砍 30 分 7 篮板 6 助攻、末节独得 12 分，老鹰逆转四连胜。</li>
+              <li><b>太阳 <span class="score">102-99</span> 火箭</b>：太阳险胜。</li>
+              <li><b>今日（美国当地周日）场次</b>：公牛 vs 76 人、活塞 vs 湖人、独行侠 vs 篮网等，北京时间 11 月 9 日凌晨起陆续开打。</li>
+            </ul>
+          </div>
+          <div class="sport">
+            <h3>足球</h3>
+            <ul>
+              <li><b>英超（11 月 7 日）</b>：诺丁汉森林 <span class="score">3-1</span> 爆冷击败曼城（德拉普梅开二度），森林全场控球率仅 22% 却高效取胜；阿森纳 <span class="score">1-0</span> 小胜赫尔城，厄德高第 72 分钟补射建功，枪手英超五连胜；富勒姆 <span class="score">1-1</span> 纽卡斯尔；利兹联 <span class="score">1-0</span> 热刺。</li>
+              <li><b>西甲</b>：瓦伦西亚 <span class="score">0-3</span> 皇家马德里（巴尔韦德、居勒尔、姆巴佩先后破门）；奥萨苏纳 <span class="score">1-1</span> 毕尔巴鄂竞技；西班牙人 <span class="score">0-0</span> 拉科鲁尼亚。</li>
+              <li><b>德甲</b>：拜仁 <span class="score">2-1</span> 美因茨；多特蒙德 <span class="score">2-1</span> 埃尔弗斯贝格；莱比锡 <span class="score">5-2</span> 奥格斯堡；斯图加特 <span class="score">1-0</span> 不莱梅。</li>
+              <li><b>意甲 / 法甲</b>：罗马 <span class="score">3-0</span> 萨索洛；帕尔马 <span class="score">1-2</span> 博洛尼亚；都灵 <span class="score">1-1</span> 莱切；巴黎圣日耳曼 <span class="score">1-0</span> 特鲁瓦。</li>
+              <li><b>中超收官轮（11 月 8 日）</b>：山东泰山主场迎战成都蓉城是争冠焦点战，登上抖音热搜第 1；上海海港 vs 辽宁铁人（沈阳城市）15:30 在上海开球；大连英博 vs 天津津门虎也是今日焦点战。</li>
+              <li><b>今日焦点</b>：马德里竞技 vs 巴塞罗那（北京时间 11 月 9 日 04:00）；曼联 vs 阿斯顿维拉、水晶宫 vs 利物浦同日开打。</li>
+            </ul>
+          </div>
+          <div class="sport">
+            <h3>卡尔加里火焰队</h3>
+            <ul>
+              <li><b>上一场（当地 11 月 6 日）</b>：主场 <span class="score">3-5</span> 不敌安纳海姆鸭队。鸭队 Cutter Gauthier 在终场前 1 分 34 秒打入制胜球，个人连续五场打入 10 球创队史纪录；火焰队 Farabee、Stromgren、Hanley 各入一球，战绩 7 胜 9 负 1 加时负。</li>
+              <li><b>下一场</b>：卡尔加里当地今日（11 月 8 日周日）18:00，主场迎战费城飞人。</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 六、月相卦象运势 -->
+        <section class="blk" id="s-astro">
+          <div class="blk-head">
+            <span class="no">其六</span><h2>月相 · 卦象 · 处女座运势</h2>
+            <span class="note">月相按沈阳坐标（41.80°N，123.43°E）计算</span>
+          </div>
+          <div class="astro-grid">
+            <div class="astro">
+              <h3>今日阴历与月相</h3>
+              <dl>
+                <div><dt>阴历</dt><dd>农历<b>丙午年九月三十</b>；立冬节气（11 月 7 日已交节）</dd></div>
+                <div><dt>干支</dt><dd>丙午年 · 己亥月 · <b>丙戌日</b>；冲龙（庚辰）煞北</dd></div>
+                <div><dt>月相</dt><dd>残月（晦月），月龄约 28.5 天，月照比例约 <b>1.6%</b>，月亮几不可见</dd></div>
+                <div><dt>月出月落</dt><dd>月出 05:17，月落 15:33（北京时间）；月上中天约 10:29</dd></div>
+                <div><dt>新月 / 满月</dt><dd>新月在明天 11 月 9 日约 15:02；下一次满月 11 月 24 日约 22:53</dd></div>
+              </dl>
+            </div>
+            <div class="astro">
+              <h3>当日一卦</h3>
+              <p><span class="gua-name">旅卦</span>　火山旅 · 第 56 卦（上离下艮，火在山上）</p>
+              <div class="gua-quote">“旅，小亨，旅贞吉。”—— 人在旅途、身处异地，小有亨通；守正行事，就能获吉。火在山上，行而不止，宜明察谨慎、不宜久留冒进。</div>
+              <p>推演：2026 年 11 月 8 日为全年中第 312 天，312 ÷ 64 余 56，得第 56 卦旅卦。Bosen 生于 2002 年 9 月 6 日（农历七月廿九），属马；今日丙戌日与午马构成“午戌三合”火局，按传统说法是三合之日，贵人运、顺遂度都不错。</p>
+            </div>
+            <div class="astro" style="grid-column: 1 / -1">
+              <h3>处女座今日运势（结合旅卦一起看）</h3>
+              <p>今天的星象和旅卦说的是同一件事：<b>在路上，但别赶路</b>。处女座天生爱把事情拆细、列清单、抠细节，这正好是旅卦“守正出奇”的打法 —— 不靠一记猛冲，靠一步一个脚印。</p>
+              <p><b>事业 / 学业</b>：大四关键期，宜稳扎稳打、守正出奇；求职与课程任务按计划推进，不宜急躁冒进。旅卦主“在外谋事”，多向老师、前辈请教会有收获；把待办拆成小清单逐项打勾，晚上会很有成就感。</p>
+              <p><b>感情</b>：旅卦主聚少离多之象，宜多沟通、以诚相待；一句体贴的问候胜过十句争辩。今天尤其提醒自己：先表达关心，再讨论问题，别让“为你好”变成“挑你错”。</p>
+              <p><b>健康</b>：立冬后寒潮来袭，沈阳、鞍山白天最高仅 1°C，注意保暖防寒、防感冒；作息宜早睡，少熬夜。按时吃饭、按时睡觉，就是最好的养生。</p>
+              <p><b>财运</b>：守财为宜，不宜投机、借贷或冲动消费；正财稳中有进，偏财莫强求。看到“限时折扣”先放进购物车冷静一晚再说。</p>
+              <p><b>幸运色</b>：墨绿色　·　<b>幸运数字</b>：6</p>
+              <div class="yiji">
+                <span><b>宜</b>　出行访友 · 学习规划 · 处理积压事务 · 与人结交</span>
+                <span><b>忌</b>　冲动消费 · 远行冒险 · 与人争执 · 借贷投机</span>
+              </div>
+              <p class="folk">卦象与星座运势为传统民俗内容，仅供参考。</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 七、娱乐八卦 -->
+        <section class="blk" id="s-gossip">
+          <div class="blk-head">
+            <span class="no">其七</span><h2>娱乐圈八卦</h2>
+            <span class="note">未证实消息均已标注</span>
+          </div>
+          <div class="gossip">
+            <article class="gos-item">
+              <div class="n">1</div>
+              <div>
+                <h4>李一桐换头像、推荐薛之谦《演员》，被指暗指《女子推理社 3》换角<span class="tag-unconfirmed">网传 / 未经证实</span></h4>
+                <span class="from">新浪娱乐 · 11 月 7 日</span>
+                <p>11 月 6 日晚李一桐空降超话，先回“切芒果”梗、又推荐薛之谦的《演员》，还把头像换成“姐们要战斗”，被网友解读为暗指《女子推理社 3》临录前把她移出常驻。不过她本人澄清只是闲聊打趣，节目组与工作室也都未官宣换角。</p>
+              </div>
+            </article>
+            <article class="gos-item">
+              <div class="n">2</div>
+              <div>
+                <h4>昆剧《长生殿》南京首演，杨贵妃扮演者邹美玲当初直接拒演</h4>
+                <span class="from">11 月 8 日</span>
+                <p>昆山当代昆剧院年度创排的《长生殿》作为第六届紫金京昆艺术群英会展演剧目在南京江南剧院首演。青年演员邹美玲刚接到杨贵妃一角时直接拒绝，还坦承自己不会撒娇，练了很久才摸清那个度 —— 这出戏的幕后比台上还热闹。</p>
+              </div>
+            </article>
+            <article class="gos-item">
+              <div class="n">3</div>
+              <div>
+                <h4>郑胜焕因预备军训练缺席《玩什么好呢》，只以录音形式参与歌谣祭</h4>
+                <span class="from">韩媒 newsen / OSEN · 11 月 8 日</span>
+                <p>11 月 7 日播出的 MBC《玩什么好呢？》“95 MBC 首尔歌谣祭”上，刘在石解释“思春期”选手因预备军训练缺席、改以录音参赛 —— “国家叫你就得去”。李素罗、Gummy 等大前辈都到场了，郑胜焕却只能“云参赛”。</p>
+              </div>
+            </article>
+            <article class="gos-item">
+              <div class="n">4</div>
+              <div>
+                <h4>徐开骋被拍地库推婴儿车，“30 天凭空变出 4 个月大婴儿”<span class="tag-unconfirmed">网传 / 未经证实</span></h4>
+                <span class="from">黄瓜网 · 11 月 6 日</span>
+                <p>八卦号称徐开骋在地库推婴儿车被拍，算下来孩子“凭空”出现的时间线对不上，网友调侃“张天爱预言成真”。该说法只来自八卦聚合站，未见当事人回应，吃瓜归吃瓜，别当真。</p>
+              </div>
+            </article>
+            <article class="gos-item">
+              <div class="n">5</div>
+              <div>
+                <h4>剧集《谷雨》“井柏然师父下线”冲上抖音热搜“爆”榜</h4>
+                <span class="from">抖音热搜第 29 · 11 月 8 日</span>
+                <p>井柏然主演的剧集《谷雨》剧情迎来高潮，“师父下线”一幕直接把话题顶上热搜爆款位置，剧迷们一边哭一边刷屏讨论后续走向，今晚追剧的人估计不少。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <!-- ================= 往期归档 ================= -->
+      <div id="view-archive" role="tabpanel" aria-labelledby="tab-archive" hidden>
+        <section class="blk">
+          <div class="blk-head">
+            <h2 class="serif">往期归档</h2>
+            <span class="note">按日期倒序 · 点任意一期打开全文</span>
+          </div>
+          <div class="arch-list">
+            <button class="arch-item" data-open-date="2026-11-08">
+              <span class="d">11 月 8 日</span>
+              <span class="badge">最新</span>
+              <span class="sum">2026 年 · 星期日 · 农历九月三十 —— 寒潮过境，沈阳 1°C / -10°C；杨瀚森 NBA 生涯首个两双；旅卦当值，处女座宜稳扎稳打。</span>
+              <span class="go">打开 →</span>
+            </button>
+          </div>
+          <p class="arch-note">公开版自 2026 年 11 月 8 日创刊，此后每日一期，都会收进这份归档。</p>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="f-title">Bosen 的专属每日晨间简报</div>
+      <p>每日 08:10（北京时间）刊发 · 沈阳 / 鞍山 / 卡尔加里三城天气与新闻、金融市场、体育、月相卦象与娱乐资讯<br />本期（2026 年 11 月 8 日）天气与榜单数据截至当日 17:00 前后；A 股、美股、黄金为 11 月 6 日最近交易日收盘数据。</p>
+    </footer>
+
+    <script>
+      (function () {
+        var tabLatest = document.getElementById('tab-latest');
+        var tabArchive = document.getElementById('tab-archive');
+        var viewLatest = document.getElementById('view-latest');
+        var viewArchive = document.getElementById('view-archive');
+
+        function show(which) {
+          var isLatest = which === 'latest';
+          viewLatest.hidden = !isLatest;
+          viewArchive.hidden = isLatest;
+          tabLatest.setAttribute('aria-selected', isLatest ? 'true' : 'false');
+          tabArchive.setAttribute('aria-selected', isLatest ? 'false' : 'true');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        tabLatest.addEventListener('click', function () { show('latest'); });
+        tabArchive.addEventListener('click', function () { show('archive'); });
+
+        var archItems = document.querySelectorAll('.arch-item');
+        for (var i = 0; i < archItems.length; i++) {
+          archItems[i].addEventListener('click', function () { show('latest'); });
+        }
+      })();
+    </script>
+  </body>
+</html>
