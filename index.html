@@ -276,6 +276,35 @@
         background: var(--gold-soft); border-radius: 4px; padding: 1px 7px; margin-left: 6px; vertical-align: 2px;
       }
 
+      /* ---------- history / quote / wellness ---------- */
+      .hist {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 18px;
+      }
+      .hist .intro { margin: 0 0 6px; font-size: 14px; color: var(--ink-2); }
+      .hist ol { margin: 0; padding-left: 20px; }
+      .hist li { margin-top: 10px; font-size: 14px; color: var(--ink-2); }
+      .hist li b { color: var(--ink); }
+      .quote-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 22px 18px; text-align: center;
+      }
+      .quote-card .q {
+        font-family: "Noto Serif SC", serif; font-size: 22px; font-weight: 900;
+        line-height: 1.6; margin: 0 0 6px; letter-spacing: .03em;
+      }
+      .quote-card .from { font-size: 13.5px; color: var(--accent); font-weight: 700; margin: 0 0 14px; }
+      .quote-card .note-text { font-size: 14px; color: var(--ink-2); margin: 0; text-align: left; }
+      .well {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 18px;
+      }
+      .well ol { margin: 0; padding-left: 20px; }
+      .well li { margin-bottom: 10px; font-size: 14px; color: var(--ink-2); }
+      .well li:last-child { margin-bottom: 0; }
+      .well li b { color: var(--ink); }
+      .well .disclaimer { font-size: 12px; color: var(--ink-3); margin: 12px 0 0; }
+
       /* ---------- archive ---------- */
       #view-archive[hidden], #view-latest[hidden] { display: none; }
       .arch-list { display: flex; flex-direction: column; gap: 10px; }
@@ -363,6 +392,9 @@
           <a href="#s-sports">体育速递</a>
           <a href="#s-astro">月相 · 卦象 · 运势</a>
           <a href="#s-gossip">娱乐圈八卦</a>
+          <a href="#s-history">历史上的今天</a>
+          <a href="#s-quote">每日金句</a>
+          <a href="#s-wellness">养生小技巧</a>
         </nav>
 
         <!-- 一、天气 -->
@@ -546,17 +578,13 @@
                 <li><b>Start of Winter（立冬）上榜中国大陆第 8</b> —— 11 月 7 日已交立冬节气，华语圈都在聊冬天来了，与今天东北的寒潮正好呼应。</li>
               </ol>
             </div>
-            <div class="hl">
+            <div class="hl" style="grid-column: 1 / -1">
               <h3>全球 AI 热点资讯</h3>
               <ol>
                 <li><b>美国人开始担忧 AI 繁荣破灭</b>（The Washington Post，11 月 8 日）—— 美国民众对 AI 热潮能否持续感到焦虑，与本周美股因 AI 估值担忧大跌直接相关。</li>
                 <li><b>Anthropic 用 AI 加速 AI 研发，报告引发研究者担忧</b>（The Verge，11 月 7 日）—— 新报告显示 Anthropic 的模型改进速度比一年前快约一倍，AI 自我加速研发的前景让研究者感到不安。</li>
                 <li><b>美情报备忘录称中国国安招募高管监视黄仁勋</b>（TechCrunch，11 月 7 日）—— 备忘录指称中国国安部门招募了 Megaspeed 公司高管监视英伟达 CEO，芯片管制话题再升温。</li>
               </ol>
-            </div>
-            <div class="hl">
-              <h3>今日日程</h3>
-              <p class="cal">北京时间 11 月 8 日（周日）—— Google 日历上今天没有日程安排，可以安心休息或自由安排时间。</p>
             </div>
           </div>
         </section>
@@ -736,6 +764,52 @@
                 <p>井柏然主演的剧集《谷雨》剧情迎来高潮，“师父下线”一幕直接把话题顶上热搜爆款位置，剧迷们一边哭一边刷屏讨论后续走向，今晚追剧的人估计不少。</p>
               </div>
             </article>
+          </div>
+        </section>
+
+        <!-- 八、历史上的今天 -->
+        <section class="blk" id="s-history">
+          <div class="blk-head">
+            <span class="no">其八</span><h2>历史上的今天</h2>
+            <span class="note">11 月 8 日 · 五个年份回望</span>
+          </div>
+          <div class="hist">
+            <p class="intro">今天也是中国记者节，向每一位记录者致敬。</p>
+            <ol>
+              <li><b>1895 年 —— 伦琴发现 X 射线</b>：德国物理学家威廉·伦琴在实验中发现 X 射线，医学从此有了“透视眼”，他也因此获得首届诺贝尔物理学奖。</li>
+              <li><b>1923 年 —— 啤酒馆政变</b>：希特勒等人在慕尼黑发动政变，企图推翻魏玛共和国政府，政变失败，希特勒被捕入狱。</li>
+              <li><b>1960 年 —— 肯尼迪当选美国总统</b>：约翰·肯尼迪击败尼克松，成为美国历史上最年轻的当选总统。</li>
+              <li><b>1997 年 —— 长江三峡大江截流成功</b>：三峡工程实现大江截流，中国水利建设史上的一座里程碑。</li>
+              <li><b>2016 年 —— 特朗普当选美国总统</b>：唐纳德·特朗普击败希拉里·克林顿，当选美国第 45 任总统。</li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- 九、每日金句 -->
+        <section class="blk" id="s-quote">
+          <div class="blk-head">
+            <span class="no">其九</span><h2>每日金句</h2>
+          </div>
+          <div class="quote-card">
+            <p class="q">“冬天来了，春天还会远吗？”</p>
+            <p class="from">—— 雪莱《西风颂》</p>
+            <p class="note-text">立冬刚过，沈阳鞍山正赶上寒潮，冷是真的冷，但冬天是季节的必经之路。大四的关键期也一样，熬过这段冷，毕业和入职的春天就在前面。</p>
+          </div>
+        </section>
+
+        <!-- 十、每日养生小技巧 -->
+        <section class="blk" id="s-wellness">
+          <div class="blk-head">
+            <span class="no">其十</span><h2>每日养生小技巧</h2>
+            <span class="note">老少皆宜 · 立冬后适用</span>
+          </div>
+          <div class="well">
+            <ol>
+              <li><b>防寒保暖</b>：头部、颈部、脚部最怕冷，出门戴好帽子围巾，晚上用热水泡脚 15 分钟再睡，暖和了才睡得踏实。</li>
+              <li><b>饮食温润</b>：多喝热水、喝点热粥热汤，少吃生冷；可以适量吃些温补的食物，比如羊肉、红枣、山药，别贪凉。</li>
+              <li><b>起居有度</b>：中老年人晨起别太猛，先在床边坐一会儿再起身，出门尽量避开清晨最冷的时段；年轻人少熬夜，久坐一小时就起来活动几分钟，脖子和腰都会感谢你。</li>
+            </ol>
+            <p class="disclaimer">以上为通用健康知识，仅供参考。</p>
           </div>
         </section>
       </div>
