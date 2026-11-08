@@ -197,6 +197,8 @@
       .news-item + .news-item { border-top: 1px dashed var(--line); }
       .news-item h4 { margin: 0 0 4px; font-size: 15px; line-height: 1.55; font-weight: 700; }
       .news-item .from { font-size: 12px; color: var(--accent); font-weight: 700; }
+      .blk a { text-decoration: underline; text-underline-offset: 2px; }
+      .from a { color: inherit; }
       .news-item p { margin: 0 0 8px; font-size: 13.5px; color: var(--ink-2); }
 
       /* ---------- highlights ---------- */
@@ -359,6 +361,37 @@
       .issue-head .back-archive { margin-left: auto; }
       .issue-panel .fin td.num { white-space: normal; }
 
+      /* ---------- issue prev / next navigation (end of each issue) ---------- */
+      .issue-nav {
+        display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: stretch;
+        margin: 26px 0 10px; padding-top: 20px; border-top: 1px solid var(--line);
+      }
+      .issue-nav-btn {
+        appearance: none; font: inherit; font-size: 14px; font-weight: 700; line-height: 1.45;
+        min-height: 48px; padding: 10px 16px; border-radius: 10px; cursor: pointer;
+        background: var(--surface); color: var(--ink); border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        display: inline-flex; align-items: center; justify-content: center; text-align: center;
+        max-width: 100%;
+      }
+      .issue-nav-btn.prev { justify-self: start; }
+      .issue-nav-btn.next { justify-self: end; }
+      .issue-nav-btn.to-archive { justify-self: center; background: var(--ink); color: var(--bg); border-color: var(--ink); }
+      .issue-nav-btn:hover { border-color: var(--ink); }
+      .issue-nav-btn.to-archive:hover { border-color: var(--ink); opacity: .88; }
+      .issue-nav-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .issue-nav-btn.is-disabled, .issue-nav-btn[disabled] {
+        background: var(--surface-2); color: var(--ink-3); border-color: var(--line);
+        box-shadow: none; cursor: not-allowed; opacity: .65;
+      }
+      .issue-nav-btn.is-disabled:hover, .issue-nav-btn[disabled]:hover { border-color: var(--line); opacity: .65; }
+      @media (max-width: 640px) {
+        .issue-nav { grid-template-columns: 1fr; gap: 10px; }
+        .issue-nav-btn, .issue-nav-btn.prev, .issue-nav-btn.next, .issue-nav-btn.to-archive {
+          justify-self: stretch; width: 100%;
+        }
+      }
+
       footer {
         border-top: 3px double var(--ink); margin-top: 10px;
         padding: 18px 20px 30px; text-align: center;
@@ -453,7 +486,7 @@
 
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#s-weather">三城天气</a><a href="#s-news">三城新闻</a><a href="#s-highlights">今日看点</a><a href="#s-finance">金融市场</a><a href="#s-sports">体育速递</a><a href="#s-gossip">娱乐圈八卦</a><a href="#s-astro">月相 · 卦象 · 运势</a><a href="#s-history">历史上的今天</a><a href="#s-quote">每日金句</a><a href="#s-wellness">养生小技巧</a><a href="#s-meal">健身减脂餐</a><a href="#s-song">每日一曲</a><a href="#s-anime">每周一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#s-weather">三城天气</a><a href="#s-news">三城新闻</a><a href="#s-highlights">今日看点</a><a href="#s-finance">金融市场</a><a href="#s-sports">体育速递</a><a href="#s-gossip">娱乐圈八卦</a><a href="#s-astro">月相 · 卦象 · 运势</a><a href="#s-history">历史上的今天</a><a href="#s-quote">每日金句</a><a href="#s-wellness">养生小技巧</a><a href="#s-meal">健身减脂餐</a><a href="#s-song">每日一曲</a><a href="#s-anime">每日一漫</a></nav>
 <!-- 三城天气 -->
 <section class="blk" id="s-weather">
 <div class="blk-head"><span class="no">其一</span><h2>三城天气</h2></div>
@@ -491,9 +524,9 @@
 <section class="blk" id="s-news">
 <div class="blk-head"><span class="no">其二</span><h2>三城近期新闻</h2></div>
 <div class="news-grid">
-<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>霍步刚当选沈阳市委书记 <span class="from">京报网/中新网，11月7日</span></h4><p>11 月 7 日，中共沈阳市第十五届委员会第一次全体会议选举霍步刚为市委书记，马珊珊、魏红江为市委副书记。这是沈阳市领导层换届的重要人事消息。</p></div><div class="news-item"><h4>沈阳新增沈阳—义乌—汕头航线，11月7日已开通 <span class="from">沈阳发布，11月4日</span></h4><p>南方航空开通沈阳—义乌—汕头航线，每周二、四、六、日执飞，CZ5938 航班 17:35 从桃仙机场起飞，经停义乌后 23:05 抵达揭阳潮汕机场。这条航线打通了沈阳与粤东地区的直达通道，对经贸往来和探亲旅游都是利好。</p></div><div class="news-item"><h4>今年前 10 个月沈阳关区 TIR 车辆出口汽车零部件货值猛增 5.3 倍 <span class="from">东北新闻网/新浪财经，11月6日</span></h4><p>一批国产汽车零部件在辽中海关完成监管放行后，搭乘 TIR 国际公路运输车辆直奔境外组装工厂。高附加值产品出海越来越青睐 TIR 运输，说明沈阳汽车产业链的出口通道正在提速，区域外贸结构也在优化。</p></div><div class="news-item"><h4>交通运输部启动低温雨雪冰冻三级防御响应 <span class="from">11月7日</span></h4><p>受寒潮影响，辽宁西部、河北东北部等地部分地区有大到暴雪，局地特大暴雪，交通运输部已启动三级防御响应，对受红色、橙色预警影响路段采取主动封闭等措施。东北出行请留意路况与高速管制信息。</p></div><div class="news-item"><h4>大学生球员站上万人球场，首届"东北超"沈阳队获季军 <span class="from">11月8日</span></h4><p>首届"东北超"沈阳队在伤病满营的情况下拼到季军，主场五胜一平保持不败。沈阳体育学院灵活安排文化课、一级运动员可网课补课，赛事平台正在补齐校园足球的育人短板。</p></div><div class="news-item"><h4>"八二八新政"后，沈阳改善型洋房受关注 <span class="from">11月8日</span></h4><p>沈阳楼市在"八二八新政"后告别规划红利、进入品质为先阶段，浑河长青板块的中天·央著 352 席限量洋房封顶，凭借低密度、实景兑现成为改善客群的热门选择，反映出购房者正从比价格转向看土地价值和产品兑现力。</p></div></article>
-<article class="news-col"><h3>鞍山</h3><p class="col-note">说明：近 1~2 天内鞍山本地新闻较少，以下为本周内较新的消息，均已注明日期。</p><div class="news-item"><h4>鞍山与南京共商老工业基地"智改数转" <span class="from">辽宁日报/北国网，11月4日</span></h4><p>宁鞍产业科技协同发展对接会在鞍山举行，双方依托"南方创新研发、北方场景落地"模式合作。中国工业互联网研究院专家作制造业技改宣讲，南钢、鞍钢专家分享标杆工厂与 AI 赋能实践；鞍山冶金集团与南京钢铁现场签约，产品从单品供货拓展至"产品+服务"。</p></div><div class="news-item"><h4>鞍山、南京签约共筑科创共同体 <span class="from">11月4日</span></h4><p>作为辽苏科技合作大会的落地成果，鞍山市科技局与南京市科技局签订《鞍宁科技创新合作框架协议》，围绕产业技术联合攻关、科技成果转化、人才交流等方向合作，南京考察团还走访了海洋装备金属材料全国重点实验室等科研平台。</p></div><div class="news-item"><h4>"秋菜警务"护航百姓买菜 <span class="from">辽宁日报/北国网，11月4日</span></h4><p>秋菜售卖点陆续开放之际，鞍山市公安局铁东分局把警务服务前移到摊点和居民楼前，为期 22 天的秋菜售卖期间民警常态化巡逻，维护秩序、疏导交通、化解纠纷，还紧盯防火和老年人扫码支付防骗等细节。</p></div><div class="news-item"><h4>景区迎来遛娃潮，秋假拉高鞍山文旅热度 <span class="from">新浪财经，11月3日</span></h4><p>秋假以来，千山景区层林尽染、二一九公园持续领跑遛娃赛道、老院子景区研学游火热，鞍山全域文旅凭借秋日限定美景和亲子玩法拿下秋日流量，假日人气明显攀升。</p></div><div class="news-item"><h4>鞍山大孤山综合运输廊道进入主隧道掘进阶段 <span class="from">新华社，11月2日</span></h4><p>"金石号"硬岩隧道掘进机顺利始发，项目进入主隧道掘进施工阶段。TBM 掘进段位于地下 54 至 815 米、全长 7418 米，建成后将打通大孤山矿区矿石运输通道。</p></div></article>
-<article class="news-col"><h3>卡尔加里（当地 11月6~7日）</h3><div class="news-item"><h4>供水限制仍在执行，市民用水量连续两天低于目标 <span class="from">卡尔加里市政府，11月6日</span></h4><p>Bearspaw South 新主供水管连接工程期间，全市继续实施用水限制。11 月 5 日区域用水量为 4.9 亿升，连续第二天低于 5 亿升的目标；现有管道排水工作预计本周末完成，83 Street N.W. 等路段有施工绕行。</p></div><div class="news-item"><h4>市政府启动 2026 年"支持本地节日消费"活动 <span class="from">卡尔加里市政府，11月6日</span></h4><p>第八届 Support Local Holiday 活动启动，鼓励市民在节日期间光顾本地社区商铺和餐馆，提振本地小商业的假日生意。</p></div><div class="news-item"><h4>"与制服喝杯咖啡"社区安全活动在东北区举行 <span class="from">National Times，11月7日</span></h4><p>11 月 6 日，卡尔加里警方、执法队、公交、停车管理部门和 Ward 5 市议员 Raj Dhaliwal 在 Cornerstone 的 Denny's 餐厅与居民面对面，交流社区安全问题，拉近警民关系。</p></div><div class="news-item"><h4>YYC 面条节进行中，周末美食活动丰富 <span class="from">YumYak，11月5日</span></h4><p>全城市范围的 YYC Noodle Festival 于 11 月 5~15 日举行，各参与餐厅推出特色面条；11 月 7 日（周六）还有 Ottolenghi 动手烹饪课，周末觅食的好去处不少。</p></div><div class="news-item"><h4>第 113 届 Grey Cup 将于 11 月 15 日在卡尔加里举行 <span class="from">The Canadian Wire，11月7日</span></h4><p>CFL 季后赛分区决赛于 11 月 7 日在蒙特利尔和埃德蒙顿开打，第 113 届 Grey Cup 定于 11 月 15 日在卡尔加里 McMahon 体育场举行，11 月 11~14 日 Stampede Park 将举办 Grey Cup Festival。</p></div></article>
+<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>霍步刚当选沈阳市委书记 <span class="from">京报网/<a href="https://feng.ifeng.com/c/8xrhHQyUjvk" target="_blank" rel="noopener noreferrer">中新网</a>，11月7日</span></h4><p>11 月 7 日，中共沈阳市第十五届委员会第一次全体会议选举霍步刚为市委书记，马珊珊、魏红江为市委副书记。这是沈阳市领导层换届的重要人事消息。</p></div><div class="news-item"><h4>沈阳新增沈阳—义乌—汕头航线，11月7日已开通 <span class="from"><a href="https://finance.sina.cn/2026-11-04/detail-inixqhkz0140218.d.html" target="_blank" rel="noopener noreferrer">沈阳发布</a>，11月4日</span></h4><p>南方航空开通沈阳—义乌—汕头航线，每周二、四、六、日执飞，CZ5938 航班 17:35 从桃仙机场起飞，经停义乌后 23:05 抵达揭阳潮汕机场。这条航线打通了沈阳与粤东地区的直达通道，对经贸往来和探亲旅游都是利好。</p></div><div class="news-item"><h4>今年前 10 个月沈阳关区 TIR 车辆出口汽车零部件货值猛增 5.3 倍 <span class="from"><a href="https://finance.sina.cn/2026-11-06/detail-inixtxky8302834.d.html" target="_blank" rel="noopener noreferrer">东北新闻网</a>/新浪财经，11月6日</span></h4><p>一批国产汽车零部件在辽中海关完成监管放行后，搭乘 TIR 国际公路运输车辆直奔境外组装工厂。高附加值产品出海越来越青睐 TIR 运输，说明沈阳汽车产业链的出口通道正在提速，区域外贸结构也在优化。</p></div><div class="news-item"><h4>交通运输部启动低温雨雪冰冻三级防御响应 <span class="from">来源：<a href="https://news.bjd.com.cn/2026/11/07/12021662.shtml" target="_blank" rel="noopener noreferrer">京报网</a>，11月7日</span></h4><p>受寒潮影响，辽宁西部、河北东北部等地部分地区有大到暴雪，局地特大暴雪，交通运输部已启动三级防御响应，对受红色、橙色预警影响路段采取主动封闭等措施。东北出行请留意路况与高速管制信息。</p></div><div class="news-item"><h4>大学生球员站上万人球场，首届"东北超"沈阳队获季军 <span class="from">来源：<a href="https://k.sina.com.cn/article_7879995911_1d5af320706802yux2.html" target="_blank" rel="noopener noreferrer">新浪新闻</a>，11月8日</span></h4><p>首届"东北超"沈阳队在伤病满营的情况下拼到季军，主场五胜一平保持不败。沈阳体育学院灵活安排文化课、一级运动员可网课补课，赛事平台正在补齐校园足球的育人短板。</p></div><div class="news-item"><h4>"八二八新政"后，沈阳改善型洋房受关注 <span class="from">来源：<a href="https://www.sohu.com/a/1086966940_696058" target="_blank" rel="noopener noreferrer">搜狐网</a>，11月8日</span></h4><p>沈阳楼市在"八二八新政"后告别规划红利、进入品质为先阶段，浑河长青板块的中天·央著 352 席限量洋房封顶，凭借低密度、实景兑现成为改善客群的热门选择，反映出购房者正从比价格转向看土地价值和产品兑现力。</p></div></article>
+<article class="news-col"><h3>鞍山</h3><p class="col-note">说明：近 1~2 天内鞍山本地新闻较少，以下为本周内较新的消息，均已注明日期。</p><div class="news-item"><h4>鞍山与南京共商老工业基地"智改数转" <span class="from"><a href="https://liaoning.lnd.com.cn/system/2026/11/04/030582391.shtml" target="_blank" rel="noopener noreferrer">辽宁日报</a>/北国网，11月4日</span></h4><p>宁鞍产业科技协同发展对接会在鞍山举行，双方依托"南方创新研发、北方场景落地"模式合作。中国工业互联网研究院专家作制造业技改宣讲，南钢、鞍钢专家分享标杆工厂与 AI 赋能实践；鞍山冶金集团与南京钢铁现场签约，产品从单品供货拓展至"产品+服务"。</p></div><div class="news-item"><h4>鞍山、南京签约共筑科创共同体 <span class="from">来源：<a href="https://liaoning.lnd.com.cn/system/2026/11/02/030582044.shtml" target="_blank" rel="noopener noreferrer">辽宁日报</a>，11月4日</span></h4><p>作为辽苏科技合作大会的落地成果，鞍山市科技局与南京市科技局签订《鞍宁科技创新合作框架协议》，围绕产业技术联合攻关、科技成果转化、人才交流等方向合作，南京考察团还走访了海洋装备金属材料全国重点实验室等科研平台。</p></div><div class="news-item"><h4>"秋菜警务"护航百姓买菜 <span class="from"><a href="https://liaoning.lnd.com.cn/system/2026/11/04/030582384.shtml" target="_blank" rel="noopener noreferrer">辽宁日报</a>/北国网，11月4日</span></h4><p>秋菜售卖点陆续开放之际，鞍山市公安局铁东分局把警务服务前移到摊点和居民楼前，为期 22 天的秋菜售卖期间民警常态化巡逻，维护秩序、疏导交通、化解纠纷，还紧盯防火和老年人扫码支付防骗等细节。</p></div><div class="news-item"><h4>景区迎来遛娃潮，秋假拉高鞍山文旅热度 <span class="from"><a href="https://finance.sina.cn/2026-11-03/detail-inixmxcz8690919.d.html" target="_blank" rel="noopener noreferrer">新浪财经</a>，11月3日</span></h4><p>秋假以来，千山景区层林尽染、二一九公园持续领跑遛娃赛道、老院子景区研学游火热，鞍山全域文旅凭借秋日限定美景和亲子玩法拿下秋日流量，假日人气明显攀升。</p></div><div class="news-item"><h4>鞍山大孤山综合运输廊道进入主隧道掘进阶段 <span class="from"><a href="https://news.e23.cn/guonei/2026-11-02/2026B0200287.html" target="_blank" rel="noopener noreferrer">新华社</a>，11月2日</span></h4><p>"金石号"硬岩隧道掘进机顺利始发，项目进入主隧道掘进施工阶段。TBM 掘进段位于地下 54 至 815 米、全长 7418 米，建成后将打通大孤山矿区矿石运输通道。</p></div></article>
+<article class="news-col"><h3>卡尔加里（当地 11月6~7日）</h3><div class="news-item"><h4>供水限制仍在执行，市民用水量连续两天低于目标 <span class="from"><a href="https://newsroom.calgary.ca/water-use-stays-in-the-green-zone-as-bearspaw-south-feeder-main-work-progresses/" target="_blank" rel="noopener noreferrer">卡尔加里市政府</a>（需翻墙），11月6日</span></h4><p>Bearspaw South 新主供水管连接工程期间，全市继续实施用水限制。11 月 5 日区域用水量为 4.9 亿升，连续第二天低于 5 亿升的目标；现有管道排水工作预计本周末完成，83 Street N.W. 等路段有施工绕行。</p></div><div class="news-item"><h4>市政府启动 2026 年"支持本地节日消费"活动 <span class="from"><a href="https://newsroom.calgary.ca/shop-local-share-the-joy-mayor-highlights-2026-support-local-holiday-campaign-in-bowness-and-montgomery/" target="_blank" rel="noopener noreferrer">卡尔加里市政府</a>（需翻墙），11月6日</span></h4><p>第八届 Support Local Holiday 活动启动，鼓励市民在节日期间光顾本地社区商铺和餐馆，提振本地小商业的假日生意。</p></div><div class="news-item"><h4>"与制服喝杯咖啡"社区安全活动在东北区举行 <span class="from"><a href="https://nationaltimesmedia.com/community-safety-takes-centre-stage-at-coffee-with-a-uniform-in-calgary/" target="_blank" rel="noopener noreferrer">National Times</a>（需翻墙），11月7日</span></h4><p>11 月 6 日，卡尔加里警方、执法队、公交、停车管理部门和 Ward 5 市议员 Raj Dhaliwal 在 Cornerstone 的 Denny's 餐厅与居民面对面，交流社区安全问题，拉近警民关系。</p></div><div class="news-item"><h4>YYC 面条节进行中，周末美食活动丰富 <span class="from"><a href="https://www.yumyak.ca/calgary-weekend-plan-nov-6-8-2026/" target="_blank" rel="noopener noreferrer">YumYak</a>（需翻墙），11月5日</span></h4><p>全城市范围的 YYC Noodle Festival 于 11 月 5~15 日举行，各参与餐厅推出特色面条；11 月 7 日（周六）还有 Ottolenghi 动手烹饪课，周末觅食的好去处不少。</p></div><div class="news-item"><h4>第 113 届 Grey Cup 将于 11 月 15 日在卡尔加里举行 <span class="from">The Canadian Wire，11月7日</span></h4><p>CFL 季后赛分区决赛于 11 月 7 日在蒙特利尔和埃德蒙顿开打，第 113 届 Grey Cup 定于 11 月 15 日在卡尔加里 McMahon 体育场举行，11 月 11~14 日 Stampede Park 将举办 Grey Cup Festival。</p></div></article>
 </div>
 </section>
 <!-- 今日看点 -->
@@ -502,7 +535,7 @@
 <div class="hl-grid">
 <article class="hl"><h3>抖音热搜（截至 17:07 刷新）</h3><ol><li><b>泰山主场迎战成都蓉城</b>（热搜第 1）—— 中超收官轮的争冠焦点战，今晚的胜负直接决定冠军归属，值得一看。</li><li><b>开拓者惨败马刺，杨瀚森首次两双</b>（热搜第 2）—— 中国球员杨瀚森在 NBA 拿到生涯首个两双，是中国篮球久违的好消息，值得一看。</li><li><b>最后一位开国将军王扶之逝世</b>（热搜第 20）—— 开国将军全部离世，一代人的历史正式落幕，值得铭记。</li></ol></article>
 <article class="hl"><h3>推特热搜（华语地区，截至 16:03 刷新）</h3><ol><li><b>Nasdaq 冲上中国大陆趋势第 10</b> —— 美股纳斯达克周五反弹 1.09%，但全周仍跌 3.4%，华语圈也在热议美股波动。</li><li><b>Jensen Huang 登上台湾趋势第 15</b> —— 英伟达 CEO 黄仁勋卷入美情报备忘录指称的间谍风波，芯片与地缘话题持续发酵。</li><li><b>Start of Winter（立冬）上榜中国大陆第 8</b> —— 昨天 11 月 7 日已交立冬节气，华语圈都在聊冬天来了，与今天东北的寒潮正好呼应。</li></ol></article>
-<article class="hl"><h3>全球 AI 热点资讯（11月8日，今日已刷新 80 条）</h3><ol><li><b>美国人开始担忧 AI 繁荣破灭</b>（The Washington Post，11月8日）—— 美国民众对 AI 热潮能否持续感到焦虑，与本周美股因 AI 估值担忧大跌直接相关，是理解当前市场情绪的一手材料。</li><li><b>Anthropic 用 AI 加速 AI 研发，报告引发研究者担忧</b>（The Verge，11月7日）—— 一份新报告显示 Anthropic 的模型改进速度比一年前快约一倍，AI 自我加速研发的前景让研究者感到不安。</li><li><b>美情报备忘录称中国国安招募高管监视黄仁勋</b>（TechCrunch，11月7日）—— 备忘录指称中国国安部门招募了 Megaspeed 公司高管监视英伟达 CEO，同时美方质疑英伟达 H200 芯片对华销售的审查漏洞，芯片管制话题再升温。</li></ol></article>
+<article class="hl"><h3>全球 AI 热点资讯（11月8日，今日已刷新 80 条）</h3><ol><li><b>美国人开始担忧 AI 繁荣破灭</b>（The Washington Post，11月8日）—— 美国民众对 AI 热潮能否持续感到焦虑，与本周美股因 AI 估值担忧大跌直接相关，是理解当前市场情绪的一手材料。</li><li><b>Anthropic 用 AI 加速 AI 研发，报告引发研究者担忧</b>（<a href="https://www.theverge.com/ai-artificial-intelligence/1029126/anthropic-metr-report-accelerating-ai-development" target="_blank" rel="noopener noreferrer">The Verge</a>（需翻墙），11月7日）—— 一份新报告显示 Anthropic 的模型改进速度比一年前快约一倍，AI 自我加速研发的前景让研究者感到不安。</li><li><b>美情报备忘录称中国国安招募高管监视黄仁勋</b>（<a href="https://techcrunch.com/2026/11/07/chinese-exec-was-recruited-to-spy-on-nvidia-ceo-according-to-us-intelligence-memo/" target="_blank" rel="noopener noreferrer">TechCrunch</a>（需翻墙），11月7日）—— 备忘录指称中国国安部门招募了 Megaspeed 公司高管监视英伟达 CEO，同时美方质疑英伟达 H200 芯片对华销售的审查漏洞，芯片管制话题再升温。</li></ol></article>
 </div>
 </section>
 <!-- 金融市场早报 -->
@@ -513,23 +546,23 @@
 <article class="fin"><h3>人民币对美元</h3><table><tr><td>中间价（11月6日）</td><td class="num down">6.7168，较前一日调贬 12 个基点，结束短暂调升</td></tr><tr><td>在岸收盘（11月6日）</td><td class="num up">6.6680，较上一交易日夜盘收涨 75 点；离岸约 6.6646~6.6710</td></tr></table><p><b>背景</b>：在岸人民币已连续 14 个交易日走强，先后升破 6.65，创 2022 年 6 月以来最强；但中间价与市场价的偏离仍维持在约 370 个基点，显示央行认可升值方向、同时对升值速度保持克制。</p></article>
 <article class="fin"><h3>A股（11月6日周五收盘）</h3><table><tr><td>上证指数</td><td class="num down">3649.18 点，跌 1.10%</td></tr><tr><td>深证成指</td><td class="num down">11175.78 点，跌 2.57%</td></tr><tr><td>创业板指</td><td class="num down">2465.23 点，跌 3.96%</td></tr></table><p><b>背景</b>：三大指数集体下挫，下跌个股超 4700 只，两市成交额缩至 1.66 万亿元。当日亚太股市普遍大跌，日经 225 跌 5.96%、韩国综指跌 6.02%，市场对 AI 估值泡沫的担忧蔓延。</p></article>
 <article class="fin"><h3>美股（11月6日，美国当地周五收盘）</h3><table><tr><td>道琼斯</td><td class="num down">51285.73 点，跌 0.46%</td></tr><tr><td>纳斯达克</td><td class="num up">24579.42 点，涨 1.09%</td></tr><tr><td>标普 500</td><td class="num up">7376.86 点，涨 0.31%</td></tr></table><p><b>背景</b>：10 月非农就业报告超预期，降息预期降温；芯片股领涨，纳指在周四暴跌 5.5% 跌入修正区间后技术性反弹。但全周来看标普仍跌 2.7%、纳指跌 3.4%，为 6 月以来最差一周。</p></article>
-<article class="fin"><h3>黄金</h3><p><b>COMEX 12 月期金（11月6日结算）</b>：4074.90 美元/盎司，跌 0.94%；现货金约 4070.59 美元/盎司，跌 0.43%</p><p><b>折合人民币</b>：按在岸人民币收盘价 6.6680 换算，COMEX 期金约合 <b>873.58 元/克</b>，现货金约合 872.66 元/克（1 盎司 = 31.1035 克）；国内金价同一日：上海黄金交易所 AU9999 报 883.99 元/克，沪金主力报 881.64 元/克</p><p><b>背景</b>：美元走强叠加美股反弹，压制了金价单日表现；但全周金价仍上涨约 4.5%~5%，为 8 月底以来最佳单周表现，周四盘中一度触及 4146 美元。11 月 7 日央行公布，10 月末黄金储备 7830 万盎司，较 9 月末增加 83 万盎司，为连续第 24 个月增持黄金。</p><p class="src">数据来源：新浪财经、中国外汇交易中心、路透社市场更新、上海黄金交易所、中国人民银行。</p></article>
+<article class="fin"><h3>黄金</h3><p><b>COMEX 12 月期金（11月6日结算）</b>：4074.90 美元/盎司，跌 0.94%；现货金约 4070.59 美元/盎司，跌 0.43%</p><p><b>折合人民币</b>：按在岸人民币收盘价 6.6680 换算，COMEX 期金约合 <b>873.58 元/克</b>，现货金约合 872.66 元/克（1 盎司 = 31.1035 克）；国内金价同一日：上海黄金交易所 AU9999 报 883.99 元/克，沪金主力报 881.64 元/克</p><p><b>背景</b>：美元走强叠加美股反弹，压制了金价单日表现；但全周金价仍上涨约 4.5%~5%，为 8 月底以来最佳单周表现，周四盘中一度触及 4146 美元。11 月 7 日央行公布，10 月末黄金储备 7830 万盎司，较 9 月末增加 83 万盎司，为连续第 24 个月增持黄金。</p><p class="src">数据来源：<a href="https://finance.sina.com.cn" target="_blank" rel="noopener noreferrer">新浪财经</a>、<a href="https://www.chinamoney.com.cn" target="_blank" rel="noopener noreferrer">中国外汇交易中心</a>、<a href="https://www.reuters.com" target="_blank" rel="noopener noreferrer">路透社</a>（需翻墙）市场更新、<a href="https://www.sge.com.cn" target="_blank" rel="noopener noreferrer">上海黄金交易所</a>、<a href="https://www.pbc.gov.cn" target="_blank" rel="noopener noreferrer">中国人民银行</a>。</p></article>
 </div>
 </section>
 <!-- 体育速递 -->
 <section class="blk" id="s-sports">
 <div class="blk-head"><span class="no">其五</span><h2>体育速递</h2></div>
-<article class="sport"><h3>NBA（11月7日，美国当地周六；北京时间 11月8日上午）</h3><ul><li><b>勇士 126-119 魔术（加时）</b>：库里砍下 41 分 6 篮板 6 助攻（本赛季第二场 40+），加时赛带队取胜，勇士开局 0-3 后取得七连胜；库里 35 岁后第 16 次单场 40+，超越詹姆斯独居历史第一，勇士也成为自 1950-51 赛季以来首支开局三连败后七连胜的球队。</li><li><b>马刺 125-103 开拓者</b>：文班亚马仅出战 24 分钟就拿下 29 分 7 篮板，马刺八连胜（联盟最长）；<b>杨瀚森替补出战 26 分钟，拿下 12 分 10 篮板 1 助攻，生涯首个两双、得分篮板双新高，成为继姚明（209 次）、易建联（16 次）之后第三位在 NBA 常规赛拿到两双的中国球员</b>。</li><li><b>雷霆 114-75 奇才</b>：西班牙中锋 Aday Mara 18 分 8 篮板 3 盖帽，雷霆 8 胜 2 负。</li><li><b>尼克斯 109-97 骑士</b>：唐斯 29 分 13 篮板，米切尔空砍 37 分，尼克斯 5 胜 4 负。</li><li><b>掘金 114-102 步行者（墨西哥城赛）</b>：约基奇 19 分 13 篮板 8 助攻带队取胜，2 万球迷现场观战亡灵节主题海外赛；西亚卡姆 23 分。</li><li><b>老鹰 124-121 篮网</b>：杰伦·约翰逊复出砍 30 分 7 篮板 6 助攻、末节独得 12 分，老鹰逆转取胜、四连胜。</li><li><b>太阳 102-99 火箭</b>：太阳险胜。</li><li><b>今日美国当地周日场次</b>：公牛 vs 76 人、活塞 vs 湖人、独行侠 vs 篮网等（北京时间 11 月 9 日凌晨起陆续开打）。</li></ul></article>
-<article class="sport"><h3>足球</h3><ul><li><b>英超（11月7日，欧洲当地）</b>：诺丁汉森林 3-1 爆冷击败曼城（德拉普梅开二度，库尼亚、切尔基各入一球），森林全场控球率仅 22% 却高效取胜；阿森纳 1-0 小胜赫尔城，厄德高第 72 分钟补射建功，枪手英超五连胜；富勒姆 1-1 纽卡斯尔；利兹联 1-0 热刺。</li><li><b>西甲（11月7日）</b>：瓦伦西亚 0-3 皇家马德里（巴尔韦德、居勒尔、姆巴佩先后破门）；奥萨苏纳 1-1 毕尔巴鄂竞技；西班牙人 0-0 拉科鲁尼亚。</li><li><b>德甲（11月7日）</b>：拜仁 2-1 美因茨；多特蒙德 2-1 埃尔弗斯贝格；莱比锡 5-2 奥格斯堡；斯图加特 1-0 不莱梅。</li><li><b>意甲（11月7日）</b>：罗马 3-0 萨索洛；帕尔马 1-2 博洛尼亚；都灵 1-1 莱切；<b>法甲</b>：巴黎圣日耳曼 1-0 特鲁瓦。</li><li><b>今日焦点</b>：马德里竞技 vs 巴塞罗那（11月8日 21:00 欧洲中部时间，北京时间 11月9日 04:00）；曼联 vs 阿斯顿维拉、水晶宫 vs 利物浦同日开打。</li><li><b>中超（11月8日，北京时间，收官轮）</b>：上海海港 vs 辽宁铁人（沈阳城市）15:30 在上海开球，赛果页显示 0-0；山东泰山主场迎战成都蓉城是争冠焦点战，登上抖音热搜第 1；大连英博 vs 天津津门虎也是今日焦点战（登上抖音热搜第 4）。</li></ul></article>
-<article class="sport"><h3>卡尔加里火焰队</h3><ul><li><b>上一场（卡尔加里当地 11月6日周五）</b>：主场 3-5 不敌安纳海姆鸭队。鸭队 Cutter Gauthier 在终场前 1 分 34 秒打入制胜球，个人连续五场打入 10 球，创队史纪录；火焰队 Farabee、Stromgren、Hanley 各入一球，战绩 7 胜 9 负 1 加时负。</li><li><b>下一场</b>：卡尔加里当地今日（11月8日周日）18:00，主场迎战费城飞人。</li></ul></article>
+<article class="sport"><h3>NBA（11月7日，美国当地周六；北京时间 11月8日上午）</h3><ul><li><b>勇士 126-119 魔术（加时）</b>：库里砍下 41 分 6 篮板 6 助攻（本赛季第二场 40+），加时赛带队取胜，勇士开局 0-3 后取得七连胜；库里 35 岁后第 16 次单场 40+，超越詹姆斯独居历史第一，勇士也成为自 1950-51 赛季以来首支开局三连败后七连胜的球队。（来源：<a href="https://feng.ifeng.com/c/8xt5xu3HSjA" target="_blank" rel="noopener noreferrer">凤凰网</a>）</li><li><b>马刺 125-103 开拓者</b>：文班亚马仅出战 24 分钟就拿下 29 分 7 篮板，马刺八连胜（联盟最长）；<b>杨瀚森替补出战 26 分钟，拿下 12 分 10 篮板 1 助攻，生涯首个两双、得分篮板双新高，成为继姚明（209 次）、易建联（16 次）之后第三位在 NBA 常规赛拿到两双的中国球员</b>。（来源：<a href="https://feng.ifeng.com/c/8xt5xu3HSjA" target="_blank" rel="noopener noreferrer">凤凰网</a>）</li><li><b>雷霆 114-75 奇才</b>：西班牙中锋 Aday Mara 18 分 8 篮板 3 盖帽，雷霆 8 胜 2 负。（来源：<a href="https://feng.ifeng.com/c/8xt5xu3HSjA" target="_blank" rel="noopener noreferrer">凤凰网</a>）</li><li><b>尼克斯 109-97 骑士</b>：唐斯 29 分 13 篮板，米切尔空砍 37 分，尼克斯 5 胜 4 负。（来源：<a href="https://feng.ifeng.com/c/8xt5xu3HSjA" target="_blank" rel="noopener noreferrer">凤凰网</a>）</li><li><b>掘金 114-102 步行者（墨西哥城赛）</b>：约基奇 19 分 13 篮板 8 助攻带队取胜，2 万球迷现场观战亡灵节主题海外赛；西亚卡姆 23 分。（来源：<a href="https://feng.ifeng.com/c/8xt5xu3HSjA" target="_blank" rel="noopener noreferrer">凤凰网</a>）</li><li><b>老鹰 124-121 篮网</b>：杰伦·约翰逊复出砍 30 分 7 篮板 6 助攻、末节独得 12 分，老鹰逆转取胜、四连胜。（来源：<a href="https://feng.ifeng.com/c/8xt5xu3HSjA" target="_blank" rel="noopener noreferrer">凤凰网</a>）</li><li><b>太阳 102-99 火箭</b>：太阳险胜。（来源：<a href="https://feng.ifeng.com/c/8xt5xu3HSjA" target="_blank" rel="noopener noreferrer">凤凰网</a>）</li><li><b>今日美国当地周日场次</b>：公牛 vs 76 人、活塞 vs 湖人、独行侠 vs 篮网等（北京时间 11 月 9 日凌晨起陆续开打）。</li></ul></article>
+<article class="sport"><h3>足球</h3><ul><li><b>英超（11月7日，欧洲当地）</b>：诺丁汉森林 3-1 爆冷击败曼城（德拉普梅开二度，贾伊尔·库尼亚、切尔基各入一球），森林全场控球率仅 22% 却高效取胜；阿森纳 1-0 小胜赫尔城，厄德高第 72 分钟补射建功，枪手英超五连胜；富勒姆 1-1 纽卡斯尔；利兹联 1-0 热刺。（来源：<a href="https://www.cacst.cn/news/zuqiu/2202.html" target="_blank" rel="noopener noreferrer">绿茵直播</a>）</li><li><b>西甲（11月7日）</b>：瓦伦西亚 0-3 皇家马德里（巴尔韦德、居勒尔、姆巴佩先后破门）；奥萨苏纳 1-1 毕尔巴鄂竞技；西班牙人 0-0 拉科鲁尼亚。（来源：<a href="https://www.cacst.cn/news/zuqiu/2202.html" target="_blank" rel="noopener noreferrer">绿茵直播</a>）</li><li><b>德甲（11月7日）</b>：拜仁 2-1 美因茨；多特蒙德 2-1 埃尔弗斯贝格；莱比锡 5-2 奥格斯堡；斯图加特 1-0 不莱梅。（来源：<a href="https://www.cacst.cn/news/zuqiu/2202.html" target="_blank" rel="noopener noreferrer">绿茵直播</a>）</li><li><b>意甲（11月7日）</b>：罗马 3-0 萨索洛；帕尔马 1-2 博洛尼亚；都灵 1-1 莱切；<b>法甲</b>：巴黎圣日耳曼 1-0 特鲁瓦。（来源：<a href="https://www.cacst.cn/news/zuqiu/2202.html" target="_blank" rel="noopener noreferrer">绿茵直播</a>）</li><li><b>今日焦点</b>：马德里竞技 vs 巴塞罗那（11月8日 21:00 欧洲中部时间，北京时间 11月9日 04:00）；曼联 vs 阿斯顿维拉、水晶宫 vs 利物浦同日开打。</li><li><b>中超（11月8日，北京时间，收官轮）</b>：上海海港 6-1 大胜辽宁铁人（沈阳城市）；山东泰山 3-2 力克成都蓉城（赛前登上抖音热搜第 1）；大连英博 3-1 击败天津津门虎夺冠（赛前登上抖音热搜第 4）。（来源：<a href="https://k.sina.com.cn/article_7857201856_1d45362c001908u420.html" target="_blank" rel="noopener noreferrer">新浪</a>）</li></ul></article>
+<article class="sport"><h3>卡尔加里火焰队</h3><ul><li><b>上一场（卡尔加里当地 11月6日周五）</b>：主场 3-5 不敌安纳海姆鸭队。鸭队 Cutter Gauthier 在终场前 1 分 34 秒打入制胜球，个人连续五场打入 10 球，创队史纪录；火焰队 Farabee、Stromgren、Hanley 各入一球，战绩 7 胜 9 负 1 加时负。（来源：<a href="https://www.nhl.com/news/anaheim-ducks-calgary-flames-game-recap-november-6-2026" target="_blank" rel="noopener noreferrer">NHL官网</a>（需翻墙））</li><li><b>下一场</b>：卡尔加里当地今日（11月8日周日）18:00，主场迎战费城飞人。</li></ul></article>
 </section>
 <!-- 娱乐圈八卦 -->
 <section class="blk" id="s-gossip">
 <div class="blk-head"><span class="no">其六</span><h2>娱乐圈八卦</h2></div>
 <div class="gossip">
-<div class="gos-item"><div class="n">1</div><div><h4>李一桐换头像、推荐薛之谦《演员》，被指暗指《女子推理社3》换角 <span class="from">新浪娱乐，11月7日</span></h4><p>11 月 6 日晚李一桐空降超话，先回"切芒果"梗、又推荐薛之谦的《演员》，还把头像换成"姐们要战斗"，被网友解读为暗指《女子推理社 3》临录前把她移出常驻。不过她本人澄清只是闲聊打趣，节目组与工作室也都未官宣换角——"暗指换角"目前仍是网友基于网传信息的解读，<b>网传/未经证实</b>。</p></div></div>
-<div class="gos-item"><div class="n">2</div><div><h4>昆剧《长生殿》南京首演，杨贵妃扮演者邹美玲当初直接拒演 <span class="from">11月8日</span></h4><p>昆山当代昆剧院年度创排的《长生殿》作为第六届紫金京昆艺术群英会展演剧目在南京江南剧院首演。青年演员邹美玲刚接到杨贵妃一角时直接拒绝："我说不行，其他戏都能考虑，这个真不敢接"，还坦承自己不会撒娇，练了很久才摸清那个度——老艺术家蔡正仁扶着道具剑讲了一辈子《长生殿》，这出戏的幕后比台上还热闹。</p></div></div>
-<div class="gos-item"><div class="n">3</div><div><h4>郑胜焕因预备军训练缺席《玩什么好呢》，只以录音形式参与歌谣祭 <span class="from">韩媒 newsen/OSEN，11月8日</span></h4><p>11 月 7 日播出的 MBC《玩什么好呢？"95 MBC 首尔歌谣祭"》上，刘在石解释"思春期"选手因个人原因缺席、改以录音参赛，原因竟是预备军训练——"国家叫你就得去"。李素罗、Gummy 等大前辈都到场了，郑胜焕却只能"云参赛"，场面又好笑又有点惨。</p></div></div>
+<div class="gos-item"><div class="n">1</div><div><h4>李一桐换头像、推荐薛之谦《演员》，被指暗指《女子推理社3》换角 <span class="from"><a href="https://ent.sina.cn/2026-11-07/detail-inixxcvw4632275.d.html?vt=4" target="_blank" rel="noopener noreferrer">新浪娱乐</a>，11月7日</span></h4><p>11 月 6 日晚李一桐空降超话，先回"切芒果"梗、又推荐薛之谦的《演员》，还把头像换成"姐们要战斗"，被网友解读为暗指《女子推理社 3》临录前把她移出常驻。不过她本人澄清只是闲聊打趣，节目组与工作室也都未官宣换角——"暗指换角"目前仍是网友基于网传信息的解读，<b>网传/未经证实</b>。</p></div></div>
+<div class="gos-item"><div class="n">2</div><div><h4>昆剧《长生殿》南京首演，杨贵妃扮演者邹美玲当初直接拒演 <span class="from">来源：<a href="https://feng.ifeng.com/c/8xDskcM69lV" target="_blank" rel="noopener noreferrer">凤凰网</a>，11月8日</span></h4><p>昆山当代昆剧院年度创排的《长生殿》作为第六届紫金京昆艺术群英会展演剧目在南京江南剧院首演。青年演员邹美玲刚接到杨贵妃一角时直接拒绝："我说不行，其他戏都能考虑，这个真不敢接"，还坦承自己不会撒娇，练了很久才摸清那个度——老艺术家蔡正仁扶着道具剑讲了一辈子《长生殿》，这出戏的幕后比台上还热闹。</p></div></div>
+<div class="gos-item"><div class="n">3</div><div><h4>郑胜焕因预备军训练缺席《玩什么好呢》，只以录音形式参与歌谣祭 <span class="from">韩媒 <a href="https://www.newsen.com/news_view.php?uid=202611072052086110&amp;code=999999" target="_blank" rel="noopener noreferrer">newsen</a>（需翻墙）/OSEN，11月8日</span></h4><p>11 月 7 日播出的 MBC《玩什么好呢？"95 MBC 首尔歌谣祭"》上，刘在石解释"思春期"选手因个人原因缺席、改以录音参赛，原因竟是预备军训练——"国家叫你就得去"。李素罗、Gummy 等大前辈都到场了，郑胜焕却只能"云参赛"，场面又好笑又有点惨。</p></div></div>
 <div class="gos-item"><div class="n">4</div><div><h4>徐开骋被拍地库推婴儿车，"30 天凭空变出 4 个月大婴儿" <span class="from">黄瓜网，11月6日</span></h4><p>八卦号称徐开骋在地库推婴儿车被拍，算下来孩子"凭空"出现的时间线对不上，网友调侃"张天爱预言成真"。不过该说法只来自八卦聚合站，未见当事人回应，<b>网传/未经证实</b>，吃瓜归吃瓜，别当真。</p></div></div>
 <div class="gos-item"><div class="n">5</div><div><h4>剧集《谷雨》"井柏然师父下线"冲上抖音热搜"爆"榜 <span class="from">抖音热搜第 29，11月8日</span></h4><p>井柏然主演的剧集《谷雨》剧情迎来高潮，"师父下线"一幕直接把话题顶上热搜爆款位置，剧迷们一边哭一边刷屏讨论后续走向，今晚追剧的人估计不少。</p></div></div>
 </div>
@@ -600,13 +633,15 @@
 <p>今天旅卦讲"在路上，但别赶路"，新一周也从今天开始；杨瀚森昨晚刚拿生涯首个两双，平凡的路也能走出高光。《平凡之路》唱的就是这条路——"我曾经跨过山和大海，也穿过人山人海"，今晚备餐的时候放这首，煮一锅糙米、卤几份鸡胸肉，下周的低碳日就不用天天现做，路要一步一步走，饭也要一顿一顿备。</p>
 </div>
 </section>
-<!-- 每周一漫 -->
+<!-- 每日一漫 -->
 <section class="blk" id="s-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每周一漫</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
 <div class="anime">
-<p>本周在看：《葬送的芙莉莲》——今晚看第 11~12 集，新一周开始，跟着芙莉莲继续往北走。</p>
+<p class="ttl">今日推荐：《强风吹拂》（TV 动画全 23 集，2018–2019 年）</p>
+<p>改编自三浦紫苑的同名小说，讲十个原本不会跑步的大学生，在灰二的带领下从零开始，一路跑向箱根驿传。理由：今天是旅卦，"在路上"——寒潮天看一群人顶着冷风晨跑，比窝在被窝里更提气；今晚看第 1 集《第十名男子》，灰二那句"你喜欢跑步吗"一出来，新一周就有了劲头；这周主题是冬夜暖番，它负责把暖意从被窝里带到路上。</p>
 </div>
 </section>
+<nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev" type="button" data-nav-date="2026-11-07" aria-label="上一期：11月7日 周六">&larr; 上一期 &middot; 11月7日 周六</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next is-disabled" type="button" disabled aria-disabled="true">下一期 &middot; 已是最新一期 &rarr;</button></nav>
 <p class="src">简报完。天气与榜单数据截至今日 17:00 前后；A 股、美股、黄金为 11 月 6 日最近交易日收盘数据。</p>
 </div>
 
@@ -621,7 +656,7 @@
         <div class="strip" aria-label="三城气温速览"><div class="cell"><div class="big">12.7°<small> / -0.3°</small></div><div class="meta"><b>沈阳</b><br />毛毛雨转多云<br />西北风阵风 43 km/h</div></div><div class="cell"><div class="big">15.1°<small> / 1.0°</small></div><div class="meta"><b>鞍山</b><br />毛毛雨，降水约 3.3 毫米<br />西北风阵风 44 km/h</div></div><div class="cell"><div class="big">4.2°<small> / -2.8°</small></div><div class="meta"><b>卡尔加里</b><br />当地 10 月 31 日 · 阴<br />湿度约 87%，体感偏冷</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1101-weather">三城天气</a><a href="#d1101-news">三城新闻</a><a href="#d1101-highlights">今日看点</a><a href="#d1101-finance">金融市场</a><a href="#d1101-sports">体育速递</a><a href="#d1101-gossip">娱乐圈八卦</a><a href="#d1101-astro">月相 · 卦象 · 运势</a><a href="#d1101-history">历史上的今天</a><a href="#d1101-quote">每日金句</a><a href="#d1101-wellness">养生小技巧</a><a href="#d1101-meal">健身减脂餐</a><a href="#d1101-song">每日一曲</a><a href="#d1101-anime">每周一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1101-weather">三城天气</a><a href="#d1101-news">三城新闻</a><a href="#d1101-highlights">今日看点</a><a href="#d1101-finance">金融市场</a><a href="#d1101-sports">体育速递</a><a href="#d1101-gossip">娱乐圈八卦</a><a href="#d1101-astro">月相 · 卦象 · 运势</a><a href="#d1101-history">历史上的今天</a><a href="#d1101-quote">每日金句</a><a href="#d1101-wellness">养生小技巧</a><a href="#d1101-meal">健身减脂餐</a><a href="#d1101-song">每日一曲</a><a href="#d1101-anime">每日一漫</a></nav>
 <!-- 三城天气 -->
 <section class="blk" id="d1101-weather">
 <div class="blk-head"><span class="no">其一</span><h2>三城天气</h2></div>
@@ -657,16 +692,16 @@
 <section class="blk" id="d1101-news">
 <div class="blk-head"><span class="no">其二</span><h2>三城近期新闻</h2></div>
 <div class="news-grid">
-<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>全省正式开栓供热，沈阳 11 月 1 日达正式供热标准 <span class="from">新华社，11月1日</span></h4><p>10 月 27 日起沈阳全市换热站陆续达标供热，11 月 1 日达到正式供热标准；浑南热力为辖区 23.7 万户居民保障供暖。供暖季正式开始，室内外温差拉大。</p></div><div class="news-item"><h4>11 月 1 日起沈阳地铁末班车调整 <span class="from">网易&quot;指尖早报&quot;，11月1日</span></h4><p>2026 年 11 月 1 日至 2027 年 3 月 31 日，地铁 1、2、4、9、10 号线双向末班车均调整为 22:20；3 号线部分交路末班车亦为 22:20。冬季出行留意末班时间。</p></div><div class="news-item"><h4>辽宁雨雪大风：沈阳小雨转晴，东部山区局部中雪 <span class="from">辽宁省气象台、沈阳晚报，11月1日</span></h4><p>11 月 1 日辽宁中部、东南部小雨转多云，东北部雨夹雪或小雪，东部山区局部中雪；沈阳等地偏北风 4~6 级、阵风 7~8 级局部 9 级，道路湿滑，出行注意安全。</p></div></article>
-<article class="news-col"><h3>鞍山</h3><div class="news-item"><h4>全省正式开栓供热，鞍山此前已提前送暖 <span class="from">辽宁日报，11月1日</span></h4><p>11 月 1 日辽宁 13 个市和沈抚示范区正式开栓供热；沈阳、鞍山等地部分区域已提前开栓送暖；全省储煤 1141.18 万吨，储煤率 78.7%。</p></div><div class="news-item"><h4>鞍山 10 月 31 日至 11 月 1 日迎降水、降温、大风 <span class="from">鞍山发布、市气象局 10 月 30 日预报</span></h4><p>10 月 31 日 20 时至 11 月 1 日 20 时市区、海城、台安小雨，岫岩小到中雨；11 月 1 日气温下降 4~8°C，2 日早晨市区最低 -4~-2°C；偏南风转偏北风 4~5 级、阵风 7~8 级。</p></div><div class="news-item"><p>鞍山当日未检索到其他专属重大新闻，如实说明，未另编。</p></div></article>
-<article class="news-col"><h3>卡尔加里（当地 10月31日）</h3><div class="news-item"><h4>火焰队主场 2-5 不敌科罗拉多雪崩队 <span class="from">NHL 官网、美联社，10月31日</span></h4><p>雪崩队莱科宁梅开二度、马卡尔送出 4 次助攻；火焰队法拉比、波斯皮希尔各进 1 球。火焰队战绩 6 胜 8 负，下一场为当地 11 月 2 日客场对圣何塞鲨鱼队。</p></div><div class="news-item"><h4>阿尔伯塔分离主义领袖 Jeffrey Rath 被逐出联合保守党（UCP） <span class="from">Global News、《环球邮报》，10月30~31日</span></h4><p>省长 Danielle Smith 10 月 30 日在卡尔加里表示，党执行主任决定撤销其党籍。</p></div><div class="news-item"><h4>卡尔加里 10 月楼市数据出炉（11 月 2 日发布，数据属 10 月） <span class="from">CREB，10月数据</span></h4><p>10 月成交 1592 套，同比降 15.3%；基准价 56.42 万加元，同比微降 0.4%；库存 6173 套，约 3.9 个月供应量。</p></div></article>
+<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>全省正式开栓供热，沈阳 11 月 1 日达正式供热标准 <span class="from"><a href="https://news.ifeng.com/c/8xh5outCEe0" target="_blank" rel="noopener noreferrer">新华社</a>，11月1日</span></h4><p>10 月 27 日起沈阳全市换热站陆续达标供热，11 月 1 日达到正式供热标准；浑南热力为辖区 23.7 万户居民保障供暖。供暖季正式开始，室内外温差拉大。</p></div><div class="news-item"><h4>11 月 1 日起沈阳地铁末班车调整 <span class="from"><a href="https://feng.ifeng.com/c/8xfTRGw7Y0T" target="_blank" rel="noopener noreferrer">网易"指尖早报"</a>，11月1日</span></h4><p>2026 年 11 月 1 日至 2027 年 3 月 31 日，地铁 1、2、4、9、10 号线双向末班车均调整为 22:20；3 号线部分交路末班车亦为 22:20。冬季出行留意末班时间。</p></div><div class="news-item"><h4>辽宁雨雪大风：沈阳小雨转晴，东部山区局部中雪 <span class="from"><a href="https://news.qq.com/rain/a/20261101A02YBA00" target="_blank" rel="noopener noreferrer">辽宁省气象台</a>、沈阳晚报，11月1日</span></h4><p>11 月 1 日辽宁中部、东南部小雨转多云，东北部雨夹雪或小雪，东部山区局部中雪；沈阳等地偏北风 4~6 级、阵风 7~8 级局部 9 级，道路湿滑，出行注意安全。</p></div></article>
+<article class="news-col"><h3>鞍山</h3><div class="news-item"><h4>全省正式开栓供热，鞍山此前已提前送暖 <span class="from"><a href="https://feng.ifeng.com/c/8xguCN6pcgu" target="_blank" rel="noopener noreferrer">辽宁日报</a>，11月1日</span></h4><p>11 月 1 日辽宁 13 个市和沈抚示范区正式开栓供热；沈阳、鞍山等地部分区域已提前开栓送暖；全省储煤 1141.18 万吨，储煤率 78.7%。</p></div><div class="news-item"><h4>鞍山 10 月 31 日至 11 月 1 日迎降水、降温、大风 <span class="from"><a href="https://feng.ifeng.com/c/8xfQutTgqSO" target="_blank" rel="noopener noreferrer">鞍山发布</a>、市气象局 10 月 30 日预报</span></h4><p>10 月 31 日 20 时至 11 月 1 日 20 时市区、海城、台安小雨，岫岩小到中雨；11 月 1 日气温下降 4~8°C，2 日早晨市区最低 -4~-2°C；偏南风转偏北风 4~5 级、阵风 7~8 级。</p></div><div class="news-item"><p>鞍山当日未检索到其他专属重大新闻，如实说明，未另编。</p></div></article>
+<article class="news-col"><h3>卡尔加里（当地 10月31日）</h3><div class="news-item"><h4>火焰队主场 2-5 不敌科罗拉多雪崩队 <span class="from">NHL 官网、<a href="https://incoloradonews.com/news/artturi-lehkonen-and-cale-makar-lead-the-avalanche-to-a-52-victory-over-the-flames/21d0c07f496285d626e0651afb99fb8b" target="_blank" rel="noopener noreferrer">美联社</a>（需翻墙），10月31日</span></h4><p>雪崩队莱科宁梅开二度、马卡尔送出 4 次助攻；火焰队法拉比、波斯皮希尔各进 1 球。火焰队战绩 6 胜 8 负，下一场为当地 11 月 2 日客场对圣何塞鲨鱼队。</p></div><div class="news-item"><h4>阿尔伯塔分离主义领袖 Jeffrey Rath 被逐出联合保守党（UCP） <span class="from">Global News、《环球邮报》，10月30~31日</span></h4><p>省长 Danielle Smith 10 月 30 日在卡尔加里表示，党执行主任决定撤销其党籍。</p></div><div class="news-item"><h4>卡尔加里 10 月楼市数据出炉（11 月 2 日发布，数据属 10 月） <span class="from"><a href="https://www.creb.com/News/CREBNow/2026/November/October_2026_Stats/" target="_blank" rel="noopener noreferrer">CREB</a>（需翻墙），10月数据</span></h4><p>10 月成交 1592 套，同比降 15.3%；基准价 56.42 万加元，同比微降 0.4%；库存 6173 套，约 3.9 个月供应量。</p></div></article>
 </div>
 </section>
 <!-- 今日看点 -->
 <section class="blk" id="d1101-highlights">
 <div class="blk-head"><span class="no">其三</span><h2>今日看点</h2></div>
 <p class="sec-note">热搜榜单无历史存档，本期看点取自当日主要新闻。</p>
-<div class="hl"><ol><li><b>中国首次载人登月方案细节公布：3 人乘组、2 人登月</b>（新华社、央视新闻、中国之声，11月1日）10 月 31 日第七届载人航天学术大会透露，我国计划 2030 年前实现中国人登陆月球，采用"两次发射、环月对接"方案，梦舟飞船载 3 人、揽月着陆器送 2 人登月面。为什么值得看：这是首次载人登月任务乘组构成和实施路径的正式披露，从"要登月"推进到"几个人、怎么去"，对理解中国航天下一步有标志意义。</li><li><b>AI：DeepSeek 发布 Super-agent 架构；苹果官宣 Apple Intelligence 接入阿里千问</b>（极客公园、识澜 AI 资讯，11月1日）DeepSeek 10 月 31 日晚发布《Super-agent 设计探索》，探索更自主的多任务并行 Agent 系统；苹果 10 月 31 日中国官网宣布，Apple Intelligence 部分功能 11 月 4 日起向开发者测试，接入阿里千问。为什么值得看：一条是国产大模型向"持续在线、多任务协作"的 Agent 演进，一条是苹果 AI 正式落地中国市场的关键一步，都与日常用 AI 的方式直接相关。</li></ol></div>
+<div class="hl"><ol><li><b>中国首次载人登月方案细节公布：3 人乘组、2 人登月</b>（<a href="https://m.10jqka.com.cn/20261102/c681331165.shtml" target="_blank" rel="noopener noreferrer">新华社</a>、央视新闻、中国之声，11月1日）10 月 31 日第七届载人航天学术大会透露，我国计划 2030 年前实现中国人登陆月球，采用"两次发射、环月对接"方案，梦舟飞船载 3 人、揽月着陆器送 2 人登月面。为什么值得看：这是首次载人登月任务乘组构成和实施路径的正式披露，从"要登月"推进到"几个人、怎么去"，对理解中国航天下一步有标志意义。</li><li><b>AI：DeepSeek 发布 Super-agent 架构；苹果官宣 Apple Intelligence 接入阿里千问</b>（<a href="https://www.163.com/dy/article/LAKSV2NO05119FMA.html" target="_blank" rel="noopener noreferrer">极客公园</a>、<a href="https://www.lanyaoai.com/blog/16844641" target="_blank" rel="noopener noreferrer">识澜 AI 资讯</a>，11月1日）DeepSeek 10 月 31 日晚发布《Super-agent 设计探索》，探索更自主的多任务并行 Agent 系统；苹果 10 月 31 日中国官网宣布，Apple Intelligence 部分功能 11 月 4 日起向开发者测试，接入阿里千问。为什么值得看：一条是国产大模型向"持续在线、多任务协作"的 Agent 演进，一条是苹果 AI 正式落地中国市场的关键一步，都与日常用 AI 的方式直接相关。</li></ol></div>
 </section>
 <!-- 金融市场早报 -->
 <section class="blk" id="d1101-finance">
@@ -676,23 +711,23 @@
 <article class="fin"><h3>人民币对美元</h3><table><tr><td>中间价（10月30日）</td><td class="num up">6.7138，调升 9 个基点</td></tr><tr><td>在岸收盘（10月30日）</td><td class="num">6.6557，为近三年半首次回到 6.66 下方</td></tr></table></article>
 <article class="fin"><h3>A股（10月30日周五收盘）</h3><table><tr><td>上证指数</td><td class="num down">3599.02 点，跌 1.44%，失守 3600 点</td></tr><tr><td>深证成指</td><td class="num down">10833.78 点，跌 2.73%</td></tr><tr><td>创业板指</td><td class="num down">2413.63 点，跌 4.13%，创年内新低；科创 50 跌 5.48%</td></tr></table><p><b>背景</b>：全市场成交约 1.69 万亿元，超 4600 只个股下跌，白酒、医疗板块相对抗跌，半导体、传媒跌幅居前。10 月全月上证跌 6.33%，创业板跌 23.02%。</p></article>
 <article class="fin"><h3>美股（美东时间 10月30日收盘）</h3><table><tr><td>道琼斯</td><td class="num down">51770.31 点，跌 1.09%</td></tr><tr><td>纳斯达克</td><td class="num down">25437.00 点，跌 2.86%</td></tr><tr><td>标普 500</td><td class="num down">7580.07 点，跌 1.82%</td></tr></table><p><b>背景</b>：英特尔财报后暴跌拖累科技股，纳指 10 月累计跌 5.3%。</p></article>
-<article class="fin"><h3>黄金</h3><table><tr><td>COMEX 12 月期金（10月30日结算）</td><td class="num down">3898.9 美元/盎司，跌 3.29%，跌破 4000 美元关口</td></tr></table><p><b>折合人民币</b>：按当日中间价 6.7138 换算，约合 <b>841.59 元/克</b>（1 盎司 = 31.1035 克）</p><p><b>背景</b>：金价单日大跌，与美股科技股抛售引发的流动性压力有关。注：个别聚合源给出的上一交易日 COMEX 收盘为 3884.90 美元/盎司，应为不同交割月份合约口径不同，本期统一采用 12 月主力合约的新华社口径。</p><p class="src">数据来源：同花顺财经、新华社、香港新闻网"每日金融数据"。</p></article>
+<article class="fin"><h3>黄金</h3><table><tr><td>COMEX 12 月期金（10月30日结算）</td><td class="num down">3898.9 美元/盎司，跌 3.29%，跌破 4000 美元关口</td></tr></table><p><b>折合人民币</b>：按当日中间价 6.7138 换算，约合 <b>841.59 元/克</b>（1 盎司 = 31.1035 克）</p><p><b>背景</b>：金价单日大跌，与美股科技股抛售引发的流动性压力有关。注：个别聚合源给出的上一交易日 COMEX 收盘为 3884.90 美元/盎司，应为不同交割月份合约口径不同，本期统一采用 12 月主力合约的新华社口径。</p><p class="src">数据来源：<a href="https://www.10jqka.com.cn" target="_blank" rel="noopener noreferrer">同花顺财经</a>、<a href="https://www.news.cn" target="_blank" rel="noopener noreferrer">新华社</a>、香港新闻网"每日金融数据"。</p></article>
 </div>
 </section>
 <!-- 体育速递 -->
 <section class="blk" id="d1101-sports">
 <div class="blk-head"><span class="no">其五</span><h2>体育速递</h2></div>
-<article class="sport"><h3>NBA（美国当地 10月31日，北京时间 11月1日上午可见的最新完整赛果）</h3><ul><li><b>马刺 121-111 森林狼</b>：文班亚马 43 分 6 盖帽，率队 4 连胜。</li><li><b>76 人 109-104 黄蜂</b>：马克西 38 分，76 人逆转取胜。</li><li><b>灰熊 136-105 国王</b>：新秀布泽尔 27 分，灰熊开局 6 连胜、联盟唯一不败。</li><li><b>火箭 119-98 雷霆</b>：小史密斯 30 分，火箭大胜残阵雷霆。</li><li><b>骑士 136-111 雄鹿</b>：莫布里 27 分；<b>鹈鹕 121-99 老鹰</b>；<b>开拓者 112-90 爵士</b>。</li></ul></article>
-<article class="sport"><h3>足球（欧洲当地 11月1日，北京时间 11月2日凌晨结束）</h3><ul><li><b>英超第 9 轮焦点战，利物浦 0-1 阿森纳</b>：哈弗茨第 16 分钟破门（赖斯助攻），阿森纳 24 分登顶英超，时隔 14 年客场胜利物浦。</li><li><b>西甲，皇马客场 3-0 桑坦德竞技</b>：姆巴佩点球、贝林厄姆、迪奥曼德先后破门。</li><li><b>意甲，尤文图斯 2-0 胜 10 人那不勒斯</b>；拉齐奥 2-1 逆转卡利亚里登顶意甲。</li></ul></article>
-<article class="sport"><h3>卡尔加里火焰队（当地 10月31日）</h3><ul><li><b>雪崩队 5-2 胜火焰队</b>：莱科宁梅开二度、马卡尔 4 次助攻；火焰队法拉比、波斯皮希尔各进 1 球。火焰队战绩 6 胜 8 负，下一场为当地 11 月 2 日客场对圣何塞鲨鱼队。</li><li>中超当日未检索到可确认的比赛结果，如实说明。</li></ul></article>
+<article class="sport"><h3>NBA（美国当地 10月31日，北京时间 11月1日上午可见的最新完整赛果）</h3><ul><li><b>马刺 121-111 森林狼</b>：文班亚马 43 分 6 盖帽，率队 4 连胜。（来源：<a href="https://k.sina.com.cn/article_6013600985_1667044d900101r8ei.html" target="_blank" rel="noopener noreferrer">新浪体育</a>）</li><li><b>76 人 109-104 黄蜂</b>：马克西 38 分，76 人逆转取胜。（来源：<a href="https://k.sina.com.cn/article_7879995911_1d5af320706802yxhc.html" target="_blank" rel="noopener noreferrer">新浪体育</a>）</li><li><b>灰熊 136-105 国王</b>：新秀布泽尔 27 分，灰熊开局 6 连胜、联盟唯一不败。（来源：<a href="https://k.sina.com.cn/article_2026710242_78cd24e200101q3va.html" target="_blank" rel="noopener noreferrer">新浪体育</a>）</li><li><b>火箭 119-98 雷霆</b>：小史密斯 30 分，火箭大胜残阵雷霆。（来源：<a href="https://www.sohu.com/a/1095775462_122538714" target="_blank" rel="noopener noreferrer">搜狐体育</a>）</li><li><b>骑士 136-111 雄鹿</b>：莫布里 27 分；<b>鹈鹕 121-99 老鹰</b>；<b>开拓者 112-90 爵士</b>。（来源：<a href="https://www.sohu.com/a/1095775462_122538714" target="_blank" rel="noopener noreferrer">搜狐体育</a>）</li></ul></article>
+<article class="sport"><h3>足球（欧洲当地 11月1日，北京时间 11月2日凌晨结束）</h3><ul><li><b>英超第 9 轮焦点战，利物浦 0-1 阿森纳</b>：哈弗茨第 16 分钟破门（赖斯助攻），阿森纳 24 分登顶英超，时隔 14 年客场胜利物浦。（来源：<a href="https://k.sina.com.cn/article_7354218509_1b658780d00101eo0k.html" target="_blank" rel="noopener noreferrer">新浪体育</a>）</li><li><b>西甲，皇马客场 3-0 桑坦德竞技</b>：姆巴佩点球、贝林厄姆、迪奥曼德先后破门。（来源：<a href="https://www.sinchew.com.my/news/20261102/sports/8025481" target="_blank" rel="noopener noreferrer">星洲日报</a>）</li><li><b>意甲，尤文图斯 2-0 胜 10 人那不勒斯</b>；拉齐奥 2-1 逆转卡利亚里登顶意甲。（来源：<a href="https://news.ifeng.com/c/8xj37xGqv9L" target="_blank" rel="noopener noreferrer">新华社</a>）</li></ul></article>
+<article class="sport"><h3>卡尔加里火焰队（当地 10月31日）</h3><ul><li><b>雪崩队 5-2 胜火焰队</b>：莱科宁梅开二度、马卡尔 4 次助攻；火焰队法拉比、波斯皮希尔各进 1 球。火焰队战绩 6 胜 8 负，下一场为当地 11 月 2 日客场对圣何塞鲨鱼队。（来源：<a href="https://incoloradonews.com/news/artturi-lehkonen-and-cale-makar-lead-the-avalanche-to-a-52-victory-over-the-flames/21d0c07f496285d626e0651afb99fb8b" target="_blank" rel="noopener noreferrer">美联社</a>（需翻墙））</li><li>中超当日未检索到可确认的比赛结果，如实说明。</li></ul></article>
 </section>
 <!-- 娱乐圈八卦 -->
 <section class="blk" id="d1101-gossip">
 <div class="blk-head"><span class="no">其六</span><h2>娱乐圈八卦</h2></div>
 <div class="gossip">
-<div class="gos-item"><div class="n">1</div><div><h4>微博视界大会在横店举行，年度荣誉揭晓 <span class="from">今日头条&quot;娱乐热点&quot;，11月1日</span></h4><p>大会以"创见·新生"为主题，近百位艺人出席；刘诗诗与张若昀同获年度影响力演员，谭松韵与王凯同获年度实力演员，《兰香如故》获年度影响力剧集。</p></div></div>
-<div class="gos-item"><div class="n">2</div><div><h4>《披荆斩棘 2026》总决赛收官，小沈阳夺冠 <span class="from">今日头条&quot;娱乐热点&quot;，11月1日</span></h4><p>小沈阳以 319 票个人喜爱度第一夺得年度总冠军。</p></div></div>
-<div class="gos-item"><div class="n">3</div><div><h4>S.H.E 合体为任家萱庆生 <span class="from">今日头条&quot;娱乐热点&quot;，11月1日</span></h4><p>10 月 31 日任家萱 45 岁生日，Hebe、Ella 到场合体庆生，现场粉色气球与 6 个蛋糕，三姐妹相拥。</p></div></div>
+<div class="gos-item"><div class="n">1</div><div><h4>微博视界大会在横店举行，年度荣誉揭晓 <span class="from"><a href="https://ent.ifeng.com/c/8xmGYKd8FUI" target="_blank" rel="noopener noreferrer">今日头条"娱乐热点"</a>，11月1日</span></h4><p>大会以"创见·新生"为主题，近百位艺人出席；刘诗诗与张若昀同获年度影响力演员，谭松韵与王凯同获年度实力演员，《兰香如故》获年度影响力剧集。</p></div></div>
+<div class="gos-item"><div class="n">2</div><div><h4>《披荆斩棘 2026》总决赛收官，小沈阳夺冠 <span class="from"><a href="https://news.qq.com/rain/a/20261101A06QF900" target="_blank" rel="noopener noreferrer">今日头条"娱乐热点"</a>，11月1日</span></h4><p>小沈阳以 319 票个人喜爱度第一夺得年度总冠军。</p></div></div>
+<div class="gos-item"><div class="n">3</div><div><h4>S.H.E 合体为任家萱庆生 <span class="from"><a href="https://news.qq.com/rain/a/20261102A02IQ900" target="_blank" rel="noopener noreferrer">今日头条"娱乐热点"</a>，11月1日</span></h4><p>10 月 31 日任家萱 45 岁生日，Hebe、Ella 到场合体庆生，现场粉色气球与 6 个蛋糕，三姐妹相拥。</p></div></div>
 <div class="gos-item"><div class="n">4</div><div><p>另据"今日吃瓜晚报"称"警方介入谢霆锋被扔荧光棒事件"登上热搜，<b>该说法未经权威渠道证实，仅作网传标注，不采为事实</b>。</p></div></div>
 </div>
 </section>
@@ -761,14 +796,15 @@
 <p>本周主题"秋日尾声"：霜降已过、秋天只剩尾巴，沈阳今天最高 12.7°C、风大阵风超 40 公里，正是枫叶落尽的时候。《枫》唱的就是秋天走到尽头的心情，旋律慢、歌词直白，适合 11 月第一天晚上一个人慢慢听；听完把十月的待办清一清，明天周一换个打法开工。</p>
 </div>
 </section>
-<!-- 每周一漫 -->
+<!-- 每日一漫 -->
 <section class="blk" id="d1101-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每周一漫</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
 <div class="anime">
-<p class="ttl">本周推荐：《夏目友人帐》（TV 动画共 7 季 86 集，2008–2024 年；第 7 季"漆"已于 2024 年 12 月完结；另有 2 部剧场版）</p>
+<p class="ttl">今日推荐：《夏目友人帐》（TV 动画共 7 季 86 集，2008–2024 年；第 7 季"漆"已于 2024 年 12 月完结；另有 2 部剧场版）</p>
 <p>改编自绿川幸的同名漫画，讲能看见妖怪的少年夏目贵志继承外祖母的"友人帐"，一边把名字还给妖怪，一边和猫咪老师一起过日子。理由：本周主题"秋日尾声"——霜降末期、秋天只剩尾巴，这部番的节奏和秋天一模一样，慢、暖、带一点凉意；每集一个妖怪、一个小故事，适合睡前看一集，不用追、不用赶，11 月的第一天就从它开始。</p>
 </div>
 </section>
+<nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev is-disabled" type="button" disabled aria-disabled="true">&larr; 上一期 &middot; 已是第一期</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next" type="button" data-nav-date="2026-11-02" aria-label="下一期：11月2日 周一">下一期 &middot; 11月2日 周一 &rarr;</button></nav>
 <p class="src">简报完。本期为补档版本，天气与月相为历史档案与天文公式计算值；A 股、美股、黄金为 10 月 30 日最近交易日收盘数据。</p>
 </div>
 
@@ -783,7 +819,7 @@
         <div class="strip" aria-label="三城气温速览"><div class="cell"><div class="big">8.5°<small> / -2.7°</small></div><div class="meta"><b>沈阳</b><br />阴 · 全天无降水<br />AQI 约 162（中度污染）</div></div><div class="cell"><div class="big">10.8°<small> / -2.1°</small></div><div class="meta"><b>鞍山</b><br />阴 · 全天无降水<br />AQI 约 158（中度污染）</div></div><div class="cell"><div class="big">5.2°<small> / -3.0°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 1 日 · 阴<br />阿尔伯塔省起实行永久“阿尔伯塔时间”</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1102-weather">三城天气</a><a href="#d1102-news">三城新闻</a><a href="#d1102-highlights">今日看点</a><a href="#d1102-finance">金融市场</a><a href="#d1102-sports">体育速递</a><a href="#d1102-gossip">娱乐圈八卦</a><a href="#d1102-astro">月相 · 卦象 · 运势</a><a href="#d1102-history">历史上的今天</a><a href="#d1102-quote">每日金句</a><a href="#d1102-wellness">养生小技巧</a><a href="#d1102-meal">健身减脂餐</a><a href="#d1102-song">每日一曲</a><a href="#d1102-anime">每周一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1102-weather">三城天气</a><a href="#d1102-news">三城新闻</a><a href="#d1102-highlights">今日看点</a><a href="#d1102-finance">金融市场</a><a href="#d1102-sports">体育速递</a><a href="#d1102-gossip">娱乐圈八卦</a><a href="#d1102-astro">月相 · 卦象 · 运势</a><a href="#d1102-history">历史上的今天</a><a href="#d1102-quote">每日金句</a><a href="#d1102-wellness">养生小技巧</a><a href="#d1102-meal">健身减脂餐</a><a href="#d1102-song">每日一曲</a><a href="#d1102-anime">每日一漫</a></nav>
 <!-- 三城天气 -->
 <section class="blk" id="d1102-weather">
 <div class="blk-head"><span class="no">其一</span><h2>三城天气</h2></div>
@@ -819,16 +855,16 @@
 <section class="blk" id="d1102-news">
 <div class="blk-head"><span class="no">其二</span><h2>三城近期新闻</h2></div>
 <div class="news-grid">
-<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>沈阳姑娘付严熙夺得 2026 世界旅游小姐中国年度冠军 <span class="from">网易&quot;指尖早报&quot;，11月2日</span></h4><p>日前在广西崇左宁明县举行的总决赛暨颁奖盛典上，从沈阳丁香湖畔走出的付严熙夺冠。</p></div><div class="news-item"><h4>沈阳疾控提醒：流感不是"重感冒"，科学防护要牢记 <span class="from">沈阳市政府网&quot;百姓关注&quot;，11月2日</span></h4><p>沈阳市 65 岁及以上老年人、3~6 岁儿童及农村义务教育阶段中小学生可免费接种一剂次三价流感病毒裂解疫苗，可扫码查询就近接种门诊。</p></div><div class="news-item"><h4>沈阳体彩前三季度销量 26.05 亿元、同比增 30% <span class="from">网易辽瞰，11月2日</span></h4><p>10 月 31 日在中街举行的文体旅商融合示范店授牌仪式披露：前三季度销量 26.05 亿元，筹集市级公益金及发行费 1.75 亿元，2000 多家网点为 4000 余人提供创业就业平台。</p></div></article>
+<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>沈阳姑娘付严熙夺得 2026 世界旅游小姐中国年度冠军 <span class="from"><a href="https://feng.ifeng.com/c/8xgs2TfJVG0" target="_blank" rel="noopener noreferrer">网易"指尖早报"</a>，11月2日</span></h4><p>日前在广西崇左宁明县举行的总决赛暨颁奖盛典上，从沈阳丁香湖畔走出的付严熙夺冠。</p></div><div class="news-item"><h4>沈阳疾控提醒：流感不是"重感冒"，科学防护要牢记 <span class="from"><a href="https://feng.ifeng.com/c/8xhXTPd3vdu" target="_blank" rel="noopener noreferrer">沈阳市政府网"百姓关注"</a>，11月2日</span></h4><p>沈阳市 65 岁及以上老年人、3~6 岁儿童及农村义务教育阶段中小学生可免费接种一剂次三价流感病毒裂解疫苗，可扫码查询就近接种门诊。</p></div><div class="news-item"><h4>沈阳体彩前三季度销量 26.05 亿元、同比增 30% <span class="from"><a href="https://finance.sina.com.cn/jjxw/2026-11-03/doc-inixkvsi0119043.shtml" target="_blank" rel="noopener noreferrer">网易辽瞰</a>，11月2日</span></h4><p>10 月 31 日在中街举行的文体旅商融合示范店授牌仪式披露：前三季度销量 26.05 亿元，筹集市级公益金及发行费 1.75 亿元，2000 多家网点为 4000 余人提供创业就业平台。</p></div></article>
 <article class="news-col"><h3>鞍山</h3></article>
-<article class="news-col"><h3>卡尔加里（当地 11月1日）</h3><div class="news-item"><h4>阿尔伯塔省从 11 月 1 日起实行永久"阿尔伯塔时间"，不再调钟 <span class="from">阿尔伯塔电台 11 月 2 日综述，11月1日</span></h4><p>全省固定为 UTC-6，全年不再实行夏令时切换；冬季与多伦多的时差由 2 小时变为 1 小时。</p></div><div class="news-item"><h4>卡尔加里警方调查 11 月 1 日晚 Sunridge 商场停车场致命车祸 <span class="from">卡尔加里警方新闻室，11月2日，事件为 11 月 1 日</span></h4><p>11 月 1 日 17:35 左右，一名两岁男童在 Sunridge 购物中心停车场被撞身亡，司机留在现场配合调查。</p></div><div class="news-item"><h4>"十字架原野"纪念活动 11 月 1 日开启 <span class="from">卡尔加里市政府 Ward 2 十一月通讯，11月1日</span></h4><p>11 月 1 日至 11 日，纪念大道旁展示 3400 个发光十字架，纪念南阿尔伯塔阵亡军人，每日举行日出、日落仪式，11 月 11 日为阵亡将士纪念日仪式。</p></div></article>
+<article class="news-col"><h3>卡尔加里（当地 11月1日）</h3><div class="news-item"><h4>阿尔伯塔省从 11 月 1 日起实行永久"阿尔伯塔时间"，不再调钟 <span class="from"><a href="https://www.alberta.ca/albertas-new-time-system-abt" target="_blank" rel="noopener noreferrer">阿尔伯塔电台 11 月 2 日综述</a>（需翻墙），11月1日</span></h4><p>全省固定为 UTC-6，全年不再实行夏令时切换；冬季与多伦多的时差由 2 小时变为 1 小时。</p></div><div class="news-item"><h4>卡尔加里警方调查 11 月 1 日晚 Sunridge 商场停车场致命车祸 <span class="from"><a href="https://newsroom.calgary.ca/investigation-into-death-of-pedestrian-continues/" target="_blank" rel="noopener noreferrer">卡尔加里警方新闻室</a>（需翻墙），11月2日，事件为 11 月 1 日</span></h4><p>11 月 1 日 17:35 左右，一名两岁男童在 Sunridge 购物中心停车场被撞身亡，司机留在现场配合调查。</p></div><div class="news-item"><h4>"十字架原野"纪念活动 11 月 1 日开启 <span class="from"><a href="https://www.calgary.ca/council/ward-2/articles/november-newsletter-2026.html" target="_blank" rel="noopener noreferrer">卡尔加里市政府 Ward 2 十一月通讯</a>（需翻墙），11月1日</span></h4><p>11 月 1 日至 11 日，纪念大道旁展示 3400 个发光十字架，纪念南阿尔伯塔阵亡军人，每日举行日出、日落仪式，11 月 11 日为阵亡将士纪念日仪式。</p></div></article>
 </div>
 </section>
 <!-- 今日看点 -->
 <section class="blk" id="d1102-highlights">
 <div class="blk-head"><span class="no">其三</span><h2>今日看点</h2></div>
 <p class="sec-note">热搜榜单无历史存档，本期看点取自当日主要新闻。</p>
-<div class="hl"><ol><li><b>中国首次载人登月细节再披露：2030 年前登月，"两次发射、一次登月"</b>（中国之声，11月2日）11 月 2 日中国之声等详细报道：两枚长征十号先后发射揽月着陆器与梦舟飞船，在环月轨道对接；3 名航天员中 2 人登月面开展科考采样，1 人留守飞船；登月前还将安排梦舟、揽月无人首飞。为什么值得看：11 月 1 日是消息首发，11 月 2 日的详细方案把"怎么去、谁留守、如何返回"讲清楚了，是这轮航天新闻里最完整的一篇，值得细读。</li><li><b>AI：美团发布 1.6 万亿参数大模型 LongCat-2.5，微软开发者大会连发 AI 新品</b>（CSDN DevPress"AI 资讯日报"、SegmentFault，11月2日）美团 11 月 2 日发布新一代大模型 LongCat-2.5，总参数 1.6 万亿，面向长程智能体任务，全程由国产算力训练；微软年度开发者大会同日在旧金山开幕，发布首款 AI 编程模型、推理模型、AI 搜索引擎与个人助手等。为什么值得看：国产大模型在"长程智能体"这个求职与工作中最实用的方向上再进一步，而微软的新品直接关系到程序员、学生写代码、查资料的日常工具。</li></ol></div>
+<div class="hl"><ol><li><b>中国首次载人登月细节再披露：2030 年前登月，"两次发射、一次登月"</b>（<a href="https://hb.ifeng.com/c/8xhKr30pYYL" target="_blank" rel="noopener noreferrer">中国之声</a>，11月2日）11 月 2 日中国之声等详细报道：两枚长征十号先后发射揽月着陆器与梦舟飞船，在环月轨道对接；3 名航天员中 2 人登月面开展科考采样，1 人留守飞船；登月前还将安排梦舟、揽月无人首飞。为什么值得看：11 月 1 日是消息首发，11 月 2 日的详细方案把"怎么去、谁留守、如何返回"讲清楚了，是这轮航天新闻里最完整的一篇，值得细读。</li><li><b>AI：美团发布 1.6 万亿参数大模型 LongCat-2.5，微软开发者大会连发 AI 新品</b>（<a href="https://tech.meituan.com/2026/11/02/Meituan-LongCat-2.5.html" target="_blank" rel="noopener noreferrer">CSDN DevPress"AI 资讯日报"</a>、<a href="https://www.36kr.com/p/3836668626891910" target="_blank" rel="noopener noreferrer">SegmentFault</a>，11月2日）美团 11 月 2 日发布新一代大模型 LongCat-2.5，总参数 1.6 万亿，面向长程智能体任务，全程由国产算力训练；微软年度开发者大会同日在旧金山开幕，发布首款 AI 编程模型、推理模型、AI 搜索引擎与个人助手等。为什么值得看：国产大模型在"长程智能体"这个求职与工作中最实用的方向上再进一步，而微软的新品直接关系到程序员、学生写代码、查资料的日常工具。</li></ol></div>
 </section>
 <!-- 金融市场早报 -->
 <section class="blk" id="d1102-finance">
@@ -837,24 +873,24 @@
 <article class="fin"><h3>人民币对美元</h3><table><tr><td>中间价（11月2日）</td><td class="num down">6.7146，调贬 8 个基点；前一交易日中间价 6.7138</td></tr><tr><td>在岸收盘（11月2日）</td><td class="num">本次检索未查到可靠来源，如实说明，未编数字</td></tr></table></article>
 <article class="fin"><h3>A股（11月2日，11月首个交易日）</h3><table><tr><td>上证指数</td><td class="num up">3638.03 点，涨 1.08%</td></tr><tr><td>深证成指</td><td class="num up">11010.68 点，涨 1.63%</td></tr></table><p><b>创业板指</b>：2458.70 点，涨 1.87%；沪深 300 报 4016.92 点，涨 0.79%；科创 50 涨 3.11%</p><p><b>背景</b>：三市成交 17952 亿元，较上一交易日增加约 1075 亿元；影视院线、游戏、文化传媒涨幅居前，贵金属、银行、煤炭跌幅居前。11 月开门红。</p></article>
 <article class="fin"><h3>美股（美东时间 11月2日收盘，北京时间 11月3日凌晨，事后补档口径）</h3><table><tr><td>道琼斯</td><td class="num up">51983.98 点，涨 0.41%</td></tr><tr><td>纳斯达克</td><td class="num down">25164.32 点，跌 1.07%</td></tr><tr><td>标普 500</td><td class="num down">7541.40 点，跌 0.51%</td></tr></table><p><b>背景</b>：科技股领跌、道指独涨，油价大跌近 8% 提振蓝筹。</p></article>
-<article class="fin"><h3>黄金</h3><table><tr><td>COMEX 12 月期金（11月2日结算）</td><td class="num down">3969.60 美元/盎司，涨 1.81%，较 10 月 30 日大跌后反弹</td></tr></table><p><b>折合人民币</b>：按当日中间价 6.7146 换算，约合 <b>856.95 元/克</b>（1 盎司 = 31.1035 克）</p><p><b>背景</b>：金价从 3900 美元下方反弹重回 4000 美元关口附近。注：11 月交割的前月合约同日收报 3956.90 美元/盎司（约 854.21 元/克），本期统一采用 12 月合约；现货金同日收报约 3946.5 美元/盎司。</p><p class="src">数据来源：同花顺财经、中国人民银行授权中国外汇交易中心公告、Morningstar（道琼斯）。</p></article>
+<article class="fin"><h3>黄金</h3><table><tr><td>COMEX 12 月期金（11月2日结算）</td><td class="num down">3969.60 美元/盎司，涨 1.81%，较 10 月 30 日大跌后反弹</td></tr></table><p><b>折合人民币</b>：按当日中间价 6.7146 换算，约合 <b>856.95 元/克</b>（1 盎司 = 31.1035 克）</p><p><b>背景</b>：金价从 3900 美元下方反弹重回 4000 美元关口附近。注：11 月交割的前月合约同日收报 3956.90 美元/盎司（约 854.21 元/克），本期统一采用 12 月合约；现货金同日收报约 3946.5 美元/盎司。</p><p class="src">数据来源：<a href="https://www.10jqka.com.cn" target="_blank" rel="noopener noreferrer">同花顺财经</a>、中国人民银行授权<a href="https://www.chinamoney.com.cn" target="_blank" rel="noopener noreferrer">中国外汇交易中心</a>公告、<a href="https://www.morningstar.com" target="_blank" rel="noopener noreferrer">Morningstar（道琼斯）</a>（需翻墙）。</p></article>
 </div>
 </section>
 <!-- 体育速递 -->
 <section class="blk" id="d1102-sports">
 <div class="blk-head"><span class="no">其五</span><h2>体育速递</h2></div>
-<article class="sport"><h3>NBA（美国当地 11月1日，4 场比赛）</h3><ul><li><b>湖人 131-125 猛龙</b>：东契奇 45 分 15 篮板。</li><li><b>勇士 124-112 快船</b>：新秀伦德伯格生涯新高 37 分，库里、格林缺阵下勇士仍取胜。</li><li><b>凯尔特人 108-97 魔术</b>：塔图姆 32 分，凯尔特人五连胜。</li><li><b>篮网 98-90 步行者</b>：波特 23 分，篮网赛季首胜。</li></ul></article>
-<article class="sport"><h3>足球（欧洲当地 11月2日）</h3><ul><li><b>英超第 9 轮收官战，纽卡斯尔 0-1 埃弗顿</b>：巴里第 49 分钟打入全场唯一进球，埃弗顿升至第 7，纽卡跌至第 13，纽卡替补拉姆齐补时两黄变一红被罚下。</li><li><b>西甲，拉科鲁尼亚 2-1 奥萨苏纳</b>。当日欧洲五大联赛赛程较少，意甲、法甲的主要场次在 11 月 3 日凌晨，未列入本期。</li></ul></article>
-<article class="sport"><h3>F1（墨西哥城站，当地 11月1日、11月2日见报）</h3><ul><li><b>安东内利以季军完赛，提前加冕世界冠军，成为 F1 历史上最年轻的世界冠军（20 岁）</b>。</li></ul></article>
-<article class="sport"><h3>卡尔加里火焰队（当地 11月1日）</h3><ul><li>火焰队当日无比赛。下一场：当地 11 月 2 日客场对圣何塞鲨鱼队（晚 9 点 ET 开球）。此前 10 月 31 日火焰队 2-5 负于雪崩队。</li><li>中超当日未检索到可确认的比赛结果，如实说明。</li></ul></article>
+<article class="sport"><h3>NBA（美国当地 11月1日，4 场比赛）</h3><ul><li><b>湖人 131-125 猛龙</b>：东契奇 45 分 15 篮板。（来源：<a href="https://www.sinchew.com.my/news/20261102/sports/8026012" target="_blank" rel="noopener noreferrer">星洲日报</a>）</li><li><b>勇士 124-112 快船</b>：新秀伦德伯格生涯新高 37 分，库里、格林缺阵下勇士仍取胜。（来源：<a href="https://www.sinchew.com.my/news/20261102/sports/8026012" target="_blank" rel="noopener noreferrer">星洲日报</a>）</li><li><b>凯尔特人 108-97 魔术</b>：塔图姆 32 分，凯尔特人五连胜。（来源：<a href="https://n.yam.com/Article/20261102338204" target="_blank" rel="noopener noreferrer">蕃新闻</a>）</li><li><b>篮网 98-90 步行者</b>：波特 23 分，篮网赛季首胜。（来源：<a href="https://n.yam.com/Article/20261102338204" target="_blank" rel="noopener noreferrer">蕃新闻</a>）</li></ul></article>
+<article class="sport"><h3>足球（欧洲当地 11月2日）</h3><ul><li><b>英超第 9 轮收官战，纽卡斯尔 0-1 埃弗顿</b>：巴里第 49 分钟打入全场唯一进球，埃弗顿升至第 7，纽卡跌至第 13，纽卡替补拉姆齐补时两黄变一红被罚下。（来源：<a href="https://k.sina.cn/article_7879923917_1d5ae18cd02002cqj2.html?from=sports" target="_blank" rel="noopener noreferrer">新浪体育</a>）</li><li><b>西甲，拉科鲁尼亚 2-1 奥萨苏纳</b>。当日欧洲五大联赛赛程较少，意甲、法甲的主要场次在 11 月 3 日凌晨，未列入本期。（来源：<a href="https://www.chinapress.com.my/20261103/%e8%a5%bf%e7%94%b2%ef%bd%9c2%e6%af%941%e9%80%86%e8%bd%ac%e5%a5%a5%e6%b2%99%e8%8b%8f%e7%ba%b3-%e6%8b%89%e7%a7%91%e7%bb%88%e7%bb%936%e5%9c%ba%e4%b8%8d%e8%83%9c/" target="_blank" rel="noopener noreferrer">中国报</a>）</li></ul></article>
+<article class="sport"><h3>F1（墨西哥城站，当地 11月1日、11月2日见报）</h3><ul><li><b>安东内利以季军完赛，提前加冕世界冠军，成为 F1 历史上最年轻的世界冠军（20 岁）</b>。（来源：<a href="https://news.mingpao.com/ins/%e9%ab%94%e8%82%b2/article/20261102/s00006/1793617534916/f1-%e5%ae%89%e6%9d%b1%e5%b0%bc%e5%88%a9%e5%a2%a8%e8%a5%bf%e5%93%a5%e7%ab%99%e6%91%98%e5%ad%a3-%e6%8f%90%e5%89%8d4%e7%ab%99%e9%8e%96%e5%ae%9a%e4%b8%96%e7%95%8c%e5%86%a0%e8%bb%8d-20%e6%ad%b2%e4%b9%8b%e9%bd%a1%e7%a0%b4%e6%9c%80%e5%b9%b4%e8%bc%95%e5%b0%81%e7%8e%8b%e7%b4%80%e9%8c%84" target="_blank" rel="noopener noreferrer">明报</a>）</li></ul></article>
+<article class="sport"><h3>卡尔加里火焰队（当地 11月1日）</h3><ul><li>火焰队当日无比赛。下一场：当地 11 月 2 日客场对圣何塞鲨鱼队（晚 9 点 ET 开球）。此前 10 月 31 日火焰队 2-5 负于雪崩队。（来源：<a href="https://www.nhl.com/flames/news/5-things-flames-sharks-02-11-26" target="_blank" rel="noopener noreferrer">NHL官网</a>（需翻墙））</li><li>中超当日未检索到可确认的比赛结果，如实说明。</li></ul></article>
 </section>
 <!-- 娱乐圈八卦 -->
 <section class="blk" id="d1102-gossip">
 <div class="blk-head"><span class="no">其六</span><h2>娱乐圈八卦</h2></div>
 <div class="gossip">
-<div class="gos-item"><div class="n">1</div><div><h4>BTS 南美巡演 14 场全部售罄，共吸引 85.3 万观众 <span class="from">SBS Star，11月2日</span></h4><p>BTS 南美巡演 14 场全数售罄，总观众 85.3 万人次。</p></div></div>
-<div class="gos-item"><div class="n">2</div><div><h4>《吉伊卡哇》剧场版连续四周夺得韩国周末票房冠军 <span class="from">SBS Star，11月2日</span></h4><p>《吉伊卡哇：人鱼岛的秘密》连续第四周登顶周末票房，观影人次突破 250 万。</p></div></div>
-<div class="gos-item"><div class="n">3</div><div><h4>周华健济南演唱会上宣布要当爷爷了 <span class="from">新浪娱乐，11月2日，演出为 10 月 31 日</span></h4><p>10 月 31 日济南演唱会上，周华健在唱《亲亲我的宝贝》前宣布将歌名改为《亲亲我的孙儿宝贝》，"我要当爷爷了"。</p></div></div>
+<div class="gos-item"><div class="n">1</div><div><h4>BTS 南美巡演 14 场全部售罄，共吸引 85.3 万观众 <span class="from"><a href="https://sbsstar.net/article/N1008825776/bts-captivates-south-america-with-completely-soldout-tour-drawing-853000-fans" target="_blank" rel="noopener noreferrer">SBS Star</a>（需翻墙），11月2日</span></h4><p>BTS 南美巡演 14 场全数售罄，总观众 85.3 万人次。</p></div></div>
+<div class="gos-item"><div class="n">2</div><div><h4>《吉伊卡哇》剧场版连续四周夺得韩国周末票房冠军 <span class="from"><a href="https://www.cineplay.co.kr/zh-tw/articles/30573" target="_blank" rel="noopener noreferrer">SBS Star</a>（需翻墙），11月2日</span></h4><p>《吉伊卡哇：人鱼岛的秘密》连续第四周登顶周末票房，观影人次突破 250 万。</p></div></div>
+<div class="gos-item"><div class="n">3</div><div><h4>周华健济南演唱会上宣布要当爷爷了 <span class="from"><a href="https://k.sina.cn/article_7879776328_1d5abd84806802g6fs.html?from=ent" target="_blank" rel="noopener noreferrer">新浪娱乐</a>，11月2日，演出为 10 月 31 日</span></h4><p>10 月 31 日济南演唱会上，周华健在唱《亲亲我的宝贝》前宣布将歌名改为《亲亲我的孙儿宝贝》，"我要当爷爷了"。</p></div></div>
 <div class="gos-item"><div class="n">4</div><div><p>另有搜狐 11 月 2 日"娱乐资讯"类聚合列出多条明星商务、剧组接触消息，<b>均为未注明出处的爆料口径，本期不采为事实</b>；当日可查的、有明确来源的娱乐新闻以上述三条为主。</p></div></div>
 </div>
 </section>
@@ -923,14 +959,15 @@
 <p>本周主题"立冬·寒潮里的暖意"：周一开工，鼎卦讲"立新功"，A 股也开了个红盘。《追梦赤子心》的副歌一上来就是"向前跑"，适合早上出门前放一遍、跑着去赶地铁；歌词里"用力活着用力爱"，就是今天要干的事——先做出一件能放进简历的事。</p>
 </div>
 </section>
-<!-- 每周一漫 -->
+<!-- 每日一漫 -->
 <section class="blk" id="d1102-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每周一漫</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
 <div class="anime">
-<p class="ttl">本周推荐：《葬送的芙莉莲》（第 1 季 28 集，2023–2024 年；第 2 季 10 集已于 2026 年 1–3 月播出）</p>
+<p class="ttl">今日推荐：《葬送的芙莉莲》（第 1 季 28 集，2023–2024 年；第 2 季 10 集已于 2026 年 1–3 月播出）</p>
 <p>改编自山田钟人原作、阿部司作画的漫画，讲精灵魔法师芙莉莲在打败魔王十年后，带着新伙伴一路向北的旅程。理由：昨天推了慢节奏的治愈番《夏目友人帐》，今天换一部同样温柔、但走得更远的"在路上"的番——芙莉莲的旅程讲的是时间、告别和重新出发，正好对上今天鼎卦的"立新功"和这周"立冬·寒潮里的暖意"；两部番一静一动，静的是归还名字，动的是向北出发，冬天就从这两部番开始追。</p>
 </div>
 </section>
+<nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev" type="button" data-nav-date="2026-11-01" aria-label="上一期：11月1日 周日">&larr; 上一期 &middot; 11月1日 周日</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next" type="button" data-nav-date="2026-11-03" aria-label="下一期：11月3日 周二">下一期 &middot; 11月3日 周二 &rarr;</button></nav>
 <p class="src">简报完。本期为补档版本，天气与月相为历史档案与天文公式计算值；美股为美东时间 11 月 2 日收盘（北京时间 11 月 3 日凌晨出炉），属事后补档口径。</p>
 </div>
 
@@ -945,7 +982,7 @@
         <div class="strip" aria-label="三城气温速览"><div class="cell"><div class="big">11.6°<small> / 2.6°</small></div><div class="meta"><b>沈阳</b><br />多云 · 全天无降水<br />AQI 约 111（轻度污染）</div></div><div class="cell"><div class="big">14.0°<small> / 4.0°</small></div><div class="meta"><b>鞍山</b><br />晴 · 全天无降水<br />台安县发布大雾黄色预警</div></div><div class="cell"><div class="big">7.2°<small> / -3.8°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 2 日 · 大部晴<br />创新周开幕</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1103-weather">三城天气</a><a href="#d1103-news">三城新闻</a><a href="#d1103-highlights">今日看点</a><a href="#d1103-finance">金融市场</a><a href="#d1103-sports">体育速递</a><a href="#d1103-gossip">娱乐圈八卦</a><a href="#d1103-astro">月相 · 卦象 · 运势</a><a href="#d1103-history">历史上的今天</a><a href="#d1103-quote">每日金句</a><a href="#d1103-wellness">养生小技巧</a><a href="#d1103-meal">健身减脂餐</a><a href="#d1103-song">每日一曲</a><a href="#d1103-anime">每周一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1103-weather">三城天气</a><a href="#d1103-news">三城新闻</a><a href="#d1103-highlights">今日看点</a><a href="#d1103-finance">金融市场</a><a href="#d1103-sports">体育速递</a><a href="#d1103-gossip">娱乐圈八卦</a><a href="#d1103-astro">月相 · 卦象 · 运势</a><a href="#d1103-history">历史上的今天</a><a href="#d1103-quote">每日金句</a><a href="#d1103-wellness">养生小技巧</a><a href="#d1103-meal">健身减脂餐</a><a href="#d1103-song">每日一曲</a><a href="#d1103-anime">每日一漫</a></nav>
 <!-- 三城天气 -->
 <section class="blk" id="d1103-weather">
 <div class="blk-head"><span class="no">其一</span><h2>三城天气</h2></div>
@@ -981,16 +1018,16 @@
 <section class="blk" id="d1103-news">
 <div class="blk-head"><span class="no">其二</span><h2>三城近期新闻</h2></div>
 <div class="news-grid">
-<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>沈阳老小区"听劝"式改造，老小区改出新生活 <span class="from">辽宁省人民政府网，11月3日</span></h4><p>大东区长安小区从居民"负面清单"入手、广泛征求意见、居民全程监督推进城市更新。</p></div><div class="news-item"><h4>沈阳以新一代信息技术产业立柱架梁，在新型工业化赛道上向"新"图强 <span class="from">中国金融信息网/新华财经，11月3日 09:16</span></h4><p>沈河金廊发布，聚焦新一代信息技术产业发展。</p></div><div class="news-item"><h4>"还是沈阳"5 天秋假迎客 6.8 万人次 <span class="from">沈阳日报，11月3日获悉、11月4日刊发</span></h4><p>记者 11 月 3 日从沈河区获悉，秋假期间该项目累计接待学子、家长和各地游客超 6.8 万人次；此后全国中小学生（18 周岁以下）秋假来园可免票，1 位陪同家长同步免票。</p></div></article>
-<article class="news-col"><h3>鞍山</h3><div class="news-item"><h4>台安县发布大雾黄色预警 <span class="from">国家预警信息发布中心/台安县气象台，11月3日 04:10</span></h4><p>预计未来 4 到 6 小时台安县将出现能见度小于 500 米的大雾，提醒防范大雾对交通运输的不利影响。</p></div><div class="news-item"><h4>当日可查的鞍山本地新闻较少</h4><p>——检索到的鞍山本地消息以 11 月 4 日人民日报客户端报道的"宁鞍产业科技协同发展对接会"（近日在鞍山举行）为主，该条归入 11 月 4 日那期；11 月 3 日当天未再查到其他可核实的鞍山本地要闻，如实说明，不编造。</p></div></article>
-<article class="news-col"><h3>卡尔加里（当地 11月2日）</h3><div class="news-item"><h4>10 月房屋销售 1592 套，同比跌 15.3%，公寓供应过剩压低价格 <span class="from">CREB 11 月 2 日发布，Canadian Mortgage Professional，11月3日</span></h4><p>10 月销售 1592 套，年初至今累计跌近 11%；库存 6173 套，供应月数略低于 4 个月；公寓基准价 288,800 加元，同比跌 7.9%，较 2024 年 8 月峰值低 15%。</p></div><div class="news-item"><h4>阿尔伯塔省启用"阿尔伯塔时间"，全年不再调表 <span class="from">Alberta Radio《Alberta Crime &amp; Politics Today》，11月2日</span></h4><p>11 月 1 日凌晨 2 时起，阿省全年保持 UTC−6，不再实行夏令时切换。</p></div><div class="news-item"><h4>卡尔加里创新周开幕（11 月 2—5 日） <span class="from">GlobeNewswire，10月27日发布、11月2日开幕</span></h4><p>由 Platform Calgary 主办，为全市最大的科技、创新与创业庆祝活动，11 月 5 日以第 16 届 Launch Party 暨十大最具前景初创企业揭晓收官。</p></div><div class="news-item"><h4>市政府提醒：11 月 4 日起实施用水限制 <span class="from">卡尔加里市政府新闻中心，11月2日</span></h4><p>因 Bearspaw 南供水干管连接工程进入收尾阶段，11 月 4 日（周三）起用水限制生效。</p></div></article>
+<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>沈阳老小区"听劝"式改造，老小区改出新生活 <span class="from"><a href="https://news.ifeng.com/c/8xkdQgFH3kD" target="_blank" rel="noopener noreferrer">辽宁省人民政府网</a>，11月3日</span></h4><p>大东区长安小区从居民"负面清单"入手、广泛征求意见、居民全程监督推进城市更新。</p></div><div class="news-item"><h4>沈阳以新一代信息技术产业立柱架梁，在新型工业化赛道上向"新"图强 <span class="from">中国金融信息网/新华财经，11月3日 09:16</span></h4><p>沈河金廊发布，聚焦新一代信息技术产业发展。</p></div><div class="news-item"><h4>"还是沈阳"5 天秋假迎客 6.8 万人次 <span class="from"><a href="https://finance.sina.cn/2026-11-04/detail-inixpexh6334680.d.html" target="_blank" rel="noopener noreferrer">沈阳日报</a>，11月3日获悉、11月4日刊发</span></h4><p>记者 11 月 3 日从沈河区获悉，秋假期间该项目累计接待学子、家长和各地游客超 6.8 万人次；此后全国中小学生（18 周岁以下）秋假来园可免票，1 位陪同家长同步免票。</p></div></article>
+<article class="news-col"><h3>鞍山</h3><div class="news-item"><h4>台安县发布大雾黄色预警 <span class="from"><a href="https://news.qq.com/rain/a/20261103A034GD00" target="_blank" rel="noopener noreferrer">国家预警信息发布中心</a>/台安县气象台，11月3日 04:10</span></h4><p>预计未来 4 到 6 小时台安县将出现能见度小于 500 米的大雾，提醒防范大雾对交通运输的不利影响。</p></div><div class="news-item"><h4>当日可查的鞍山本地新闻较少</h4><p>——检索到的鞍山本地消息以 11 月 4 日人民日报客户端报道的"宁鞍产业科技协同发展对接会"（近日在鞍山举行）为主，该条归入 11 月 4 日那期；11 月 3 日当天未再查到其他可核实的鞍山本地要闻，如实说明，不编造。</p></div></article>
+<article class="news-col"><h3>卡尔加里（当地 11月2日）</h3><div class="news-item"><h4>10 月房屋销售 1592 套，同比跌 15.3%，公寓供应过剩压低价格 <span class="from">CREB 11 月 2 日发布，<a href="https://www.mpamag.com/ca/mortgage-industry/market-updates/calgary-home-sales-fall-as-condo-oversupply-presses-prices-lower/595985" target="_blank" rel="noopener noreferrer">Canadian Mortgage Professional</a>（需翻墙），11月3日</span></h4><p>10 月销售 1592 套，年初至今累计跌近 11%；库存 6173 套，供应月数略低于 4 个月；公寓基准价 288,800 加元，同比跌 7.9%，较 2024 年 8 月峰值低 15%。</p></div><div class="news-item"><h4>阿尔伯塔省启用"阿尔伯塔时间"，全年不再调表 <span class="from"><a href="https://www.albertaradio.ca/post/alberta-crime-politics-november-2-2026" target="_blank" rel="noopener noreferrer">Alberta Radio</a>（需翻墙）《Alberta Crime &amp; Politics Today》，11月2日</span></h4><p>11 月 1 日凌晨 2 时起，阿省全年保持 UTC−6，不再实行夏令时切换。</p></div><div class="news-item"><h4>卡尔加里创新周开幕（11 月 2—5 日） <span class="from"><a href="https://www.platformcalgary.com/blog/calgary-innovation-week-is-back-monday-november-2-to-thursday-november-5" target="_blank" rel="noopener noreferrer">GlobeNewswire</a>（需翻墙），10月27日发布、11月2日开幕</span></h4><p>由 Platform Calgary 主办，为全市最大的科技、创新与创业庆祝活动，11 月 5 日以第 16 届 Launch Party 暨十大最具前景初创企业揭晓收官。</p></div><div class="news-item"><h4>市政府提醒：11 月 4 日起实施用水限制 <span class="from"><a href="https://www.calgary.ca/planning/water/bearspaw-feeder-main/water-restrictions.html?cid=social-ig-water-novemberrestrictions-2026-igstory-restricitions-nov4-6-mw" target="_blank" rel="noopener noreferrer">卡尔加里市政府新闻中心</a>（需翻墙），11月2日</span></h4><p>因 Bearspaw 南供水干管连接工程进入收尾阶段，11 月 4 日（周三）起用水限制生效。</p></div></article>
 </div>
 </section>
 <!-- 今日看点 -->
 <section class="blk" id="d1103-highlights">
 <div class="blk-head"><span class="no">其三</span><h2>今日看点</h2></div>
 <p class="sec-note">热搜榜单无历史存档，本期看点取自当日主要新闻。</p>
-<div class="hl"><ol><li><b>2026 年世界互联网大会乌镇峰会今天开幕（重大新闻）</b>（香港新闻网科技快讯，11月3日）11 月 3 日以"开源开放 共建共享"为主题在乌镇开幕，设 27 个分论坛，主论坛设人工智能乌镇对话；领先科技奖收到 43 个国家和地区的 430 多项成果。值得看：这是当年 AI 治理与开源议题最集中的主场活动之一，直接关系到接下来一周的 AI 新闻走向。</li><li><b>GPT-6 Astra 直接编辑 Qwen 模型权重，数学成绩翻六倍（AI 新闻）</b>（AI Weekly/SiliconNoon《Today in AI》，11月3日）论文显示该模型直接读取并修改 Qwen3.5-0.8B 仅 0.016% 的权重、未经过训练，MATH-500 从 7.9% 升至 48.1%，IFEval 分数翻三倍；同日 Anthropic 在修订文件中称其可能很快达到自身定义的"AI 大幅加速进步"标准。值得看："AI 改造 AI"从概念变成可复现的实验，是当天全球 AI 圈讨论度最高的技术进展，也牵出安全与治理的新问题。</li></ol></div>
+<div class="hl"><ol><li><b>2026 年世界互联网大会乌镇峰会今天开幕（重大新闻）</b>（<a href="https://news.qq.com/rain/a/20261103A0AZB400" target="_blank" rel="noopener noreferrer">香港新闻网科技快讯</a>，11月3日）11 月 3 日以"开源开放 共建共享"为主题在乌镇开幕，设 27 个分论坛，主论坛设人工智能乌镇对话；领先科技奖收到 43 个国家和地区的 430 多项成果。值得看：这是当年 AI 治理与开源议题最集中的主场活动之一，直接关系到接下来一周的 AI 新闻走向。</li><li><b>GPT-6 Astra 直接编辑 Qwen 模型权重，数学成绩翻六倍（AI 新闻）</b>（AI Weekly/<a href="https://siliconnoon.com/today-in-ai-november-4-2026/" target="_blank" rel="noopener noreferrer">SiliconNoon</a>（需翻墙）《Today in AI》，11月3日）论文显示该模型直接读取并修改 Qwen3.5-0.8B 仅 0.016% 的权重、未经过训练，MATH-500 从 7.9% 升至 48.1%，IFEval 分数翻三倍；同日 Anthropic 在修订文件中称其可能很快达到自身定义的"AI 大幅加速进步"标准。值得看："AI 改造 AI"从概念变成可复现的实验，是当天全球 AI 圈讨论度最高的技术进展，也牵出安全与治理的新问题。</li></ol></div>
 </section>
 <!-- 金融市场早报 -->
 <section class="blk" id="d1103-finance">
@@ -999,23 +1036,23 @@
 <article class="fin"><h3>人民币对美元</h3><table><tr><td>中间价（11月3日）</td><td class="num">6.7146，较前一交易日下调 4 个基点</td></tr></table><p><b>在岸收盘（11月3日）</b>：16:30 收盘报 6.6720。注：香港新闻网同日数据给出中间价 6.7150、在岸 6.6765，与上述略有出入，本期采用东方财富口径。</p></article>
 <article class="fin"><h3>A股（11月3日收盘）</h3><table><tr><td>上证指数</td><td class="num down">3608.10 点，跌 0.82%</td></tr><tr><td>深证成指</td><td class="num down">10876.99 点，跌 1.21%</td></tr><tr><td>创业板指</td><td class="num down">2391.65 点，跌 2.73%，跌破 2400 点</td></tr></table><p><b>背景</b>：沪深两市成交约 1.72 万亿元，较前一交易日缩量约 800 亿元。保险、养殖板块逆势走强，半导体、算力硬件领跌。</p></article>
 <article class="fin"><h3>美股（美国当地 11月3日收盘，北京时间 11月4日凌晨出炉）</h3><table><tr><td>道琼斯</td><td class="num down">51786.72 点，跌 0.38%</td></tr><tr><td>纳斯达克</td><td class="num up">25372.01 点，涨 0.83%</td></tr><tr><td>标普 500</td><td class="num up">7568.92 点，涨 0.36%</td></tr></table><p><b>背景</b>：科技股反弹，芯片股强势。</p></article>
-<article class="fin"><h3>黄金</h3><p><b>COMEX 黄金期货主力（11月3日）</b>：3940.20 美元/盎司，跌 0.74%；现货黄金 3930.21 美元/盎司，跌 0.42%</p><p><b>折合人民币</b>：按当日中间价 6.7146 换算，COMEX 金价约合 <b>850.61 元/克</b>（1 盎司 = 31.1035 克）。注：香港新闻网当月连续合约报 3931.20 美元/盎司（约合 848.66 元/克），系不同合约口径。</p><p><b>政策背景</b>：中国人民银行 11 月 3 日宣布，自 11 月 15 日起上调金融机构外汇存款准备金率 2 个百分点至 6%，以加强外汇流动性管理；同日开展 1000 亿元证券、基金、保险公司互换便利操作，31 家机构参与。</p><p class="src">数据来源：新华财经、东方财富、新华社、香港新闻网《每日金融数据》。</p></article>
+<article class="fin"><h3>黄金</h3><p><b>COMEX 黄金期货主力（11月3日）</b>：3940.20 美元/盎司，跌 0.74%；现货黄金 3930.21 美元/盎司，跌 0.42%</p><p><b>折合人民币</b>：按当日中间价 6.7146 换算，COMEX 金价约合 <b>850.61 元/克</b>（1 盎司 = 31.1035 克）。注：香港新闻网当月连续合约报 3931.20 美元/盎司（约合 848.66 元/克），系不同合约口径。</p><p><b>政策背景</b>：中国人民银行 11 月 3 日宣布，自 11 月 15 日起上调金融机构外汇存款准备金率 2 个百分点至 6%，以加强外汇流动性管理；同日开展 1000 亿元证券、基金、保险公司互换便利操作，31 家机构参与。</p><p class="src">数据来源：<a href="https://www.cnfin.com/" target="_blank" rel="noopener noreferrer">新华财经</a>、<a href="https://www.eastmoney.com/" target="_blank" rel="noopener noreferrer">东方财富</a>、<a href="https://www.news.cn/" target="_blank" rel="noopener noreferrer">新华社</a>、<a href="https://www.hkcna.hk/" target="_blank" rel="noopener noreferrer">香港新闻网</a>《每日金融数据》。</p></article>
 </div>
 </section>
 <!-- 体育速递 -->
 <section class="blk" id="d1103-sports">
 <div class="blk-head"><span class="no">其五</span><h2>体育速递</h2></div>
-<article class="sport"><h3>NBA（美国当地 11月3日晚、北京时间 11月4日；当日 15 场比赛）</h3><ul><li><b>湖人 138-117 热火</b>：东契奇 42 分 7 篮板 13 助攻。</li><li><b>勇士 116-113 太阳</b>：库里 34 分，勇士逆转取胜、5 连胜。</li><li><b>雷霆 117-112 骑士</b>：亚历山大 43 分。</li><li><b>鹈鹕加时 135-134 灰熊</b>：终结对手开季不败，锡安 25 分 11 篮板。</li><li><b>火箭 109-93 凯尔特人</b>：申京 26 分 10 助攻。</li><li>其余：76 人 126-107 公牛、活塞 124-91 黄蜂、老鹰 108-104 步行者、尼克斯 103-90 篮网、奇才 103-94 魔术、国王 115-100 独行侠、森林狼 112-100 雄鹿、马刺 119-97 爵士、开拓者 118-110 掘金、猛龙 125-118 快船。</li></ul></article>
-<article class="sport"><h3>足球·欧冠联赛阶段第 4 轮（欧洲当地 11月3日晚、北京时间 11月4日凌晨）</h3><ul><li><b>巴黎圣日耳曼 6-0 比利亚雷亚尔</b>；<b>巴塞罗那 3-0 阿斯顿维拉</b>（亚马尔闪击，拉菲尼亚梅开二度）；<b>曼联 3-2 逆转罗马</b>（0:2 落后，库尼亚第 83、86 分钟两球绝杀，终结 9 场不胜）；<b>拜仁慕尼黑 2-0 马德里竞技</b>；国际米兰 3-0 费耶诺德；加拉塔萨雷 2-0 斯图加特；葡萄牙体育 1-0 矿工；博德闪耀 0-0 里尔。</li><li>当日未查到中超赛果（欧冠比赛周、国内联赛无赛程）。</li></ul></article>
-<article class="sport"><h3>卡尔加里火焰队（当地 11月2日晚，圣何塞客场）</h3><ul><li><b>火焰 2-1 胜圣何塞鲨鱼</b>：克拉普卡 1 球 1 助攻，斯特伦格伦第 3 节 9 分 14 秒打入个人 NHL 首球锁定胜局；门将沃尔夫 26 次扑救（27 射）。火焰战绩 7 胜 8 负，下一场为当地 11 月 4 日晚客场对西雅图海怪。</li></ul></article>
+<article class="sport"><h3>NBA（美国当地 11月3日晚、北京时间 11月4日；当日 15 场比赛）</h3><ul><li><b>湖人 138-117 热火</b>：东契奇 42 分 7 篮板 13 助攻。（来源：<a href="https://www.sohu.com/a/1096872103_122365486" target="_blank" rel="noopener noreferrer">搜狐</a>）</li><li><b>勇士 116-113 太阳</b>：库里 34 分，勇士逆转取胜、5 连胜。（来源：<a href="https://www.bjtiangao.com.cn/news/3132864.html" target="_blank" rel="noopener noreferrer">直播吧</a>）</li><li><b>雷霆 117-112 骑士</b>：亚历山大 43 分。（来源：<a href="https://www.sohu.com/a/1096830849_122411161" target="_blank" rel="noopener noreferrer">搜狐</a>）</li><li><b>鹈鹕加时 135-134 灰熊</b>：终结对手开季不败，锡安 25 分 11 篮板。（来源：<a href="https://www.ppsport.net/news/basketball-news/4514.html" target="_blank" rel="noopener noreferrer">PP视频体育频道</a>）</li><li><b>火箭 109-93 凯尔特人</b>：申京 26 分 10 助攻。（来源：<a href="https://www.gzzhiying.com.cn/news/25036867.html" target="_blank" rel="noopener noreferrer">直播吧</a>）</li><li>其余：76 人 126-107 公牛、活塞 124-91 黄蜂、老鹰 108-104 步行者、尼克斯 103-90 篮网、奇才 103-94 魔术、国王 115-100 独行侠、森林狼 112-100 雄鹿、马刺 119-97 爵士、开拓者 118-110 掘金、猛龙 125-118 快船。</li></ul></article>
+<article class="sport"><h3>足球·欧冠联赛阶段第 4 轮（欧洲当地 11月3日晚、北京时间 11月4日凌晨）</h3><ul><li><b>巴黎圣日耳曼 6-0 比利亚雷亚尔</b>；<b>巴塞罗那 3-0 阿斯顿维拉</b>（亚马尔闪击，拉菲尼亚梅开二度）；<b>曼联 3-2 逆转罗马</b>（0:2 落后，库尼亚第 83、86 分钟两球绝杀，终结 9 场不胜）；<b>拜仁慕尼黑 2-0 马德里竞技</b>；国际米兰 3-0 费耶诺德；加拉塔萨雷 2-0 斯图加特；葡萄牙体育 1-0 矿工；博德闪耀 0-0 里尔。（来源：<a href="https://www.163.com/dy/article/LASKC9PO0537B2DW.html" target="_blank" rel="noopener noreferrer">网易</a>）</li><li>当日未查到中超赛果（欧冠比赛周、国内联赛无赛程）。</li></ul></article>
+<article class="sport"><h3>卡尔加里火焰队（当地 11月2日晚，圣何塞客场）</h3><ul><li><b>火焰 2-1 胜圣何塞鲨鱼</b>：克拉普卡 1 球 1 助攻，斯特伦格伦第 3 节 9 分 14 秒打入个人 NHL 首球锁定胜局；门将沃尔夫 26 次扑救（27 射）。火焰战绩 7 胜 8 负，下一场为当地 11 月 4 日晚客场对西雅图海怪。（来源：<a href="https://www.nhl.com/flames/news/stromgren-s-first-nhl-goal-helps-flames-past-sharks" target="_blank" rel="noopener noreferrer">NHL官网</a>（需翻墙））</li></ul></article>
 </section>
 <!-- 娱乐圈八卦 -->
 <section class="blk" id="d1103-gossip">
 <div class="blk-head"><span class="no">其六</span><h2>娱乐圈八卦</h2></div>
 <div class="gossip">
 <div class="gos-item"><div class="n">1</div><div><h4>杨紫接触剧版《复仇的决心》，春晚已陆续邀约艺人（网传/未经证实） <span class="from">网易号娱乐资讯，11月3日</span></h4><p>11 月 3 日娱乐资讯称，杨紫正在接触改编自杨妞花真实打拐案件的剧版《复仇的决心》，计划剧影同步开发；春晚已开始陆续邀请艺人嘉宾，网传名单包括肖战、谭松韵、张凌赫、田曦薇。以上均为网传消息，未经官方证实。</p></div></div>
-<div class="gos-item"><div class="n">2</div><div><h4>《饥饿游戏：黎明收割》原声带 11 月 13 日发行 <span class="from">iHeart《Daily Music Headlines》，11月3日</span></h4><p>原声带将于 11 月 13 日上线，比电影 11 月 20 日上映提前一周。</p></div></div>
-<div class="gos-item"><div class="n">3</div><div><h4>新科百花影后卫诗雅谈获奖夜"意料之外" <span class="from">新浪电影，11月3日</span></h4><p>她在《是个人物》专访中说，连感言都没准备，丈夫用 AI 分析也认为她没希望，直到名字被念出才错愕上台。</p></div></div>
+<div class="gos-item"><div class="n">2</div><div><h4>《饥饿游戏：黎明收割》原声带 11 月 13 日发行 <span class="from"><a href="https://country.iheart.com/alternate/amp/2026-11-04-ella-langley-kacey-musgraves-others-appear-on-hunger-games-sunrise-on-the-reaping-soundtrack/" target="_blank" rel="noopener noreferrer">iHeart</a>（需翻墙）《Daily Music Headlines》，11月3日</span></h4><p>原声带将于 11 月 13 日上线，比电影 11 月 20 日上映提前一周。</p></div></div>
+<div class="gos-item"><div class="n">3</div><div><h4>新科百花影后卫诗雅谈获奖夜"意料之外" <span class="from"><a href="https://k.sina.com.cn/article_7879776328_1d5abd84806802gg1i.html" target="_blank" rel="noopener noreferrer">新浪电影</a>，11月3日</span></h4><p>她在《是个人物》专访中说，连感言都没准备，丈夫用 AI 分析也认为她没希望，直到名字被念出才错愕上台。</p></div></div>
 </div>
 </section>
 <!-- 月相、卦象与星座运势 -->
@@ -1083,13 +1120,15 @@
 <p>今天乌镇互联网大会开幕，AI 和星空是全天的关键词；震卦讲"借势而动"，适合主动出击。《夜空中最亮的星》写的是夜里抬头找方向，副歌一响就让人想往前走——今晚写简历写累了就放这首，站到窗边看一眼夜空，再回去把投递清单收个尾。</p>
 </div>
 </section>
-<!-- 每周一漫 -->
+<!-- 每日一漫 -->
 <section class="blk" id="d1103-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每周一漫</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
 <div class="anime">
-<p>本周在看：《葬送的芙莉莲》——今晚先看第 1~2 集，从打败魔王十年后的重逢开始，节奏很慢，正好配今晚回暖的天气。</p>
+<p class="ttl">今日推荐：《摇曳露营△》（TV 动画共 3 季 37 集，2018–2024 年；另有剧场版 2022 年）</p>
+<p>改编自 Afro 的同名漫画，讲几个女生冬天去露营：搭帐篷、生篝火、煮一锅热汤，看富士山的日出。理由：这周主题是"冬夜暖番"，从它开始最合适——今天沈阳最高 11.6°C，还不算太冷，今晚先看第 1 集《富士山与咖喱面》，锅一开、雾气一升，屋里就暖了；一集二十多分钟，不用追、不用赶，睡前看正好。</p>
 </div>
 </section>
+<nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev" type="button" data-nav-date="2026-11-02" aria-label="上一期：11月2日 周一">&larr; 上一期 &middot; 11月2日 周一</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next" type="button" data-nav-date="2026-11-04" aria-label="下一期：11月4日 周三">下一期 &middot; 11月4日 周三 &rarr;</button></nav>
 <p class="src">简报完。本期为补档版本，天气与月相为历史档案与天文公式计算值；美股为美国当地 11 月 3 日收盘（北京时间 11 月 4 日凌晨出炉），属事后补档口径。</p>
 </div>
 
@@ -1104,7 +1143,7 @@
         <div class="strip" aria-label="三城气温速览"><div class="cell"><div class="big">18.2°<small> / 7.1°</small></div><div class="meta"><b>沈阳</b><br />阴 · 南风阵风 58 km/h<br />降温前的回暖，明日骤降</div></div><div class="cell"><div class="big">18.9°<small> / 9.5°</small></div><div class="meta"><b>鞍山</b><br />阴 · 南风阵风 56 km/h<br />11 月里难得的暖和天</div></div><div class="cell"><div class="big">11.9°<small> / -0.9°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 3 日 · 阴<br />本周最暖的一天</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1104-weather">三城天气</a><a href="#d1104-news">三城新闻</a><a href="#d1104-highlights">今日看点</a><a href="#d1104-finance">金融市场</a><a href="#d1104-sports">体育速递</a><a href="#d1104-gossip">娱乐圈八卦</a><a href="#d1104-astro">月相 · 卦象 · 运势</a><a href="#d1104-history">历史上的今天</a><a href="#d1104-quote">每日金句</a><a href="#d1104-wellness">养生小技巧</a><a href="#d1104-meal">健身减脂餐</a><a href="#d1104-song">每日一曲</a><a href="#d1104-anime">每周一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1104-weather">三城天气</a><a href="#d1104-news">三城新闻</a><a href="#d1104-highlights">今日看点</a><a href="#d1104-finance">金融市场</a><a href="#d1104-sports">体育速递</a><a href="#d1104-gossip">娱乐圈八卦</a><a href="#d1104-astro">月相 · 卦象 · 运势</a><a href="#d1104-history">历史上的今天</a><a href="#d1104-quote">每日金句</a><a href="#d1104-wellness">养生小技巧</a><a href="#d1104-meal">健身减脂餐</a><a href="#d1104-song">每日一曲</a><a href="#d1104-anime">每日一漫</a></nav>
 <!-- 三城天气 -->
 <section class="blk" id="d1104-weather">
 <div class="blk-head"><span class="no">其一</span><h2>三城天气</h2></div>
@@ -1140,16 +1179,16 @@
 <section class="blk" id="d1104-news">
 <div class="blk-head"><span class="no">其二</span><h2>三城近期新闻</h2></div>
 <div class="news-grid">
-<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>中外学子探访沈阳科创带，探寻春晚舞台背后的硬核科技 <span class="from">辽宁省人民政府网，11月4日</span></h4><p>辽宁石油化工大学组织 17 个国家的 65 名中外师生赴沈阳铁西、浑南科创带研学，走访华晨宝马铁西工厂、省科技馆、新松科教基地、沈阳国际软件园，了解 AI 与机器人从实验室到产业落地的全链条。</p></div><div class="news-item"><h4>沈阳市工商联第十八次代表大会召开 <span class="from">沈阳日报，11月4日 19:10</span></h4><p>大会总结十七届执委会工作，选举产生新一届领导班子，明确未来五年目标任务，汇聚民企力量共促振兴。</p></div><div class="news-item"><h4>沈阳市第十五次党代会代表报到 <span class="from">沈阳日报，11月4日</span></h4><p>11 月 4 日中午，来自全市各条战线的党代表陆续抵达驻地报到。</p></div><div class="news-item"><h4>沈阳将新增航线：11 月 7 日起开通沈阳—义乌—汕头航线 <span class="from">腾讯新闻，11月4日 00:04</span></h4><p>南航执飞，每周二、四、六、日各一班。</p></div></article>
-<article class="news-col"><h3>鞍山</h3><div class="news-item"><h4>鞍山与南京共商老工业基地"智改数转" <span class="from">人民日报客户端，11月4日</span></h4><p>宁鞍产业科技协同发展对接会近日在鞍山举行，双方依托"南方创新研发、北方场景落地"合作模式；鞍山市工信局与南京市工信局、两地企业家协会及相关企业签约，覆盖钢铁升级、数字赋能、新材料研发等领域。</p></div><div class="news-item"><h4>鞍山南京签约共筑科创共同体 <span class="from">人民日报客户端，11月4日</span></h4><p>鞍山市科技局与南京市科技局正式签订《鞍宁科技创新合作框架协议》，围绕产业技术联合攻关、科技成果互促转化、人才交流培养等开展合作。</p></div><div class="news-item"><h4>台安县发布大风黄色预警、寒潮蓝色预警 <span class="from">国家预警信息发布中心/台安县气象台，11月4日 08:24、11月3日 16:07</span></h4><p>预计 11 月 4 日 9 时至 20 时台安西南风 5—6 级、阵风 8—9 级；4 日早晨至 6 日早晨最低气温下降 8°C 以上，6 日早晨约 −4°C。</p></div></article>
-<article class="news-col"><h3>卡尔加里（当地 11月3日）</h3><div class="news-item"><h4>德哈维兰将在卡尔加里新增 1200 个岗位、增设第二条水上飞机生产线 <span class="from">《卡尔加里先驱报》Chris Varcoe，11月3日</span></h4><p>据报道，德哈维兰宣布扩产，新增约 1200 个工作岗位。</p></div><div class="news-item"><h4>市政府：人类遗骸调查定为凶杀案 <span class="from">卡尔加里市政府新闻中心，11月3日 15:13</span></h4><p>卡尔加里市政府 11 月 3 日更新，Skyview Ranch 住所发现人类遗骸一案已定为凶杀案调查；此前报道称涉案人员面临相关指控并接受精神评估。</p></div><div class="news-item"><h4>本周卡尔加里人热议：暖冬持续、名人生意火爆 <span class="from">Curiocity《5 things your friends are talking about in Calgary this week》，11月3日</span></h4><p>本周气温将达 12°C，11 月 8 日（周日）可达 15°C；卡尔加里出生的歌手 Tate McRae 首款香水 TATE 01 在 Sephora 加拿大官网售罄；本地早午餐店 Morning Brunch Co. 在 Crowfoot 开出第三家分店。</p></div><div class="news-item"><h4>10 月楼市数据续报</h4><p>——CREB 11 月 2 日发布的 10 月数据（销售 1592 套、同比跌 15.3%）在 11 月 3 日继续被本地媒体广泛报道，详见 11 月 3 日那期卡尔加里条目，此处不重复。</p></div></article>
+<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>中外学子探访沈阳科创带，探寻春晚舞台背后的硬核科技 <span class="from"><a href="https://ln.chinadaily.com.cn/a/202611/03/WS6ae9a6d3e4b0e14252fc8ef8.html" target="_blank" rel="noopener noreferrer">辽宁省人民政府网</a>，11月4日</span></h4><p>辽宁石油化工大学组织 17 个国家的 65 名中外师生赴沈阳铁西、浑南科创带研学，走访华晨宝马铁西工厂、省科技馆、新松科教基地、沈阳国际软件园，了解 AI 与机器人从实验室到产业落地的全链条。</p></div><div class="news-item"><h4>沈阳市工商联第十八次代表大会召开 <span class="from"><a href="https://finance.sina.cn/2026-11-04/detail-inixnyrn1950484.d.html" target="_blank" rel="noopener noreferrer">沈阳日报</a>，11月4日 19:10</span></h4><p>大会总结十七届执委会工作，选举产生新一届领导班子，明确未来五年目标任务，汇聚民企力量共促振兴。</p></div><div class="news-item"><h4>沈阳市第十五次党代会代表报到 <span class="from">沈阳日报，11月4日</span></h4><p>11 月 4 日中午，来自全市各条战线的党代表陆续抵达驻地报到。</p></div><div class="news-item"><h4>沈阳将新增航线：11 月 7 日起开通沈阳—义乌—汕头航线 <span class="from"><a href="https://news.qq.com/rain/a/20261104A0037L00" target="_blank" rel="noopener noreferrer">腾讯新闻</a>，11月4日 00:04</span></h4><p>南航执飞，每周二、四、六、日各一班。</p></div></article>
+<article class="news-col"><h3>鞍山</h3><div class="news-item"><h4>鞍山与南京共商老工业基地"智改数转" <span class="from"><a href="https://liaoning.lnd.com.cn/system/2026/11/04/030582391.shtml" target="_blank" rel="noopener noreferrer">人民日报客户端</a>，11月4日</span></h4><p>宁鞍产业科技协同发展对接会近日在鞍山举行，双方依托"南方创新研发、北方场景落地"合作模式；鞍山市工信局与南京市工信局、两地企业家协会及相关企业签约，覆盖钢铁升级、数字赋能、新材料研发等领域。</p></div><div class="news-item"><h4>鞍山南京签约共筑科创共同体 <span class="from"><a href="https://liaoning.lnd.com.cn/system/2026/11/02/030582044.shtml" target="_blank" rel="noopener noreferrer">人民日报客户端</a>，11月4日</span></h4><p>鞍山市科技局与南京市科技局正式签订《鞍宁科技创新合作框架协议》，围绕产业技术联合攻关、科技成果互促转化、人才交流培养等开展合作。</p></div><div class="news-item"><h4>台安县发布大风黄色预警、寒潮蓝色预警 <span class="from">国家预警信息发布中心/台安县气象台，11月4日 08:24、11月3日 16:07</span></h4><p>预计 11 月 4 日 9 时至 20 时台安西南风 5—6 级、阵风 8—9 级；4 日早晨至 6 日早晨最低气温下降 8°C 以上，6 日早晨约 −4°C。</p></div></article>
+<article class="news-col"><h3>卡尔加里（当地 11月3日）</h3><div class="news-item"><h4>德哈维兰将在卡尔加里新增 1200 个岗位、增设第二条水上飞机生产线 <span class="from"><a href="https://favofcanada.ca/de-havilland-getting-up-to-2-5b-in-federal-financing-to-ramp-up-water-bomber-production/" target="_blank" rel="noopener noreferrer">《卡尔加里先驱报》</a>（需翻墙）Chris Varcoe，11月3日</span></h4><p>据报道，德哈维兰宣布扩产，新增约 1200 个工作岗位。</p></div><div class="news-item"><h4>市政府：人类遗骸调查定为凶杀案 <span class="from"><a href="https://newsroom.calgary.ca/update-human-remains-investigation-deemed-a-homicide/" target="_blank" rel="noopener noreferrer">卡尔加里市政府新闻中心</a>（需翻墙），11月3日 15:13</span></h4><p>卡尔加里市政府 11 月 3 日更新，Skyview Ranch 住所发现人类遗骸一案已定为凶杀案调查；此前报道称涉案人员面临相关指控并接受精神评估。</p></div><div class="news-item"><h4>本周卡尔加里人热议：暖冬持续、名人生意火爆 <span class="from"><a href="https://curiocity.com/the-calgary-group-chat-nov-3/" target="_blank" rel="noopener noreferrer">Curiocity</a>（需翻墙）《5 things your friends are talking about in Calgary this week》，11月3日</span></h4><p>本周气温将达 12°C，11 月 8 日（周日）可达 15°C；卡尔加里出生的歌手 Tate McRae 首款香水 TATE 01 在 Sephora 加拿大官网售罄；本地早午餐店 Morning Brunch Co. 在 Crowfoot 开出第三家分店。</p></div><div class="news-item"><h4>10 月楼市数据续报</h4><p>——CREB 11 月 2 日发布的 10 月数据（销售 1592 套、同比跌 15.3%）在 11 月 3 日继续被本地媒体广泛报道，详见 11 月 3 日那期卡尔加里条目，此处不重复。</p></div></article>
 </div>
 </section>
 <!-- 今日看点 -->
 <section class="blk" id="d1104-highlights">
 <div class="blk-head"><span class="no">其三</span><h2>今日看点</h2></div>
 <p class="sec-note">热搜榜单无历史存档，本期看点取自当日主要新闻。</p>
-<div class="hl"><ol><li><b>美国中期选举投票结束，初步计票显示民主党领先（重大新闻）</b>（央视《新闻联播》、新浪财经，11月4日）美国中期选举投票于当地 11 月 3 日结束，计票随即展开；多家美媒据初步计票预测民主党在多个州领先，有望重新掌控国会参众两院；预测机构 DDHQ 预测民主党赢得众议院控制权。值得看：选举结果将直接影响未来两年美国内外政策与全球市场情绪，是当天最大的国际变量。（最终结果：民主党同时赢得参众两院控制权，见 11 月 5 日那期。）</li><li><b>国行 Apple 智能上线开发者测试，接入阿里千问（AI 新闻）</b>（香港新闻网科技快讯，11月4日）苹果 11 月 4 日向开发者推送 iOS 27.3 首个测试版，中国用户可在 Siri、写作工具、视觉智能中调用千问的文本与图像理解、内容生成功能，发送前须征得用户同意，阿里承诺交互内容不用于模型训练。值得看：这是苹果 AI 首次以本土大模型深度接入中国市场，对国内果粉的日常使用有直接影响。</li><li><b>DeepSeek V5 计划基于华为昇腾芯片预训练（AI 新闻）</b>（香港新闻网科技快讯，11月4日）多家媒体报道，DeepSeek 下一代大模型 V5 计划基于昇腾芯片进行预训练，此前昇腾主要用于推理任务。值得看："国芯训练国模"若落地，是国产算力生态的关键一步，也与当天 A 股半导体大涨相互呼应。</li></ol></div>
+<div class="hl"><ol><li><b>美国中期选举投票结束，初步计票显示民主党领先（重大新闻）</b>（<a href="https://news.qq.com/rain/a/20261105A0384900" target="_blank" rel="noopener noreferrer">央视《新闻联播》</a>、新浪财经，11月4日）美国中期选举投票于当地 11 月 3 日结束，计票随即展开；多家美媒据初步计票预测民主党在多个州领先，有望重新掌控国会参众两院；预测机构 DDHQ 预测民主党赢得众议院控制权。值得看：选举结果将直接影响未来两年美国内外政策与全球市场情绪，是当天最大的国际变量。（最终结果：民主党同时赢得参众两院控制权，见 11 月 5 日那期。）</li><li><b>国行 Apple 智能上线开发者测试，接入阿里千问（AI 新闻）</b>（<a href="https://www.pchome.tech/article/news/apple-intelligence-china-ios-27-3-beta-7gb" target="_blank" rel="noopener noreferrer">香港新闻网科技快讯</a>，11月4日）苹果 11 月 4 日向开发者推送 iOS 27.3 首个测试版，中国用户可在 Siri、写作工具、视觉智能中调用千问的文本与图像理解、内容生成功能，发送前须征得用户同意，阿里承诺交互内容不用于模型训练。值得看：这是苹果 AI 首次以本土大模型深度接入中国市场，对国内果粉的日常使用有直接影响。</li><li><b>DeepSeek V5 计划基于华为昇腾芯片预训练（AI 新闻）</b>（<a href="https://www.pchome.tech/article/news/deepseek-v5-huawei-ascend-training" target="_blank" rel="noopener noreferrer">香港新闻网科技快讯</a>，11月4日）多家媒体报道，DeepSeek 下一代大模型 V5 计划基于昇腾芯片进行预训练，此前昇腾主要用于推理任务。值得看："国芯训练国模"若落地，是国产算力生态的关键一步，也与当天 A 股半导体大涨相互呼应。</li></ol></div>
 </section>
 <!-- 金融市场早报 -->
 <section class="blk" id="d1104-finance">
@@ -1158,22 +1197,22 @@
 <article class="fin"><h3>人民币对美元</h3><table><tr><td>中间价（11月4日）</td><td class="num">6.7180，上调 30 个基点</td></tr><tr><td>在岸收盘（11月4日）</td><td class="num">16:30 收盘报 6.6736</td></tr></table></article>
 <article class="fin"><h3>A股（11月4日收盘）</h3><table><tr><td>上证指数</td><td class="num up">3686.17 点，涨 2.16%</td></tr><tr><td>深证成指</td><td class="num up">11335.69 点，涨 4.22%</td></tr></table><p><b>创业板指</b>：2544.73 点，涨 6.40%；科创 50 涨 9.92% 报 1265.47 点</p><p><b>背景</b>：沪深京三市成交突破 2 万亿元（约 2.05 万亿），较前一日放量逾 3300 亿元，全市场 4667 只个股上涨、123 只涨停，半导体领涨。</p></article>
 <article class="fin"><h3>美股（美国当地 11月4日收盘，北京时间 11月5日凌晨出炉）</h3><table><tr><td>道琼斯</td><td class="num up">53356.12 点，涨 3.03%</td></tr><tr><td>纳斯达克</td><td class="num up">25736.51 点，涨 1.44%</td></tr><tr><td>标普 500</td><td class="num up">7688.62 点，涨 1.58%</td></tr></table><p><b>背景</b>：三大股指集体大涨，市场解读为中期选举不确定性落地后的反弹。</p></article>
-<article class="fin"><h3>黄金</h3><p><b>COMEX 黄金期货（11月4日）</b>：4072.20 美元/盎司，涨 3.34%；现货黄金 4060.13 美元/盎司，涨 3.31%</p><p><b>折合人民币</b>：按当日中间价 6.7180 换算，COMEX 金价约合 <b>879.55 元/克</b>（1 盎司 = 31.1035 克）。注：个别来源给出 COMEX 4061.20 美元/盎司，系不同合约口径，本期采用东方财富口径（与 11 月 5 日收盘 4113.5 美元/盎司、涨 40.5 美元的衔接一致）。</p><p><b>政策背景</b>：中国人民银行加力实施股票回购增持再贷款政策，自 11 月 4 日起下调再贷款利率 0.25 个百分点至 1%，并将其由阶段性安排转为长期制度性安排。</p><p class="src">数据来源：新华财经、东方财富、同花顺、投资通。</p></article>
+<article class="fin"><h3>黄金</h3><p><b>COMEX 黄金期货（11月4日）</b>：4072.20 美元/盎司，涨 3.34%；现货黄金 4060.13 美元/盎司，涨 3.31%</p><p><b>折合人民币</b>：按当日中间价 6.7180 换算，COMEX 金价约合 <b>879.55 元/克</b>（1 盎司 = 31.1035 克）。注：个别来源给出 COMEX 4061.20 美元/盎司，系不同合约口径，本期采用东方财富口径（与 11 月 5 日收盘 4113.5 美元/盎司、涨 40.5 美元的衔接一致）。</p><p><b>政策背景</b>：中国人民银行加力实施股票回购增持再贷款政策，自 11 月 4 日起下调再贷款利率 0.25 个百分点至 1%，并将其由阶段性安排转为长期制度性安排。</p><p class="src">数据来源：<a href="https://www.cnfin.com/" target="_blank" rel="noopener noreferrer">新华财经</a>、<a href="https://www.eastmoney.com/" target="_blank" rel="noopener noreferrer">东方财富</a>、<a href="https://www.10jqka.com.cn/" target="_blank" rel="noopener noreferrer">同花顺</a>、投资通。</p></article>
 </div>
 </section>
 <!-- 体育速递 -->
 <section class="blk" id="d1104-sports">
 <div class="blk-head"><span class="no">其五</span><h2>体育速递</h2></div>
-<article class="sport"><h3>NBA（美国当地 11月4日晚、北京时间 11月5日；当日 14 场比赛）</h3><ul><li><b>76 人 112-106 活塞</b>；<b>老鹰 120-105 奇才</b>；<b>凯尔特人 109-102 雄鹿</b>；<b>篮网 114-104 黄蜂</b>。</li><li><b>尼克斯 135-105 公牛</b>：上半场 84 分追平队史纪录，布伦森 33 分。</li><li><b>雷霆 124-116 骑士</b>；<b>步行者 107-103 灰熊</b>；<b>森林狼 117-107 火箭</b>；<b>鹈鹕加时 120-113 爵士</b>；<b>掘金 128-109 猛龙</b>；<b>开拓者 132-119 太阳</b>。</li><li><b>马刺 112-111 险胜独行侠</b>；<b>湖人 116-103 国王</b>（东契奇再砍 40+）；<b>热火加时 117-116 快船</b>（克莱·汤普森加时最后时刻三分绝杀）。</li></ul></article>
-<article class="sport"><h3>足球·欧冠联赛阶段第 4 轮（欧洲当地 11月4日晚、北京时间 11月5日凌晨）</h3><ul><li><b>皇家马德里 3-2 雅典 AEK</b>；<b>费内巴切 3-2 利物浦</b>；<b>曼城 3-2 莱比锡</b>；<b>阿森纳 2-1 布拉格斯拉维亚</b>；<b>多特蒙德 2-1 皇家贝蒂斯</b>；<b>波尔图 4-1 那不勒斯</b>；<b>布鲁日 2-1 埃因霍温</b>；<b>科莫 9-1 朗斯</b>（当轮最悬殊比分）。</li><li>欧冠下一轮（第 5 轮）为 11 月 24—25 日。当日未查到中超赛果。</li></ul></article>
-<article class="sport"><h3>卡尔加里火焰队（当地 11月3日）</h3><ul><li>火焰队当日无比赛（轮空）。下一场为当地 11 月 4 日晚客场对西雅图海怪——按当地日期该场比赛属于 11 月 5 日北京时间那期的赛果，此处仅作赛程提示：火焰加时 1:2 负于海怪，海怪的贝尼耶斯在加时 55 秒单刀绝杀，卡顿为海怪扳平比分；火焰下一场为当地 11 月 6 日晚主场对安纳海姆鸭队。</li></ul></article>
+<article class="sport"><h3>NBA（美国当地 11月4日晚、北京时间 11月5日；当日 14 场比赛）</h3><ul><li><b>76 人 112-106 活塞</b>；<b>老鹰 120-105 奇才</b>；<b>凯尔特人 109-102 雄鹿</b>；<b>篮网 114-104 黄蜂</b>。（来源：<a href="https://www.ppsport.net/news/basketball-news/4687.html" target="_blank" rel="noopener noreferrer">PP视频体育频道</a>）</li><li><b>尼克斯 135-105 公牛</b>：上半场 84 分追平队史纪录，布伦森 33 分。（来源：<a href="https://www.163.com/dy/article/LAVET42T0529RKNN.html" target="_blank" rel="noopener noreferrer">网易</a>）</li><li><b>雷霆 124-116 骑士</b>；<b>步行者 107-103 灰熊</b>；<b>森林狼 117-107 火箭</b>；<b>鹈鹕加时 120-113 爵士</b>；<b>掘金 128-109 猛龙</b>；<b>开拓者 132-119 太阳</b>。（来源：<a href="https://www.ppsport.net/news/basketball-news/4687.html" target="_blank" rel="noopener noreferrer">PP视频体育频道</a>）</li><li><b>马刺 112-111 险胜独行侠</b>；<b>湖人 116-103 国王</b>（东契奇再砍 40+）；<b>热火加时 117-116 快船</b>（克莱·汤普森加时最后时刻三分绝杀）。（来源：<a href="https://www.ppsport.net/news/basketball-news/4687.html" target="_blank" rel="noopener noreferrer">PP视频体育频道</a>）</li></ul></article>
+<article class="sport"><h3>足球·欧冠联赛阶段第 4 轮（欧洲当地 11月4日晚、北京时间 11月5日凌晨）</h3><ul><li><b>皇家马德里 3-2 雅典 AEK</b>；<b>费内巴切 3-2 利物浦</b>；<b>曼城 3-2 莱比锡</b>；<b>阿森纳 2-1 布拉格斯拉维亚</b>；<b>多特蒙德 2-1 皇家贝蒂斯</b>；<b>波尔图 4-1 那不勒斯</b>；<b>布鲁日 2-1 埃因霍温</b>；<b>科莫 9-1 朗斯</b>（当轮最悬殊比分）。（来源：<a href="https://news.qq.com/rain/a/20261105A02MV000" target="_blank" rel="noopener noreferrer">腾讯新闻</a>）</li><li>欧冠下一轮（第 5 轮）为 11 月 24—25 日。当日未查到中超赛果。</li></ul></article>
+<article class="sport"><h3>卡尔加里火焰队（当地 11月3日）</h3><ul><li>火焰队当日无比赛（轮空）。下一场为当地 11 月 4 日晚客场对西雅图海怪——按当地日期该场比赛属于 11 月 5 日北京时间那期的赛果，此处仅作赛程提示：火焰加时 1:2 负于海怪，海怪的贝尼耶斯在加时 55 秒单刀绝杀，卡顿为海怪扳平比分；火焰下一场为当地 11 月 6 日晚主场对安纳海姆鸭队。（来源：<a href="https://www.nhl.com/news/calgary-flames-seattle-kraken-game-recap-november-4-2026" target="_blank" rel="noopener noreferrer">NHL官网</a>（需翻墙））</li></ul></article>
 </section>
 <!-- 娱乐圈八卦 -->
 <section class="blk" id="d1104-gossip">
 <div class="blk-head"><span class="no">其六</span><h2>娱乐圈八卦</h2></div>
 <div class="gossip">
-<div class="gos-item"><div class="n">1</div><div><h4>杨幂直播玩梗"我画地为牢"，网友联想唐嫣冲上热搜 <span class="from">新浪娱乐，11月4日</span></h4><p>杨幂在直播中主动玩起《后会友期》里许飞对厉娜的台词梗；话题"我画地为牢啊唐嫣"随之冲上热搜，但杨幂原话并未提及唐嫣，整波热度属网友自发的跨人物联想与玩梗。两人因《仙剑奇侠传三》结缘，2014 年杨幂婚礼上唐嫣是唯一圈内伴娘。</p></div></div>
-<div class="gos-item"><div class="n">2</div><div><h4>双十一首现"AI 偶像"数字人接力直播 <span class="from">China Meta Guide《4 November 2026 News》，11月4日</span></h4><p>天猫双十一期间出现互联网首个"AI-dol"明星数字人接力直播，宁泽涛等六位明星授权肖像生成 AI 数字分身参与直播；芒果 TV 同日推出五位原生 AI 艺人并首播其主演的 AI 写实剧，华策影视推出 AI 偶像男团"MO:V 墨伍"并发布出道 MV。</p></div></div>
+<div class="gos-item"><div class="n">1</div><div><h4>杨幂直播玩梗"我画地为牢"，网友联想唐嫣冲上热搜 <span class="from"><a href="https://ent.sina.cn/2026-11-04/detail-inixqnsx0068985.d.html?vt=4" target="_blank" rel="noopener noreferrer">新浪娱乐</a>，11月4日</span></h4><p>杨幂在直播中主动玩起《后会友期》里许飞对厉娜的台词梗；话题"我画地为牢啊唐嫣"随之冲上热搜，但杨幂原话并未提及唐嫣，整波热度属网友自发的跨人物联想与玩梗。两人因《仙剑奇侠传三》结缘，2014 年杨幂婚礼上唐嫣是唯一圈内伴娘。</p></div></div>
+<div class="gos-item"><div class="n">2</div><div><h4>双十一首现"AI 偶像"数字人接力直播 <span class="from"><a href="https://www.xinminweekly.com.cn/shenghuo/2026/11/04/55324.html" target="_blank" rel="noopener noreferrer">China Meta Guide</a>《4 November 2026 News》，11月4日</span></h4><p>天猫双十一期间出现互联网首个"AI-dol"明星数字人接力直播，宁泽涛等六位明星授权肖像生成 AI 数字分身参与直播；芒果 TV 同日推出五位原生 AI 艺人并首播其主演的 AI 写实剧，华策影视推出 AI 偶像男团"MO:V 墨伍"并发布出道 MV。</p></div></div>
 <div class="gos-item"><div class="n">3</div><div><h4>迪丽热巴接触电影《从前有只鲸》，肖战两部待播剧入选推荐片单（网传/未经证实） <span class="from">网易号娱乐资讯，11月4日</span></h4><p>11 月 4 日娱乐资讯称，李玉自编自导的电影《从前有只鲸》主演正在接触迪丽热巴；肖战主演的两部待播作品《谍报上不封顶》和《十日终焉》全部入选剧美中国推荐片单。选角类消息为网传，未经片方证实。</p></div></div>
 </div>
 </section>
@@ -1242,13 +1281,15 @@
 <p>今天沈阳一天升温 11°C、南风阵风近 60 公里，是名副其实"起风了"的一天；A 股也大涨 2.16%，风是往上吹的。歌里唱"逆风的方向，更适合飞翔"，适合今晚收尾复盘时放——把已投的岗位跟进一遍，别只顾海投，风起了，方向要先定好。</p>
 </div>
 </section>
-<!-- 每周一漫 -->
+<!-- 每日一漫 -->
 <section class="blk" id="d1104-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每周一漫</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
 <div class="anime">
-<p>本周在看：《葬送的芙莉莲》——今晚看第 3~4 集，菲伦拜师、旅途正式成行，配今天 18°C 的回暖天很合适。</p>
+<p class="ttl">今日推荐：《轻音少女》（TV 动画共 2 季 39 集，第 1 季 13 集 2009 年，第 2 季 26 集 2010 年；另有剧场版 2011 年）</p>
+<p>改编自 kakifly 的四格漫画，讲平泽唯等四个女生放学后在轻音部喝茶、练琴、吃蛋糕的日子。理由：今天沈阳难得回暖到 18°C，A 股也大涨，心情正好配这部——今晚看第 1 集，二十多分钟，全是放学后阳光的味道，暖和又不费脑子；这周主题是冬夜暖番，它负责把白天的暖气留到晚上。</p>
 </div>
 </section>
+<nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev" type="button" data-nav-date="2026-11-03" aria-label="上一期：11月3日 周二">&larr; 上一期 &middot; 11月3日 周二</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next" type="button" data-nav-date="2026-11-05" aria-label="下一期：11月5日 周四">下一期 &middot; 11月5日 周四 &rarr;</button></nav>
 <p class="src">简报完。本期为补档版本，天气与月相为历史档案与天文公式计算值；美股为美国当地 11 月 4 日收盘（北京时间 11 月 5 日凌晨出炉），属事后补档口径。</p>
 </div>
 
@@ -1263,7 +1304,7 @@
         <div class="strip" aria-label="三城气温速览"><div class="cell"><div class="big">6.7°<small> / -0.9°</small></div><div class="meta"><b>沈阳</b><br />白天气温 · 冷锋过境<br />凌晨锋前曾达 13.8°C</div></div><div class="cell"><div class="big">10.9°<small> / 0.5°</small></div><div class="meta"><b>鞍山</b><br />白天气温 · 冷锋过境<br />凌晨曾达 14.5°C</div></div><div class="cell"><div class="big">6.4°<small> / -2.2°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 4 日 · 多云<br />全市用水限制今日生效</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1105-weather">三城天气</a><a href="#d1105-news">三城新闻</a><a href="#d1105-highlights">今日看点</a><a href="#d1105-finance">金融市场</a><a href="#d1105-sports">体育速递</a><a href="#d1105-gossip">娱乐圈八卦</a><a href="#d1105-astro">月相 · 卦象 · 运势</a><a href="#d1105-history">历史上的今天</a><a href="#d1105-quote">每日金句</a><a href="#d1105-wellness">养生小技巧</a><a href="#d1105-meal">健身减脂餐</a><a href="#d1105-song">每日一曲</a><a href="#d1105-anime">每周一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1105-weather">三城天气</a><a href="#d1105-news">三城新闻</a><a href="#d1105-highlights">今日看点</a><a href="#d1105-finance">金融市场</a><a href="#d1105-sports">体育速递</a><a href="#d1105-gossip">娱乐圈八卦</a><a href="#d1105-astro">月相 · 卦象 · 运势</a><a href="#d1105-history">历史上的今天</a><a href="#d1105-quote">每日金句</a><a href="#d1105-wellness">养生小技巧</a><a href="#d1105-meal">健身减脂餐</a><a href="#d1105-song">每日一曲</a><a href="#d1105-anime">每日一漫</a></nav>
 <!-- 三城天气 -->
 <section class="blk" id="d1105-weather">
 <div class="blk-head"><span class="no">其一</span><h2>三城天气</h2></div>
@@ -1302,16 +1343,16 @@
 <section class="blk" id="d1105-news">
 <div class="blk-head"><span class="no">其二</span><h2>三城近期新闻</h2></div>
 <div class="news-grid">
-<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>辽宁"优化消费环境月"，冷锋过境沈阳白天最高仅 6.7°C <span class="from">辽宁省气象台、中国天气网，11月5日</span></h4><p>冷锋过境，沈阳白天最高气温仅 6.7°C 左右，较前一日下降超过 10°C；辽宁省同步启动"优化消费环境月"活动。</p></div><div class="news-item"><h4>沈阳地铁 9 号线胜利南街站 A 出口临时关闭 <span class="from">沈阳地铁，11月5日</span></h4><p>地铁 9 号线胜利南街站 A 出口因故临时关闭，出行请留意站内指引、选择其他出入口。</p></div><div class="news-item"><p>当日可查的沈阳本地新闻较少，以上两条为主，如实说明，未另编。</p></div></article>
+<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>辽宁"优化消费环境月"，冷锋过境沈阳白天最高仅 6.7°C <span class="from">辽宁省气象台、<a href="http://news.weather.com.cn/2026/11/4848664.shtml" target="_blank" rel="noopener noreferrer">中国天气网</a>，11月5日</span></h4><p>冷锋过境，沈阳白天最高气温仅 6.7°C 左右，较前一日下降超过 10°C；辽宁省同步启动"优化消费环境月"活动。</p></div><div class="news-item"><h4>沈阳地铁 9 号线胜利南街站 A 出口临时关闭 <span class="from"><a href="https://finance.sina.com.cn/wm/2026-11-04/doc-inixqnsq9339796.shtml" target="_blank" rel="noopener noreferrer">沈阳地铁</a>，11月5日</span></h4><p>地铁 9 号线胜利南街站 A 出口因故临时关闭，出行请留意站内指引、选择其他出入口。</p></div><div class="news-item"><p>当日可查的沈阳本地新闻较少，以上两条为主，如实说明，未另编。</p></div></article>
 <article class="news-col"><h3>鞍山</h3></article>
-<article class="news-col"><h3>卡尔加里（当地 11月4日）</h3><div class="news-item"><h4>全市用水限制今日生效，用水量连续达标 <span class="from">卡尔加里市政府，11月4日</span></h4><p>因 Bearspaw 南供水干管连接工程，11 月 4 日起实施用水限制；此前全市用水量已连续两天低于 5 亿升目标。</p></div><div class="news-item"><h4>卡尔加里创新周进入收官日 <span class="from">Platform Calgary，11月4日</span></h4><p>11 月 2—5 日的创新周进入最后一天，11 月 5 日将举行第 16 届 Launch Party，揭晓十大最具前景初创企业。</p></div><div class="news-item"><h4>联邦预算引市长不满：市长 Jeromy Farkas 称预算对卡尔加里不公 <span class="from">卡尔加里本地媒体，11月4日</span></h4><p>联邦预算公布后，市长 Jeromy Farkas 公开表达不满，认为预算未充分照顾卡尔加里利益。</p></div></article>
+<article class="news-col"><h3>卡尔加里（当地 11月4日）</h3><div class="news-item"><h4>全市用水限制今日生效，用水量连续达标 <span class="from"><a href="https://www.calgary.ca/planning/water/bearspaw-feeder-main/water-restrictions.html" target="_blank" rel="noopener noreferrer">卡尔加里市政府</a>（需翻墙），11月4日</span></h4><p>因 Bearspaw 南供水干管连接工程，11 月 4 日起实施用水限制；此前全市用水量已连续两天低于 5 亿升目标。</p></div><div class="news-item"><h4>卡尔加里创新周进入收官日 <span class="from"><a href="https://www.platformcalgary.com/blog/calgary-innovation-week-is-back-monday-november-2-to-thursday-november-5" target="_blank" rel="noopener noreferrer">Platform Calgary</a>（需翻墙），11月4日</span></h4><p>11 月 2—5 日的创新周进入最后一天，11 月 5 日将举行第 16 届 Launch Party，揭晓十大最具前景初创企业。</p></div><div class="news-item"><h4>联邦预算引市长不满：市长 Jeromy Farkas 称预算对卡尔加里不公 <span class="from"><a href="https://www.europesays.com/canada/282901/" target="_blank" rel="noopener noreferrer">卡尔加里本地媒体</a>（需翻墙），11月4日</span></h4><p>联邦预算公布后，市长 Jeromy Farkas 公开表达不满，认为预算未充分照顾卡尔加里利益。</p></div></article>
 </div>
 </section>
 <!-- 今日看点 -->
 <section class="blk" id="d1105-highlights">
 <div class="blk-head"><span class="no">其三</span><h2>今日看点</h2></div>
 <p class="sec-note">热搜榜单无历史存档，本期看点取自当日主要新闻。</p>
-<div class="hl"><ol><li><b>美国中期选举结果出炉：民主党横扫参众两院（重大新闻）</b>（美联社、NBC、半岛电视台，11月4日）民主党在 11 月 3 日的中期选举中同时赢得众议院与参议院控制权，明年 1 月起全面掌控国会；参议院从共和党手中翻转北卡、南卡、堪萨斯、俄亥俄与德州共 5 席，德州更是 38 年来首度由民主党拿下参院席次。值得看：这是共和党半世纪以来最惨重的一次败选，将直接影响未来两年美国内外政策与全球市场情绪——而市场反应来得极快：选举次日（11 月 4 日）美股先大涨，道指涨超 1500 点；但 11 月 5 日又暴跌，纳指跌 5.5% 跌入修正区间，投资者担心民主党胜选后可能放缓数据中心建设。</li><li><b>乌镇世界互联网大会闭幕，AI 治理成最大共识（重大新闻）</b>（新华社，11月5日）2026 年世界互联网大会乌镇峰会 11 月 5 日闭幕，"开源开放、共建共享"成为本届峰会关键词。值得看：三天 27 个分论坛把 AI 治理、开源生态的讨论推向高潮，接下来一周的 AI 政策新闻都绕不开乌镇的共识。</li><li><b>OpenAI 发布 Images 2.6，新增 GIF 动图支持（AI 新闻）</b>（OpenAI 官方、科技媒体，11月5日）OpenAI 发布新一代图像生成模型 Images 2.6，支持 GIF 动图生成与更精细的图像编辑。值得看：图像 AI 从"出图"走向"出动图"，对做 PPT、海报、短视频的日常工作有直接帮助。</li></ol></div>
+<div class="hl"><ol><li><b>美国中期选举结果出炉：民主党横扫参众两院（重大新闻）</b>（美联社、NBC、<a href="https://www.aljazeera.com/news/2026/11/4/democrats-win-control-of-house-and-senate-key-us-midterms-takeaways" target="_blank" rel="noopener noreferrer">半岛电视台</a>（需翻墙），11月4日）民主党在 11 月 3 日的中期选举中同时赢得众议院与参议院控制权，明年 1 月起全面掌控国会；参议院从共和党手中翻转北卡、南卡、堪萨斯、俄亥俄与德州共 5 席，德州更是 38 年来首度由民主党拿下参院席次。值得看：这是共和党半世纪以来最惨重的一次败选，将直接影响未来两年美国内外政策与全球市场情绪——而市场反应来得极快：选举次日（11 月 4 日）美股先大涨，道指涨超 1500 点；但 11 月 5 日又暴跌，纳指跌 5.5% 跌入修正区间，投资者担心民主党胜选后可能放缓数据中心建设。</li><li><b>乌镇世界互联网大会闭幕，AI 治理成最大共识（重大新闻）</b>（<a href="https://www.cs.com.cn/xwzx/01/2026/11/05/detail_2026110510050037.html" target="_blank" rel="noopener noreferrer">新华社</a>，11月5日）2026 年世界互联网大会乌镇峰会 11 月 5 日闭幕，"开源开放、共建共享"成为本届峰会关键词。值得看：三天 27 个分论坛把 AI 治理、开源生态的讨论推向高潮，接下来一周的 AI 政策新闻都绕不开乌镇的共识。</li><li><b>OpenAI 发布 Images 2.6，新增 GIF 动图支持（AI 新闻）</b>（OpenAI 官方、<a href="https://finance.sina.cn/stock/jdts/2026-11-05/detail-inixsmiy9440999.d.html" target="_blank" rel="noopener noreferrer">科技媒体</a>，11月5日）OpenAI 发布新一代图像生成模型 Images 2.6，支持 GIF 动图生成与更精细的图像编辑。值得看：图像 AI 从"出图"走向"出动图"，对做 PPT、海报、短视频的日常工作有直接帮助。</li></ol></div>
 </section>
 <!-- 金融市场早报 -->
 <section class="blk" id="d1105-finance">
@@ -1320,23 +1361,23 @@
 <article class="fin"><h3>人民币对美元</h3><table><tr><td>中间价（11月5日）</td><td class="num down">6.7156，较上一交易日上调 24 个基点，结束连续三个交易日调贬</td></tr><tr><td>在岸收盘（11月5日）</td><td class="num">本次检索未查到可靠来源，如实说明，未编数字</td></tr></table></article>
 <article class="fin"><h3>A股（11月5日收盘）</h3><table><tr><td>上证指数</td><td class="num up">3689.91 点，涨 0.10%</td></tr><tr><td>深证成指</td><td class="num up">11471.09 点，涨 1.19%</td></tr><tr><td>创业板指</td><td class="num up">2566.80 点，涨 0.87%</td></tr></table><p><b>背景</b>：三大指数小幅收涨，与前一日大涨后的震荡整理有关；与 11 月 6 日收盘数衔接一致（11 月 6 日上证跌 1.10% 至 3649.18 点）。</p></article>
 <article class="fin"><h3>美股（美国当地 11月5日收盘，北京时间 11月6日凌晨出炉）</h3><table><tr><td>道琼斯</td><td class="num down">51523.06 点，跌 3.44%（-1833.06 点）</td></tr><tr><td>纳斯达克</td><td class="num down">24315.00 点，跌 5.52%（-1421.52 点）</td></tr><tr><td>标普 500</td><td class="num down">7353.73 点，跌 4.36%（-334.89 点）</td></tr></table><p><b>背景</b>：三大股指创 2025 年 4 月以来最大单日跌幅，纳指跌入修正区间（较 10 月纪录高点跌超 10%）；芯片股领跌，费城半导体指数跌 12.25%，投资者担心民主党中期选举大胜后可能叫停数据中心建设。周三选举后的大涨一天之内全部回吐。</p></article>
-<article class="fin"><h3>黄金</h3><p><b>COMEX 12 月期金（11月5日结算）</b>：4113.5 美元/盎司，涨 1%（+40.5 美元）；现货金约 4088.28 美元/盎司，涨 0.69%</p><p><b>折合人民币</b>：按当日中间价 6.7156 换算，COMEX 期金约合 <b>888.15 元/克</b>（1 盎司 = 31.1035 克）</p><p><b>背景</b>：美债收益率走低提供支撑，金价重回 4100 美元上方；与美股大跌形成对比，避险属性再受关注。注：个别聚合源给出的 11 月 5 日 COMEX 收盘 4072.2 美元/盎司（涨 3.34%）实为 11 月 4 日的收盘数，本期采用 MoneyDJ/CNN 证实的 11 月 5 日结算价 4113.5 美元/盎司。</p><p class="src">数据来源：美联社、MoneyDJ 理财网、中国外汇交易中心、同花顺财经。</p></article>
+<article class="fin"><h3>黄金</h3><p><b>COMEX 12 月期金（11月5日结算）</b>：4113.5 美元/盎司，涨 1%（+40.5 美元）；现货金约 4088.28 美元/盎司，涨 0.69%</p><p><b>折合人民币</b>：按当日中间价 6.7156 换算，COMEX 期金约合 <b>888.15 元/克</b>（1 盎司 = 31.1035 克）</p><p><b>背景</b>：美债收益率走低提供支撑，金价重回 4100 美元上方；与美股大跌形成对比，避险属性再受关注。注：个别聚合源给出的 11 月 5 日 COMEX 收盘 4072.2 美元/盎司（涨 3.34%）实为 11 月 4 日的收盘数，本期采用 MoneyDJ/CNN 证实的 11 月 5 日结算价 4113.5 美元/盎司。</p><p class="src">数据来源：<a href="https://apnews.com" target="_blank" rel="noopener noreferrer">美联社</a>（需翻墙）、<a href="https://www.moneydj.com" target="_blank" rel="noopener noreferrer">MoneyDJ 理财网</a>、<a href="https://www.chinamoney.com.cn" target="_blank" rel="noopener noreferrer">中国外汇交易中心</a>、<a href="https://www.10jqka.com.cn" target="_blank" rel="noopener noreferrer">同花顺财经</a>。</p></article>
 </div>
 </section>
 <!-- 体育速递 -->
 <section class="blk" id="d1105-sports">
 <div class="blk-head"><span class="no">其五</span><h2>体育速递</h2></div>
-<article class="sport"><h3>NBA（美国当地 11月5日晚、北京时间 11月6日；当日仅 2 场比赛）</h3><ul><li><b>勇士 120-100 热火</b>：库里 29 分，勇士六连胜。</li><li><b>太阳 117-104 魔术</b>：布克 30 分、布鲁克斯 24 分，太阳终结四连败。</li></ul></article>
+<article class="sport"><h3>NBA（美国当地 11月5日晚、北京时间 11月6日；当日仅 2 场比赛）</h3><ul><li><b>勇士 120-100 热火</b>：库里 29 分，勇士六连胜。（来源：<a href="https://www.163.com/dy/article/LB2HCP2M0556BOXC.html" target="_blank" rel="noopener noreferrer">网易</a>）</li><li><b>太阳 117-104 魔术</b>：布克 30 分、布鲁克斯 24 分，太阳终结四连败。（来源：<a href="https://www.163.com/dy/article/LB2HCP2M0556BOXC.html" target="_blank" rel="noopener noreferrer">网易</a>）</li></ul></article>
 <article class="sport"><h3>足球·欧联杯（欧洲当地 11月5日晚）</h3><ul><li>欧联杯比赛日进行中，具体赛果截至补写时未检索到可确认的完整比分，如实说明，未编造。</li></ul></article>
-<article class="sport"><h3>卡尔加里火焰队（当地 11月4日晚，西雅图客场）</h3><ul><li><b>火焰加时 1-2 负于西雅图海怪</b>：海怪的贝尼耶斯在加时 55 秒单刀绝杀，卡顿为海怪扳平比分。火焰下一场为当地 11 月 6 日晚主场对安纳海姆鸭队。</li></ul></article>
+<article class="sport"><h3>卡尔加里火焰队（当地 11月4日晚，西雅图客场）</h3><ul><li><b>火焰加时 1-2 负于西雅图海怪</b>：海怪的贝尼耶斯在加时 55 秒单刀绝杀，卡顿为海怪扳平比分。火焰下一场为当地 11 月 6 日晚主场对安纳海姆鸭队。（来源：<a href="https://www.sportsnet.ca/nhl/article/flames-fall-to-kraken-for-first-overtime-loss-of-season/" target="_blank" rel="noopener noreferrer">Sportsnet</a>（需翻墙））</li></ul></article>
 </section>
 <!-- 娱乐圈八卦 -->
 <section class="blk" id="d1105-gossip">
 <div class="blk-head"><span class="no">其六</span><h2>娱乐圈八卦</h2></div>
 <div class="gossip">
-<div class="gos-item"><div class="n">1</div><div><h4>The Weeknd 巡演票房创 13 亿美元纪录 <span class="from">音乐媒体，11月5日</span></h4><p>The Weeknd 巡演总票房达 13 亿美元，创下个人巡演纪录。</p></div></div>
-<div class="gos-item"><div class="n">2</div><div><h4>HYBE 第三季度营收 10.8 亿美元 <span class="from">韩国财报，11月5日</span></h4><p>HYBE 公布第三季度营收 10.8 亿美元，旗下艺人巡演与专辑销售表现强劲。</p></div></div>
-<div class="gos-item"><div class="n">3</div><div><h4>肖战《藏海传》获奖 <span class="from">娱乐媒体，11月5日</span></h4><p>肖战主演的《藏海传》在相关奖项评选中获奖，剧集热度持续。</p></div></div>
+<div class="gos-item"><div class="n">1</div><div><h4>The Weeknd 巡演票房创 13 亿美元纪录 <span class="from"><a href="https://www.stheadline.com/film-drama/3634360/The-Weeknd%E5%B7%A1%E5%94%B1%E5%90%B8%E9%80%BE13%E5%84%84%E7%BE%8E%E5%85%83-%E5%88%B7%E6%96%B0%E7%94%B7%E6%AD%8C%E6%89%8B%E7%B4%80%E9%8C%84" target="_blank" rel="noopener noreferrer">音乐媒体</a>，11月5日</span></h4><p>The Weeknd 巡演总票房达 13 亿美元，创下个人巡演纪录。</p></div></div>
+<div class="gos-item"><div class="n">2</div><div><h4>HYBE 第三季度营收 10.8 亿美元 <span class="from"><a href="https://www.musicbusinessworldwide.com/bts-world-tour-powers-hybe-to-record-quarterly-revenues-of-1-08b-in-q3-up-109-8-yoy-as-concerts-generate-512m/" target="_blank" rel="noopener noreferrer">韩国财报</a>（需翻墙），11月5日</span></h4><p>HYBE 公布第三季度营收 10.8 亿美元，旗下艺人巡演与专辑销售表现强劲。</p></div></div>
+<div class="gos-item"><div class="n">3</div><div><h4>肖战《藏海传》获奖 <span class="from"><a href="https://k.sina.com.cn/article_1796087453_m6b0e1e9d03301xnaq.html" target="_blank" rel="noopener noreferrer">娱乐媒体</a>，11月5日</span></h4><p>肖战主演的《藏海传》在相关奖项评选中获奖，剧集热度持续。</p></div></div>
 </div>
 </section>
 <!-- 月相、卦象与星座运势 -->
@@ -1404,13 +1445,15 @@
 <p>今天冷锋过境，沈阳一天之内从 13°C 跌到 0°C 以下，美股也跌了个大的——越是这种日子越不能急。渐卦讲"一天进一步就是赢"，《步步》唱的也是一步一步往上爬：今晚别刷大盘了，放这首歌，把明天面试要说的自我介绍顺三遍，睡前打勾睡觉。</p>
 </div>
 </section>
-<!-- 每周一漫 -->
+<!-- 每日一漫 -->
 <section class="blk" id="d1105-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每周一漫</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
 <div class="anime">
-<p>本周在看：《葬送的芙莉莲》——今晚看第 5~6 集，冷锋过境的夜里，看精灵慢慢理解"时间"的重量。</p>
+<p class="ttl">今日推荐：《虫师》（TV 动画第 1 季 26 集，2005–2006 年；续章 20 集，2014 年）</p>
+<p>改编自漆原友纪的同名漫画，讲"虫师"银古走村串巷，解决由"虫"引起的怪事，每集一个故事。理由：冷锋过境，白天最高只有 6.7°C，晚上最适合看一集就睡的番——今晚看第 1 集《绿之座》，山里的绿意和虫鸣，冷夜里听着格外安静；一集一个完整的故事，不用记剧情，困了随时能睡。</p>
 </div>
 </section>
+<nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev" type="button" data-nav-date="2026-11-04" aria-label="上一期：11月4日 周三">&larr; 上一期 &middot; 11月4日 周三</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next" type="button" data-nav-date="2026-11-06" aria-label="下一期：11月6日 周五">下一期 &middot; 11月6日 周五 &rarr;</button></nav>
 <p class="src">简报完。本期为补档版本，天气与月相为历史档案与天文公式计算值；美股为美国当地 11 月 5 日收盘（北京时间 11 月 6 日凌晨出炉），属事后补档口径。</p>
 </div>
 
@@ -1425,7 +1468,7 @@
         <div class="strip" aria-label="三城气温速览"><div class="cell"><div class="big">2.4°<small> / -2.8°</small></div><div class="meta"><b>沈阳</b><br />晴 · 全天无降水<br />西北风阵风 45 km/h</div></div><div class="cell"><div class="big">5.0°<small> / -2.5°</small></div><div class="meta"><b>鞍山</b><br />晴 · 全天无降水<br />北风阵风 41 km/h</div></div><div class="cell"><div class="big">10.0°<small> / -1.6°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 5 日 · 毛毛雨<br />西风阵风 40 km/h</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1106-weather">三城天气</a><a href="#d1106-news">三城新闻</a><a href="#d1106-highlights">今日看点</a><a href="#d1106-finance">金融市场</a><a href="#d1106-sports">体育速递</a><a href="#d1106-gossip">娱乐圈八卦</a><a href="#d1106-astro">月相 · 卦象 · 运势</a><a href="#d1106-history">历史上的今天</a><a href="#d1106-quote">每日金句</a><a href="#d1106-wellness">养生小技巧</a><a href="#d1106-meal">健身减脂餐</a><a href="#d1106-song">每日一曲</a><a href="#d1106-anime">每周一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1106-weather">三城天气</a><a href="#d1106-news">三城新闻</a><a href="#d1106-highlights">今日看点</a><a href="#d1106-finance">金融市场</a><a href="#d1106-sports">体育速递</a><a href="#d1106-gossip">娱乐圈八卦</a><a href="#d1106-astro">月相 · 卦象 · 运势</a><a href="#d1106-history">历史上的今天</a><a href="#d1106-quote">每日金句</a><a href="#d1106-wellness">养生小技巧</a><a href="#d1106-meal">健身减脂餐</a><a href="#d1106-song">每日一曲</a><a href="#d1106-anime">每日一漫</a></nav>
 <!-- 三城天气 -->
 <section class="blk" id="d1106-weather">
 <div class="blk-head"><span class="no">其一</span><h2>三城天气</h2></div>
@@ -1461,16 +1504,16 @@
 <section class="blk" id="d1106-news">
 <div class="blk-head"><span class="no">其二</span><h2>三城近期新闻</h2></div>
 <div class="news-grid">
-<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>沈阳举办专场招聘会，60 余家企业提供 1878 个岗位 <span class="from">沈阳本地媒体，11月6日</span></h4><p>当日招聘会汇集 60 余家企业，提供 1878 个岗位，覆盖多个行业。大四求职季，这类本地专场值得留意。</p></div><div class="news-item"><h4>沈阳高新技术产业对接会在拓荆科技举行 <span class="from">沈阳本地媒体，11月6日</span></h4><p>高新技术产业对接活动在拓荆科技举行，聚焦本地高新技术产业链合作。</p></div><div class="news-item"><h4>寒潮与降雪预警持续 <span class="from">辽宁省气象台，11月6日</span></h4><p>寒潮影响持续，沈阳等地气温维持低位，提醒防范低温与道路结冰。</p></div></article>
-<article class="news-col"><h3>鞍山</h3><div class="news-item"><h4>鞍山市检察院开展扫黑除恶宣传 <span class="from">鞍山本地媒体，11月6日</span></h4><p>鞍山市检察院开展扫黑除恶专项宣传活动。</p></div><div class="news-item"><h4>鞍山新增航线：11 月 30 日起开通鞍山—上海浦东—西双版纳航线 <span class="from">吉祥航空、鞍山本地媒体，11月6日</span></h4><p>吉祥航空宣布，自 11 月 30 日起开通鞍山—上海浦东—西双版纳航线，方便鞍山旅客南下。</p></div><div class="news-item"><h4>鞍宁科创共同体建设推进 <span class="from">鞍山本地媒体，11月6日</span></h4><p>11 月 4 日宁鞍对接会之后，鞍宁科技创新共同体建设持续推进，详见 11 月 4 日那期。</p></div></article>
-<article class="news-col"><h3>卡尔加里（当地 11月5日）</h3><div class="news-item"><h4>全市用水量 4.9 亿升，连续第二天低于目标 <span class="from">卡尔加里市政府，11月5日</span></h4><p>Bearspaw 南供水干管连接工程期间，11 月 5 日区域用水量为 4.9 亿升，连续第二天低于 5 亿升的目标。</p></div><div class="news-item"><h4>Okotoks 地区房屋爆炸 <span class="from">卡尔加里本地媒体，11月5日</span></h4><p>Okotoks 地区发生房屋爆炸事件，详情仍在调查中。</p></div><div class="news-item"><h4>两起袭击案件，"更安全卡尔加里"执法行动持续 <span class="from">卡尔加里警方，11月5日</span></h4><p>当地发生两起袭击案件，警方"更安全卡尔加里"执法行动持续进行中。</p></div></article>
+<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>沈阳举办专场招聘会，60 余家企业提供 1878 个岗位 <span class="from"><a href="https://liaoning.lnd.com.cn/system/2026/11/06/030582693.shtml" target="_blank" rel="noopener noreferrer">沈阳本地媒体</a>，11月6日</span></h4><p>当日招聘会汇集 60 余家企业，提供 1878 个岗位，覆盖多个行业。大四求职季，这类本地专场值得留意。</p></div><div class="news-item"><h4>沈阳高新技术产业对接会在拓荆科技举行 <span class="from">沈阳本地媒体，11月6日</span></h4><p>高新技术产业对接活动在拓荆科技举行，聚焦本地高新技术产业链合作。</p></div><div class="news-item"><h4>寒潮与降雪预警持续 <span class="from"><a href="https://finance.sina.com.cn/jjxw/2026-11-06/doc-inixtxmh8987880.shtml" target="_blank" rel="noopener noreferrer">辽宁省气象台</a>，11月6日</span></h4><p>寒潮影响持续，沈阳等地气温维持低位，提醒防范低温与道路结冰。</p></div></article>
+<article class="news-col"><h3>鞍山</h3><div class="news-item"><h4>鞍山市检察院开展扫黑除恶宣传 <span class="from"><a href="https://feng.ifeng.com/c/8xpdReSbC8H" target="_blank" rel="noopener noreferrer">鞍山本地媒体</a>，11月6日</span></h4><p>鞍山市检察院开展扫黑除恶专项宣传活动。</p></div><div class="news-item"><h4>鞍山—上海浦东直飞航线 11 月 6 日首航，鞍山—南京航线 11 月 19 日开通 <span class="from"><a href="https://finance.sina.com.cn/wm/2026-11-07/doc-inixwxqe4962376.shtml" target="_blank" rel="noopener noreferrer">新浪财经</a>，11月6日</span></h4><p>吉祥航空执飞的鞍山—上海浦东直飞航线于 11 月 6 日首航（航班号 HO1029，每周一、三、五、日）；鞍山—南京航线将于 11 月 19 日开通（航班号 HO1799/HO1800，每周二、四、六）。</p></div><div class="news-item"><h4>鞍宁科创共同体建设推进 <span class="from"><a href="https://liaoning.lnd.com.cn/system/2026/11/02/030582044.shtml" target="_blank" rel="noopener noreferrer">鞍山本地媒体</a>，11月6日</span></h4><p>11 月 4 日宁鞍对接会之后，鞍宁科技创新共同体建设持续推进，详见 11 月 4 日那期。</p></div></article>
+<article class="news-col"><h3>卡尔加里（当地 11月5日）</h3><div class="news-item"><h4>全市用水量 4.9 亿升，连续第二天低于目标 <span class="from"><a href="https://www.calgary.ca/planning/water/bearspaw-feeder-main/water-restrictions.html" target="_blank" rel="noopener noreferrer">卡尔加里市政府</a>（需翻墙），11月5日</span></h4><p>Bearspaw 南供水干管连接工程期间，11 月 5 日区域用水量为 4.9 亿升，连续第二天低于 5 亿升的目标。</p></div><div class="news-item"><h4>Okotoks 地区房屋爆炸 <span class="from"><a href="https://www.europesays.com/canada/279963/" target="_blank" rel="noopener noreferrer">卡尔加里本地媒体</a>（需翻墙），11月5日</span></h4><p>Okotoks 地区发生房屋爆炸事件，详情仍在调查中。</p></div><div class="news-item"><h4>两起袭击案件，"更安全卡尔加里"执法行动持续 <span class="from"><a href="https://newsroom.calgary.ca/fifth-safer-calgary--operation-order-continues-coordinated-response-to-crime-and-social-disorder/" target="_blank" rel="noopener noreferrer">卡尔加里警方</a>（需翻墙），11月5日</span></h4><p>当地发生两起袭击案件，警方"更安全卡尔加里"执法行动持续进行中。</p></div></article>
 </div>
 </section>
 <!-- 今日看点 -->
 <section class="blk" id="d1106-highlights">
 <div class="blk-head"><span class="no">其三</span><h2>今日看点</h2></div>
 <p class="sec-note">热搜榜单无历史存档，本期看点取自当日主要新闻。</p>
-<div class="hl"><ol><li><b>美股暴跌次日：纳指跌入修正区间，AI 估值担忧蔓延（重大新闻）</b>（美联社、CNBC，11月6日）美国当地 11 月 5 日，三大股指创 2025 年 4 月以来最大单日跌幅，纳指跌 5.52% 跌入修正区间，费城半导体指数跌 12.25%。值得看：一天之内，选举后的大涨全部回吐，市场对 AI 估值与数据中心建设的担忧从"讨论"变成了"抛售"，这轮波动直接关系到接下来一周的全球市场情绪，也与 A 股 11 月 6 日的大跌相互呼应。</li><li><b>金鸡百花电影节在厦门开幕（重大新闻）</b>（新华社，11月6日）第 38 届中国电影金鸡奖暨金鸡百花电影节在厦门开幕。值得看：一年一度的中国电影盛会，获奖名单与红毯话题将是接下来几天娱乐新闻的主线。</li><li><b>AI 新闻：中期选举后，AI 与数据中心政策添变数</b>（科技媒体，11月6日）民主党夺回国会后，市场担心其可能放缓数据中心建设、收紧 AI 监管，这正是 11 月 5 日芯片股暴跌的直接导火索。值得看：AI 行业的政策环境正在变化，接下来看国会新班子对科技监管的具体表态。</li></ol></div>
+<div class="hl"><ol><li><b>美股暴跌次日：纳指跌入修正区间，AI 估值担忧蔓延（重大新闻）</b>（<a href="https://apnews.com/article/stocks-markets-ai-midterm-oil-trump-7ee9c212805aa5e70cf34d25aab7a36e" target="_blank" rel="noopener noreferrer">美联社</a>（需翻墙）、CNBC，11月6日）美国当地 11 月 5 日，三大股指创 2025 年 4 月以来最大单日跌幅，纳指跌 5.52% 跌入修正区间，费城半导体指数跌 12.25%。值得看：一天之内，选举后的大涨全部回吐，市场对 AI 估值与数据中心建设的担忧从"讨论"变成了"抛售"，这轮波动直接关系到接下来一周的全球市场情绪，也与 A 股 11 月 6 日的大跌相互呼应。</li><li><b>金鸡百花电影节在厦门开幕（重大新闻）</b>（<a href="https://feng.ifeng.com/c/8xrOKxqpeEe" target="_blank" rel="noopener noreferrer">新华社</a>，11月6日）第 38 届中国电影金鸡奖暨金鸡百花电影节在厦门开幕。值得看：一年一度的中国电影盛会，获奖名单与红毯话题将是接下来几天娱乐新闻的主线。</li><li><b>AI 新闻：中期选举后，AI 与数据中心政策添变数</b>（<a href="https://m.economictimes.com/tech/artificial-intelligence/nasdaq-set-to-confirm-correction-as-ai-stocks-tumble/amp_articleshow/135583549.cms" target="_blank" rel="noopener noreferrer">科技媒体</a>（需翻墙），11月6日）民主党夺回国会后，市场担心其可能放缓数据中心建设、收紧 AI 监管，这正是 11 月 5 日芯片股暴跌的直接导火索。值得看：AI 行业的政策环境正在变化，接下来看国会新班子对科技监管的具体表态。</li></ol></div>
 </section>
 <!-- 金融市场早报 -->
 <section class="blk" id="d1106-finance">
@@ -1480,23 +1523,23 @@
 <article class="fin"><h3>人民币对美元</h3><table><tr><td>中间价（11月6日）</td><td class="num down">6.7168，较前一日调贬 12 个基点，结束短暂调升</td></tr><tr><td>在岸收盘（11月6日）</td><td class="num up">6.6680，较上一交易日夜盘收涨 75 点；离岸约 6.6646~6.6710</td></tr></table><p><b>背景</b>：在岸人民币已连续 14 个交易日走强，先后升破 6.65，创 2022 年 6 月以来最强；但中间价与市场价的偏离仍维持在约 370 个基点，显示央行认可升值方向、同时对升值速度保持克制。</p></article>
 <article class="fin"><h3>A股（11月6日周五收盘）</h3><table><tr><td>上证指数</td><td class="num down">3649.18 点，跌 1.10%</td></tr><tr><td>深证成指</td><td class="num down">11175.78 点，跌 2.57%</td></tr><tr><td>创业板指</td><td class="num down">2465.23 点，跌 3.96%</td></tr></table><p><b>背景</b>：三大指数集体下挫，下跌个股超 4700 只，两市成交额缩至 1.66 万亿元。当日亚太股市普遍大跌，日经 225 跌 5.96%、韩国综指跌 6.02%，市场对 AI 估值泡沫的担忧蔓延。</p></article>
 <article class="fin"><h3>美股（11月6日，美国当地周五收盘）</h3><table><tr><td>道琼斯</td><td class="num down">51285.73 点，跌 0.46%</td></tr><tr><td>纳斯达克</td><td class="num up">24579.42 点，涨 1.09%</td></tr><tr><td>标普 500</td><td class="num up">7376.86 点，涨 0.31%</td></tr></table><p><b>背景</b>：10 月非农就业报告超预期，降息预期降温；芯片股领涨，纳指在周四暴跌 5.5% 跌入修正区间后技术性反弹。但全周来看标普仍跌 2.7%、纳指跌 3.4%，为 6 月以来最差一周。</p></article>
-<article class="fin"><h3>黄金</h3><p><b>COMEX 12 月期金（11月6日结算）</b>：4074.90 美元/盎司，跌 0.94%；现货金约 4070.59 美元/盎司，跌 0.43%</p><p><b>折合人民币</b>：按在岸人民币收盘价 6.6680 换算，COMEX 期金约合 <b>873.58 元/克</b>，现货金约合 872.66 元/克（1 盎司 = 31.1035 克）；国内金价同一日：上海黄金交易所 AU9999 报 883.99 元/克，沪金主力报 881.64 元/克</p><p><b>背景</b>：美元走强叠加美股反弹，压制了金价单日表现；但全周金价仍上涨约 4.5%~5%，为 8 月底以来最佳单周表现，周四盘中一度触及 4146 美元。11 月 7 日央行公布，10 月末黄金储备 7830 万盎司，较 9 月末增加 83 万盎司，为连续第 24 个月增持黄金。</p><p class="src">数据来源：新浪财经、中国外汇交易中心、路透社市场更新、上海黄金交易所、中国人民银行。</p></article>
+<article class="fin"><h3>黄金</h3><p><b>COMEX 12 月期金（11月6日结算）</b>：4074.90 美元/盎司，跌 0.94%；现货金约 4070.59 美元/盎司，跌 0.43%</p><p><b>折合人民币</b>：按在岸人民币收盘价 6.6680 换算，COMEX 期金约合 <b>873.58 元/克</b>，现货金约合 872.66 元/克（1 盎司 = 31.1035 克）；国内金价同一日：上海黄金交易所 AU9999 报 883.99 元/克，沪金主力报 881.64 元/克</p><p><b>背景</b>：美元走强叠加美股反弹，压制了金价单日表现；但全周金价仍上涨约 4.5%~5%，为 8 月底以来最佳单周表现，周四盘中一度触及 4146 美元。11 月 7 日央行公布，10 月末黄金储备 7830 万盎司，较 9 月末增加 83 万盎司，为连续第 24 个月增持黄金。</p><p class="src">数据来源：<a href="https://finance.sina.com.cn" target="_blank" rel="noopener noreferrer">新浪财经</a>、<a href="https://www.chinamoney.com.cn" target="_blank" rel="noopener noreferrer">中国外汇交易中心</a>、<a href="https://www.reuters.com/markets/" target="_blank" rel="noopener noreferrer">路透社市场更新</a>（需翻墙）、<a href="https://www.sge.com.cn" target="_blank" rel="noopener noreferrer">上海黄金交易所</a>、<a href="https://www.pbc.gov.cn" target="_blank" rel="noopener noreferrer">中国人民银行</a>。</p></article>
 </div>
 </section>
 <!-- 体育速递 -->
 <section class="blk" id="d1106-sports">
 <div class="blk-head"><span class="no">其五</span><h2>体育速递</h2></div>
-<article class="sport"><h3>NBA（美国当地 11月6日晚、北京时间 11月7日；NBA 杯小组赛日）</h3><ul><li><b>湖人 124-118 开拓者</b>：东契奇 53 分，湖人四连胜。</li><li><b>凯尔特人 119-80 黄蜂</b>：塔图姆 34 分，凯尔特人全场投进 24 个三分。</li><li><b>骑士 119-95 76 人</b>：詹姆斯重回克利夫兰仅得 8 分，骑士终结 76 人五连胜。</li><li><b>马刺 124-109 国王</b>：文班亚马 30 分 14 篮板，马刺七连胜。</li><li><b>雷霆 128-97 灰熊</b>：米切尔生涯新高 35 分。</li><li><b>老鹰 139-132 奇才</b>；<b>猛龙 121-107 雄鹿</b>；<b>独行侠 112-100 爵士</b>；<b>森林狼 115-109 鹈鹕</b>。</li></ul></article>
+<article class="sport"><h3>NBA（美国当地 11月6日晚、北京时间 11月7日；NBA 杯小组赛日）</h3><ul><li><b>湖人 124-118 开拓者</b>：东契奇 53 分，湖人四连胜。（来源：<a href="https://srnnews.com/nba-roundup-luka-doncic-stays-hot-with-53-points-in-lakers-win/" target="_blank" rel="noopener noreferrer">SRN News</a>（需翻墙））</li><li><b>凯尔特人 119-80 黄蜂</b>：塔图姆 34 分，凯尔特人全场投进 24 个三分。（来源：<a href="https://srnnews.com/nba-roundup-luka-doncic-stays-hot-with-53-points-in-lakers-win/" target="_blank" rel="noopener noreferrer">SRN News</a>（需翻墙））</li><li><b>骑士 119-95 76 人</b>：詹姆斯重回克利夫兰仅得 8 分，骑士终结 76 人五连胜。（来源：<a href="https://srnnews.com/nba-roundup-luka-doncic-stays-hot-with-53-points-in-lakers-win/" target="_blank" rel="noopener noreferrer">SRN News</a>（需翻墙））</li><li><b>马刺 124-109 国王</b>：文班亚马 30 分 14 篮板，马刺七连胜。（来源：<a href="https://srnnews.com/nba-roundup-luka-doncic-stays-hot-with-53-points-in-lakers-win/" target="_blank" rel="noopener noreferrer">SRN News</a>（需翻墙））</li><li><b>雷霆 128-97 灰熊</b>：米切尔生涯新高 35 分。（来源：<a href="https://srnnews.com/nba-roundup-luka-doncic-stays-hot-with-53-points-in-lakers-win/" target="_blank" rel="noopener noreferrer">SRN News</a>（需翻墙））</li><li><b>老鹰 139-132 奇才</b>；<b>猛龙 121-107 雄鹿</b>；<b>独行侠 112-100 爵士</b>；<b>森林狼 115-109 鹈鹕</b>。（来源：<a href="https://srnnews.com/nba-roundup-luka-doncic-stays-hot-with-53-points-in-lakers-win/" target="_blank" rel="noopener noreferrer">SRN News</a>（需翻墙））</li></ul></article>
 <article class="sport"><h3>足球（欧洲当地 11月6日）</h3><ul><li>当日未检索到可确认的五大联赛完整赛果，如实说明，未编造。</li></ul></article>
-<article class="sport"><h3>卡尔加里火焰队（当地 11月6日晚，主场）</h3><ul><li><b>火焰主场 3-5 不敌安纳海姆鸭队</b>：鸭队 Cutter Gauthier 在终场前 1 分 34 秒打入制胜球，个人连续五场打入 10 球，创队史纪录；火焰队 Farabee、Stromgren、Hanley 各入一球，战绩 7 胜 9 负 1 加时负。下一场为当地 11 月 8 日周日 18:00，主场迎战费城飞人。</li></ul></article>
+<article class="sport"><h3>卡尔加里火焰队（当地 11月6日晚，主场）</h3><ul><li><b>火焰主场 3-5 不敌安纳海姆鸭队</b>：鸭队 Cutter Gauthier 在终场前 1 分 34 秒打入制胜球，个人连续五场打入 10 球，创队史纪录；火焰队 Farabee、Stromgren、Hanley 各入一球，战绩 7 胜 9 负 1 加时负。下一场为当地 11 月 8 日周日 18:00，主场迎战费城飞人。（来源：<a href="https://www.sportsnet.ca/nhl/article/flames-allow-four-unanswered-goals-in-loss-to-ducks/" target="_blank" rel="noopener noreferrer">Sportsnet</a>（需翻墙））</li></ul></article>
 </section>
 <!-- 娱乐圈八卦 -->
 <section class="blk" id="d1106-gossip">
 <div class="blk-head"><span class="no">其六</span><h2>娱乐圈八卦</h2></div>
 <div class="gossip">
-<div class="gos-item"><div class="n">1</div><div><h4>金鸡百花电影节在厦门开幕 <span class="from">新华社，11月6日</span></h4><p>第 38 届中国电影金鸡奖暨金鸡百花电影节在厦门开幕，影人齐聚，获奖名单将于随后几天揭晓。</p></div></div>
-<div class="gos-item"><div class="n">2</div><div><h4>肖战上海演唱会 <span class="from">娱乐媒体，11月6日</span></h4><p>肖战上海演唱会相关消息引发粉丝关注，现场热度持续。</p></div></div>
-<div class="gos-item"><div class="n">3</div><div><h4>孙燕姿长沙演唱会 <span class="from">娱乐媒体，11月6日</span></h4><p>孙燕姿长沙演唱会举行，老歌新唱，现场气氛热烈。</p></div></div>
+<div class="gos-item"><div class="n">1</div><div><h4>金鸡百花电影节在厦门开幕 <span class="from"><a href="https://feng.ifeng.com/c/8xrOKxqpeEe" target="_blank" rel="noopener noreferrer">新华社</a>，11月6日</span></h4><p>第 38 届中国电影金鸡奖暨金鸡百花电影节在厦门开幕，影人齐聚，获奖名单将于随后几天揭晓。</p></div></div>
+<div class="gos-item"><div class="n">2</div><div><h4>肖战上海演唱会 <span class="from"><a href="https://ent.sina.cn/2026-11-03/detail-inixmswc8763303.d.html?vt=4" target="_blank" rel="noopener noreferrer">娱乐媒体</a>，11月6日</span></h4><p>肖战上海演唱会相关消息引发粉丝关注，现场热度持续。</p></div></div>
+<div class="gos-item"><div class="n">3</div><div><h4>孙燕姿长沙演唱会 <span class="from"><a href="https://www.sohu.com/a/1098253229_392415" target="_blank" rel="noopener noreferrer">娱乐媒体</a>，11月6日</span></h4><p>孙燕姿长沙演唱会举行，老歌新唱，现场气氛热烈。</p></div></div>
 </div>
 </section>
 <!-- 月相、卦象与星座运势 -->
@@ -1564,13 +1607,15 @@
 <p>今天是霜降最后一天，明天就是立冬；金鸡百花电影节也在厦门开幕，电影是今天的关键词。《如愿》是电影主题曲，唱的是"你是遥遥的路，山野大雾里的灯"——大四求职季就是这条路，今晚看一场电影节的开幕直播，或者重温一部老电影，愿望先许下，明天立冬再出发。</p>
 </div>
 </section>
-<!-- 每周一漫 -->
+<!-- 每日一漫 -->
 <section class="blk" id="d1106-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每周一漫</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
 <div class="anime">
-<p>本周在看：《葬送的芙莉莲》——今晚看第 7~8 集，霜降最后一天，适合看一段不赶路的旅程。</p>
+<p class="ttl">今日推荐：《CLANNAD》（TV 动画共 2 季，第 1 季 23 集 2007–2008 年，第 2 季《AFTER STORY》24 集 2008–2009 年；另有 2007 年剧场版）</p>
+<p>改编自 Key 社的同名游戏，讲不良少年冈崎朋也遇见古河渚，从学园生活一路走到成家立业。理由：霜降最后一天，沈阳最高只有 2.4°C，这部番的后半段正好讲冬天、一家人和"团圆"——今晚从第 1 集开始，先看学园篇的暖，再留着 AFTER STORY 的冬天慢慢追；提醒一句：后半段很催泪，纸巾备好再看。</p>
 </div>
 </section>
+<nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev" type="button" data-nav-date="2026-11-05" aria-label="上一期：11月5日 周四">&larr; 上一期 &middot; 11月5日 周四</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next" type="button" data-nav-date="2026-11-07" aria-label="下一期：11月7日 周六">下一期 &middot; 11月7日 周六 &rarr;</button></nav>
 <p class="src">简报完。本期为补档版本，天气与月相为历史档案与天文公式计算值；A 股、美股、黄金为 11 月 6 日收盘数据，与 11 月 8 日那期一致。</p>
 </div>
 
@@ -1585,7 +1630,7 @@
         <div class="strip" aria-label="三城气温速览"><div class="cell"><div class="big">0.5°<small> / -4.7°</small></div><div class="meta"><b>沈阳</b><br />阴 · 立冬当日<br />寒潮持续，北风不大</div></div><div class="cell"><div class="big">2.1°<small> / -4.4°</small></div><div class="meta"><b>鞍山</b><br />阴 · 立冬当日<br />寒潮持续</div></div><div class="cell"><div class="big">10.2°<small> / -0.1°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 6 日 · 阴<br />西南风阵风 62 km/h</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1107-weather">三城天气</a><a href="#d1107-news">三城新闻</a><a href="#d1107-highlights">今日看点</a><a href="#d1107-finance">金融市场</a><a href="#d1107-sports">体育速递</a><a href="#d1107-gossip">娱乐圈八卦</a><a href="#d1107-astro">月相 · 卦象 · 运势</a><a href="#d1107-history">历史上的今天</a><a href="#d1107-quote">每日金句</a><a href="#d1107-wellness">养生小技巧</a><a href="#d1107-meal">健身减脂餐</a><a href="#d1107-song">每日一曲</a><a href="#d1107-anime">每周一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1107-weather">三城天气</a><a href="#d1107-news">三城新闻</a><a href="#d1107-highlights">今日看点</a><a href="#d1107-finance">金融市场</a><a href="#d1107-sports">体育速递</a><a href="#d1107-gossip">娱乐圈八卦</a><a href="#d1107-astro">月相 · 卦象 · 运势</a><a href="#d1107-history">历史上的今天</a><a href="#d1107-quote">每日金句</a><a href="#d1107-wellness">养生小技巧</a><a href="#d1107-meal">健身减脂餐</a><a href="#d1107-song">每日一曲</a><a href="#d1107-anime">每日一漫</a></nav>
 <!-- 三城天气 -->
 <section class="blk" id="d1107-weather">
 <div class="blk-head"><span class="no">其一</span><h2>三城天气</h2></div>
@@ -1624,16 +1669,16 @@
 <section class="blk" id="d1107-news">
 <div class="blk-head"><span class="no">其二</span><h2>三城近期新闻</h2></div>
 <div class="news-grid">
-<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>沈阳市第十五次党代会闭幕，霍步刚当选市委书记 <span class="from">京报网、中新网，11月7日</span></h4><p>11 月 7 日，中共沈阳市第十五届委员会第一次全体会议选举霍步刚为市委书记，马珊珊、魏红江为市委副书记。这是沈阳市领导层换届的重要人事消息。</p></div><div class="news-item"><h4>沈阳提出"1825"工业体系 <span class="from">沈阳市第十五次党代会，11月7日</span></h4><p>党代会提出"1825"工业体系等发展路线图，为沈阳未来五年的产业发展定调。</p></div><div class="news-item"><h4>暴雪与大风预警发布 <span class="from">辽宁省气象台，11月7日</span></h4><p>受寒潮影响，辽宁部分地区发布暴雪与大风预警，出行注意安全。</p></div></article>
+<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>沈阳市第十五次党代会闭幕，霍步刚当选市委书记 <span class="from">京报网、<a href="https://feng.ifeng.com/c/8xrhHQyUjvk" target="_blank" rel="noopener noreferrer">中新网</a>，11月7日</span></h4><p>11 月 7 日，中共沈阳市第十五届委员会第一次全体会议选举霍步刚为市委书记，马珊珊、魏红江为市委副书记。这是沈阳市领导层换届的重要人事消息。</p></div><div class="news-item"><h4>沈阳提出"1825"工业体系 <span class="from"><a href="https://feng.ifeng.com/c/8xpBejIZocS" target="_blank" rel="noopener noreferrer">沈阳市第十五次党代会</a>，11月7日</span></h4><p>党代会提出"1825"工业体系等发展路线图，为沈阳未来五年的产业发展定调。</p></div><div class="news-item"><h4>暴雪与大风预警发布 <span class="from"><a href="http://news.weather.com.cn/2026/11/4851143.shtml" target="_blank" rel="noopener noreferrer">辽宁省气象台</a>，11月7日</span></h4><p>受寒潮影响，辽宁部分地区发布暴雪与大风预警，出行注意安全。</p></div></article>
 <article class="news-col"><h3>鞍山</h3><div class="news-item"><h4>进博会上的鞍山"宝藏天团" <span class="from">鞍山本地媒体，11月7日</span></h4><p>进博会上，鞍山展团携本地特色产品亮相，被称为"宝藏天团"，吸引客商关注。</p></div><div class="news-item"><h4>降雪将至，铁路部门做好除雪准备 <span class="from">鞍山本地媒体、铁路部门，11月7日</span></h4><p>降雪将至，铁路部门提前做好除雪与运输保障准备。</p></div><div class="news-item"><p>当日可查的鞍山本地新闻较少，以上两条为主，如实说明，未另编。</p></div></article>
-<article class="news-col"><h3>卡尔加里（当地 11月6日）</h3><div class="news-item"><h4>市政府启动 2026 年"支持本地节日消费"活动 <span class="from">卡尔加里市政府，11月6日</span></h4><p>第八届 Support Local Holiday 活动启动，鼓励市民在节日期间光顾本地社区商铺和餐馆，提振本地小商业的假日生意。</p></div><div class="news-item"><h4>全市用水量进入"绿色区间" <span class="from">卡尔加里市政府，11月6日</span></h4><p>Bearspaw 南供水干管连接工程期间，全市用水量持续低于目标，进入"绿色区间"。</p></div><div class="news-item"><h4>"与制服喝杯咖啡"社区安全活动在东北区举行 <span class="from">National Times，11月7日，活动为 11 月 6 日</span></h4><p>11 月 6 日，卡尔加里警方、执法队、公交、停车管理部门和 Ward 5 市议员 Raj Dhaliwal 在 Cornerstone 的 Denny's 餐厅与居民面对面，交流社区安全问题，拉近警民关系。</p></div></article>
+<article class="news-col"><h3>卡尔加里（当地 11月6日）</h3><div class="news-item"><h4>市政府启动 2026 年"支持本地节日消费"活动 <span class="from"><a href="https://newsroom.calgary.ca/shop-local-share-the-joy-mayor-highlights-2026-support-local-holiday-campaign-in-bowness-and-montgomery/" target="_blank" rel="noopener noreferrer">卡尔加里市政府</a>（需翻墙），11月6日</span></h4><p>第八届 Support Local Holiday 活动启动，鼓励市民在节日期间光顾本地社区商铺和餐馆，提振本地小商业的假日生意。</p></div><div class="news-item"><h4>全市用水量进入"绿色区间" <span class="from"><a href="https://newsroom.calgary.ca/water-use-stays-in-the-green-zone-as-bearspaw-south-feeder-main-work-progresses/" target="_blank" rel="noopener noreferrer">卡尔加里市政府</a>（需翻墙），11月6日</span></h4><p>Bearspaw 南供水干管连接工程期间，全市用水量持续低于目标，进入"绿色区间"。</p></div><div class="news-item"><h4>"与制服喝杯咖啡"社区安全活动在东北区举行 <span class="from"><a href="https://nationaltimesmedia.com/community-safety-takes-centre-stage-at-coffee-with-a-uniform-in-calgary/" target="_blank" rel="noopener noreferrer">National Times</a>（需翻墙），11月7日，活动为 11 月 6 日</span></h4><p>11 月 6 日，卡尔加里警方、执法队、公交、停车管理部门和 Ward 5 市议员 Raj Dhaliwal 在 Cornerstone 的 Denny's 餐厅与居民面对面，交流社区安全问题，拉近警民关系。</p></div></article>
 </div>
 </section>
 <!-- 今日看点 -->
 <section class="blk" id="d1107-highlights">
 <div class="blk-head"><span class="no">其三</span><h2>今日看点</h2></div>
 <p class="sec-note">热搜榜单无历史存档，本期看点取自当日主要新闻。</p>
-<div class="hl"><ol><li><b>OpenAI 获 110 亿美元融资，估值达 1.25 万亿美元（重大新闻）</b>（科技媒体，11月7日）OpenAI 完成 110 亿美元新一轮融资，估值达 1.25 万亿美元。值得看：这是 AI 行业史上最大规模的单笔融资之一，发生在美股 AI 股暴跌的同一周——一边是市场抛售 AI 股，一边是资本继续重注头部 AI 公司，分歧本身就是最大的看点。</li><li><b>沈阳市第十五次党代会闭幕，产业路线图出炉（重大新闻）</b>（京报网、中新网，11月7日）党代会闭幕，霍步刚当选市委书记，"1825"工业体系等路线图公布。值得看：未来五年沈阳的产业方向、就业机会都写在这份路线图里，对在沈阳求职的大四学生来说，是值得细读的一份文件。</li><li><b>Gemini Omni 1.2 Flash 视频价格下调 30%（AI 新闻）</b>（Google 官方、科技媒体，11月7日）谷歌将 Gemini Omni 1.2 Flash 的视频处理价格下调 30%。值得看：视频理解越来越便宜，做视频分析、剪辑辅助的 AI 工具成本又降了一截，对学生党和创作者都是实打实的好消息。</li></ol></div>
+<div class="hl"><ol><li><b>OpenAI 获 110 亿美元融资，估值达 1.25 万亿美元（重大新闻）</b>（<a href="https://tech.ifeng.com/c/8xr98khttd4" target="_blank" rel="noopener noreferrer">科技媒体</a>，11月7日）OpenAI 完成 110 亿美元新一轮融资，估值达 1.25 万亿美元。值得看：这是 AI 行业史上最大规模的单笔融资之一，发生在美股 AI 股暴跌的同一周——一边是市场抛售 AI 股，一边是资本继续重注头部 AI 公司，分歧本身就是最大的看点。</li><li><b>沈阳市第十五次党代会闭幕，产业路线图出炉（重大新闻）</b>（京报网、<a href="https://feng.ifeng.com/c/8xrhHQyUjvk" target="_blank" rel="noopener noreferrer">中新网</a>，11月7日）党代会闭幕，霍步刚当选市委书记，"1825"工业体系等路线图公布。值得看：未来五年沈阳的产业方向、就业机会都写在这份路线图里，对在沈阳求职的大四学生来说，是值得细读的一份文件。</li><li><b>Gemini Omni 1.2 Flash 视频价格下调 30%（AI 新闻）</b>（<a href="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/?ref=ki-pruefstand.de" target="_blank" rel="noopener noreferrer">Google 官方</a>（需翻墙）、科技媒体，11月7日）谷歌将 Gemini Omni 1.2 Flash 的视频处理价格下调 30%。值得看：视频理解越来越便宜，做视频分析、剪辑辅助的 AI 工具成本又降了一截，对学生党和创作者都是实打实的好消息。</li></ol></div>
 </section>
 <!-- 金融市场早报 -->
 <section class="blk" id="d1107-finance">
@@ -1643,23 +1688,23 @@
 <article class="fin"><h3>人民币对美元</h3><table><tr><td>中间价（11月6日）</td><td class="num down">6.7168，较前一日调贬 12 个基点</td></tr><tr><td>在岸收盘（11月6日）</td><td class="num up">6.6680，较上一交易日夜盘收涨 75 点；离岸约 6.6646~6.6710</td></tr></table></article>
 <article class="fin"><h3>A股（11月6日周五收盘）</h3><table><tr><td>上证指数</td><td class="num down">3649.18 点，跌 1.10%</td></tr><tr><td>深证成指</td><td class="num down">11175.78 点，跌 2.57%</td></tr><tr><td>创业板指</td><td class="num down">2465.23 点，跌 3.96%</td></tr></table><p><b>背景</b>：三大指数集体下挫，下跌个股超 4700 只，两市成交额缩至 1.66 万亿元。当日亚太股市普遍大跌，日经 225 跌 5.96%、韩国综指跌 6.02%，市场对 AI 估值泡沫的担忧蔓延。</p></article>
 <article class="fin"><h3>美股（11月6日，美国当地周五收盘）</h3><table><tr><td>道琼斯</td><td class="num down">51285.73 点，跌 0.46%</td></tr><tr><td>纳斯达克</td><td class="num up">24579.42 点，涨 1.09%</td></tr><tr><td>标普 500</td><td class="num up">7376.86 点，涨 0.31%</td></tr></table><p><b>背景</b>：10 月非农就业报告超预期，降息预期降温；芯片股领涨，纳指在周四暴跌 5.5% 跌入修正区间后技术性反弹。但全周来看标普仍跌 2.7%、纳指跌 3.4%，为 6 月以来最差一周。</p></article>
-<article class="fin"><h3>黄金</h3><p><b>COMEX 12 月期金（11月6日结算）</b>：4074.90 美元/盎司，跌 0.94%；现货金约 4070.59 美元/盎司，跌 0.43%</p><p><b>折合人民币</b>：按在岸人民币收盘价 6.6680 换算，COMEX 期金约合 <b>873.58 元/克</b>，现货金约合 872.66 元/克（1 盎司 = 31.1035 克）；国内金价同一日：上海黄金交易所 AU9999 报 883.99 元/克，沪金主力报 881.64 元/克</p><p><b>背景</b>：美元走强叠加美股反弹，压制了金价单日表现；但全周金价仍上涨约 4.5%~5%，为 8 月底以来最佳单周表现。11 月 7 日央行公布，10 月末黄金储备 7830 万盎司，较 9 月末增加 83 万盎司，为连续第 24 个月增持黄金。</p><p class="src">数据来源：新浪财经、中国外汇交易中心、路透社市场更新、上海黄金交易所、中国人民银行。</p></article>
+<article class="fin"><h3>黄金</h3><p><b>COMEX 12 月期金（11月6日结算）</b>：4074.90 美元/盎司，跌 0.94%；现货金约 4070.59 美元/盎司，跌 0.43%</p><p><b>折合人民币</b>：按在岸人民币收盘价 6.6680 换算，COMEX 期金约合 <b>873.58 元/克</b>，现货金约合 872.66 元/克（1 盎司 = 31.1035 克）；国内金价同一日：上海黄金交易所 AU9999 报 883.99 元/克，沪金主力报 881.64 元/克</p><p><b>背景</b>：美元走强叠加美股反弹，压制了金价单日表现；但全周金价仍上涨约 4.5%~5%，为 8 月底以来最佳单周表现。11 月 7 日央行公布，10 月末黄金储备 7830 万盎司，较 9 月末增加 83 万盎司，为连续第 24 个月增持黄金。</p><p class="src">数据来源：<a href="https://finance.sina.com.cn" target="_blank" rel="noopener noreferrer">新浪财经</a>、<a href="https://www.chinamoney.com.cn" target="_blank" rel="noopener noreferrer">中国外汇交易中心</a>、<a href="https://www.reuters.com" target="_blank" rel="noopener noreferrer">路透社</a>（需翻墙）市场更新、<a href="https://www.sge.com.cn" target="_blank" rel="noopener noreferrer">上海黄金交易所</a>、<a href="https://www.pbc.gov.cn" target="_blank" rel="noopener noreferrer">中国人民银行</a>。</p></article>
 </div>
 </section>
 <!-- 体育速递 -->
 <section class="blk" id="d1107-sports">
 <div class="blk-head"><span class="no">其五</span><h2>体育速递</h2></div>
-<article class="sport"><h3>NBA（美国当地 11月7日晚、北京时间 11月8日）</h3><ul><li><b>勇士 126-119 魔术（加时）</b>：库里 41 分，勇士加时取胜。</li><li><b>马刺 125-103 开拓者</b>：文班亚马 29 分，马刺八连胜；<b>杨瀚森生涯首次两双（12 分 10 篮板）</b>。</li><li><b>掘金 114-102 步行者</b>：约基奇 19 分 13 篮板 8 助攻，墨西哥城全球赛。</li><li><b>尼克斯 109-97 骑士</b>：布伦森 31 分，唐斯 29 分 13 篮板。</li><li><b>雷霆 114-75 奇才</b>：亚历山大 30 分，雷霆四连胜。</li><li><b>太阳 102-99 火箭</b>：布克 24 分；<b>老鹰 124-121 篮网</b>。</li></ul></article>
-<article class="sport"><h3>足球（欧洲当地 11月7日）</h3><ul><li><b>英超，诺丁汉森林 3-1 曼城</b>：森林爆冷击败曼城。</li><li><b>英超，阿森纳 1-0 赫尔城</b>：阿森纳取胜。</li><li><b>西甲，皇家马德里 3-0 瓦伦西亚</b>：皇马取胜。</li><li><b>德甲，拜仁 2-1 美因茨</b>；<b>多特蒙德 2-1 埃尔弗斯贝格</b>。</li><li>其余场次未检索到可确认的完整赛果，如实说明。</li></ul></article>
-<article class="sport"><h3>卡尔加里火焰队（当地 11月6日）</h3><ul><li>火焰队当日无比赛。<b>下一场</b>：卡尔加里当地 11 月 8 日周日 18:00，主场迎战费城飞人。上一场为当地 11 月 6 日主场 3-5 不敌安纳海姆鸭队。</li></ul></article>
+<article class="sport"><h3>NBA（美国当地 11月7日晚、北京时间 11月8日）</h3><ul><li><b>勇士 126-119 魔术（加时）</b>：库里 41 分，勇士加时取胜。（来源：<a href="https://feng.ifeng.com/c/8xt5xu3HSjA" target="_blank" rel="noopener noreferrer">凤凰网</a>）</li><li><b>马刺 125-103 开拓者</b>：文班亚马 29 分，马刺八连胜；<b>杨瀚森生涯首次两双（12 分 10 篮板）</b>。（来源：<a href="https://feng.ifeng.com/c/8xt5xu3HSjA" target="_blank" rel="noopener noreferrer">凤凰网</a>）</li><li><b>掘金 114-102 步行者</b>：约基奇 19 分 13 篮板 8 助攻，墨西哥城全球赛。（来源：<a href="https://feng.ifeng.com/c/8xt5xu3HSjA" target="_blank" rel="noopener noreferrer">凤凰网</a>）</li><li><b>尼克斯 109-97 骑士</b>：布伦森 31 分，唐斯 29 分 13 篮板。（来源：<a href="https://feng.ifeng.com/c/8xt5xu3HSjA" target="_blank" rel="noopener noreferrer">凤凰网</a>）</li><li><b>雷霆 114-75 奇才</b>：亚历山大 30 分，雷霆四连胜。（来源：<a href="https://feng.ifeng.com/c/8xt5xu3HSjA" target="_blank" rel="noopener noreferrer">凤凰网</a>）</li><li><b>太阳 102-99 火箭</b>：布克 24 分；<b>老鹰 124-121 篮网</b>。（来源：<a href="https://feng.ifeng.com/c/8xt5xu3HSjA" target="_blank" rel="noopener noreferrer">凤凰网</a>）</li></ul></article>
+<article class="sport"><h3>足球（欧洲当地 11月7日）</h3><ul><li><b>英超，诺丁汉森林 3-1 曼城</b>：森林爆冷击败曼城。（来源：<a href="https://www.cacst.cn/news/zuqiu/2202.html" target="_blank" rel="noopener noreferrer">绿茵直播</a>）</li><li><b>英超，阿森纳 1-0 赫尔城</b>：阿森纳取胜。（来源：<a href="https://www.cacst.cn/news/zuqiu/2202.html" target="_blank" rel="noopener noreferrer">绿茵直播</a>）</li><li><b>西甲，皇家马德里 3-0 瓦伦西亚</b>：皇马取胜。（来源：<a href="https://www.cacst.cn/news/zuqiu/2202.html" target="_blank" rel="noopener noreferrer">绿茵直播</a>）</li><li><b>德甲，拜仁 2-1 美因茨</b>；<b>多特蒙德 2-1 埃尔弗斯贝格</b>。（来源：<a href="https://www.cacst.cn/news/zuqiu/2202.html" target="_blank" rel="noopener noreferrer">绿茵直播</a>）</li><li>其余场次未检索到可确认的完整赛果，如实说明。</li></ul></article>
+<article class="sport"><h3>卡尔加里火焰队（当地 11月6日）</h3><ul><li>火焰队当日无比赛。<b>下一场</b>：卡尔加里当地 11 月 8 日周日 18:00，主场迎战费城飞人。上一场为当地 11 月 6 日主场 3-5 不敌安纳海姆鸭队。（上一场来源：<a href="https://www.nhl.com/news/anaheim-ducks-calgary-flames-game-recap-november-6-2026" target="_blank" rel="noopener noreferrer">NHL官网</a>（需翻墙））</li></ul></article>
 </section>
 <!-- 娱乐圈八卦 -->
 <section class="blk" id="d1107-gossip">
 <div class="blk-head"><span class="no">其六</span><h2>娱乐圈八卦</h2></div>
 <div class="gossip">
-<div class="gos-item"><div class="n">1</div><div><h4>胡军儿子 18 岁生日 <span class="from">娱乐媒体，11月7日</span></h4><p>胡军儿子迎来 18 岁生日，家人为其庆生，相关照片引发网友关注。</p></div></div>
-<div class="gos-item"><div class="n">2</div><div><h4>周深常州演唱会 <span class="from">娱乐媒体，11月7日</span></h4><p>周深常州演唱会举行，现场座无虚席，歌迷反响热烈。</p></div></div>
-<div class="gos-item"><div class="n">3</div><div><h4>王菲〈季候风〉重新发行 <span class="from">音乐媒体，11月7日</span></h4><p>王菲经典歌曲〈季候风〉重新发行，老歌新听，引发一波回忆杀。</p></div></div>
+<div class="gos-item"><div class="n">1</div><div><h4>胡军儿子 18 岁生日 <span class="from"><a href="https://www.163.com/dy/article/LB5QVRPP051492LM.html" target="_blank" rel="noopener noreferrer">娱乐媒体</a>，11月7日</span></h4><p>胡军儿子迎来 18 岁生日，家人为其庆生，相关照片引发网友关注。</p></div></div>
+<div class="gos-item"><div class="n">2</div><div><h4>周深常州演唱会 <span class="from"><a href="https://www.kankanews.com/detail/xMwLG7lk9QD" target="_blank" rel="noopener noreferrer">娱乐媒体</a>，11月7日</span></h4><p>周深常州演唱会举行，现场座无虚席，歌迷反响热烈。</p></div></div>
+<div class="gos-item"><div class="n">3</div><div><h4>王菲〈季候风〉重新发行 <span class="from"><a href="https://k.sina.com.cn/article_7879995944_1d5af322806802yxzs.html" target="_blank" rel="noopener noreferrer">音乐媒体</a>，11月7日</span></h4><p>王菲经典歌曲〈季候风〉重新发行，老歌新听，引发一波回忆杀。</p></div></div>
 </div>
 </section>
 <!-- 月相、卦象与星座运势 -->
@@ -1727,13 +1772,15 @@
 <p>今天立冬，雪季正式开始；丰卦讲"丰收在望"，一周的辛苦也该收个尾。《雪の華》是日本冬天的代表曲，唱的是雪花落在手心的样子——中午火锅吃完，晚上窝在被窝里放这首，配一杯热茶，立冬夜就该这么过；明天新一周，继续往前走。</p>
 </div>
 </section>
-<!-- 每周一漫 -->
+<!-- 每日一漫 -->
 <section class="blk" id="d1107-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每周一漫</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
 <div class="anime">
-<p>本周在看：《葬送的芙莉莲》——立冬夜看第 9~10 集，旅途越走越远，冬天正好慢慢追。</p>
+<p class="ttl">今日推荐：《紫罗兰永恒花园》（TV 动画 13 集 + 番外 1 集，2018 年；另有外传剧场版 2019 年与剧场版 2020 年）</p>
+<p>改编自晓佳奈的同名轻小说，讲从战场回来的少女薇尔莉特当"自动手记人偶"，替别人把心里的话写成信。理由：立冬夜，沈阳最高才 0.5°C，今晚看第 1 集就行——每一封信都是一句没说出口的话，冬天越冷，这种"把心意写下来"的番越暖；京都动画的画面美得像壁纸，配一杯热茶，半小时就把寒气看没了。</p>
 </div>
 </section>
+<nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev" type="button" data-nav-date="2026-11-06" aria-label="上一期：11月6日 周五">&larr; 上一期 &middot; 11月6日 周五</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next" type="button" data-nav-date="2026-11-08" aria-label="下一期：11月8日 周日">下一期 &middot; 11月8日 周日 &rarr;</button></nav>
 <p class="src">简报完。本期为补档版本，天气与月相为历史档案与天文公式计算值；A 股、美股、黄金为 11 月 6 日最近交易日收盘数据。</p>
 </div>
 
@@ -1842,6 +1889,12 @@
         var backBtns = document.querySelectorAll('.back-archive');
         for (var j = 0; j < backBtns.length; j++) {
           backBtns[j].addEventListener('click', showArchive);
+        }
+        var issueNavBtns = document.querySelectorAll('.issue-nav-btn[data-nav-date]');
+        for (var k = 0; k < issueNavBtns.length; k++) {
+          issueNavBtns[k].addEventListener('click', function () {
+            showIssue(this.getAttribute('data-nav-date'));
+          });
         }
       })();
     </script>
