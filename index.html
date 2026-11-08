@@ -304,6 +304,18 @@
       .well li:last-child { margin-bottom: 0; }
       .well li b { color: var(--ink); }
       .well .disclaimer { font-size: 12px; color: var(--ink-3); margin: 12px 0 0; }
+      .meal {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 18px;
+      }
+      .meal .carb { margin: 0 0 12px; font-size: 14px; color: var(--ink-2); }
+      .meal .carb b { color: var(--ink); }
+      .meal ul { margin: 0; padding-left: 20px; }
+      .meal li { margin-bottom: 10px; font-size: 14px; color: var(--ink-2); }
+      .meal li b { color: var(--ink); }
+      .meal .total { margin: 12px 0 0; font-size: 14px; color: var(--ink-2); }
+      .meal .tip { margin: 10px 0 0; font-size: 14px; color: var(--ink-2); }
+      .meal .disclaimer { font-size: 12px; color: var(--ink-3); margin: 12px 0 0; }
 
       /* ---------- archive ---------- */
       #view-archive[hidden], #view-latest[hidden] { display: none; }
@@ -405,13 +417,14 @@
           <a href="#s-history">历史上的今天</a>
           <a href="#s-quote">每日金句</a>
           <a href="#s-wellness">养生小技巧</a>
+          <a href="#s-meal">健身减脂餐</a>
         </nav>
 
         <!-- 一、天气 -->
         <section class="blk" id="s-weather">
           <div class="blk-head">
             <span class="no">其一</span><h2>三城天气</h2>
-            <span class="note">卡尔加里比北京晚 15 小时，当地仍是 11 月 7 日（周六）晚</span>
+            <span class="note">卡尔加里比北京晚 14 小时，当地仍是 11 月 7 日（周六）晚</span>
           </div>
           <div class="wx-grid">
             <article class="wx">
@@ -822,6 +835,25 @@
             <p class="disclaimer">以上为通用健康知识，仅供参考。</p>
           </div>
         </section>
+
+        <!-- 十一、健身减脂餐 -->
+        <section class="blk" id="s-meal">
+          <div class="blk-head">
+            <span class="no">其十一</span><h2>健身减脂餐</h2>
+          </div>
+          <div class="meal">
+            <p class="carb"><b>今日：高碳日</b></p>
+            <ul>
+              <li><b>早餐</b>：燕麦 50 克（牛奶燕麦粥）+ 纯牛奶 1 杯（约 200 毫升）+ 水煮鸡蛋 2 个 + 香蕉 1 根。约 480 大卡，蛋白质约 25 克。</li>
+              <li><b>午餐</b>：糙米饭 1 大碗（约 250 克熟饭）+ 卤牛肉 200 克 + 土豆炖白菜一盘。约 700 大卡，蛋白质约 65 克。</li>
+              <li><b>晚餐</b>：糙米饭 1 碗（约 200 克熟饭）+ 白灼虾仁 200 克 + 清炒菠菜一盘。约 550 大卡，蛋白质约 50 克。</li>
+              <li><b>可选加餐</b>：坚果一小把（约 20 克）+ 无糖酸奶 1 杯（约 200 克），约 200 大卡，蛋白质约 12 克。</li>
+            </ul>
+            <p class="total">全天合计约 1930 大卡，蛋白质约 150 克。</p>
+            <p class="tip">💡 小提示：新一周开始，今晚可以顺手备餐——煮一锅糙米分装冷藏，再备几份鸡胸肉，下周的低碳日就不用天天现做。</p>
+            <p class="disclaimer">内容为通用营养知识，不针对具体疾病给建议。</p>
+          </div>
+        </section>
       </div>
 
 <div id="view-2026-11-01" class="issue-panel" role="tabpanel" hidden>
@@ -833,11 +865,11 @@
           <button class="tab-btn back-archive" type="button">← 返回归档</button>
         </div>
         <div class="strip" aria-label="三城气温速览"><div class="cell"><div class="big">12.7°<small> / -0.3°</small></div><div class="meta"><b>沈阳</b><br />毛毛雨转多云<br />西北风阵风 43 km/h</div></div><div class="cell"><div class="big">15.1°<small> / 1.0°</small></div><div class="meta"><b>鞍山</b><br />毛毛雨，降水约 3.3 毫米<br />西北风阵风 44 km/h</div></div><div class="cell"><div class="big">4.2°<small> / -2.8°</small></div><div class="meta"><b>卡尔加里</b><br />当地 10 月 31 日 · 阴<br />湿度约 87%，体感偏冷</div></div></div>
-        <nav class="secnav" aria-label="本期栏目"><a href="#d1101-weather">三城天气</a><a href="#d1101-news">三城新闻</a><a href="#d1101-highlights">今日看点</a><a href="#d1101-finance">金融市场</a><a href="#d1101-sports">体育速递</a><a href="#d1101-astro">月相 · 卦象 · 运势</a><a href="#d1101-gossip">娱乐圈八卦</a><a href="#d1101-history">历史上的今天</a><a href="#d1101-quote">每日金句</a><a href="#d1101-wellness">养生小技巧</a></nav>
+        <nav class="secnav" aria-label="本期栏目"><a href="#d1101-weather">三城天气</a><a href="#d1101-news">三城新闻</a><a href="#d1101-highlights">今日看点</a><a href="#d1101-finance">金融市场</a><a href="#d1101-sports">体育速递</a><a href="#d1101-astro">月相 · 卦象 · 运势</a><a href="#d1101-gossip">娱乐圈八卦</a><a href="#d1101-history">历史上的今天</a><a href="#d1101-quote">每日金句</a><a href="#d1101-wellness">养生小技巧</a><a href="#d1101-meal">健身减脂餐</a></nav>
         <section class="blk" id="d1101-weather">
           <div class="blk-head">
             <span class="no">其一</span><h2>三城天气</h2>
-            <span class="note">卡尔加里比北京晚 15 小时，当地仍是前一日</span>
+            <span class="note">卡尔加里比北京晚 14 小时，当地仍是前一日</span>
           </div>
           <div class="wx-grid"><article class="wx">
               <h3>沈阳</h3>
@@ -952,6 +984,11 @@
             <span class="note">老少皆宜</span>
           </div>
           <div class="well"><ol><li><b>供暖季到了，先查暖气、再防干燥</b>：沈阳、鞍山 11 月 1 日正式供热，室内外温差拉大；注意暖气跑风、管道漏水，同时室内可放一盆水或用加湿器，勤开窗短时间通风，防口鼻干燥和静电。</li><li><b>冷空气频繁，穿衣按"洋葱式"增减</b>：未来几天冷暖交替、昼夜温差大，早晚加外套、护好头颈手脚；中老年人尤其注意晨起别猛起、别急着出门受凉。</li><li><b>流感季将至，勤洗手、多通风、早睡</b>：沈阳疾控已提示科学防流感；年轻人别熬夜硬扛，符合条件的老人、孩子可咨询接种流感疫苗。通用健康提示，不针对具体疾病诊疗。</li></ol></div>
+        </section><section class="blk" id="d1101-meal">
+          <div class="blk-head">
+            <span class="no">其十一</span><h2>健身减脂餐</h2>
+          </div>
+          <div class="meal"><p class="carb"><b>今日：高碳日</b></p><ul><li><b>早餐</b>：燕麦粥（燕麦 50g）+ 水煮蛋 2 个 + 香蕉 1 根 + 无糖豆浆 1 杯（250ml）——约 500 大卡，蛋白质约 27g</li><li><b>午餐</b>：糙米饭 1 碗半 + 卤鸡胸肉 200g + 清炒西兰花 1 盘 + 水煮蛋 1 个——约 770 大卡，蛋白质约 59g</li><li><b>晚餐</b>：糙米饭 1 碗 + 清蒸鲈鱼 200g + 蒜蓉炒油菜 1 盘——约 490 大卡，蛋白质约 46g</li><li><b>加餐</b>：无糖酸奶 200g + 混合坚果 20g（一小把）——约 240 大卡，蛋白质约 11g</li></ul><p class="total">全天合计约 2000 大卡、蛋白质约 143g。</p><p class="tip">💡 小提示：今天是备餐日——煮一大锅糙米、卤鸡胸肉 600g、水煮蛋 6 个，分装冷藏，供周日到周三使用；高碳日主食加量，练后记得及时补充碳水和蛋白质。</p><p class="disclaimer">内容为通用营养知识，不针对具体疾病给建议。</p></div>
         </section>
       </div>
 
@@ -964,11 +1001,11 @@
           <button class="tab-btn back-archive" type="button">← 返回归档</button>
         </div>
         <div class="strip" aria-label="三城气温速览"><div class="cell"><div class="big">8.5°<small> / -2.7°</small></div><div class="meta"><b>沈阳</b><br />阴 · 全天无降水<br />AQI 约 162（中度污染）</div></div><div class="cell"><div class="big">10.8°<small> / -2.1°</small></div><div class="meta"><b>鞍山</b><br />阴 · 全天无降水<br />AQI 约 158（中度污染）</div></div><div class="cell"><div class="big">5.2°<small> / -3.0°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 1 日 · 阴<br />阿尔伯塔省起实行永久“阿尔伯塔时间”</div></div></div>
-        <nav class="secnav" aria-label="本期栏目"><a href="#d1102-weather">三城天气</a><a href="#d1102-news">三城新闻</a><a href="#d1102-highlights">今日看点</a><a href="#d1102-finance">金融市场</a><a href="#d1102-sports">体育速递</a><a href="#d1102-astro">月相 · 卦象 · 运势</a><a href="#d1102-gossip">娱乐圈八卦</a><a href="#d1102-history">历史上的今天</a><a href="#d1102-quote">每日金句</a><a href="#d1102-wellness">养生小技巧</a></nav>
+        <nav class="secnav" aria-label="本期栏目"><a href="#d1102-weather">三城天气</a><a href="#d1102-news">三城新闻</a><a href="#d1102-highlights">今日看点</a><a href="#d1102-finance">金融市场</a><a href="#d1102-sports">体育速递</a><a href="#d1102-astro">月相 · 卦象 · 运势</a><a href="#d1102-gossip">娱乐圈八卦</a><a href="#d1102-history">历史上的今天</a><a href="#d1102-quote">每日金句</a><a href="#d1102-wellness">养生小技巧</a><a href="#d1102-meal">健身减脂餐</a></nav>
         <section class="blk" id="d1102-weather">
           <div class="blk-head">
             <span class="no">其一</span><h2>三城天气</h2>
-            <span class="note">卡尔加里比北京晚 15 小时，当地仍是前一日</span>
+            <span class="note">卡尔加里比北京晚 14 小时，当地仍是前一日</span>
           </div>
           <div class="wx-grid"><article class="wx">
               <h3>沈阳</h3>
@@ -1083,6 +1120,11 @@
             <span class="note">老少皆宜</span>
           </div>
           <div class="well"><ol><li><b>立冬在即（11 月 7 日），现在正是"收"的时候</b>：霜降末期天气转冷，早睡晚起、别熬夜透支；饮食上可适当温补、少食生冷辛辣，但别盲目大补，均衡、清淡、温热为宜。</li><li><b>防寒先护"三个口"：头、颈、脚</b>：早晚出门戴帽、围巾，睡前热水泡脚 10~15 分钟，有助驱寒助眠；中老年人晨起动作放缓，起床先坐一会儿再站。</li><li><b>供暖后室内干燥，记得补水润燥</b>：多喝温水，吃些梨、银耳、百合等润燥食物（按个人体质适量）；室内湿度低时适当加湿，皮肤干痒别用过热的水洗澡。通用健康提示，不针对具体疾病诊疗。</li></ol></div>
+        </section><section class="blk" id="d1102-meal">
+          <div class="blk-head">
+            <span class="no">其十一</span><h2>健身减脂餐</h2>
+          </div>
+          <div class="meal"><p class="carb"><b>今日：低碳日</b></p><ul><li><b>早餐</b>：水煮蛋 2 个 + 无糖豆浆 1 杯（250ml）+ 黄瓜 1 根 + 全麦面包 1 片 + 混合坚果 15g（一小把）+ 苹果半个——约 450 大卡，蛋白质约 25g</li><li><b>午餐</b>：卤鸡胸肉 200g（周日备好的）+ 蔬菜沙拉 1 大盘（生菜、黄瓜、番茄）+ 小半碗糙米饭 + 橄榄油 1 小勺拌沙拉——约 560 大卡，蛋白质约 52g</li><li><b>晚餐</b>：虾仁 200g + 北豆腐 200g + 蒜蓉菠菜 1 盘 + 水煮蛋 1 个——约 480 大卡，蛋白质约 58g</li><li><b>加餐（练后）</b>：蛋白粉 1 勺（约 25g，冲水），或换成希腊酸奶 150g——约 120 大卡，蛋白质约 24g（按蛋白粉计）</li></ul><p class="total">全天合计约 1610 大卡、蛋白质约 159g。</p><p class="tip">💡 小提示：低碳日主食减半，多吃蔬菜和蛋白质；练后 30 分钟内喝蛋白粉或吃希腊酸奶；周二记得买瘦牛肉 300g（一半周二用、一半周四用）。</p><p class="disclaimer">内容为通用营养知识，不针对具体疾病给建议。</p></div>
         </section>
       </div>
 
@@ -1095,11 +1137,11 @@
           <button class="tab-btn back-archive" type="button">← 返回归档</button>
         </div>
         <div class="strip" aria-label="三城气温速览"><div class="cell"><div class="big">11.6°<small> / 2.6°</small></div><div class="meta"><b>沈阳</b><br />多云 · 全天无降水<br />AQI 约 111（轻度污染）</div></div><div class="cell"><div class="big">14.0°<small> / 4.0°</small></div><div class="meta"><b>鞍山</b><br />晴 · 全天无降水<br />台安县发布大雾黄色预警</div></div><div class="cell"><div class="big">7.2°<small> / -3.8°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 2 日 · 大部晴<br />创新周开幕</div></div></div>
-        <nav class="secnav" aria-label="本期栏目"><a href="#d1103-weather">三城天气</a><a href="#d1103-news">三城新闻</a><a href="#d1103-highlights">今日看点</a><a href="#d1103-finance">金融市场</a><a href="#d1103-sports">体育速递</a><a href="#d1103-astro">月相 · 卦象 · 运势</a><a href="#d1103-gossip">娱乐圈八卦</a><a href="#d1103-history">历史上的今天</a><a href="#d1103-quote">每日金句</a><a href="#d1103-wellness">养生小技巧</a></nav>
+        <nav class="secnav" aria-label="本期栏目"><a href="#d1103-weather">三城天气</a><a href="#d1103-news">三城新闻</a><a href="#d1103-highlights">今日看点</a><a href="#d1103-finance">金融市场</a><a href="#d1103-sports">体育速递</a><a href="#d1103-astro">月相 · 卦象 · 运势</a><a href="#d1103-gossip">娱乐圈八卦</a><a href="#d1103-history">历史上的今天</a><a href="#d1103-quote">每日金句</a><a href="#d1103-wellness">养生小技巧</a><a href="#d1103-meal">健身减脂餐</a></nav>
         <section class="blk" id="d1103-weather">
           <div class="blk-head">
             <span class="no">其一</span><h2>三城天气</h2>
-            <span class="note">卡尔加里比北京晚 15 小时，当地仍是前一日</span>
+            <span class="note">卡尔加里比北京晚 14 小时，当地仍是前一日</span>
           </div>
           <div class="wx-grid"><article class="wx">
               <h3>沈阳</h3>
@@ -1207,6 +1249,11 @@
             <span class="note">老少皆宜</span>
           </div>
           <div class="well"><ol><li><b>霜降末期注意"秋冻"有度</b>：早晚温差大，出门多带一件外套护住颈肩；沈阳 11 月 3 日白天最高约 13°C，周四将迎强降温，添衣要赶在降温前，别等冻着了再加。</li><li><b>润燥防秋咳</b>：秋季干燥，可多吃梨、银耳、百合、莲藕等润燥食物，多喝温水；少吃辛辣燥热之物。通用食养建议，不针对具体疾病。</li><li><b>中老年人晨起慢半拍，年轻人别熬夜</b>：起床先在床边坐一会儿再起身，避免猛起；年轻人尽量 23 点前入睡，睡前少刷手机，保证睡眠才能扛住换季。</li></ol></div>
+        </section><section class="blk" id="d1103-meal">
+          <div class="blk-head">
+            <span class="no">其十一</span><h2>健身减脂餐</h2>
+          </div>
+          <div class="meal"><p class="carb"><b>今日：中碳日</b></p><ul><li><b>早餐（约 550 大卡，蛋白质约 26g）</b>：燕麦 50g 冲泡 + 水煮蛋 2 个 + 纯牛奶 250ml + 苹果 1 个。周日备的水煮蛋直接取用，燕麦用开水或热牛奶冲，3 分钟搞定。</li><li><b>午餐（约 510 大卡，蛋白质约 38g）</b>：糙米饭 1 碗（熟重约 150g，周日备好的糙米饭）+ 瘦牛肉 150g 炒土豆 100g（今天新买的瘦牛肉 300g，用一半，另一半留到周四）+ 炒白菜 1 盘。牛肉切薄片快炒，土豆切小块先焯水再炒，省时间。</li><li><b>晚餐（约 555 大卡，蛋白质约 67g）</b>：糙米饭 1 小碗（熟重约 100g）+ 卤鸡胸肉 200g（周日备餐）+ 炒山药木耳（山药 150g、干木耳泡发 1 小把）。鸡胸肉切片回锅稍热即可，山药清炒保留脆感。</li><li><b>加餐（练后，约 245 大卡，蛋白质约 10g）</b>：香蕉 1 根 + 无糖酸奶 1 盒 + 水煮蛋 1 个。练后 30 分钟内吃，香蕉补碳水、酸奶和鸡蛋补蛋白。</li></ul><p class="total">全天合计：约 1860 大卡，蛋白质约 141g。</p><p class="tip">💡 小提示：中碳日适合安排力量训练，练前 1 小时吃根香蕉，练后及时补充蛋白质；牛肉和鸡胸肉一次多做点分装，接下来两天直接取用，省时又不容易破戒。</p><p class="disclaimer">内容为通用营养知识，不针对具体疾病给建议。</p></div>
         </section>
       </div>
 
@@ -1219,11 +1266,11 @@
           <button class="tab-btn back-archive" type="button">← 返回归档</button>
         </div>
         <div class="strip" aria-label="三城气温速览"><div class="cell"><div class="big">18.2°<small> / 7.1°</small></div><div class="meta"><b>沈阳</b><br />阴 · 南风阵风 58 km/h<br />降温前的回暖，明日骤降</div></div><div class="cell"><div class="big">18.9°<small> / 9.5°</small></div><div class="meta"><b>鞍山</b><br />阴 · 南风阵风 56 km/h<br />11 月里难得的暖和天</div></div><div class="cell"><div class="big">11.9°<small> / -0.9°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 3 日 · 阴<br />本周最暖的一天</div></div></div>
-        <nav class="secnav" aria-label="本期栏目"><a href="#d1104-weather">三城天气</a><a href="#d1104-news">三城新闻</a><a href="#d1104-highlights">今日看点</a><a href="#d1104-finance">金融市场</a><a href="#d1104-sports">体育速递</a><a href="#d1104-astro">月相 · 卦象 · 运势</a><a href="#d1104-gossip">娱乐圈八卦</a><a href="#d1104-history">历史上的今天</a><a href="#d1104-quote">每日金句</a><a href="#d1104-wellness">养生小技巧</a></nav>
+        <nav class="secnav" aria-label="本期栏目"><a href="#d1104-weather">三城天气</a><a href="#d1104-news">三城新闻</a><a href="#d1104-highlights">今日看点</a><a href="#d1104-finance">金融市场</a><a href="#d1104-sports">体育速递</a><a href="#d1104-astro">月相 · 卦象 · 运势</a><a href="#d1104-gossip">娱乐圈八卦</a><a href="#d1104-history">历史上的今天</a><a href="#d1104-quote">每日金句</a><a href="#d1104-wellness">养生小技巧</a><a href="#d1104-meal">健身减脂餐</a></nav>
         <section class="blk" id="d1104-weather">
           <div class="blk-head">
             <span class="no">其一</span><h2>三城天气</h2>
-            <span class="note">卡尔加里比北京晚 15 小时，当地仍是前一日</span>
+            <span class="note">卡尔加里比北京晚 14 小时，当地仍是前一日</span>
           </div>
           <div class="wx-grid"><article class="wx">
               <h3>沈阳</h3>
@@ -1331,6 +1378,11 @@
             <span class="note">老少皆宜</span>
           </div>
           <div class="well"><ol><li><b>寒潮将至，保暖先行</b>：沈阳 11 月 4 日已发布寒潮黄色预警，预计 5 日早晨至 7 日早晨最低气温下降 10°C 以上，7 日早晨可至 −8°C 到 −10°C；羽绒服、帽子、围巾、手套该拿出来了，尤其注意头部和脚部保暖。中老年人外出尽量避开清晨最冷时段。</li><li><b>立冬将至（11 月 7 日），饮食宜温补润燥</b>：可适当吃些温热食物如羊肉汤、红枣、山药、核桃，搭配当季的萝卜、白菜；年轻人别贪凉，少喝冰饮、少吃生冷。</li><li><b>运动要热身、别猛练</b>：天气转冷后晨练前务必充分热身，循序渐进；年轻人跑步、打球前活动开关节，中老年人宜选择散步、太极等温和运动，量力而行。</li></ol></div>
+        </section><section class="blk" id="d1104-meal">
+          <div class="blk-head">
+            <span class="no">其十一</span><h2>健身减脂餐</h2>
+          </div>
+          <div class="meal"><p class="carb"><b>今日：低碳日</b></p><ul><li><b>早餐（约 375 大卡，蛋白质约 24g）</b>：水煮蛋 2 个 + 纯牛奶 250ml + 小番茄 1 小把 + 全麦面包 1 片。低碳日早餐不吃粥和燕麦，鸡蛋和牛奶顶饱，小番茄补充维生素。</li><li><b>午餐（约 490 大卡，蛋白质约 56g）</b>：清蒸鲈鱼 250g + 糙米饭小半碗（熟重约 100g，主食减半）+ 白灼西兰花 1 盘 + 水煮蛋 1 个。鲈鱼清蒸 8 分钟，淋少许蒸鱼豉油；西兰花焯水 1 分钟，拌蒜末和少许盐。</li><li><b>晚餐（约 365 大卡，蛋白质约 49g）</b>：豆腐 200g + 卤鸡胸肉 100g（周日备的鸡胸肉收尾）+ 炒油菜 1 盘。豆腐切块和鸡胸肉一起小火烩 5 分钟，油菜大火快炒，少油少盐。</li><li><b>加餐（约 355 大卡，蛋白质约 9g）</b>：混合坚果 1 小把（约 30g，核桃、杏仁、花生都行）+ 无糖酸奶 1 盒 + 香蕉 1 根。坚果别贪多，1 小把就够，香蕉放在练后吃。</li></ul><p class="total">全天合计：约 1585 大卡，蛋白质约 138g。</p><p class="tip">💡 小提示：低碳日主食减半但蛋白质不能减，鱼、豆腐、鸡蛋轮着吃才不容易饿；觉得嘴馋就喝水或吃黄瓜、小番茄，别碰饼干和含糖饮料。</p><p class="disclaimer">内容为通用营养知识，不针对具体疾病给建议。</p></div>
         </section>
       </div>
 
@@ -1343,11 +1395,11 @@
           <button class="tab-btn back-archive" type="button">← 返回归档</button>
         </div>
         <div class="strip" aria-label="三城气温速览"><div class="cell"><div class="big">6.7°<small> / -0.9°</small></div><div class="meta"><b>沈阳</b><br />白天气温 · 冷锋过境<br />凌晨锋前曾达 13.8°C</div></div><div class="cell"><div class="big">10.9°<small> / 0.5°</small></div><div class="meta"><b>鞍山</b><br />白天气温 · 冷锋过境<br />凌晨曾达 14.5°C</div></div><div class="cell"><div class="big">6.4°<small> / -2.2°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 4 日 · 多云<br />全市用水限制今日生效</div></div></div>
-        <nav class="secnav" aria-label="本期栏目"><a href="#d1105-weather">三城天气</a><a href="#d1105-news">三城新闻</a><a href="#d1105-highlights">今日看点</a><a href="#d1105-finance">金融市场</a><a href="#d1105-sports">体育速递</a><a href="#d1105-astro">月相 · 卦象 · 运势</a><a href="#d1105-gossip">娱乐圈八卦</a><a href="#d1105-history">历史上的今天</a><a href="#d1105-quote">每日金句</a><a href="#d1105-wellness">养生小技巧</a></nav>
+        <nav class="secnav" aria-label="本期栏目"><a href="#d1105-weather">三城天气</a><a href="#d1105-news">三城新闻</a><a href="#d1105-highlights">今日看点</a><a href="#d1105-finance">金融市场</a><a href="#d1105-sports">体育速递</a><a href="#d1105-astro">月相 · 卦象 · 运势</a><a href="#d1105-gossip">娱乐圈八卦</a><a href="#d1105-history">历史上的今天</a><a href="#d1105-quote">每日金句</a><a href="#d1105-wellness">养生小技巧</a><a href="#d1105-meal">健身减脂餐</a></nav>
         <section class="blk" id="d1105-weather">
           <div class="blk-head">
             <span class="no">其一</span><h2>三城天气</h2>
-            <span class="note">卡尔加里比北京晚 15 小时，当地仍是前一日</span>
+            <span class="note">卡尔加里比北京晚 14 小时，当地仍是前一日</span>
           </div>
           <div class="wx-grid"><article class="wx">
               <h3>沈阳</h3>
@@ -1455,6 +1507,11 @@
             <span class="note">老少皆宜</span>
           </div>
           <div class="well"><ol><li><b>冷锋过后，保暖是第一位的</b>：沈阳、鞍山白天最高仅 6~11°C，夜间接近 0°C，羽绒服、围巾、帽子都该上身；中老年人晨起别急着出门，等太阳出来、气温回升再活动。</li><li><b>润燥防秋咳</b>：秋季干燥加降温，嗓子最容易不舒服；多喝温水，吃些梨、银耳、百合，少吃辛辣。通用食养建议，不针对具体疾病。</li><li><b>血压与防滑都要留心</b>：气温骤降时血压容易波动，有高血压的长辈注意监测、按时服药；年轻人也别仗着身体好就硬扛，早晚温差大，出门留意路面湿滑。</li></ol></div>
+        </section><section class="blk" id="d1105-meal">
+          <div class="blk-head">
+            <span class="no">其十一</span><h2>健身减脂餐</h2>
+          </div>
+          <div class="meal"><p class="carb"><b>今日：中碳日</b></p><ul><li><b>早餐</b>：燕麦粥 1 碗（燕麦 50g）+ 水煮蛋 2 个 + 橙子 1 个。约 380 大卡，蛋白质约 20g。</li><li><b>午餐</b>：糙米饭 1 碗（熟饭约 150g）+ 瘦牛肉 150g 炒青椒（周二买的 300g 瘦牛肉留下的另一半）+ 白菜炖豆腐（豆腐 100g）+ 水煮蛋 1 个。约 700 大卡，蛋白质约 50g。</li><li><b>晚餐</b>：糙米饭小半碗（熟饭约 100g）+ 南瓜蒸瘦肉（瘦肉 100g、南瓜约 200g）+ 清炒菠菜 1 盘。约 500 大卡，蛋白质约 32g。</li><li><b>加餐（可选，练后）</b>：无糖酸奶 1 杯（约 200g）+ 梨 1 个 + 蛋白粉 1 勺（约 25g）。约 280 大卡，蛋白质约 35g。</li></ul><p class="total">全天合计约 1850 大卡，蛋白质约 140g。</p><p class="tip">💡 小提示：中碳日主食是正常量，最适合安排力量训练；练后半小时内吃加餐，酸奶加蛋白粉一起补蛋白质，帮助肌肉恢复。牛肉记得提前从冰箱取出解冻。</p><p class="disclaimer">内容为通用营养知识，不针对具体疾病给建议。</p></div>
         </section>
       </div>
 
@@ -1467,11 +1524,11 @@
           <button class="tab-btn back-archive" type="button">← 返回归档</button>
         </div>
         <div class="strip" aria-label="三城气温速览"><div class="cell"><div class="big">2.4°<small> / -2.8°</small></div><div class="meta"><b>沈阳</b><br />晴 · 全天无降水<br />西北风阵风 45 km/h</div></div><div class="cell"><div class="big">5.0°<small> / -2.5°</small></div><div class="meta"><b>鞍山</b><br />晴 · 全天无降水<br />北风阵风 41 km/h</div></div><div class="cell"><div class="big">10.0°<small> / -1.6°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 5 日 · 毛毛雨<br />西风阵风 40 km/h</div></div></div>
-        <nav class="secnav" aria-label="本期栏目"><a href="#d1106-weather">三城天气</a><a href="#d1106-news">三城新闻</a><a href="#d1106-highlights">今日看点</a><a href="#d1106-finance">金融市场</a><a href="#d1106-sports">体育速递</a><a href="#d1106-astro">月相 · 卦象 · 运势</a><a href="#d1106-gossip">娱乐圈八卦</a><a href="#d1106-history">历史上的今天</a><a href="#d1106-quote">每日金句</a><a href="#d1106-wellness">养生小技巧</a></nav>
+        <nav class="secnav" aria-label="本期栏目"><a href="#d1106-weather">三城天气</a><a href="#d1106-news">三城新闻</a><a href="#d1106-highlights">今日看点</a><a href="#d1106-finance">金融市场</a><a href="#d1106-sports">体育速递</a><a href="#d1106-astro">月相 · 卦象 · 运势</a><a href="#d1106-gossip">娱乐圈八卦</a><a href="#d1106-history">历史上的今天</a><a href="#d1106-quote">每日金句</a><a href="#d1106-wellness">养生小技巧</a><a href="#d1106-meal">健身减脂餐</a></nav>
         <section class="blk" id="d1106-weather">
           <div class="blk-head">
             <span class="no">其一</span><h2>三城天气</h2>
-            <span class="note">卡尔加里比北京晚 15 小时，当地仍是前一日</span>
+            <span class="note">卡尔加里比北京晚 14 小时，当地仍是前一日</span>
           </div>
           <div class="wx-grid"><article class="wx">
               <h3>沈阳</h3>
@@ -1579,6 +1636,11 @@
             <span class="note">老少皆宜</span>
           </div>
           <div class="well"><ol><li><b>霜降最后一天，防寒保暖别松劲</b>：沈阳白天最高仅 2°C 多，鞍山 5°C，寒冷持续；羽绒服、帽子、围巾、手套全套上身，尤其护好头部和脚部。</li><li><b>吃点应季的润燥食物</b>：柿子、梨、山药正当季，润燥又暖胃；少吃生冷，热粥热汤是最适合这个时节的。通用食养建议，不针对具体疾病。</li><li><b>天冷关节、脖子最先"报警"</b>：久坐一小时就起来活动几分钟，活动开关节；中老年人晨练前务必充分热身，循序渐进，量力而行。</li></ol></div>
+        </section><section class="blk" id="d1106-meal">
+          <div class="blk-head">
+            <span class="no">其十一</span><h2>健身减脂餐</h2>
+          </div>
+          <div class="meal"><p class="carb"><b>今日：低碳日</b></p><ul><li><b>早餐</b>：水煮蛋 2 个 + 无糖豆浆 1 杯（约 250ml）+ 全麦面包 1 小片（约 30g）+ 一小把坚果（约 15g）。约 390 大卡，蛋白质约 25g。</li><li><b>午餐</b>：虾仁 150g 清炒 + 小半碗糙米（熟饭约 80g）+ 蒜蓉油菜 1 盘（油菜约 200g）+ 水煮蛋 1 个。约 480 大卡，蛋白质约 38g。</li><li><b>晚餐</b>：清蒸鲈鱼 1 条（约 200g）+ 小葱拌豆腐（豆腐 150g）+ 冬瓜汤 1 碗。约 480 大卡，蛋白质约 42g。</li><li><b>加餐（可选，练后）</b>：蛋白粉 1 勺（约 25g）用脱脂牛奶（约 250ml）冲服 + 苹果 1 个。约 290 大卡，蛋白质约 32g。</li></ul><p class="total">全天合计约 1640 大卡，蛋白质约 140g。</p><p class="tip">💡 小提示：低碳日主食减半，适合安排有氧或休息日，不宜空腹大强度训练。本周剩的糙米今天吃完，周末重新备餐——周日煮一大锅糙米、卤鸡胸肉、水煮蛋，分装供下周使用。</p><p class="disclaimer">内容为通用营养知识，不针对具体疾病给建议。</p></div>
         </section>
       </div>
 
@@ -1591,11 +1653,11 @@
           <button class="tab-btn back-archive" type="button">← 返回归档</button>
         </div>
         <div class="strip" aria-label="三城气温速览"><div class="cell"><div class="big">0.5°<small> / -4.7°</small></div><div class="meta"><b>沈阳</b><br />阴 · 立冬当日<br />寒潮持续，北风不大</div></div><div class="cell"><div class="big">2.1°<small> / -4.4°</small></div><div class="meta"><b>鞍山</b><br />阴 · 立冬当日<br />寒潮持续</div></div><div class="cell"><div class="big">10.2°<small> / -0.1°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 6 日 · 阴<br />西南风阵风 62 km/h</div></div></div>
-        <nav class="secnav" aria-label="本期栏目"><a href="#d1107-weather">三城天气</a><a href="#d1107-news">三城新闻</a><a href="#d1107-highlights">今日看点</a><a href="#d1107-finance">金融市场</a><a href="#d1107-sports">体育速递</a><a href="#d1107-astro">月相 · 卦象 · 运势</a><a href="#d1107-gossip">娱乐圈八卦</a><a href="#d1107-history">历史上的今天</a><a href="#d1107-quote">每日金句</a><a href="#d1107-wellness">养生小技巧</a></nav>
+        <nav class="secnav" aria-label="本期栏目"><a href="#d1107-weather">三城天气</a><a href="#d1107-news">三城新闻</a><a href="#d1107-highlights">今日看点</a><a href="#d1107-finance">金融市场</a><a href="#d1107-sports">体育速递</a><a href="#d1107-astro">月相 · 卦象 · 运势</a><a href="#d1107-gossip">娱乐圈八卦</a><a href="#d1107-history">历史上的今天</a><a href="#d1107-quote">每日金句</a><a href="#d1107-wellness">养生小技巧</a><a href="#d1107-meal">健身减脂餐</a></nav>
         <section class="blk" id="d1107-weather">
           <div class="blk-head">
             <span class="no">其一</span><h2>三城天气</h2>
-            <span class="note">卡尔加里比北京晚 15 小时，当地仍是前一日</span>
+            <span class="note">卡尔加里比北京晚 14 小时，当地仍是前一日</span>
           </div>
           <div class="wx-grid"><article class="wx">
               <h3>沈阳</h3>
@@ -1703,6 +1765,11 @@
             <span class="note">老少皆宜</span>
           </div>
           <div class="well"><ol><li><b>立冬进补，宜温补、别大补</b>：今天交立冬，北方有吃饺子的习俗；饮食上可适量吃些温热食物如羊肉、红枣、山药，搭配萝卜、白菜，均衡就好，别盲目大补。</li><li><b>早睡晚起，藏好阳气</b>：立冬后昼短夜长，宜早睡、早上可以稍晚起；年轻人别熬夜，中老年人晨起先坐一会儿再起身，出门避开清晨最冷时段。</li><li><b>防寒保暖，全副武装</b>：沈阳、鞍山白天最高仅 0~2°C，头部、颈部、脚部最怕冷，出门戴好帽子围巾，晚上热水泡脚 15 分钟再睡，暖和了才睡得踏实。</li></ol></div>
+        </section><section class="blk" id="d1107-meal">
+          <div class="blk-head">
+            <span class="no">其十一</span><h2>健身减脂餐</h2>
+          </div>
+          <div class="meal"><p class="carb"><b>今日：放纵日</b></p><ul><li><b>早餐（清淡高蛋白）</b>：燕麦粥一小碗（燕麦 50 克）+ 水煮鸡蛋 2 个 + 苹果 1 个 + 纯牛奶 1 杯（约 200 毫升）。约 450 大卡，蛋白质约 25 克。</li><li><b>午餐（放纵餐）</b>：火锅——清汤锅底，毛肚、牛肉片约 200 克、冻豆腐、菠菜、白菜、金针菇等蔬菜涮着吃，蘸料少油少盐；主食只吃小半碗米饭。这顿不设限，约 1000 大卡，蛋白质约 50 克。</li><li><b>晚餐（清淡回归）</b>：蔬菜沙拉一盘（生菜、黄瓜、番茄）+ 凉拌豆腐 150 克 + 糙米饭小半碗（约 100 克）。约 420 大卡，蛋白质约 20 克。</li><li><b>可选加餐</b>：无糖酸奶 1 杯（约 200 克），约 120 大卡，蛋白质约 8 克。</li></ul><p class="total">全天合计约 2000 大卡，蛋白质约 100 克。</p><p class="tip">💡 小提示：放纵一顿就够了，晚上回归清淡；火锅选清汤、少喝汤、多吃菜，蛋白质就够了。</p><p class="disclaimer">内容为通用营养知识，不针对具体疾病给建议。</p></div>
         </section>
       </div>
 
