@@ -132,11 +132,28 @@
       }
       .secnav::-webkit-scrollbar { display: none; }
       .secnav a {
+        position: relative; z-index: 1;
         color: var(--ink-2); text-decoration: none; font-size: 13.5px; font-weight: 700;
         padding: 6px 12px; border-radius: 999px; white-space: nowrap; flex: 0 0 auto;
+        transition: color .3s ease, background-color .3s ease;
       }
       .secnav a:hover { background: var(--surface-2); color: var(--ink); }
-      .secnav a.active { background: var(--ink); color: var(--bg); }
+      .secnav a.active { background: transparent; color: var(--bg); }
+      .secnav a.active:hover { background: transparent; color: var(--bg); }
+      /* sliding highlight pill: instead of the black background snapping from
+         link to link, one pill glides to whichever link is active, so the
+         highlight eases across the bar as the reader scrolls (script-driven) */
+      .secnav .pill {
+        position: absolute; left: 0; top: 0; z-index: 0; pointer-events: none;
+        background: var(--ink); border-radius: 999px; opacity: 0;
+        transition: transform .38s cubic-bezier(.45, .05, .25, 1),
+          width .38s cubic-bezier(.45, .05, .25, 1),
+          opacity .3s ease;
+      }
+      .secnav .pill.no-anim { transition: none; }
+      @media (prefers-reduced-motion: reduce) {
+        .secnav .pill, .secnav a { transition: none; }
+      }
       /* right-edge fade hint while more links can be scrolled into view (class set by script) */
       .secnav::after {
         content: ""; display: none; flex: 0 0 26px; align-self: stretch;
@@ -2032,7 +2049,8 @@
          calibrated to this bar's fixed 52px height.
          Scrollspy: while the reader scrolls the page, the highlight follows the
          section currently under the reading line (just below the sticky bar)
-         and the bar scrolls sideways so the active link stays in view. */
+         and the bar scrolls sideways so the active link stays in view. The
+         highlight is a pill that glides between links, so it never snaps. */
       (function () {
         var navs = document.querySelectorAll('.secnav');
         var LINE = 90; /* reading line: 52px bar + its margins, with a small buffer */
@@ -2054,24 +2072,47 @@
           var viewR = viewL + nav.clientWidth;
           if (left < viewL + 4 || right > viewR - 4) { centerLink(nav, link); }
         }
-        function setActive(nav, links, link) {
-          if (link.classList.contains('active')) { return false; }
-          for (var k = 0; k < links.length; k++) { links[k].classList.remove('active'); }
+        /* Glide the highlight pill under the given link. The first placement
+           for a bar snaps into place so it never sweeps in from the left
+           edge; later placements animate for the gradual effect. */
+        function placePill(state, link, animate) {
+          var pill = state.pill;
+          if (!animate) { pill.classList.add('no-anim'); }
+          pill.style.width = link.offsetWidth + 'px';
+          pill.style.height = link.offsetHeight + 'px';
+          pill.style.top = link.offsetTop + 'px';
+          pill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+          pill.style.opacity = '1';
+          if (!animate) {
+            void pill.offsetWidth; /* commit the snap before transitions resume */
+            pill.classList.remove('no-anim');
+          }
+          state.placed = true;
+        }
+        function setActive(state, link) {
+          if (link === state.activeLink) { return false; }
+          for (var k = 0; k < state.links.length; k++) { state.links[k].classList.remove('active'); }
           link.classList.add('active');
+          state.activeLink = link;
+          placePill(state, link, state.placed);
           return true;
         }
         var states = [];
         for (var n = 0; n < navs.length; n++) {
           (function (nav) {
             var links = nav.querySelectorAll('a');
-            var state = { nav: nav, links: links, targets: [], clickedAt: 0 };
+            var pill = document.createElement('span');
+            pill.className = 'pill no-anim';
+            pill.setAttribute('aria-hidden', 'true');
+            nav.insertBefore(pill, nav.firstChild);
+            var state = { nav: nav, links: links, targets: [], clickedAt: 0, pill: pill, placed: false, activeLink: null };
             for (var i = 0; i < links.length; i++) {
               (function (link) {
                 var id = link.getAttribute('href').slice(1);
                 state.targets.push(document.getElementById(id));
                 link.addEventListener('click', function () {
                   state.clickedAt = Date.now();
-                  setActive(nav, links, link);
+                  setActive(state, link);
                   centerLink(nav, link);
                 });
               })(links[i]);
@@ -2095,7 +2136,7 @@
             }
             if (atBottom) { current = st.links.length - 1; }
             var link = st.links[current];
-            if (link && setActive(st.nav, st.links, link)) { revealLink(st.nav, link); }
+            if (link && setActive(st, link)) { revealLink(st.nav, link); }
           }
         }
         var ticking = false;
@@ -2105,10 +2146,20 @@
             window.requestAnimationFrame(function () { ticking = false; spy(); });
           }
         }, { passive: true });
+        /* Re-seat each visible bar's pill on its active link without animating
+           (link geometry shifts when the viewport or the webfont settles). */
+        function reseatPills() {
+          for (var s = 0; s < states.length; s++) {
+            var st = states[s];
+            if (st.activeLink && st.nav.getClientRects().length) { placePill(st, st.activeLink, false); }
+          }
+        }
         window.addEventListener('resize', function () {
           for (var n = 0; n < navs.length; n++) { updateFade(navs[n]); }
           spy();
+          reseatPills();
         });
+        window.addEventListener('load', reseatPills);
         spy();
       })();
     </script>
