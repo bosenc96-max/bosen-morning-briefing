@@ -38,9 +38,6 @@
         document.documentElement.classList.add(dark ? 'dark' : 'light');
       })();
     </script>
-    
-    
-    
     <style>
       :root {
         --bg: #fbfaf7;
@@ -681,6 +678,16 @@
       /* One-line site intro under the title */
       .mast-intro { color: var(--ink-3); font-size: 13px; letter-spacing: .04em; margin: 0 0 6px; }
       .mast-intro .city-note { color: var(--accent); font-weight: 700; }
+      /* Mobile only: the cities intro stacks vertically — lead line, one
+         city per line, tail line; the "·" separators are hidden. Desktop
+         keeps the single-line layout untouched. */
+      @media (max-width: 640px) {
+        .mast-intro-cities { line-height: 2; }
+        .mast-intro-cities .intro-lead,
+        .mast-intro-cities .nw,
+        .mast-intro-cities .intro-tail { display: block; white-space: normal; }
+        .mast-intro-cities .intro-sep { display: none; }
+      }
       /* Reading progress bar: fixed to the viewport's top edge, above the
          sticky nav's background strip; covers no nav text or links. */
       #read-progress {
@@ -1186,7 +1193,7 @@
         <span class="nw">沈阳 · 鞍山 · 卡尔加里 · 海斯 · 京都</span>
       </div>
       <h1>每日晨间简报<span class="seal">公开版</span></h1>
-      <p class="mast-intro">每天早上 08:10 更新 · 覆盖<span class="nw">中国辽宁沈阳<span class="city-note">（省会）</span></span> · <span class="nw">中国辽宁鞍山<span class="city-note">（钢都）</span></span> · <span class="nw">加拿大阿尔伯塔卡尔加里<span class="city-note">（阿尔伯塔省最大城市）</span></span> · <span class="nw">美国堪萨斯海斯<span class="city-note">（富特海斯州立大学所在地）</span></span> · <span class="nw">日本京都府京都市<span class="city-note">（京阿尼工作室所在地）</span></span>的晨间简报</p>
+      <p class="mast-intro mast-intro-cities"><span class="intro-lead">每天早上 08:10 更新 · 覆盖</span><span class="nw">中国辽宁沈阳<span class="city-note">（省会）</span></span><span class="intro-sep"> · </span><span class="nw">中国辽宁鞍山<span class="city-note">（钢都）</span></span><span class="intro-sep"> · </span><span class="nw">加拿大阿尔伯塔卡尔加里<span class="city-note">（阿尔伯塔省最大城市）</span></span><span class="intro-sep"> · </span><span class="nw">美国堪萨斯海斯<span class="city-note">（富特海斯州立大学所在地）</span></span><span class="intro-sep"> · </span><span class="nw">日本京都府京都市<span class="city-note">（京阿尼工作室所在地）</span></span><span class="intro-tail">的晨间简报</span></p>
       <p class="mast-intro">这五座城市都与笔者息息相关。</p>
       <p class="mast-sub" id="mast-sub">最新一期：<b class="nw">2026 年 11 月 9 日（星期一）</b> · <span class="nw">农历丙午年十月初一</span> · <span class="nw">新月日</span> · <span class="nw">全国消防日</span></p>
       <p class="mast-author">笔名：深眠秋巷雨梦</p>
