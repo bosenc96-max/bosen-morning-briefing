@@ -1128,14 +1128,20 @@
         appearance: none; width: 100%; text-align: left; font: inherit; cursor: pointer;
         background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
         box-shadow: var(--shadow); padding: 12px 16px; color: var(--ink);
-        display: flex; align-items: baseline; gap: 8px 14px; flex-wrap: wrap;
+        display: flex; align-items: center; gap: 8px 14px; flex-wrap: nowrap;
       }
       .coll-item:hover { border-color: var(--accent); }
       .coll-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-      .coll-item .coll-title { font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 16.5px; line-height: 1.5; }
-      .coll-item .coll-sub { font-size: 13.5px; color: var(--ink-2); }
-      .coll-item .coll-date { margin-left: auto; font-size: 12.5px; color: var(--ink-3); white-space: nowrap; }
-      .coll-item .coll-go { color: var(--accent); font-weight: 700; font-size: 13px; white-space: nowrap; flex-basis: 100%; }
+      /* All entry text lives in one flexible main column; the
+         "看那期 →" action is a fixed trailing column, so every row's
+         link shares the same right edge and vertical centre no
+         matter how long the title or author is. */
+      .coll-item .coll-main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+      .coll-item .coll-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; min-width: 0; }
+      .coll-item .coll-title { font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 16.5px; line-height: 1.5; overflow-wrap: anywhere; }
+      .coll-item .coll-sub { font-size: 13.5px; color: var(--ink-2); overflow-wrap: anywhere; }
+      .coll-item .coll-date { font-size: 12.5px; color: var(--ink-3); white-space: nowrap; }
+      .coll-item .coll-go { flex: 0 0 auto; align-self: center; color: var(--accent); font-weight: 700; font-size: 13px; white-space: nowrap; }
       .wk-day { padding: 10px 0 12px; border-bottom: 1px solid var(--line); }
       .wk-day-head { display: flex; align-items: center; gap: 10px; margin-bottom: 2px; }
       .wk-day-head .d { font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 16px; }
@@ -3204,7 +3210,12 @@
             <h2 class="serif">本周回顾</h2>
             <span class="note" id="wk-range"></span>
           </div>
-          <div class="wk-picker" id="wk-picker" role="group" aria-label="选择回顾周次"></div>
+          <!-- The picker is part of the served markup, not built
+               only by script: the current complete week's pill is
+               here from the start, selected, even when it is the
+               only complete week so far. The script below refreshes
+               the row in place from the computed weeks. -->
+          <div class="wk-picker" id="wk-picker" role="group" aria-label="选择回顾周次"><button type="button" class="wk-pick" aria-pressed="true">11 月 2–8 日</button></div>
           <div id="wk-root"></div>
         </section>
       </div>
@@ -5179,20 +5190,26 @@
           var btn = document.createElement('button');
           btn.type = 'button';
           btn.className = 'coll-item';
+          var main = document.createElement('span');
+          main.className = 'coll-main';
+          var line = document.createElement('span');
+          line.className = 'coll-line';
           var t = document.createElement('span');
           t.className = 'coll-title';
           t.textContent = title;
-          btn.appendChild(t);
+          line.appendChild(t);
           if (sub) {
             var s = document.createElement('span');
             s.className = 'coll-sub';
             s.textContent = sub;
-            btn.appendChild(s);
+            line.appendChild(s);
           }
+          main.appendChild(line);
           var dt = document.createElement('span');
           dt.className = 'coll-date';
           dt.textContent = fmtDayW(ds);
-          btn.appendChild(dt);
+          main.appendChild(dt);
+          btn.appendChild(main);
           var go = document.createElement('span');
           go.className = 'coll-go';
           go.textContent = '看那期 →';
@@ -5356,8 +5373,15 @@
           }
         }
 
-        /* Week picker: one pill per complete week, newest first;
-           the most recent complete week is shown by default. */
+        /* Week picker: always shown whenever at least one
+           complete week exists — a single complete week still
+           gets its pill, selected by default; it is never held
+           back until a second week completes. One pill per
+           complete week, newest first; the static pill already in
+           the markup is replaced in place by the computed row. */
+        if (wkPicker && allWks.length) {
+          while (wkPicker.firstChild) { wkPicker.removeChild(wkPicker.firstChild); }
+        }
         if (wkRoot && allWks.length) {
           var pickBtns = [];
           for (var pi = allWks.length - 1; pi >= 0; pi--) {
