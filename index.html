@@ -38,20 +38,6 @@
         document.documentElement.classList.add(dark ? 'dark' : 'light');
       })();
     </script>
-    <script>
-      /* Font-size bootstrap: apply the reader's saved body-text size
-         (localStorage 'briefing-font-size': s / m / l) before first
-         paint, the same way the theme choice above is applied. 'm'
-         (the default) needs no attribute — the stylesheet only
-         overrides sizes for html[data-fs="s"] and html[data-fs="l"]. */
-      (function () {
-        var saved = null;
-        try { saved = localStorage.getItem('briefing-font-size'); } catch (e) {}
-        if (saved === 's' || saved === 'l') {
-          document.documentElement.setAttribute('data-fs', saved);
-        }
-      })();
-    </script>
     
     
     
@@ -1129,62 +1115,8 @@
       .secnav-scroll { scroll-snap-type: none; }
       .secnav a { scroll-snap-align: none; }
 
-      /* ---------- 合集 / 本周回顾 / 字号 2026-11-09 (additive) ---------- */
+      /* ---------- 合集 / 本周回顾 2026-11-09 (additive) ---------- */
       #view-collections[hidden], #view-weekly[hidden] { display: none; }
-
-      /* Font-size control in the tabs row: three quiet segments. */
-      .fs-ctl {
-        display: inline-flex; align-items: center;
-        border: 1px solid var(--line); border-radius: 999px;
-        background: var(--surface); padding: 3px;
-      }
-      .fs-ctl-label { font-size: 12.5px; font-weight: 700; color: var(--ink-3); padding: 0 4px 0 8px; }
-      .fs-ctl button {
-        appearance: none; border: 0; background: transparent; color: var(--ink-2);
-        font: inherit; font-size: 13px; font-weight: 700; line-height: 1;
-        padding: 6px 11px; border-radius: 999px; cursor: pointer;
-      }
-      .fs-ctl button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
-      .fs-ctl button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-
-      /* Body-text size steps: 中 (no data-fs) keeps every size on this
-         page exactly as authored. 小 / 大 shift only the reading text
-         (paragraphs and list copy inside the sections); headings, the
-         section nav, buttons and other chrome keep their sizes. */
-      html[data-fs="s"] body { font-size: 14px; }
-      html[data-fs="l"] body { font-size: 16.5px; }
-      html[data-fs="s"] .hl li, html[data-fs="s"] .hl p, html[data-fs="s"] .hl .cal,
-      html[data-fs="s"] .fin table, html[data-fs="s"] .fin li, html[data-fs="s"] .sport li,
-      html[data-fs="s"] .astro p, html[data-fs="s"] .astro dl, html[data-fs="s"] .advice ol,
-      html[data-fs="s"] .tarot-text, html[data-fs="s"] .tarot .advice p,
-      html[data-fs="s"] .hist .intro, html[data-fs="s"] .hist li,
-      html[data-fs="s"] .quote-card .note-text, html[data-fs="s"] .well li,
-      html[data-fs="s"] .meal .carb, html[data-fs="s"] .meal li, html[data-fs="s"] .meal .total, html[data-fs="s"] .meal .tip,
-      html[data-fs="s"] .song p, html[data-fs="s"] .anime p,
-      html[data-fs="s"] .learn p, html[data-fs="s"] .learn li, html[data-fs="s"] .reading p,
-      html[data-fs="s"] .wk-line { font-size: 13px; }
-      html[data-fs="l"] .hl li, html[data-fs="l"] .hl p, html[data-fs="l"] .hl .cal,
-      html[data-fs="l"] .fin table, html[data-fs="l"] .fin li, html[data-fs="l"] .sport li,
-      html[data-fs="l"] .astro p, html[data-fs="l"] .astro dl, html[data-fs="l"] .advice ol,
-      html[data-fs="l"] .tarot-text, html[data-fs="l"] .tarot .advice p,
-      html[data-fs="l"] .hist .intro, html[data-fs="l"] .hist li,
-      html[data-fs="l"] .quote-card .note-text, html[data-fs="l"] .well li,
-      html[data-fs="l"] .meal .carb, html[data-fs="l"] .meal li, html[data-fs="l"] .meal .total, html[data-fs="l"] .meal .tip,
-      html[data-fs="l"] .song p, html[data-fs="l"] .anime p,
-      html[data-fs="l"] .learn p, html[data-fs="l"] .learn li, html[data-fs="l"] .reading p,
-      html[data-fs="l"] .wk-line { font-size: 15.5px; }
-      html[data-fs="s"] .reading .excerpt p { font-size: 13.5px; }
-      html[data-fs="l"] .reading .excerpt p { font-size: 16px; }
-      html[data-fs="s"] .news-item p, html[data-fs="s"] .fin p, html[data-fs="s"] .gos-item p,
-      html[data-fs="s"] .wx dl, html[data-fs="s"] .wx .tip, html[data-fs="s"] .prices li,
-      html[data-fs="s"] .arch-item .sum, html[data-fs="s"] .about-body p,
-      html[data-fs="s"] .coll-item .coll-sub { font-size: 12.5px; }
-      html[data-fs="l"] .news-item p, html[data-fs="l"] .fin p, html[data-fs="l"] .gos-item p,
-      html[data-fs="l"] .wx dl, html[data-fs="l"] .wx .tip, html[data-fs="l"] .prices li,
-      html[data-fs="l"] .arch-item .sum, html[data-fs="l"] .about-body p,
-      html[data-fs="l"] .coll-item .coll-sub { font-size: 15px; }
-      html[data-fs="s"] .sec-note, html[data-fs="s"] .price-table { font-size: 12px; }
-      html[data-fs="l"] .sec-note, html[data-fs="l"] .price-table { font-size: 14.5px; }
 
       /* Collections + weekly review: rows reuse the archive card look. */
       .coll-h { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin: 22px 0 10px; }
@@ -1235,7 +1167,8 @@
         <span class="nw">沈阳 · 鞍山 · 卡尔加里 · 海斯 · 京都</span>
       </div>
       <h1>每日晨间简报<span class="seal">公开版</span></h1>
-      <p class="mast-intro">每天早上 08:10 更新 · 覆盖<span class="nw">沈阳、鞍山、卡尔加里、海斯（美国堪萨斯州）、京都</span>的晨间简报</p>
+      <p class="mast-intro">每天早上 08:10 更新 · 覆盖<span class="nw">中国辽宁沈阳（省会）</span> · <span class="nw">中国辽宁鞍山（钢都）</span> · <span class="nw">加拿大阿尔伯塔卡尔加里（阿尔伯塔省最大城市）</span> · <span class="nw">美国堪萨斯海斯（富特海斯州立大学所在地）</span> · <span class="nw">日本京都府京都市（古都）</span>的晨间简报</p>
+      <p class="mast-intro">这五座城市都与笔者息息相关。</p>
       <p class="mast-sub" id="mast-sub">最新一期：<b class="nw">2026 年 11 月 9 日（星期一）</b> · <span class="nw">农历丙午年十月初一</span> · <span class="nw">新月日</span> · <span class="nw">全国消防日</span></p>
       <p class="mast-author">笔名：深眠秋巷雨梦</p>
     </header>
@@ -1246,12 +1179,6 @@
       <button class="tab-btn" role="tab" id="tab-collections" aria-selected="false" aria-controls="view-collections">合集</button>
       <button class="tab-btn" role="tab" id="tab-weekly" aria-selected="false" aria-controls="view-weekly">本周回顾</button>
       <button class="tab-btn" type="button" id="tab-about">关于 ↓</button>
-      <span class="fs-ctl" role="group" aria-label="正文字号调节">
-        <span class="fs-ctl-label" aria-hidden="true">字号</span>
-        <button type="button" data-fs-val="s" aria-pressed="false">小</button>
-        <button type="button" data-fs-val="m" aria-pressed="true">中</button>
-        <button type="button" data-fs-val="l" aria-pressed="false">大</button>
-      </span>
       <div class="site-search" role="search">
         <span class="site-search-icon" aria-hidden="true">🔍</span>
         <input type="search" id="site-search-input" placeholder="搜索简报…" aria-label="搜索简报" autocomplete="off" />
@@ -3480,7 +3407,7 @@
     </script>
     <script>
       /* Section nav: single-row sticky bar — highlight the tapped link, scroll it
-         to the middle of the bar, and show a right-edge fade while more links
+         into view (onto a snap target near the middle of the bar, batch-10), and show a right-edge fade while more links
          remain off-screen. Anchor jumps use the sections' scroll-margin-top,
          calibrated to this bar's fixed 52px height.
          Scrollspy: while the reader scrolls the page, the highlight follows the
@@ -3551,6 +3478,37 @@
           list.sort(function (a, b) { return a - b; });
           return list;
         }
+        /* The link straddling the strip's right edge at scroll
+           position pos, or null. Top-level (batch-10) so both the
+           settler and centerLink judge positions by the same rules. */
+        function straddleLink(links, pos, cw) {
+          var edge = pos + cw;
+          for (var j = 0; j < links.length; j++) {
+            var ls = links[j].offsetLeft, le = ls + links[j].offsetWidth;
+            if (ls < edge && edge < le) { return links[j]; }
+          }
+          return null;
+        }
+        /* A resting position's right edge is bad when the link
+           straddling it shows less than half its width. The end
+           position is exempt: the last link is fully visible there. */
+        function rightEdgeBadAt(links, pos, max, cw) {
+          if (pos >= max - 0.5) { return false; }
+          var s = straddleLink(links, pos, cw);
+          if (!s) { return false; }
+          return (pos + cw - s.offsetLeft) < s.offsetWidth / 2;
+        }
+        /* Batch-8's end correction, top-level: a target that would
+           leave the LAST link cut by the right edge becomes the end
+           position instead (see the settler's copy of this logic). */
+        function endIfLastCutAt(links, t, max, cw) {
+          if (t >= max || !links.length) { return t; }
+          var last = links[links.length - 1];
+          var viewR = t + cw;
+          if (last.offsetLeft < viewR &&
+              viewR < last.offsetLeft + last.offsetWidth) { return max; }
+          return t;
+        }
         function updateFade(nav) {
           var more = nav.scrollWidth - nav.clientWidth > 4 &&
             nav.scrollLeft + nav.clientWidth < nav.scrollWidth - 4;
@@ -3558,10 +3516,53 @@
         }
         function centerLink(nav, link) {
           fitEndPadding(nav, nav.querySelectorAll('a'));
-          var target = link.offsetLeft - (nav.clientWidth - link.offsetWidth) / 2;
-          if (target < 0) { target = 0; }
           var max = nav.scrollWidth - nav.clientWidth;
-          if (target > max) { target = max; }
+          if (max < 0) { max = 0; }
+          var ideal = link.offsetLeft - (nav.clientWidth - link.offsetWidth) / 2;
+          if (ideal < 0) { ideal = 0; }
+          if (ideal > max) { ideal = max; }
+          /* Batch-10: land on a SNAP TARGET, not on the strip's
+             geometric centre. Centring put the resting position
+             between snap targets, so the scroll-end settler then
+             dragged the strip a second time (~130–750ms after every
+             link tap and every scrollspy reveal) — the bar visibly
+             moved twice after arriving at a section, and on a slow
+             device the settler could fire mid-centring (once the
+             old 900ms in-flight window expired), cancel the glide
+             and strand the strip wherever it had got to. Now the
+             programmatic landing IS a settle target: the one that
+             keeps the link fully in view and sits closest to the
+             ideal centred position, so the settler's verdict on
+             arrival is "already home" and the strip moves exactly
+             once. (For the last link the end position qualifies —
+             it shows that link whole, per batch-7/8.) */
+          var linksHere = nav.querySelectorAll('a');
+          var targets = snapTargets(nav, linksHere, max);
+          var target = -1, bestD = Infinity;   /* settler-clean landings */
+          var target2 = -1, bestD2 = Infinity; /* any landing showing the link whole */
+          for (var i = 0; i < targets.length; i++) {
+            var t = targets[i];
+            if (link.offsetLeft < t - 1) { continue; }
+            if (link.offsetLeft + link.offsetWidth > t + nav.clientWidth + 1) { continue; }
+            var d = Math.abs(t - ideal);
+            if (d < bestD2) { bestD2 = d; target2 = t; }
+            /* Prefer a landing the settler itself accepts: apply
+               the end correction, then require a clean right edge
+               and the link still fully in view at the corrected
+               position. At some widths NO target qualifies for a
+               given link (e.g. 金融市场 at 390px: every target that
+               shows it whole leaves the right edge straddling a
+               link at under half width) — the fallback above is
+               used then, and snapNow's programmatic-landing rule
+               (batch-10) protects it from being overturned. */
+            var tc = endIfLastCutAt(linksHere, t, max, nav.clientWidth);
+            if (link.offsetLeft >= tc - 1 &&
+                link.offsetLeft + link.offsetWidth <= tc + nav.clientWidth + 1 &&
+                !rightEdgeBadAt(linksHere, tc, max, nav.clientWidth) &&
+                d < bestD) { bestD = d; target = tc; }
+          }
+          if (target < 0) { target = target2; }
+          if (target < 0) { target = ideal; }
           /* Record where this programmatic scroll is heading: the
              scroll-end snap below leaves a strip that landed on its
              programmatic target exactly where it was put. A wheel or
@@ -3683,18 +3684,10 @@
             var settleTimer = null;
             var snapFlight = null; /* {target, at}: a settle scroll this script started */
             function straddleAt(pos) {
-              var edge = pos + scroller.clientWidth;
-              for (var j = 0; j < links.length; j++) {
-                var ls = links[j].offsetLeft, le = ls + links[j].offsetWidth;
-                if (ls < edge && edge < le) { return links[j]; }
-              }
-              return null;
+              return straddleLink(links, pos, scroller.clientWidth);
             }
             function rightEdgeBad(pos, max) {
-              if (pos >= max - 0.5) { return false; } /* end position: last link fully visible */
-              var s = straddleAt(pos);
-              if (!s) { return false; }
-              return (pos + scroller.clientWidth - s.offsetLeft) < s.offsetWidth / 2;
+              return rightEdgeBadAt(links, pos, max, scroller.clientWidth);
             }
             /* Choose where the strip settles: the snap target nearest
                the resting position whose RIGHT edge is clean (the
@@ -3735,12 +3728,7 @@
                it. Correcting the WINNER, not just the current
                position, closes every path into that basin. */
             function endIfLastCut(t, max) {
-              if (t >= max || !links.length) { return t; }
-              var last = links[links.length - 1];
-              var viewR = t + scroller.clientWidth;
-              if (last.offsetLeft < viewR &&
-                  viewR < last.offsetLeft + last.offsetWidth) { return max; }
-              return t;
+              return endIfLastCutAt(links, t, max, scroller.clientWidth);
             }
             function nearestCleanTarget(cur, max) {
               /* Batch-7: a strip that has reached the true end
@@ -3789,13 +3777,24 @@
                  re-check back — that reset loop was one way the old
                  snap silently never ran. */
               if (snapFlight && Math.abs(cur - snapFlight.target) > 2 &&
-                  Date.now() - snapFlight.at < 900) { return true; }
+                  Date.now() - snapFlight.at < 1600) { return true; }
               if (scroller._progAt && Math.abs(cur - scroller._progTarget) > 2 &&
-                  Date.now() - scroller._progAt < 900) { return true; }
+                  Date.now() - scroller._progAt < 1600) { return true; }
               return false;
             }
             function snapNow() {
               snapTimer = null;
+              if (gesturing && Date.now() - gestureAt < 3000) {
+                /* Batch-10: the reader's finger is still on the
+                   strip, so the gesture — not this script — owns
+                   the scroll position: a programmatic scroll now
+                   would be clobbered by the gesture's next update,
+                   and the pass would be spent. Defer to a watchdog
+                   and let the gesture-end handler (below) arm the
+                   real check once the reader lets go. */
+                snapTimer = setTimeout(snapNow, 350);
+                return;
+              }
               fitEndPadding(scroller, links);
               var max = scroller.scrollWidth - scroller.clientWidth;
               if (max <= 0) { return; }
@@ -3809,6 +3808,27 @@
               }
               snapFlight = null;
               if (Date.now() - state.clickedAt < 350) { return; }
+              /* Batch-10: a programmatic landing is a legal rest.
+                 When the strip is sitting on the target centerLink
+                 recorded for it, the reader has not taken over
+                 since, and the active link is fully in view there,
+                 accept the position as-is — even when the
+                 right-edge rule alone would move on. Without this,
+                 a tap that centred a link the settler could not
+                 centre "cleanly" (金融市场 at phone widths) was
+                 overturned a second later and the strip came to
+                 rest with the just-tapped section scrolled out of
+                 view: the two systems fought over the resting
+                 position. A reader's own scroll marks the strip
+                 user-driven and re-arms the normal rules below. */
+              if (!scroller._userDriven &&
+                  scroller._progTarget != null &&
+                  Math.abs(cur - scroller._progTarget) < 1 &&
+                  state.activeLink &&
+                  state.activeLink.offsetLeft >= cur - 1 &&
+                  state.activeLink.offsetLeft + state.activeLink.offsetWidth <= cur + scroller.clientWidth + 1) {
+                return;
+              }
               /* Every resting position — the reader's own scroll or
                  a programmatic landing alike — settles on the
                  nearest target whose right edge is clean. A centred
@@ -3845,10 +3865,44 @@
               if (settleTimer) { clearTimeout(settleTimer); }
               settleTimer = setTimeout(snapNow, 750);
             }, { passive: true });
+            /* Batch-10: track whether a touch gesture currently
+               owns the strip (see snapNow). Only TOUCH events can
+               track this: pointercancel fires the moment a touch is
+               recognised as a pan, so a pointer-based "gesture over"
+               signal ends the watch at the very start of every real
+               drag (found in browser testing — the settler still
+               fired mid-hold). Touch events are not cancelled by
+               panning, and e.touches says exactly how many fingers
+               remain down. The gesture-end arm is the other half of
+               the fix: if the reader drags the strip to a stop and
+               lets go without the position changing afterwards, no
+               further scroll event fires — previously every settle
+               pass had already been consumed during the drag (or
+               clobbered by it), so the strip could rest on a
+               half-cut name indefinitely and the next small drag
+               fell into the same trap. Arming the usual 130ms/750ms
+               checks at gesture end guarantees a post-gesture
+               judgement whatever happened mid-drag. */
+            var gesturing = false;
+            var gestureAt = 0; /* stale-gesture guard: a lost touchend must not suspend the settler forever (see snapNow's 3s cap) */
             function markUser() { scroller._userDriven = true; scroller._progAt = 0; snapFlight = null; }
+            function gestureStart(e) {
+              if (e.touches && e.touches.length) { gesturing = true; gestureAt = Date.now(); }
+              markUser();
+            }
+            function gestureEnd(e) {
+              if (e.touches && e.touches.length) { return; } /* other fingers still down */
+              gesturing = false;
+              if (snapTimer) { clearTimeout(snapTimer); }
+              snapTimer = setTimeout(snapNow, 130);
+              if (settleTimer) { clearTimeout(settleTimer); }
+              settleTimer = setTimeout(snapNow, 750);
+            }
             scroller.addEventListener('wheel', markUser, { passive: true });
-            scroller.addEventListener('touchstart', markUser, { passive: true });
+            scroller.addEventListener('touchstart', gestureStart, { passive: true });
             scroller.addEventListener('pointerdown', markUser, { passive: true });
+            scroller.addEventListener('touchend', gestureEnd, { passive: true });
+            scroller.addEventListener('touchcancel', gestureEnd, { passive: true });
             /* Batch-9: the settler above only ever runs off the
                strip's own scroll events, so a geometry change while
                the strip is at rest silently invalidates the resting
@@ -4968,7 +5022,7 @@
       })();
     </script>
     <script>
-      /* 合集 / 本周回顾 / 随便看看 / 字号 2026-11-09 (additive):
+      /* 合集 / 本周回顾 / 随便看看 2026-11-09 (additive):
          The three collections （读过 / 听过 / 看过） and the weekly
          review are generated at runtime from the issue sections
          already on this page — every issue's 每日阅读 / 每日一曲 /
@@ -5325,25 +5379,6 @@
           });
         }
 
-        /* ---------- font size: 小 / 中 / 大， persisted like the theme ---------- */
-        var fsBtns = document.querySelectorAll('.fs-ctl button[data-fs-val]');
-        function paintFs() {
-          var cur = document.documentElement.getAttribute('data-fs') || 'm';
-          for (var i = 0; i < fsBtns.length; i++) {
-            fsBtns[i].setAttribute('aria-pressed',
-              fsBtns[i].getAttribute('data-fs-val') === cur ? 'true' : 'false');
-          }
-        }
-        for (var f = 0; f < fsBtns.length; f++) {
-          fsBtns[f].addEventListener('click', function () {
-            var v = this.getAttribute('data-fs-val');
-            if (v === 'm') { document.documentElement.removeAttribute('data-fs'); }
-            else { document.documentElement.setAttribute('data-fs', v); }
-            try { localStorage.setItem('briefing-font-size', v); } catch (e) {}
-            paintFs();
-          });
-        }
-        paintFs();
       })();
     </script>
   </body>
