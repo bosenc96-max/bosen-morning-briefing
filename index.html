@@ -3361,28 +3361,24 @@
           return (nav && nav.offsetHeight ? nav.offsetHeight : 52) + 26;
         }
         var PAD_L = 10; /* the strip's left padding (CSS). Snap targets no longer derive from it — see snapTargets (batch-6). */
-        /* Make the strip's end position a snap position: grow the
-           right padding just enough that the maximum scrollLeft lands
-           exactly on the first link start from which the last link is
-           fully visible. Resting at the end then starts on a complete
-           section name, like every other resting position. */
+        /* Batch-7: the strip's end position is the TRUE maximum
+           scrollLeft (scrollWidth - clientWidth), full stop. The old
+           fitEndPadding grew/shrank the right padding so the maximum
+           would land on a link start, but every settle pass first
+           reset the padding — which shrank scrollWidth and let the
+           browser clamp a strip resting at the end back down — and
+           the settler then chose an earlier clean target, so the
+           last link （每日一漫） flashed fully visible at the end and
+           was bounced back to half-shown. No padding fitting is
+           needed for the last link to be fully visible at the true
+           maximum: with the strip's CSS right padding (10px) the
+           maximum is always >= the smallest scrollLeft that shows
+           the last link whole, so at the maximum it rests fully in
+           view (the left edge may cut a name there — that is the
+           end of the strip and is accepted). Kept as a no-op so the
+           existing call sites stay valid. */
         function fitEndPadding(scroller, links) {
-          if (!links.length || !scroller.clientWidth) { return; }
-          scroller.style.paddingRight = '';
-          var last = links[links.length - 1];
-          var end = last.offsetLeft + last.offsetWidth;
-          var cw = scroller.clientWidth;
-          var need = end - cw; /* smallest scrollLeft showing the last link fully */
-          if (need <= 0) { return; }
-          var s = null;
-          for (var i = 0; i < links.length; i++) {
-            var t = i === 0 ? 0 : links[i].offsetLeft - 3;
-            if (t >= need - 0.5 && (s === null || t < s)) { s = t; }
-          }
-          if (s === null) { return; }
-          var padR = s - need; /* == s + cw - end */
-          if (padR < 0) { padR = 0; }
-          scroller.style.paddingRight = padR + 'px';
+          return;
         }
         /* Every scrollLeft at which a link's first character sits
            flush at the strip's left edge (plus the end position). */
@@ -3530,7 +3526,11 @@
                only settler. A later settle pass (~750ms after the
                last scroll event) re-runs the same check; scroll
                events fired by an in-flight smooth scroll no longer
-               reset that pass. */
+               reset that pass.
+               Batch-7 exception: the true end position (maximum
+               scrollLeft) is always accepted as-is — see
+               nearestCleanTarget — so the last link can rest fully
+               visible there even though its left edge is cut. */
             var snapTimer = null;
             var settleTimer = null;
             var snapFlight = null; /* {target, at}: a settle scroll this script started */
@@ -3567,6 +3567,18 @@
                than a link or two and never strands a single character
                at the right edge when a clean position exists. */
             function nearestCleanTarget(cur, max) {
+              /* Batch-7: a strip that has reached the true end
+                 STAYS at the end. The maximum is a legal resting
+                 position even though its left edge may cut a section
+                 name — the reader scrolled there for the last link
+                 （每日一漫）, which is fully visible at the maximum.
+                 Without this short-circuit the anchor preference
+                 below (keep the current left-edge link on screen)
+                 rejects the maximum and the settle bounces the strip
+                 back to an earlier target, stranding the last link
+                 at half width. Positions short of the end keep the
+                 existing behaviour unchanged. */
+              if (cur >= max - 2) { return max; }
               var targets = snapTargets(scroller, links, max);
               var anchor = null; /* first link not cut at the left edge */
               for (var a = 0; a < links.length; a++) {
