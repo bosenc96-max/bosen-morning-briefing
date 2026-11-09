@@ -48,7 +48,7 @@
         }
       }
       * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
+      html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
       body {
         margin: 0;
         background: var(--bg);
@@ -122,19 +122,24 @@
       .strip .meta b { color: var(--ink); font-size: 14px; }
 
       /* ---------- section nav ---------- */
+      /* The 7px/8px vertical padding plus the links' fixed 36px height fill
+         the 52px bar exactly (7 + 36 + 8 + 1px border), so the link row is
+         centered by construction — it cannot ride up against the top edge
+         of the bar in browsers whose flex centering or text metrics differ. */
       .secnav {
         position: sticky; top: 0; z-index: 20;
         background: var(--bg); border-bottom: 1px solid var(--line);
         display: flex; flex-wrap: nowrap; align-items: center; gap: 4px;
         height: 52px; overflow-x: auto; overflow-y: hidden;
-        padding: 0 2px; margin: 14px 0 22px;
+        padding: 7px 2px 8px; margin: 14px 0 22px;
         scrollbar-width: none; -webkit-overflow-scrolling: touch;
       }
       .secnav::-webkit-scrollbar { display: none; }
       .secnav a {
         position: relative; z-index: 1;
         color: var(--ink-2); text-decoration: none; font-size: 13.5px; font-weight: 700;
-        padding: 6px 12px; border-radius: 999px; white-space: nowrap; flex: 0 0 auto;
+        height: 36px; padding: 0 12px; border-radius: 999px; white-space: nowrap; flex: 0 0 auto;
+        display: inline-flex; align-items: center;
         transition: color .3s ease, background-color .3s ease;
       }
       .secnav a:hover { background: var(--surface-2); color: var(--ink); }
@@ -144,7 +149,7 @@
          link to link, one pill glides to whichever link is active, so the
          highlight eases across the bar as the reader scrolls (script-driven) */
       .secnav .pill {
-        position: absolute; left: 0; top: 0; z-index: 0; pointer-events: none;
+        position: absolute; left: 0; top: 50%; z-index: 0; pointer-events: none;
         background: var(--ink); border-radius: 999px; opacity: 0;
         transition: transform .38s cubic-bezier(.45, .05, .25, 1),
           width .38s cubic-bezier(.45, .05, .25, 1),
@@ -433,7 +438,7 @@
         .blk-head { flex-wrap: wrap; }
         .blk-head .note { margin-left: 0; width: 100%; text-align: left; }
         .tabs .upd { margin-left: 0; width: 100%; }
-        .secnav a { padding: 6px 10px; font-size: 13px; }
+        .secnav a { padding: 0 10px; font-size: 13px; }
         .quote-card .q { font-size: 20px; }
         .arch-item { flex-wrap: wrap; gap: 8px; }
         .arch-item .go { margin-left: 0; }
@@ -548,8 +553,8 @@
 <section class="blk" id="s-news">
 <div class="blk-head"><span class="no">其二</span><h2>三城近期新闻</h2></div>
 <div class="news-grid">
-<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>沈阳第五届鸡架美食文化嘉年华开幕 <span class="from">来源：<a href="https://bz7jr5il3lj3ln.apostaorbihouse.com/delisting/20261108/5089407.html" target="_blank" rel="noopener noreferrer">活动报道</a>，11月8日</span></h4><p>嘉年华在皇姑区塔湾兴顺国际夜市启幕，由市文旅局、市商务局、皇姑区政府指导，设置百人“课堂偷吃大赛”、自助烧烤、大胃王挑战赛等项目。沈阳鸡架五年打造成文旅 IP，累计线下客流超 60 万人次，这次主打夜间消费场景，晚上想吃点热乎的可以去逛逛。</p></div><div class="news-item"><h4>辽宁借进博会集中签约，医疗、农食、大宗商品是重点 <span class="from"><a href="https://ln.cri.cn/n/20261108/4f094c50-d85f-494e-9701-15fa6c11ef6c.html" target="_blank" rel="noopener noreferrer">国际在线</a>，11月8日</span></h4><p>第九届进博会期间，辽宁多家重点采购企业与多个国家及港澳台地区合作商集中签约。嘉里粮油（营口）达成重点采购合作意向；荣信汇科签约新能源电力电工装备，孔雀表业、辽宁蜂巢推进宝石、美妆日化合作，中国医大附属盛京医院完成药品签约，沈阳腾翔科技意向采购特种作业机器人。辽宁用进博窗口对接全球资源，订单落到了医疗、食品和高端装备这些实处。</p></div><div class="news-item"><h4>大连英博 3-1 天津津门虎，夺得 2026 赛季中超冠军 <span class="from"><a href="https://www.hkcd.com/hkcdweb/content/2026/11/08/content_8784235.html" target="_blank" rel="noopener noreferrer">香港商报</a>，11月8日</span></h4><p>中超收官轮，赛前手握“冠军点”的成都蓉城客场 2-3 不敌山东泰山，大连英博主场 3-1 击败天津津门虎。在联赛最后 4 轮还落后成都 12 分的情况下，大连英博实现神奇逆转，成为中超新科冠军，球迷冒着暴雪在现场呐喊助威。辽宁足球这个冬天有了一件值得高兴的事。</p></div><div class="news-item"><h4>辽宁降雪过后气温下降，9 日早晨山区最低 -15°C <span class="from"><a href="https://finance.sina.com.cn/wm/2026-11-06/doc-inixuywu8762505.shtml" target="_blank" rel="noopener noreferrer">新浪财经</a>，11月6日</span></h4><p>辽宁省气象局 11 月 6 日发布重大气象信息专报：11 月 7 日午后至 8 日白天，朝阳、葫芦岛等地大雪到暴雪，局部大暴雪，积雪 5~20 厘米；鞍山、丹东、锦州北部等地小雪到中雪。降雪过后西部地区气温下降 4~8°C，9 日早晨东西部山区最低 -15~-10°C。雪后路滑、气温骤降，出行注意道路结冰。</p></div></article>
-<article class="news-col"><h3>鞍山</h3><p class="col-note">说明：近 1~2 天内鞍山本地新闻较少，以下为本周内较新的消息，均已注明日期。</p><div class="news-item"><h4>今天是全国消防日，鞍山消防宣传月正在进行 <span class="from"><a href="https://feng.ifeng.com/c/8xknOob0fed" target="_blank" rel="noopener noreferrer">凤凰网</a>，11月3日</span></h4><p>11 月 9 日是第 35 个全国消防日，今年宣传月主题是“全民消防、生命至上，提高自防自救能力”。鞍山消防介绍，全市 95 个乡镇（街道）消防工作站已全部建成投用，今年以来累计防火巡查 5377 次、整改火灾隐患 10438 处，新建城市小型站 13 个。入冬后用火用电多，家里插线板、取暖器、电动车充电都检查一遍，别留隐患。</p></div><div class="news-item"><h4>鞍山姑娘李雯雯亚运夺冠，补齐职业生涯大满贯 <span class="from">来源：<a href="https://9rvjod7yrc9tbbwin.apostaorbihouse.com/acg-consumption/20261103-384022.html" target="_blank" rel="noopener noreferrer">亚运报道</a>，11月3日</span></h4><p>10 月 29 日，2026 年爱知·名古屋亚运会举重女子 86 公斤以上级比赛，鞍山名将李雯雯以抓举 140 公斤、总成绩 310 公斤夺冠，并刷新两项亚运会纪录。这是她职业生涯首枚亚运会金牌，此前她已拿过奥运、世锦赛冠军，这次终于圆满实现大满贯，家乡全城喝彩。</p></div><div class="news-item"><h4>鞍钢股份申请低镍合金钢卷板相关专利 <span class="from"><a href="https://finance.sina.com.cn/stock/aigc/zl/2026-11-04/doc-inixprpa6182443.shtml" target="_blank" rel="noopener noreferrer">新浪财经</a>，11月4日</span></h4><p>国家知识产权局信息显示，鞍钢股份申请一项“低镍系合金钢热轧卷板氧化铁皮的全流程控制方法”专利，申请公布日为 11 月 3 日。三季度鞍钢股份营收 698.66 亿元，但净利润 -39.45 亿元，在行业可比企业中垫底，专利和新品是钢企降本增效的出路之一。</p></div><div class="news-item"><h4>东北三省十一校科研协作体年会在鞍山一中召开 <span class="from"><a href="https://feng.ifeng.com/c/8xkeyzDmVX2" target="_blank" rel="noopener noreferrer">凤凰网</a>，11月3日</span></h4><p>来自黑、吉、辽三省 11 所重点高中的校领导、科研负责人齐聚鞍山一中，围绕“‘双减’政策下校本研修的提质增效策略与路径”研讨。这个协作体已有 33 年历史，由辽宁省实验中学、鞍山一中、东北师大附中和哈师大附中发起，第 34 届年会将由东北师大附中承办。</p></div></article>
+<article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>沈阳第五届鸡架美食文化嘉年华开幕 <span class="from">来源：<a href="https://liaon.ifeng.com/c/8wM7HEYNdig" target="_blank" rel="noopener noreferrer">凤凰网辽宁</a>，9月13日</span></h4><p>嘉年华在皇姑区塔湾兴顺国际夜市启幕，由市文旅局、市商务局、皇姑区政府指导，设置百人“课堂偷吃大赛”、自助烧烤、大胃王挑战赛等项目。沈阳鸡架五年打造成文旅 IP，累计线下客流超 60 万人次，这次主打夜间消费场景，晚上想吃点热乎的可以去逛逛。</p></div><div class="news-item"><h4>辽宁借进博会集中签约，医疗、农食、大宗商品是重点 <span class="from"><a href="https://ln.cri.cn/n/20261108/4f094c50-d85f-494e-9701-15fa6c11ef6c.html" target="_blank" rel="noopener noreferrer">国际在线</a>，11月8日</span></h4><p>第九届进博会期间，辽宁多家重点采购企业与多个国家及港澳台地区合作商集中签约。嘉里粮油（营口）达成重点采购合作意向；荣信汇科签约新能源电力电工装备，孔雀表业、辽宁蜂巢推进宝石、美妆日化合作，中国医大附属盛京医院完成药品签约，沈阳腾翔科技意向采购特种作业机器人。辽宁用进博窗口对接全球资源，订单落到了医疗、食品和高端装备这些实处。</p></div><div class="news-item"><h4>大连英博 3-1 天津津门虎，夺得 2026 赛季中超冠军 <span class="from"><a href="https://www.hkcd.com/hkcdweb/content/2026/11/08/content_8784235.html" target="_blank" rel="noopener noreferrer">香港商报</a>，11月8日</span></h4><p>中超收官轮，赛前手握“冠军点”的成都蓉城客场 2-3 不敌山东泰山，大连英博主场 3-1 击败天津津门虎。在联赛最后 4 轮还落后成都 12 分的情况下，大连英博实现神奇逆转，成为中超新科冠军，球迷冒着暴雪在现场呐喊助威。辽宁足球这个冬天有了一件值得高兴的事。</p></div><div class="news-item"><h4>辽宁降雪过后气温下降，9 日早晨山区最低 -15°C <span class="from"><a href="https://finance.sina.com.cn/wm/2026-11-06/doc-inixuywu8762505.shtml" target="_blank" rel="noopener noreferrer">新浪财经</a>，11月6日</span></h4><p>辽宁省气象局 11 月 6 日发布重大气象信息专报：11 月 7 日午后至 8 日白天，朝阳、葫芦岛等地大雪到暴雪，局部大暴雪，积雪 5~20 厘米；鞍山、丹东、锦州北部等地小雪到中雪。降雪过后西部地区气温下降 4~8°C，9 日早晨东西部山区最低 -15~-10°C。雪后路滑、气温骤降，出行注意道路结冰。</p></div></article>
+<article class="news-col"><h3>鞍山</h3><p class="col-note">说明：近 1~2 天内鞍山本地新闻较少，以下为本周内较新的消息，均已注明日期。</p><div class="news-item"><h4>今天是全国消防日，鞍山消防宣传月正在进行 <span class="from"><a href="https://feng.ifeng.com/c/8xknOob0fed" target="_blank" rel="noopener noreferrer">凤凰网</a>，11月3日</span></h4><p>11 月 9 日是第 35 个全国消防日，今年宣传月主题是“全民消防、生命至上，提高自防自救能力”。鞍山消防介绍，全市 95 个乡镇（街道）消防工作站已全部建成投用，今年以来累计防火巡查 5377 次、整改火灾隐患 10438 处，新建城市小型站 13 个。入冬后用火用电多，家里插线板、取暖器、电动车充电都检查一遍，别留隐患。</p></div><div class="news-item"><h4>鞍山姑娘李雯雯亚运夺冠，补齐职业生涯大满贯 <span class="from">来源：<a href="https://www.sport.gov.cn/n20001280/n20745751/c30085391/content.html" target="_blank" rel="noopener noreferrer">国家体育总局</a>，9月30日</span></h4><p>9 月 29 日，2026 年爱知·名古屋亚运会举重女子 86 公斤以上级比赛，鞍山名将李雯雯以抓举 140 公斤、总成绩 310 公斤夺冠，并刷新两项亚运会纪录。这是她职业生涯首枚亚运会金牌，此前她已拿过奥运、世锦赛冠军，这次终于圆满实现大满贯，家乡全城喝彩。</p></div><div class="news-item"><h4>鞍钢股份申请低镍合金钢卷板相关专利 <span class="from"><a href="https://finance.sina.com.cn/stock/aigc/zl/2026-11-04/doc-inixprpa6182443.shtml" target="_blank" rel="noopener noreferrer">新浪财经</a>，11月4日</span></h4><p>国家知识产权局信息显示，鞍钢股份申请一项“低镍系合金钢热轧卷板氧化铁皮的全流程控制方法”专利，申请公布日为 11 月 3 日。三季度鞍钢股份营收 698.66 亿元，但净利润 -39.45 亿元，在行业可比企业中垫底，专利和新品是钢企降本增效的出路之一。</p></div><div class="news-item"><h4>东北三省十一校科研协作体年会在鞍山一中召开 <span class="from"><a href="https://feng.ifeng.com/c/8xkeyzDmVX2" target="_blank" rel="noopener noreferrer">凤凰网</a>，11月3日</span></h4><p>来自黑、吉、辽三省 11 所重点高中的校领导、科研负责人齐聚鞍山一中，围绕“‘双减’政策下校本研修的提质增效策略与路径”研讨。这个协作体已有 33 年历史，由辽宁省实验中学、鞍山一中、东北师大附中和哈师大附中发起，第 34 届年会将由东北师大附中承办。</p></div></article>
 <article class="news-col"><h3>卡尔加里（当地 11月7~8日）</h3><div class="news-item"><h4>火焰队后卫巴尔赛季报销：跟腱断裂，将接受手术 <span class="from"><a href="https://www.nhl.com/news/nhl-status-report-news-and-notes-november-8-2026" target="_blank" rel="noopener noreferrer">NHL 官网</a>（需翻墙），11月8日</span></h4><p>卡尔加里火焰队宣布，后卫凯文·巴尔（Kevin Bahl）跟腱断裂，将接受赛季报销的手术。他是在上周五对安纳海姆鸭队赛前场外热身时受伤的。巴尔本赛季场均上场 21 分 56 秒，全队最高，去年夏天刚签下 6 年 3210 万美元合同。球队已从 AHL 召回后卫布雷登·帕查尔补缺，今晚主场对费城飞人一战压力更大了。</p></div><div class="news-item"><h4>第 113 届 Grey Cup 决赛对阵出炉：埃德蒙顿麋鹿 vs 蒙特利尔云雀 <span class="from"><a href="https://www.thescore.com/cfl/news/3648402/elks-alouettes-will-meet-in-113-th-grey-cup" target="_blank" rel="noopener noreferrer">theScore</a>（需翻墙），11月8日</span></h4><p>CFL 分区决赛：蒙特利尔云雀 33-23 击败温尼伯蓝色轰炸机，埃德蒙顿麋鹿 28-16 战胜 BC 雄狮，两队将于 11 月 15 日在卡尔加里 McMahon 体育场争夺第 113 届 Grey Cup。这是两队历史上第 12 次在 Grey Cup 相遇，上一次还是 2005 年的加时经典。卡尔加里下周末要热闹了。</p></div><div class="news-item"><h4>阿省政治周报：学费上限法案、选区重划与联邦预算 <span class="from"><a href="https://app.cyberimpact.com/newsletter-view-online?ct=6J9sjNZn7wXXJ02x-vqRAEJe13M7uIRnKjZWSw6l4P2XsikhSk5tCYcmCL3f8u8XNtWWjqS-_h6qLvTqC-bFWT2pi23R3FM3fQzYZfbDof6mziqbeFaIZHbkuDA8yM3x" target="_blank" rel="noopener noreferrer">Forward Weekly</a>（需翻墙），11月8日</span></h4><p>本周阿省政坛三件事：一是执政党 UCP 提出法案，拟取消大学学费每年 2% 的涨幅上限，并限制高校就政治议题表态；二是省长史密斯推动的新选区边界图被指“杰利蝾螈”，按 2023 年选举结果测算会稀释 NDP 票仓；三是 2026 年联邦预算出炉，卡尔加里市长法卡斯指出预算中几乎没有卡尔加里的基建资金，城市“几乎完全缺席”。留学生和本地居民都值得留意学费那条。</p></div><div class="news-item"><h4>火焰队召回后卫帕查尔，应对防线伤病潮 <span class="from"><a href="https://wire.report/article/flames-recall-defenceman-brayden-pachal-from-ahl-calgary-wranglers-2026-11-08" target="_blank" rel="noopener noreferrer">Wire Report</a>（需翻墙），11月8日</span></h4><p>随着巴尔赛季报销，火焰队周日宣布从 AHL 卡尔加里牧马人队召回后卫布雷登·帕查尔，增加防线深度。球队近 10 场 6 胜 3 负 1 加时负，状态正在回升，但防线伤病是接下来一周最大的考验。</p></div></article>
 </div>
 </section>
@@ -2074,14 +2079,16 @@
         }
         /* Glide the highlight pill under the given link. The first placement
            for a bar snaps into place so it never sweeps in from the left
-           edge; later placements animate for the gradual effect. */
+           edge; later placements animate for the gradual effect. Vertically
+           the pill is centered on the bar's midline (top: 50% in CSS, the
+           -50% in the transform) instead of copying the link's offsetTop,
+           so it always keeps equal breathing room above and below. */
         function placePill(state, link, animate) {
           var pill = state.pill;
           if (!animate) { pill.classList.add('no-anim'); }
           pill.style.width = link.offsetWidth + 'px';
           pill.style.height = link.offsetHeight + 'px';
-          pill.style.top = link.offsetTop + 'px';
-          pill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+          pill.style.transform = 'translate(' + link.offsetLeft + 'px, -50%)';
           pill.style.opacity = '1';
           if (!animate) {
             void pill.offsetWidth; /* commit the snap before transitions resume */
