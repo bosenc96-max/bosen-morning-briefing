@@ -24,6 +24,19 @@
         window.scrollTo(0, 0);
       });
     </script>
+    <script>
+      /* Theme bootstrap: apply the reader's saved choice (localStorage)
+         before first paint; with no saved choice, follow the system
+         preference. html.dark / html.light (defined below) override the
+         prefers-color-scheme media query. */
+      (function () {
+        var saved = null;
+        try { saved = localStorage.getItem('briefing-theme'); } catch (e) {}
+        var dark = saved ? saved === 'dark'
+          : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.classList.add(dark ? 'dark' : 'light');
+      })();
+    </script>
     <style>
       :root {
         --bg: #fbfaf7;
@@ -552,9 +565,160 @@
       .song p, .anime p { font-size: 14px; color: var(--ink-2); margin: 0 0 10px; }
       .song p:last-child, .anime p:last-child { margin-bottom: 0; }
       .song p b, .anime p b { color: var(--ink); }
+
+      /* ---------- UX additions 2026-11-09 (all additive) ---------- */
+      /* Explicit theme classes: same palettes as :root / the dark media
+         query above. html.dark / html.light beat ":root" in the media
+         query (higher specificity), so a saved choice always wins. */
+      html.dark {
+        color-scheme: dark;
+        --bg: #121317;
+        --surface: #1b1d23;
+        --surface-2: #23252d;
+        --ink: #ece9e2;
+        --ink-2: #b9bcc4;
+        --ink-3: #83868f;
+        --line: #2e3038;
+        --accent: #e0684a;
+        --accent-soft: #33231f;
+        --gold: #d3ab4a;
+        --gold-soft: #2f2a1c;
+        --blue: #7fa8cf;
+        --blue-soft: #1e2836;
+        --green: #7ab98a;
+        --up: #e0684a;
+        --down: #7ab98a;
+        --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+      }
+      html.light {
+        color-scheme: light;
+        --bg: #fbfaf7;
+        --surface: #ffffff;
+        --surface-2: #f3f0e9;
+        --ink: #1c1e24;
+        --ink-2: #4c4f57;
+        --ink-3: #83868f;
+        --line: #e3ded2;
+        --accent: #b3351f;
+        --accent-soft: #fbeeea;
+        --gold: #9a7414;
+        --gold-soft: #f7f0da;
+        --blue: #1f4e79;
+        --blue-soft: #e8eff6;
+        --green: #2e6b3e;
+        --up: #b3351f;
+        --down: #2e6b3e;
+        --shadow: 0 1px 2px rgba(28,30,36,.05), 0 8px 24px rgba(28,30,36,.05);
+      }
+      /* One-line site intro under the title */
+      .mast-intro { color: var(--ink-3); font-size: 13px; letter-spacing: .04em; margin: 0 0 6px; }
+      /* Reading progress bar: fixed to the viewport's top edge, above the
+         sticky nav's background strip; covers no nav text or links. */
+      #read-progress {
+        position: fixed; top: 0; left: 0; z-index: 60;
+        height: 3px; width: 0; background: var(--gold);
+      }
+      /* Back-to-top floating button */
+      #back-to-top {
+        position: fixed; right: 18px; bottom: 22px; z-index: 50;
+        width: 46px; height: 46px; border-radius: 50%;
+        border: 1px solid var(--line); background: var(--surface);
+        color: var(--ink-2); font-size: 19px; line-height: 1;
+        box-shadow: var(--shadow); cursor: pointer;
+        opacity: 0; visibility: hidden; pointer-events: none;
+        transition: opacity .25s ease, visibility .25s ease;
+      }
+      #back-to-top.visible { opacity: 1; visibility: visible; pointer-events: auto; }
+      #back-to-top:hover { color: var(--accent); border-color: var(--accent); }
+      #back-to-top:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      /* Dark-mode toggle in the tabs row (top-right) */
+      .theme-toggle {
+        appearance: none; border: 1px solid var(--line); background: var(--surface);
+        color: var(--ink-2); font: inherit; font-size: 16px; line-height: 1;
+        width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+        display: inline-flex; align-items: center; justify-content: center;
+      }
+      .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+      .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      /* Per-issue copy-link button */
+      .copy-link-btn {
+        appearance: none; border: 1px solid var(--line); background: var(--surface);
+        color: var(--ink-2); font: inherit; font-size: 12.5px; font-weight: 700;
+        padding: 6px 14px; border-radius: 999px; cursor: pointer; white-space: nowrap;
+      }
+      .copy-link-btn:hover { border-color: var(--accent); color: var(--accent); }
+      .copy-link-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .copy-link-btn.copied { color: var(--green); border-color: var(--green); }
+      .issue-tools { display: flex; justify-content: flex-end; margin: 0 0 12px; }
+      /* Archive date quick-jump */
+      .date-jump {
+        display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+        margin: 0 0 14px; font-size: 14px; color: var(--ink-2);
+      }
+      .date-jump label { font-weight: 700; color: var(--ink); }
+      .date-jump input[type="date"] {
+        font: inherit; font-size: 14px; color: var(--ink);
+        background: var(--surface); border: 1px solid var(--line);
+        border-radius: 8px; padding: 7px 10px;
+      }
+      .date-jump input[type="date"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .date-jump-note { font-size: 13px; color: var(--accent); }
+
+      /* ---------- site search 2026-11-09 (additive) ---------- */
+      /* Search box sits in the tabs row, right after the view tabs; the
+         results panel hangs below it. All colours come from the theme
+         variables, so it follows light and dark mode automatically. */
+      .site-search {
+        position: relative; flex: 0 1 230px; min-width: 168px;
+      }
+      .site-search-icon {
+        position: absolute; left: 11px; top: 50%; transform: translateY(-50%);
+        font-size: 13px; line-height: 1; pointer-events: none; opacity: .75;
+      }
+      .site-search input[type="search"] {
+        width: 100%; font: inherit; font-size: 13.5px; color: var(--ink);
+        background: var(--surface); border: 1px solid var(--line);
+        border-radius: 999px; padding: 7px 12px 7px 32px; appearance: none;
+        -webkit-appearance: none;
+      }
+      .site-search input[type="search"]::placeholder { color: var(--ink-3); }
+      .site-search input[type="search"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .site-search-panel {
+        position: absolute; top: calc(100% + 6px); left: 0; z-index: 40;
+        width: 360px; max-width: calc(100vw - 32px); max-height: min(62vh, 480px);
+        overflow-y: auto; overscroll-behavior: contain;
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 6px;
+      }
+      .site-search-panel[hidden] { display: none; }
+      .search-result {
+        appearance: none; display: block; width: 100%; text-align: left;
+        font: inherit; background: transparent; border: none; border-radius: 8px;
+        padding: 9px 10px; cursor: pointer; color: var(--ink);
+      }
+      .search-result:hover, .search-result:focus-visible { background: var(--surface-2); }
+      .search-result:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+      .search-result + .search-result { border-top: 1px dashed var(--line); }
+      .search-result .sr-meta {
+        display: flex; align-items: baseline; gap: 8px; margin-bottom: 2px;
+      }
+      .search-result .sr-date { font-size: 12px; font-weight: 700; color: var(--accent); white-space: nowrap; }
+      .search-result .sr-sec { font-size: 13px; font-weight: 700; color: var(--ink); }
+      .search-result .sr-snippet {
+        display: block; font-size: 12.5px; line-height: 1.6; color: var(--ink-2);
+        overflow-wrap: anywhere;
+      }
+      .search-result mark { background: var(--gold-soft); color: var(--gold); border-radius: 2px; padding: 0 1px; }
+      .search-empty { padding: 12px 10px; font-size: 13.5px; color: var(--ink-3); text-align: center; }
+      .search-more { padding: 6px 10px 8px; font-size: 12px; color: var(--ink-3); text-align: center; }
+      @media (max-width: 640px) {
+        .site-search { flex: 1 1 180px; }
+        .site-search-panel { width: calc(100vw - 40px); }
+      }
     </style>
   </head>
   <body>
+    <div id="read-progress" aria-hidden="true"></div>
     <header class="masthead">
       <div class="mast-date">
         <span>北京时间 · 每日 08:10 刊发</span>
@@ -562,6 +726,7 @@
         <span>沈阳 · 鞍山 · 卡尔加里 · 海斯 · 京都</span>
       </div>
       <h1>每日晨间简报<span class="seal">公开版</span></h1>
+      <p class="mast-intro">每天早上 08:10 更新 · 覆盖沈阳、鞍山、卡尔加里、海斯、京都的晨间简报</p>
       <p class="mast-sub">最新一期：<b>2026 年 11 月 9 日（星期一）</b> · 农历丙午年十月初一 · 新月日 · 全国消防日</p>
     </header>
 
@@ -569,13 +734,20 @@
       <button class="tab-btn" role="tab" id="tab-latest" aria-selected="true" aria-controls="view-latest">最新简报</button>
       <button class="tab-btn" role="tab" id="tab-archive" aria-selected="false" aria-controls="view-archive">往期归档</button>
       <button class="tab-btn" type="button" id="tab-about">关于</button>
+      <div class="site-search" role="search">
+        <span class="site-search-icon" aria-hidden="true">🔍</span>
+        <input type="search" id="site-search-input" placeholder="搜索简报…" aria-label="搜索简报" autocomplete="off" />
+        <div class="site-search-panel" id="site-search-panel" role="listbox" aria-label="搜索结果" hidden></div>
+      </div>
       <span class="upd">本期数据截至 11 月 9 日 08:10 前后</span>
+      <button class="theme-toggle" type="button" id="theme-toggle" aria-label="切换到深色模式" title="切换到深色模式">☾</button>
     </div>
 
     <main class="wrap">
       <!-- ================= 最新简报 ================= -->
             <div id="view-latest" role="tabpanel" aria-labelledby="tab-latest">
 
+        <div class="issue-tools"><button class="copy-link-btn" type="button" data-copy-date="2026-11-09">复制链接</button></div>
         <div class="strip" aria-label="五城气温速览">
           <div class="cell">
             <div class="big">6°<small> / -5°</small></div>
@@ -790,7 +962,7 @@
             <div class="issue-date serif">2026 年 11 月 8 日（星期日）</div>
             <p class="issue-sub">农历丙午年九月三十 · 立冬次日，寒潮过境</p>
           </div>
-          <button class="tab-btn back-archive" type="button">← 返回归档</button>
+          <button class="tab-btn back-archive" type="button">← 返回归档</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-08">复制链接</button>
         </div>
 
         <div class="strip" aria-label="五城气温速览">
@@ -1007,7 +1179,7 @@
             <div class="issue-date serif">2026 年 11 月 1 日（星期日）</div>
             <p class="issue-sub">农历丙午年九月廿三 · 霜降节气 · 全省正式开栓供热 · 补档版（2026 年 11 月 8 日晚补写）</p>
           </div>
-          <button class="tab-btn back-archive" type="button">← 返回归档</button>
+          <button class="tab-btn back-archive" type="button">← 返回归档</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-01">复制链接</button>
         </div>
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">12.7°<small> / -0.3°</small></div><div class="meta"><b>沈阳</b><br />毛毛雨转多云<br />西北风阵风 43 km/h</div></div><div class="cell"><div class="big">15.1°<small> / 1.0°</small></div><div class="meta"><b>鞍山</b><br />毛毛雨，降水约 3.3 毫米<br />西北风阵风 44 km/h</div></div><div class="cell"><div class="big">4.2°<small> / -2.8°</small></div><div class="meta"><b>卡尔加里</b><br />当地 10 月 31 日 · 阴<br />湿度约 87%，体感偏冷</div></div><div class="cell"><div class="big">15.7°<small> / 12.3°</small></div><div class="meta"><b>海斯</b><br />当地 10 月 31 日 · 毛毛雨<br />降水约 2.8 毫米</div></div><div class="cell"><div class="big">18.7°<small> / 9.2°</small></div><div class="meta"><b>京都</b><br />阴 · 全天无降水<br />早晚 9°C，昼夜温差大</div></div></div>
         
@@ -1194,7 +1366,7 @@
             <div class="issue-date serif">2026 年 11 月 2 日（星期一）</div>
             <p class="issue-sub">农历丙午年九月廿四 · 霜降节气 · 下弦月 · 补档版（2026 年 11 月 8 日晚补写）</p>
           </div>
-          <button class="tab-btn back-archive" type="button">← 返回归档</button>
+          <button class="tab-btn back-archive" type="button">← 返回归档</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-02">复制链接</button>
         </div>
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">8.5°<small> / -2.7°</small></div><div class="meta"><b>沈阳</b><br />阴 · 全天无降水<br />AQI 约 162（中度污染）</div></div><div class="cell"><div class="big">10.8°<small> / -2.1°</small></div><div class="meta"><b>鞍山</b><br />阴 · 全天无降水<br />AQI 约 158（中度污染）</div></div><div class="cell"><div class="big">5.2°<small> / -3.0°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 1 日 · 阴<br />阿尔伯塔省起实行永久“阿尔伯塔时间”</div></div><div class="cell"><div class="big">18.0°<small> / 13.0°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 1 日 · 毛毛雨<br />东南风阵风 53 km/h</div></div><div class="cell"><div class="big">17.4°<small> / 12.1°</small></div><div class="meta"><b>京都</b><br />小雨 · 全天降水约 7.8 毫米<br />带伞穿防风外套</div></div></div>
         
@@ -1381,7 +1553,7 @@
             <div class="issue-date serif">2026 年 11 月 3 日（星期二）</div>
             <p class="issue-sub">农历丙午年九月廿五 · 霜降节气 · 补档版（2026 年 11 月 8 日晚补写）</p>
           </div>
-          <button class="tab-btn back-archive" type="button">← 返回归档</button>
+          <button class="tab-btn back-archive" type="button">← 返回归档</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-03">复制链接</button>
         </div>
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">11.6°<small> / 2.6°</small></div><div class="meta"><b>沈阳</b><br />多云 · 全天无降水<br />AQI 约 111（轻度污染）</div></div><div class="cell"><div class="big">14.0°<small> / 4.0°</small></div><div class="meta"><b>鞍山</b><br />晴 · 全天无降水<br />台安县发布大雾黄色预警</div></div><div class="cell"><div class="big">7.2°<small> / -3.8°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 2 日 · 大部晴<br />创新周开幕</div></div><div class="cell"><div class="big">25.4°<small> / 12.5°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 2 日 · 中雨<br />南风阵风 69 km/h</div></div><div class="cell"><div class="big">19.6°<small> / 10.9°</small></div><div class="meta"><b>京都</b><br />阴 · 全天无降水<br />最高近 20°C</div></div></div>
         
@@ -1566,7 +1738,7 @@
             <div class="issue-date serif">2026 年 11 月 4 日（星期三）</div>
             <p class="issue-sub">农历丙午年九月廿六 · 霜降节气 · 降温前回暖 · 补档版（2026 年 11 月 8 日晚补写）</p>
           </div>
-          <button class="tab-btn back-archive" type="button">← 返回归档</button>
+          <button class="tab-btn back-archive" type="button">← 返回归档</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-04">复制链接</button>
         </div>
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">18.2°<small> / 7.1°</small></div><div class="meta"><b>沈阳</b><br />阴 · 南风阵风 58 km/h<br />降温前的回暖，明日骤降</div></div><div class="cell"><div class="big">18.9°<small> / 9.5°</small></div><div class="meta"><b>鞍山</b><br />阴 · 南风阵风 56 km/h<br />11 月里难得的暖和天</div></div><div class="cell"><div class="big">11.9°<small> / -0.9°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 3 日 · 阴<br />本周最暖的一天</div></div><div class="cell"><div class="big">14.4°<small> / 6.1°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 3 日 · 中雨<br />降水约 15.6 毫米，阵风 70 km/h</div></div><div class="cell"><div class="big">19.1°<small> / 9.7°</small></div><div class="meta"><b>京都</b><br />毛毛雨 · 降水约 1.6 毫米<br />早晚 10°C 左右</div></div></div>
         
@@ -1751,7 +1923,7 @@
             <div class="issue-date serif">2026 年 11 月 5 日（星期四）</div>
             <p class="issue-sub">农历丙午年九月廿七 · 霜降节气 · 冷锋过境 · 补档版（2026 年 11 月 8 日晚补写）</p>
           </div>
-          <button class="tab-btn back-archive" type="button">← 返回归档</button>
+          <button class="tab-btn back-archive" type="button">← 返回归档</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-05">复制链接</button>
         </div>
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">6.7°<small> / -0.9°</small></div><div class="meta"><b>沈阳</b><br />白天气温 · 冷锋过境<br />凌晨锋前曾达 13.8°C</div></div><div class="cell"><div class="big">10.9°<small> / 0.5°</small></div><div class="meta"><b>鞍山</b><br />白天气温 · 冷锋过境<br />凌晨曾达 14.5°C</div></div><div class="cell"><div class="big">6.4°<small> / -2.2°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 4 日 · 多云<br />全市用水限制今日生效</div></div><div class="cell"><div class="big">17.1°<small> / 4.3°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 4 日 · 大部晴朗<br />早晚仅 4°C，昼夜温差大</div></div><div class="cell"><div class="big">23.3°<small> / 13.8°</small></div><div class="meta"><b>京都</b><br />小雨 · 降水约 3.9 毫米<br />本周最暖，最高 23°C</div></div></div>
         
@@ -1939,7 +2111,7 @@
             <div class="issue-date serif">2026 年 11 月 6 日（星期五）</div>
             <p class="issue-sub">农历丙午年九月廿八 · 霜降最后一天 · 晴冷 · 补档版（2026 年 11 月 8 日晚补写）</p>
           </div>
-          <button class="tab-btn back-archive" type="button">← 返回归档</button>
+          <button class="tab-btn back-archive" type="button">← 返回归档</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-06">复制链接</button>
         </div>
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">2.4°<small> / -2.8°</small></div><div class="meta"><b>沈阳</b><br />晴 · 全天无降水<br />西北风阵风 45 km/h</div></div><div class="cell"><div class="big">5.0°<small> / -2.5°</small></div><div class="meta"><b>鞍山</b><br />晴 · 全天无降水<br />北风阵风 41 km/h</div></div><div class="cell"><div class="big">10.0°<small> / -1.6°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 5 日 · 毛毛雨<br />西风阵风 40 km/h</div></div><div class="cell"><div class="big">14.6°<small> / 4.0°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 5 日 · 阴<br />北风阵风 36 km/h</div></div><div class="cell"><div class="big">20.9°<small> / 12.9°</small></div><div class="meta"><b>京都</b><br />毛毛雨 · 降水约 0.2 毫米<br />西北风阵风 44 km/h</div></div></div>
         
@@ -2125,7 +2297,7 @@
             <div class="issue-date serif">2026 年 11 月 7 日（星期六）</div>
             <p class="issue-sub">农历丙午年九月廿九 · 立冬节气 · 补档版（2026 年 11 月 8 日晚补写）</p>
           </div>
-          <button class="tab-btn back-archive" type="button">← 返回归档</button>
+          <button class="tab-btn back-archive" type="button">← 返回归档</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-07">复制链接</button>
         </div>
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">0.5°<small> / -4.7°</small></div><div class="meta"><b>沈阳</b><br />阴 · 立冬当日<br />寒潮持续，北风不大</div></div><div class="cell"><div class="big">2.1°<small> / -4.4°</small></div><div class="meta"><b>鞍山</b><br />阴 · 立冬当日<br />寒潮持续</div></div><div class="cell"><div class="big">10.2°<small> / -0.1°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 6 日 · 阴<br />西南风阵风 62 km/h</div></div><div class="cell"><div class="big">9.1°<small> / 1.7°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 6 日 · 阴<br />本周最冷，最高仅 9°C</div></div><div class="cell"><div class="big">15.3°<small> / 9.7°</small></div><div class="meta"><b>京都</b><br />阴 · 立冬当日<br />西北风阵风近 50 km/h</div></div></div>
         
@@ -2314,6 +2486,11 @@
             <h2 class="serif">往期归档</h2>
             <span class="note">按日期倒序 · 点任意一期打开全文</span>
           </div>
+          <div class="date-jump">
+            <label for="date-jump-input">按日期查看</label>
+            <input type="date" id="date-jump-input" min="2026-11-01" />
+            <span class="date-jump-note" id="date-jump-note" hidden>这一天没有简报</span>
+          </div>
           <div class="arch-list">
             <button class="arch-item" data-open-date="2026-11-09">
               <span class="d">11 月 9 日</span>
@@ -2387,6 +2564,8 @@
       <div class="f-title">每日晨间简报</div>
       <p>每日 08:10（北京时间）刊发 · 沈阳 / 鞍山 / 卡尔加里 / 海斯 / 京都五城天气与新闻、金融市场、体育、月相卦象与娱乐资讯<br />本期（2026 年 11 月 9 日）天气与榜单数据截至当日 08:10 前后；A 股、美股、黄金为 11 月 6 日最近交易日收盘数据。</p>
     </footer>
+
+    <button id="back-to-top" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
 
     <script>
       (function () {
@@ -2591,6 +2770,289 @@
         if (!btn || !about) { return; }
         btn.addEventListener('click', function () {
           about.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      })();
+    </script>
+    <script>
+      /* UX additions 2026-11-09: reading progress bar, back-to-top button,
+         dark-mode toggle, per-issue copy link, archive date quick-jump,
+         and #YYYY-MM-DD deep links (so a copied issue link opens that
+         issue). All additive; the scroll-restoration handling above is
+         untouched — a deep link only acts on a fresh load, never on a
+         bfcache restore, where the browser keeps the reader's position. */
+      (function () {
+        var root = document.documentElement;
+
+        /* ---------- dark mode toggle ---------- */
+        var themeBtn = document.getElementById('theme-toggle');
+        function effectiveTheme() { return root.classList.contains('dark') ? 'dark' : 'light'; }
+        function paintThemeBtn() {
+          if (!themeBtn) { return; }
+          var dark = effectiveTheme() === 'dark';
+          themeBtn.textContent = dark ? '☀' : '☾';
+          themeBtn.setAttribute('aria-label', dark ? '切换到浅色模式' : '切换到深色模式');
+          themeBtn.title = dark ? '切换到浅色模式' : '切换到深色模式';
+        }
+        if (themeBtn) {
+          themeBtn.addEventListener('click', function () {
+            var dark = effectiveTheme() !== 'dark';
+            root.classList.toggle('dark', dark);
+            root.classList.toggle('light', !dark);
+            try { localStorage.setItem('briefing-theme', dark ? 'dark' : 'light'); } catch (e) {}
+            paintThemeBtn();
+          });
+          paintThemeBtn();
+        }
+
+        /* ---------- reading progress + back-to-top (one rAF-throttled listener) ---------- */
+        var bar = document.getElementById('read-progress');
+        var topBtn = document.getElementById('back-to-top');
+        var ticking = false;
+        function onScroll() {
+          var doc = document.documentElement;
+          var max = doc.scrollHeight - window.innerHeight;
+          var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+          if (bar) { bar.style.width = (p * 100).toFixed(2) + '%'; }
+          if (topBtn) { topBtn.classList.toggle('visible', window.scrollY > 600); }
+          ticking = false;
+        }
+        window.addEventListener('scroll', function () {
+          if (!ticking) { ticking = true; window.requestAnimationFrame(onScroll); }
+        }, { passive: true });
+        onScroll();
+        if (topBtn) {
+          topBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }
+
+        /* ---------- copy issue link ---------- */
+        function issueUrl(date) {
+          var base = window.location.href.split('#')[0];
+          return base + '#' + date;
+        }
+        function fallbackCopy(text) {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed'; ta.style.top = '0'; ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+        var copyBtns = document.querySelectorAll('.copy-link-btn');
+        for (var i = 0; i < copyBtns.length; i++) {
+          copyBtns[i].addEventListener('click', function () {
+            var btn = this;
+            var url = issueUrl(btn.getAttribute('data-copy-date'));
+            var done = function (ok) {
+              if (btn.dataset.timer) { clearTimeout(Number(btn.dataset.timer)); }
+              btn.textContent = ok ? '已复制' : '复制失败';
+              btn.classList.toggle('copied', ok);
+              btn.dataset.timer = String(setTimeout(function () {
+                btn.textContent = '复制链接';
+                btn.classList.remove('copied');
+              }, 2000));
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(url).then(function () { done(true); },
+                function () { done(fallbackCopy(url)); });
+            } else {
+              done(fallbackCopy(url));
+            }
+          });
+        }
+
+        /* ---------- archive date quick-jump ---------- */
+        var dateInput = document.getElementById('date-jump-input');
+        var dateNote = document.getElementById('date-jump-note');
+        if (dateInput) {
+          var today = new Date();
+          var ty = today.getFullYear();
+          var tm = ('0' + (today.getMonth() + 1)).slice(-2);
+          var td = ('0' + today.getDate()).slice(-2);
+          dateInput.max = ty + '-' + tm + '-' + td;
+          dateInput.addEventListener('change', function () {
+            var v = dateInput.value;
+            if (!v) { if (dateNote) { dateNote.hidden = true; } return; }
+            var target = document.querySelector('.arch-item[data-open-date="' + v + '"]');
+            if (target) {
+              if (dateNote) { dateNote.hidden = true; }
+              target.click(); /* same mechanism as tapping the archive entry */
+            } else if (dateNote) {
+              dateNote.hidden = false;
+            }
+          });
+        }
+
+        /* ---------- #YYYY-MM-DD deep link (makes copied links land) ---------- */
+        var m = window.location.hash.match(/^#(\d{4}-\d{2}-\d{2})$/);
+        var deepDate = m ? m[1] : null;
+        if (deepDate) {
+          window.addEventListener('load', function () {
+            var target = document.querySelector('.arch-item[data-open-date="' + deepDate + '"]');
+            if (target) { target.click(); }
+          });
+        }
+      })();
+    </script>
+    <script>
+      /* Site search 2026-11-09 (additive): fully client-side, no external
+         library or index is loaded. The index is built at runtime from the
+         briefing text already on this page — every issue panel (#view-latest
+         plus each .issue-panel) and every section inside it — so issues the
+         daily update adds later are searchable automatically with no extra
+         step. Results reuse the existing navigation: clicking a result
+         clicks the matching .arch-item (the same mechanism the archive and
+         the date quick-jump use), then scrolls that section into view. */
+      (function () {
+        var input = document.getElementById('site-search-input');
+        var panel = document.getElementById('site-search-panel');
+        if (!input || !panel) { return; }
+
+        function norm(s) { return (s || '').replace(/\s+/g, ' ').trim(); }
+
+        /* ---------- build the index from the DOM ---------- */
+        var index = [];
+        var containers = [];
+        var latest = document.getElementById('view-latest');
+        if (latest) { containers.push(latest); }
+        var issuePanels = document.querySelectorAll('.issue-panel');
+        for (var c = 0; c < issuePanels.length; c++) { containers.push(issuePanels[c]); }
+        for (var i = 0; i < containers.length; i++) {
+          var box = containers[i];
+          var copyBtn = box.querySelector('.copy-link-btn[data-copy-date]');
+          if (!copyBtn) { continue; }
+          var date = copyBtn.getAttribute('data-copy-date');
+          var sections = box.querySelectorAll('section.blk[id]');
+          for (var j = 0; j < sections.length; j++) {
+            var sec = sections[j];
+            var h2 = sec.querySelector('.blk-head h2');
+            var name = h2 ? norm(h2.textContent) : '';
+            var text = norm(sec.textContent);
+            if (!text) { continue; }
+            index.push({
+              date: date, name: name, id: sec.id,
+              text: text, lower: text.toLowerCase()
+            });
+          }
+        }
+        /* newest issue first, section order preserved within an issue */
+        index.sort(function (a, b) {
+          if (a.date === b.date) { return 0; }
+          return a.date < b.date ? 1 : -1;
+        });
+
+        function esc(s) {
+          return s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        /* snippet: the text around the first hit, keyword wrapped in <mark> */
+        function snippetHtml(entry, q, pos) {
+          var start = Math.max(0, pos - 26);
+          var end = Math.min(entry.text.length, pos + q.length + 46);
+          var before = entry.text.slice(start, pos);
+          var hit = entry.text.slice(pos, pos + q.length);
+          var after = entry.text.slice(pos + q.length, end);
+          return (start > 0 ? '…' : '') + esc(before) + '<mark>' + esc(hit) +
+            '</mark>' + esc(after) + (end < entry.text.length ? '…' : '');
+        }
+
+        function hidePanel() { panel.hidden = true; panel.innerHTML = ''; }
+        function clearSearch() { input.value = ''; hidePanel(); }
+
+        var LIMIT = 30;
+        function runSearch() {
+          var q = input.value.trim();
+          if (!q) { hidePanel(); return; }
+          var ql = q.toLowerCase();
+          var matches = [];
+          for (var i = 0; i < index.length; i++) {
+            var pos = index[i].lower.indexOf(ql);
+            if (pos !== -1) { matches.push({ entry: index[i], pos: pos }); }
+          }
+          panel.innerHTML = '';
+          if (!matches.length) {
+            var empty = document.createElement('div');
+            empty.className = 'search-empty';
+            empty.textContent = '没有找到相关内容';
+            panel.appendChild(empty);
+            panel.hidden = false;
+            return;
+          }
+          var shown = Math.min(matches.length, LIMIT);
+          for (var k = 0; k < shown; k++) {
+            (function (m) {
+              var btn = document.createElement('button');
+              btn.type = 'button';
+              btn.className = 'search-result';
+              btn.setAttribute('role', 'option');
+              btn.setAttribute('data-goto-date', m.entry.date);
+              btn.setAttribute('data-goto-id', m.entry.id);
+              var meta = document.createElement('span');
+              meta.className = 'sr-meta';
+              var d = document.createElement('span');
+              d.className = 'sr-date'; d.textContent = m.entry.date;
+              var s = document.createElement('span');
+              s.className = 'sr-sec'; s.textContent = m.entry.name;
+              meta.appendChild(d); meta.appendChild(s);
+              var snip = document.createElement('span');
+              snip.className = 'sr-snippet';
+              snip.innerHTML = snippetHtml(m.entry, q, m.pos);
+              btn.appendChild(meta); btn.appendChild(snip);
+              btn.addEventListener('click', function () { goTo(m.entry); });
+              panel.appendChild(btn);
+            })(matches[k]);
+          }
+          if (matches.length > shown) {
+            var more = document.createElement('div');
+            more.className = 'search-more';
+            more.textContent = '共 ' + matches.length + ' 条结果，仅显示前 ' + shown + ' 条';
+            panel.appendChild(more);
+          }
+          panel.hidden = false;
+        }
+
+        /* Navigate: click the archive entry for that issue (existing
+           mechanism), then scroll the section into view once the panel
+           switch has landed. */
+        function goTo(entry) {
+          hidePanel();
+          input.blur();
+          var arch = document.querySelector('.arch-item[data-open-date="' + entry.date + '"]');
+          if (arch) { arch.click(); }
+          window.setTimeout(function () {
+            var el = document.getElementById(entry.id);
+            if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+          }, 420);
+        }
+
+        /* ---------- wiring: light debounce, Escape, outside tap ---------- */
+        var timer = null;
+        input.addEventListener('input', function () {
+          if (timer) { clearTimeout(timer); }
+          timer = setTimeout(runSearch, 120);
+        });
+        input.addEventListener('focus', function () {
+          if (input.value.trim()) { runSearch(); }
+        });
+        input.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            clearSearch();
+            input.blur();
+          } else if (e.key === 'Enter') {
+            e.preventDefault();
+            var first = panel.querySelector('.search-result');
+            if (first && !panel.hidden) { first.click(); }
+          }
+        });
+        document.addEventListener('click', function (e) {
+          var wrap = input.parentNode;
+          if (wrap && !wrap.contains(e.target)) { hidePanel(); }
         });
       })();
     </script>
