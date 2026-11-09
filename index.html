@@ -1095,8 +1095,11 @@
       .toc-panel { padding-bottom: 34px; }
       .toc-panel::after { content: ""; display: block; height: 8px; }
       /* in-page search hits: matches of the current query inside the
-         section a result jumps to */
-      mark.sr-hit { background: var(--gold-soft); color: var(--ink); border-radius: 2px; }
+         section a result jumps to. A solid, clearly visible yellow in
+         both colour schemes (the old near-cream tint was effectively
+         invisible against the page), and the marks stay in the DOM
+         until the next search or issue switch — no fade-out. */
+      mark.sr-hit { background: #ffe066; color: #191c1e; border-radius: 2px; padding: 0 1px; box-shadow: 0 0 0 1px rgba(201, 162, 0, .5); }
     </style>
   </head>
   <body>
@@ -3399,6 +3402,7 @@
              over), and any later resting place is snapped instead. */
           nav._progTarget = target;
           nav._progAt = Date.now();
+          nav._userDriven = false; /* a programmatic landing, even right after the reader's pointer touched the strip */
           nav.scrollTo({ left: target, behavior: 'smooth' });
         }
         /* Scroll the bar only when the active link is (partly) out of view. */
@@ -3428,12 +3432,12 @@
           }
           state.placed = true;
         }
-        function setActive(state, link) {
+        function setActive(state, link, animate) {
           if (link === state.activeLink) { return false; }
           for (var k = 0; k < state.links.length; k++) { state.links[k].classList.remove('active'); }
           link.classList.add('active');
           state.activeLink = link;
-          placePill(state, link, state.placed);
+          placePill(state, link, animate === undefined ? state.placed : animate);
           return true;
         }
         var states = [];
@@ -3445,11 +3449,31 @@
             pill.className = 'pill no-anim';
             pill.setAttribute('aria-hidden', 'true');
             scroller.insertBefore(pill, scroller.firstChild);
-            var state = { nav: nav, scroller: scroller, links: links, targets: [], clickedAt: 0, pill: pill, placed: false, activeLink: null };
+            var state = { nav: nav, scroller: scroller, links: links, targets: [], refs: [], clickedAt: 0, pill: pill, placed: false, activeLink: null };
             for (var i = 0; i < links.length; i++) {
               (function (link) {
                 var id = link.getAttribute('href').slice(1);
-                state.targets.push(document.getElementById(id));
+                var target = document.getElementById(id);
+                state.targets.push(target);
+                /* The element whose top the scrollspy watches for
+                   this link: the section itself — except for a
+                   section that opens a category group, where the
+                   group's divider head is the first part of that
+                   section to reach the top of the viewport. Counting
+                   such a section from its divider's top keeps the
+                   highlight from sitting on the previous section
+                   while the divider and the section's heading are
+                   already what the reader sees at the top. */
+                var ref = target;
+                if (target && target.parentNode &&
+                    target.parentNode.classList &&
+                    target.parentNode.classList.contains('cat-body')) {
+                  var firstSec = target.parentNode.querySelector('section.blk');
+                  if (firstSec === target && target.parentNode.parentNode) {
+                    ref = target.parentNode.parentNode;
+                  }
+                }
+                state.refs.push(ref);
                 link.addEventListener('click', function () {
                   state.clickedAt = Date.now();
                   setActive(state, link);
@@ -3466,15 +3490,64 @@
                programmatic target (link tap centering, scrollspy
                reveal, or a previous snap) is left alone; wheel/touch
                input clears that record, so a reader's own scroll
-               always ends snapped. */
+               always ends snapped.
+               Both edges are policed, not just the left: a resting
+               position is only accepted when the link straddling the
+               RIGHT edge shows at least half its width. If it shows
+               less — down to a single character, as readers reported
+               for 「每日金句」 — the strip advances to that link's own
+               start and the check repeats, until the rightmost
+               visible link shows at least half. The end position is
+               the one exception: fitEndPadding makes the last link
+               fully visible there, so resting at max is always fine.
+               A later settle pass (~750ms after the last scroll
+               event) re-runs the same check, in case the browser's
+               own mandatory scroll-snap pulled the strip to a
+               neighbouring snap point after the script's smooth
+               scroll came to rest. */
             var snapTimer = null;
+            var settleTimer = null;
+            function straddleAt(pos) {
+              var edge = pos + scroller.clientWidth;
+              for (var j = 0; j < links.length; j++) {
+                var ls = links[j].offsetLeft, le = ls + links[j].offsetWidth;
+                if (ls < edge && edge < le) { return links[j]; }
+              }
+              return null;
+            }
+            function rightEdgeBad(pos, max) {
+              if (pos >= max - 0.5) { return false; } /* end position: last link fully visible */
+              var s = straddleAt(pos);
+              if (!s) { return false; }
+              return (pos + scroller.clientWidth - s.offsetLeft) < s.offsetWidth / 2;
+            }
+            function fixRightEdge(best, max) {
+              var guard = 0;
+              while (guard++ < links.length + 2) {
+                if (best >= max - 0.5) { return max; }
+                var s = straddleAt(best);
+                if (!s) { return best; }
+                var vis = best + scroller.clientWidth - s.offsetLeft;
+                if (vis >= s.offsetWidth / 2) { return best; }
+                var nt = s.offsetLeft - PAD_L;
+                if (nt > max) { return max; }
+                if (nt <= best) { return best; }
+                best = nt;
+              }
+              return best;
+            }
             function snapNow() {
               snapTimer = null;
               fitEndPadding(scroller, links);
               var max = scroller.scrollWidth - scroller.clientWidth;
               if (max <= 0) { return; }
               var cur = scroller.scrollLeft;
-              if (scroller._progAt && Math.abs(cur - scroller._progTarget) <= 2) { return; }
+              /* A programmatic landing (link-tap centering, scrollspy
+                 reveal) is left where it was put — unless its right
+                 edge strands a link at under half width, which no
+                 resting position may do. */
+              if (!scroller._userDriven && scroller._progAt &&
+                  Math.abs(cur - scroller._progTarget) <= 2 && !rightEdgeBad(cur, max)) { return; }
               if (Date.now() - state.clickedAt < 350) { return; }
               var targets = snapTargets(scroller, links, max);
               var best = targets[0], bd = Math.abs(cur - best);
@@ -3482,72 +3555,67 @@
                 var d = Math.abs(cur - targets[i]);
                 if (d < bd) { bd = d; best = targets[i]; }
               }
-              /* Right edge: never rest with a one-character sliver of
-                 the next link showing. If the link straddling the
-                 right edge shows less than ~36px (its padding plus a
-                 single character), rest at that link's own start
-                 instead, so it is fully readable at the left edge. */
-              for (var bump = 0; bump < 2; bump++) {
-                var edge = best + scroller.clientWidth;
-                var straddle = null;
-                for (var j = 0; j < links.length; j++) {
-                  var ls = links[j].offsetLeft, le = ls + links[j].offsetWidth;
-                  if (ls < edge && edge < le) { straddle = links[j]; break; }
-                }
-                if (!straddle) { break; }
-                if (edge - straddle.offsetLeft >= 36) { break; }
-                var nt = straddle.offsetLeft - PAD_L;
-                if (nt <= best || nt > max) { break; }
-                best = nt;
-              }
+              best = fixRightEdge(best, max);
               if (Math.abs(best - cur) < 1) { return; }
               scroller._progTarget = best;
               scroller._progAt = Date.now();
+              scroller._userDriven = false;
               scroller.scrollTo({ left: best, behavior: 'smooth' });
             }
             scroller.addEventListener('scroll', function () {
               updateFade(scroller);
               if (snapTimer) { clearTimeout(snapTimer); }
               snapTimer = setTimeout(snapNow, 130);
+              if (settleTimer) { clearTimeout(settleTimer); }
+              settleTimer = setTimeout(snapNow, 750);
             }, { passive: true });
-            scroller.addEventListener('wheel', function () { scroller._progAt = 0; }, { passive: true });
-            scroller.addEventListener('touchstart', function () { scroller._progAt = 0; }, { passive: true });
+            function markUser() { scroller._userDriven = true; scroller._progAt = 0; }
+            scroller.addEventListener('wheel', markUser, { passive: true });
+            scroller.addEventListener('touchstart', markUser, { passive: true });
+            scroller.addEventListener('pointerdown', markUser, { passive: true });
             fitEndPadding(scroller, links);
             updateFade(scroller);
             states.push(state);
           })(navs[n]);
         }
+        /* Scrollspy, computed straight from the scroll position:
+           the current section is the last one whose top has passed
+           the reading line just below the sticky bar, worked out
+           synchronously inside the scroll handler below — no
+           observer thresholds and no animation-frame deferral, so
+           the highlight is never a section behind. The pill is
+           placed without its glide on scroll-driven changes (a tap
+           still glides): while the page is moving, the black
+           background sits exactly on the link for the section at
+           the top, never in transit toward it. There is also no
+           post-tap grace period: a jumped-to section lands with
+           its top at the 68px scroll-margin, above the 78px line,
+           so it registers as current the moment it lands. */
         function spy() {
           var doc = document.documentElement;
           var atBottom = window.innerHeight + window.scrollY >= doc.scrollHeight - 4;
           for (var s = 0; s < states.length; s++) {
             var st = states[s];
             if (st.nav.getClientRects().length === 0) { continue; } /* hidden issue panel */
-            if (Date.now() - st.clickedAt < 300) { continue; } /* let a tap's jump register first */
             var current = 0;
             var line = readLine(st.nav);
-            for (var i = 0; i < st.targets.length; i++) {
-              var t = st.targets[i];
+            for (var i = 0; i < st.refs.length; i++) {
+              var t = st.refs[i];
               if (t && t.getBoundingClientRect().top <= line) { current = i; }
             }
             if (atBottom) { current = st.links.length - 1; }
             var link = st.links[current];
-            if (link && setActive(st, link)) { revealLink(st.scroller, link); }
+            if (link && setActive(st, link, false)) { revealLink(st.scroller, link); }
           }
         }
-        var ticking = false;
         var endTimer = null;
         window.addEventListener('scroll', function () {
-          if (!ticking) {
-            ticking = true;
-            window.requestAnimationFrame(function () { ticking = false; spy(); });
-          }
-          /* Scroll-end check: rAF-throttled passes can miss the final
-             resting position of a smooth jump (TOC, search, anchor),
-             and the click guard may still be up when the last scroll
-             event fires. Re-evaluating once the page has been still
-             for ~160ms guarantees the pill settles on the section
-             actually at the top. */
+          spy(); /* immediate: the highlight follows this very scroll event */
+          /* Scroll-end re-check: a smooth jump's last frame, or a
+             late layout shift (webfont landing), can move a section
+             across the line after the final scroll event; one
+             re-evaluation once the page has been still ~160ms keeps
+             the resting highlight exact. */
           if (endTimer) { clearTimeout(endTimer); }
           endTimer = setTimeout(function () { endTimer = null; spy(); }, 160);
         }, { passive: true });
@@ -3931,10 +3999,20 @@
            issues clears the search (see the listener below) and that
            clearing must not wipe the fresh highlights. */
         function goTo(entry) {
+          /* The archive click below bubbles to the document listener
+             that clears the search on every issue switch — and that
+             clearing also empties lastQuery, which applyHits reads.
+             Applying the highlights after the click (the old order)
+             therefore found an empty query and highlighted nothing.
+             Keep the query aside and restore it once the click has
+             run, so the target section really gets its marks. The
+             marks then stay until the next search or issue switch. */
+          var q = lastQuery;
           hidePanel();
           input.blur();
           var arch = document.querySelector('.arch-item[data-open-date="' + entry.date + '"]');
           if (arch) { arch.click(); }
+          lastQuery = q;
           applyHits(entry);
           window.setTimeout(function () {
             var el = document.getElementById(entry.id);
