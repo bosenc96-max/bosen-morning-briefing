@@ -38,6 +38,20 @@
         document.documentElement.classList.add(dark ? 'dark' : 'light');
       })();
     </script>
+    <script>
+      /* Font-size bootstrap: apply the reader's saved body-text size
+         (localStorage 'briefing-font-size': s / m / l) before first
+         paint, the same way the theme choice above is applied. 'm'
+         (the default) needs no attribute — the stylesheet only
+         overrides sizes for html[data-fs="s"] and html[data-fs="l"]. */
+      (function () {
+        var saved = null;
+        try { saved = localStorage.getItem('briefing-font-size'); } catch (e) {}
+        if (saved === 's' || saved === 'l') {
+          document.documentElement.setAttribute('data-fs', saved);
+        }
+      })();
+    </script>
     
     
     
@@ -1114,6 +1128,102 @@
          own every resting position. */
       .secnav-scroll { scroll-snap-type: none; }
       .secnav a { scroll-snap-align: none; }
+
+      /* ---------- 合集 / 本周回顾 / 字号 2026-11-09 (additive) ---------- */
+      #view-collections[hidden], #view-weekly[hidden] { display: none; }
+
+      /* Font-size control in the tabs row: three quiet segments. */
+      .fs-ctl {
+        display: inline-flex; align-items: center;
+        border: 1px solid var(--line); border-radius: 999px;
+        background: var(--surface); padding: 3px;
+      }
+      .fs-ctl-label { font-size: 12.5px; font-weight: 700; color: var(--ink-3); padding: 0 4px 0 8px; }
+      .fs-ctl button {
+        appearance: none; border: 0; background: transparent; color: var(--ink-2);
+        font: inherit; font-size: 13px; font-weight: 700; line-height: 1;
+        padding: 6px 11px; border-radius: 999px; cursor: pointer;
+      }
+      .fs-ctl button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+      .fs-ctl button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+      /* Body-text size steps: 中 (no data-fs) keeps every size on this
+         page exactly as authored. 小 / 大 shift only the reading text
+         (paragraphs and list copy inside the sections); headings, the
+         section nav, buttons and other chrome keep their sizes. */
+      html[data-fs="s"] body { font-size: 14px; }
+      html[data-fs="l"] body { font-size: 16.5px; }
+      html[data-fs="s"] .hl li, html[data-fs="s"] .hl p, html[data-fs="s"] .hl .cal,
+      html[data-fs="s"] .fin table, html[data-fs="s"] .fin li, html[data-fs="s"] .sport li,
+      html[data-fs="s"] .astro p, html[data-fs="s"] .astro dl, html[data-fs="s"] .advice ol,
+      html[data-fs="s"] .tarot-text, html[data-fs="s"] .tarot .advice p,
+      html[data-fs="s"] .hist .intro, html[data-fs="s"] .hist li,
+      html[data-fs="s"] .quote-card .note-text, html[data-fs="s"] .well li,
+      html[data-fs="s"] .meal .carb, html[data-fs="s"] .meal li, html[data-fs="s"] .meal .total, html[data-fs="s"] .meal .tip,
+      html[data-fs="s"] .song p, html[data-fs="s"] .anime p,
+      html[data-fs="s"] .learn p, html[data-fs="s"] .learn li, html[data-fs="s"] .reading p,
+      html[data-fs="s"] .wk-line { font-size: 13px; }
+      html[data-fs="l"] .hl li, html[data-fs="l"] .hl p, html[data-fs="l"] .hl .cal,
+      html[data-fs="l"] .fin table, html[data-fs="l"] .fin li, html[data-fs="l"] .sport li,
+      html[data-fs="l"] .astro p, html[data-fs="l"] .astro dl, html[data-fs="l"] .advice ol,
+      html[data-fs="l"] .tarot-text, html[data-fs="l"] .tarot .advice p,
+      html[data-fs="l"] .hist .intro, html[data-fs="l"] .hist li,
+      html[data-fs="l"] .quote-card .note-text, html[data-fs="l"] .well li,
+      html[data-fs="l"] .meal .carb, html[data-fs="l"] .meal li, html[data-fs="l"] .meal .total, html[data-fs="l"] .meal .tip,
+      html[data-fs="l"] .song p, html[data-fs="l"] .anime p,
+      html[data-fs="l"] .learn p, html[data-fs="l"] .learn li, html[data-fs="l"] .reading p,
+      html[data-fs="l"] .wk-line { font-size: 15.5px; }
+      html[data-fs="s"] .reading .excerpt p { font-size: 13.5px; }
+      html[data-fs="l"] .reading .excerpt p { font-size: 16px; }
+      html[data-fs="s"] .news-item p, html[data-fs="s"] .fin p, html[data-fs="s"] .gos-item p,
+      html[data-fs="s"] .wx dl, html[data-fs="s"] .wx .tip, html[data-fs="s"] .prices li,
+      html[data-fs="s"] .arch-item .sum, html[data-fs="s"] .about-body p,
+      html[data-fs="s"] .coll-item .coll-sub { font-size: 12.5px; }
+      html[data-fs="l"] .news-item p, html[data-fs="l"] .fin p, html[data-fs="l"] .gos-item p,
+      html[data-fs="l"] .wx dl, html[data-fs="l"] .wx .tip, html[data-fs="l"] .prices li,
+      html[data-fs="l"] .arch-item .sum, html[data-fs="l"] .about-body p,
+      html[data-fs="l"] .coll-item .coll-sub { font-size: 15px; }
+      html[data-fs="s"] .sec-note, html[data-fs="s"] .price-table { font-size: 12px; }
+      html[data-fs="l"] .sec-note, html[data-fs="l"] .price-table { font-size: 14.5px; }
+
+      /* Collections + weekly review: rows reuse the archive card look. */
+      .coll-h { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin: 22px 0 10px; }
+      .coll-h:first-child { margin-top: 2px; }
+      .coll-h h3 { font-family: "Noto Serif SC", serif; font-size: 19px; font-weight: 900; margin: 0; }
+      .coll-h .note { font-size: 12.5px; color: var(--ink-3); }
+      .coll-list { display: flex; flex-direction: column; gap: 8px; }
+      .coll-item {
+        appearance: none; width: 100%; text-align: left; font: inherit; cursor: pointer;
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 12px 16px; color: var(--ink);
+        display: flex; align-items: baseline; gap: 8px 14px; flex-wrap: wrap;
+      }
+      .coll-item:hover { border-color: var(--accent); }
+      .coll-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .coll-item .coll-title { font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 16.5px; line-height: 1.5; }
+      .coll-item .coll-sub { font-size: 13.5px; color: var(--ink-2); }
+      .coll-item .coll-date { margin-left: auto; font-size: 12.5px; color: var(--ink-3); white-space: nowrap; }
+      .coll-item .coll-go { color: var(--accent); font-weight: 700; font-size: 13px; white-space: nowrap; }
+      .wk-day { padding: 10px 0 12px; border-bottom: 1px solid var(--line); }
+      .wk-day-head { display: flex; align-items: center; gap: 10px; margin-bottom: 2px; }
+      .wk-day-head .d { font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 16px; }
+      .wk-open {
+        appearance: none; border: 0; background: transparent; cursor: pointer;
+        font: inherit; font-size: 13px; font-weight: 700; color: var(--accent);
+        padding: 2px 4px; margin-left: auto;
+      }
+      .wk-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .wk-line { margin: 2px 0; font-size: 14px; color: var(--ink-2); }
+      .wk-line b { color: var(--ink); }
+
+      /* Archive "随便看看" button, at the end of the date-jump row. */
+      .arch-random {
+        appearance: none; font: inherit; font-size: 13.5px; font-weight: 700;
+        border: 1px solid var(--line); background: var(--surface); color: var(--ink-2);
+        border-radius: 999px; padding: 7px 16px; cursor: pointer; margin-left: auto;
+      }
+      .arch-random:hover { border-color: var(--accent); color: var(--accent); }
+      .arch-random:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     </style>
   </head>
   <body>
@@ -1133,7 +1243,15 @@
     <div class="tabs" role="tablist" aria-label="简报视图">
       <button class="tab-btn" role="tab" id="tab-latest" aria-selected="true" aria-controls="view-latest">最新简报</button>
       <button class="tab-btn" role="tab" id="tab-archive" aria-selected="false" aria-controls="view-archive">往期归档</button>
+      <button class="tab-btn" role="tab" id="tab-collections" aria-selected="false" aria-controls="view-collections">合集</button>
+      <button class="tab-btn" role="tab" id="tab-weekly" aria-selected="false" aria-controls="view-weekly">本周回顾</button>
       <button class="tab-btn" type="button" id="tab-about">关于 ↓</button>
+      <span class="fs-ctl" role="group" aria-label="正文字号调节">
+        <span class="fs-ctl-label" aria-hidden="true">字号</span>
+        <button type="button" data-fs-val="s" aria-pressed="false">小</button>
+        <button type="button" data-fs-val="m" aria-pressed="true">中</button>
+        <button type="button" data-fs-val="l" aria-pressed="false">大</button>
+      </span>
       <div class="site-search" role="search">
         <span class="site-search-icon" aria-hidden="true">🔍</span>
         <input type="search" id="site-search-input" placeholder="搜索简报…" aria-label="搜索简报" autocomplete="off" />
@@ -3066,6 +3184,7 @@
             <select id="dj-day" aria-label="日"><option value="">请选择日期</option></select>
             <span class="date-jump-cur" id="date-jump-cur" aria-live="polite"></span>
             <span class="date-jump-note" id="date-jump-note" hidden>这一天没有简报</span>
+            <button type="button" class="arch-random" id="arch-random">随便看看 →</button>
           </div>
           <div class="arch-list">
             <button class="arch-item" data-open-date="2026-11-09">
@@ -3119,6 +3238,35 @@
         </section>
       </div>
     
+
+      <!-- ================= 合集：读过 / 听过 / 看过 =================
+           The three lists are filled at runtime by the collections
+           script at the end of the body, generated from each issue's
+           每日阅读 / 每日一曲 / 每日一漫 sections — a new issue adds
+           its entries automatically. -->
+      <div id="view-collections" role="tabpanel" aria-labelledby="tab-collections" hidden>
+        <section class="blk">
+          <div class="blk-head">
+            <h2 class="serif">读过 · 听过 · 看过</h2>
+            <span class="note">由各期简报自动汇集 · 点任意一条回到那一期</span>
+          </div>
+          <div id="coll-root"></div>
+        </section>
+      </div>
+
+      <!-- ================= 本周回顾 =================
+           Filled at runtime by the same script: the most recent
+           complete Monday–Sunday week whose seven issues are all
+           on this page. -->
+      <div id="view-weekly" role="tabpanel" aria-labelledby="tab-weekly" hidden>
+        <section class="blk">
+          <div class="blk-head">
+            <h2 class="serif">本周回顾</h2>
+            <span class="note" id="wk-range"></span>
+          </div>
+          <div id="wk-root"></div>
+        </section>
+      </div>
 
 </main>
 
@@ -4757,6 +4905,385 @@
         });
         var m = window.location.hash.match(/^#(\d{4}-\d{2}-\d{2})$/);
         if (m) { setIssue(m[1]); }
+      })();
+    </script>
+    <script>
+      /* 合集 / 本周回顾 / 随便看看 / 字号 2026-11-09 (additive):
+         The three collections （读过 / 听过 / 看过） and the weekly
+         review are generated at runtime from the issue sections
+         already on this page — every issue's 每日阅读 / 每日一曲 /
+         每日一漫 / 每日金句 / 今日要闻， the latest issue included —
+         so an issue added by the daily update appears in both
+         automatically; nothing is copied or maintained by hand.
+         The weekly window is the most recent complete Monday–Sunday
+         week whose seven issues are all on this page (the first
+         edition covers 2026-11-02 – 2026-11-08); it stays fixed
+         while the next week is still in progress and rolls forward
+         once a new week is complete. Opening an entry reuses the
+         archive mechanism —
+         it clicks that issue's .arch-item, then scrolls to the
+         section — so the masthead / footer / search scripts follow
+         along exactly as they do for archive navigation. */
+      (function () {
+        var WD = ['日', '一', '二', '三', '四', '五', '六'];
+        function parseDate(ds) {
+          var p = ds.split('-');
+          return new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
+        }
+        function fmtDay(ds) {
+          var p = ds.split('-');
+          return Number(p[1]) + ' 月 ' + Number(p[2]) + ' 日';
+        }
+        function fmtDayW(ds) {
+          return fmtDay(ds) + '（周' + WD[parseDate(ds).getDay()] + '）';
+        }
+        function text(el) {
+          return el ? el.textContent.replace(/\s+/g, ' ').trim() : '';
+        }
+
+        /* ---------- collect the issues ---------- */
+        var latestBox = document.getElementById('view-latest');
+        var latestBtn = latestBox ? latestBox.querySelector('.copy-link-btn[data-copy-date]') : null;
+        var latestDate = latestBtn ? latestBtn.getAttribute('data-copy-date') : null;
+        var archItems = document.querySelectorAll('.arch-item[data-open-date]');
+        var dates = [];
+        for (var i = 0; i < archItems.length; i++) {
+          dates.push(archItems[i].getAttribute('data-open-date'));
+        }
+        dates.sort(); /* ISO dates sort lexicographically, ascending */
+        if (!latestDate && dates.length) { latestDate = dates[dates.length - 1]; }
+
+        function boxFor(ds) {
+          if (ds === latestDate) { return latestBox; }
+          return document.getElementById('view-' + ds);
+        }
+        function sectionFor(box, key) {
+          if (!box) { return null; }
+          var secs = box.querySelectorAll('section.blk[id]');
+          for (var i = 0; i < secs.length; i++) {
+            var id = secs[i].id;
+            if (id === 's-' + key || id.slice(id.length - key.length - 1) === '-' + key) { return secs[i]; }
+          }
+          return null;
+        }
+        function sectionIdFor(ds, key) {
+          var sec = sectionFor(boxFor(ds), key);
+          return sec ? sec.id : null;
+        }
+        /* "《平凡的世界》——路遥" / "今日推荐：《暖暖》——梁静茹" /
+           "今日推荐：《冰菓》（TV 动画 22 集，2012 年，已完结）" */
+        function parseTtl(raw) {
+          var t = raw.replace(/^今日推荐：/, '').trim();
+          var m = t.match(/《([^》]+)》([\s\S]*)$/);
+          if (!m) { return { title: t, sub: '' }; }
+          var rest = m[2].trim();
+          var sub = '';
+          if (rest.indexOf('——') === 0) { sub = rest.slice(2).trim(); }
+          else if (rest) { sub = rest.replace(/^[（(]/, '').replace(/[）)]$/, ''); }
+          return { title: '《' + m[1] + '》', sub: sub };
+        }
+        function ttlOf(sec) {
+          if (!sec) { return null; }
+          var el = sec.querySelector('.ttl');
+          return el ? parseTtl(text(el)) : null;
+        }
+
+        var data = {}; /* ds -> { reading, song, anime, quote, headlines } */
+        for (var d = 0; d < dates.length; d++) {
+          var ds = dates[d];
+          var box = boxFor(ds);
+          if (!box) { continue; }
+          var entry = {};
+          entry.reading = ttlOf(sectionFor(box, 'reading'));
+          entry.song = ttlOf(sectionFor(box, 'song'));
+          entry.anime = ttlOf(sectionFor(box, 'anime'));
+          if (entry.anime) {
+            /* The anime title line carries format / year specs, not
+               the maker. The maker-side credit lives in the body
+               text: an explicit "X出品" when the issue names one,
+               otherwise the "改编自…" original-work credit the
+               section leads with. When neither is stated, the entry
+               honestly shows no credit rather than passing the
+               format specs off as one. */
+            var aText = text(sectionFor(box, 'anime'));
+            var sm = aText.match(/([一-龥A-Za-z·]{2,10})出品/);
+            var om = aText.match(/改编自(.{2,40}?的(?:同名)?(?:四格漫画|漫画|轻小说|小说|游戏))/);
+            if (sm) { entry.anime.sub = '出品 · ' + sm[1]; }
+            else if (om) { entry.anime.sub = '原作 · ' + om[1].replace(/\s+/g, ''); }
+            else { entry.anime.sub = ''; }
+          }
+          var qsec = sectionFor(box, 'quote');
+          if (qsec) {
+            var q = qsec.querySelector('.quote-card .q');
+            var f = qsec.querySelector('.quote-card .from');
+            if (q) { entry.quote = { q: text(q), from: text(f).replace(/^——\s*/, '') }; }
+          }
+          var hsec = sectionFor(box, 'headlines');
+          if (hsec) {
+            entry.headlines = [];
+            var arts = hsec.querySelectorAll('.hl');
+            for (var a = 0; a < arts.length; a++) {
+              var bs = arts[a].querySelectorAll('li b');
+              var titles = [];
+              for (var b = 0; b < bs.length; b++) { titles.push(text(bs[b])); }
+              if (titles.length) {
+                entry.headlines.push({ cat: text(arts[a].querySelector('h3')), titles: titles });
+              }
+            }
+          }
+          data[ds] = entry;
+        }
+
+        /* ---------- open an issue at a section (archive mechanism) ---------- */
+        function openIssue(ds, secId) {
+          var item = document.querySelector('.arch-item[data-open-date="' + ds + '"]');
+          if (item) { item.click(); }
+          if (secId) {
+            window.setTimeout(function () {
+              var el = document.getElementById(secId);
+              if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            }, 480);
+          }
+        }
+        function makeRow(ds, key, title, sub) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'coll-item';
+          var t = document.createElement('span');
+          t.className = 'coll-title';
+          t.textContent = title;
+          btn.appendChild(t);
+          if (sub) {
+            var s = document.createElement('span');
+            s.className = 'coll-sub';
+            s.textContent = sub;
+            btn.appendChild(s);
+          }
+          var dt = document.createElement('span');
+          dt.className = 'coll-date';
+          dt.textContent = fmtDayW(ds);
+          btn.appendChild(dt);
+          var go = document.createElement('span');
+          go.className = 'coll-go';
+          go.textContent = '看那期 →';
+          btn.appendChild(go);
+          btn.addEventListener('click', function () { openIssue(ds, sectionIdFor(ds, key)); });
+          return btn;
+        }
+        function subHead(parent, title, note) {
+          var head = document.createElement('div');
+          head.className = 'coll-h';
+          var h3 = document.createElement('h3');
+          h3.textContent = title;
+          head.appendChild(h3);
+          if (note) {
+            var n = document.createElement('span');
+            n.className = 'note';
+            n.textContent = note;
+            head.appendChild(n);
+          }
+          parent.appendChild(head);
+        }
+
+        /* ---------- collections: 读过 / 听过 / 看过 ---------- */
+        var collRoot = document.getElementById('coll-root');
+        if (collRoot) {
+          var groups = [
+            { key: 'reading', h: '读过', note: '每日阅读推荐过的书' },
+            { key: 'song', h: '听过', note: '每日一曲推荐过的歌' },
+            { key: 'anime', h: '看过', note: '每日一漫推荐过的番' }
+          ];
+          for (var g = 0; g < groups.length; g++) {
+            (function (grp) {
+              var rows = [];
+              for (var i = dates.length - 1; i >= 0; i--) {
+                var e = data[dates[i]];
+                if (e && e[grp.key]) { rows.push({ ds: dates[i], v: e[grp.key] }); }
+              }
+              subHead(collRoot, grp.h, grp.note + ' · 共 ' + rows.length + ' 条');
+              var list = document.createElement('div');
+              list.className = 'coll-list';
+              for (var r = 0; r < rows.length; r++) {
+                list.appendChild(makeRow(rows[r].ds, grp.key, rows[r].v.title, rows[r].v.sub));
+              }
+              collRoot.appendChild(list);
+            })(groups[g]);
+          }
+        }
+
+        /* ---------- weekly review ---------- */
+        /* The most recent complete Monday–Sunday week whose seven
+           issues are all on this page: start from the Monday of the
+           newest issue's week and step back whole weeks until a full
+           Mon–Sun span is present. */
+        function dsOf(dt) {
+          return dt.getFullYear() + '-' + ('0' + (dt.getMonth() + 1)).slice(-2) + '-' + ('0' + dt.getDate()).slice(-2);
+        }
+        function weekWindow() {
+          if (!dates.length) { return []; }
+          var have = {};
+          for (var i = 0; i < dates.length; i++) { have[dates[i]] = true; }
+          var latest = parseDate(dates[dates.length - 1]);
+          var dow = (latest.getDay() + 6) % 7; /* Monday = 0 */
+          var monday = new Date(latest.getFullYear(), latest.getMonth(), latest.getDate() - dow);
+          for (var back = 0; back < 520; back++) {
+            var start = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() - back * 7);
+            var span = [];
+            var full = true;
+            for (var k = 0; k < 7; k++) {
+              var ds = dsOf(new Date(start.getFullYear(), start.getMonth(), start.getDate() + k));
+              if (!have[ds]) { full = false; break; }
+              span.push(ds);
+            }
+            if (full) { return span; }
+          }
+          return [];
+        }
+        var wkRoot = document.getElementById('wk-root');
+        var wkRange = document.getElementById('wk-range');
+        var week = weekWindow();
+        if (wkRoot && week.length) {
+          if (wkRange) {
+            wkRange.textContent = fmtDayW(week[0]) + ' – ' + fmtDayW(week[week.length - 1]) + ' · 最近一个完整周，新一周完成时自动更新';
+          }
+          subHead(wkRoot, '本周大新闻', '各期「今日要闻」标题汇总');
+          for (var w = 0; w < week.length; w++) {
+            (function (wds) {
+              var we = data[wds];
+              if (!we || !we.headlines || !we.headlines.length) { return; }
+              var day = document.createElement('div');
+              day.className = 'wk-day';
+              var dh = document.createElement('div');
+              dh.className = 'wk-day-head';
+              var dsp = document.createElement('span');
+              dsp.className = 'd';
+              dsp.textContent = fmtDayW(wds);
+              dh.appendChild(dsp);
+              var ob = document.createElement('button');
+              ob.type = 'button';
+              ob.className = 'wk-open';
+              ob.textContent = '看那期 →';
+              ob.addEventListener('click', function () { openIssue(wds, sectionIdFor(wds, 'headlines')); });
+              dh.appendChild(ob);
+              day.appendChild(dh);
+              for (var c = 0; c < we.headlines.length; c++) {
+                var line = document.createElement('p');
+                line.className = 'wk-line';
+                var cb = document.createElement('b');
+                cb.textContent = we.headlines[c].cat;
+                line.appendChild(cb);
+                line.appendChild(document.createTextNode(' · ' + we.headlines[c].titles.join('；')));
+                day.appendChild(line);
+              }
+              wkRoot.appendChild(day);
+            })(week[w]);
+          }
+          subHead(wkRoot, '本周金句', '各期「每日金句」');
+          var qlist = document.createElement('div');
+          qlist.className = 'coll-list';
+          for (var qi = week.length - 1; qi >= 0; qi--) {
+            var qe = data[week[qi]];
+            if (qe && qe.quote) { qlist.appendChild(makeRow(week[qi], 'quote', qe.quote.q, qe.quote.from)); }
+          }
+          wkRoot.appendChild(qlist);
+          var kinds = [
+            { key: 'song', h: '本周一曲' },
+            { key: 'anime', h: '本周一漫' }
+          ];
+          for (var kg = 0; kg < kinds.length; kg++) {
+            (function (k2) {
+              subHead(wkRoot, k2.h, null);
+              var ll = document.createElement('div');
+              ll.className = 'coll-list';
+              for (var i2 = week.length - 1; i2 >= 0; i2--) {
+                var ee = data[week[i2]];
+                if (ee && ee[k2.key]) { ll.appendChild(makeRow(week[i2], k2.key, ee[k2.key].title, ee[k2.key].sub)); }
+              }
+              wkRoot.appendChild(ll);
+            })(kinds[kg]);
+          }
+        }
+
+        /* ---------- the two new views join the tab switching ---------- */
+        var tabColl = document.getElementById('tab-collections');
+        var tabWk = document.getElementById('tab-weekly');
+        var viewColl = document.getElementById('view-collections');
+        var viewWk = document.getElementById('view-weekly');
+        var viewLatest = document.getElementById('view-latest');
+        var viewArchive = document.getElementById('view-archive');
+        var tabLatest = document.getElementById('tab-latest');
+        var tabArchive = document.getElementById('tab-archive');
+        var panels = document.querySelectorAll('.issue-panel');
+        function hideMine() {
+          if (viewColl) { viewColl.hidden = true; }
+          if (viewWk) { viewWk.hidden = true; }
+          if (tabColl) { tabColl.setAttribute('aria-selected', 'false'); }
+          if (tabWk) { tabWk.setAttribute('aria-selected', 'false'); }
+        }
+        function showMine(view, tab) {
+          hideMine();
+          viewLatest.hidden = true;
+          viewArchive.hidden = true;
+          for (var i = 0; i < panels.length; i++) { panels[i].hidden = true; }
+          tabLatest.setAttribute('aria-selected', 'false');
+          tabArchive.setAttribute('aria-selected', 'false');
+          view.hidden = false;
+          tab.setAttribute('aria-selected', 'true');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        if (tabColl && viewColl) {
+          tabColl.addEventListener('click', function () { showMine(viewColl, tabColl); });
+        }
+        if (tabWk && viewWk) {
+          tabWk.addEventListener('click', function () { showMine(viewWk, tabWk); });
+        }
+        /* Every standard navigation path (tabs, archive entries,
+           prev/next, search results, deep links) ends with a standard
+           view's hidden attribute being lifted; when that happens the
+           two new views close and their tabs deselect. */
+        if (window.MutationObserver) {
+          var mo = new MutationObserver(function (recs) {
+            for (var i = 0; i < recs.length; i++) {
+              if (!recs[i].target.hidden) { hideMine(); return; }
+            }
+          });
+          var watched = [viewLatest, viewArchive];
+          for (var p = 0; p < panels.length; p++) { watched.push(panels[p]); }
+          for (var wv = 0; wv < watched.length; wv++) {
+            if (watched[wv]) { mo.observe(watched[wv], { attributes: true, attributeFilter: ['hidden'] }); }
+          }
+        }
+
+        /* ---------- archive: 随便看看 ---------- */
+        var rnd = document.getElementById('arch-random');
+        if (rnd) {
+          rnd.addEventListener('click', function () {
+            if (!dates.length) { return; }
+            var pick = dates[Math.floor(Math.random() * dates.length)];
+            var item = document.querySelector('.arch-item[data-open-date="' + pick + '"]');
+            if (item) { item.click(); }
+          });
+        }
+
+        /* ---------- font size: 小 / 中 / 大， persisted like the theme ---------- */
+        var fsBtns = document.querySelectorAll('.fs-ctl button[data-fs-val]');
+        function paintFs() {
+          var cur = document.documentElement.getAttribute('data-fs') || 'm';
+          for (var i = 0; i < fsBtns.length; i++) {
+            fsBtns[i].setAttribute('aria-pressed',
+              fsBtns[i].getAttribute('data-fs-val') === cur ? 'true' : 'false');
+          }
+        }
+        for (var f = 0; f < fsBtns.length; f++) {
+          fsBtns[f].addEventListener('click', function () {
+            var v = this.getAttribute('data-fs-val');
+            if (v === 'm') { document.documentElement.removeAttribute('data-fs'); }
+            else { document.documentElement.setAttribute('data-fs', v); }
+            try { localStorage.setItem('briefing-font-size', v); } catch (e) {}
+            paintFs();
+          });
+        }
+        paintFs();
       })();
     </script>
   </body>
