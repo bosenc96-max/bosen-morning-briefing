@@ -7,15 +7,22 @@
     <link rel="icon" href="data:," />
     <title>每日晨间简报（公开版）</title>
     <script>
-      /* Always open at the very top of the page: never restore the scroll
-         position from a previous visit, and drop any #fragment carried in
-         by the incoming link (e.g. a shared link pointing at one section)
-         before the browser can jump to it. In-page nav links are not
+      /* Fresh opens and refreshes start at the very top: drop any
+         #fragment carried in by the incoming link and scroll to 0.
+         When the page is revived from the back/forward cache
+         (pageshow with persisted === true), do nothing at all — do
+         not drop the hash and do not scroll — so the browser can
+         restore the reader's previous scroll position (e.g. after
+         returning from a news link). In-page nav links are not
          affected — tapping one still jumps to its section. */
-      if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
-      if (window.location.hash) {
-        history.replaceState(null, '', window.location.pathname + window.location.search);
-      }
+      if ('scrollRestoration' in history) { history.scrollRestoration = 'auto'; }
+      window.addEventListener('pageshow', function (e) {
+        if (e.persisted) { return; }
+        if (window.location.hash) {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+        window.scrollTo(0, 0);
+      });
     </script>
     <style>
       :root {
@@ -2558,14 +2565,20 @@
       })();
     </script>
     <script>
-      /* Belt and braces for "always start at the top": once everything has
-         loaded, settle at scroll position 0 — and do the same when the page
-         is revived from the back/forward cache, which restores the old
-         scroll position on its own. */
+      /* Fresh loads start at the top: the load event fires only on a
+         full load (never on a back/forward-cache restore), so settling
+         at scroll position 0 there is safe. On a bfcache restore
+         (pageshow with persisted === true) do nothing, so the browser
+         restores the reader's previous scroll position instead of
+         forcing the page back to the top. */
       (function () {
         window.addEventListener('load', function () { window.scrollTo(0, 0); });
         window.addEventListener('pageshow', function (e) {
-          if (e.persisted) { window.scrollTo(0, 0); }
+          if (e.persisted) { return; }
+          if (window.location.hash) {
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+          }
+          window.scrollTo(0, 0);
         });
       })();
     </script>
