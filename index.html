@@ -99,12 +99,12 @@
       /* ---------- masthead ---------- */
       .masthead {
         border-bottom: 3px double var(--ink);
-        padding: 28px 20px 18px;
+        padding: 18px 20px 12px;
         text-align: center;
       }
       .mast-date {
         display: flex; justify-content: space-between; align-items: center;
-        max-width: 1060px; margin: 0 auto 14px;
+        max-width: 1060px; margin: 0 auto 9px;
         font-size: 12.5px; color: var(--ink-3); letter-spacing: .04em;
         gap: 12px; flex-wrap: wrap;
       }
@@ -112,9 +112,9 @@
       .masthead h1 {
         font-family: "Noto Serif SC", serif;
         font-weight: 900;
-        font-size: clamp(30px, 6vw, 52px);
+        font-size: clamp(27px, 5vw, 44px);
         letter-spacing: .06em;
-        margin: 0 0 6px;
+        margin: 0 0 4px;
         line-height: 1.25;
       }
       .mast-sub { color: var(--ink-2); font-size: 14px; margin: 0; }
@@ -129,7 +129,7 @@
 
       /* ---------- view tabs ---------- */
       .tabs {
-        max-width: 1060px; margin: 0 auto; padding: 16px 20px 0;
+        max-width: 1060px; margin: 0 auto; padding: 10px 20px 0;
         display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
       }
       .tab-btn {
@@ -142,7 +142,7 @@
       .tabs .upd { margin-left: auto; font-size: 12.5px; color: var(--ink-3); }
 
       /* ---------- temp strip ---------- */
-      .wrap { max-width: 1060px; margin: 0 auto; padding: 18px 20px 40px; }
+      .wrap { max-width: 1060px; margin: 0 auto; padding: 12px 20px 40px; }
       .strip {
         display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 8px;
       }
@@ -151,9 +151,13 @@
         box-shadow: var(--shadow); padding: 14px 16px;
         display: flex; align-items: center; gap: 14px;
       }
-      .strip .big { font-family: "Noto Serif SC", serif; font-size: 34px; font-weight: 900; line-height: 1; white-space: nowrap; }
+      /* Fixed-width temperature column: wide enough for the widest
+         reading in any issue (e.g. "25.4° / 12.5°"), so the city /
+         conditions text starts at the same x in all five cards and
+         the five cards share one clean vertical left edge. */
+      .strip .big { font-family: "Noto Serif SC", serif; font-size: 34px; font-weight: 900; line-height: 1; white-space: nowrap; flex: 0 0 150px; }
       .strip .big small { font-size: 16px; color: var(--ink-3); font-weight: 600; }
-      .strip .meta { font-size: 13px; color: var(--ink-2); line-height: 1.55; }
+      .strip .meta { font-size: 13px; color: var(--ink-2); line-height: 1.55; flex: 1 1 auto; min-width: 0; }
       .strip .meta b { color: var(--ink); font-size: 14px; }
 
       /* ---------- section nav ---------- */
@@ -165,8 +169,23 @@
         position: sticky; top: 0; z-index: 20;
         background: var(--bg); border-bottom: 1px solid var(--line);
         display: flex; flex-wrap: nowrap; align-items: stretch; gap: 0;
-        height: 52px; margin: 14px 0 22px;
+        height: 52px; margin: 10px 0 16px;
       }
+      /* Quiet ◀ ▶ paging buttons pinned at the ends of the sticky bar,
+         outside the scrolling strip (added by the sticky-bar script):
+         they page the strip sideways by about one screenful of links
+         and never scroll the page itself. */
+      .secnav .secnav-arrow {
+        flex: 0 0 auto; align-self: center;
+        appearance: none; border: 1px solid var(--line); background: var(--surface);
+        color: var(--ink-2); font: inherit; font-size: 11px; line-height: 1;
+        width: 30px; height: 30px; border-radius: 999px; cursor: pointer;
+        display: inline-flex; align-items: center; justify-content: center;
+        margin: 0 2px; padding: 0;
+      }
+      .secnav .secnav-arrow:first-child { margin-left: 6px; }
+      .secnav .secnav-arrow:hover { border-color: var(--accent); color: var(--accent); }
+      .secnav .secnav-arrow:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
       /* The 19 section links live in their own horizontally scrolling
          strip inside the bar; the 「目录」 control (injected by script)
          sits outside that strip at the bar's right end, so it stays
@@ -699,6 +718,11 @@
       .issue-tools { display: flex; flex-wrap: nowrap; justify-content: flex-end; align-items: center; gap: 6px; margin: 0 0 12px; }
       .issue-head .issue-tools { margin: 0; }
       .issue-tools .copy-link-btn, .issue-tools .share-btn { padding: 5px 11px; }
+      /* Bottom share row: the same four share controls repeated above
+         the prev/next issue nav, so a reader who finished the issue can
+         share without scrolling back up. No theme toggle here — that is
+         a display setting, not sharing. */
+      .issue-tools.issue-tools-bottom { margin: 20px 0 12px; }
       /* Archive date quick-jump */
       .date-jump {
         display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
@@ -767,7 +791,7 @@
 
       /* ---------- table of contents 2026-11-09 (additive) ---------- */
       /* A quiet 「目录」 button in the tabs row, next to the search box.
-         Its panel drops down under the button and lists all 19 sections
+         Its panel drops down under the button and lists all 17 sections
          of the currently open issue, grouped under the six categories.
          All colours come from the theme variables (light/dark safe). */
       .toc-wrap { position: relative; flex: 0 0 auto; }
@@ -784,7 +808,7 @@
       .toc-panel {
         position: absolute; top: calc(100% + 6px); right: 0; z-index: 40;
         width: 320px; max-width: calc(100vw - 32px);
-        max-height: min(64vh, 540px); overflow-y: auto; overscroll-behavior: contain;
+        max-height: min(88vh, 900px); overflow-y: auto; overscroll-behavior: contain;
         background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
         box-shadow: var(--shadow); padding: 10px 8px 12px;
         animation: toc-slide .18s ease;
@@ -797,16 +821,16 @@
       @media (prefers-reduced-motion: reduce) {
         .toc-panel { animation: none; }
       }
-      .toc-group + .toc-group { margin-top: 10px; }
+      .toc-group + .toc-group { margin-top: 8px; }
       .toc-group-title {
         font-size: 12px; font-weight: 700; color: var(--ink-3);
         letter-spacing: .14em; padding: 2px 10px 4px;
       }
       .toc-item {
         appearance: none; display: flex; align-items: baseline; gap: 9px;
-        width: 100%; text-align: left; font: inherit; font-size: 13.5px;
+        width: 100%; text-align: left; font: inherit; font-size: 13.5px; line-height: 1.45;
         background: transparent; border: none; border-radius: 8px;
-        padding: 6px 10px; cursor: pointer; color: var(--ink-2);
+        padding: 4px 10px; cursor: pointer; color: var(--ink-2);
       }
       .toc-item:hover, .toc-item:focus-visible { background: var(--surface-2); color: var(--ink); }
       .toc-item:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
@@ -816,7 +840,7 @@
       }
 
       /* ---------- category group dividers (additive) ---------- */
-      /* The 19 sections of each issue are grouped under six quiet category
+      /* The 17 sections of each issue are grouped under six quiet category
          headings. The headings are plain, non-interactive labels marking
          where each group starts — nothing is collapsed or hidden, and the
          page reads as one continuous scroll, as before.
@@ -902,19 +926,19 @@
           </div>
           <div class="cell">
             <div class="big">10°<small> / 2°</small></div>
-            <div class="meta"><b>卡尔加里</b> · 当地 11 月 8 日<br />大风黄色预警，阵风 79 km/h</div>
+            <div class="meta"><b>卡尔加里</b> · 当地 11 月 8 日<br />大风黄色预警，阵风 79&nbsp;km/h</div>
           </div>
           <div class="cell">
             <div class="big">18.3°<small> / 5.1°</small></div>
-            <div class="meta"><b>海斯</b> · 当地 11 月 8 日<br />阴 · 全天无降水，阵风 30 km/h</div>
+            <div class="meta"><b>海斯</b> · 当地 11 月 8 日<br />阴 · 全天无降水，阵风 30&nbsp;km/h</div>
           </div>
           <div class="cell">
             <div class="big">14.5°<small> / 9.5°</small></div>
-            <div class="meta"><b>京都</b> · 毛毛雨<br />降水约 0.5 毫米，阵风 20 km/h</div>
+            <div class="meta"><b>京都</b> · 毛毛雨<br />降水约 0.5&nbsp;毫米，阵风 20&nbsp;km/h</div>
           </div>
         </div>
 
-<nav class="secnav" aria-label="本期栏目"><a href="#s-weather">五城天气</a><a href="#s-news">五城新闻</a><a href="#s-highlights">今日看点</a><a href="#s-finance">金融市场</a><a href="#s-sports">体育速递</a><a href="#s-gossip">娱乐圈八卦</a><a href="#s-astro">月相 · 卦象</a><a href="#s-tarot">塔罗</a><a href="#s-history">历史上的今天</a><a href="#s-quote">每日金句</a><a href="#s-wellness">养生小技巧</a><a href="#s-meal">健身减脂餐</a><a href="#s-english">英语</a><a href="#s-poem">一诗</a><a href="#s-ai">AI 一招</a><a href="#s-money">理财</a><a href="#s-slang">热梗</a><a href="#s-song">每日一曲</a><a href="#s-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#s-weather">五城天气</a><a href="#s-news">五城新闻</a><a href="#s-highlights">今日看点</a><a href="#s-finance">金融市场</a><a href="#s-sports">体育速递</a><a href="#s-gossip">娱乐圈八卦</a><a href="#s-astro">月相 · 卦象</a><a href="#s-tarot">塔罗</a><a href="#s-history">历史上的今天</a><a href="#s-quote">每日金句</a><a href="#s-wellness">养生小技巧</a><a href="#s-meal">健身减脂餐</a><a href="#s-english">英语</a><a href="#s-poem">一诗</a><a href="#s-ai">AI 一招</a><a href="#s-song">每日一曲</a><a href="#s-anime">每日一漫</a></nav>
 <p class="sec-note">北京时间 11 月 9 日；卡尔加里当地 11 月 8 日（周日）晚。简报日期以北京时间为准，卡尔加里部分按当地日期写。今天是第 35 个全国消防日（119），也是新月日：农历十月初一，15:02 迎来新月，新一周、新一月都从今天开始。天气、榜单为今日 08:10 前后最新数据；A 股、美股、黄金因周末休市，仍为 11 月 6 日最近交易日收盘数据；今日 A 股开盘前，人民币中间价尚未公布。</p>
 <!-- 五城天气 -->
 <section class="blk" id="s-weather">
@@ -925,7 +949,7 @@
 <div class="wx-date">11月9日（周一）</div>
 <div class="wx-temp">6°C <small>/ -5°C</small></div>
 <p class="wx-cond">白天晴、夜间晴，全天无降水（降水概率 0%），紫外线弱</p>
-<dl><div><dt>逐时</dt><dd>9 时 -3°C，12 时 3°C，14~15 时最高 5°C，18 时 1°C，20 时 -2°C，夜间 -3°C 至 -5°C；凌晨体感可达 -7°C</dd></div><div><dt>风力</dt><dd>西南风 5~9 公里/时，阵风不大</dd></div><div><dt>湿度</dt><dd>清晨 68%，午后降至 25% 左右，夜间回升至 55%~70%</dd></div><div><dt>空气质量</dt><dd>AQI 156（不健康），主要污染物 PM2.5，雾霾较重</dd></div><div><dt>日出日落</dt><dd>日出 06:27，日落 16:31</dd></div><div><dt>明日</dt><dd>晴，最高 11°C、最低 0°C，西南风微风，无降水，明显回暖</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>9 时 -3°C，12 时 3°C，14~15 时最高 5°C，18 时 1°C，20 时 -2°C，夜间 -3°C 至 -5°C；凌晨体感可达 -7°C</dd></div><div><dt>风力</dt><dd>西南风 5~9&nbsp;公里/时，阵风不大</dd></div><div><dt>湿度</dt><dd>清晨 68%，午后降至 25% 左右，夜间回升至 55%~70%</dd></div><div><dt>空气质量</dt><dd>AQI 156（不健康），主要污染物 PM2.5，雾霾较重</dd></div><div><dt>日出日落</dt><dd>日出 06:27，日落 16:31</dd></div><div><dt>明日</dt><dd>晴，最高 11°C、最低 0°C，西南风微风，无降水，明显回暖</dd></div></dl>
 <div class="tip">寒潮过后气温略有回升，但早晚仍在零下，厚羽绒服+保暖内衣不能脱；白天有太阳但风凉，口罩戴上，既防寒又防霾</div>
 </article>
 <article class="wx">
@@ -933,7 +957,7 @@
 <div class="wx-date">11月9日（周一）</div>
 <div class="wx-temp">6°C <small>/ -3°C</small></div>
 <p class="wx-cond">晴转晴，全天无降水（降水概率 0%）；中国天气网报最高 7°C</p>
-<dl><div><dt>逐时</dt><dd>9 时 -2°C，12 时 4°C，14~15 时最高 5°C，18 时 1°C，夜间 -1°C 至 -2°C</dd></div><div><dt>风力</dt><dd>西南风 5~7 公里/时，微风</dd></div><div><dt>湿度</dt><dd>清晨约 60%，午后 25% 左右，夜间约 60%</dd></div><div><dt>空气质量</dt><dd>AQI 134（对敏感人群不健康），主要污染物 PM2.5</dd></div><div><dt>日出日落</dt><dd>日出 06:27，日落 16:34</dd></div><div><dt>明日</dt><dd>晴，最高 12°C、最低 1°C，无降水，继续回暖</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>9 时 -2°C，12 时 4°C，14~15 时最高 5°C，18 时 1°C，夜间 -1°C 至 -2°C</dd></div><div><dt>风力</dt><dd>西南风 5~7&nbsp;公里/时，微风</dd></div><div><dt>湿度</dt><dd>清晨约 60%，午后 25% 左右，夜间约 60%</dd></div><div><dt>空气质量</dt><dd>AQI 134（对敏感人群不健康），主要污染物 PM2.5</dd></div><div><dt>日出日落</dt><dd>日出 06:27，日落 16:34</dd></div><div><dt>明日</dt><dd>晴，最高 12°C、最低 1°C，无降水，继续回暖</dd></div></dl>
 <div class="tip">与沈阳一样，早晚零下、白天个位数，厚外套+围巾是标配；空气不太好，敏感人群出门戴口罩，晨练改到午后</div>
 </article>
 <article class="wx">
@@ -941,7 +965,7 @@
 <div class="wx-date">当地 11月8日（周日）晚</div>
 <div class="wx-temp">约 10°C <small>/ 约 2°C</small></div>
 <p class="wx-cond">傍晚多云转晴，夜间晴，全天无降水（降水概率 0%~10%）</p>
-<dl><div><dt>逐时</dt><dd>傍晚约 10°C，体感 6°C；19 时 9°C，21 时 7°C，夜间最低约 2°C；白天气温在 10°C 上下</dd></div><div><dt>风力</dt><dd>西风 42 公里/时，阵风高达 79 公里/时</dd></div><div><dt>湿度</dt><dd>28%~40%，比较干燥</dd></div><div><dt>空气质量</dt><dd>AQI 37（优），主要污染物为臭氧 O3</dd></div><div><dt>日出日落</dt><dd>日出 08:40，日落 17:58（阿尔伯塔时间 UTC-6）</dd></div><div><dt>明日</dt><dd>当地 11月9日（周一）多云，最高 10°C、最低 1°C，西南风约 12 公里/时，无降水，风力明显减弱</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>傍晚约 10°C，体感 6°C；19 时 9°C，21 时 7°C，夜间最低约 2°C；白天气温在 10°C 上下</dd></div><div><dt>风力</dt><dd>西风 42&nbsp;公里/时，阵风高达 79&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>28%~40%，比较干燥</dd></div><div><dt>空气质量</dt><dd>AQI 37（优），主要污染物为臭氧 O3</dd></div><div><dt>日出日落</dt><dd>日出 08:40，日落 17:58（阿尔伯塔时间 UTC-6）</dd></div><div><dt>明日</dt><dd>当地 11月9日（周一）多云，最高 10°C、最低 1°C，西南风约 12&nbsp;公里/时，无降水，风力明显减弱</dd></div></dl>
 <div class="tip">温度不算低，但风大到能把人吹透，防风外套必须穿，帽子围巾压住别被吹跑；夜间降温明显，加一件保暖层</div>
 <div class="warn">⚠️ 加拿大环境部大风黄色预警，有效期至当地周日 23:00，出门注意高空坠物和横风</div>
 </article>
@@ -950,15 +974,15 @@
 <div class="wx-date">当地 11月8日（周日）</div>
 <div class="wx-temp">18.3°C <small>/ 5.1°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>风力</dt><dd>西北风，最大风速 14.4 公里/时，阵风 29.9 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:12，日落 17:29</dd></div><div><dt>明日</dt><dd>当地 11月9日（周一）晴，最高 20.4°C、最低 7.3°C</dd></div></dl>
+<dl><div><dt>风力</dt><dd>西北风，最大风速 14.4&nbsp;公里/时，阵风 29.9&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:12，日落 17:29</dd></div><div><dt>明日</dt><dd>当地 11月9日（周一）晴，最高 20.4°C、最低 7.3°C</dd></div></dl>
 <div class="tip">阴天，最高 18°C，早晚 5°C 左右，昼夜温差大，带一件厚外套</div>
 </article>
 <article class="wx">
 <h3>京都</h3>
 <div class="wx-date">11月9日（周一）</div>
 <div class="wx-temp">14.5°C <small>/ 9.5°C</small></div>
-<p class="wx-cond">毛毛雨，全天降水量约 0.5 毫米</p>
-<dl><div><dt>风力</dt><dd>西北风，最大风速 8.3 公里/时，阵风 19.8 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:25，日落 16:56</dd></div><div><dt>明日</dt><dd>以实时预报为准</dd></div></dl>
+<p class="wx-cond">毛毛雨，全天降水量约 0.5&nbsp;毫米</p>
+<dl><div><dt>风力</dt><dd>西北风，最大风速 8.3&nbsp;公里/时，阵风 19.8&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:25，日落 16:56</dd></div><div><dt>明日</dt><dd>以实时预报为准</dd></div></dl>
 <div class="tip">毛毛雨，带把小伞；最高不到 15°C，早晚 10°C 左右，厚外套穿上</div>
 </article>
 </div>
@@ -1102,25 +1126,9 @@
 <p>写完东西贴给 AI，说“检查错别字和语病，只指出问题不改写”；交作业、发邮件前过一遍，少出错，显得专业。</p>
 </div>
 </section>
-<!-- 理财小知识 -->
-<section class="blk" id="s-money">
-<div class="blk-head"><span class="no">其十六</span><h2>理财小知识</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日知识：先存后花</b></p>
-<p>发工资当天，先把要存的钱转到另一个账户，剩下的再花。先存后花比先花后存更容易攒下钱；别等月底剩多少存多少，月底往往一分不剩。</p>
-</div>
-</section>
-<!-- 今日热梗 -->
-<section class="blk" id="s-slang">
-<div class="blk-head"><span class="no">其十七</span><h2>今日热梗</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日热梗：栓 Q</b></p>
-<p>谐音英文 &quot;thank you&quot;，但多半是反讽：表面说“谢谢”，实际意思是“谢谢你让我无语”。比如加班到半夜，有人说“栓 Q”，就是又气又无奈。</p>
-</div>
-</section>
 <!-- 每日一曲 -->
 <section class="blk" id="s-song">
-<div class="blk-head"><span class="no">其十八</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十六</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《暖暖》——梁静茹</p>
 <p><b>本周主题：立冬暖调</b>（立冬刚过一周的歌都围绕“暖”来选，每天不重样）</p>
@@ -1129,13 +1137,14 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="s-anime">
-<div class="blk-head"><span class="no">其十九</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十七</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《摇曳露营△》（TV 动画 3 季，2018–2024 年，已完结）</p>
 <p><b>本周主题：冬日治愈</b>（一周的推荐都围绕“冬天里让人心里暖起来的番”）</p>
 <p>讲几个女生在冬天露营、煮暖锅、看富士山的故事，剧情没什么大起大落，全是“今天吃什么、去哪里看星星”的小事。理由：立冬后看一群人顶着冷风在户外吃热腾腾的暖锅，比窝在被窝里更治愈；每一集都像一杯热茶，适合睡前看一集放松；这周主题是冬日治愈，它负责把暖意从屏幕里带到被窝里。今晚先看第 1 集《富士山与咖喱面》。</p>
 </div>
 </section>
+<div class="issue-tools issue-tools-bottom"><button class="copy-link-btn" type="button" data-copy-date="2026-11-09">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-09" data-share-title="每日晨间简报 · 2026年11月9日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-09&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%889%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-09">微信</button></div>
 <nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev" type="button" data-nav-date="2026-11-08" aria-label="上一期：11月8日 周日">&larr; 上一期 &middot; 11月8日 周日</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next is-disabled" type="button" disabled aria-disabled="true">下一期 &middot; 已是最新一期 &rarr;</button></nav>
 <p class="src">简报完。天气与榜单数据截至今日 08:10 前后；A 股、美股、黄金为 11 月 6 日最近交易日收盘数据。湖人 vs 活塞、火焰队 vs 飞人两场比赛写稿时尚未完赛，比分以完赛后为准。</p>
 </div>
@@ -1152,7 +1161,7 @@
         <div class="strip" aria-label="五城气温速览">
           <div class="cell">
             <div class="big">1°<small> / -10°</small></div>
-            <div class="meta"><b>沈阳</b> · 多云转晴<br />体感 -5°，北风阵风 26 km/h</div>
+            <div class="meta"><b>沈阳</b> · 多云转晴<br />体感 -5°，北风阵风 26&nbsp;km/h</div>
           </div>
           <div class="cell">
             <div class="big">2°<small> / -7°</small></div>
@@ -1160,7 +1169,7 @@
           </div>
           <div class="cell">
             <div class="big">14°<small> / 6°</small></div>
-            <div class="meta"><b>卡尔加里</b> · 当地 11 月 7 日<br />大风黄色预警，阵风 40 km/h</div>
+            <div class="meta"><b>卡尔加里</b> · 当地 11 月 7 日<br />大风黄色预警，阵风 40&nbsp;km/h</div>
           </div>
                   <div class="cell">
             <div class="big">18.2°<small> / 1.1°</small></div>
@@ -1168,13 +1177,13 @@
           </div>
           <div class="cell">
             <div class="big">14.7°<small> / 9.6°</small></div>
-            <div class="meta"><b>京都</b> · 阴<br />全天无降水，北风阵风 36 km/h</div>
+            <div class="meta"><b>京都</b> · 阴<br />全天无降水，北风阵风 36&nbsp;km/h</div>
           </div>
 </div>
 
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1108-weather">五城天气</a><a href="#d1108-news">五城新闻</a><a href="#d1108-highlights">今日看点</a><a href="#d1108-finance">金融市场</a><a href="#d1108-sports">体育速递</a><a href="#d1108-gossip">娱乐圈八卦</a><a href="#d1108-astro">月相 · 卦象</a><a href="#d1108-tarot">塔罗</a><a href="#d1108-history">历史上的今天</a><a href="#d1108-quote">每日金句</a><a href="#d1108-wellness">养生小技巧</a><a href="#d1108-meal">健身减脂餐</a><a href="#d1108-english">英语</a><a href="#d1108-poem">一诗</a><a href="#d1108-ai">AI 一招</a><a href="#d1108-money">理财</a><a href="#d1108-slang">热梗</a><a href="#d1108-song">每日一曲</a><a href="#d1108-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1108-weather">五城天气</a><a href="#d1108-news">五城新闻</a><a href="#d1108-highlights">今日看点</a><a href="#d1108-finance">金融市场</a><a href="#d1108-sports">体育速递</a><a href="#d1108-gossip">娱乐圈八卦</a><a href="#d1108-astro">月相 · 卦象</a><a href="#d1108-tarot">塔罗</a><a href="#d1108-history">历史上的今天</a><a href="#d1108-quote">每日金句</a><a href="#d1108-wellness">养生小技巧</a><a href="#d1108-meal">健身减脂餐</a><a href="#d1108-english">英语</a><a href="#d1108-poem">一诗</a><a href="#d1108-ai">AI 一招</a><a href="#d1108-song">每日一曲</a><a href="#d1108-anime">每日一漫</a></nav>
 <!-- 五城天气 -->
 <section class="blk" id="d1108-weather">
 <div class="blk-head"><span class="no">其一</span><h2>五城天气</h2></div>
@@ -1184,7 +1193,7 @@
 <div class="wx-date">11月8日（周日）</div>
 <div class="wx-temp">1°C <small>/ -10°C</small></div>
 <p class="wx-cond">多云转晴，傍晚后转晴，全天无降水（降水概率 0%）</p>
-<dl><div><dt>逐时</dt><dd>17 时 -1°C，体感 -5°C；18 时 -2°C，20 时 -4°C，23 时 -6°C，凌晨降至 -9°C 至 -10°C</dd></div><div><dt>风力</dt><dd>北风 14 公里/时，阵风 26 公里/时</dd></div><div><dt>湿度</dt><dd>下午 28% 左右，夜间升至约 50%~70%</dd></div><div><dt>空气质量</dt><dd>AQI 68（中等），主要污染物 PM2.5</dd></div><div><dt>日出日落</dt><dd>日出 06:26，日落 16:32</dd></div><div><dt>明日</dt><dd>晴，最高 5°C、最低 -5°C，西南风微风，无降水</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>17 时 -1°C，体感 -5°C；18 时 -2°C，20 时 -4°C，23 时 -6°C，凌晨降至 -9°C 至 -10°C</dd></div><div><dt>风力</dt><dd>北风 14&nbsp;公里/时，阵风 26&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>下午 28% 左右，夜间升至约 50%~70%</dd></div><div><dt>空气质量</dt><dd>AQI 68（中等），主要污染物 PM2.5</dd></div><div><dt>日出日落</dt><dd>日出 06:26，日落 16:32</dd></div><div><dt>明日</dt><dd>晴，最高 5°C、最低 -5°C，西南风微风，无降水</dd></div></dl>
 <div class="tip">寒潮过境、白天最高仅 1°C，体感零下，务必穿厚羽绒服、戴帽子手套围巾，昼夜温差 11°C，早晚注意保暖</div>
 </article>
 <article class="wx">
@@ -1192,7 +1201,7 @@
 <div class="wx-date">11月8日（周日）</div>
 <div class="wx-temp">1~2°C <small>/ -7°C</small></div>
 <p class="wx-cond">多云转晴</p>
-<dl><div><dt>逐时</dt><dd>17 时 -1°C，体感 -5°C；18 时 -2°C，23 时约 -6°C，凌晨约 -8°C 至 -9°C</dd></div><div><dt>降水</dt><dd>Weather.com 预报全天降水概率 0%</dd></div><div><dt>风力</dt><dd>北风 11 公里/时，阵风约 26 公里/时（东北风 5~6 级）</dd></div><div><dt>湿度</dt><dd>30% 左右</dd></div><div><dt>空气质量</dt><dd>AQI 65（中等），主要污染物 PM2.5；另一监测点报 107（轻度污染），口径略有差异</dd></div><div><dt>日出日落</dt><dd>日出 06:26，日落 16:35</dd></div><div><dt>明日</dt><dd>晴，最高 6°C、最低 -3°C，无降水，气温小幅回升</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>17 时 -1°C，体感 -5°C；18 时 -2°C，23 时约 -6°C，凌晨约 -8°C 至 -9°C</dd></div><div><dt>降水</dt><dd>Weather.com 预报全天降水概率 0%</dd></div><div><dt>风力</dt><dd>北风 11&nbsp;公里/时，阵风约 26&nbsp;公里/时（东北风 5~6 级）</dd></div><div><dt>湿度</dt><dd>30% 左右</dd></div><div><dt>空气质量</dt><dd>AQI 65（中等），主要污染物 PM2.5；另一监测点报 107（轻度污染），口径略有差异</dd></div><div><dt>日出日落</dt><dd>日出 06:26，日落 16:35</dd></div><div><dt>明日</dt><dd>晴，最高 6°C、最低 -3°C，无降水，气温小幅回升</dd></div></dl>
 <div class="tip">与沈阳一样寒冷，白天最高仅 1~2°C，穿厚羽绒服加保暖内衣，风大体感更冷，户外注意防风</div>
 <div class="warn">个别来源另报"中雪"/"雨夹雪转晴"，与 Weather.com 全天降水概率 0% 的口径不一，出行请留意临近预报</div>
 </article>
@@ -1201,7 +1210,7 @@
 <div class="wx-date">当地 11月7日（周六）晚</div>
 <div class="wx-temp">约 14°C <small>/ 约 6°C</small></div>
 <p class="wx-cond">白天多云，夜间转晴，全天无降水（降水概率 0%）</p>
-<dl><div><dt>逐时</dt><dd>傍晚约 7°C，体感 2~3°C；夜间转晴，最低约 6°C</dd></div><div><dt>风力</dt><dd>南风 20 公里/时，阵风 40 公里/时</dd></div><div><dt>湿度</dt><dd>44%~58%</dd></div><div><dt>空气质量</dt><dd>AQI 23（优），主要污染物为臭氧 O3</dd></div><div><dt>日出日落</dt><dd>日出 08:40，日落 17:58</dd></div><div><dt>明日</dt><dd>晴朗有风，最高 13°C（体感 6°C），西南风 40 公里/时，夜间晴、最低 1°C；大风天注意安全</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>傍晚约 7°C，体感 2~3°C；夜间转晴，最低约 6°C</dd></div><div><dt>风力</dt><dd>南风 20&nbsp;公里/时，阵风 40&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>44%~58%</dd></div><div><dt>空气质量</dt><dd>AQI 23（优），主要污染物为臭氧 O3</dd></div><div><dt>日出日落</dt><dd>日出 08:40，日落 17:58</dd></div><div><dt>明日</dt><dd>晴朗有风，最高 13°C（体感 6°C），西南风 40&nbsp;公里/时，夜间晴、最低 1°C；大风天注意安全</dd></div></dl>
 <div class="tip">白天不算太冷，但风大且阵风强，穿防风外套；夜间气温下降明显，外出加一件保暖层</div>
 <div class="warn">⚠️ 加拿大环境部发布大风黄色预警，有效期至当地周日 21:30</div>
 </article>
@@ -1210,7 +1219,7 @@
 <div class="wx-date">当地 11月7日（周六）</div>
 <div class="wx-temp">18.2°C <small>/ 1.1°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>风力</dt><dd>西南风，最大风速 10.7 公里/时，阵风 23.4 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:11，日落 17:30</dd></div><div><dt>明日</dt><dd>阴，最高 18.3°C、最低 5.1°C</dd></div></dl>
+<dl><div><dt>风力</dt><dd>西南风，最大风速 10.7&nbsp;公里/时，阵风 23.4&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:11，日落 17:30</dd></div><div><dt>明日</dt><dd>阴，最高 18.3°C、最低 5.1°C</dd></div></dl>
 <div class="tip">白天最高 18°C，但早晨只有 1°C，昼夜温差大，早上厚外套、中午可脱</div>
 </article>
 <article class="wx">
@@ -1218,7 +1227,7 @@
 <div class="wx-date">11月8日（周日）</div>
 <div class="wx-temp">14.7°C <small>/ 9.6°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>风力</dt><dd>北风，最大风速 12.0 公里/时，阵风 36.0 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:24，日落 16:56</dd></div><div><dt>明日</dt><dd>毛毛雨，最高 14.5°C、最低 9.5°C</dd></div></dl>
+<dl><div><dt>风力</dt><dd>北风，最大风速 12.0&nbsp;公里/时，阵风 36.0&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:24，日落 16:56</dd></div><div><dt>明日</dt><dd>毛毛雨，最高 14.5°C、最低 9.5°C</dd></div></dl>
 <div class="tip">阴天，最高不到 15°C，早晚 10°C 左右，厚外套穿上，看红叶注意保暖</div>
 </article>
 </div>
@@ -1362,25 +1371,9 @@
 <p>把演讲主题和要点给 AI，让它先出一个 PPT 大纲（每页标题加要点），你再往里面填内容；结构先立住，写起来不乱。</p>
 </div>
 </section>
-<!-- 理财小知识 -->
-<section class="blk" id="d1108-money">
-<div class="blk-head"><span class="no">其十六</span><h2>理财小知识</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日知识：冲动消费</b></p>
-<p>想买非必需品，先等 24 小时；还想买再买。很多东西过一天就不想要了，这招能省不少钱；管住“现在就想买”的冲动。</p>
-</div>
-</section>
-<!-- 今日热梗 -->
-<section class="blk" id="d1108-slang">
-<div class="blk-head"><span class="no">其十七</span><h2>今日热梗</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日热梗：绝绝子</b></p>
-<p>“绝了”的升级版，形容特别好或特别离谱，语气比“绝了”更夸张。比如“这道菜绝绝子”，就是好吃到没话说。</p>
-</div>
-</section>
 <!-- 每日一曲 -->
 <section class="blk" id="d1108-song">
-<div class="blk-head"><span class="no">其十八</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十六</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《平凡之路》——朴树</p>
 <p>今天旅卦讲"在路上，但别赶路"，新一周也从今天开始；杨瀚森昨晚刚拿生涯首个两双，平凡的路也能走出高光。《平凡之路》唱的就是这条路——"我曾经跨过山和大海，也穿过人山人海"，今晚备餐的时候放这首，煮一锅糙米、卤几份鸡胸肉，下周的低碳日就不用天天现做，路要一步一步走，饭也要一顿一顿备。</p>
@@ -1388,12 +1381,13 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="d1108-anime">
-<div class="blk-head"><span class="no">其十九</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十七</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《强风吹拂》（TV 动画全 23 集，2018–2019 年）</p>
 <p>改编自三浦紫苑的同名小说，讲十个原本不会跑步的大学生，在灰二的带领下从零开始，一路跑向箱根驿传。理由：今天是旅卦，"在路上"——寒潮天看一群人顶着冷风晨跑，比窝在被窝里更提气；今晚看第 1 集《第十名男子》，灰二那句"你喜欢跑步吗"一出来，新一周就有了劲头；这周主题是冬夜暖番，它负责把暖意从被窝里带到路上。</p>
 </div>
 </section>
+<div class="issue-tools issue-tools-bottom"><button class="copy-link-btn" type="button" data-copy-date="2026-11-08">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-08" data-share-title="每日晨间简报 · 2026年11月8日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-08&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%888%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-08">微信</button></div>
 <nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev" type="button" data-nav-date="2026-11-07" aria-label="上一期：11月7日 周六">&larr; 上一期 &middot; 11月7日 周六</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next" type="button" data-nav-date="2026-11-09" aria-label="下一期：11月9日 周一">下一期 &middot; 11月9日 周一 &rarr;</button></nav>
 <p class="src">简报完。天气与榜单数据截至今日 17:00 前后；A 股、美股、黄金为 11 月 6 日最近交易日收盘数据。</p>
 </div>
@@ -1406,10 +1400,10 @@
           </div>
           <button class="tab-btn back-archive" type="button">← 返回归档</button><div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式">☾</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-01">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-01" data-share-title="每日晨间简报 · 2026年11月1日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-01&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%881%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-01">微信</button></div>
         </div>
-        <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">12.7°<small> / -0.3°</small></div><div class="meta"><b>沈阳</b><br />毛毛雨转多云<br />西北风阵风 43 km/h</div></div><div class="cell"><div class="big">15.1°<small> / 1.0°</small></div><div class="meta"><b>鞍山</b><br />毛毛雨，降水约 3.3 毫米<br />西北风阵风 44 km/h</div></div><div class="cell"><div class="big">4.2°<small> / -2.8°</small></div><div class="meta"><b>卡尔加里</b><br />当地 10 月 31 日 · 阴<br />湿度约 87%，体感偏冷</div></div><div class="cell"><div class="big">15.7°<small> / 12.3°</small></div><div class="meta"><b>海斯</b><br />当地 10 月 31 日 · 毛毛雨<br />降水约 2.8 毫米</div></div><div class="cell"><div class="big">18.7°<small> / 9.2°</small></div><div class="meta"><b>京都</b><br />阴 · 全天无降水<br />早晚 9°C，昼夜温差大</div></div></div>
+        <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">12.7°<small> / -0.3°</small></div><div class="meta"><b>沈阳</b><br />毛毛雨转多云<br />西北风阵风 43&nbsp;km/h</div></div><div class="cell"><div class="big">15.1°<small> / 1.0°</small></div><div class="meta"><b>鞍山</b><br />毛毛雨，降水约 3.3&nbsp;毫米<br />西北风阵风 44&nbsp;km/h</div></div><div class="cell"><div class="big">4.2°<small> / -2.8°</small></div><div class="meta"><b>卡尔加里</b><br />当地 10 月 31 日 · 阴<br />湿度约 87%，体感偏冷</div></div><div class="cell"><div class="big">15.7°<small> / 12.3°</small></div><div class="meta"><b>海斯</b><br />当地 10 月 31 日 · 毛毛雨<br />降水约 2.8&nbsp;毫米</div></div><div class="cell"><div class="big">18.7°<small> / 9.2°</small></div><div class="meta"><b>京都</b><br />阴 · 全天无降水<br />早晚 9°C，昼夜温差大</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1101-weather">五城天气</a><a href="#d1101-news">五城新闻</a><a href="#d1101-highlights">今日看点</a><a href="#d1101-finance">金融市场</a><a href="#d1101-sports">体育速递</a><a href="#d1101-gossip">娱乐圈八卦</a><a href="#d1101-astro">月相 · 卦象</a><a href="#d1101-tarot">塔罗</a><a href="#d1101-history">历史上的今天</a><a href="#d1101-quote">每日金句</a><a href="#d1101-wellness">养生小技巧</a><a href="#d1101-meal">健身减脂餐</a><a href="#d1101-english">英语</a><a href="#d1101-poem">一诗</a><a href="#d1101-ai">AI 一招</a><a href="#d1101-money">理财</a><a href="#d1101-slang">热梗</a><a href="#d1101-song">每日一曲</a><a href="#d1101-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1101-weather">五城天气</a><a href="#d1101-news">五城新闻</a><a href="#d1101-highlights">今日看点</a><a href="#d1101-finance">金融市场</a><a href="#d1101-sports">体育速递</a><a href="#d1101-gossip">娱乐圈八卦</a><a href="#d1101-astro">月相 · 卦象</a><a href="#d1101-tarot">塔罗</a><a href="#d1101-history">历史上的今天</a><a href="#d1101-quote">每日金句</a><a href="#d1101-wellness">养生小技巧</a><a href="#d1101-meal">健身减脂餐</a><a href="#d1101-english">英语</a><a href="#d1101-poem">一诗</a><a href="#d1101-ai">AI 一招</a><a href="#d1101-song">每日一曲</a><a href="#d1101-anime">每日一漫</a></nav>
 <!-- 五城天气 -->
 <section class="blk" id="d1101-weather">
 <div class="blk-head"><span class="no">其一</span><h2>五城天气</h2></div>
@@ -1418,16 +1412,16 @@
 <h3>沈阳</h3>
 <div class="wx-date">11月1日（周日）</div>
 <div class="wx-temp">12.7°C <small>/ -0.3°C</small></div>
-<p class="wx-cond">毛毛雨转多云，全天降水量约 0.3 毫米</p>
-<dl><div><dt>逐时</dt><dd>02 时 2.7°C，08 时 5.0°C，11 时 11.2°C，14 时 11.4°C，17 时 7.3°C，20 时 2.8°C，23 时 0.4°C</dd></div><div><dt>风力</dt><dd>西北风，最大风速 17.9 公里/时，阵风 43.2 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 58%</dd></div><div><dt>空气质量</dt><dd>AQI 约 92（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:18，日落 16:41</dd></div><div><dt>明日</dt><dd>阴，最高 8.5°C、最低 -2.7°C，无降水，风力减弱</dd></div></dl>
-<div class="tip">白天最高近 13°C，但风大阵风超 40 公里/时，体感偏凉，穿防风外套；早晚接近 0°C，注意保暖</div>
+<p class="wx-cond">毛毛雨转多云，全天降水量约 0.3&nbsp;毫米</p>
+<dl><div><dt>逐时</dt><dd>02 时 2.7°C，08 时 5.0°C，11 时 11.2°C，14 时 11.4°C，17 时 7.3°C，20 时 2.8°C，23 时 0.4°C</dd></div><div><dt>风力</dt><dd>西北风，最大风速 17.9&nbsp;公里/时，阵风 43.2&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 58%</dd></div><div><dt>空气质量</dt><dd>AQI 约 92（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:18，日落 16:41</dd></div><div><dt>明日</dt><dd>阴，最高 8.5°C、最低 -2.7°C，无降水，风力减弱</dd></div></dl>
+<div class="tip">白天最高近 13°C，但风大阵风超 40&nbsp;公里/时，体感偏凉，穿防风外套；早晚接近 0°C，注意保暖</div>
 </article>
 <article class="wx">
 <h3>鞍山</h3>
 <div class="wx-date">11月1日（周日）</div>
 <div class="wx-temp">15.1°C <small>/ 1.0°C</small></div>
-<p class="wx-cond">毛毛雨，全天降水量约 3.3 毫米</p>
-<dl><div><dt>逐时</dt><dd>02 时 5.6°C，08 时 8.4°C，11 时 13.8°C，14 时 14.3°C，17 时 9.8°C，20 时 4.5°C，23 时 1.7°C</dd></div><div><dt>风力</dt><dd>西北风，最大风速 19.4 公里/时，阵风 44.3 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 59%</dd></div><div><dt>空气质量</dt><dd>AQI 约 80（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:18，日落 16:44</dd></div><div><dt>明日</dt><dd>阴，最高 10.8°C、最低 -2.1°C，无降水</dd></div></dl>
+<p class="wx-cond">毛毛雨，全天降水量约 3.3&nbsp;毫米</p>
+<dl><div><dt>逐时</dt><dd>02 时 5.6°C，08 时 8.4°C，11 时 13.8°C，14 时 14.3°C，17 时 9.8°C，20 时 4.5°C，23 时 1.7°C</dd></div><div><dt>风力</dt><dd>西北风，最大风速 19.4&nbsp;公里/时，阵风 44.3&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 59%</dd></div><div><dt>空气质量</dt><dd>AQI 约 80（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:18，日落 16:44</dd></div><div><dt>明日</dt><dd>阴，最高 10.8°C、最低 -2.1°C，无降水</dd></div></dl>
 <div class="tip">有雨又起风，带伞穿防风外套；夜间降至 1°C 左右，早晚添衣</div>
 </article>
 <article class="wx">
@@ -1435,15 +1429,15 @@
 <div class="wx-date">当地 10月31日（周六）</div>
 <div class="wx-temp">4.2°C <small>/ -2.8°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 -0.9°C，08 时 -2.7°C，11 时 -1.2°C，14 时 3.4°C，17 时 3.4°C，20 时 0.0°C，23 时 0.0°C</dd></div><div><dt>风力</dt><dd>西南风，最大风速 10.3 公里/时，阵风 20.9 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 87%</dd></div><div><dt>空气质量</dt><dd>AQI 约 55（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 08:27，日落 18:11</dd></div><div><dt>明日</dt><dd>阴，最高 5.2°C、最低 -3.0°C，无降水</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>02 时 -0.9°C，08 时 -2.7°C，11 时 -1.2°C，14 时 3.4°C，17 时 3.4°C，20 时 0.0°C，23 时 0.0°C</dd></div><div><dt>风力</dt><dd>西南风，最大风速 10.3&nbsp;公里/时，阵风 20.9&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 87%</dd></div><div><dt>空气质量</dt><dd>AQI 约 55（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 08:27，日落 18:11</dd></div><div><dt>明日</dt><dd>阴，最高 5.2°C、最低 -3.0°C，无降水</dd></div></dl>
 <div class="tip">白天最高仅 4°C 左右，夜间零下，穿厚外套、戴手套；湿度大，体感更冷</div>
 </article>
 <article class="wx">
 <h3>海斯</h3>
 <div class="wx-date">当地 10月31日（周六）</div>
 <div class="wx-temp">15.7°C <small>/ 12.3°C</small></div>
-<p class="wx-cond">毛毛雨，全天降水量约 2.8 毫米</p>
-<dl><div><dt>风力</dt><dd>东南风，最大风速 18.3 公里/时，阵风 35.6 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:03，日落 17:37</dd></div><div><dt>明日</dt><dd>毛毛雨，最高 18.0°C、最低 13.0°C</dd></div></dl>
+<p class="wx-cond">毛毛雨，全天降水量约 2.8&nbsp;毫米</p>
+<dl><div><dt>风力</dt><dd>东南风，最大风速 18.3&nbsp;公里/时，阵风 35.6&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:03，日落 17:37</dd></div><div><dt>明日</dt><dd>毛毛雨，最高 18.0°C、最低 13.0°C</dd></div></dl>
 <div class="tip">有雨，带伞穿防风外套；气温 12~16°C，早晚添一件薄外套</div>
 </article>
 <article class="wx">
@@ -1451,7 +1445,7 @@
 <div class="wx-date">11月1日（周日）</div>
 <div class="wx-temp">18.7°C <small>/ 9.2°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>风力</dt><dd>西风，最大风速 6.6 公里/时，阵风 20.5 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:17，日落 17:03</dd></div><div><dt>明日</dt><dd>小雨，最高 17.4°C、最低 12.1°C</dd></div></dl>
+<dl><div><dt>风力</dt><dd>西风，最大风速 6.6&nbsp;公里/时，阵风 20.5&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:17，日落 17:03</dd></div><div><dt>明日</dt><dd>小雨，最高 17.4°C、最低 12.1°C</dd></div></dl>
 <div class="tip">阴天，最高近 19°C，但早晚只有 9°C 左右，昼夜温差大，带一件外套</div>
 </article>
 </div>
@@ -1590,25 +1584,9 @@
 <p>把一篇长文章贴给 AI，说“先用三句话总结，再分点展开”——读长文、看报告时先看结论再看细节，省一半时间。适合每天要读很多资料的人。</p>
 </div>
 </section>
-<!-- 理财小知识 -->
-<section class="blk" id="d1101-money">
-<div class="blk-head"><span class="no">其十六</span><h2>理财小知识</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日知识：复利</b></p>
-<p>钱生钱的关键是时间。每月哪怕只存几百块，坚持几十年，复利滚起来差距会很大；别小看小钱，早开始比多存更重要。</p>
-</div>
-</section>
-<!-- 今日热梗 -->
-<section class="blk" id="d1101-slang">
-<div class="blk-head"><span class="no">其十七</span><h2>今日热梗</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日热梗：city 不 city</b></p>
-<p>2024 年火起来的词，源自外国博主在中国旅游时的口头禅，意思是“洋气不洋气、时髦不时髦”。比如“这家店 city 不 city？”就是问它够不够潮。</p>
-</div>
-</section>
 <!-- 每日一曲 -->
 <section class="blk" id="d1101-song">
-<div class="blk-head"><span class="no">其十八</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十六</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《枫》——周杰伦</p>
 <p>本周主题"秋日尾声"：霜降已过、秋天只剩尾巴，沈阳今天最高 12.7°C、风大阵风超 40 公里，正是枫叶落尽的时候。《枫》唱的就是秋天走到尽头的心情，旋律慢、歌词直白，适合 11 月第一天晚上一个人慢慢听；听完把十月的待办清一清，明天周一换个打法开工。</p>
@@ -1616,12 +1594,13 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="d1101-anime">
-<div class="blk-head"><span class="no">其十九</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十七</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《夏目友人帐》（TV 动画共 7 季 86 集，2008–2024 年；第 7 季"漆"已于 2024 年 12 月完结；另有 2 部剧场版）</p>
 <p>改编自绿川幸的同名漫画，讲能看见妖怪的少年夏目贵志继承外祖母的"友人帐"，一边把名字还给妖怪，一边和猫咪老师一起过日子。理由：本周主题"秋日尾声"——霜降末期、秋天只剩尾巴，这部番的节奏和秋天一模一样，慢、暖、带一点凉意；每集一个妖怪、一个小故事，适合睡前看一集，不用追、不用赶，11 月的第一天就从它开始。</p>
 </div>
 </section>
+<div class="issue-tools issue-tools-bottom"><button class="copy-link-btn" type="button" data-copy-date="2026-11-01">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-01" data-share-title="每日晨间简报 · 2026年11月1日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-01&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%881%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-01">微信</button></div>
 <nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev is-disabled" type="button" disabled aria-disabled="true">&larr; 上一期 &middot; 已是第一期</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next" type="button" data-nav-date="2026-11-02" aria-label="下一期：11月2日 周一">下一期 &middot; 11月2日 周一 &rarr;</button></nav>
 <p class="src">简报完。本期为补档版本，天气与月相为历史档案与天文公式计算值；A 股、美股、黄金为 10 月 30 日最近交易日收盘数据。</p>
 </div>
@@ -1634,10 +1613,10 @@
           </div>
           <button class="tab-btn back-archive" type="button">← 返回归档</button><div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式">☾</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-02">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-02" data-share-title="每日晨间简报 · 2026年11月2日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-02&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%882%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-02">微信</button></div>
         </div>
-        <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">8.5°<small> / -2.7°</small></div><div class="meta"><b>沈阳</b><br />阴 · 全天无降水<br />AQI 约 162（中度污染）</div></div><div class="cell"><div class="big">10.8°<small> / -2.1°</small></div><div class="meta"><b>鞍山</b><br />阴 · 全天无降水<br />AQI 约 158（中度污染）</div></div><div class="cell"><div class="big">5.2°<small> / -3.0°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 1 日 · 阴<br />阿尔伯塔省起实行永久“阿尔伯塔时间”</div></div><div class="cell"><div class="big">18.0°<small> / 13.0°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 1 日 · 毛毛雨<br />东南风阵风 53 km/h</div></div><div class="cell"><div class="big">17.4°<small> / 12.1°</small></div><div class="meta"><b>京都</b><br />小雨 · 全天降水约 7.8 毫米<br />带伞穿防风外套</div></div></div>
+        <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">8.5°<small> / -2.7°</small></div><div class="meta"><b>沈阳</b><br />阴 · 全天无降水<br />AQI 约 162（中度污染）</div></div><div class="cell"><div class="big">10.8°<small> / -2.1°</small></div><div class="meta"><b>鞍山</b><br />阴 · 全天无降水<br />AQI 约 158（中度污染）</div></div><div class="cell"><div class="big">5.2°<small> / -3.0°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 1 日 · 阴<br />阿尔伯塔省起实行永久“阿尔伯塔时间”</div></div><div class="cell"><div class="big">18.0°<small> / 13.0°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 1 日 · 毛毛雨<br />东南风阵风 53&nbsp;km/h</div></div><div class="cell"><div class="big">17.4°<small> / 12.1°</small></div><div class="meta"><b>京都</b><br />小雨 · 全天降水约 7.8&nbsp;毫米<br />带伞穿防风外套</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1102-weather">五城天气</a><a href="#d1102-news">五城新闻</a><a href="#d1102-highlights">今日看点</a><a href="#d1102-finance">金融市场</a><a href="#d1102-sports">体育速递</a><a href="#d1102-gossip">娱乐圈八卦</a><a href="#d1102-astro">月相 · 卦象</a><a href="#d1102-tarot">塔罗</a><a href="#d1102-history">历史上的今天</a><a href="#d1102-quote">每日金句</a><a href="#d1102-wellness">养生小技巧</a><a href="#d1102-meal">健身减脂餐</a><a href="#d1102-english">英语</a><a href="#d1102-poem">一诗</a><a href="#d1102-ai">AI 一招</a><a href="#d1102-money">理财</a><a href="#d1102-slang">热梗</a><a href="#d1102-song">每日一曲</a><a href="#d1102-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1102-weather">五城天气</a><a href="#d1102-news">五城新闻</a><a href="#d1102-highlights">今日看点</a><a href="#d1102-finance">金融市场</a><a href="#d1102-sports">体育速递</a><a href="#d1102-gossip">娱乐圈八卦</a><a href="#d1102-astro">月相 · 卦象</a><a href="#d1102-tarot">塔罗</a><a href="#d1102-history">历史上的今天</a><a href="#d1102-quote">每日金句</a><a href="#d1102-wellness">养生小技巧</a><a href="#d1102-meal">健身减脂餐</a><a href="#d1102-english">英语</a><a href="#d1102-poem">一诗</a><a href="#d1102-ai">AI 一招</a><a href="#d1102-song">每日一曲</a><a href="#d1102-anime">每日一漫</a></nav>
 <!-- 五城天气 -->
 <section class="blk" id="d1102-weather">
 <div class="blk-head"><span class="no">其一</span><h2>五城天气</h2></div>
@@ -1647,7 +1626,7 @@
 <div class="wx-date">11月2日（周一）</div>
 <div class="wx-temp">8.5°C <small>/ -2.7°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 -1.4°C，08 时 -0.9°C，11 时 4.0°C，14 时 8.2°C，17 时 6.7°C，20 时 5.7°C，23 时 4.9°C</dd></div><div><dt>风力</dt><dd>南风，最大风速 10.1 公里/时，阵风 24.8 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 63%</dd></div><div><dt>空气质量</dt><dd>AQI 约 162（中度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:19，日落 16:40</dd></div><div><dt>明日</dt><dd>多云，最高 11.6°C、最低 2.6°C，无降水，气温小幅回升</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>02 时 -1.4°C，08 时 -0.9°C，11 时 4.0°C，14 时 8.2°C，17 时 6.7°C，20 时 5.7°C，23 时 4.9°C</dd></div><div><dt>风力</dt><dd>南风，最大风速 10.1&nbsp;公里/时，阵风 24.8&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 63%</dd></div><div><dt>空气质量</dt><dd>AQI 约 162（中度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:19，日落 16:40</dd></div><div><dt>明日</dt><dd>多云，最高 11.6°C、最低 2.6°C，无降水，气温小幅回升</dd></div></dl>
 <div class="tip">白天最高不足 9°C，早晚零下，穿厚外套加保暖内衣；空气较差，敏感人群外出可戴口罩</div>
 </article>
 <article class="wx">
@@ -1655,7 +1634,7 @@
 <div class="wx-date">11月2日（周一）</div>
 <div class="wx-temp">10.8°C <small>/ -2.1°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 -0.4°C，08 时 0.1°C，11 时 6.4°C，14 时 10.7°C，17 时 8.5°C，20 时 7.2°C，23 时 7.4°C</dd></div><div><dt>风力</dt><dd>南风，最大风速 12.1 公里/时，阵风 31.0 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 65%</dd></div><div><dt>空气质量</dt><dd>AQI 约 158（中度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:19，日落 16:43</dd></div><div><dt>明日</dt><dd>晴，最高 14.0°C、最低 4.0°C，无降水</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>02 时 -0.4°C，08 时 0.1°C，11 时 6.4°C，14 时 10.7°C，17 时 8.5°C，20 时 7.2°C，23 时 7.4°C</dd></div><div><dt>风力</dt><dd>南风，最大风速 12.1&nbsp;公里/时，阵风 31.0&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 65%</dd></div><div><dt>空气质量</dt><dd>AQI 约 158（中度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:19，日落 16:43</dd></div><div><dt>明日</dt><dd>晴，最高 14.0°C、最低 4.0°C，无降水</dd></div></dl>
 <div class="tip">与沈阳一样偏冷且空气较差，早晚添衣，少开窗，敏感人群注意防护</div>
 </article>
 <article class="wx">
@@ -1663,23 +1642,23 @@
 <div class="wx-date">当地 11月1日（周日）</div>
 <div class="wx-temp">5.2°C <small>/ -3.0°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 -0.4°C，08 时 -3.0°C，11 时 0.0°C，14 时 4.6°C，17 时 3.9°C，20 时 0.4°C，23 时 -1.6°C</dd></div><div><dt>风力</dt><dd>西北风，最大风速 12.1 公里/时，阵风 24.1 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 67%</dd></div><div><dt>空气质量</dt><dd>AQI 约 63（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 08:28，日落 18:09</dd></div><div><dt>明日</dt><dd>大部晴，最高 7.2°C、最低 -3.8°C，无降水</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>02 时 -0.4°C，08 时 -3.0°C，11 时 0.0°C，14 时 4.6°C，17 时 3.9°C，20 时 0.4°C，23 时 -1.6°C</dd></div><div><dt>风力</dt><dd>西北风，最大风速 12.1&nbsp;公里/时，阵风 24.1&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 67%</dd></div><div><dt>空气质量</dt><dd>AQI 约 63（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 08:28，日落 18:09</dd></div><div><dt>明日</dt><dd>大部晴，最高 7.2°C、最低 -3.8°C，无降水</dd></div></dl>
 <div class="tip">白天最高仅 5°C，夜间零下，穿厚外套；早晚温差大，注意添衣</div>
 </article>
 <article class="wx">
 <h3>海斯</h3>
 <div class="wx-date">当地 11月1日（周日）</div>
 <div class="wx-temp">18.0°C <small>/ 13.0°C</small></div>
-<p class="wx-cond">毛毛雨，全天降水量约 2.1 毫米</p>
-<dl><div><dt>风力</dt><dd>东南风，最大风速 29.4 公里/时，阵风 52.6 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:04，日落 17:36</dd></div><div><dt>明日</dt><dd>中雨，最高 25.4°C、最低 12.5°C</dd></div></dl>
-<div class="tip">有雨，带伞；风大阵风超 50 公里/时，防风外套穿上</div>
+<p class="wx-cond">毛毛雨，全天降水量约 2.1&nbsp;毫米</p>
+<dl><div><dt>风力</dt><dd>东南风，最大风速 29.4&nbsp;公里/时，阵风 52.6&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:04，日落 17:36</dd></div><div><dt>明日</dt><dd>中雨，最高 25.4°C、最低 12.5°C</dd></div></dl>
+<div class="tip">有雨，带伞；风大阵风超 50&nbsp;公里/时，防风外套穿上</div>
 </article>
 <article class="wx">
 <h3>京都</h3>
 <div class="wx-date">11月2日（周一）</div>
 <div class="wx-temp">17.4°C <small>/ 12.1°C</small></div>
-<p class="wx-cond">小雨，全天降水量约 7.8 毫米</p>
-<dl><div><dt>风力</dt><dd>北风，最大风速 11.1 公里/时，阵风 26.3 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:18，日落 17:02</dd></div><div><dt>明日</dt><dd>阴，最高 19.6°C、最低 10.9°C</dd></div></dl>
+<p class="wx-cond">小雨，全天降水量约 7.8&nbsp;毫米</p>
+<dl><div><dt>风力</dt><dd>北风，最大风速 11.1&nbsp;公里/时，阵风 26.3&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:18，日落 17:02</dd></div><div><dt>明日</dt><dd>阴，最高 19.6°C、最低 10.9°C</dd></div></dl>
 <div class="tip">下雨，带伞穿防风外套；气温 12~17°C，早晚添衣</div>
 </article>
 </div>
@@ -1818,25 +1797,9 @@
 <p>手机录下课堂或会议，再用飞书妙记、通义听悟转成文字，让 AI 提炼要点；不用手记，课后翻一遍就能复习。</p>
 </div>
 </section>
-<!-- 理财小知识 -->
-<section class="blk" id="d1102-money">
-<div class="blk-head"><span class="no">其十六</span><h2>理财小知识</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日知识：应急金</b></p>
-<p>先存够 3–6 个月的生活费，放在活期或货币基金里。遇到突发情况不用借钱，这是理财的第一步，比投资更重要。</p>
-</div>
-</section>
-<!-- 今日热梗 -->
-<section class="blk" id="d1102-slang">
-<div class="blk-head"><span class="no">其十七</span><h2>今日热梗</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日热梗：特种兵式旅游</b></p>
-<p>2023 年火起来的词，指用最少的时间打卡最多的景点，像特种兵一样赶路：一天爬一座山、逛三座城，年轻人体力好、时间紧，玩的就是一个“值回票价”。</p>
-</div>
-</section>
 <!-- 每日一曲 -->
 <section class="blk" id="d1102-song">
-<div class="blk-head"><span class="no">其十八</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十六</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《追梦赤子心》——GALA 乐队</p>
 <p>本周主题"立冬·寒潮里的暖意"：周一开工，鼎卦讲"立新功"，A 股也开了个红盘。《追梦赤子心》的副歌一上来就是"向前跑"，适合早上出门前放一遍、跑着去赶地铁；歌词里"用力活着用力爱"，就是今天要干的事——先踏踏实实做成一件小事。</p>
@@ -1844,12 +1807,13 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="d1102-anime">
-<div class="blk-head"><span class="no">其十九</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十七</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《葬送的芙莉莲》（第 1 季 28 集，2023–2024 年；第 2 季 10 集已于 2026 年 1–3 月播出）</p>
 <p>改编自山田钟人原作、阿部司作画的漫画，讲精灵魔法师芙莉莲在打败魔王十年后，带着新伙伴一路向北的旅程。理由：昨天推了慢节奏的治愈番《夏目友人帐》，今天换一部同样温柔、但走得更远的"在路上"的番——芙莉莲的旅程讲的是时间、告别和重新出发，正好对上今天鼎卦的"立新功"和这周"立冬·寒潮里的暖意"；两部番一静一动，静的是归还名字，动的是向北出发，冬天就从这两部番开始追。</p>
 </div>
 </section>
+<div class="issue-tools issue-tools-bottom"><button class="copy-link-btn" type="button" data-copy-date="2026-11-02">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-02" data-share-title="每日晨间简报 · 2026年11月2日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-02&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%882%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-02">微信</button></div>
 <nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev" type="button" data-nav-date="2026-11-01" aria-label="上一期：11月1日 周日">&larr; 上一期 &middot; 11月1日 周日</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next" type="button" data-nav-date="2026-11-03" aria-label="下一期：11月3日 周二">下一期 &middot; 11月3日 周二 &rarr;</button></nav>
 <p class="src">简报完。本期为补档版本，天气与月相为历史档案与天文公式计算值；美股为美东时间 11 月 2 日收盘（北京时间 11 月 3 日凌晨出炉），属事后补档口径。</p>
 </div>
@@ -1862,10 +1826,10 @@
           </div>
           <button class="tab-btn back-archive" type="button">← 返回归档</button><div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式">☾</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-03">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-03" data-share-title="每日晨间简报 · 2026年11月3日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-03&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%883%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-03">微信</button></div>
         </div>
-        <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">11.6°<small> / 2.6°</small></div><div class="meta"><b>沈阳</b><br />多云 · 全天无降水<br />AQI 约 111（轻度污染）</div></div><div class="cell"><div class="big">14.0°<small> / 4.0°</small></div><div class="meta"><b>鞍山</b><br />晴 · 全天无降水<br />台安县发布大雾黄色预警</div></div><div class="cell"><div class="big">7.2°<small> / -3.8°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 2 日 · 大部晴<br />创新周开幕</div></div><div class="cell"><div class="big">25.4°<small> / 12.5°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 2 日 · 中雨<br />南风阵风 69 km/h</div></div><div class="cell"><div class="big">19.6°<small> / 10.9°</small></div><div class="meta"><b>京都</b><br />阴 · 全天无降水<br />最高近 20°C</div></div></div>
+        <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">11.6°<small> / 2.6°</small></div><div class="meta"><b>沈阳</b><br />多云 · 全天无降水<br />AQI 约 111（轻度污染）</div></div><div class="cell"><div class="big">14.0°<small> / 4.0°</small></div><div class="meta"><b>鞍山</b><br />晴 · 全天无降水<br />台安县发布大雾黄色预警</div></div><div class="cell"><div class="big">7.2°<small> / -3.8°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 2 日 · 大部晴<br />创新周开幕</div></div><div class="cell"><div class="big">25.4°<small> / 12.5°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 2 日 · 中雨<br />南风阵风 69&nbsp;km/h</div></div><div class="cell"><div class="big">19.6°<small> / 10.9°</small></div><div class="meta"><b>京都</b><br />阴 · 全天无降水<br />最高近 20°C</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1103-weather">五城天气</a><a href="#d1103-news">五城新闻</a><a href="#d1103-highlights">今日看点</a><a href="#d1103-finance">金融市场</a><a href="#d1103-sports">体育速递</a><a href="#d1103-gossip">娱乐圈八卦</a><a href="#d1103-astro">月相 · 卦象</a><a href="#d1103-tarot">塔罗</a><a href="#d1103-history">历史上的今天</a><a href="#d1103-quote">每日金句</a><a href="#d1103-wellness">养生小技巧</a><a href="#d1103-meal">健身减脂餐</a><a href="#d1103-english">英语</a><a href="#d1103-poem">一诗</a><a href="#d1103-ai">AI 一招</a><a href="#d1103-money">理财</a><a href="#d1103-slang">热梗</a><a href="#d1103-song">每日一曲</a><a href="#d1103-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1103-weather">五城天气</a><a href="#d1103-news">五城新闻</a><a href="#d1103-highlights">今日看点</a><a href="#d1103-finance">金融市场</a><a href="#d1103-sports">体育速递</a><a href="#d1103-gossip">娱乐圈八卦</a><a href="#d1103-astro">月相 · 卦象</a><a href="#d1103-tarot">塔罗</a><a href="#d1103-history">历史上的今天</a><a href="#d1103-quote">每日金句</a><a href="#d1103-wellness">养生小技巧</a><a href="#d1103-meal">健身减脂餐</a><a href="#d1103-english">英语</a><a href="#d1103-poem">一诗</a><a href="#d1103-ai">AI 一招</a><a href="#d1103-song">每日一曲</a><a href="#d1103-anime">每日一漫</a></nav>
 <!-- 五城天气 -->
 <section class="blk" id="d1103-weather">
 <div class="blk-head"><span class="no">其一</span><h2>五城天气</h2></div>
@@ -1875,7 +1839,7 @@
 <div class="wx-date">11月3日（周二）</div>
 <div class="wx-temp">11.6°C <small>/ 2.6°C</small></div>
 <p class="wx-cond">多云，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 4.4°C，08 时 4.2°C，11 时 8.4°C，14 时 11.5°C，17 时 9.3°C，20 时 6.6°C，23 时 6.8°C</dd></div><div><dt>风力</dt><dd>东南风，最大风速 11.9 公里/时，阵风 23.8 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 62%</dd></div><div><dt>空气质量</dt><dd>AQI 约 111（轻度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:20，日落 16:38</dd></div><div><dt>明日</dt><dd>阴，最高 18.2°C、最低 7.1°C，南风大、阵风可达 58 公里/时，气温明显回升</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>02 时 4.4°C，08 时 4.2°C，11 时 8.4°C，14 时 11.5°C，17 时 9.3°C，20 时 6.6°C，23 时 6.8°C</dd></div><div><dt>风力</dt><dd>东南风，最大风速 11.9&nbsp;公里/时，阵风 23.8&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 62%</dd></div><div><dt>空气质量</dt><dd>AQI 约 111（轻度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:20，日落 16:38</dd></div><div><dt>明日</dt><dd>阴，最高 18.2°C、最低 7.1°C，南风大、阵风可达 58&nbsp;公里/时，气温明显回升</dd></div></dl>
 <div class="tip">白天最高近 12°C，比昨天暖和，但早晚只有 3°C 左右，穿外套、注意温差</div>
 </article>
 <article class="wx">
@@ -1883,7 +1847,7 @@
 <div class="wx-date">11月3日（周二）</div>
 <div class="wx-temp">14.0°C <small>/ 4.0°C</small></div>
 <p class="wx-cond">晴，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 7.2°C，08 时 5.5°C，11 时 10.7°C，14 时 13.9°C，17 时 10.5°C，20 时 8.1°C，23 时 9.9°C</dd></div><div><dt>风力</dt><dd>南风，最大风速 13.2 公里/时，阵风 26.6 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 66%</dd></div><div><dt>空气质量</dt><dd>AQI 约 109（轻度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:21，日落 16:41</dd></div><div><dt>明日</dt><dd>阴，最高 18.9°C、最低 9.5°C，南风大，气温继续回升</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>02 时 7.2°C，08 时 5.5°C，11 时 10.7°C，14 时 13.9°C，17 时 10.5°C，20 时 8.1°C，23 时 9.9°C</dd></div><div><dt>风力</dt><dd>南风，最大风速 13.2&nbsp;公里/时，阵风 26.6&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 66%</dd></div><div><dt>空气质量</dt><dd>AQI 约 109（轻度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:21，日落 16:41</dd></div><div><dt>明日</dt><dd>阴，最高 18.9°C、最低 9.5°C，南风大，气温继续回升</dd></div></dl>
 <div class="tip">晴天回暖，白天 14°C 体感舒适，早晚仍凉，带一件外套</div>
 </article>
 <article class="wx">
@@ -1891,15 +1855,15 @@
 <div class="wx-date">当地 11月2日（周一）</div>
 <div class="wx-temp">7.2°C <small>/ -3.8°C</small></div>
 <p class="wx-cond">大部晴，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 -2.4°C，08 时 -3.7°C，11 时 -0.2°C，14 时 6.4°C，17 时 5.6°C，20 时 2.0°C，23 时 -0.2°C</dd></div><div><dt>风力</dt><dd>西风，最大风速 12.6 公里/时，阵风 27.0 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 67%</dd></div><div><dt>空气质量</dt><dd>AQI 约 58（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 08:30，日落 18:08</dd></div><div><dt>明日</dt><dd>阴，最高 11.9°C、最低 -0.9°C，西北风较大，气温明显回升</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>02 时 -2.4°C，08 时 -3.7°C，11 时 -0.2°C，14 时 6.4°C，17 时 5.6°C，20 时 2.0°C，23 时 -0.2°C</dd></div><div><dt>风力</dt><dd>西风，最大风速 12.6&nbsp;公里/时，阵风 27.0&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 67%</dd></div><div><dt>空气质量</dt><dd>AQI 约 58（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 08:30，日落 18:08</dd></div><div><dt>明日</dt><dd>阴，最高 11.9°C、最低 -0.9°C，西北风较大，气温明显回升</dd></div></dl>
 <div class="tip">白天 7°C、阳光不错，但早晚零下，出门穿厚外套</div>
 </article>
 <article class="wx">
 <h3>海斯</h3>
 <div class="wx-date">当地 11月2日（周一）</div>
 <div class="wx-temp">25.4°C <small>/ 12.5°C</small></div>
-<p class="wx-cond">中雨，全天降水量约 8.2 毫米</p>
-<dl><div><dt>风力</dt><dd>南风，最大风速 36.3 公里/时，阵风 68.8 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:05，日落 17:35</dd></div><div><dt>明日</dt><dd>中雨，最高 14.4°C、最低 6.1°C</dd></div></dl>
+<p class="wx-cond">中雨，全天降水量约 8.2&nbsp;毫米</p>
+<dl><div><dt>风力</dt><dd>南风，最大风速 36.3&nbsp;公里/时，阵风 68.8&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:05，日落 17:35</dd></div><div><dt>明日</dt><dd>中雨，最高 14.4°C、最低 6.1°C</dd></div></dl>
 <div class="tip">白天最高 25°C 但有雨有大风，带伞穿防风外套；夜间降至 12°C，添衣</div>
 </article>
 <article class="wx">
@@ -1907,7 +1871,7 @@
 <div class="wx-date">11月3日（周二）</div>
 <div class="wx-temp">19.6°C <small>/ 10.9°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>风力</dt><dd>西北风，最大风速 10.5 公里/时，阵风 25.9 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:19，日落 17:01</dd></div><div><dt>明日</dt><dd>毛毛雨，最高 19.1°C、最低 9.7°C</dd></div></dl>
+<dl><div><dt>风力</dt><dd>西北风，最大风速 10.5&nbsp;公里/时，阵风 25.9&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:19，日落 17:01</dd></div><div><dt>明日</dt><dd>毛毛雨，最高 19.1°C、最低 9.7°C</dd></div></dl>
 <div class="tip">阴天无雨，最高近 20°C，早晚 11°C 左右，带一件薄外套</div>
 </article>
 </div>
@@ -2044,25 +2008,9 @@
 <p>给 AI 一句“帮我写一封向老师请假的邮件，语气礼貌，说明原因和补课计划”，它先搭好框架，你再改细节；比从零写快得多。</p>
 </div>
 </section>
-<!-- 理财小知识 -->
-<section class="blk" id="d1103-money">
-<div class="blk-head"><span class="no">其十六</span><h2>理财小知识</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日知识：记账</b></p>
-<p>记一个月账，就知道钱花哪了。很多人不是赚得少，是不知道钱去哪了；手机记账 App 随手记，不用复杂，坚持一个月就能看到问题。</p>
-</div>
-</section>
-<!-- 今日热梗 -->
-<section class="blk" id="d1103-slang">
-<div class="blk-head"><span class="no">其十七</span><h2>今日热梗</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日热梗：班味</b></p>
-<p>2024 年的词，指打工人身上那股被工作“腌入味”的疲惫感：眼神发直、脸色发黄、周末也缓不过来。网友调侃“班味洗不掉”，其实是提醒自己该休息了。</p>
-</div>
-</section>
 <!-- 每日一曲 -->
 <section class="blk" id="d1103-song">
-<div class="blk-head"><span class="no">其十八</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十六</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《夜空中最亮的星》——逃跑计划</p>
 <p>今天乌镇互联网大会开幕，AI 和星空是全天的关键词；震卦讲"借势而动"，适合主动出击。《夜空中最亮的星》写的是夜里抬头找方向，副歌一响就让人想往前走——今晚忙累了就放这首，站到窗边看一眼夜空，歇一歇再回去把手头的事收个尾。</p>
@@ -2070,12 +2018,13 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="d1103-anime">
-<div class="blk-head"><span class="no">其十九</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十七</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《摇曳露营△》（TV 动画共 3 季 37 集，2018–2024 年；另有剧场版 2022 年）</p>
 <p>改编自 Afro 的同名漫画，讲几个女生冬天去露营：搭帐篷、生篝火、煮一锅热汤，看富士山的日出。理由：这周主题是"冬夜暖番"，从它开始最合适——今天沈阳最高 11.6°C，还不算太冷，今晚先看第 1 集《富士山与咖喱面》，锅一开、雾气一升，屋里就暖了；一集二十多分钟，不用追、不用赶，睡前看正好。</p>
 </div>
 </section>
+<div class="issue-tools issue-tools-bottom"><button class="copy-link-btn" type="button" data-copy-date="2026-11-03">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-03" data-share-title="每日晨间简报 · 2026年11月3日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-03&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%883%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-03">微信</button></div>
 <nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev" type="button" data-nav-date="2026-11-02" aria-label="上一期：11月2日 周一">&larr; 上一期 &middot; 11月2日 周一</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next" type="button" data-nav-date="2026-11-04" aria-label="下一期：11月4日 周三">下一期 &middot; 11月4日 周三 &rarr;</button></nav>
 <p class="src">简报完。本期为补档版本，天气与月相为历史档案与天文公式计算值；美股为美国当地 11 月 3 日收盘（北京时间 11 月 4 日凌晨出炉），属事后补档口径。</p>
 </div>
@@ -2088,10 +2037,10 @@
           </div>
           <button class="tab-btn back-archive" type="button">← 返回归档</button><div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式">☾</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-04">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-04" data-share-title="每日晨间简报 · 2026年11月4日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-04&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%884%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-04">微信</button></div>
         </div>
-        <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">18.2°<small> / 7.1°</small></div><div class="meta"><b>沈阳</b><br />阴 · 南风阵风 58 km/h<br />降温前的回暖，明日骤降</div></div><div class="cell"><div class="big">18.9°<small> / 9.5°</small></div><div class="meta"><b>鞍山</b><br />阴 · 南风阵风 56 km/h<br />11 月里难得的暖和天</div></div><div class="cell"><div class="big">11.9°<small> / -0.9°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 3 日 · 阴<br />本周最暖的一天</div></div><div class="cell"><div class="big">14.4°<small> / 6.1°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 3 日 · 中雨<br />降水约 15.6 毫米，阵风 70 km/h</div></div><div class="cell"><div class="big">19.1°<small> / 9.7°</small></div><div class="meta"><b>京都</b><br />毛毛雨 · 降水约 1.6 毫米<br />早晚 10°C 左右</div></div></div>
+        <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">18.2°<small> / 7.1°</small></div><div class="meta"><b>沈阳</b><br />阴 · 南风阵风 58&nbsp;km/h<br />降温前的回暖，明日骤降</div></div><div class="cell"><div class="big">18.9°<small> / 9.5°</small></div><div class="meta"><b>鞍山</b><br />阴 · 南风阵风 56&nbsp;km/h<br />11 月里难得的暖和天</div></div><div class="cell"><div class="big">11.9°<small> / -0.9°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 3 日 · 阴<br />本周最暖的一天</div></div><div class="cell"><div class="big">14.4°<small> / 6.1°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 3 日 · 中雨<br />降水约 15.6&nbsp;毫米，阵风 70&nbsp;km/h</div></div><div class="cell"><div class="big">19.1°<small> / 9.7°</small></div><div class="meta"><b>京都</b><br />毛毛雨 · 降水约 1.6&nbsp;毫米<br />早晚 10°C 左右</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1104-weather">五城天气</a><a href="#d1104-news">五城新闻</a><a href="#d1104-highlights">今日看点</a><a href="#d1104-finance">金融市场</a><a href="#d1104-sports">体育速递</a><a href="#d1104-gossip">娱乐圈八卦</a><a href="#d1104-astro">月相 · 卦象</a><a href="#d1104-tarot">塔罗</a><a href="#d1104-history">历史上的今天</a><a href="#d1104-quote">每日金句</a><a href="#d1104-wellness">养生小技巧</a><a href="#d1104-meal">健身减脂餐</a><a href="#d1104-english">英语</a><a href="#d1104-poem">一诗</a><a href="#d1104-ai">AI 一招</a><a href="#d1104-money">理财</a><a href="#d1104-slang">热梗</a><a href="#d1104-song">每日一曲</a><a href="#d1104-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1104-weather">五城天气</a><a href="#d1104-news">五城新闻</a><a href="#d1104-highlights">今日看点</a><a href="#d1104-finance">金融市场</a><a href="#d1104-sports">体育速递</a><a href="#d1104-gossip">娱乐圈八卦</a><a href="#d1104-astro">月相 · 卦象</a><a href="#d1104-tarot">塔罗</a><a href="#d1104-history">历史上的今天</a><a href="#d1104-quote">每日金句</a><a href="#d1104-wellness">养生小技巧</a><a href="#d1104-meal">健身减脂餐</a><a href="#d1104-english">英语</a><a href="#d1104-poem">一诗</a><a href="#d1104-ai">AI 一招</a><a href="#d1104-song">每日一曲</a><a href="#d1104-anime">每日一漫</a></nav>
 <!-- 五城天气 -->
 <section class="blk" id="d1104-weather">
 <div class="blk-head"><span class="no">其一</span><h2>五城天气</h2></div>
@@ -2101,15 +2050,15 @@
 <div class="wx-date">11月4日（周三）</div>
 <div class="wx-temp">18.2°C <small>/ 7.1°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 7.2°C，08 时 11.0°C，11 时 16.7°C，14 时 18.2°C，17 时 15.7°C，20 时 15.3°C，23 时 14.1°C</dd></div><div><dt>风力</dt><dd>南风，最大风速 24.5 公里/时，阵风 58.3 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 71%</dd></div><div><dt>空气质量</dt><dd>AQI 约 146（轻度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:21，日落 16:37</dd></div><div><dt>明日</dt><dd>阴，冷锋过境，白天最高仅约 6~7°C、夜间最低 -0.9°C，西北风大，气温骤降</dd></div></dl>
-<div class="tip">一天之内升温近 11°C，白天 18°C 穿薄外套就够，但南风大、阵风近 60 公里/时，出行注意防风；这是降温前的回暖，明天起大幅降温，厚衣服提前备好</div>
+<dl><div><dt>逐时</dt><dd>02 时 7.2°C，08 时 11.0°C，11 时 16.7°C，14 时 18.2°C，17 时 15.7°C，20 时 15.3°C，23 时 14.1°C</dd></div><div><dt>风力</dt><dd>南风，最大风速 24.5&nbsp;公里/时，阵风 58.3&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 71%</dd></div><div><dt>空气质量</dt><dd>AQI 约 146（轻度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:21，日落 16:37</dd></div><div><dt>明日</dt><dd>阴，冷锋过境，白天最高仅约 6~7°C、夜间最低 -0.9°C，西北风大，气温骤降</dd></div></dl>
+<div class="tip">一天之内升温近 11°C，白天 18°C 穿薄外套就够，但南风大、阵风近 60&nbsp;公里/时，出行注意防风；这是降温前的回暖，明天起大幅降温，厚衣服提前备好</div>
 </article>
 <article class="wx">
 <h3>鞍山</h3>
 <div class="wx-date">11月4日（周三）</div>
 <div class="wx-temp">18.9°C <small>/ 9.5°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 9.6°C，08 时 13.2°C，11 时 17.6°C，14 时 18.5°C，17 时 16.3°C，20 时 15.4°C，23 时 14.6°C</dd></div><div><dt>风力</dt><dd>南风，最大风速 24.8 公里/时，阵风 56.2 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 66%</dd></div><div><dt>空气质量</dt><dd>AQI 约 152（中度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:22，日落 16:40</dd></div><div><dt>明日</dt><dd>阴，白天最高约 8~11°C、夜间最低 0.5°C，西北风大，降温明显</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>02 时 9.6°C，08 时 13.2°C，11 时 17.6°C，14 时 18.5°C，17 时 16.3°C，20 时 15.4°C，23 时 14.6°C</dd></div><div><dt>风力</dt><dd>南风，最大风速 24.8&nbsp;公里/时，阵风 56.2&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 66%</dd></div><div><dt>空气质量</dt><dd>AQI 约 152（中度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:22，日落 16:40</dd></div><div><dt>明日</dt><dd>阴，白天最高约 8~11°C、夜间最低 0.5°C，西北风大，降温明显</dd></div></dl>
 <div class="tip">白天近 19°C，是 11 月里难得的暖和天，但风大、空气较差，敏感人群少户外久待；暖和只是一天，明天冷空气到，厚衣服别收起来</div>
 </article>
 <article class="wx">
@@ -2117,23 +2066,23 @@
 <div class="wx-date">当地 11月3日（周二）</div>
 <div class="wx-temp">11.9°C <small>/ -0.9°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 0.6°C，08 时 3.1°C，11 时 6.0°C，14 时 11.4°C，17 时 9.8°C，20 时 5.3°C，23 时 3.3°C</dd></div><div><dt>风力</dt><dd>西北风，最大风速 18.8 公里/时，阵风 38.5 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 57%</dd></div><div><dt>空气质量</dt><dd>AQI 约 59（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 08:32，日落 18:06</dd></div><div><dt>明日</dt><dd>多云，最高 6.4°C、最低 -2.2°C，无降水，气温回落</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>02 时 0.6°C，08 时 3.1°C，11 时 6.0°C，14 时 11.4°C，17 时 9.8°C，20 时 5.3°C，23 时 3.3°C</dd></div><div><dt>风力</dt><dd>西北风，最大风速 18.8&nbsp;公里/时，阵风 38.5&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 57%</dd></div><div><dt>空气质量</dt><dd>AQI 约 59（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 08:32，日落 18:06</dd></div><div><dt>明日</dt><dd>多云，最高 6.4°C、最低 -2.2°C，无降水，气温回落</dd></div></dl>
 <div class="tip">白天近 12°C，是本周最暖的一天，穿薄外套即可；但风大，早晚仍凉</div>
 </article>
 <article class="wx">
 <h3>海斯</h3>
 <div class="wx-date">当地 11月3日（周二）</div>
 <div class="wx-temp">14.4°C <small>/ 6.1°C</small></div>
-<p class="wx-cond">中雨，全天降水量约 15.6 毫米</p>
-<dl><div><dt>风力</dt><dd>西北风，最大风速 36.4 公里/时，阵风 69.5 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:06，日落 17:34</dd></div><div><dt>明日</dt><dd>大部晴朗，最高 17.1°C、最低 4.3°C</dd></div></dl>
+<p class="wx-cond">中雨，全天降水量约 15.6&nbsp;毫米</p>
+<dl><div><dt>风力</dt><dd>西北风，最大风速 36.4&nbsp;公里/时，阵风 69.5&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:06，日落 17:34</dd></div><div><dt>明日</dt><dd>大部晴朗，最高 17.1°C、最低 4.3°C</dd></div></dl>
 <div class="tip">雨大风大，带伞穿防风外套；气温降至 6°C，早晚冷，添厚外套</div>
 </article>
 <article class="wx">
 <h3>京都</h3>
 <div class="wx-date">11月4日（周三）</div>
 <div class="wx-temp">19.1°C <small>/ 9.7°C</small></div>
-<p class="wx-cond">毛毛雨，全天降水量约 1.6 毫米</p>
-<dl><div><dt>风力</dt><dd>北风，最大风速 8.5 公里/时，阵风 24.1 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:20，日落 17:00</dd></div><div><dt>明日</dt><dd>小雨，最高 23.3°C、最低 13.8°C</dd></div></dl>
+<p class="wx-cond">毛毛雨，全天降水量约 1.6&nbsp;毫米</p>
+<dl><div><dt>风力</dt><dd>北风，最大风速 8.5&nbsp;公里/时，阵风 24.1&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:20，日落 17:00</dd></div><div><dt>明日</dt><dd>小雨，最高 23.3°C、最低 13.8°C</dd></div></dl>
 <div class="tip">毛毛雨，带把小伞；最高 19°C，早晚 10°C 左右，薄外套不能少</div>
 </article>
 </div>
@@ -2270,25 +2219,9 @@
 <p>把一堆零散数据贴给 AI，说“整理成表格，按 XX 排序”，再复制到 Excel；省下手动排版的时间，做课程作业、实习报表都用得上。</p>
 </div>
 </section>
-<!-- 理财小知识 -->
-<section class="blk" id="d1104-money">
-<div class="blk-head"><span class="no">其十六</span><h2>理财小知识</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日知识：信用卡</b></p>
-<p>按时全额还款，不分期、不取现，就不会付利息。信用卡是工具，不是多出来的钱；管住手，它就是方便，管不住就是坑。</p>
-</div>
-</section>
-<!-- 今日热梗 -->
-<section class="blk" id="d1104-slang">
-<div class="blk-head"><span class="no">其十七</span><h2>今日热梗</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日热梗：破防</b></p>
-<p>原指游戏中防线被突破，现在指情绪防线被击穿：被一句话、一首歌、一个画面感动到绷不住，或者被扎心到难受。常说“我破防了”，就是“我绷不住了”。</p>
-</div>
-</section>
 <!-- 每日一曲 -->
 <section class="blk" id="d1104-song">
-<div class="blk-head"><span class="no">其十八</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十六</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《起风了》——买辣椒也用券</p>
 <p>今天沈阳一天升温 11°C、南风阵风近 60 公里，是名副其实"起风了"的一天；A 股也大涨 2.16%，风是往上吹的。歌里唱"逆风的方向，更适合飞翔"，适合今晚收尾复盘时放——把手头的事跟进一遍，别只顾往前冲，风起了，方向要先定好。</p>
@@ -2296,12 +2229,13 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="d1104-anime">
-<div class="blk-head"><span class="no">其十九</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十七</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《轻音少女》（TV 动画共 2 季 39 集，第 1 季 13 集 2009 年，第 2 季 26 集 2010 年；另有剧场版 2011 年）</p>
 <p>改编自 kakifly 的四格漫画，讲平泽唯等四个女生放学后在轻音部喝茶、练琴、吃蛋糕的日子。理由：今天沈阳难得回暖到 18°C，A 股也大涨，心情正好配这部——今晚看第 1 集，二十多分钟，全是放学后阳光的味道，暖和又不费脑子；这周主题是冬夜暖番，它负责把白天的暖气留到晚上。</p>
 </div>
 </section>
+<div class="issue-tools issue-tools-bottom"><button class="copy-link-btn" type="button" data-copy-date="2026-11-04">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-04" data-share-title="每日晨间简报 · 2026年11月4日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-04&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%884%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-04">微信</button></div>
 <nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev" type="button" data-nav-date="2026-11-03" aria-label="上一期：11月3日 周二">&larr; 上一期 &middot; 11月3日 周二</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next" type="button" data-nav-date="2026-11-05" aria-label="下一期：11月5日 周四">下一期 &middot; 11月5日 周四 &rarr;</button></nav>
 <p class="src">简报完。本期为补档版本，天气与月相为历史档案与天文公式计算值；美股为美国当地 11 月 4 日收盘（北京时间 11 月 5 日凌晨出炉），属事后补档口径。</p>
 </div>
@@ -2314,10 +2248,10 @@
           </div>
           <button class="tab-btn back-archive" type="button">← 返回归档</button><div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式">☾</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-05">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-05" data-share-title="每日晨间简报 · 2026年11月5日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-05&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%885%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-05">微信</button></div>
         </div>
-        <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">6.7°<small> / -0.9°</small></div><div class="meta"><b>沈阳</b><br />白天气温 · 冷锋过境<br />凌晨锋前曾达 13.8°C</div></div><div class="cell"><div class="big">10.9°<small> / 0.5°</small></div><div class="meta"><b>鞍山</b><br />白天气温 · 冷锋过境<br />凌晨曾达 14.5°C</div></div><div class="cell"><div class="big">6.4°<small> / -2.2°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 4 日 · 多云<br />全市用水限制今日生效</div></div><div class="cell"><div class="big">17.1°<small> / 4.3°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 4 日 · 大部晴朗<br />早晚仅 4°C，昼夜温差大</div></div><div class="cell"><div class="big">23.3°<small> / 13.8°</small></div><div class="meta"><b>京都</b><br />小雨 · 降水约 3.9 毫米<br />本周最暖，最高 23°C</div></div></div>
+        <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">6.7°<small> / -0.9°</small></div><div class="meta"><b>沈阳</b><br />白天气温 · 冷锋过境<br />凌晨锋前曾达 13.8°C</div></div><div class="cell"><div class="big">10.9°<small> / 0.5°</small></div><div class="meta"><b>鞍山</b><br />白天气温 · 冷锋过境<br />凌晨曾达 14.5°C</div></div><div class="cell"><div class="big">6.4°<small> / -2.2°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 4 日 · 多云<br />全市用水限制今日生效</div></div><div class="cell"><div class="big">17.1°<small> / 4.3°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 4 日 · 大部晴朗<br />早晚仅 4°C，昼夜温差大</div></div><div class="cell"><div class="big">23.3°<small> / 13.8°</small></div><div class="meta"><b>京都</b><br />小雨 · 降水约 3.9&nbsp;毫米<br />本周最暖，最高 23°C</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1105-weather">五城天气</a><a href="#d1105-news">五城新闻</a><a href="#d1105-highlights">今日看点</a><a href="#d1105-finance">金融市场</a><a href="#d1105-sports">体育速递</a><a href="#d1105-gossip">娱乐圈八卦</a><a href="#d1105-astro">月相 · 卦象</a><a href="#d1105-tarot">塔罗</a><a href="#d1105-history">历史上的今天</a><a href="#d1105-quote">每日金句</a><a href="#d1105-wellness">养生小技巧</a><a href="#d1105-meal">健身减脂餐</a><a href="#d1105-english">英语</a><a href="#d1105-poem">一诗</a><a href="#d1105-ai">AI 一招</a><a href="#d1105-money">理财</a><a href="#d1105-slang">热梗</a><a href="#d1105-song">每日一曲</a><a href="#d1105-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1105-weather">五城天气</a><a href="#d1105-news">五城新闻</a><a href="#d1105-highlights">今日看点</a><a href="#d1105-finance">金融市场</a><a href="#d1105-sports">体育速递</a><a href="#d1105-gossip">娱乐圈八卦</a><a href="#d1105-astro">月相 · 卦象</a><a href="#d1105-tarot">塔罗</a><a href="#d1105-history">历史上的今天</a><a href="#d1105-quote">每日金句</a><a href="#d1105-wellness">养生小技巧</a><a href="#d1105-meal">健身减脂餐</a><a href="#d1105-english">英语</a><a href="#d1105-poem">一诗</a><a href="#d1105-ai">AI 一招</a><a href="#d1105-song">每日一曲</a><a href="#d1105-anime">每日一漫</a></nav>
 <!-- 五城天气 -->
 <section class="blk" id="d1105-weather">
 <div class="blk-head"><span class="no">其一</span><h2>五城天气</h2></div>
@@ -2327,7 +2261,7 @@
 <div class="wx-date">11月5日（周四）</div>
 <div class="wx-temp">13.8°C <small>/ -0.9°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 12.8°C，05 时 10.2°C，08 时 5.0°C，11 时 6.4°C，14 时 5.5°C，17 时 3.5°C，20 时 1.2°C，23 时 -0.5°C</dd></div><div><dt>风力</dt><dd>西北风，最大风速 17.4 公里/时，阵风 40.7 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 65%</dd></div><div><dt>空气质量</dt><dd>AQI 约 135（轻度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:23，日落 16:36</dd></div><div><dt>明日</dt><dd>晴，最高 2.4°C、最低 -2.8°C，西北风，寒冷持续</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>02 时 12.8°C，05 时 10.2°C，08 时 5.0°C，11 时 6.4°C，14 时 5.5°C，17 时 3.5°C，20 时 1.2°C，23 时 -0.5°C</dd></div><div><dt>风力</dt><dd>西北风，最大风速 17.4&nbsp;公里/时，阵风 40.7&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 65%</dd></div><div><dt>空气质量</dt><dd>AQI 约 135（轻度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:23，日落 16:36</dd></div><div><dt>明日</dt><dd>晴，最高 2.4°C、最低 -2.8°C，西北风，寒冷持续</dd></div></dl>
 <div class="tip">一天之内从 13°C 跌到 0°C 以下，白天穿厚外套、戴围巾；早晚温差极大，千万别按凌晨的温度穿衣服出门</div>
 <div class="warn">冷锋过境，白天气温不升反降</div>
 </article>
@@ -2336,7 +2270,7 @@
 <div class="wx-date">11月5日（周四）</div>
 <div class="wx-temp">14.5°C <small>/ 0.5°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 13.5°C，05 时 11.9°C，08 时 9.4°C，11 时 10.9°C，14 时 8.0°C，17 时 6.3°C，20 时 2.9°C，23 时 1.0°C</dd></div><div><dt>风力</dt><dd>西北风，最大风速 18.7 公里/时，阵风 42.1 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 64%</dd></div><div><dt>空气质量</dt><dd>AQI 约 125（轻度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:23，日落 16:39</dd></div><div><dt>明日</dt><dd>晴，最高 5.0°C、最低 -2.5°C，北风，寒冷持续</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>02 时 13.5°C，05 时 11.9°C，08 时 9.4°C，11 时 10.9°C，14 时 8.0°C，17 时 6.3°C，20 时 2.9°C，23 时 1.0°C</dd></div><div><dt>风力</dt><dd>西北风，最大风速 18.7&nbsp;公里/时，阵风 42.1&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 64%</dd></div><div><dt>空气质量</dt><dd>AQI 约 125（轻度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:23，日落 16:39</dd></div><div><dt>明日</dt><dd>晴，最高 5.0°C、最低 -2.5°C，北风，寒冷持续</dd></div></dl>
 <div class="tip">与沈阳一样"先暖后冷"，白天穿厚外套；夜间降至 0°C 左右，注意保暖</div>
 <div class="warn">冷锋过境，白天降温明显</div>
 </article>
@@ -2345,7 +2279,7 @@
 <div class="wx-date">当地 11月4日（周三）</div>
 <div class="wx-temp">6.4°C <small>/ -2.2°C</small></div>
 <p class="wx-cond">多云，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 0.2°C，08 时 -2.0°C，11 时 1.7°C，14 时 6.2°C，17 时 5.5°C，20 时 2.1°C，23 时 0.5°C</dd></div><div><dt>风力</dt><dd>西南风，最大风速 8.3 公里/时，阵风 18.0 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 76%</dd></div><div><dt>空气质量</dt><dd>AQI 约 73（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 08:34，日落 18:04</dd></div><div><dt>明日</dt><dd>毛毛雨，最高 10.0°C、最低 -1.6°C，西风较大，气温回升</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>02 时 0.2°C，08 时 -2.0°C，11 时 1.7°C，14 时 6.2°C，17 时 5.5°C，20 时 2.1°C，23 时 0.5°C</dd></div><div><dt>风力</dt><dd>西南风，最大风速 8.3&nbsp;公里/时，阵风 18.0&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 76%</dd></div><div><dt>空气质量</dt><dd>AQI 约 73（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 08:34，日落 18:04</dd></div><div><dt>明日</dt><dd>毛毛雨，最高 10.0°C、最低 -1.6°C，西风较大，气温回升</dd></div></dl>
 <div class="tip">白天 6°C 左右，夜间零下，穿厚外套；湿度偏高，体感偏凉</div>
 <div class="warn">用水限制自今日起实施</div>
 </article>
@@ -2354,15 +2288,15 @@
 <div class="wx-date">当地 11月4日（周三）</div>
 <div class="wx-temp">17.1°C <small>/ 4.3°C</small></div>
 <p class="wx-cond">大部晴朗，全天无降水</p>
-<dl><div><dt>风力</dt><dd>西北风，最大风速 16.9 公里/时，阵风 35.3 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:07，日落 17:33</dd></div><div><dt>明日</dt><dd>阴，最高 14.6°C、最低 4.0°C</dd></div></dl>
+<dl><div><dt>风力</dt><dd>西北风，最大风速 16.9&nbsp;公里/时，阵风 35.3&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:07，日落 17:33</dd></div><div><dt>明日</dt><dd>阴，最高 14.6°C、最低 4.0°C</dd></div></dl>
 <div class="tip">晴天无雨，但早晚只有 4°C 左右，昼夜温差大，厚外套早上穿着</div>
 </article>
 <article class="wx">
 <h3>京都</h3>
 <div class="wx-date">11月5日（周四）</div>
 <div class="wx-temp">23.3°C <small>/ 13.8°C</small></div>
-<p class="wx-cond">小雨，全天降水量约 3.9 毫米</p>
-<dl><div><dt>风力</dt><dd>东北风，最大风速 7.5 公里/时，阵风 22.3 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:21，日落 16:59</dd></div><div><dt>明日</dt><dd>毛毛雨，最高 20.9°C、最低 12.9°C</dd></div></dl>
+<p class="wx-cond">小雨，全天降水量约 3.9&nbsp;毫米</p>
+<dl><div><dt>风力</dt><dd>东北风，最大风速 7.5&nbsp;公里/时，阵风 22.3&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:21，日落 16:59</dd></div><div><dt>明日</dt><dd>毛毛雨，最高 20.9°C、最低 12.9°C</dd></div></dl>
 <div class="tip">今天最暖，最高 23°C，但有雨，带伞穿薄外套；早晚 14°C 左右</div>
 </article>
 </div>
@@ -2499,25 +2433,9 @@
 <p>跟 AI 说“你现在是银行面试官，问我三个关于实习经历的问题”，它会真的提问，你回答完它还能点评；正式面试前练一遍，上场不紧张。</p>
 </div>
 </section>
-<!-- 理财小知识 -->
-<section class="blk" id="d1105-money">
-<div class="blk-head"><span class="no">其十六</span><h2>理财小知识</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日知识：定投</b></p>
-<p>每月固定一天、固定金额买入，不用猜涨跌，长期坚持能摊平成本。适合没时间盯盘的人；关键是坚持，别涨了就追、跌了就跑。</p>
-</div>
-</section>
-<!-- 今日热梗 -->
-<section class="blk" id="d1105-slang">
-<div class="blk-head"><span class="no">其十七</span><h2>今日热梗</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日热梗：内卷</b></p>
-<p>原指同行之间过度竞争，现在泛指大家都在拼命、但收益没变多：比如别人都加班，你不加班就显得落后。大家都累，但谁也不敢先停。</p>
-</div>
-</section>
 <!-- 每日一曲 -->
 <section class="blk" id="d1105-song">
-<div class="blk-head"><span class="no">其十八</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十六</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《步步》——五月天</p>
 <p>今天冷锋过境，沈阳一天之内从 13°C 跌到 0°C 以下，美股也跌了个大的——越是这种日子越不能急。渐卦讲"一天进一步就是赢"，《步步》唱的也是一步一步往上爬：今晚别刷大盘了，放这首歌，把明天的安排在心里顺三遍，睡前打勾睡觉。</p>
@@ -2525,12 +2443,13 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="d1105-anime">
-<div class="blk-head"><span class="no">其十九</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十七</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《虫师》（TV 动画第 1 季 26 集，2005–2006 年；续章 20 集，2014 年）</p>
 <p>改编自漆原友纪的同名漫画，讲"虫师"银古走村串巷，解决由"虫"引起的怪事，每集一个故事。理由：冷锋过境，白天最高只有 6.7°C，晚上最适合看一集就睡的番——今晚看第 1 集《绿之座》，山里的绿意和虫鸣，冷夜里听着格外安静；一集一个完整的故事，不用记剧情，困了随时能睡。</p>
 </div>
 </section>
+<div class="issue-tools issue-tools-bottom"><button class="copy-link-btn" type="button" data-copy-date="2026-11-05">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-05" data-share-title="每日晨间简报 · 2026年11月5日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-05&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%885%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-05">微信</button></div>
 <nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev" type="button" data-nav-date="2026-11-04" aria-label="上一期：11月4日 周三">&larr; 上一期 &middot; 11月4日 周三</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next" type="button" data-nav-date="2026-11-06" aria-label="下一期：11月6日 周五">下一期 &middot; 11月6日 周五 &rarr;</button></nav>
 <p class="src">简报完。本期为补档版本，天气与月相为历史档案与天文公式计算值；美股为美国当地 11 月 5 日收盘（北京时间 11 月 6 日凌晨出炉），属事后补档口径。</p>
 </div>
@@ -2543,10 +2462,10 @@
           </div>
           <button class="tab-btn back-archive" type="button">← 返回归档</button><div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式">☾</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-06">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-06" data-share-title="每日晨间简报 · 2026年11月6日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-06&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%886%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-06">微信</button></div>
         </div>
-        <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">2.4°<small> / -2.8°</small></div><div class="meta"><b>沈阳</b><br />晴 · 全天无降水<br />西北风阵风 45 km/h</div></div><div class="cell"><div class="big">5.0°<small> / -2.5°</small></div><div class="meta"><b>鞍山</b><br />晴 · 全天无降水<br />北风阵风 41 km/h</div></div><div class="cell"><div class="big">10.0°<small> / -1.6°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 5 日 · 毛毛雨<br />西风阵风 40 km/h</div></div><div class="cell"><div class="big">14.6°<small> / 4.0°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 5 日 · 阴<br />北风阵风 36 km/h</div></div><div class="cell"><div class="big">20.9°<small> / 12.9°</small></div><div class="meta"><b>京都</b><br />毛毛雨 · 降水约 0.2 毫米<br />西北风阵风 44 km/h</div></div></div>
+        <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">2.4°<small> / -2.8°</small></div><div class="meta"><b>沈阳</b><br />晴 · 全天无降水<br />西北风阵风 45&nbsp;km/h</div></div><div class="cell"><div class="big">5.0°<small> / -2.5°</small></div><div class="meta"><b>鞍山</b><br />晴 · 全天无降水<br />北风阵风 41&nbsp;km/h</div></div><div class="cell"><div class="big">10.0°<small> / -1.6°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 5 日 · 毛毛雨<br />西风阵风 40&nbsp;km/h</div></div><div class="cell"><div class="big">14.6°<small> / 4.0°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 5 日 · 阴<br />北风阵风 36&nbsp;km/h</div></div><div class="cell"><div class="big">20.9°<small> / 12.9°</small></div><div class="meta"><b>京都</b><br />毛毛雨 · 降水约 0.2&nbsp;毫米<br />西北风阵风 44&nbsp;km/h</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1106-weather">五城天气</a><a href="#d1106-news">五城新闻</a><a href="#d1106-highlights">今日看点</a><a href="#d1106-finance">金融市场</a><a href="#d1106-sports">体育速递</a><a href="#d1106-gossip">娱乐圈八卦</a><a href="#d1106-astro">月相 · 卦象</a><a href="#d1106-tarot">塔罗</a><a href="#d1106-history">历史上的今天</a><a href="#d1106-quote">每日金句</a><a href="#d1106-wellness">养生小技巧</a><a href="#d1106-meal">健身减脂餐</a><a href="#d1106-english">英语</a><a href="#d1106-poem">一诗</a><a href="#d1106-ai">AI 一招</a><a href="#d1106-money">理财</a><a href="#d1106-slang">热梗</a><a href="#d1106-song">每日一曲</a><a href="#d1106-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1106-weather">五城天气</a><a href="#d1106-news">五城新闻</a><a href="#d1106-highlights">今日看点</a><a href="#d1106-finance">金融市场</a><a href="#d1106-sports">体育速递</a><a href="#d1106-gossip">娱乐圈八卦</a><a href="#d1106-astro">月相 · 卦象</a><a href="#d1106-tarot">塔罗</a><a href="#d1106-history">历史上的今天</a><a href="#d1106-quote">每日金句</a><a href="#d1106-wellness">养生小技巧</a><a href="#d1106-meal">健身减脂餐</a><a href="#d1106-english">英语</a><a href="#d1106-poem">一诗</a><a href="#d1106-ai">AI 一招</a><a href="#d1106-song">每日一曲</a><a href="#d1106-anime">每日一漫</a></nav>
 <!-- 五城天气 -->
 <section class="blk" id="d1106-weather">
 <div class="blk-head"><span class="no">其一</span><h2>五城天气</h2></div>
@@ -2556,7 +2475,7 @@
 <div class="wx-date">11月6日（周五）</div>
 <div class="wx-temp">2.4°C <small>/ -2.8°C</small></div>
 <p class="wx-cond">晴，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 -1.7°C，08 时 -1.5°C，11 时 2.4°C，14 时 2.1°C，17 时 -0.1°C，20 时 -1.6°C，23 时 -2.6°C</dd></div><div><dt>风力</dt><dd>西北风，最大风速 17.5 公里/时，阵风 45.4 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 43%</dd></div><div><dt>空气质量</dt><dd>AQI 约 78（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:24，日落 16:35</dd></div><div><dt>明日</dt><dd>阴，最高 0.5°C、最低 -4.7°C，北风，寒冷持续，立冬当日更冷</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>02 时 -1.7°C，08 时 -1.5°C，11 时 2.4°C，14 时 2.1°C，17 时 -0.1°C，20 时 -1.6°C，23 时 -2.6°C</dd></div><div><dt>风力</dt><dd>西北风，最大风速 17.5&nbsp;公里/时，阵风 45.4&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 43%</dd></div><div><dt>空气质量</dt><dd>AQI 约 78（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:24，日落 16:35</dd></div><div><dt>明日</dt><dd>阴，最高 0.5°C、最低 -4.7°C，北风，寒冷持续，立冬当日更冷</dd></div></dl>
 <div class="tip">晴天但寒冷，白天最高仅 2°C 多，风大体感更冷，穿厚羽绒服、戴帽子手套；昼夜温差不大，全天都冷</div>
 </article>
 <article class="wx">
@@ -2564,15 +2483,15 @@
 <div class="wx-date">11月6日（周五）</div>
 <div class="wx-temp">5.0°C <small>/ -2.5°C</small></div>
 <p class="wx-cond">晴，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 -0.6°C，08 时 -0.5°C，11 时 4.4°C，14 时 4.8°C，17 时 2.0°C，20 时 -0.3°C，23 时 -1.9°C</dd></div><div><dt>风力</dt><dd>北风，最大风速 16.5 公里/时，阵风 40.7 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 46%</dd></div><div><dt>空气质量</dt><dd>AQI 约 66（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:24，日落 16:38</dd></div><div><dt>明日</dt><dd>阴，最高 2.1°C、最低 -4.4°C，北风，立冬当日更冷</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>02 时 -0.6°C，08 时 -0.5°C，11 时 4.4°C，14 时 4.8°C，17 时 2.0°C，20 时 -0.3°C，23 时 -1.9°C</dd></div><div><dt>风力</dt><dd>北风，最大风速 16.5&nbsp;公里/时，阵风 40.7&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 46%</dd></div><div><dt>空气质量</dt><dd>AQI 约 66（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:24，日落 16:38</dd></div><div><dt>明日</dt><dd>阴，最高 2.1°C、最低 -4.4°C，北风，立冬当日更冷</dd></div></dl>
 <div class="tip">比沈阳稍暖，但白天最高也只有 5°C，穿厚外套加保暖内衣；风大，注意防风</div>
 </article>
 <article class="wx">
 <h3>卡尔加里</h3>
 <div class="wx-date">当地 11月5日（周四）</div>
 <div class="wx-temp">10.0°C <small>/ -1.6°C</small></div>
-<p class="wx-cond">毛毛雨，全天降水量约 0.1 毫米</p>
-<dl><div><dt>逐时</dt><dd>02 时 -1.0°C，08 时 3.6°C，11 时 4.7°C，14 时 8.4°C，17 时 8.4°C，20 时 5.7°C，23 时 4.0°C</dd></div><div><dt>风力</dt><dd>西风，最大风速 18.6 公里/时，阵风 40.0 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 59%</dd></div><div><dt>空气质量</dt><dd>AQI 约 62（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 08:35，日落 18:03</dd></div><div><dt>明日</dt><dd>阴，最高 10.2°C、最低 -0.1°C，西南风大、阵风可达 62 公里/时</dd></div></dl>
+<p class="wx-cond">毛毛雨，全天降水量约 0.1&nbsp;毫米</p>
+<dl><div><dt>逐时</dt><dd>02 时 -1.0°C，08 时 3.6°C，11 时 4.7°C，14 时 8.4°C，17 时 8.4°C，20 时 5.7°C，23 时 4.0°C</dd></div><div><dt>风力</dt><dd>西风，最大风速 18.6&nbsp;公里/时，阵风 40.0&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 59%</dd></div><div><dt>空气质量</dt><dd>AQI 约 62（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 08:35，日落 18:03</dd></div><div><dt>明日</dt><dd>阴，最高 10.2°C、最低 -0.1°C，西南风大、阵风可达 62&nbsp;公里/时</dd></div></dl>
 <div class="tip">白天 10°C 左右，体感尚可，但有小雨、风大，带伞穿防风外套；夜间降温明显</div>
 </article>
 <article class="wx">
@@ -2580,16 +2499,16 @@
 <div class="wx-date">当地 11月5日（周四）</div>
 <div class="wx-temp">14.6°C <small>/ 4.0°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>风力</dt><dd>北风，最大风速 17.9 公里/时，阵风 36.0 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:09，日落 17:32</dd></div><div><dt>明日</dt><dd>阴，最高 9.1°C、最低 1.7°C</dd></div></dl>
+<dl><div><dt>风力</dt><dd>北风，最大风速 17.9&nbsp;公里/时，阵风 36.0&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:09，日落 17:32</dd></div><div><dt>明日</dt><dd>阴，最高 9.1°C、最低 1.7°C</dd></div></dl>
 <div class="tip">阴天，最高不到 15°C，早晚只有 4°C，厚外套穿上，风大注意保暖</div>
 </article>
 <article class="wx">
 <h3>京都</h3>
 <div class="wx-date">11月6日（周五）</div>
 <div class="wx-temp">20.9°C <small>/ 12.9°C</small></div>
-<p class="wx-cond">毛毛雨，全天降水量约 0.2 毫米</p>
-<dl><div><dt>风力</dt><dd>西北风，最大风速 16.3 公里/时，阵风 44.3 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:22，日落 16:58</dd></div><div><dt>明日</dt><dd>阴，最高 15.3°C、最低 9.7°C</dd></div></dl>
-<div class="tip">毛毛雨，风大阵风超 40 公里/时，带伞穿防风外套；最高 21°C，早晚 13°C</div>
+<p class="wx-cond">毛毛雨，全天降水量约 0.2&nbsp;毫米</p>
+<dl><div><dt>风力</dt><dd>西北风，最大风速 16.3&nbsp;公里/时，阵风 44.3&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:22，日落 16:58</dd></div><div><dt>明日</dt><dd>阴，最高 15.3°C、最低 9.7°C</dd></div></dl>
+<div class="tip">毛毛雨，风大阵风超 40&nbsp;公里/时，带伞穿防风外套；最高 21°C，早晚 13°C</div>
 </article>
 </div>
 <p class="src">天气来源：Open-Meteo 历史档案 API（ERA5 再分析数据）。降水概率为历史档案数据，未提供逐时概率；AQI 为据 CAMS PM2.5 24 小时均值按美国 EPA 公式换算的估算值，非官方监测数据。</p>
@@ -2726,25 +2645,9 @@
 <p>先自己写英文，再让 AI 润色（“请把这段英文改得更自然、更正式”），比直接机翻更像人写的；写邮件、改简历都用得上。</p>
 </div>
 </section>
-<!-- 理财小知识 -->
-<section class="blk" id="d1106-money">
-<div class="blk-head"><span class="no">其十六</span><h2>理财小知识</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日知识：利率</b></p>
-<p>存钱先看年化利率，再看期限。同样一笔钱，利率差 1%，一年就差不少；货比三家再存，别只看一家银行。</p>
-</div>
-</section>
-<!-- 今日热梗 -->
-<section class="blk" id="d1106-slang">
-<div class="blk-head"><span class="no">其十七</span><h2>今日热梗</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日热梗：躺平</b></p>
-<p>不再过度努力、主动降低欲望：不买房、不加班、不拼命，够吃够用就行。不是懒，是年轻人面对压力的一种选择。</p>
-</div>
-</section>
 <!-- 每日一曲 -->
 <section class="blk" id="d1106-song">
-<div class="blk-head"><span class="no">其十八</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十六</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《如愿》——王菲</p>
 <p>今天是霜降最后一天，明天就是立冬；金鸡百花电影节也在厦门开幕，电影是今天的关键词。《如愿》是电影主题曲，唱的是"你是遥遥的路，山野大雾里的灯"——赶路的人都懂这条路，今晚看一场电影节的开幕直播，或者重温一部老电影，愿望先许下，明天立冬再出发。</p>
@@ -2752,12 +2655,13 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="d1106-anime">
-<div class="blk-head"><span class="no">其十九</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十七</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《CLANNAD》（TV 动画共 2 季，第 1 季 23 集 2007–2008 年，第 2 季《AFTER STORY》24 集 2008–2009 年；另有 2007 年剧场版）</p>
 <p>改编自 Key 社的同名游戏，讲不良少年冈崎朋也遇见古河渚，从学园生活一路走到成家立业。理由：霜降最后一天，沈阳最高只有 2.4°C，这部番的后半段正好讲冬天、一家人和"团圆"——今晚从第 1 集开始，先看学园篇的暖，再留着 AFTER STORY 的冬天慢慢追；提醒一句：后半段很催泪，纸巾备好再看。</p>
 </div>
 </section>
+<div class="issue-tools issue-tools-bottom"><button class="copy-link-btn" type="button" data-copy-date="2026-11-06">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-06" data-share-title="每日晨间简报 · 2026年11月6日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-06&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%886%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-06">微信</button></div>
 <nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev" type="button" data-nav-date="2026-11-05" aria-label="上一期：11月5日 周四">&larr; 上一期 &middot; 11月5日 周四</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next" type="button" data-nav-date="2026-11-07" aria-label="下一期：11月7日 周六">下一期 &middot; 11月7日 周六 &rarr;</button></nav>
 <p class="src">简报完。本期为补档版本，天气与月相为历史档案与天文公式计算值；A 股、美股、黄金为 11 月 6 日收盘数据，与 11 月 8 日那期一致。</p>
 </div>
@@ -2770,10 +2674,10 @@
           </div>
           <button class="tab-btn back-archive" type="button">← 返回归档</button><div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式">☾</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-07">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-07" data-share-title="每日晨间简报 · 2026年11月7日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-07&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%887%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-07">微信</button></div>
         </div>
-        <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">0.5°<small> / -4.7°</small></div><div class="meta"><b>沈阳</b><br />阴 · 立冬当日<br />寒潮持续，北风不大</div></div><div class="cell"><div class="big">2.1°<small> / -4.4°</small></div><div class="meta"><b>鞍山</b><br />阴 · 立冬当日<br />寒潮持续</div></div><div class="cell"><div class="big">10.2°<small> / -0.1°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 6 日 · 阴<br />西南风阵风 62 km/h</div></div><div class="cell"><div class="big">9.1°<small> / 1.7°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 6 日 · 阴<br />本周最冷，最高仅 9°C</div></div><div class="cell"><div class="big">15.3°<small> / 9.7°</small></div><div class="meta"><b>京都</b><br />阴 · 立冬当日<br />西北风阵风近 50 km/h</div></div></div>
+        <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">0.5°<small> / -4.7°</small></div><div class="meta"><b>沈阳</b><br />阴 · 立冬当日<br />寒潮持续，北风不大</div></div><div class="cell"><div class="big">2.1°<small> / -4.4°</small></div><div class="meta"><b>鞍山</b><br />阴 · 立冬当日<br />寒潮持续</div></div><div class="cell"><div class="big">10.2°<small> / -0.1°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 6 日 · 阴<br />西南风阵风 62&nbsp;km/h</div></div><div class="cell"><div class="big">9.1°<small> / 1.7°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 6 日 · 阴<br />本周最冷，最高仅 9°C</div></div><div class="cell"><div class="big">15.3°<small> / 9.7°</small></div><div class="meta"><b>京都</b><br />阴 · 立冬当日<br />西北风阵风近 50&nbsp;km/h</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1107-weather">五城天气</a><a href="#d1107-news">五城新闻</a><a href="#d1107-highlights">今日看点</a><a href="#d1107-finance">金融市场</a><a href="#d1107-sports">体育速递</a><a href="#d1107-gossip">娱乐圈八卦</a><a href="#d1107-astro">月相 · 卦象</a><a href="#d1107-tarot">塔罗</a><a href="#d1107-history">历史上的今天</a><a href="#d1107-quote">每日金句</a><a href="#d1107-wellness">养生小技巧</a><a href="#d1107-meal">健身减脂餐</a><a href="#d1107-english">英语</a><a href="#d1107-poem">一诗</a><a href="#d1107-ai">AI 一招</a><a href="#d1107-money">理财</a><a href="#d1107-slang">热梗</a><a href="#d1107-song">每日一曲</a><a href="#d1107-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1107-weather">五城天气</a><a href="#d1107-news">五城新闻</a><a href="#d1107-highlights">今日看点</a><a href="#d1107-finance">金融市场</a><a href="#d1107-sports">体育速递</a><a href="#d1107-gossip">娱乐圈八卦</a><a href="#d1107-astro">月相 · 卦象</a><a href="#d1107-tarot">塔罗</a><a href="#d1107-history">历史上的今天</a><a href="#d1107-quote">每日金句</a><a href="#d1107-wellness">养生小技巧</a><a href="#d1107-meal">健身减脂餐</a><a href="#d1107-english">英语</a><a href="#d1107-poem">一诗</a><a href="#d1107-ai">AI 一招</a><a href="#d1107-song">每日一曲</a><a href="#d1107-anime">每日一漫</a></nav>
 <!-- 五城天气 -->
 <section class="blk" id="d1107-weather">
 <div class="blk-head"><span class="no">其一</span><h2>五城天气</h2></div>
@@ -2783,7 +2687,7 @@
 <div class="wx-date">11月7日（周六，立冬）</div>
 <div class="wx-temp">0.5°C <small>/ -4.7°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 -3.6°C，08 时 -3.4°C，11 时 -0.9°C，14 时 0.5°C，17 时 -0.9°C，20 时 -1.6°C，23 时 -2.1°C</dd></div><div><dt>风力</dt><dd>北风，最大风速 8.7 公里/时，阵风 19.1 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 39%</dd></div><div><dt>空气质量</dt><dd>AQI 约 103（轻度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:25，日落 16:34</dd></div><div><dt>明日</dt><dd>晴，最高 1°C、最低 -10°C，寒冷加剧，早晚注意保暖</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>02 时 -3.6°C，08 时 -3.4°C，11 时 -0.9°C，14 时 0.5°C，17 时 -0.9°C，20 时 -1.6°C，23 时 -2.1°C</dd></div><div><dt>风力</dt><dd>北风，最大风速 8.7&nbsp;公里/时，阵风 19.1&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 39%</dd></div><div><dt>空气质量</dt><dd>AQI 约 103（轻度污染，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:25，日落 16:34</dd></div><div><dt>明日</dt><dd>晴，最高 1°C、最低 -10°C，寒冷加剧，早晚注意保暖</dd></div></dl>
 <div class="tip">立冬了，白天最高仅 0.5°C，全天都在零度上下，厚羽绒服、帽子、围巾、手套全套上身；风不大，但冷是实打实的</div>
 <div class="warn">立冬当日，寒潮持续</div>
 </article>
@@ -2792,7 +2696,7 @@
 <div class="wx-date">11月7日（周六，立冬）</div>
 <div class="wx-temp">2.1°C <small>/ -4.4°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 -3.1°C，08 时 -2.9°C，11 时 0.5°C，14 时 2.1°C，17 时 0.7°C，20 时 -0.2°C，23 时 -1.0°C</dd></div><div><dt>风力</dt><dd>北风，最大风速 9.5 公里/时，阵风 23.4 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 44%</dd></div><div><dt>空气质量</dt><dd>AQI 约 96（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:25，日落 16:37</dd></div><div><dt>明日</dt><dd>晴，最高 2°C、最低 -7°C，寒冷持续</dd></div></dl>
+<dl><div><dt>逐时</dt><dd>02 时 -3.1°C，08 时 -2.9°C，11 时 0.5°C，14 时 2.1°C，17 时 0.7°C，20 时 -0.2°C，23 时 -1.0°C</dd></div><div><dt>风力</dt><dd>北风，最大风速 9.5&nbsp;公里/时，阵风 23.4&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 44%</dd></div><div><dt>空气质量</dt><dd>AQI 约 96（良，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 06:25，日落 16:37</dd></div><div><dt>明日</dt><dd>晴，最高 2°C、最低 -7°C，寒冷持续</dd></div></dl>
 <div class="tip">与沈阳一样寒冷，白天最高仅 2°C，穿厚羽绒服加保暖内衣；立冬吃饺子的日子，别忘了暖和着过</div>
 <div class="warn">立冬当日，寒潮持续</div>
 </article>
@@ -2801,8 +2705,8 @@
 <div class="wx-date">当地 11月6日（周五）</div>
 <div class="wx-temp">10.2°C <small>/ -0.1°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>逐时</dt><dd>02 时 1.9°C，08 时 1.0°C，11 时 3.5°C，14 时 8.2°C，17 时 7.9°C，20 时 6.4°C，23 时 9.4°C</dd></div><div><dt>风力</dt><dd>西南风，最大风速 30.2 公里/时，阵风 62.3 公里/时</dd></div><div><dt>湿度</dt><dd>日均约 63%</dd></div><div><dt>空气质量</dt><dd>AQI 约 9（优，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 08:37，日落 18:01</dd></div><div><dt>明日</dt><dd>多云转晴，最高约 14°C（机场实测 13.7°C）、最低约 6°C，傍晚约 7°C；加拿大环境部发布大风黄色预警，有效期至当地周日 21:30</dd></div></dl>
-<div class="tip">白天 10°C 左右不算冷，但阵风超 60 公里/时，穿防风外套；夜间气温不降反升，注意添减</div>
+<dl><div><dt>逐时</dt><dd>02 时 1.9°C，08 时 1.0°C，11 时 3.5°C，14 时 8.2°C，17 时 7.9°C，20 时 6.4°C，23 时 9.4°C</dd></div><div><dt>风力</dt><dd>西南风，最大风速 30.2&nbsp;公里/时，阵风 62.3&nbsp;公里/时</dd></div><div><dt>湿度</dt><dd>日均约 63%</dd></div><div><dt>空气质量</dt><dd>AQI 约 9（优，估算值，主要污染物 PM2.5）</dd></div><div><dt>日出日落</dt><dd>日出 08:37，日落 18:01</dd></div><div><dt>明日</dt><dd>多云转晴，最高约 14°C（机场实测 13.7°C）、最低约 6°C，傍晚约 7°C；加拿大环境部发布大风黄色预警，有效期至当地周日 21:30</dd></div></dl>
+<div class="tip">白天 10°C 左右不算冷，但阵风超 60&nbsp;公里/时，穿防风外套；夜间气温不降反升，注意添减</div>
 <div class="warn">西南风大</div>
 </article>
 <article class="wx">
@@ -2810,7 +2714,7 @@
 <div class="wx-date">当地 11月6日（周五）</div>
 <div class="wx-temp">9.1°C <small>/ 1.7°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>风力</dt><dd>东风，最大风速 7.7 公里/时，阵风 19.1 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:10，日落 17:31</dd></div><div><dt>明日</dt><dd>阴，最高 18.2°C、最低 1.1°C</dd></div></dl>
+<dl><div><dt>风力</dt><dd>东风，最大风速 7.7&nbsp;公里/时，阵风 19.1&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 07:10，日落 17:31</dd></div><div><dt>明日</dt><dd>阴，最高 18.2°C、最低 1.1°C</dd></div></dl>
 <div class="tip">今天最冷，最高只有 9°C，最低不到 2°C，厚外套、围巾都穿上</div>
 </article>
 <article class="wx">
@@ -2818,8 +2722,8 @@
 <div class="wx-date">11月7日（周六）</div>
 <div class="wx-temp">15.3°C <small>/ 9.7°C</small></div>
 <p class="wx-cond">阴，全天无降水</p>
-<dl><div><dt>风力</dt><dd>西北风，最大风速 19.2 公里/时，阵风 49.7 公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:23，日落 16:57</dd></div><div><dt>明日</dt><dd>阴，最高 14.7°C、最低 9.6°C</dd></div></dl>
-<div class="tip">立冬了，风大阵风近 50 公里/时，防风外套穿上；最高 15°C，早晚 10°C 左右</div>
+<dl><div><dt>风力</dt><dd>西北风，最大风速 19.2&nbsp;公里/时，阵风 49.7&nbsp;公里/时</dd></div><div><dt>日出日落</dt><dd>日出 06:23，日落 16:57</dd></div><div><dt>明日</dt><dd>阴，最高 14.7°C、最低 9.6°C</dd></div></dl>
+<div class="tip">立冬了，风大阵风近 50&nbsp;公里/时，防风外套穿上；最高 15°C，早晚 10°C 左右</div>
 </article>
 </div>
 <p class="src">天气来源：Open-Meteo 历史档案 API（ERA5 再分析数据）。降水概率为历史档案数据，未提供逐时概率；AQI 为据 CAMS PM2.5 24 小时均值按美国 EPA 公式换算的估算值，非官方监测数据。</p>
@@ -2956,25 +2860,9 @@
 <p>告诉 AI 你的目标（比如“一个月背完 1000 个单词”）和每天能学的时间，让它排一张一周学习表；按表执行，比凭感觉学靠谱。</p>
 </div>
 </section>
-<!-- 理财小知识 -->
-<section class="blk" id="d1107-money">
-<div class="blk-head"><span class="no">其十六</span><h2>理财小知识</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日知识：保险</b></p>
-<p>先保“万一”再谈“理财”。意外险、医疗险是底线，年轻时保费便宜，先把保障配齐，再考虑别的；别本末倒置。</p>
-</div>
-</section>
-<!-- 今日热梗 -->
-<section class="blk" id="d1107-slang">
-<div class="blk-head"><span class="no">其十七</span><h2>今日热梗</h2></div>
-<div class="learn">
-<p class="ttl"><b>今日热梗：yyds</b></p>
-<p>“永远的神”的拼音首字母，形容某人或某物特别厉害、无人能比。比如“这家店的拉面 yyds”，就是说它好吃到无敌。</p>
-</div>
-</section>
 <!-- 每日一曲 -->
 <section class="blk" id="d1107-song">
-<div class="blk-head"><span class="no">其十八</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十六</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《雪の華》——中岛美嘉</p>
 <p>今天立冬，雪季正式开始；丰卦讲"丰收在望"，一周的辛苦也该收个尾。《雪の華》是日本冬天的代表曲，唱的是雪花落在手心的样子——中午火锅吃完，晚上窝在被窝里放这首，配一杯热茶，立冬夜就该这么过；明天新一周，继续往前走。</p>
@@ -2982,12 +2870,13 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="d1107-anime">
-<div class="blk-head"><span class="no">其十九</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十七</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《紫罗兰永恒花园》（TV 动画 13 集 + 番外 1 集，2018 年；另有外传剧场版 2019 年与剧场版 2020 年）</p>
 <p>改编自晓佳奈的同名轻小说，讲从战场回来的少女薇尔莉特当"自动手记人偶"，替别人把心里的话写成信。理由：立冬夜，沈阳最高才 0.5°C，今晚看第 1 集就行——每一封信都是一句没说出口的话，冬天越冷，这种"把心意写下来"的番越暖；京都动画的画面美得像壁纸，配一杯热茶，半小时就把寒气看没了。</p>
 </div>
 </section>
+<div class="issue-tools issue-tools-bottom"><button class="copy-link-btn" type="button" data-copy-date="2026-11-07">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-07" data-share-title="每日晨间简报 · 2026年11月7日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-07&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%887%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-07">微信</button></div>
 <nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev" type="button" data-nav-date="2026-11-06" aria-label="上一期：11月6日 周五">&larr; 上一期 &middot; 11月6日 周五</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next" type="button" data-nav-date="2026-11-08" aria-label="下一期：11月8日 周日">下一期 &middot; 11月8日 周日 &rarr;</button></nav>
 <p class="src">简报完。本期为补档版本，天气与月相为历史档案与天文公式计算值；A 股、美股、黄金为 11 月 6 日最近交易日收盘数据。</p>
 </div>
@@ -3083,7 +2972,7 @@
     <script>
       /* Category group dividers (additive): runs before the view-tab,
          section-nav and search scripts below, so those pick up the grouped
-         structure. Each issue's 19 sections are wrapped, in their existing
+         structure. Each issue's 17 sections are wrapped, in their existing
          order, into six groups. The nav is not touched: it keeps its 19
          per-section links and the section-nav scrollspy tracks the 19
          sections; the groups serve as page dividers and as the 目录
@@ -3097,8 +2986,8 @@
           { name: '财经娱乐', range: '第 4 – 6 节', keys: ['finance', 'sports', 'gossip'] },
           { name: '运势', range: '第 7 – 10 节', keys: ['astro', 'tarot', 'history', 'quote'] },
           { name: '生活', range: '第 11 – 12 节', keys: ['wellness', 'meal'] },
-          { name: '每日学习', range: '第 13 – 17 节', keys: ['english', 'poem', 'ai', 'money', 'slang'] },
-          { name: '娱乐', range: '第 18 – 19 节', keys: ['song', 'anime'] }
+          { name: '每日学习', range: '第 13 – 15 节', keys: ['english', 'poem', 'ai'] },
+          { name: '娱乐', range: '第 16 – 17 节', keys: ['song', 'anime'] }
         ];
         function keyOf(sec) {
           var i = sec.id.lastIndexOf('-');
@@ -3157,7 +3046,7 @@
                 if (sec) { groups[g].body.appendChild(sec); }
               }
             }
-            /* The issue's nav keeps its 19 per-section links exactly as
+            /* The issue's nav keeps its 17 per-section links exactly as
                authored in the HTML; the groups are only visual dividers
                on the page and the grouping used by the 目录 panel. */
           })(containers[c]);
@@ -3199,6 +3088,32 @@
           wrap.appendChild(btn);
           wrap.appendChild(panel);
           nav.appendChild(wrap);
+          /* Quiet ◀ ▶ paging buttons at the ends of the bar, outside
+             the scrolling strip: each tap pages the strip sideways by
+             about one screenful of links. They scroll only the strip,
+             never the page, and leave the pill/scrollspy wiring (which
+             keys off the strip itself) untouched. */
+          var prev = document.createElement('button');
+          prev.type = 'button';
+          prev.className = 'secnav-arrow';
+          prev.setAttribute('aria-label', '向左滚动栏目导航');
+          prev.textContent = '◀';
+          var next = document.createElement('button');
+          next.type = 'button';
+          next.className = 'secnav-arrow';
+          next.setAttribute('aria-label', '向右滚动栏目导航');
+          next.textContent = '▶';
+          nav.insertBefore(prev, scroller);
+          nav.insertBefore(next, wrap);
+          var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          function pageStrip(dir) {
+            var step = Math.max(160, Math.round(scroller.clientWidth * 0.85));
+            var target = scroller.scrollLeft + dir * step;
+            if (target < 0) { target = 0; }
+            scroller.scrollTo({ left: target, behavior: smooth ? 'smooth' : 'auto' });
+          }
+          prev.addEventListener('click', function () { pageStrip(-1); });
+          next.addEventListener('click', function () { pageStrip(1); });
         }
       })();
     </script>
@@ -3466,9 +3381,12 @@
         }
 
         /* ---------- copy issue link ---------- */
+        /* Always copy the canonical public-site URL (the same base the
+           share script and the Weibo links use) — never the address of
+           whatever frame the page happens to be viewed in, so the
+           copied link opens this issue on the public site. */
         function issueUrl(date) {
-          var base = window.location.href.split('#')[0];
-          return base + '#' + date;
+          return 'https://bosenc96-max.github.io/bosen-morning-briefing/' + '#' + date;
         }
         function fallbackCopy(text) {
           var ta = document.createElement('textarea');
@@ -3788,7 +3706,7 @@
         for (var i = 0; i < btns.length; i++) {
           btns[i].addEventListener('click', function () {
             var btn = this;
-            var url = window.location.href.split('#')[0] + '#' + btn.getAttribute('data-wechat-date');
+            var url = 'https://bosenc96-max.github.io/bosen-morning-briefing/' + '#' + btn.getAttribute('data-wechat-date');
             var done = function (ok) {
               if (btn.dataset.timer) { clearTimeout(Number(btn.dataset.timer)); }
               btn.classList.toggle('copied', ok);
@@ -3809,7 +3727,7 @@
     </script>
     <script>
       /* Table of contents 2026-11-09 (additive): the 「目录」 button pinned
-         at the right end of the sticky section nav opens a drop-down panel listing all 19 sections of the
+         at the right end of the sticky section nav opens a drop-down panel listing all 17 sections of the
          issue currently on screen, grouped under the six categories (read
          from that issue's .cat-group wrappers, so it always matches the
          open issue). Every section is always visible, so tapping one
@@ -3831,7 +3749,7 @@
           astro: '月相与当日一卦', tarot: '今日塔罗', history: '历史上的今天',
           quote: '每日金句', wellness: '每日养生小技巧', meal: '健身减脂餐',
           english: '每日英语', poem: '每日一诗', ai: 'AI 每日一招',
-          money: '理财小知识', slang: '今日热梗', song: '每日一曲', anime: '每日一漫'
+          song: '每日一曲', anime: '每日一漫'
         };
         function keyOf(sec) {
           var i = sec.id.lastIndexOf('-');
