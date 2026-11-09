@@ -1198,6 +1198,42 @@
       }
       .arch-random:hover { border-color: var(--accent); color: var(--accent); }
       .arch-random:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+      /* ---------- batch-11 fixes 2026-11-10 (additive) ---------- */
+      /* 1) 「目录」 button narrowed (side padding 14px -> 9px, icon
+         gap 6px -> 5px: ~66px wide in total), and the strip's scroll
+         area reserves room on the right equal to that button's width
+         plus a gap (76px), so the strip can always travel far enough
+         for a section name to rest fully clear of the strip's right
+         edge beside the fixed 「目录」 cluster — no name is left
+         half-hidden under/next to the button. Colours and the bar's
+         overall layout are unchanged. */
+      .toc-btn { padding: 0 9px; gap: 5px; }
+      .secnav-tools .toc-wrap { margin: 0 4px 0 2px; }
+      .secnav-scroll { padding-right: 76px; scroll-padding-right: 76px; }
+      /* 2) The strip is FULLY free-scrolling: no scroll-snap at all
+         (the batch-6 proximity snap still tugged the strip onto a
+         snap point after the reader lifted their finger — the
+         "一顿一顿" catch they reported). Where the finger stops is
+         where the strip stays; nothing re-aligns it afterwards. */
+      .secnav-scroll { scroll-snap-type: none; }
+      .secnav a { scroll-snap-align: none; }
+      /* The active pill moves instantly, with no glide or trailing:
+         it is either on the current section's link or it is not. */
+      .secnav .pill { transition: none; }
+      /* 3) Back-to-top: smaller (40px), translucent at rest (0.55),
+         fully opaque on hover/touch. Hidden by default; the script
+         adds .visible only while the reader is scrolling past
+         ~400px and removes it ~2.5s after scrolling stops, so it
+         never sits on top of right-aligned content (「看那期 →」,
+         「随便看看 →」, line ends) while the reader is reading or
+         tapping links. */
+      #back-to-top {
+        width: 40px; height: 40px; font-size: 17px;
+        opacity: 0; visibility: hidden; pointer-events: none;
+      }
+      #back-to-top.visible { opacity: .55; visibility: visible; pointer-events: auto; }
+      #back-to-top:hover, #back-to-top:active { opacity: 1; }
     </style>
   </head>
   <body>
@@ -4094,7 +4130,15 @@
             }
             if (atBottom) { current = st.links.length - 1; }
             var link = st.links[current];
-            if (link && setActive(st, link, false)) { revealLink(st.scroller, link); }
+            /* 2026-11-10 follow-up: the scrollspy moves ONLY the
+               pill and the active state — it never scrolls the
+               strip. While the reader drags the strip, no script
+               may move it; the strip scrolls programmatically only
+               on a link tap (centerLink in the click handler),
+               which is the reader's own action. The old revealLink
+               call here made the strip chase the reading position
+               under the reader's finger and fight their drag. */
+            if (link) { setActive(st, link, false); }
           }
         }
         var endTimer = null;
@@ -4217,12 +4261,28 @@
         var bar = document.getElementById('read-progress');
         var topBtn = document.getElementById('back-to-top');
         var ticking = false;
+        var topHideTimer = null;
         function onScroll() {
           var doc = document.documentElement;
           var max = doc.scrollHeight - window.innerHeight;
           var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
           if (bar) { bar.style.width = (p * 100).toFixed(2) + '%'; }
-          if (topBtn) { topBtn.classList.toggle('visible', window.scrollY > 600); }
+          /* Back-to-top (2026-11-10): appears only once the reader
+             is ~400px down, and fades back out ~2.5s after scrolling
+             stops, so while reading or tapping right-aligned links
+             it is never in the way; any new scroll brings it back. */
+          if (topBtn) {
+            if (topHideTimer) { clearTimeout(topHideTimer); topHideTimer = null; }
+            if (window.scrollY > 400) {
+              topBtn.classList.add('visible');
+              topHideTimer = setTimeout(function () {
+                topBtn.classList.remove('visible');
+                topHideTimer = null;
+              }, 2500);
+            } else {
+              topBtn.classList.remove('visible');
+            }
+          }
           ticking = false;
         }
         window.addEventListener('scroll', function () {
