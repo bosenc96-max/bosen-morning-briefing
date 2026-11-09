@@ -316,6 +316,29 @@
       .advice li { margin-bottom: 6px; }
       .advice li:last-child { margin-bottom: 0; }
 
+      /* ---------- tarot (今日塔罗 · 西方占卜) ---------- */
+      /* Deliberately unlike the gua cards of the previous section: a single
+         narrow, centered card on the warm paper tone with a gold rule, so the
+         Western divination block reads as its own thing, apart from the
+         Chinese hexagram above it. */
+      .tarot {
+        max-width: 620px; margin: 0 auto;
+        background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 22px 26px 16px; text-align: center;
+      }
+      .tarot .tarot-star { color: var(--gold); font-size: 13px; letter-spacing: .55em; text-indent: .55em; margin: 0 0 8px; }
+      .tarot-name { font-family: "Noto Serif SC", serif; font-size: 24px; font-weight: 900; line-height: 1.3; }
+      .tarot-name .en { font-size: 16px; font-weight: 700; color: var(--ink-2); letter-spacing: .04em; }
+      .tarot-pos {
+        display: inline-block; margin: 9px 0 13px; padding: 2px 14px; border-radius: 999px;
+        background: var(--gold-soft); color: var(--gold); font-size: 12.5px; font-weight: 700; letter-spacing: .12em;
+      }
+      .tarot-text { font-size: 14.5px; color: var(--ink-2); text-align: left; margin: 0; }
+      .tarot-text b { color: var(--ink); }
+      .tarot .advice { text-align: left; }
+      .tarot .advice p { font-size: 14.5px; color: var(--ink-2); }
+      .tarot .folk { text-align: center; }
+
       /* ---------- gossip ---------- */
       .gossip { counter-reset: gos; }
       .gos-item {
@@ -569,7 +592,7 @@
           </div>
         </div>
 
-<nav class="secnav" aria-label="本期栏目"><a href="#s-weather">五城天气</a><a href="#s-news">五城新闻</a><a href="#s-highlights">今日看点</a><a href="#s-finance">金融市场</a><a href="#s-sports">体育速递</a><a href="#s-gossip">娱乐圈八卦</a><a href="#s-astro">月相 · 卦象</a><a href="#s-history">历史上的今天</a><a href="#s-quote">每日金句</a><a href="#s-wellness">养生小技巧</a><a href="#s-meal">健身减脂餐</a><a href="#s-song">每日一曲</a><a href="#s-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#s-weather">五城天气</a><a href="#s-news">五城新闻</a><a href="#s-highlights">今日看点</a><a href="#s-finance">金融市场</a><a href="#s-sports">体育速递</a><a href="#s-gossip">娱乐圈八卦</a><a href="#s-astro">月相 · 卦象</a><a href="#s-tarot">塔罗</a><a href="#s-history">历史上的今天</a><a href="#s-quote">每日金句</a><a href="#s-wellness">养生小技巧</a><a href="#s-meal">健身减脂餐</a><a href="#s-song">每日一曲</a><a href="#s-anime">每日一漫</a></nav>
 <p class="sec-note">北京时间 11 月 9 日；卡尔加里当地 11 月 8 日（周日）晚。简报日期以北京时间为准，卡尔加里部分按当地日期写。今天是第 35 个全国消防日（119），也是新月日：农历十月初一，15:02 迎来新月，新一周、新一月都从今天开始。天气、榜单为今日 08:10 前后最新数据；A 股、美股、黄金因周末休市，仍为 11 月 6 日最近交易日收盘数据；今日 A 股开盘前，人民币中间价尚未公布。</p>
 <!-- 五城天气 -->
 <section class="blk" id="s-weather">
@@ -686,9 +709,21 @@
 </article>
 </div>
 </section>
+<!-- 今日塔罗 -->
+<section class="blk" id="s-tarot">
+<div class="blk-head"><span class="no">其八</span><h2>今日塔罗（西方占卜）</h2></div>
+<article class="tarot">
+<p class="tarot-star" aria-hidden="true">✦</p>
+<div class="tarot-name">教皇 <span class="en">The Hierophant</span></div>
+<span class="tarot-pos">正位</span>
+<p class="tarot-text">教皇代表<b>传统、学习和请教有经验的人</b>：遇到拿不准的事，别自己硬扛，问问走过这条路的人。今天是新月又是周一，适合定个规矩、学点新东西。</p>
+<div class="advice"><p><b>今日建议</b></p><p>今天向一位你信任的长辈或朋友请教一个最近困扰你的问题，把对方的建议记下来，照着试一次。</p></div>
+<p class="folk">西方占卜内容，仅供参考。</p>
+</article>
+</section>
 <!-- 历史上的今天 -->
 <section class="blk" id="s-history">
-<div class="blk-head"><span class="no">其八</span><h2>历史上的今天</h2></div>
+<div class="blk-head"><span class="no">其九</span><h2>历史上的今天</h2></div>
 <div class="hist">
 <p class="intro">今天也是中国全国消防日（119），向每一位消防员致敬；出门前检查一下家里的插线板和取暖器。</p>
 <ol><li><b>1989 年——柏林墙倒塌</b>：东德发言人沙博夫斯基在记者会上误将旅行自由化说成“立即生效”，大批市民涌向边境，柏林墙在当晚打开，冷战就此走向终结。今天是 37 周年。</li><li><b>1938 年——水晶之夜</b>：11 月 9 日至 10 日凌晨，纳粹分子在德国各地袭击犹太人商店、会堂和住宅，满街碎玻璃，“水晶之夜”由此得名，成为纳粹迫害走向大屠杀的转折点。同一天既有最黑暗的记忆，也有最光明的重逢，德国人称 11 月 9 日为“命运之日”。</li><li><b>1799 年——拿破仑雾月政变</b>：11 月 9 日（法国革命历雾月 18 日），拿破仑·波拿巴发动政变推翻督政府，掌握法国大权，法国大革命就此落幕，拿破仑时代开启。</li><li><b>1953 年——柬埔寨独立</b>：经过西哈努克国王的外交谈判，柬埔寨在 11 月 9 日完全脱离法国独立，首都金边独立纪念碑每年这一天都会举行点圣火仪式。</li><li><b>1914 年——海蒂·拉玛出生</b>：奥地利出生的好莱坞女星海蒂·拉玛在今天出生。她不只是银幕明星，还是跳频技术的发明者之一，这项技术后来成为 Wi-Fi 和蓝牙的基础——演戏之外，她改写了通信史。</li></ol>
@@ -696,12 +731,12 @@
 </section>
 <!-- 每日金句 -->
 <section class="blk" id="s-quote">
-<div class="blk-head"><span class="no">其九</span><h2>每日金句</h2></div>
+<div class="blk-head"><span class="no">其十</span><h2>每日金句</h2></div>
 <div class="quote-card"><p class="q">“每一个不曾起舞的日子，都是对生命的辜负。”</p><p class="from">—— 尼采</p><p class="note-text">新月、新一周，沈阳的雪后天晴得正好。冬天是季节的必经之路，别只等“春天”——今天就把手头最重要的那件事往前推一步，冷天里先动起来，路是走出来的，不是等出来的。</p></div>
 </section>
 <!-- 每日养生小技巧 -->
 <section class="blk" id="s-wellness">
-<div class="blk-head"><span class="no">其十</span><h2>每日养生小技巧</h2></div>
+<div class="blk-head"><span class="no">其十一</span><h2>每日养生小技巧</h2></div>
 <div class="well"><ol>
 <li><b>防寒防霾</b>：沈阳 AQI 156、鞍山 134，雾霾天晨练改到午后或室内，出门戴口罩；头部、颈部、脚部最怕冷，帽子围巾戴好。中老年人晨起别太猛，先在床边坐一会儿再起身，出门尽量避开清晨最冷的时段，血压高的人起床前先测一测。</li><li><b>饮食温润</b>：今晚炖一锅白萝卜牛腩汤：牛腩蛋白质高、耐饿，萝卜顺气化痰，寒潮后喝一碗从里暖到外；低碳日这碗汤正好，汤里多放萝卜、少放油，配半碗糙米饭就够了。再配一道清炒山药木耳：山药健脾、木耳清肠，两道菜都是当季便宜食材，做法简单，少吃生冷，别贪凉。</li><li><b>起居有度</b>：新月之夜宜早睡，年轻人少熬夜，睡前一小时放下手机，泡脚 15 分钟再睡；久坐一小时就起来活动几分钟，脖子和腰都会感谢你。</li>
 <li><b>《黄帝内经》讲“冬三月，早卧晚起，必待日光”</b>：立冬后天亮得晚、雾霾又重，早上等太阳出来、雾散一点再出门，别摸黑顶着霾晨练。</li>
@@ -711,7 +746,7 @@
 </section>
 <!-- 健身减脂餐 -->
 <section class="blk" id="s-meal">
-<div class="blk-head"><span class="no">其十一</span><h2>健身减脂餐</h2></div>
+<div class="blk-head"><span class="no">其十二</span><h2>健身减脂餐</h2></div>
 <div class="meal">
 <p class="carb"><b>今日：低碳日（周一）</b>。承接昨天高碳日：周日煮的糙米分装冷藏、卤的牛肉还剩一些，今天正好用上，不浪费。</p>
 <ul><li><b>早餐</b>：水煮鸡蛋 2 个 + 无糖豆浆 1 杯（约 300 毫升）+ 全麦面包 1 片（约 30 克，主食减半）+ 黄瓜 1 根。约 380 大卡，蛋白质约 26 克，碳水约 28 克。</li><li><b>午餐</b>：香煎鸡胸肉 200 克 + 西兰花 1 大盘（约 200 克）+ 糙米饭半碗（约 100 克熟饭，周日备好的）+ 番茄蛋花汤 1 碗。约 520 大卡，蛋白质约 48 克，碳水约 32 克。</li><li><b>晚餐</b>：卤牛肉 150 克（周日卤的剩的，切片）+ 凉拌黄瓜木耳 1 盘 + 紫菜蛋花汤 1 碗。约 420 大卡，蛋白质约 38 克，碳水约 12 克。</li><li><b>可选加餐</b>：无糖酸奶 1 杯（约 200 克）+ 杏仁 10 颗，约 180 大卡，蛋白质约 10 克，碳水约 10 克。</li></ul>
@@ -722,7 +757,7 @@
 </section>
 <!-- 每日一曲 -->
 <section class="blk" id="s-song">
-<div class="blk-head"><span class="no">其十二</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《暖暖》——梁静茹</p>
 <p><b>本周主题：立冬暖调</b>（立冬刚过一周的歌都围绕“暖”来选，每天不重样）</p>
@@ -731,7 +766,7 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="s-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十四</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《摇曳露营△》（TV 动画 3 季，2018–2024 年，已完结）</p>
 <p><b>本周主题：冬日治愈</b>（一周的推荐都围绕“冬天里让人心里暖起来的番”）</p>
@@ -776,7 +811,7 @@
 
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1108-weather">五城天气</a><a href="#d1108-news">五城新闻</a><a href="#d1108-highlights">今日看点</a><a href="#d1108-finance">金融市场</a><a href="#d1108-sports">体育速递</a><a href="#d1108-gossip">娱乐圈八卦</a><a href="#d1108-astro">月相 · 卦象</a><a href="#d1108-history">历史上的今天</a><a href="#d1108-quote">每日金句</a><a href="#d1108-wellness">养生小技巧</a><a href="#d1108-meal">健身减脂餐</a><a href="#d1108-song">每日一曲</a><a href="#d1108-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1108-weather">五城天气</a><a href="#d1108-news">五城新闻</a><a href="#d1108-highlights">今日看点</a><a href="#d1108-finance">金融市场</a><a href="#d1108-sports">体育速递</a><a href="#d1108-gossip">娱乐圈八卦</a><a href="#d1108-astro">月相 · 卦象</a><a href="#d1108-tarot">塔罗</a><a href="#d1108-history">历史上的今天</a><a href="#d1108-quote">每日金句</a><a href="#d1108-wellness">养生小技巧</a><a href="#d1108-meal">健身减脂餐</a><a href="#d1108-song">每日一曲</a><a href="#d1108-anime">每日一漫</a></nav>
 <!-- 五城天气 -->
 <section class="blk" id="d1108-weather">
 <div class="blk-head"><span class="no">其一</span><h2>五城天气</h2></div>
@@ -893,9 +928,21 @@
 </article>
 </div>
 </section>
+<!-- 今日塔罗 -->
+<section class="blk" id="d1108-tarot">
+<div class="blk-head"><span class="no">其八</span><h2>今日塔罗（西方占卜）</h2></div>
+<article class="tarot">
+<p class="tarot-star" aria-hidden="true">✦</p>
+<div class="tarot-name">皇帝 <span class="en">The Emperor</span></div>
+<span class="tarot-pos">正位</span>
+<p class="tarot-text">皇帝代表<b>秩序、掌控和把事情管起来</b>：周日适合收拾收拾、定定下周的规矩，把散着的事归拢一下。寒潮过后，屋里屋外都收拾利索，心里也踏实。</p>
+<div class="advice"><p><b>今日建议</b></p><p>花 20 分钟整理一下房间或桌面，顺手列出下周要做的三件事，贴在看得见的地方。</p></div>
+<p class="folk">西方占卜内容，仅供参考。</p>
+</article>
+</section>
 <!-- 历史上的今天 -->
 <section class="blk" id="d1108-history">
-<div class="blk-head"><span class="no">其八</span><h2>历史上的今天</h2></div>
+<div class="blk-head"><span class="no">其九</span><h2>历史上的今天</h2></div>
 <div class="hist">
 <p class="intro">今天也是中国记者节，向每一位记录者致敬。</p>
 <ol><li><b>1895 年——伦琴发现 X 射线</b>：德国物理学家威廉·伦琴在实验中发现 X 射线，医学从此有了"透视眼"，他也因此获得首届诺贝尔物理学奖。</li><li><b>1923 年——啤酒馆政变</b>：希特勒等人在慕尼黑发动政变，企图推翻魏玛共和国政府，政变失败，希特勒被捕入狱。</li><li><b>1960 年——肯尼迪当选美国总统</b>：约翰·肯尼迪击败尼克松，成为美国历史上最年轻的当选总统。</li><li><b>1997 年——长江三峡大江截流成功</b>：三峡工程实现大江截流，中国水利建设史上的一座里程碑。</li><li><b>2016 年——特朗普当选美国总统</b>：唐纳德·特朗普击败希拉里·克林顿，当选美国第 45 任总统。</li></ol>
@@ -903,12 +950,12 @@
 </section>
 <!-- 每日金句 -->
 <section class="blk" id="d1108-quote">
-<div class="blk-head"><span class="no">其九</span><h2>每日金句</h2></div>
+<div class="blk-head"><span class="no">其十</span><h2>每日金句</h2></div>
 <div class="quote-card"><p class="q">"冬天来了，春天还会远吗？"</p><p class="from">—— 雪莱《西风颂》</p><p class="note-text">立冬刚过，沈阳鞍山正赶上寒潮，冷是真的冷，但冬天是季节的必经之路。眼下的难关也一样，别只等“春天”——把手头最要紧的一件事先做起来，冷天里先动起来，路是走出来的。</p></div>
 </section>
 <!-- 每日养生小技巧 -->
 <section class="blk" id="d1108-wellness">
-<div class="blk-head"><span class="no">其十</span><h2>每日养生小技巧</h2></div>
+<div class="blk-head"><span class="no">其十一</span><h2>每日养生小技巧</h2></div>
 <div class="well"><ol>
 <li><b>防寒保暖</b>：头部、颈部、脚部最怕冷，出门戴好帽子围巾，晚上用热水泡脚 15 分钟再睡，暖和了才睡得踏实。</li><li><b>饮食温润</b>：今晚炖一锅羊肉萝卜汤：羊肉温补、萝卜顺气，寒潮天喝一碗从里暖到外；高碳日这碗汤配一小碗糙米饭正好，汤里多放萝卜、少放油。少吃生冷，别贪凉。</li><li><b>起居有度</b>：中老年人晨起别太猛，先在床边坐一会儿再起身，出门尽量避开清晨最冷的时段；年轻人少熬夜，久坐一小时就起来活动几分钟，脖子和腰都会感谢你。</li>
 <li><b>《黄帝内经》讲“冬三月，去寒就温”</b>：寒潮天里避开风寒、靠近温暖，衣服、屋子、吃食都要暖和，冷水冷饮先放一放。</li>
@@ -918,7 +965,7 @@
 </section>
 <!-- 健身减脂餐 -->
 <section class="blk" id="d1108-meal">
-<div class="blk-head"><span class="no">其十一</span><h2>健身减脂餐</h2></div>
+<div class="blk-head"><span class="no">其十二</span><h2>健身减脂餐</h2></div>
 <div class="meal">
 <p class="carb"><b>今日：高碳日</b></p>
 <ul><li><b>早餐</b>：燕麦 50 克（牛奶燕麦粥）+ 纯牛奶 1 杯（约 200 毫升）+ 水煮鸡蛋 2 个 + 香蕉 1 根。约 480 大卡，蛋白质约 25 克，碳水约 73 克。</li><li><b>午餐</b>：糙米饭 1 大碗（约 250 克熟饭）+ 卤牛肉 200 克 + 土豆炖白菜一盘。约 700 大卡，蛋白质约 49 克，碳水约 86 克。</li><li><b>晚餐</b>：糙米饭 1 碗（约 200 克熟饭）+ 白灼虾仁 200 克 + 清炒菠菜一盘。约 550 大卡，蛋白质约 43 克，碳水约 59 克。</li><li><b>可选加餐</b>：坚果一小把（约 20 克）+ 无糖酸奶 1 杯（约 200 克），约 200 大卡，蛋白质约 12 克，碳水约 13 克。</li></ul>
@@ -929,7 +976,7 @@
 </section>
 <!-- 每日一曲 -->
 <section class="blk" id="d1108-song">
-<div class="blk-head"><span class="no">其十二</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《平凡之路》——朴树</p>
 <p>今天旅卦讲"在路上，但别赶路"，新一周也从今天开始；杨瀚森昨晚刚拿生涯首个两双，平凡的路也能走出高光。《平凡之路》唱的就是这条路——"我曾经跨过山和大海，也穿过人山人海"，今晚备餐的时候放这首，煮一锅糙米、卤几份鸡胸肉，下周的低碳日就不用天天现做，路要一步一步走，饭也要一顿一顿备。</p>
@@ -937,7 +984,7 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="d1108-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十四</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《强风吹拂》（TV 动画全 23 集，2018–2019 年）</p>
 <p>改编自三浦紫苑的同名小说，讲十个原本不会跑步的大学生，在灰二的带领下从零开始，一路跑向箱根驿传。理由：今天是旅卦，"在路上"——寒潮天看一群人顶着冷风晨跑，比窝在被窝里更提气；今晚看第 1 集《第十名男子》，灰二那句"你喜欢跑步吗"一出来，新一周就有了劲头；这周主题是冬夜暖番，它负责把暖意从被窝里带到路上。</p>
@@ -958,7 +1005,7 @@
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">12.7°<small> / -0.3°</small></div><div class="meta"><b>沈阳</b><br />毛毛雨转多云<br />西北风阵风 43 km/h</div></div><div class="cell"><div class="big">15.1°<small> / 1.0°</small></div><div class="meta"><b>鞍山</b><br />毛毛雨，降水约 3.3 毫米<br />西北风阵风 44 km/h</div></div><div class="cell"><div class="big">4.2°<small> / -2.8°</small></div><div class="meta"><b>卡尔加里</b><br />当地 10 月 31 日 · 阴<br />湿度约 87%，体感偏冷</div></div><div class="cell"><div class="big">15.7°<small> / 12.3°</small></div><div class="meta"><b>海斯</b><br />当地 10 月 31 日 · 毛毛雨<br />降水约 2.8 毫米</div></div><div class="cell"><div class="big">18.7°<small> / 9.2°</small></div><div class="meta"><b>京都</b><br />阴 · 全天无降水<br />早晚 9°C，昼夜温差大</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1101-weather">五城天气</a><a href="#d1101-news">五城新闻</a><a href="#d1101-highlights">今日看点</a><a href="#d1101-finance">金融市场</a><a href="#d1101-sports">体育速递</a><a href="#d1101-gossip">娱乐圈八卦</a><a href="#d1101-astro">月相 · 卦象</a><a href="#d1101-history">历史上的今天</a><a href="#d1101-quote">每日金句</a><a href="#d1101-wellness">养生小技巧</a><a href="#d1101-meal">健身减脂餐</a><a href="#d1101-song">每日一曲</a><a href="#d1101-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1101-weather">五城天气</a><a href="#d1101-news">五城新闻</a><a href="#d1101-highlights">今日看点</a><a href="#d1101-finance">金融市场</a><a href="#d1101-sports">体育速递</a><a href="#d1101-gossip">娱乐圈八卦</a><a href="#d1101-astro">月相 · 卦象</a><a href="#d1101-tarot">塔罗</a><a href="#d1101-history">历史上的今天</a><a href="#d1101-quote">每日金句</a><a href="#d1101-wellness">养生小技巧</a><a href="#d1101-meal">健身减脂餐</a><a href="#d1101-song">每日一曲</a><a href="#d1101-anime">每日一漫</a></nav>
 <!-- 五城天气 -->
 <section class="blk" id="d1101-weather">
 <div class="blk-head"><span class="no">其一</span><h2>五城天气</h2></div>
@@ -1069,21 +1116,33 @@
 </article>
 </div>
 </section>
+<!-- 今日塔罗 -->
+<section class="blk" id="d1101-tarot">
+<div class="blk-head"><span class="no">其八</span><h2>今日塔罗（西方占卜）</h2></div>
+<article class="tarot">
+<p class="tarot-star" aria-hidden="true">✦</p>
+<div class="tarot-name">太阳 <span class="en">The Sun</span></div>
+<span class="tarot-pos">正位</span>
+<p class="tarot-text">太阳是塔罗里最明朗的一张牌，代表<b>喜悦、顺利和坦荡</b>：事情正在往好的方向走，不用把简单的事情想复杂。今天是十一月的第一天，秋意正浓，适合把心态放轻松。</p>
+<div class="advice"><p><b>今日建议</b></p><p>白天出门晒晒太阳、散步 20 分钟，让身体和心情都透透气。</p></div>
+<p class="folk">西方占卜内容，仅供参考。</p>
+</article>
+</section>
 <!-- 历史上的今天 -->
 <section class="blk" id="d1101-history">
-<div class="blk-head"><span class="no">其八</span><h2>历史上的今天</h2></div>
+<div class="blk-head"><span class="no">其九</span><h2>历史上的今天</h2></div>
 <div class="hist">
 <ol><li><b>1512 年——米开朗基罗西斯廷礼拜堂天顶画首次向公众展示</b>：历时约四年完成的《创世纪》，至今仍是文艺复兴艺术的巅峰之作。</li><li><b>1755 年——里斯本大地震</b>：葡萄牙里斯本近海发生约 9 级强震，造成约 10 万人死亡，深刻影响了欧洲思想史与地震学发展。</li><li><b>1922 年——土耳其大国民议会废除苏丹制</b>：奥斯曼帝国 600 余年君主统治终结，共和国建立铺平道路。</li><li><b>1952 年——美国进行首次氢弹试验</b>：代号"常春藤·迈克"，在马绍尔群岛埃尼威托克环礁引爆，威力约 1000 万吨 TNT 当量，热核武器时代开启。</li><li><b>1993 年——《马斯特里赫特条约》生效，欧盟正式成立</b>：由 12 个欧洲共同体国家签署的条约生效，欧洲联盟正式诞生，并为欧元铺路。</li></ol>
 </div>
 </section>
 <!-- 每日金句 -->
 <section class="blk" id="d1101-quote">
-<div class="blk-head"><span class="no">其九</span><h2>每日金句</h2></div>
+<div class="blk-head"><span class="no">其十</span><h2>每日金句</h2></div>
 <div class="quote-card"><p class="q">"千里之行，始于足下。"</p><p class="from">—— 老子《道德经》</p><p class="note-text">11 月的第一天，也是新一个月的起点。再长的路，也都是从迈出第一步、做好手边的第一件小事开始的，别只在起点张望。</p></div>
 </section>
 <!-- 每日养生小技巧 -->
 <section class="blk" id="d1101-wellness">
-<div class="blk-head"><span class="no">其十</span><h2>每日养生小技巧</h2></div>
+<div class="blk-head"><span class="no">其十一</span><h2>每日养生小技巧</h2></div>
 <div class="well"><ol>
 <li><b>供暖季到了，先查暖气、再防干燥</b>：沈阳、鞍山 11 月 1 日正式供热，室内外温差拉大；注意暖气跑风、管道漏水，同时室内可放一盆水或用加湿器，勤开窗短时间通风，防口鼻干燥和静电。</li><li><b>冷空气频繁，穿衣按"洋葱式"增减</b>：未来几天冷暖交替、昼夜温差大，早晚加外套、护好头颈手脚；中老年人尤其注意晨起别猛起、别急着出门受凉。</li><li><b>流感季将至，勤洗手、多通风、早睡</b>：沈阳疾控已提示科学防流感；年轻人别熬夜硬扛，符合条件的老人、孩子可咨询接种流感疫苗。通用健康提示，不针对具体疾病诊疗。</li><li><b>供暖后口鼻干，睡前喝一碗银耳雪梨汤</b>：银耳泡发后和雪梨一起小火炖 40 分钟，润肺防燥，正好对付供暖后干巴巴的室内空气；高碳日这碗汤当睡前的一碗汤喝，甜味靠雪梨本身，别多加冰糖。</li>
 <li><b>《黄帝内经》讲“秋冬养阴”</b>：供暖季开始，室内外温差大，更要收敛精气、少耗散，晚上早点睡、少熬夜，把阳气藏住。</li>
@@ -1093,7 +1152,7 @@
 </section>
 <!-- 健身减脂餐 -->
 <section class="blk" id="d1101-meal">
-<div class="blk-head"><span class="no">其十一</span><h2>健身减脂餐</h2></div>
+<div class="blk-head"><span class="no">其十二</span><h2>健身减脂餐</h2></div>
 <div class="meal">
 <p class="carb"><b>今日：高碳日</b></p>
 <ul><li><b>早餐</b>：燕麦粥（燕麦 50g）+ 水煮蛋 2 个 + 香蕉 1 根 + 无糖豆浆 1 杯（250ml）——约 500 大卡，蛋白质约 27g，碳水约 68g</li><li><b>午餐</b>：糙米饭 1 碗半 + 卤鸡胸肉 200g + 清炒西兰花 1 盘 + 水煮蛋 1 个——约 770 大卡，蛋白质约 59g，碳水约 70g</li><li><b>晚餐</b>：糙米饭 1 碗半 + 清蒸鲈鱼 200g + 蒜蓉炒油菜 1 盘——约 590 大卡，蛋白质约 48g，碳水约 65g</li><li><b>加餐</b>：无糖酸奶 200g + 混合坚果 20g（一小把）——约 240 大卡，蛋白质约 11g，碳水约 13g</li></ul>
@@ -1104,7 +1163,7 @@
 </section>
 <!-- 每日一曲 -->
 <section class="blk" id="d1101-song">
-<div class="blk-head"><span class="no">其十二</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《枫》——周杰伦</p>
 <p>本周主题"秋日尾声"：霜降已过、秋天只剩尾巴，沈阳今天最高 12.7°C、风大阵风超 40 公里，正是枫叶落尽的时候。《枫》唱的就是秋天走到尽头的心情，旋律慢、歌词直白，适合 11 月第一天晚上一个人慢慢听；听完把十月的待办清一清，明天周一换个打法开工。</p>
@@ -1112,7 +1171,7 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="d1101-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十四</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《夏目友人帐》（TV 动画共 7 季 86 集，2008–2024 年；第 7 季"漆"已于 2024 年 12 月完结；另有 2 部剧场版）</p>
 <p>改编自绿川幸的同名漫画，讲能看见妖怪的少年夏目贵志继承外祖母的"友人帐"，一边把名字还给妖怪，一边和猫咪老师一起过日子。理由：本周主题"秋日尾声"——霜降末期、秋天只剩尾巴，这部番的节奏和秋天一模一样，慢、暖、带一点凉意；每集一个妖怪、一个小故事，适合睡前看一集，不用追、不用赶，11 月的第一天就从它开始。</p>
@@ -1133,7 +1192,7 @@
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">8.5°<small> / -2.7°</small></div><div class="meta"><b>沈阳</b><br />阴 · 全天无降水<br />AQI 约 162（中度污染）</div></div><div class="cell"><div class="big">10.8°<small> / -2.1°</small></div><div class="meta"><b>鞍山</b><br />阴 · 全天无降水<br />AQI 约 158（中度污染）</div></div><div class="cell"><div class="big">5.2°<small> / -3.0°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 1 日 · 阴<br />阿尔伯塔省起实行永久“阿尔伯塔时间”</div></div><div class="cell"><div class="big">18.0°<small> / 13.0°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 1 日 · 毛毛雨<br />东南风阵风 53 km/h</div></div><div class="cell"><div class="big">17.4°<small> / 12.1°</small></div><div class="meta"><b>京都</b><br />小雨 · 全天降水约 7.8 毫米<br />带伞穿防风外套</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1102-weather">五城天气</a><a href="#d1102-news">五城新闻</a><a href="#d1102-highlights">今日看点</a><a href="#d1102-finance">金融市场</a><a href="#d1102-sports">体育速递</a><a href="#d1102-gossip">娱乐圈八卦</a><a href="#d1102-astro">月相 · 卦象</a><a href="#d1102-history">历史上的今天</a><a href="#d1102-quote">每日金句</a><a href="#d1102-wellness">养生小技巧</a><a href="#d1102-meal">健身减脂餐</a><a href="#d1102-song">每日一曲</a><a href="#d1102-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1102-weather">五城天气</a><a href="#d1102-news">五城新闻</a><a href="#d1102-highlights">今日看点</a><a href="#d1102-finance">金融市场</a><a href="#d1102-sports">体育速递</a><a href="#d1102-gossip">娱乐圈八卦</a><a href="#d1102-astro">月相 · 卦象</a><a href="#d1102-tarot">塔罗</a><a href="#d1102-history">历史上的今天</a><a href="#d1102-quote">每日金句</a><a href="#d1102-wellness">养生小技巧</a><a href="#d1102-meal">健身减脂餐</a><a href="#d1102-song">每日一曲</a><a href="#d1102-anime">每日一漫</a></nav>
 <!-- 五城天气 -->
 <section class="blk" id="d1102-weather">
 <div class="blk-head"><span class="no">其一</span><h2>五城天气</h2></div>
@@ -1244,21 +1303,33 @@
 </article>
 </div>
 </section>
+<!-- 今日塔罗 -->
+<section class="blk" id="d1102-tarot">
+<div class="blk-head"><span class="no">其八</span><h2>今日塔罗（西方占卜）</h2></div>
+<article class="tarot">
+<p class="tarot-star" aria-hidden="true">✦</p>
+<div class="tarot-name">审判 <span class="en">Judgement</span></div>
+<span class="tarot-pos">正位</span>
+<p class="tarot-text">审判代表<b>觉醒、复盘和重新出发</b>：回头看看过去一段的得失，把该放下的放下，该捡起来的捡起来。新的一周从周一开始，正好是个复盘的节点。</p>
+<div class="advice"><p><b>今日建议</b></p><p>今晚花 10 分钟写下这周最想完成的一件事，贴在显眼处，明天照着做。</p></div>
+<p class="folk">西方占卜内容，仅供参考。</p>
+</article>
+</section>
 <!-- 历史上的今天 -->
 <section class="blk" id="d1102-history">
-<div class="blk-head"><span class="no">其八</span><h2>历史上的今天</h2></div>
+<div class="blk-head"><span class="no">其九</span><h2>历史上的今天</h2></div>
 <div class="hist">
 <ol><li><b>1861 年——辛酉政变</b>：清朝慈安太后、慈禧太后与恭亲王奕䜣发动宫廷政变，逮捕肃顺等顾命八大臣，清末权力格局由此改写。</li><li><b>1917 年——《贝尔福宣言》发表</b>：英国外交大臣贝尔福表示支持在巴勒斯坦建立犹太家园，成为中东现代史的关键文件之一。</li><li><b>1963 年——南越总统吴廷琰遇刺身亡</b>：在杨文明等军官发动的军事政变后，吴廷琰与其胞弟吴廷瑈被枪杀，越南局势进一步动荡。</li><li><b>2000 年——首批宇航员进驻国际空间站</b>：远征 1 任务乘组——美国宇航员威廉·谢泼德与俄罗斯宇航员尤里·吉津科、谢尔盖·克里卡廖夫搭乘联盟 TM-31 飞船抵达空间站，开启人类在太空连续居住至今的时代。</li></ol>
 </div>
 </section>
 <!-- 每日金句 -->
 <section class="blk" id="d1102-quote">
-<div class="blk-head"><span class="no">其九</span><h2>每日金句</h2></div>
+<div class="blk-head"><span class="no">其十</span><h2>每日金句</h2></div>
 <div class="quote-card"><p class="q">"纸上得来终觉浅，绝知此事要躬行。"</p><p class="from">—— 陆游《冬夜读书示子聿》</p><p class="note-text">道理看再多，都不如一次亲手去做。周一开工，把一件"知道"的事变成一件"做过"的事，比什么都管用。</p></div>
 </section>
 <!-- 每日养生小技巧 -->
 <section class="blk" id="d1102-wellness">
-<div class="blk-head"><span class="no">其十</span><h2>每日养生小技巧</h2></div>
+<div class="blk-head"><span class="no">其十一</span><h2>每日养生小技巧</h2></div>
 <div class="well"><ol>
 <li><b>立冬在即（11 月 7 日），现在正是"收"的时候</b>：霜降末期天气转冷，早睡晚起、别熬夜透支；饮食上温补、少食生冷辛辣，具体吃食见下面第 3 条。</li><li><b>防寒先护"三个口"：头、颈、脚</b>：早晚出门戴帽、围巾，睡前热水泡脚 10~15 分钟，有助驱寒助眠；中老年人晨起动作放缓，起床先坐一会儿再站。</li><li><b>供暖后室内干燥，记得补水润燥</b>：今晚炖一碗山药排骨汤：山药健脾胃、排骨补蛋白，霜降后吃正应季；低碳日喝汤不吃主食，汤里的山药当半份主食算，别再添米饭。室内湿度低时适当加湿，皮肤干痒别用过热的水洗澡。通用健康提示，不针对具体疾病诊疗。</li>
 <li><b>《黄帝内经》讲“冬三月，早卧晚起，必待日光”</b>：立冬在即，天亮得晚，早上等太阳出来再起床活动，别摸黑贪早。</li>
@@ -1268,7 +1339,7 @@
 </section>
 <!-- 健身减脂餐 -->
 <section class="blk" id="d1102-meal">
-<div class="blk-head"><span class="no">其十一</span><h2>健身减脂餐</h2></div>
+<div class="blk-head"><span class="no">其十二</span><h2>健身减脂餐</h2></div>
 <div class="meal">
 <p class="carb"><b>今日：低碳日</b></p>
 <ul><li><b>早餐</b>：水煮蛋 2 个 + 无糖豆浆 1 杯（250ml）+ 黄瓜 1 根 + 全麦面包 1 片 + 混合坚果 15g（一小把）+ 苹果半个——约 450 大卡，蛋白质约 25g，碳水约 40g</li><li><b>午餐</b>：卤鸡胸肉 200g（周日备好的）+ 蔬菜沙拉 1 大盘（生菜、黄瓜、番茄）+ 小半碗糙米饭 + 橄榄油 1 小勺拌沙拉——约 560 大卡，蛋白质约 52g，碳水约 29g</li><li><b>晚餐</b>：虾仁 200g + 北豆腐 200g + 蒜蓉菠菜 1 盘 + 水煮蛋 1 个——约 480 大卡，蛋白质约 58g，碳水约 11g</li><li><b>加餐（练后）</b>：蛋白粉 1 勺（约 25g，冲水），或换成希腊酸奶 150g——约 120 大卡，蛋白质约 24g，碳水约 2g（按蛋白粉计）</li></ul>
@@ -1279,7 +1350,7 @@
 </section>
 <!-- 每日一曲 -->
 <section class="blk" id="d1102-song">
-<div class="blk-head"><span class="no">其十二</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《追梦赤子心》——GALA 乐队</p>
 <p>本周主题"立冬·寒潮里的暖意"：周一开工，鼎卦讲"立新功"，A 股也开了个红盘。《追梦赤子心》的副歌一上来就是"向前跑"，适合早上出门前放一遍、跑着去赶地铁；歌词里"用力活着用力爱"，就是今天要干的事——先踏踏实实做成一件小事。</p>
@@ -1287,7 +1358,7 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="d1102-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十四</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《葬送的芙莉莲》（第 1 季 28 集，2023–2024 年；第 2 季 10 集已于 2026 年 1–3 月播出）</p>
 <p>改编自山田钟人原作、阿部司作画的漫画，讲精灵魔法师芙莉莲在打败魔王十年后，带着新伙伴一路向北的旅程。理由：昨天推了慢节奏的治愈番《夏目友人帐》，今天换一部同样温柔、但走得更远的"在路上"的番——芙莉莲的旅程讲的是时间、告别和重新出发，正好对上今天鼎卦的"立新功"和这周"立冬·寒潮里的暖意"；两部番一静一动，静的是归还名字，动的是向北出发，冬天就从这两部番开始追。</p>
@@ -1308,7 +1379,7 @@
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">11.6°<small> / 2.6°</small></div><div class="meta"><b>沈阳</b><br />多云 · 全天无降水<br />AQI 约 111（轻度污染）</div></div><div class="cell"><div class="big">14.0°<small> / 4.0°</small></div><div class="meta"><b>鞍山</b><br />晴 · 全天无降水<br />台安县发布大雾黄色预警</div></div><div class="cell"><div class="big">7.2°<small> / -3.8°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 2 日 · 大部晴<br />创新周开幕</div></div><div class="cell"><div class="big">25.4°<small> / 12.5°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 2 日 · 中雨<br />南风阵风 69 km/h</div></div><div class="cell"><div class="big">19.6°<small> / 10.9°</small></div><div class="meta"><b>京都</b><br />阴 · 全天无降水<br />最高近 20°C</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1103-weather">五城天气</a><a href="#d1103-news">五城新闻</a><a href="#d1103-highlights">今日看点</a><a href="#d1103-finance">金融市场</a><a href="#d1103-sports">体育速递</a><a href="#d1103-gossip">娱乐圈八卦</a><a href="#d1103-astro">月相 · 卦象</a><a href="#d1103-history">历史上的今天</a><a href="#d1103-quote">每日金句</a><a href="#d1103-wellness">养生小技巧</a><a href="#d1103-meal">健身减脂餐</a><a href="#d1103-song">每日一曲</a><a href="#d1103-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1103-weather">五城天气</a><a href="#d1103-news">五城新闻</a><a href="#d1103-highlights">今日看点</a><a href="#d1103-finance">金融市场</a><a href="#d1103-sports">体育速递</a><a href="#d1103-gossip">娱乐圈八卦</a><a href="#d1103-astro">月相 · 卦象</a><a href="#d1103-tarot">塔罗</a><a href="#d1103-history">历史上的今天</a><a href="#d1103-quote">每日金句</a><a href="#d1103-wellness">养生小技巧</a><a href="#d1103-meal">健身减脂餐</a><a href="#d1103-song">每日一曲</a><a href="#d1103-anime">每日一漫</a></nav>
 <!-- 五城天气 -->
 <section class="blk" id="d1103-weather">
 <div class="blk-head"><span class="no">其一</span><h2>五城天气</h2></div>
@@ -1417,21 +1488,33 @@
 </article>
 </div>
 </section>
+<!-- 今日塔罗 -->
+<section class="blk" id="d1103-tarot">
+<div class="blk-head"><span class="no">其八</span><h2>今日塔罗（西方占卜）</h2></div>
+<article class="tarot">
+<p class="tarot-star" aria-hidden="true">✦</p>
+<div class="tarot-name">世界 <span class="en">The World</span></div>
+<span class="tarot-pos">正位</span>
+<p class="tarot-text">世界代表<b>完成、圆满和开阔的视野</b>：一件事走到了收尾，值得停下来看一眼自己走了多远，也适合把眼光放长远。深秋时节，适合收一收、理一理。</p>
+<div class="advice"><p><b>今日建议</b></p><p>把手头一件拖了很久的小事今天收尾，做完就放下，别再惦记。</p></div>
+<p class="folk">西方占卜内容，仅供参考。</p>
+</article>
+</section>
 <!-- 历史上的今天 -->
 <section class="blk" id="d1103-history">
-<div class="blk-head"><span class="no">其八</span><h2>历史上的今天</h2></div>
+<div class="blk-head"><span class="no">其九</span><h2>历史上的今天</h2></div>
 <div class="hist">
 <ol><li><b>1838 年——《印度时报》创刊</b>：前身《孟买时报与商业杂志》在孟买创刊，最初为双周刊，后成为世界发行量最大的英文日报之一。点评：一份报纸近两个世纪不倒，靠的是持续记录时代。</li><li><b>1903 年——巴拿马宣布脱离哥伦比亚独立</b>：在美国支持下发动分离运动，同年 11 月 6 日获美国承认。点评：一条运河的归属，改写了一个国家的命运。</li><li><b>1954 年——电影《哥斯拉》首映</b>：日本东宝公司特摄片《哥斯拉》在日本首映，开启了影史最长寿的怪兽系列。点评：战后日本的核恐惧，化作了银幕上的巨兽。</li><li><b>1957 年——苏联发射"斯普特尼克 2 号"，莱卡犬进入太空</b>：莱卡成为首只进入地球轨道的动物，但飞船未设计返回方案，它在飞行中死去。点评：人类迈向太空的第一步，是以一只流浪狗的生命为代价的。</li><li><b>1978 年——多米尼克独立</b>：加勒比岛国多米尼克脱离英国独立，成为英联邦成员国。点评：小岛国的独立，是 20 世纪去殖民化浪潮的一朵浪花。</li></ol>
 </div>
 </section>
 <!-- 每日金句 -->
 <section class="blk" id="d1103-quote">
-<div class="blk-head"><span class="no">其九</span><h2>每日金句</h2></div>
+<div class="blk-head"><span class="no">其十</span><h2>每日金句</h2></div>
 <div class="quote-card"><p class="q">"世上本没有路，走的人多了，也便成了路。"</p><p class="from">—— 鲁迅《故乡》（1921 年）</p><p class="note-text">人生没有标准答案，别人走通的路未必适合你；今天就做一件“走路”的事：从想做的事里挑出一件最小的，今晚就动手做起来；路不是想出来的，是走出来的。</p></div>
 </section>
 <!-- 每日养生小技巧 -->
 <section class="blk" id="d1103-wellness">
-<div class="blk-head"><span class="no">其十</span><h2>每日养生小技巧</h2></div>
+<div class="blk-head"><span class="no">其十一</span><h2>每日养生小技巧</h2></div>
 <div class="well"><ol>
 <li><b>霜降末期注意"秋冻"有度</b>：早晚温差大，出门多带一件外套护住颈肩；沈阳 11 月 3 日白天最高约 13°C，周四将迎强降温，添衣要赶在降温前，别等冻着了再加。</li><li><b>润燥防秋咳</b>：今晚炖一锅莲藕排骨汤：莲藕润燥、排骨补蛋白，霜降后莲藕正粉糯；中碳日汤里加两块莲藕当配菜，配一小碗糙米饭正好，别贪多。多喝温水，少吃辛辣燥热之物。通用食养建议，不针对具体疾病。</li><li><b>中老年人晨起慢半拍，年轻人别熬夜</b>：起床先在床边坐一会儿再起身，避免猛起；年轻人尽量 23 点前入睡，睡前少刷手机，保证睡眠才能扛住换季。</li>
 <li><b>《黄帝内经》讲“秋冬养阴”</b>：霜降末期、强降温在即，这几天更要少出汗、多保暖，运动别练到大汗淋漓。</li>
@@ -1441,7 +1524,7 @@
 </section>
 <!-- 健身减脂餐 -->
 <section class="blk" id="d1103-meal">
-<div class="blk-head"><span class="no">其十一</span><h2>健身减脂餐</h2></div>
+<div class="blk-head"><span class="no">其十二</span><h2>健身减脂餐</h2></div>
 <div class="meal">
 <p class="carb"><b>今日：中碳日</b></p>
 <ul><li><b>早餐（约 550 大卡，蛋白质约 26g，碳水约 73g）</b>：燕麦 50g 冲泡 + 水煮蛋 2 个 + 纯牛奶 250ml + 苹果 1 个。周日备的水煮蛋直接取用，燕麦用开水或热牛奶冲，3 分钟搞定。</li><li><b>午餐（约 470 大卡，蛋白质约 38g，碳水约 54g）</b>：糙米饭 1 碗（熟重约 150g，周日备好的糙米饭）+ 瘦牛肉 150g 炒土豆 50g（今天新买的瘦牛肉 300g，用一半，另一半留到周四）+ 炒白菜 1 盘。牛肉切薄片快炒，土豆切小块先焯水再炒，省时间。</li><li><b>晚餐（约 555 大卡，蛋白质约 52g，碳水约 49g）</b>：糙米饭 1 小碗（熟重约 100g）+ 卤鸡胸肉 200g（周日备餐）+ 炒山药木耳（山药 150g、干木耳泡发 1 小把）。鸡胸肉切片回锅稍热即可，山药清炒保留脆感。</li><li><b>加餐（练后，约 245 大卡，蛋白质约 10g，碳水约 37g）</b>：香蕉 1 根 + 无糖酸奶 1 盒 + 水煮蛋 1 个。练后 30 分钟内吃，香蕉补碳水、酸奶和鸡蛋补蛋白。</li></ul>
@@ -1452,7 +1535,7 @@
 </section>
 <!-- 每日一曲 -->
 <section class="blk" id="d1103-song">
-<div class="blk-head"><span class="no">其十二</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《夜空中最亮的星》——逃跑计划</p>
 <p>今天乌镇互联网大会开幕，AI 和星空是全天的关键词；震卦讲"借势而动"，适合主动出击。《夜空中最亮的星》写的是夜里抬头找方向，副歌一响就让人想往前走——今晚忙累了就放这首，站到窗边看一眼夜空，歇一歇再回去把手头的事收个尾。</p>
@@ -1460,7 +1543,7 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="d1103-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十四</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《摇曳露营△》（TV 动画共 3 季 37 集，2018–2024 年；另有剧场版 2022 年）</p>
 <p>改编自 Afro 的同名漫画，讲几个女生冬天去露营：搭帐篷、生篝火、煮一锅热汤，看富士山的日出。理由：这周主题是"冬夜暖番"，从它开始最合适——今天沈阳最高 11.6°C，还不算太冷，今晚先看第 1 集《富士山与咖喱面》，锅一开、雾气一升，屋里就暖了；一集二十多分钟，不用追、不用赶，睡前看正好。</p>
@@ -1481,7 +1564,7 @@
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">18.2°<small> / 7.1°</small></div><div class="meta"><b>沈阳</b><br />阴 · 南风阵风 58 km/h<br />降温前的回暖，明日骤降</div></div><div class="cell"><div class="big">18.9°<small> / 9.5°</small></div><div class="meta"><b>鞍山</b><br />阴 · 南风阵风 56 km/h<br />11 月里难得的暖和天</div></div><div class="cell"><div class="big">11.9°<small> / -0.9°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 3 日 · 阴<br />本周最暖的一天</div></div><div class="cell"><div class="big">14.4°<small> / 6.1°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 3 日 · 中雨<br />降水约 15.6 毫米，阵风 70 km/h</div></div><div class="cell"><div class="big">19.1°<small> / 9.7°</small></div><div class="meta"><b>京都</b><br />毛毛雨 · 降水约 1.6 毫米<br />早晚 10°C 左右</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1104-weather">五城天气</a><a href="#d1104-news">五城新闻</a><a href="#d1104-highlights">今日看点</a><a href="#d1104-finance">金融市场</a><a href="#d1104-sports">体育速递</a><a href="#d1104-gossip">娱乐圈八卦</a><a href="#d1104-astro">月相 · 卦象</a><a href="#d1104-history">历史上的今天</a><a href="#d1104-quote">每日金句</a><a href="#d1104-wellness">养生小技巧</a><a href="#d1104-meal">健身减脂餐</a><a href="#d1104-song">每日一曲</a><a href="#d1104-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1104-weather">五城天气</a><a href="#d1104-news">五城新闻</a><a href="#d1104-highlights">今日看点</a><a href="#d1104-finance">金融市场</a><a href="#d1104-sports">体育速递</a><a href="#d1104-gossip">娱乐圈八卦</a><a href="#d1104-astro">月相 · 卦象</a><a href="#d1104-tarot">塔罗</a><a href="#d1104-history">历史上的今天</a><a href="#d1104-quote">每日金句</a><a href="#d1104-wellness">养生小技巧</a><a href="#d1104-meal">健身减脂餐</a><a href="#d1104-song">每日一曲</a><a href="#d1104-anime">每日一漫</a></nav>
 <!-- 五城天气 -->
 <section class="blk" id="d1104-weather">
 <div class="blk-head"><span class="no">其一</span><h2>五城天气</h2></div>
@@ -1590,21 +1673,33 @@
 </article>
 </div>
 </section>
+<!-- 今日塔罗 -->
+<section class="blk" id="d1104-tarot">
+<div class="blk-head"><span class="no">其八</span><h2>今日塔罗（西方占卜）</h2></div>
+<article class="tarot">
+<p class="tarot-star" aria-hidden="true">✦</p>
+<div class="tarot-name">愚者 <span class="en">The Fool</span></div>
+<span class="tarot-pos">正位</span>
+<p class="tarot-text">愚者代表<b>新的开始和轻装上阵</b>：不用等万事俱备，先迈出第一步，路上再调整。周三是一周的中间，适合换个节奏。</p>
+<div class="advice"><p><b>今日建议</b></p><p>今天试一件平时没做过的小事，比如走一条没走过的路、换一家店吃午饭，给日常换个新鲜感。</p></div>
+<p class="folk">西方占卜内容，仅供参考。</p>
+</article>
+</section>
 <!-- 历史上的今天 -->
 <section class="blk" id="d1104-history">
-<div class="blk-head"><span class="no">其八</span><h2>历史上的今天</h2></div>
+<div class="blk-head"><span class="no">其九</span><h2>历史上的今天</h2></div>
 <div class="hist">
 <ol><li><b>1903 年——华兴会在长沙成立</b>：黄兴、陈天华、宋教仁等人在长沙成立革命团体华兴会，提出"驱除鞑虏、复兴中华"的纲领，后成为同盟会的主要来源之一。点评：辛亥革命的火种，正是在这样的秘密集会里点燃的。</li><li><b>1922 年——图坦卡蒙陵墓被发现</b>：英国考古学家霍华德·卡特在帝王谷发现通往图坦卡蒙陵墓的台阶入口（约三周后才正式打开墓门确认），这是古埃及考古史上最伟大的发现之一。点评：三千年的沉睡，一锹下去就改写了历史教科书。</li><li><b>1946 年——联合国教科文组织成立</b>：联合国教育、科学及文化组织（UNESCO）正式成立，同年 12 月成为联合国专门机构。点评：战争刚结束，人类就开始为"让心灵不生锈"建章立制。</li><li><b>1979 年——伊朗人质危机爆发</b>：伊朗学生冲入美国驻伊朗大使馆，扣押 52 名美国人质长达 444 天，美伊断交。点评：一场持续 444 天的对峙，至今仍在影响中东格局。</li><li><b>2008 年——奥巴马当选美国总统</b>：贝拉克·奥巴马当选美国第 44 任总统，成为美国历史上首位非洲裔总统。点评："变革"这个词，在那一年真的改变了白宫的面孔。</li></ol>
 </div>
 </section>
 <!-- 每日金句 -->
 <section class="blk" id="d1104-quote">
-<div class="blk-head"><span class="no">其九</span><h2>每日金句</h2></div>
+<div class="blk-head"><span class="no">其十</span><h2>每日金句</h2></div>
 <div class="quote-card"><p class="q">"博学之，审问之，慎思之，明辨之，笃行之。"</p><p class="from">—— 《礼记·中庸》</p><p class="note-text">越是事情多的时候，越需要"笃行"——学得多不如做得实：今天就落实一件，把手头的计划列成一张清单、睡前逐项打勾，做完一件再睡。</p></div>
 </section>
 <!-- 每日养生小技巧 -->
 <section class="blk" id="d1104-wellness">
-<div class="blk-head"><span class="no">其十</span><h2>每日养生小技巧</h2></div>
+<div class="blk-head"><span class="no">其十一</span><h2>每日养生小技巧</h2></div>
 <div class="well"><ol>
 <li><b>寒潮将至，保暖先行</b>：沈阳 11 月 4 日已发布寒潮黄色预警，预计 5 日早晨至 7 日早晨最低气温下降 10°C 以上，7 日早晨可至 −8°C 到 −10°C；羽绒服、帽子、围巾、手套该拿出来了，尤其注意头部和脚部保暖。中老年人外出尽量避开清晨最冷时段。</li><li><b>立冬将至（11 月 7 日），饮食宜温补润燥</b>：今晚做一道白萝卜炖羊肉：白萝卜顺气、羊肉温补，霜降后吃正应季；低碳日只吃肉和萝卜、少喝带油的汤底，别配大碗米饭。年轻人别贪凉，少喝冰饮、少吃生冷。</li><li><b>运动要热身、别猛练</b>：天气转冷后晨练前务必充分热身，循序渐进；年轻人跑步、打球前活动开关节，中老年人宜选择散步、太极等温和运动，量力而行。</li>
 <li><b>《黄帝内经》讲“冬三月，去寒就温”</b>：寒潮黄色预警，出门避开风寒、靠近温暖，帽子围巾手套别省，冷风里别久站。</li>
@@ -1614,7 +1709,7 @@
 </section>
 <!-- 健身减脂餐 -->
 <section class="blk" id="d1104-meal">
-<div class="blk-head"><span class="no">其十一</span><h2>健身减脂餐</h2></div>
+<div class="blk-head"><span class="no">其十二</span><h2>健身减脂餐</h2></div>
 <div class="meal">
 <p class="carb"><b>今日：低碳日</b></p>
 <ul><li><b>早餐（约 375 大卡，蛋白质约 24g，碳水约 31g）</b>：水煮蛋 2 个 + 纯牛奶 250ml + 小番茄 1 小把 + 全麦面包 1 片。低碳日早餐不吃粥和燕麦，鸡蛋和牛奶顶饱，小番茄补充维生素。</li><li><b>午餐（约 490 大卡，蛋白质约 56g，碳水约 36g）</b>：清蒸鲈鱼 250g + 糙米饭小半碗（熟重约 100g，主食减半）+ 白灼西兰花 1 盘 + 水煮蛋 1 个。鲈鱼清蒸 8 分钟，淋少许蒸鱼豉油；西兰花焯水 1 分钟，拌蒜末和少许盐。</li><li><b>晚餐（约 365 大卡，蛋白质约 41g，碳水约 9g）</b>：豆腐 200g + 卤鸡胸肉 100g（周日备的鸡胸肉收尾）+ 炒油菜 1 盘。豆腐切块和鸡胸肉一起小火烩 5 分钟，油菜大火快炒，少油少盐。</li><li><b>加餐（约 355 大卡，蛋白质约 9g，碳水约 42g）</b>：混合坚果 1 小把（约 30g，核桃、杏仁、花生都行）+ 无糖酸奶 1 盒 + 香蕉 1 根。坚果别贪多，1 小把就够，香蕉放在练后吃。</li></ul>
@@ -1625,7 +1720,7 @@
 </section>
 <!-- 每日一曲 -->
 <section class="blk" id="d1104-song">
-<div class="blk-head"><span class="no">其十二</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《起风了》——买辣椒也用券</p>
 <p>今天沈阳一天升温 11°C、南风阵风近 60 公里，是名副其实"起风了"的一天；A 股也大涨 2.16%，风是往上吹的。歌里唱"逆风的方向，更适合飞翔"，适合今晚收尾复盘时放——把手头的事跟进一遍，别只顾往前冲，风起了，方向要先定好。</p>
@@ -1633,7 +1728,7 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="d1104-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十四</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《轻音少女》（TV 动画共 2 季 39 集，第 1 季 13 集 2009 年，第 2 季 26 集 2010 年；另有剧场版 2011 年）</p>
 <p>改编自 kakifly 的四格漫画，讲平泽唯等四个女生放学后在轻音部喝茶、练琴、吃蛋糕的日子。理由：今天沈阳难得回暖到 18°C，A 股也大涨，心情正好配这部——今晚看第 1 集，二十多分钟，全是放学后阳光的味道，暖和又不费脑子；这周主题是冬夜暖番，它负责把白天的暖气留到晚上。</p>
@@ -1654,7 +1749,7 @@
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">6.7°<small> / -0.9°</small></div><div class="meta"><b>沈阳</b><br />白天气温 · 冷锋过境<br />凌晨锋前曾达 13.8°C</div></div><div class="cell"><div class="big">10.9°<small> / 0.5°</small></div><div class="meta"><b>鞍山</b><br />白天气温 · 冷锋过境<br />凌晨曾达 14.5°C</div></div><div class="cell"><div class="big">6.4°<small> / -2.2°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 4 日 · 多云<br />全市用水限制今日生效</div></div><div class="cell"><div class="big">17.1°<small> / 4.3°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 4 日 · 大部晴朗<br />早晚仅 4°C，昼夜温差大</div></div><div class="cell"><div class="big">23.3°<small> / 13.8°</small></div><div class="meta"><b>京都</b><br />小雨 · 降水约 3.9 毫米<br />本周最暖，最高 23°C</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1105-weather">五城天气</a><a href="#d1105-news">五城新闻</a><a href="#d1105-highlights">今日看点</a><a href="#d1105-finance">金融市场</a><a href="#d1105-sports">体育速递</a><a href="#d1105-gossip">娱乐圈八卦</a><a href="#d1105-astro">月相 · 卦象</a><a href="#d1105-history">历史上的今天</a><a href="#d1105-quote">每日金句</a><a href="#d1105-wellness">养生小技巧</a><a href="#d1105-meal">健身减脂餐</a><a href="#d1105-song">每日一曲</a><a href="#d1105-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1105-weather">五城天气</a><a href="#d1105-news">五城新闻</a><a href="#d1105-highlights">今日看点</a><a href="#d1105-finance">金融市场</a><a href="#d1105-sports">体育速递</a><a href="#d1105-gossip">娱乐圈八卦</a><a href="#d1105-astro">月相 · 卦象</a><a href="#d1105-tarot">塔罗</a><a href="#d1105-history">历史上的今天</a><a href="#d1105-quote">每日金句</a><a href="#d1105-wellness">养生小技巧</a><a href="#d1105-meal">健身减脂餐</a><a href="#d1105-song">每日一曲</a><a href="#d1105-anime">每日一漫</a></nav>
 <!-- 五城天气 -->
 <section class="blk" id="d1105-weather">
 <div class="blk-head"><span class="no">其一</span><h2>五城天气</h2></div>
@@ -1766,21 +1861,33 @@
 </article>
 </div>
 </section>
+<!-- 今日塔罗 -->
+<section class="blk" id="d1105-tarot">
+<div class="blk-head"><span class="no">其八</span><h2>今日塔罗（西方占卜）</h2></div>
+<article class="tarot">
+<p class="tarot-star" aria-hidden="true">✦</p>
+<div class="tarot-name">魔术师 <span class="en">The Magician</span></div>
+<span class="tarot-pos">正位</span>
+<p class="tarot-text">魔术师代表<b>把想法变成现实</b>：手里的资源其实够用，关键是动手去做，别只停在想的阶段。周四适合把计划落到实处。</p>
+<div class="advice"><p><b>今日建议</b></p><p>把脑子里那个“想做很久”的想法拆成三步，今天先做第一步，哪怕只花 15 分钟。</p></div>
+<p class="folk">西方占卜内容，仅供参考。</p>
+</article>
+</section>
 <!-- 历史上的今天 -->
 <section class="blk" id="d1105-history">
-<div class="blk-head"><span class="no">其八</span><h2>历史上的今天</h2></div>
+<div class="blk-head"><span class="no">其九</span><h2>历史上的今天</h2></div>
 <div class="hist">
 <ol><li><b>1605 年——英国火药阴谋</b>：盖伊·福克斯等人企图炸毁英国议会大厦、刺杀国王詹姆斯一世，阴谋在最后一刻败露。点评：每年 11 月 5 日的篝火节，烧的就是这段历史。</li><li><b>1872 年——格兰特连任美国总统、苏珊·安东尼因投票被捕</b>：格兰特赢得连任；同日，女权先驱苏珊·安东尼因作为女性投票而被捕。点评：同一天，一边是权力的延续，一边是权利的抗争。</li><li><b>1940 年——罗斯福第三次当选美国总统</b>：富兰克林·罗斯福击败温德尔·威尔基，成为美国历史上唯一一位连任三届的总统。点评：战争年代的非常之选，也因此有了后来的任期限制。</li><li><b>1968 年——尼克松当选美国总统</b>：理查德·尼克松击败休伯特·汉弗莱，当选美国第 37 任总统。点评：蛰伏八年再出发，尼克松的复出是美国政治史上最著名的"回血"之一。</li></ol>
 </div>
 </section>
 <!-- 每日金句 -->
 <section class="blk" id="d1105-quote">
-<div class="blk-head"><span class="no">其九</span><h2>每日金句</h2></div>
+<div class="blk-head"><span class="no">其十</span><h2>每日金句</h2></div>
 <div class="quote-card"><p class="q">"天才就是 1% 的灵感加上 99% 的汗水。"</p><p class="from">—— 爱迪生</p><p class="note-text">成事拼的不是灵光一现，而是每天多做一点、多练一遍、多改一稿。灵感人人都有，汗水才是分水岭。</p></div>
 </section>
 <!-- 每日养生小技巧 -->
 <section class="blk" id="d1105-wellness">
-<div class="blk-head"><span class="no">其十</span><h2>每日养生小技巧</h2></div>
+<div class="blk-head"><span class="no">其十一</span><h2>每日养生小技巧</h2></div>
 <div class="well"><ol>
 <li><b>冷锋过后，保暖是第一位的</b>：沈阳、鞍山白天最高仅 6~11°C，夜间接近 0°C，羽绒服、围巾、帽子都该上身；中老年人晨起别急着出门，等太阳出来、气温回升再活动。</li><li><b>润燥防秋咳</b>：秋季干燥加降温，嗓子最容易不舒服；今晚煮一碗冰糖雪梨银耳汤：梨润肺、银耳润燥，冷锋过后嗓子最干的时候喝正好；中碳日这碗汤当加餐，甜味靠梨本身，别多加冰糖。通用食养建议，不针对具体疾病。</li><li><b>血压与防滑都要留心</b>：气温骤降时血压容易波动，有高血压的长辈注意监测、按时服药；年轻人也别仗着身体好就硬扛，早晚温差大，出门留意路面湿滑。</li>
 <li><b>《黄帝内经》讲“秋冬养阴”</b>：冷锋过后气温骤降，晚上早点睡就是在养阴，年轻人别仗着身体好硬熬夜。</li>
@@ -1790,7 +1897,7 @@
 </section>
 <!-- 健身减脂餐 -->
 <section class="blk" id="d1105-meal">
-<div class="blk-head"><span class="no">其十一</span><h2>健身减脂餐</h2></div>
+<div class="blk-head"><span class="no">其十二</span><h2>健身减脂餐</h2></div>
 <div class="meal">
 <p class="carb"><b>今日：中碳日</b></p>
 <ul><li><b>早餐</b>：燕麦粥 1 碗（燕麦 50g）+ 水煮蛋 2 个 + 橙子 1 个。约 380 大卡，蛋白质约 20g，碳水约 51g。</li><li><b>午餐</b>：糙米饭 1 碗（熟饭约 150g）+ 瘦牛肉 150g 炒青椒（周二买的 300g 瘦牛肉留下的另一半）+ 白菜炖豆腐（豆腐 100g）+ 水煮蛋 1 个。约 700 大卡，蛋白质约 50g，碳水约 46g。</li><li><b>晚餐</b>：糙米饭小半碗（熟饭约 100g）+ 南瓜蒸瘦肉（瘦肉 100g、南瓜约 200g）+ 清炒菠菜 1 盘。约 500 大卡，蛋白质约 32g，碳水约 43g。</li><li><b>加餐（可选，练后）</b>：无糖酸奶 1 杯（约 200g）+ 梨 1 个 + 蛋白粉 1 勺（约 25g）。约 280 大卡，蛋白质约 28g，碳水约 38g。</li></ul>
@@ -1801,7 +1908,7 @@
 </section>
 <!-- 每日一曲 -->
 <section class="blk" id="d1105-song">
-<div class="blk-head"><span class="no">其十二</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《步步》——五月天</p>
 <p>今天冷锋过境，沈阳一天之内从 13°C 跌到 0°C 以下，美股也跌了个大的——越是这种日子越不能急。渐卦讲"一天进一步就是赢"，《步步》唱的也是一步一步往上爬：今晚别刷大盘了，放这首歌，把明天的安排在心里顺三遍，睡前打勾睡觉。</p>
@@ -1809,7 +1916,7 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="d1105-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十四</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《虫师》（TV 动画第 1 季 26 集，2005–2006 年；续章 20 集，2014 年）</p>
 <p>改编自漆原友纪的同名漫画，讲"虫师"银古走村串巷，解决由"虫"引起的怪事，每集一个故事。理由：冷锋过境，白天最高只有 6.7°C，晚上最适合看一集就睡的番——今晚看第 1 集《绿之座》，山里的绿意和虫鸣，冷夜里听着格外安静；一集一个完整的故事，不用记剧情，困了随时能睡。</p>
@@ -1830,7 +1937,7 @@
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">2.4°<small> / -2.8°</small></div><div class="meta"><b>沈阳</b><br />晴 · 全天无降水<br />西北风阵风 45 km/h</div></div><div class="cell"><div class="big">5.0°<small> / -2.5°</small></div><div class="meta"><b>鞍山</b><br />晴 · 全天无降水<br />北风阵风 41 km/h</div></div><div class="cell"><div class="big">10.0°<small> / -1.6°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 5 日 · 毛毛雨<br />西风阵风 40 km/h</div></div><div class="cell"><div class="big">14.6°<small> / 4.0°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 5 日 · 阴<br />北风阵风 36 km/h</div></div><div class="cell"><div class="big">20.9°<small> / 12.9°</small></div><div class="meta"><b>京都</b><br />毛毛雨 · 降水约 0.2 毫米<br />西北风阵风 44 km/h</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1106-weather">五城天气</a><a href="#d1106-news">五城新闻</a><a href="#d1106-highlights">今日看点</a><a href="#d1106-finance">金融市场</a><a href="#d1106-sports">体育速递</a><a href="#d1106-gossip">娱乐圈八卦</a><a href="#d1106-astro">月相 · 卦象</a><a href="#d1106-history">历史上的今天</a><a href="#d1106-quote">每日金句</a><a href="#d1106-wellness">养生小技巧</a><a href="#d1106-meal">健身减脂餐</a><a href="#d1106-song">每日一曲</a><a href="#d1106-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1106-weather">五城天气</a><a href="#d1106-news">五城新闻</a><a href="#d1106-highlights">今日看点</a><a href="#d1106-finance">金融市场</a><a href="#d1106-sports">体育速递</a><a href="#d1106-gossip">娱乐圈八卦</a><a href="#d1106-astro">月相 · 卦象</a><a href="#d1106-tarot">塔罗</a><a href="#d1106-history">历史上的今天</a><a href="#d1106-quote">每日金句</a><a href="#d1106-wellness">养生小技巧</a><a href="#d1106-meal">健身减脂餐</a><a href="#d1106-song">每日一曲</a><a href="#d1106-anime">每日一漫</a></nav>
 <!-- 五城天气 -->
 <section class="blk" id="d1106-weather">
 <div class="blk-head"><span class="no">其一</span><h2>五城天气</h2></div>
@@ -1940,21 +2047,33 @@
 </article>
 </div>
 </section>
+<!-- 今日塔罗 -->
+<section class="blk" id="d1106-tarot">
+<div class="blk-head"><span class="no">其八</span><h2>今日塔罗（西方占卜）</h2></div>
+<article class="tarot">
+<p class="tarot-star" aria-hidden="true">✦</p>
+<div class="tarot-name">女祭司 <span class="en">The High Priestess</span></div>
+<span class="tarot-pos">正位</span>
+<p class="tarot-text">女祭司代表<b>直觉、安静和内在的声音</b>：有些事不用急着问别人，先静下来听听自己的判断。今天是霜降最后一天，适合慢一点。</p>
+<div class="advice"><p><b>今日建议</b></p><p>睡前留 15 分钟不看手机，安静坐一会儿，想想今天哪件事做得最顺、哪件最别扭。</p></div>
+<p class="folk">西方占卜内容，仅供参考。</p>
+</article>
+</section>
 <!-- 历史上的今天 -->
 <section class="blk" id="d1106-history">
-<div class="blk-head"><span class="no">其八</span><h2>历史上的今天</h2></div>
+<div class="blk-head"><span class="no">其九</span><h2>历史上的今天</h2></div>
 <div class="hist">
 <ol><li><b>1860 年——林肯当选美国总统</b>：亚伯拉罕·林肯当选美国第 16 任总统，成为首位共和党籍总统。点评：一个出身贫寒的律师走进白宫，七个月后南北战争爆发，美国从此改写。</li><li><b>1869 年——第一场大学橄榄球比赛</b>：普林斯顿大学与罗格斯大学在新泽西进行史上第一场大学橄榄球比赛，罗格斯 6-4 获胜。点评：美式橄榄球的"第一场比赛"，比分看起来更像一场足球赛。</li><li><b>1984 年——里根连任美国总统</b>：罗纳德·里根以压倒性优势击败沃尔特·蒙代尔，赢得连任。点评：525 张选举人票对 13 张，是美国历史上最悬殊的总统选举结果之一。</li><li><b>2012 年——奥巴马连任美国总统</b>：贝拉克·奥巴马击败米特·罗姆尼，赢得第二个任期。点评：首位非洲裔总统的连任，让"变革"从口号变成了八年。</li></ol>
 </div>
 </section>
 <!-- 每日金句 -->
 <section class="blk" id="d1106-quote">
-<div class="blk-head"><span class="no">其九</span><h2>每日金句</h2></div>
+<div class="blk-head"><span class="no">其十</span><h2>每日金句</h2></div>
 <div class="quote-card"><p class="q">"时间就像海绵里的水，只要愿挤，总还是有的。"</p><p class="from">—— 鲁迅</p><p class="note-text">时间永远不够用，但挤一挤总能挤出来：通勤路上听一段播客、睡前读几页书、碎片时间处理一件小事。时间不是等出来的，是挤出来的。</p></div>
 </section>
 <!-- 每日养生小技巧 -->
 <section class="blk" id="d1106-wellness">
-<div class="blk-head"><span class="no">其十</span><h2>每日养生小技巧</h2></div>
+<div class="blk-head"><span class="no">其十一</span><h2>每日养生小技巧</h2></div>
 <div class="well"><ol>
 <li><b>霜降最后一天，防寒保暖别松劲</b>：沈阳白天最高仅 2°C 多，鞍山 5°C，寒冷持续；羽绒服、帽子、围巾、手套全套上身，尤其护好头部和脚部。</li><li><b>吃点应季的润燥食物</b>：今晚蒸一碗山药红枣羹，山药健脾、红枣补气，霜降最后一天吃正应季；低碳日这碗羹当晚餐的配菜，山药只有一小段，别再喝粥、别添主食。柿子、梨也正当季，每天一个当水果就行。少吃生冷。通用食养建议，不针对具体疾病。</li><li><b>天冷关节、脖子最先"报警"</b>：久坐一小时就起来活动几分钟，活动开关节；中老年人晨练前务必充分热身，循序渐进，量力而行。</li>
 <li><b>《黄帝内经》讲“冬三月，此谓闭藏”</b>：霜降最后一天、立冬就在明天，起居要开始“藏”了——早睡、少折腾，别透支。</li>
@@ -1964,7 +2083,7 @@
 </section>
 <!-- 健身减脂餐 -->
 <section class="blk" id="d1106-meal">
-<div class="blk-head"><span class="no">其十一</span><h2>健身减脂餐</h2></div>
+<div class="blk-head"><span class="no">其十二</span><h2>健身减脂餐</h2></div>
 <div class="meal">
 <p class="carb"><b>今日：低碳日</b></p>
 <ul><li><b>早餐</b>：水煮蛋 2 个 + 无糖豆浆 1 杯（约 250ml）+ 全麦面包 1 小片（约 30g）+ 一小把坚果（约 15g）。约 390 大卡，蛋白质约 25g，碳水约 23g。</li><li><b>午餐</b>：虾仁 150g 清炒 + 小半碗糙米（熟饭约 80g）+ 蒜蓉油菜 1 盘（油菜约 200g）+ 水煮蛋 1 个。约 480 大卡，蛋白质约 38g，碳水约 29g。</li><li><b>晚餐</b>：清蒸鲈鱼 1 条（约 200g）+ 小葱拌豆腐（豆腐 150g）+ 冬瓜汤 1 碗。约 480 大卡，蛋白质约 53g，碳水约 6g。</li><li><b>加餐（可选，练后）</b>：蛋白粉 1 勺（约 25g）用脱脂牛奶（约 250ml）冲服 + 苹果 1 个。约 290 大卡，蛋白质约 32g，碳水约 39g。</li></ul>
@@ -1975,7 +2094,7 @@
 </section>
 <!-- 每日一曲 -->
 <section class="blk" id="d1106-song">
-<div class="blk-head"><span class="no">其十二</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《如愿》——王菲</p>
 <p>今天是霜降最后一天，明天就是立冬；金鸡百花电影节也在厦门开幕，电影是今天的关键词。《如愿》是电影主题曲，唱的是"你是遥遥的路，山野大雾里的灯"——赶路的人都懂这条路，今晚看一场电影节的开幕直播，或者重温一部老电影，愿望先许下，明天立冬再出发。</p>
@@ -1983,7 +2102,7 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="d1106-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十四</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《CLANNAD》（TV 动画共 2 季，第 1 季 23 集 2007–2008 年，第 2 季《AFTER STORY》24 集 2008–2009 年；另有 2007 年剧场版）</p>
 <p>改编自 Key 社的同名游戏，讲不良少年冈崎朋也遇见古河渚，从学园生活一路走到成家立业。理由：霜降最后一天，沈阳最高只有 2.4°C，这部番的后半段正好讲冬天、一家人和"团圆"——今晚从第 1 集开始，先看学园篇的暖，再留着 AFTER STORY 的冬天慢慢追；提醒一句：后半段很催泪，纸巾备好再看。</p>
@@ -2004,7 +2123,7 @@
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">0.5°<small> / -4.7°</small></div><div class="meta"><b>沈阳</b><br />阴 · 立冬当日<br />寒潮持续，北风不大</div></div><div class="cell"><div class="big">2.1°<small> / -4.4°</small></div><div class="meta"><b>鞍山</b><br />阴 · 立冬当日<br />寒潮持续</div></div><div class="cell"><div class="big">10.2°<small> / -0.1°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 6 日 · 阴<br />西南风阵风 62 km/h</div></div><div class="cell"><div class="big">9.1°<small> / 1.7°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 6 日 · 阴<br />本周最冷，最高仅 9°C</div></div><div class="cell"><div class="big">15.3°<small> / 9.7°</small></div><div class="meta"><b>京都</b><br />阴 · 立冬当日<br />西北风阵风近 50 km/h</div></div></div>
         
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1107-weather">五城天气</a><a href="#d1107-news">五城新闻</a><a href="#d1107-highlights">今日看点</a><a href="#d1107-finance">金融市场</a><a href="#d1107-sports">体育速递</a><a href="#d1107-gossip">娱乐圈八卦</a><a href="#d1107-astro">月相 · 卦象</a><a href="#d1107-history">历史上的今天</a><a href="#d1107-quote">每日金句</a><a href="#d1107-wellness">养生小技巧</a><a href="#d1107-meal">健身减脂餐</a><a href="#d1107-song">每日一曲</a><a href="#d1107-anime">每日一漫</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1107-weather">五城天气</a><a href="#d1107-news">五城新闻</a><a href="#d1107-highlights">今日看点</a><a href="#d1107-finance">金融市场</a><a href="#d1107-sports">体育速递</a><a href="#d1107-gossip">娱乐圈八卦</a><a href="#d1107-astro">月相 · 卦象</a><a href="#d1107-tarot">塔罗</a><a href="#d1107-history">历史上的今天</a><a href="#d1107-quote">每日金句</a><a href="#d1107-wellness">养生小技巧</a><a href="#d1107-meal">健身减脂餐</a><a href="#d1107-song">每日一曲</a><a href="#d1107-anime">每日一漫</a></nav>
 <!-- 五城天气 -->
 <section class="blk" id="d1107-weather">
 <div class="blk-head"><span class="no">其一</span><h2>五城天气</h2></div>
@@ -2117,21 +2236,33 @@
 </article>
 </div>
 </section>
+<!-- 今日塔罗 -->
+<section class="blk" id="d1107-tarot">
+<div class="blk-head"><span class="no">其八</span><h2>今日塔罗（西方占卜）</h2></div>
+<article class="tarot">
+<p class="tarot-star" aria-hidden="true">✦</p>
+<div class="tarot-name">女皇 <span class="en">The Empress</span></div>
+<span class="tarot-pos">正位</span>
+<p class="tarot-text">女皇代表<b>丰盛、滋养和照顾</b>：今天交立冬，冬天正式开始，适合把自己和身边人照顾好，吃点热乎的、穿暖和点。丰盛不是铺张，是把日子过得踏实。</p>
+<div class="advice"><p><b>今日建议</b></p><p>今晚给自己做一顿热乎的饭，或者给家里人打个电话问问冷不冷，把“照顾”落到一件具体小事上。</p></div>
+<p class="folk">西方占卜内容，仅供参考。</p>
+</article>
+</section>
 <!-- 历史上的今天 -->
 <section class="blk" id="d1107-history">
-<div class="blk-head"><span class="no">其八</span><h2>历史上的今天</h2></div>
+<div class="blk-head"><span class="no">其九</span><h2>历史上的今天</h2></div>
 <div class="hist">
 <ol><li><b>1917 年——俄国十月革命</b>：列宁领导的布尔什维克在彼得格勒发动武装起义，推翻临时政府，建立苏维埃政权。点评：枪声一响，20 世纪的世界格局从此改写。</li><li><b>1931 年——中华苏维埃共和国成立</b>：中华苏维埃第一次全国代表大会在江西瑞金召开，宣布成立中华苏维埃共和国临时中央政府。点评：瑞金从此成为"红色故都"。</li><li><b>1992 年——杜布切克逝世</b>：捷克斯洛伐克"布拉格之春"领导人亚历山大·杜布切克因车祸逝世。点评："人性化社会主义"的倡导者，没能看到天鹅绒革命后的新时代。</li><li><b>2015 年——习近平与马英九会面</b>：两岸领导人在新加坡会面，这是 1949 年以来两岸领导人的首次会面。点评：握手的那一刻，海峡两岸的历史翻开新的一页。</li></ol>
 </div>
 </section>
 <!-- 每日金句 -->
 <section class="blk" id="d1107-quote">
-<div class="blk-head"><span class="no">其九</span><h2>每日金句</h2></div>
+<div class="blk-head"><span class="no">其十</span><h2>每日金句</h2></div>
 <div class="quote-card"><p class="q">"一年好景君须记，最是橙黄橘绿时。"</p><p class="from">—— 苏轼《赠刘景文》</p><p class="note-text">立冬了，秋天最好的颜色正在眼前：橙黄的柿子、橘绿的柑橘，都是这个时节的馈赠。日子也是这样——最冷的季节里，先把手头的事收好尾：今晚把这周没做完的事列一张表逐项打勾；再吃顿热乎的，事情做踏实了，再抬头看风景。</p></div>
 </section>
 <!-- 每日养生小技巧 -->
 <section class="blk" id="d1107-wellness">
-<div class="blk-head"><span class="no">其十</span><h2>每日养生小技巧</h2></div>
+<div class="blk-head"><span class="no">其十一</span><h2>每日养生小技巧</h2></div>
 <div class="well"><ol>
 <li><b>立冬进补，宜温补、别大补</b>：今天交立冬，北方有吃饺子的习俗；但中午放纵餐已经吃了火锅，晚上就喝一碗热乎的白萝卜羊肉汤——白萝卜顺气解腻、羊肉温补，正好中和中午火锅的油腻，喝完暖身助眠。</li><li><b>早睡晚起，藏好阳气</b>：立冬后昼短夜长，宜早睡、早上可以稍晚起；年轻人别熬夜，中老年人晨起先坐一会儿再起身，出门避开清晨最冷时段。</li><li><b>防寒保暖，全副武装</b>：沈阳、鞍山白天最高仅 0~2°C，头部、颈部、脚部最怕冷，出门戴好帽子围巾，晚上热水泡脚 15 分钟再睡，暖和了才睡得踏实。</li>
 <li><b>《黄帝内经》讲“冬三月，早卧晚起，必待日光”</b>：今天交立冬，往后昼短夜长，早上等太阳出来再活动，晚上早点睡，把阳气藏好。</li>
@@ -2141,7 +2272,7 @@
 </section>
 <!-- 健身减脂餐 -->
 <section class="blk" id="d1107-meal">
-<div class="blk-head"><span class="no">其十一</span><h2>健身减脂餐</h2></div>
+<div class="blk-head"><span class="no">其十二</span><h2>健身减脂餐</h2></div>
 <div class="meal">
 <p class="carb"><b>今日：放纵日</b></p>
 <ul><li><b>早餐（清淡高蛋白）</b>：燕麦粥一小碗（燕麦 50 克）+ 水煮鸡蛋 2 个 + 苹果 1 个 + 纯牛奶 1 杯（约 200 毫升）。约 450 大卡，蛋白质约 25 克，碳水约 71 克。</li><li><b>午餐（放纵餐）</b>：火锅——清汤锅底，毛肚、牛肉片约 200 克、冻豆腐、菠菜、白菜、金针菇等蔬菜涮着吃，蘸料少油少盐；主食只吃小半碗米饭。这顿不设限，约 1000 大卡，蛋白质约 50 克，碳水约 44 克。</li><li><b>晚餐（清淡回归）</b>：蔬菜沙拉一盘（生菜、黄瓜、番茄）+ 凉拌豆腐 150 克 + 糙米饭小半碗（约 100 克）。约 420 大卡，蛋白质约 20 克，碳水约 33 克。</li><li><b>可选加餐</b>：无糖酸奶 1 杯（约 200 克），约 120 大卡，蛋白质约 8 克，碳水约 9 克。</li></ul>
@@ -2152,7 +2283,7 @@
 </section>
 <!-- 每日一曲 -->
 <section class="blk" id="d1107-song">
-<div class="blk-head"><span class="no">其十二</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其十三</span><h2>每日一曲</h2></div>
 <div class="song">
 <p class="ttl">今日推荐：《雪の華》——中岛美嘉</p>
 <p>今天立冬，雪季正式开始；丰卦讲"丰收在望"，一周的辛苦也该收个尾。《雪の華》是日本冬天的代表曲，唱的是雪花落在手心的样子——中午火锅吃完，晚上窝在被窝里放这首，配一杯热茶，立冬夜就该这么过；明天新一周，继续往前走。</p>
@@ -2160,7 +2291,7 @@
 </section>
 <!-- 每日一漫 -->
 <section class="blk" id="d1107-anime">
-<div class="blk-head"><span class="no">其十三</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其十四</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p class="ttl">今日推荐：《紫罗兰永恒花园》（TV 动画 13 集 + 番外 1 集，2018 年；另有外传剧场版 2019 年与剧场版 2020 年）</p>
 <p>改编自晓佳奈的同名轻小说，讲从战场回来的少女薇尔莉特当"自动手记人偶"，替别人把心里的话写成信。理由：立冬夜，沈阳最高才 0.5°C，今晚看第 1 集就行——每一封信都是一句没说出口的话，冬天越冷，这种"把心意写下来"的番越暖；京都动画的画面美得像壁纸，配一杯热茶，半小时就把寒气看没了。</p>
