@@ -1148,6 +1148,18 @@
       .wk-line { margin: 2px 0; font-size: 14px; color: var(--ink-2); }
       .wk-line b { color: var(--ink); }
 
+      /* Weekly review week picker: one pill per complete week,
+         styled after the view tabs. */
+      .wk-picker { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 6px; }
+      .wk-pick {
+        appearance: none; border: 1px solid var(--line); background: var(--surface);
+        color: var(--ink-2); font: inherit; font-size: 13.5px; font-weight: 700;
+        padding: 6px 16px; border-radius: 999px; cursor: pointer;
+      }
+      .wk-pick:hover { border-color: var(--accent); color: var(--accent); }
+      .wk-pick[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+      .wk-pick:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
       /* Archive "随便看看" button, at the end of the date-jump row. */
       .arch-random {
         appearance: none; font: inherit; font-size: 13.5px; font-weight: 700;
@@ -3182,15 +3194,17 @@
       </div>
 
       <!-- ================= 本周回顾 =================
-           Filled at runtime by the same script: the most recent
-           complete Monday–Sunday week whose seven issues are all
-           on this page. -->
+           Filled at runtime by the same script: every complete
+           Monday–Sunday week whose seven issues are all on this
+           page, with a week picker at the top of the view; the
+           most recent complete week shows by default. -->
       <div id="view-weekly" role="tabpanel" aria-labelledby="tab-weekly" hidden>
         <section class="blk">
           <div class="blk-head">
             <h2 class="serif">本周回顾</h2>
             <span class="note" id="wk-range"></span>
           </div>
+          <div class="wk-picker" id="wk-picker" role="group" aria-label="选择回顾周次"></div>
           <div id="wk-root"></div>
         </section>
       </div>
@@ -5029,11 +5043,13 @@
          每日一漫 / 每日金句 / 今日要闻， the latest issue included —
          so an issue added by the daily update appears in both
          automatically; nothing is copied or maintained by hand.
-         The weekly window is the most recent complete Monday–Sunday
+         The weekly review lists every complete Monday–Sunday
          week whose seven issues are all on this page (the first
-         edition covers 2026-11-02 – 2026-11-08); it stays fixed
-         while the next week is still in progress and rolls forward
-         once a new week is complete. Opening an entry reuses the
+         edition covers 2026-11-02 – 2026-11-08), newest week
+         shown by default, with a picker at the top of the view
+         to switch to any earlier week; a week still in progress
+         is skipped and a newly completed week joins the picker
+         automatically. Opening an entry reuses the
          archive mechanism —
          it clicks that issue's .arch-item, then scrolls to the
          section — so the masthead / footer / search scripts follow
@@ -5226,40 +5242,62 @@
         }
 
         /* ---------- weekly review ---------- */
-        /* The most recent complete Monday–Sunday week whose seven
-           issues are all on this page: start from the Monday of the
-           newest issue's week and step back whole weeks until a full
-           Mon–Sun span is present. */
+        /* Every complete Monday–Sunday week whose seven issues are
+           all on this page, oldest first: start from the Monday of
+           the newest issue's week and step back whole weeks,
+           collecting each full Mon–Sun span. The first complete
+           edition covers 2026-11-02 – 2026-11-08; a week still in
+           progress is skipped, and a newly completed week appears
+           here automatically on the next daily update. */
         function dsOf(dt) {
           return dt.getFullYear() + '-' + ('0' + (dt.getMonth() + 1)).slice(-2) + '-' + ('0' + dt.getDate()).slice(-2);
         }
-        function weekWindow() {
+        function allWindows() {
           if (!dates.length) { return []; }
           var have = {};
           for (var i = 0; i < dates.length; i++) { have[dates[i]] = true; }
+          var out = [];
           var latest = parseDate(dates[dates.length - 1]);
           var dow = (latest.getDay() + 6) % 7; /* Monday = 0 */
           var monday = new Date(latest.getFullYear(), latest.getMonth(), latest.getDate() - dow);
           for (var back = 0; back < 520; back++) {
             var start = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() - back * 7);
+            var sundayDs = dsOf(new Date(start.getFullYear(), start.getMonth(), start.getDate() + 6));
+            if (sundayDs < dates[0]) { break; } /* whole span predates the first issue */
             var span = [];
             var full = true;
             for (var k = 0; k < 7; k++) {
-              var ds = dsOf(new Date(start.getFullYear(), start.getMonth(), start.getDate() + k));
-              if (!have[ds]) { full = false; break; }
-              span.push(ds);
+              var dayDs = dsOf(new Date(start.getFullYear(), start.getMonth(), start.getDate() + k));
+              if (!have[dayDs]) { full = false; break; }
+              span.push(dayDs);
             }
-            if (full) { return span; }
+            if (full) { out.unshift(span); }
           }
-          return [];
+          return out;
+        }
+        /* "11 月 2–8 日" within one month; full dates across a
+           month or year boundary. */
+        function weekLabel(span) {
+          var a = span[0].split('-');
+          var b = span[span.length - 1].split('-');
+          if (a[0] === b[0] && a[1] === b[1]) {
+            return Number(a[1]) + ' 月 ' + Number(a[2]) + '–' + Number(b[2]) + ' 日';
+          }
+          if (a[0] === b[0]) {
+            return Number(a[1]) + ' 月 ' + Number(a[2]) + ' 日 – ' + Number(b[1]) + ' 月 ' + Number(b[2]) + ' 日';
+          }
+          return a[0] + ' 年 ' + Number(a[1]) + ' 月 ' + Number(a[2]) + ' 日 – ' + b[0] + ' 年 ' + Number(b[1]) + ' 月 ' + Number(b[2]) + ' 日';
         }
         var wkRoot = document.getElementById('wk-root');
         var wkRange = document.getElementById('wk-range');
-        var week = weekWindow();
-        if (wkRoot && week.length) {
+        var wkPicker = document.getElementById('wk-picker');
+        var allWks = allWindows();
+        function renderWeek(week, isLatest) {
           if (wkRange) {
-            wkRange.textContent = fmtDayW(week[0]) + ' – ' + fmtDayW(week[week.length - 1]) + ' · 最近一个完整周，新一周完成时自动更新';
+            wkRange.textContent = fmtDayW(week[0]) + ' – ' + fmtDayW(week[week.length - 1]) +
+              (isLatest ? ' · 最近一个完整周，新一周完成时自动更新' : ' · 往期回顾');
           }
+          while (wkRoot.firstChild) { wkRoot.removeChild(wkRoot.firstChild); }
           subHead(wkRoot, '本周大新闻', '各期「今日要闻」标题汇总');
           for (var w = 0; w < week.length; w++) {
             (function (wds) {
@@ -5316,6 +5354,29 @@
               wkRoot.appendChild(ll);
             })(kinds[kg]);
           }
+        }
+
+        /* Week picker: one pill per complete week, newest first;
+           the most recent complete week is shown by default. */
+        if (wkRoot && allWks.length) {
+          var pickBtns = [];
+          for (var pi = allWks.length - 1; pi >= 0; pi--) {
+            (function (idx) {
+              var pb = document.createElement('button');
+              pb.type = 'button';
+              pb.className = 'wk-pick';
+              pb.textContent = weekLabel(allWks[idx]);
+              pb.setAttribute('aria-pressed', idx === allWks.length - 1 ? 'true' : 'false');
+              pb.addEventListener('click', function () {
+                for (var pj = 0; pj < pickBtns.length; pj++) { pickBtns[pj].setAttribute('aria-pressed', 'false'); }
+                pb.setAttribute('aria-pressed', 'true');
+                renderWeek(allWks[idx], idx === allWks.length - 1);
+              });
+              pickBtns.push(pb);
+              if (wkPicker) { wkPicker.appendChild(pb); }
+            })(pi);
+          }
+          renderWeek(allWks[allWks.length - 1], true);
         }
 
         /* ---------- the two new views join the tab switching ---------- */
