@@ -3566,6 +3566,34 @@
                link on screen, so a settle never moves the strip more
                than a link or two and never strands a single character
                at the right edge when a clean position exists. */
+            /* Batch-8: end correction for the winning target. When
+               the position the search below would settle on leaves
+               the LAST link cut by the right edge — even by the
+               "at least half" rule's lights, e.g. the 月相·卦象
+               target, where 每日一漫 shows 44 of its 78px — the end
+               position wins instead: the maximum is never more than
+               the last link's width plus the strip's right padding
+               beyond such a target (geometrically, a position can
+               only straddle the last link from within that range),
+               so this never teleports, and the reader who scrolled
+               to the end of the strip gets the last section name in
+               full. Batch-7's short-circuit below only fired when
+               the decisive settle pass happened to read a position
+               within 2px of the maximum; a pass that judged the
+               strip mid-glide, or after any nudge back into the end
+               basin (within ~one link pitch of the end), still
+               chose the earlier target — and that target is a fixed
+               point of the search, so no later pass ever corrected
+               it. Correcting the WINNER, not just the current
+               position, closes every path into that basin. */
+            function endIfLastCut(t, max) {
+              if (t >= max || !links.length) { return t; }
+              var last = links[links.length - 1];
+              var viewR = t + scroller.clientWidth;
+              if (last.offsetLeft < viewR &&
+                  viewR < last.offsetLeft + last.offsetWidth) { return max; }
+              return t;
+            }
             function nearestCleanTarget(cur, max) {
               /* Batch-7: a strip that has reached the true end
                  STAYS at the end. The maximum is a legal resting
@@ -3596,13 +3624,13 @@
                   t = byDist[i];
                   if (t > anchor.offsetLeft) { continue; } /* would push the anchor off-screen */
                   if (anchor.offsetLeft + anchor.offsetWidth > t + scroller.clientWidth) { continue; }
-                  if (!rightEdgeBad(t, max)) { return t; }
+                  if (!rightEdgeBad(t, max)) { return endIfLastCut(t, max); }
                 }
               }
               for (i = 0; i < byDist.length; i++) {
-                if (!rightEdgeBad(byDist[i], max)) { return byDist[i]; }
+                if (!rightEdgeBad(byDist[i], max)) { return endIfLastCut(byDist[i], max); }
               }
-              return byDist[0]; /* no clean position exists at this width */
+              return endIfLastCut(byDist[0], max); /* no clean position exists at this width */
             }
             function inFlight(cur) {
               /* A smooth scroll (this script's own settle, or a
