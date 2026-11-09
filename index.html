@@ -1234,6 +1234,38 @@
       }
       #back-to-top.visible { opacity: .55; visibility: visible; pointer-events: auto; }
       #back-to-top:hover, #back-to-top:active { opacity: 1; }
+
+      /* ---------- batch-12 fix 2026-11-10 (additive) ---------- */
+      /* Structural nav fix: padding alone could not keep the fourth
+         link （今日要闻） clear — at scroll position 0 it rests at its
+         natural offset, where the old 76px right reserve does nothing.
+         The bar is now declared as one flex row: the link strip takes
+         all remaining width (flex: 1 1 auto, min-width: 0) and the
+         「目录」 cluster is a fixed-width in-flow sibling beside it —
+         statically positioned, never absolute/fixed over the strip —
+         so the strip's visible width is exactly the bar's width minus
+         the cluster's width, and no link can slide underneath the
+         button at any scroll position. The batch-11 76px right
+         reserve is removed (nothing overlays the strip any more, so
+         it is no longer needed). A few pixels of dead margin around
+         the cluster and the strip's left inset are trimmed so that at
+         ~390px the first four links （五城天气 / 五城新闻 / 民生 /
+         今日要闻） all rest fully inside the visible strip at scroll
+         position 0. The 目录 button keeps its batch-11 narrowed size;
+         colours, copy and the rest of the layout are unchanged, and
+         the batch-11 behaviours (free-scrolling strip, instant pill,
+         40px auto-fading back-to-top) are untouched. */
+      .secnav { display: flex; flex-wrap: nowrap; align-items: stretch; }
+      .secnav-scroll {
+        flex: 1 1 auto; min-width: 0;
+        padding: 7px 10px 8px 2px;
+        scroll-padding-left: 2px; scroll-padding-right: 10px;
+      }
+      .secnav-tools {
+        flex: 0 0 auto; position: static;
+        margin-left: 0; padding-left: 0;
+      }
+      .secnav-tools .toc-wrap { margin: 0 2px 0 0; }
     </style>
   </head>
   <body>
