@@ -750,39 +750,73 @@
         .site-search-panel { width: calc(100vw - 40px); }
       }
 
-      /* ---------- collapsible category groups (additive) ---------- */
+      /* ---------- table of contents 2026-11-09 (additive) ---------- */
+      /* A quiet 「目录」 button in the tabs row, next to the search box.
+         Its panel drops down under the button and lists all 19 sections
+         of the currently open issue, grouped under the six categories.
+         All colours come from the theme variables (light/dark safe). */
+      .toc-wrap { position: relative; flex: 0 0 auto; }
+      .toc-btn {
+        appearance: none; border: 1px solid var(--line); background: var(--surface);
+        color: var(--ink-2); font: inherit; font-size: 13.5px; font-weight: 700;
+        height: 36px; padding: 0 14px; border-radius: 999px; cursor: pointer;
+        display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+      }
+      .toc-btn svg { flex: 0 0 auto; display: block; }
+      .toc-btn:hover { border-color: var(--accent); color: var(--accent); }
+      .toc-btn[aria-expanded="true"] { border-color: var(--accent); color: var(--accent); }
+      .toc-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .toc-panel {
+        position: absolute; top: calc(100% + 6px); right: 0; z-index: 40;
+        width: 320px; max-width: calc(100vw - 32px);
+        max-height: min(64vh, 540px); overflow-y: auto; overscroll-behavior: contain;
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 10px 8px 12px;
+        animation: toc-slide .18s ease;
+      }
+      .toc-panel[hidden] { display: none; }
+      @keyframes toc-slide {
+        from { opacity: 0; transform: translateY(-4px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .toc-panel { animation: none; }
+      }
+      .toc-group + .toc-group { margin-top: 10px; }
+      .toc-group-title {
+        font-size: 12px; font-weight: 700; color: var(--ink-3);
+        letter-spacing: .14em; padding: 2px 10px 4px;
+      }
+      .toc-item {
+        appearance: none; display: flex; align-items: baseline; gap: 9px;
+        width: 100%; text-align: left; font: inherit; font-size: 13.5px;
+        background: transparent; border: none; border-radius: 8px;
+        padding: 6px 10px; cursor: pointer; color: var(--ink-2);
+      }
+      .toc-item:hover, .toc-item:focus-visible { background: var(--surface-2); color: var(--ink); }
+      .toc-item:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+      .toc-item .toc-no {
+        font-family: "Noto Serif SC", serif; font-weight: 700; font-size: 12.5px;
+        color: var(--accent); white-space: nowrap; flex: 0 0 auto;
+      }
+
+      /* ---------- category group dividers (additive) ---------- */
       /* The 19 sections of each issue are grouped under six quiet category
-         headings. Only the first group is open on load; a collapsed group
-         hides its sections entirely so the page opens short and clean.
+         headings. The headings are plain, non-interactive labels marking
+         where each group starts — nothing is collapsed or hidden, and the
+         page reads as one continuous scroll, as before.
          All colours come from the theme variables (light/dark safe). */
       .cat-group { scroll-margin-top: 68px; margin-bottom: 4px; }
       .cat-head {
-        appearance: none; width: 100%; font: inherit; cursor: pointer;
         display: flex; align-items: baseline; gap: 10px;
-        background: transparent; border: none; border-bottom: 2px solid var(--ink);
+        border-bottom: 2px solid var(--ink);
         padding: 10px 2px 8px; margin: 0 0 16px;
-        color: var(--ink); text-align: left;
+        color: var(--ink);
       }
       .cat-head .cat-name {
         font-family: "Noto Serif SC", serif; font-size: 20px; font-weight: 900; letter-spacing: .05em;
       }
       .cat-head .cat-range { font-size: 12.5px; color: var(--ink-3); white-space: nowrap; }
-      .cat-head .cat-chev {
-        margin-left: auto; align-self: center; flex: 0 0 auto;
-        color: var(--ink-3); font-size: 13px; line-height: 1;
-        transition: transform .25s ease;
-      }
-      .cat-group.collapsed .cat-head { margin-bottom: 6px; }
-      .cat-group.collapsed .cat-head .cat-chev { transform: rotate(-90deg); }
-      /* The chevron follows aria-expanded (set at toggle time) so it turns
-         together with the height animation, not only when it ends. */
-      .cat-head[aria-expanded="false"] .cat-chev { transform: rotate(-90deg); }
-      .cat-group.collapsed .cat-body { display: none; }
-      .cat-head:hover .cat-name { color: var(--accent); }
-      .cat-head:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-      @media (prefers-reduced-motion: reduce) {
-        .cat-head .cat-chev { transition: none; }
-      }
     </style>
   </head>
   <body>
@@ -806,6 +840,10 @@
         <span class="site-search-icon" aria-hidden="true">🔍</span>
         <input type="search" id="site-search-input" placeholder="搜索简报…" aria-label="搜索简报" autocomplete="off" />
         <div class="site-search-panel" id="site-search-panel" role="listbox" aria-label="搜索结果" hidden></div>
+      </div>
+      <div class="toc-wrap">
+        <button class="toc-btn" type="button" id="toc-btn" aria-haspopup="true" aria-expanded="false" aria-controls="toc-panel"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="2.4" cy="3.4" r="1" fill="currentColor" stroke="none" /><circle cx="2.4" cy="8" r="1" fill="currentColor" stroke="none" /><circle cx="2.4" cy="12.6" r="1" fill="currentColor" stroke="none" /><path d="M6 3.4h7.6M6 8h7.6M6 12.6h7.6" /></svg>目录</button>
+        <div class="toc-panel" id="toc-panel" role="menu" aria-label="本期目录" hidden></div>
       </div>
       <span class="upd">本期数据截至 11 月 9 日 08:10 前后</span>
       <button class="theme-toggle" type="button" id="theme-toggle" aria-label="切换到深色模式" title="切换到深色模式">☾</button>
@@ -3005,14 +3043,15 @@
     <button id="back-to-top" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
 
     <script>
-      /* Collapsible category groups (additive): runs before the view-tab,
+      /* Category group dividers (additive): runs before the view-tab,
          section-nav and search scripts below, so those pick up the grouped
          structure. Each issue's 19 sections are wrapped, in their existing
          order, into six groups; the issue's nav is rewritten to the six
          category names, pointing at the group containers (the section-nav
          script's scrollspy then tracks the six groups). No section, heading
          or line of briefing text is changed — sections are only moved into
-         group wrappers. Only the first group starts open. */
+         group wrappers. Groups are plain visual dividers: every section
+         stays visible and the page reads as one continuous scroll. */
       (function () {
         var CATS = [
           { name: '天气新闻', range: '第 1 – 3 节', keys: ['weather', 'news', 'highlights'] },
@@ -3030,54 +3069,6 @@
           var i = sec.id.lastIndexOf('-');
           return i === -1 ? sec.id : sec.id.slice(0, i);
         }
-        var reduceMotion = window.matchMedia &&
-          window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        function finishAnim(group) {
-          if (group._catTimer) { clearTimeout(group._catTimer); group._catTimer = null; }
-          var body = group.querySelector('.cat-body');
-          if (body) { body.style.height = ''; body.style.overflow = ''; body.style.transition = ''; }
-        }
-        /* Toggle a group, animating the body's height so the open/close
-           feels smooth; with reduced motion (or no body) it snaps, exactly
-           like the plain class toggle. The collapsed class (display: none)
-           is only applied once a collapse animation has finished, and is
-           removed before an expand animation starts. */
-        function setGroup(group, open) {
-          var head = group.querySelector('.cat-head');
-          if (head) { head.setAttribute('aria-expanded', open ? 'true' : 'false'); }
-          var body = group.querySelector('.cat-body');
-          var wasCollapsed = group.classList.contains('collapsed');
-          finishAnim(group);
-          if (!body || reduceMotion || open === !wasCollapsed) {
-            group.classList.toggle('collapsed', !open);
-            return;
-          }
-          if (open) {
-            group.classList.remove('collapsed');
-            var target = body.scrollHeight;
-            body.style.overflow = 'hidden';
-            body.style.height = '0px';
-            void body.offsetHeight; /* commit the start height */
-            body.style.transition = 'height .38s ease';
-            body.style.height = target + 'px';
-            group._catTimer = setTimeout(function () { finishAnim(group); }, 430);
-          } else {
-            body.style.overflow = 'hidden';
-            body.style.height = body.scrollHeight + 'px';
-            void body.offsetHeight; /* commit the start height */
-            body.style.transition = 'height .38s ease';
-            body.style.height = '0px';
-            group._catTimer = setTimeout(function () {
-              group.classList.add('collapsed');
-              finishAnim(group);
-            }, 430);
-          }
-        }
-        function expandGroupOf(el) {
-          var g = el && el.closest ? el.closest('.cat-group') : null;
-          if (g) { setGroup(g, true); }
-        }
-
         var containers = [];
         var latest = document.getElementById('view-latest');
         if (latest) { containers.push(latest); }
@@ -3094,45 +3085,31 @@
             var parent = sections[0].parentNode;
             var marker = sections[0];
             var groups = [];
-            var g, cat, group, head, body, name, range, chev, bodyId;
+            var g, cat, group, head, body, name, range;
             /* Insert all group shells first (before the first section, in
                category order), then move the sections into them. */
             for (g = 0; g < CATS.length; g++) {
               cat = CATS[g];
               group = document.createElement('div');
-              group.className = 'cat-group' + (g === 0 ? '' : ' collapsed');
+              group.className = 'cat-group';
               group.id = prefix + '-cat-' + g;
-              head = document.createElement('button');
-              head.type = 'button';
+              head = document.createElement('div');
               head.className = 'cat-head';
-              head.setAttribute('aria-expanded', g === 0 ? 'true' : 'false');
-              bodyId = prefix + '-cat-body-' + g;
-              head.setAttribute('aria-controls', bodyId);
               name = document.createElement('span');
               name.className = 'cat-name';
               name.textContent = cat.name;
               range = document.createElement('span');
               range.className = 'cat-range';
               range.textContent = cat.range;
-              chev = document.createElement('span');
-              chev.className = 'cat-chev';
-              chev.setAttribute('aria-hidden', 'true');
-              chev.textContent = '▼';
               head.appendChild(name);
               head.appendChild(range);
-              head.appendChild(chev);
               body = document.createElement('div');
               body.className = 'cat-body';
-              body.id = bodyId;
+              body.id = prefix + '-cat-body-' + g;
               group.appendChild(head);
               group.appendChild(body);
               parent.insertBefore(group, marker);
               groups.push({ group: group, head: head, body: body, cat: cat });
-              (function (grp, hd) {
-                hd.addEventListener('click', function () {
-                  setGroup(grp, grp.classList.contains('collapsed'));
-                });
-              })(group, head);
             }
             for (g = 0; g < groups.length; g++) {
               var keys = groups[g].cat.keys;
@@ -3141,10 +3118,10 @@
                 if (sec) { groups[g].body.appendChild(sec); }
               }
             }
-            /* Rewrite this issue's nav to the six categories. The click
-               listener (registered before the section-nav script's own)
-               expands the group first, so the anchor jump lands on an
-               open group; the scrollspy/pill then track the group. */
+            /* Rewrite this issue's nav to the six categories. The links
+               are plain anchors to the group dividers; the section-nav
+               script's scrollspy/pill track the groups as the reader
+               scrolls the continuous page. */
             var nav = box.querySelector('.secnav');
             if (nav) {
               var html = '';
@@ -3152,29 +3129,10 @@
                 html += '<a href="#' + groups[g].group.id + '">' + groups[g].cat.name + '</a>';
               }
               nav.innerHTML = html;
-              var links = nav.querySelectorAll('a');
-              for (var l = 0; l < links.length; l++) {
-                (function (link) {
-                  link.addEventListener('click', function () {
-                    var target = document.getElementById(link.getAttribute('href').slice(1));
-                    if (target) { setGroup(target, true); }
-                  });
-                })(links[l]);
-              }
             }
           })(containers[c]);
         }
 
-        /* Search results pointing into a collapsed group: expand that group
-           on tap (capture phase), before the search script switches the
-           issue and scrolls the section into view. */
-        document.addEventListener('click', function (e) {
-          var t = e.target;
-          var btn = t && t.closest ? t.closest('.search-result') : null;
-          if (!btn) { return; }
-          var id = btn.getAttribute('data-goto-id');
-          if (id) { expandGroupOf(document.getElementById(id)); }
-        }, true);
       })();
     </script>
     <script>
@@ -3721,6 +3679,118 @@
             }
           });
         }
+      })();
+    </script>
+    <script>
+      /* Table of contents 2026-11-09 (additive): the 「目录」 button in the
+         tabs row opens a drop-down panel listing all 19 sections of the
+         issue currently on screen, grouped under the six categories (read
+         from that issue's .cat-group wrappers, so it always matches the
+         open issue). Every section is always visible, so tapping one
+         simply closes the panel and smooth-scrolls the section into
+         view — its scroll-margin-top leaves it clear of the 52px sticky
+         nav, and the nav's scrollspy pill follows the scroll to the
+         section's group. Tapping the button again, tapping outside, or
+         pressing Escape closes the panel. */
+      (function () {
+        var btn = document.getElementById('toc-btn');
+        var panel = document.getElementById('toc-panel');
+        if (!btn || !panel) { return; }
+        var wrap = btn.parentNode;
+
+        var NUMS = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十',
+          '十一', '十二', '十三', '十四', '十五', '十六', '十七', '十八', '十九'];
+        var SHORT = {
+          weather: '五城天气', news: '五城近期新闻', highlights: '今日看点',
+          finance: '金融市场早报', sports: '体育速递', gossip: '娱乐圈八卦',
+          astro: '月相与当日一卦', tarot: '今日塔罗', history: '历史上的今天',
+          quote: '每日金句', wellness: '每日养生小技巧', meal: '健身减脂餐',
+          english: '每日英语', poem: '每日一诗', ai: 'AI 每日一招',
+          money: '理财小知识', slang: '今日热梗', song: '每日一曲', anime: '每日一漫'
+        };
+        function keyOf(sec) {
+          var i = sec.id.lastIndexOf('-');
+          return i === -1 ? sec.id : sec.id.slice(i + 1);
+        }
+        /* The issue on screen right now: the latest view, or whichever
+           archive panel is open; fall back to the latest issue. */
+        function currentBox() {
+          var latest = document.getElementById('view-latest');
+          if (latest && !latest.hidden) { return latest; }
+          var panels = document.querySelectorAll('.issue-panel');
+          for (var i = 0; i < panels.length; i++) {
+            if (!panels[i].hidden) { return panels[i]; }
+          }
+          return latest;
+        }
+        function buildPanel() {
+          panel.innerHTML = '';
+          var box = currentBox();
+          if (!box) { return; }
+          var groups = box.querySelectorAll('.cat-group');
+          var n = 0;
+          for (var g = 0; g < groups.length; g++) {
+            var nameEl = groups[g].querySelector('.cat-head .cat-name');
+            var block = document.createElement('div');
+            block.className = 'toc-group';
+            var title = document.createElement('div');
+            title.className = 'toc-group-title';
+            title.textContent = nameEl ? nameEl.textContent : '';
+            block.appendChild(title);
+            var secs = groups[g].querySelectorAll('section.blk[id]');
+            for (var s = 0; s < secs.length; s++) {
+              (function (sec, idx) {
+                var item = document.createElement('button');
+                item.type = 'button';
+                item.className = 'toc-item';
+                item.setAttribute('role', 'menuitem');
+                var no = document.createElement('span');
+                no.className = 'toc-no';
+                no.textContent = '其' + (NUMS[idx] || String(idx + 1));
+                var label = document.createElement('span');
+                var h2 = sec.querySelector('.blk-head h2');
+                label.textContent = SHORT[keyOf(sec)] || (h2 ? h2.textContent : sec.id);
+                item.appendChild(no);
+                item.appendChild(label);
+                item.addEventListener('click', function () { jumpTo(sec); });
+                block.appendChild(item);
+              })(secs[s], n);
+              n++;
+            }
+            panel.appendChild(block);
+          }
+        }
+        function jumpTo(sec) {
+          closePanel();
+          /* Nothing is collapsed, so the section's position is already
+             final; a short delay lets the panel close first. */
+          window.setTimeout(function () {
+            sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 40);
+        }
+        function openPanel() {
+          buildPanel();
+          var sp = document.getElementById('site-search-panel');
+          if (sp) { sp.hidden = true; } /* never stack the two panels */
+          panel.hidden = false;
+          btn.setAttribute('aria-expanded', 'true');
+        }
+        function closePanel() {
+          panel.hidden = true;
+          btn.setAttribute('aria-expanded', 'false');
+        }
+        btn.addEventListener('click', function () {
+          if (panel.hidden) { openPanel(); } else { closePanel(); }
+        });
+        document.addEventListener('click', function (e) {
+          if (!panel.hidden && wrap && !wrap.contains(e.target)) { closePanel(); }
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && !panel.hidden) {
+            closePanel();
+            btn.focus();
+          }
+        });
       })();
     </script>
   </body>
