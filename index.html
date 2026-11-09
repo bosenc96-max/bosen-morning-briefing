@@ -1084,6 +1084,19 @@
         section.blk { scroll-margin-top: 68px; }
         .cat-group { scroll-margin-top: 68px; }
       }
+
+      /* ---------- batch-5 fixes 2026-11-09e (additive) ---------- */
+      /* TOC panel: deep bottom padding, plus an in-flow spacer at the
+         end of the scroll content (scrollable overflow always honours
+         an in-flow block, even in engines that drop a scroll
+         container's own bottom padding), so the last item （每日一漫）
+         rests fully inside the panel with clear space below it
+         instead of being sliced by the panel's bottom edge. */
+      .toc-panel { padding-bottom: 34px; }
+      .toc-panel::after { content: ""; display: block; height: 8px; }
+      /* in-page search hits: matches of the current query inside the
+         section a result jumps to */
+      mark.sr-hit { background: var(--gold-soft); color: var(--ink); border-radius: 2px; }
     </style>
   </head>
   <body>
@@ -3308,15 +3321,65 @@
          Scrollspy: while the reader scrolls the page, the highlight follows the
          section currently under the reading line (just below the sticky bar)
          and the bar scrolls sideways so the active link stays in view. The
-         highlight is a pill that glides between links, so it never snaps. */
+         highlight is a pill that glides between links, so it never snaps.
+         Wheel/touch scrolling of the strip itself is settled by a script
+         snap (see snapNow below): CSS scroll-snap alone did not engage
+         for wheel scrolling, leaving names cut mid-character at the
+         strip's left edge. */
       (function () {
         var navs = document.querySelectorAll('.secnav');
-        var LINE = 90; /* fallback reading line */
-        /* The wrapped nav bar is taller than the old 52px single row, so
-           the reading line follows the first bar's real height. */
-        function readLine() {
-          var n = document.querySelector('.secnav');
-          return n ? n.offsetHeight + 30 : LINE;
+        /* Reading line: just below the sticky bar, measured from the
+           bar being spied on — never from the first bar in the document.
+           The old code measured the first .secnav (the latest issue's);
+           with an archive issue open that bar is display:none, its
+           offsetHeight is 0, and the line dropped to 30px — above the
+           68px point where an anchored section lands and even above
+           the bottom of the 52px bar — so the section at the top of
+           the viewport never crossed the line and the highlight stayed
+           exactly one section behind. 52px bar + 26 = 78px: below the
+           bar, above the 68px anchor landing, so a jumped-to or
+           scrolled-to section registers the moment its heading sits
+           under the bar. */
+        function readLine(nav) {
+          return (nav && nav.offsetHeight ? nav.offsetHeight : 52) + 26;
+        }
+        var PAD_L = 10; /* the strip's left padding (CSS): the snap origin */
+        /* Make the strip's end position a snap position: grow the
+           right padding just enough that the maximum scrollLeft lands
+           exactly on the first link start from which the last link is
+           fully visible. Resting at the end then starts on a complete
+           section name, like every other resting position. */
+        function fitEndPadding(scroller, links) {
+          if (!links.length || !scroller.clientWidth) { return; }
+          scroller.style.paddingRight = '';
+          var last = links[links.length - 1];
+          var end = last.offsetLeft + last.offsetWidth;
+          var cw = scroller.clientWidth;
+          var need = end - cw; /* smallest scrollLeft showing the last link fully */
+          if (need <= 0) { return; }
+          var s = null;
+          for (var i = 0; i < links.length; i++) {
+            var t = links[i].offsetLeft - PAD_L;
+            if (t >= need - 0.5 && (s === null || t < s)) { s = t; }
+          }
+          if (s === null) { return; }
+          var padR = s - need; /* == s + cw - end */
+          if (padR < 0) { padR = 0; }
+          scroller.style.paddingRight = padR + 'px';
+        }
+        /* Every scrollLeft at which a link's first character sits
+           flush at the strip's left edge (plus the end position). */
+        function snapTargets(scroller, links, max) {
+          var list = [];
+          for (var i = 0; i < links.length; i++) {
+            var t = links[i].offsetLeft - PAD_L;
+            if (t < 0) { t = 0; }
+            if (t > max) { t = max; }
+            if (list.indexOf(t) === -1) { list.push(t); }
+          }
+          if (list.indexOf(max) === -1) { list.push(max); }
+          list.sort(function (a, b) { return a - b; });
+          return list;
         }
         function updateFade(nav) {
           var more = nav.scrollWidth - nav.clientWidth > 4 &&
@@ -3324,8 +3387,18 @@
           nav.classList.toggle('more', more);
         }
         function centerLink(nav, link) {
+          fitEndPadding(nav, nav.querySelectorAll('a'));
           var target = link.offsetLeft - (nav.clientWidth - link.offsetWidth) / 2;
           if (target < 0) { target = 0; }
+          var max = nav.scrollWidth - nav.clientWidth;
+          if (target > max) { target = max; }
+          /* Record where this programmatic scroll is heading: the
+             scroll-end snap below leaves a strip that landed on its
+             programmatic target exactly where it was put. A wheel or
+             touch on the strip clears the record (the reader took
+             over), and any later resting place is snapped instead. */
+          nav._progTarget = target;
+          nav._progAt = Date.now();
           nav.scrollTo({ left: target, behavior: 'smooth' });
         }
         /* Scroll the bar only when the active link is (partly) out of view. */
@@ -3384,7 +3457,62 @@
                 });
               })(links[i]);
             }
-            scroller.addEventListener('scroll', function () { updateFade(scroller); }, { passive: true });
+            /* Scroll-end snap: when the strip stops scrolling (~130ms
+               with no scroll event), settle it on the nearest link
+               start, so the left edge always shows a complete section
+               name however the reader scrolled — wheel, trackpad,
+               touch or scrollbar. CSS scroll-snap alone did not engage
+               for wheel scrolling. A strip that landed exactly on a
+               programmatic target (link tap centering, scrollspy
+               reveal, or a previous snap) is left alone; wheel/touch
+               input clears that record, so a reader's own scroll
+               always ends snapped. */
+            var snapTimer = null;
+            function snapNow() {
+              snapTimer = null;
+              fitEndPadding(scroller, links);
+              var max = scroller.scrollWidth - scroller.clientWidth;
+              if (max <= 0) { return; }
+              var cur = scroller.scrollLeft;
+              if (scroller._progAt && Math.abs(cur - scroller._progTarget) <= 2) { return; }
+              if (Date.now() - state.clickedAt < 350) { return; }
+              var targets = snapTargets(scroller, links, max);
+              var best = targets[0], bd = Math.abs(cur - best);
+              for (var i = 1; i < targets.length; i++) {
+                var d = Math.abs(cur - targets[i]);
+                if (d < bd) { bd = d; best = targets[i]; }
+              }
+              /* Right edge: never rest with a one-character sliver of
+                 the next link showing. If the link straddling the
+                 right edge shows less than ~36px (its padding plus a
+                 single character), rest at that link's own start
+                 instead, so it is fully readable at the left edge. */
+              for (var bump = 0; bump < 2; bump++) {
+                var edge = best + scroller.clientWidth;
+                var straddle = null;
+                for (var j = 0; j < links.length; j++) {
+                  var ls = links[j].offsetLeft, le = ls + links[j].offsetWidth;
+                  if (ls < edge && edge < le) { straddle = links[j]; break; }
+                }
+                if (!straddle) { break; }
+                if (edge - straddle.offsetLeft >= 36) { break; }
+                var nt = straddle.offsetLeft - PAD_L;
+                if (nt <= best || nt > max) { break; }
+                best = nt;
+              }
+              if (Math.abs(best - cur) < 1) { return; }
+              scroller._progTarget = best;
+              scroller._progAt = Date.now();
+              scroller.scrollTo({ left: best, behavior: 'smooth' });
+            }
+            scroller.addEventListener('scroll', function () {
+              updateFade(scroller);
+              if (snapTimer) { clearTimeout(snapTimer); }
+              snapTimer = setTimeout(snapNow, 130);
+            }, { passive: true });
+            scroller.addEventListener('wheel', function () { scroller._progAt = 0; }, { passive: true });
+            scroller.addEventListener('touchstart', function () { scroller._progAt = 0; }, { passive: true });
+            fitEndPadding(scroller, links);
             updateFade(scroller);
             states.push(state);
           })(navs[n]);
@@ -3395,11 +3523,12 @@
           for (var s = 0; s < states.length; s++) {
             var st = states[s];
             if (st.nav.getClientRects().length === 0) { continue; } /* hidden issue panel */
-            if (Date.now() - st.clickedAt < 650) { continue; } /* let a tap's smooth jump land first */
+            if (Date.now() - st.clickedAt < 300) { continue; } /* let a tap's jump register first */
             var current = 0;
+            var line = readLine(st.nav);
             for (var i = 0; i < st.targets.length; i++) {
               var t = st.targets[i];
-              if (t && t.getBoundingClientRect().top <= readLine()) { current = i; }
+              if (t && t.getBoundingClientRect().top <= line) { current = i; }
             }
             if (atBottom) { current = st.links.length - 1; }
             var link = st.links[current];
@@ -3407,11 +3536,20 @@
           }
         }
         var ticking = false;
+        var endTimer = null;
         window.addEventListener('scroll', function () {
           if (!ticking) {
             ticking = true;
             window.requestAnimationFrame(function () { ticking = false; spy(); });
           }
+          /* Scroll-end check: rAF-throttled passes can miss the final
+             resting position of a smooth jump (TOC, search, anchor),
+             and the click guard may still be up when the last scroll
+             event fires. Re-evaluating once the page has been still
+             for ~160ms guarantees the pill settles on the section
+             actually at the top. */
+          if (endTimer) { clearTimeout(endTimer); }
+          endTimer = setTimeout(function () { endTimer = null; spy(); }, 160);
         }, { passive: true });
         /* Re-seat each visible bar's pill on its active link without animating
            (link geometry shifts when the viewport or the webfont settles). */
@@ -3656,11 +3794,74 @@
         }
 
         function hidePanel() { panel.hidden = true; panel.innerHTML = ''; }
-        function clearSearch() { input.value = ''; hidePanel(); }
+
+        /* ---------- in-page highlights ---------- */
+        /* The query whose result was last chosen; its occurrences in
+           the section the reader jumps to are wrapped in
+           <mark class="sr-hit"> so the found text is visibly
+           highlighted in the page, not only in the result snippet. */
+        var lastQuery = '';
+        function clearHits() {
+          var marks = document.querySelectorAll('mark.sr-hit');
+          for (var i = marks.length - 1; i >= 0; i--) {
+            var m = marks[i];
+            var p = m.parentNode;
+            if (!p) { continue; }
+            p.replaceChild(document.createTextNode(m.textContent), m);
+            p.normalize();
+          }
+        }
+        function applyHits(entry) {
+          clearHits();
+          var q = lastQuery;
+          if (!q) { return; }
+          var sec = document.getElementById(entry.id);
+          if (!sec) { return; }
+          var ql = q.toLowerCase();
+          var walker = document.createTreeWalker(sec, NodeFilter.SHOW_TEXT, {
+            acceptNode: function (n) {
+              if (!n.nodeValue || n.nodeValue.toLowerCase().indexOf(ql) === -1) { return NodeFilter.FILTER_REJECT; }
+              var el = n.parentNode;
+              while (el && el !== sec) {
+                var tag = el.tagName;
+                if (tag === 'A' || tag === 'SCRIPT' || tag === 'STYLE' || tag === 'BUTTON' || tag === 'MARK') { return NodeFilter.FILTER_REJECT; }
+                el = el.parentNode;
+              }
+              return NodeFilter.FILTER_ACCEPT;
+            }
+          });
+          var nodes = [];
+          while (walker.nextNode()) { nodes.push(walker.currentNode); }
+          for (var i = 0; i < nodes.length; i++) {
+            var node = nodes[i];
+            var text = node.nodeValue;
+            var lower = text.toLowerCase();
+            var frag = document.createDocumentFragment();
+            var last = 0, pos = lower.indexOf(ql), hitAny = false;
+            while (pos !== -1) {
+              hitAny = true;
+              frag.appendChild(document.createTextNode(text.slice(last, pos)));
+              var mk = document.createElement('mark');
+              mk.className = 'sr-hit';
+              mk.textContent = text.slice(pos, pos + q.length);
+              frag.appendChild(mk);
+              last = pos + q.length;
+              pos = lower.indexOf(ql, last);
+            }
+            if (hitAny) {
+              frag.appendChild(document.createTextNode(text.slice(last)));
+              node.parentNode.replaceChild(frag, node);
+            }
+          }
+        }
+
+        function clearSearch() { input.value = ''; hidePanel(); clearHits(); lastQuery = ''; }
 
         var LIMIT = 30;
         function runSearch() {
           var q = input.value.trim();
+          lastQuery = q;
+          clearHits(); /* a new query retires the previous highlights */
           if (!q) { hidePanel(); return; }
           var ql = q.toLowerCase();
           var matches = [];
@@ -3724,12 +3925,17 @@
 
         /* Navigate: click the archive entry for that issue (existing
            mechanism), then scroll the section into view once the panel
-           switch has landed. */
+           switch has landed. The query's occurrences in the target
+           section are highlighted in the page; the highlight is
+           applied after the archive click returns, because switching
+           issues clears the search (see the listener below) and that
+           clearing must not wipe the fresh highlights. */
         function goTo(entry) {
           hidePanel();
           input.blur();
           var arch = document.querySelector('.arch-item[data-open-date="' + entry.date + '"]');
           if (arch) { arch.click(); }
+          applyHits(entry);
           window.setTimeout(function () {
             var el = document.getElementById(entry.id);
             if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
@@ -3752,21 +3958,39 @@
           } else if (e.key === 'Enter') {
             if (e.isComposing) { return; } /* an IME candidate confirm is not a search */
             e.preventDefault();
-            /* Flush any pending debounce first: previously, pressing Enter
-               within ~120ms of the last keystroke found the panel still
-               hidden and did nothing at all — no results, no feedback. Now
-               Enter always runs the search on the current text, then jumps
-               to the first result; with no match the panel itself is the
-               feedback （没有找到相关内容）. */
+            /* Enter runs the search and SHOWS the results: the panel
+               carries the visible result count （找到 N 条结果） and the
+               clickable result list, and the reader picks the result
+               they want. Enter deliberately does not jump straight to
+               the first hit — previously it did, so the count, the
+               list and the snippet highlighting were never seen.
+               Flushing the debounce first means Enter within ~120ms of
+               the last keystroke still searches the current text; with
+               no match the panel itself is the feedback
+               （没有找到相关内容）. */
             if (timer) { clearTimeout(timer); timer = null; }
             runSearch();
-            var first = panel.querySelector('.search-result');
-            if (first && !panel.hidden) { first.click(); }
           }
         });
         document.addEventListener('click', function (e) {
           var wrap = input.parentNode;
           if (wrap && !wrap.contains(e.target)) { hidePanel(); }
+        });
+        /* Switching to another issue clears the search completely —
+           box, result list and in-page highlights — so one issue's
+           term never lingers into the next. Every switch path runs
+           through one of these controls (archive entries, the
+           prev/next buttons and the date quick-jump all end in an
+           .arch-item click; the tabs switch views). A search result's
+           own navigation passes through here too: goTo re-applies its
+           highlights after this clearing has run. */
+        document.addEventListener('click', function (e) {
+          var t = e.target;
+          if (!t.closest) { return; }
+          if (t.closest('.arch-item, .issue-nav-btn, .back-archive, #tab-latest, #tab-archive')) {
+            if (timer) { clearTimeout(timer); timer = null; }
+            clearSearch();
+          }
         });
       })();
     </script>
