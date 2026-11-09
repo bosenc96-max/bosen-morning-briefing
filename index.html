@@ -1100,6 +1100,20 @@
          invisible against the page), and the marks stay in the DOM
          until the next search or issue switch — no fade-out. */
       mark.sr-hit { background: #ffe066; color: #191c1e; border-radius: 2px; padding: 0 1px; box-shadow: 0 0 0 1px rgba(201, 162, 0, .5); }
+
+      /* ---------- batch-6 fixes 2026-11-09f (additive) ---------- */
+      /* Nav strip: the script settle (section-nav script) is the ONLY
+         settler. The batch-4 mandatory CSS scroll-snap kept its own
+         snap points (offsetLeft - 10px scroll-padding origin), which
+         disagree with the script's targets and re-snapped the strip
+         mid-flight while the script was smooth-scrolling to its
+         target — the fight could leave the strip resting on a point
+         whose right edge strands a single character, and the scroll
+         events it generated kept resetting the script's settle
+         re-check. Snap off; the script's 130ms/750ms settle passes
+         own every resting position. */
+      .secnav-scroll { scroll-snap-type: none; }
+      .secnav a { scroll-snap-align: none; }
     </style>
   </head>
   <body>
@@ -3346,7 +3360,7 @@
         function readLine(nav) {
           return (nav && nav.offsetHeight ? nav.offsetHeight : 52) + 26;
         }
-        var PAD_L = 10; /* the strip's left padding (CSS): the snap origin */
+        var PAD_L = 10; /* the strip's left padding (CSS). Snap targets no longer derive from it — see snapTargets (batch-6). */
         /* Make the strip's end position a snap position: grow the
            right padding just enough that the maximum scrollLeft lands
            exactly on the first link start from which the last link is
@@ -3362,7 +3376,7 @@
           if (need <= 0) { return; }
           var s = null;
           for (var i = 0; i < links.length; i++) {
-            var t = links[i].offsetLeft - PAD_L;
+            var t = i === 0 ? 0 : links[i].offsetLeft - 3;
             if (t >= need - 0.5 && (s === null || t < s)) { s = t; }
           }
           if (s === null) { return; }
@@ -3375,7 +3389,16 @@
         function snapTargets(scroller, links, max) {
           var list = [];
           for (var i = 0; i < links.length; i++) {
-            var t = links[i].offsetLeft - PAD_L;
+            /* Snap position for a link: its start sits 3px inside the
+               strip's left edge. The old origin (offsetLeft minus the
+               10px left padding) is only correct for the first link —
+               between links there is just the 4px flex gap, so every
+               later snap point landed 10px before the link's start
+               and left a ~6px tail of the PREVIOUS section name
+               showing at the left edge. offsetLeft - 3 puts the
+               viewport edge inside the gap: the previous name is
+               fully hidden, this name is fully shown. */
+            var t = i === 0 ? 0 : links[i].offsetLeft - 3;
             if (t < 0) { t = 0; }
             if (t > max) { t = max; }
             if (list.indexOf(t) === -1) { list.push(t); }
@@ -3493,20 +3516,24 @@
                always ends snapped.
                Both edges are policed, not just the left: a resting
                position is only accepted when the link straddling the
-               RIGHT edge shows at least half its width. If it shows
-               less — down to a single character, as readers reported
-               for 「每日金句」 — the strip advances to that link's own
-               start and the check repeats, until the rightmost
-               visible link shows at least half. The end position is
-               the one exception: fitEndPadding makes the last link
-               fully visible there, so resting at max is always fine.
-               A later settle pass (~750ms after the last scroll
-               event) re-runs the same check, in case the browser's
-               own mandatory scroll-snap pulled the strip to a
-               neighbouring snap point after the script's smooth
-               scroll came to rest. */
+               RIGHT edge shows at least half its width — never a
+               single stranded character, as readers reported for
+               「每日金句」/「每日阅读」. The settle target is the
+               nearest snap point with a clean right edge (see
+               nearestCleanTarget below): the previous advance-only
+               rule teleported the strip to its end from most
+               positions, and where the browser's mandatory CSS
+               scroll-snap fought that long scroll the strip was
+               left stranded on the dirty position, so the failure
+               looked intermittent. CSS snap is therefore disabled
+               for the strip (batch-6 CSS) and this script is the
+               only settler. A later settle pass (~750ms after the
+               last scroll event) re-runs the same check; scroll
+               events fired by an in-flight smooth scroll no longer
+               reset that pass. */
             var snapTimer = null;
             var settleTimer = null;
+            var snapFlight = null; /* {target, at}: a settle scroll this script started */
             function straddleAt(pos) {
               var edge = pos + scroller.clientWidth;
               for (var j = 0; j < links.length; j++) {
@@ -3521,20 +3548,63 @@
               if (!s) { return false; }
               return (pos + scroller.clientWidth - s.offsetLeft) < s.offsetWidth / 2;
             }
-            function fixRightEdge(best, max) {
-              var guard = 0;
-              while (guard++ < links.length + 2) {
-                if (best >= max - 0.5) { return max; }
-                var s = straddleAt(best);
-                if (!s) { return best; }
-                var vis = best + scroller.clientWidth - s.offsetLeft;
-                if (vis >= s.offsetWidth / 2) { return best; }
-                var nt = s.offsetLeft - PAD_L;
-                if (nt > max) { return max; }
-                if (nt <= best) { return best; }
-                best = nt;
+            /* Choose where the strip settles: the snap target nearest
+               the resting position whose RIGHT edge is clean (the
+               link straddling it shows at least half, or none
+               straddles, or it is the end position). The old rule
+               only ever ADVANCED toward the straddling link's own
+               start — and when that start lay beyond the maximum
+               scroll (true for every link in the second half of the
+               strip at desktop widths) it gave up and returned max,
+               teleporting the reader to the very end of the strip
+               after a small scroll; in browsers where the native
+               mandatory scroll-snap fought that long smooth scroll,
+               the strip ended up back on the dirty position instead,
+               which is why the failure looked intermittent. Now the
+               search runs over ALL targets by distance, preferring
+               clean targets that keep the reader's current left-edge
+               link on screen, so a settle never moves the strip more
+               than a link or two and never strands a single character
+               at the right edge when a clean position exists. */
+            function nearestCleanTarget(cur, max) {
+              var targets = snapTargets(scroller, links, max);
+              var anchor = null; /* first link not cut at the left edge */
+              for (var a = 0; a < links.length; a++) {
+                if (links[a].offsetLeft >= cur + 2) {
+                  anchor = links[a];
+                  break;
+                }
               }
-              return best;
+              var byDist = targets.slice().sort(function (x, y) {
+                return Math.abs(x - cur) - Math.abs(y - cur);
+              });
+              var i, t;
+              if (anchor) {
+                for (i = 0; i < byDist.length; i++) {
+                  t = byDist[i];
+                  if (t > anchor.offsetLeft) { continue; } /* would push the anchor off-screen */
+                  if (anchor.offsetLeft + anchor.offsetWidth > t + scroller.clientWidth) { continue; }
+                  if (!rightEdgeBad(t, max)) { return t; }
+                }
+              }
+              for (i = 0; i < byDist.length; i++) {
+                if (!rightEdgeBad(byDist[i], max)) { return byDist[i]; }
+              }
+              return byDist[0]; /* no clean position exists at this width */
+            }
+            function inFlight(cur) {
+              /* A smooth scroll (this script's own settle, or a
+                 programmatic centering from a link tap / scrollspy
+                 reveal) is still travelling toward its target: do
+                 not judge the position yet, and do not let its
+                 continuous scroll events keep pushing the settle
+                 re-check back — that reset loop was one way the old
+                 snap silently never ran. */
+              if (snapFlight && Math.abs(cur - snapFlight.target) > 2 &&
+                  Date.now() - snapFlight.at < 900) { return true; }
+              if (scroller._progAt && Math.abs(cur - scroller._progTarget) > 2 &&
+                  Date.now() - scroller._progAt < 900) { return true; }
+              return false;
             }
             function snapNow() {
               snapTimer = null;
@@ -3542,21 +3612,28 @@
               var max = scroller.scrollWidth - scroller.clientWidth;
               if (max <= 0) { return; }
               var cur = scroller.scrollLeft;
-              /* A programmatic landing (link-tap centering, scrollspy
-                 reveal) is left where it was put — unless its right
-                 edge strands a link at under half width, which no
-                 resting position may do. */
-              if (!scroller._userDriven && scroller._progAt &&
-                  Math.abs(cur - scroller._progTarget) <= 2 && !rightEdgeBad(cur, max)) { return; }
-              if (Date.now() - state.clickedAt < 350) { return; }
-              var targets = snapTargets(scroller, links, max);
-              var best = targets[0], bd = Math.abs(cur - best);
-              for (var i = 1; i < targets.length; i++) {
-                var d = Math.abs(cur - targets[i]);
-                if (d < bd) { bd = d; best = targets[i]; }
+              if (inFlight(cur)) {
+                /* Still travelling: one watchdog re-check, not a
+                   fresh debounce chain. */
+                if (snapTimer) { clearTimeout(snapTimer); }
+                snapTimer = setTimeout(snapNow, 350);
+                return;
               }
-              best = fixRightEdge(best, max);
-              if (Math.abs(best - cur) < 1) { return; }
+              snapFlight = null;
+              if (Date.now() - state.clickedAt < 350) { return; }
+              /* Every resting position — the reader's own scroll or
+                 a programmatic landing alike — settles on the
+                 nearest target whose right edge is clean. A centred
+                 programmatic landing is at most ~half a link pitch
+                 from such a target, so the nudge never throws the
+                 scrollspy's active link out of view. */
+              var best = nearestCleanTarget(cur, max);
+              if (Math.abs(best - cur) < 1) {
+                scroller._progTarget = cur;
+                scroller._progAt = Date.now();
+                return;
+              }
+              snapFlight = { target: best, at: Date.now() };
               scroller._progTarget = best;
               scroller._progAt = Date.now();
               scroller._userDriven = false;
@@ -3565,11 +3642,22 @@
             scroller.addEventListener('scroll', function () {
               updateFade(scroller);
               if (snapTimer) { clearTimeout(snapTimer); }
+              if (inFlight(scroller.scrollLeft)) {
+                /* Our own settle / a programmatic centering is
+                   still moving: arm only the watchdog. Crucially the
+                   750ms settle re-check is NOT re-armed here — the
+                   old handler reset it on every scroll event, so a
+                   smooth scroll (or the native snap fighting one)
+                   could postpone the re-check indefinitely and the
+                   strip came to rest wherever the fight left it. */
+                snapTimer = setTimeout(snapNow, 350);
+                return;
+              }
               snapTimer = setTimeout(snapNow, 130);
               if (settleTimer) { clearTimeout(settleTimer); }
               settleTimer = setTimeout(snapNow, 750);
             }, { passive: true });
-            function markUser() { scroller._userDriven = true; scroller._progAt = 0; }
+            function markUser() { scroller._userDriven = true; scroller._progAt = 0; snapFlight = null; }
             scroller.addEventListener('wheel', markUser, { passive: true });
             scroller.addEventListener('touchstart', markUser, { passive: true });
             scroller.addEventListener('pointerdown', markUser, { passive: true });
@@ -3869,6 +3957,14 @@
            <mark class="sr-hit"> so the found text is visibly
            highlighted in the page, not only in the result snippet. */
         var lastQuery = '';
+        /* Generation counter for in-page highlights: every clear or
+           new query bumps it, and a result jump's delayed
+           re-applications (see goTo) only run while their captured
+           generation is still current — so a late re-apply can never
+           resurrect highlights the reader has already moved on from,
+           and a clear that lands after the jump cannot leave the
+           section permanently unmarked either. */
+        var hitToken = 0;
         function clearHits() {
           var marks = document.querySelectorAll('mark.sr-hit');
           for (var i = marks.length - 1; i >= 0; i--) {
@@ -3879,9 +3975,9 @@
             p.normalize();
           }
         }
-        function applyHits(entry) {
+        function applyHits(entry, q) {
           clearHits();
-          var q = lastQuery;
+          if (!q) { q = lastQuery; }
           if (!q) { return; }
           var sec = document.getElementById(entry.id);
           if (!sec) { return; }
@@ -3923,11 +4019,12 @@
           }
         }
 
-        function clearSearch() { input.value = ''; hidePanel(); clearHits(); lastQuery = ''; }
+        function clearSearch() { hitToken++; input.value = ''; hidePanel(); clearHits(); lastQuery = ''; }
 
         var LIMIT = 30;
         function runSearch() {
           var q = input.value.trim();
+          hitToken++; /* a new query retires any pending re-application */
           lastQuery = q;
           clearHits(); /* a new query retires the previous highlights */
           if (!q) { hidePanel(); return; }
@@ -4006,14 +4103,37 @@
              therefore found an empty query and highlighted nothing.
              Keep the query aside and restore it once the click has
              run, so the target section really gets its marks. The
-             marks then stay until the next search or issue switch. */
+             marks then stay until the next search or issue switch.
+             The query now also travels as an explicit argument (no
+             reliance on the shared lastQuery surviving the click),
+             and the marks are re-applied twice after the jump —
+             just after the scroll lands and again at ~1.4s — under
+             a generation token: any clear or re-render that lands
+             after the first application (a late issue-switch clear,
+             a panel rebuild) is painted over, while the reader's
+             own next search or issue switch bumps the token and
+             retires the re-applications, so nothing stale can
+             reappear. Reviewers in a real browser still saw no
+             in-page highlight with the single-shot application;
+             the marks must not depend on one synchronous pass
+             surviving everything the navigation sets in motion. */
           var q = lastQuery;
           hidePanel();
           input.blur();
           var arch = document.querySelector('.arch-item[data-open-date="' + entry.date + '"]');
           if (arch) { arch.click(); }
           lastQuery = q;
-          applyHits(entry);
+          var token = ++hitToken; /* after the click's clearing bumped it */
+          applyHits(entry, q);
+          var delays = [450, 1400];
+          for (var d = 0; d < delays.length; d++) {
+            (function (delay) {
+              window.setTimeout(function () {
+                if (token !== hitToken) { return; }
+                applyHits(entry, q);
+              }, delay);
+            })(delays[d]);
+          }
           window.setTimeout(function () {
             var el = document.getElementById(entry.id);
             if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
