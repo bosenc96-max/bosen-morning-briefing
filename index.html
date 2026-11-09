@@ -992,6 +992,29 @@
       @media (max-width: 640px) {
         .strip .big { flex-basis: auto; font-size: 28px; }
       }
+      /* ---------- visitor-review fixes 2026-11-09b (additive) ---------- */
+      /* nav paging arrows removed entirely: swipe/scroll only, so no
+         button can ever sit on top of a section name */
+      .secnav-arrow { display: none !important; }
+      .secnav-scroll { padding: 7px 2px 8px; scroll-padding-right: 2px; }
+      /* TOC panel: capped height, internal scroll, visible scrollbar */
+      .toc-panel { max-height: min(62vh, 520px); scrollbar-width: thin; }
+      .toc-panel::-webkit-scrollbar { width: 8px; }
+      .toc-panel::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+      .toc-hint { font-size: 12px; color: var(--ink-3); padding: 2px 10px 8px; border-bottom: 1px solid var(--line); margin-bottom: 6px; }
+      /* cross-reference links (script-wrapped) */
+      a.xref { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+      /* price tables */
+      .prices h4 { font-family: "Noto Serif SC", serif; font-size: 15px; margin: 16px 0 6px; }
+      .prices h4:first-of-type { margin-top: 2px; }
+      .price-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+      .price-table th, .price-table td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      .price-table th { color: var(--ink-3); font-weight: 700; font-size: 12px; white-space: nowrap; }
+      .prices .p-src { font-size: 12.5px; color: var(--ink-3); margin: 6px 0 0; }
+      .prices .p-wage { font-size: 13px; color: var(--ink-2); margin: 4px 0 0; }
+      .prices .p-wage b { color: var(--ink); }
+      .about { scroll-margin-top: 12px; }
+
     </style>
   </head>
   <body>
@@ -1003,15 +1026,15 @@
         <span class="nw">沈阳 · 鞍山 · 卡尔加里 · 海斯 · 京都</span>
       </div>
       <h1>每日晨间简报<span class="seal">公开版</span></h1>
-      <p class="mast-intro">每天早上 08:10 更新 · 覆盖<span class="nw">沈阳、鞍山、卡尔加里、海斯、京都</span>的晨间简报</p>
+      <p class="mast-intro">每天早上 08:10 更新 · 覆盖<span class="nw">沈阳、鞍山、卡尔加里、海斯（美国堪萨斯州）、京都</span>的晨间简报</p>
       <p class="mast-sub">最新一期：<b class="nw">2026 年 11 月 9 日（星期一）</b> · <span class="nw">农历丙午年十月初一</span> · <span class="nw">新月日</span> · <span class="nw">全国消防日</span></p>
-      <p class="mast-author">作者：深眠秋巷雨梦</p>
+      <p class="mast-author">笔名：深眠秋巷雨梦</p>
     </header>
 
     <div class="tabs" role="tablist" aria-label="简报视图">
       <button class="tab-btn" role="tab" id="tab-latest" aria-selected="true" aria-controls="view-latest">最新简报</button>
       <button class="tab-btn" role="tab" id="tab-archive" aria-selected="false" aria-controls="view-archive">往期归档</button>
-      <button class="tab-btn" type="button" id="tab-about">关于</button>
+      <button class="tab-btn" type="button" id="tab-about">关于 ↓</button>
       <div class="site-search" role="search">
         <span class="site-search-icon" aria-hidden="true">🔍</span>
         <input type="search" id="site-search-input" placeholder="搜索简报…" aria-label="搜索简报" autocomplete="off" />
@@ -1100,12 +1123,12 @@
 </section>
 <section class="blk" id="s-news">
 <div class="blk-head"><span class="no">其二</span><h2>五城近期新闻</h2></div>
-<div class="news-grid"><article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>【回顾】沈阳第五届鸡架美食文化嘉年华开幕 <span class="from">来源：9月13日</span></h4><p>嘉年华在皇姑区塔湾兴顺国际夜市启幕，由市文旅局、市商务局、皇姑区政府指导，设置百人"课堂偷吃大赛"、自助烧烤、大胃王挑战赛等项目。沈阳鸡架五年打造成文旅 IP，累计线下客流超 60 万人次，这次主打夜间消费场景，晚上想吃点热乎的可以去逛逛。（来源：<a href="https://liaon.ifeng.com/c/8wM7HEYNdig" target="_blank" rel="noopener noreferrer">凤凰网辽宁</a>，9月13日）</p></div><div class="news-item"><h4>辽宁借进博会集中签约，医疗、农食、大宗商品是重点 <span class="from">来源：<a href="https://ln.cri.cn/n/20261108/4f094c50-d85f-494e-9701-15fa6c11ef6c.html" target="_blank" rel="noopener noreferrer">国际在线</a>，11月8日</span></h4><p>第九届进博会期间，辽宁多家重点采购企业与多个国家及港澳台地区合作商集中签约。嘉里粮油（营口）达成重点采购合作意向；荣信汇科签约新能源电力电工装备，孔雀表业、辽宁蜂巢推进宝石、美妆日化合作，中国医大附属盛京医院完成药品签约，沈阳腾翔科技意向采购特种作业机器人。辽宁用进博窗口对接全球资源，订单落到了医疗、食品和高端装备这些实处。</p></div><div class="news-item"><h4>大连英博夺得 2026 赛季中超冠军</h4><p>——详见“体育速递·足球”一节。</p></div></article><article class="news-col"><h3>鞍山</h3><p class="col-note">说明：近 1~2 天内鞍山本地新闻较少，以下为本周内较新的消息，均已注明日期。</p><div class="news-item"><h4>【回顾】鞍山姑娘李雯雯亚运夺冠，补齐职业生涯大满贯 <span class="from">来源：9月30日</span></h4><p>9 月 29 日，2026 年爱知·名古屋亚运会举重女子 86 公斤以上级比赛，鞍山名将李雯雯以抓举 140 公斤、总成绩 310 公斤夺冠，并刷新两项亚运会纪录。这是她职业生涯首枚亚运会金牌，此前她已拿过奥运、世锦赛冠军，这次终于圆满实现大满贯，家乡全城喝彩。（来源：<a href="https://www.sport.gov.cn/n20001280/n20745751/c30085391/content.html" target="_blank" rel="noopener noreferrer">国家体育总局</a>，9月30日）</p></div><div class="news-item"><h4>鞍钢股份申请低镍合金钢卷板相关专利 <span class="from">来源：<a href="https://finance.sina.com.cn/stock/aigc/zl/2026-11-04/doc-inixprpa6182443.shtml" target="_blank" rel="noopener noreferrer">新浪财经</a>，11月4日</span></h4><p>国家知识产权局信息显示，鞍钢股份申请一项"低镍系合金钢热轧卷板氧化铁皮的全流程控制方法"专利，申请公布日为 11 月 3 日。三季度鞍钢股份营收 698.66 亿元，但净利润 -39.45 亿元，在行业可比企业中垫底，专利和新品是钢企降本增效的出路之一。</p></div><div class="news-item"><h4>东北三省十一校科研协作体年会在鞍山一中召开 <span class="from">来源：<a href="https://feng.ifeng.com/c/8xkeyzDmVX2" target="_blank" rel="noopener noreferrer">凤凰网</a>，11月3日</span></h4><p>来自黑、吉、辽三省 11 所重点高中的校领导、科研负责人齐聚鞍山一中，围绕"'双减'政策下校本研修的提质增效策略与路径"研讨。这个协作体已有 33 年历史，由辽宁省实验中学、鞍山一中、东北师大附中和哈师大附中发起，第 34 届年会将由东北师大附中承办。</p></div></article><article class="news-col"><h3>卡尔加里（当地 11月7~8日）</h3><div class="news-item"><h4>火焰队后卫巴尔赛季报销：跟腱断裂，将接受手术 <span class="from">来源：<a href="https://www.nhl.com/news/nhl-status-report-news-and-notes-november-8-2026" target="_blank" rel="noopener noreferrer">NHL 官网</a>（需翻墙），11月8日</span></h4><p>卡尔加里火焰队宣布，后卫凯文·巴尔（Kevin Bahl）跟腱断裂，将接受赛季报销的手术。他是在上周五对安纳海姆鸭队赛前场外热身时受伤的。巴尔本赛季场均上场 21 分 56 秒，全队最高，去年夏天刚签下 6 年 3210 万美元合同。球队已从 AHL 召回后卫布雷登·帕查尔补缺，今晚主场对费城飞人一战压力更大了。</p></div><div class="news-item"><h4>第 113 届 Grey Cup 决赛对阵出炉：埃德蒙顿麋鹿 vs 蒙特利尔云雀 <span class="from">来源：<a href="https://www.thescore.com/cfl/news/3648402/elks-alouettes-will-meet-in-113-th-grey-cup" target="_blank" rel="noopener noreferrer">theScore</a>（需翻墙），11月8日</span></h4><p>CFL 分区决赛：蒙特利尔云雀 33-23 击败温尼伯蓝色轰炸机，埃德蒙顿麋鹿 28-16 战胜 BC 雄狮，两队将于 11 月 15 日在卡尔加里 McMahon 体育场争夺第 113 届 Grey Cup。这是两队历史上第 12 次在 Grey Cup 相遇，上一次还是 2005 年的加时经典。卡尔加里下周末要热闹了。</p></div><div class="news-item"><h4>阿省政治周报：选区重划与联邦预算 <span class="from">来源：<a href="https://app.cyberimpact.com/newsletter-view-online?ct=6J9sjNZn7wXXJ02x-vqRAEJe13M7uIRnKjZWSw6l4P2XsikhSk5tCYcmCL3f8u8XNtWWjqS-_h6qLvTqC-bFWT2pi23R3FM3fQzYZfbDof6mziqbeFaIZHbkuDA8yM3x" target="_blank" rel="noopener noreferrer">Forward Weekly</a>（需翻墙），11月8日</span></h4><p>本周阿省政坛：省长史密斯推动的新选区边界图被指“杰利蝾螈”，按 2023 年选举结果测算会稀释 NDP 票仓；2026 年联邦预算出炉，卡尔加里市长法卡斯指出预算中几乎没有卡尔加里的基建资金，城市“几乎完全缺席”。（学费上限法案见“民生”一节。）</p></div><div class="news-item"><h4>火焰队召回后卫帕查尔，应对防线伤病潮 <span class="from">来源：<a href="https://wire.report/article/flames-recall-defenceman-brayden-pachal-from-ahl-calgary-wranglers-2026-11-08" target="_blank" rel="noopener noreferrer">Wire Report</a>（需翻墙），11月8日</span></h4><p>随着巴尔赛季报销，火焰队周日宣布从 AHL 卡尔加里牧马人队召回后卫布雷登·帕查尔，增加防线深度。球队近 10 场 6 胜 3 负 1 加时负，状态正在回升，但防线伤病是接下来一周最大的考验。</p></div></article><article class="news-col"><h3>海斯（当地 11月8日）</h3><div class="news-item"><h4>星条旗早餐会助力埃利斯县退伍军人联盟，迎接退伍军人节 <span class="from">来源：<a href="https://www.facebook.com/munsch.bob/posts/pfbid02QPGmLwfCJcmFLPJHFCYew9WEBf5t85E5EXHZogj6WmgLxgLj8FHJzEvLenB98EZ6l" target="_blank" rel="noopener noreferrer">VFW 9076 分会</a>（需翻墙），11月8日</span></h4><p>退伍军人协会 VFW 9076 分会举办星条旗早餐会，为埃利斯县退伍军人联盟筹款，迎接退伍军人节。11 月 11 日退伍军人节纪念活动详情见"今日活动预告"第 5 条。</p></div></article><article class="news-col"><h3>京都（11月9日）</h3><div class="news-item"><h4>和束町举行茶节，宇治茶产区迎来秋天 <span class="from">来源：<a href="https://news.web.nhk/newsweb/na/nd-20261109de72666" target="_blank" rel="noopener noreferrer">NHK</a>（需翻墙），11月9日</span></h4><p>京都府和束町举行茶节。和束是宇治茶的产区，茶节期间有采茶、制茶体验和茶席活动，秋天去宇治喝茶正当时。</p></div><div class="news-item"><h4>京都国际漫画博物馆 20 周年活动正式公布，11 月 25 日免费入场 <span class="from">来源：<a href="https://www.city.kyoto.lg.jp/sankan/page/0000359939.html" target="_blank" rel="noopener noreferrer">京都市</a>（需翻墙），11月9日</span></h4><p>京都国际漫画博物馆 20 周年纪念活动正式公布，11 月 25 日开馆纪念日当天免费入场。博物馆收藏了约 30 万册漫画，喜欢漫画的游客可以趁免费日去看看。</p></div><div class="news-item"><h4>京都红叶渐红：南禅寺、永观堂进入最佳观赏期 <span class="from">来源：<a href="https://kyotopi.jp/articles/yrX13" target="_blank" rel="noopener noreferrer">Kyotopi</a>（需翻墙），11月9日</span></h4><p>京都红叶渐红，南禅寺、永观堂进入最佳观赏期。11 月中旬是京都看红叶最好的时候，南禅寺的水路阁和永观堂的夜枫都是经典机位。</p></div></article></div>
+<div class="news-grid"><article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>【回顾】沈阳第五届鸡架美食文化嘉年华开幕 <span class="from">来源：9月13日</span></h4><p>嘉年华在皇姑区塔湾兴顺国际夜市启幕，由市文旅局、市商务局、皇姑区政府指导，设置百人"课堂偷吃大赛"、自助烧烤、大胃王挑战赛等项目。沈阳鸡架五年打造成文旅 IP，累计线下客流超 60 万人次，这次主打夜间消费场景，晚上想吃点热乎的可以去逛逛。（来源：<a href="https://liaon.ifeng.com/c/8wM7HEYNdig" target="_blank" rel="noopener noreferrer">凤凰网辽宁</a>，9月13日）</p></div><div class="news-item"><h4>辽宁借进博会集中签约，医疗、农食、大宗商品是重点 <span class="from">来源：<a href="https://ln.cri.cn/n/20261108/4f094c50-d85f-494e-9701-15fa6c11ef6c.html" target="_blank" rel="noopener noreferrer">国际在线</a>，11月8日</span></h4><p>第九届进博会期间，辽宁多家重点采购企业与多个国家及港澳台地区合作商集中签约。嘉里粮油（营口）达成重点采购合作意向；荣信汇科签约新能源电力电工装备，孔雀表业、辽宁蜂巢推进宝石、美妆日化合作，中国医大附属盛京医院完成药品签约，沈阳腾翔科技意向采购特种作业机器人。辽宁用进博窗口对接全球资源，订单落到了医疗、食品和高端装备这些实处。</p></div><div class="news-item"><h4>大连英博夺得 2026 赛季中超冠军</h4><p>——详见“体育速递·足球”一节。</p></div></article><article class="news-col"><h3>鞍山</h3><p class="col-note">说明：近 1~2 天内鞍山本地新闻较少，以下为本周内较新的消息，均已注明日期。</p><div class="news-item"><h4>【回顾】鞍山姑娘李雯雯亚运夺冠，补齐职业生涯大满贯 <span class="from">来源：9月30日</span></h4><p>9 月 29 日，2026 年爱知·名古屋亚运会举重女子 86 公斤以上级比赛，鞍山名将李雯雯以抓举 140 公斤、总成绩 310 公斤夺冠，并刷新两项亚运会纪录。这是她职业生涯首枚亚运会金牌，此前她已拿过奥运、世锦赛冠军，这次终于圆满实现大满贯，家乡全城喝彩。（来源：<a href="https://www.sport.gov.cn/n20001280/n20745751/c30085391/content.html" target="_blank" rel="noopener noreferrer">国家体育总局</a>，9月30日）</p></div><div class="news-item"><h4>鞍钢股份申请低镍合金钢卷板相关专利 <span class="from">来源：<a href="https://finance.sina.com.cn/stock/aigc/zl/2026-11-04/doc-inixprpa6182443.shtml" target="_blank" rel="noopener noreferrer">新浪财经</a>，11月4日</span></h4><p>国家知识产权局信息显示，鞍钢股份申请一项"低镍系合金钢热轧卷板氧化铁皮的全流程控制方法"专利，申请公布日为 11 月 3 日。三季度鞍钢股份营收 698.66 亿元，但净利润 -39.45 亿元，在行业可比企业中垫底，专利和新品是钢企降本增效的出路之一。</p></div><div class="news-item"><h4>东北三省十一校科研协作体年会在鞍山一中召开 <span class="from">来源：<a href="https://feng.ifeng.com/c/8xkeyzDmVX2" target="_blank" rel="noopener noreferrer">凤凰网</a>，11月3日</span></h4><p>来自黑、吉、辽三省 11 所重点高中的校领导、科研负责人齐聚鞍山一中，围绕"'双减'政策下校本研修的提质增效策略与路径"研讨。这个协作体已有 33 年历史，由辽宁省实验中学、鞍山一中、东北师大附中和哈师大附中发起，第 34 届年会将由东北师大附中承办。</p></div></article><article class="news-col"><h3>卡尔加里（当地 11月7~8日）</h3><div class="news-item"><h4>火焰队后卫巴尔赛季报销：跟腱断裂，将接受手术 <span class="from">来源：<a href="https://www.nhl.com/news/nhl-status-report-news-and-notes-november-8-2026" target="_blank" rel="noopener noreferrer">NHL 官网</a>（需翻墙），11月8日</span></h4><p>卡尔加里火焰队宣布，后卫凯文·巴尔（Kevin Bahl）跟腱断裂，将接受赛季报销的手术。他是在上周五对安纳海姆鸭队赛前场外热身时受伤的。巴尔本赛季场均上场 21 分 56 秒，全队最高，去年夏天刚签下 6 年 3210 万美元合同。球队已从 AHL 召回后卫布雷登·帕查尔补缺。（当晚比赛结果见“体育速递·卡尔加里火焰队”）</p></div><div class="news-item"><h4>第 113 届 Grey Cup 决赛对阵出炉：埃德蒙顿麋鹿 vs 蒙特利尔云雀 <span class="from">来源：<a href="https://www.thescore.com/cfl/news/3648402/elks-alouettes-will-meet-in-113-th-grey-cup" target="_blank" rel="noopener noreferrer">theScore</a>（需翻墙），11月8日</span></h4><p>CFL 分区决赛：蒙特利尔云雀 33-23 击败温尼伯蓝色轰炸机，埃德蒙顿麋鹿 28-16 战胜 BC 雄狮，两队将于 11 月 15 日在卡尔加里 McMahon 体育场争夺第 113 届 Grey Cup。这是两队历史上第 12 次在 Grey Cup 相遇，上一次还是 2005 年的加时经典。卡尔加里下周末要热闹了。</p></div><div class="news-item"><h4>阿省政治周报：选区重划与联邦预算 <span class="from">来源：<a href="https://app.cyberimpact.com/newsletter-view-online?ct=6J9sjNZn7wXXJ02x-vqRAEJe13M7uIRnKjZWSw6l4P2XsikhSk5tCYcmCL3f8u8XNtWWjqS-_h6qLvTqC-bFWT2pi23R3FM3fQzYZfbDof6mziqbeFaIZHbkuDA8yM3x" target="_blank" rel="noopener noreferrer">Forward Weekly</a>（需翻墙），11月8日</span></h4><p>本周阿省政坛：省长史密斯推动的新选区边界图被指“杰利蝾螈”，按 2023 年选举结果测算会稀释 NDP 票仓；2026 年联邦预算出炉，卡尔加里市长法卡斯指出预算中几乎没有卡尔加里的基建资金，城市“几乎完全缺席”。（学费上限法案见“民生”一节。）</p></div><div class="news-item"><h4>火焰队召回后卫帕查尔，应对防线伤病潮 <span class="from">来源：<a href="https://wire.report/article/flames-recall-defenceman-brayden-pachal-from-ahl-calgary-wranglers-2026-11-08" target="_blank" rel="noopener noreferrer">Wire Report</a>（需翻墙），11月8日</span></h4><p>随着巴尔赛季报销，火焰队周日宣布从 AHL 卡尔加里牧马人队召回后卫布雷登·帕查尔，增加防线深度（伤情详见本节第 1 条）。球队近 10 场 6 胜 3 负 1 加时负，状态正在回升，但防线伤病是接下来一周最大的考验。</p></div></article><article class="news-col"><h3>海斯（当地 11月8日）</h3><div class="news-item"><h4>星条旗早餐会助力埃利斯县退伍军人联盟，迎接退伍军人节 <span class="from">来源：<a href="https://www.facebook.com/munsch.bob/posts/pfbid02QPGmLwfCJcmFLPJHFCYew9WEBf5t85E5EXHZogj6WmgLxgLj8FHJzEvLenB98EZ6l" target="_blank" rel="noopener noreferrer">VFW 9076 分会</a>（需翻墙），11月8日</span></h4><p>退伍军人协会 VFW 9076 分会举办星条旗早餐会，为埃利斯县退伍军人联盟筹款，迎接退伍军人节。11 月 11 日退伍军人节纪念活动详情见"今日活动预告"第 5 条。</p></div></article><article class="news-col"><h3>京都（11月9日）</h3><div class="news-item"><h4>和束町举行茶节，宇治茶产区迎来秋天 <span class="from">来源：<a href="https://news.web.nhk/newsweb/na/nd-20261109de72666" target="_blank" rel="noopener noreferrer">NHK</a>（需翻墙），11月9日</span></h4><p>京都府和束町举行茶节。和束是宇治茶的产区，茶节期间有采茶、制茶体验和茶席活动，秋天去宇治喝茶正当时。</p></div><div class="news-item"><h4>京都国际漫画博物馆 20 周年活动正式公布，11 月 25 日免费入场 <span class="from">来源：<a href="https://www.city.kyoto.lg.jp/sankan/page/0000359939.html" target="_blank" rel="noopener noreferrer">京都市</a>（需翻墙），11月9日</span></h4><p>京都国际漫画博物馆 20 周年纪念活动正式公布，11 月 25 日开馆纪念日当天免费入场。博物馆收藏了约 30 万册漫画，喜欢漫画的游客可以趁免费日去看看。</p></div><div class="news-item"><h4>京都红叶渐红：南禅寺、永观堂进入最佳观赏期 <span class="from">来源：<a href="https://kyotopi.jp/articles/yrX13" target="_blank" rel="noopener noreferrer">Kyotopi</a>（需翻墙），11月9日</span></h4><p>京都红叶渐红，南禅寺、永观堂进入最佳观赏期。11 月中旬是京都看红叶最好的时候，南禅寺的水路阁和永观堂的夜枫都是经典机位。</p></div></article></div>
 </section>
 <!-- 民生 -->
 <section class="blk" id="s-livelihood">
 <div class="blk-head"><span class="no">其三</span><h2>民生</h2></div>
-<div class="news-grid"><article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>辽宁降雪过后气温下降，9 日早晨山区最低 -15°C <span class="from">来源：<a href="https://finance.sina.com.cn/wm/2026-11-06/doc-inixuywu8762505.shtml" target="_blank" rel="noopener noreferrer">新浪财经</a>，11月6日</span></h4><p>辽宁省气象局 11 月 6 日发布重大气象信息专报，降雪过后西部地区气温下降 4~8°C，9 日早晨东西部山区最低 -15~-10°C。雪后路滑、气温骤降，出行注意道路结冰。</p></div></article><article class="news-col"><h3>鞍山</h3><div class="news-item"><h4>今天是全国消防日，鞍山消防宣传月正在进行 <span class="from">来源：<a href="https://feng.ifeng.com/c/8xknOob0fed" target="_blank" rel="noopener noreferrer">凤凰网</a>，11月3日</span></h4><p>11 月 9 日是第 35 个全国消防日，今年宣传月主题是“全民消防、生命至上，提高自防自救能力”。鞍山消防介绍，全市 95 个乡镇（街道）消防工作站已全部建成投用，今年以来累计防火巡查 5377 次、整改火灾隐患 10438 处，新建城市小型站 13 个。入冬后用火用电多，家里插线板、取暖器、电动车充电都检查一遍，别留隐患。</p></div></article><article class="news-col"><h3>卡尔加里（当地 11月7~8日）</h3><div class="news-item"><h4>阿省拟取消大学学费每年 2% 的涨幅上限 <span class="from">来源：<a href="https://app.cyberimpact.com/newsletter-view-online?ct=6J9sjNZn7wXXJ02x-vqRAEJe13M7uIRnKjZWSw6l4P2XsikhSk5tCYcmCL3f8u8XNtWWjqS-_h6qLvTqC-bFWT2pi23R3FM3fQzYZfbDof6mziqbeFaIZHbkuDA8yM3x" target="_blank" rel="noopener noreferrer">Forward Weekly</a>（需翻墙），11月8日</span></h4><p>执政党 UCP 提出法案，拟取消大学学费每年 2% 的涨幅上限，并限制高校就政治议题表态。留学生和本地居民都值得留意。</p></div></article><article class="news-col"><h3>海斯（当地 11月8日）</h3><div class="news-item"><h4>市公共工程设施 Vine 街入口 11 月 9 日起关闭约两周 <span class="from">来源：<a href="https://www.facebook.com/reel/1157695333449359/" target="_blank" rel="noopener noreferrer">Hays Post / Hays311</a>（需翻墙），11月8日</span></h4><p>海斯市公共工程设施的 Vine 街入口从 11 月 9 日起关闭约两周，进行道路维护。开车经过那边的居民留意绕行，提前规划路线。</p></div></article><article class="news-col"><h3>京都</h3><p class="col-note">今日无相关民生消息。</p></article></div><div class="prices"><h3>菜价 / 肉蛋奶价格</h3><p class="p-note">沈阳、鞍山当日当地零售价未查到，以下为农业农村部 11 月 6 日全国农产品批发市场均价；卡尔加里为 2026 年 11 月本地超市均价，10 月 31 日更新；海斯为 2026 年 10 月本地均价；京都为 2026 年 10 月上旬批发价；大米、小麦价格来源见各城条目内注明（京都未查到）。汇率按 11 月 6 日人民币中间价：1 美元 = 6.7168 元，1 加元 = 4.7782 元，100 日元 = 4.2534 元。</p><ul><li><b>沈阳</b>：猪肉 15.05 元/公斤（约 7.53 元/斤）、鸡蛋 9.49 元/公斤（约 4.75 元/斤）、28 种蔬菜均价 4.02 元/公斤（约 2.01 元/斤）、鲫鱼 19.04 元/公斤、鲤鱼 13.90 元/公斤；大米 5.77 元/公斤（约 2.89 元/斤）、面粉（小麦）3.15 元/公斤（约 1.58 元/斤）（北京新发地 11 月 6 日批发价，农业农村部信息中心）；牛奶未查到当日价格。2025 年沈阳城镇居民人均可支配收入 58,297 元/年（国家统计局沈阳调查队），折月均约 4,858 元；1 斤猪肉（批发价约 7.53 元）约占月均可支配收入的 0.16%，1 斤大米约 2.89 元约占 0.06%，1 斤面粉约 1.58 元约占 0.03%。</li><li><b>鞍山</b>：同上全国批发均价（鞍山当日当地零售价未查到）；大米 5.77 元/公斤（约 2.89 元/斤）、面粉（小麦）3.15 元/公斤（约 1.58 元/斤）（北京新发地 11 月 6 日批发价，农业农村部信息中心）；牛奶未查到当日价格。2025 年鞍山城镇居民人均可支配收入 47,102 元/年（鞍山市统计局数据），折月均约 3,925 元；1 斤猪肉（批发价约 7.53 元）约占月均可支配收入的 0.19%，1 斤大米约 2.89 元约占 0.07%，1 斤面粉约 1.58 元约占 0.04%。</li><li><b>卡尔加里</b>：牛奶 3.75 加元/升（约 17.92 元）、鸡蛋 5.36 加元/12 个（约 25.61 元）、鸡胸肉 20.06 加元/公斤（约 95.85 元）、牛肉 28.09 加元/公斤（约 134.22 元）、西红柿 7.40 加元/公斤（约 35.36 元）、土豆 4.22 加元/公斤（约 20.16 元）（livingcost.net 卡尔加里 2026 年 11 月超市均价）；大米 4.47 加元/磅（约 9.85 加元/公斤，约 47.07 元/公斤）（livingcost.net 2026 年 11 月）、面粉（小麦）5.99 加元/2.5 公斤（约 2.40 加元/公斤，约 11.45 元/公斤）（Real Canadian Superstore 在售价，11 月；卡尔加里 No Frills 同价，11 月 7 日）；鱼未查到当日价格。阿尔伯塔省平均周薪 1,404.59 加元（2026 年 8 月，加拿大统计局月度薪资调查），折月均约 6,087 加元（约 29,085 元）；1 公斤牛肉约 28.09 加元，约占月均工资的 0.46%，1 公斤大米约 9.85 加元约占 0.16%，1 公斤面粉约 2.40 加元约占 0.04%。</li><li><b>海斯</b>：牛奶 0.83 美元/升（约 5.57 元）、鸡蛋 2.05 美元/12 个（约 13.77 元）、牛肉（圆牛排）13.30 美元/公斤（约 89.33 元）（citycost.org 海斯 2026 年 10 月均价）；大米 4.41 美元/公斤（约 29.62 元）（Numbeo 海斯，2026 年 10 月 2 日更新）、面粉（小麦）0.55 美元/磅（约 1.20 美元/公斤，约 8.07 元/公斤）（美国全国均价，BLS 2026 年 9 月；海斯本地面粉价未查到）；蔬菜、鱼、鸡肉未查到当日价格。海斯市家庭收入中位数 58,459 美元/年（2020–2024 年美国社区调查，美国人口普查局），折月均约 4,872 美元（约 32,722 元）；1 公斤牛肉约 13.30 美元，约占家庭月收入中位数的 0.27%，1 公斤大米约 4.41 美元约占 0.09%，1 公斤面粉约 1.20 美元约占 0.02%。</li><li><b>京都</b>：白菜 151 日元/公斤（约 6.42 元）、黄瓜 525 日元/公斤（约 22.33 元）（京都市中央批发市场 2026 年 10 月上旬旬均价，农林水产省旬别调查，11 月最近可查）；西红柿、土豆、鱼、肉、蛋、奶未查到当日价格；大米、小麦（面粉）价格未查到。京都府平均月给 36.7 万日元（2025 年，厚生劳动省“賃金構造基本統計調査”，一般劳动者），折合人民币约 15,610 元；1 公斤黄瓜约 525 日元，约占月均工资的 0.14%（大米、小麦未查到，无法比较）。</li></ul></div>
+<div class="news-grid"><article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>辽宁降雪过后气温下降，9 日早晨山区最低 -15°C <span class="from">来源：<a href="https://finance.sina.com.cn/wm/2026-11-06/doc-inixuywu8762505.shtml" target="_blank" rel="noopener noreferrer">新浪财经</a>，11月6日</span></h4><p>辽宁省气象局 11 月 6 日发布重大气象信息专报，降雪过后西部地区气温下降 4~8°C，9 日早晨东西部山区最低 -15~-10°C。雪后路滑、气温骤降，出行注意道路结冰。</p></div></article><article class="news-col"><h3>鞍山</h3><div class="news-item"><h4>鞍山消防宣传月：95 个消防工作站全部建成投用 <span class="from">来源：<a href="https://feng.ifeng.com/c/8xknOob0fed" target="_blank" rel="noopener noreferrer">凤凰网</a>，11月3日</span></h4><p>今年宣传月主题是“全民消防、生命至上，提高自防自救能力”。鞍山消防介绍，全市 95 个乡镇（街道）消防工作站已全部建成投用，今年以来累计防火巡查 5377 次、整改火灾隐患 10438 处，新建城市小型站 13 个。入冬后用火用电多，家里插线板、取暖器、电动车充电都检查一遍，别留隐患。（消防日活动见“今日活动预告”第 4 条）</p></div></article><article class="news-col"><h3>卡尔加里（当地 11月7~8日）</h3><div class="news-item"><h4>阿省拟取消大学学费每年 2% 的涨幅上限 <span class="from">来源：<a href="https://app.cyberimpact.com/newsletter-view-online?ct=6J9sjNZn7wXXJ02x-vqRAEJe13M7uIRnKjZWSw6l4P2XsikhSk5tCYcmCL3f8u8XNtWWjqS-_h6qLvTqC-bFWT2pi23R3FM3fQzYZfbDof6mziqbeFaIZHbkuDA8yM3x" target="_blank" rel="noopener noreferrer">Forward Weekly</a>（需翻墙），11月8日</span></h4><p>执政党 UCP 提出法案，拟取消大学学费每年 2% 的涨幅上限，并限制高校就政治议题表态。留学生和本地居民都值得留意。</p></div></article><article class="news-col"><h3>海斯（当地 11月8日）</h3><div class="news-item"><h4>市公共工程设施 Vine 街入口 11 月 9 日起关闭约两周 <span class="from">来源：<a href="https://www.facebook.com/reel/1157695333449359/" target="_blank" rel="noopener noreferrer">Hays Post / Hays311</a>（需翻墙），11月8日</span></h4><p>海斯市公共工程设施的 Vine 街入口从 11 月 9 日起关闭约两周，进行道路维护。开车经过那边的居民留意绕行，提前规划路线。</p></div></article><article class="news-col"><h3>京都</h3><p class="col-note">今日无相关民生消息。</p></article></div><div class="prices"><h3>本周菜价 / 肉蛋奶价格</h3><p class="p-note">沈阳、鞍山当日当地零售价未查到，以下为农业农村部 11 月 6 日全国农产品批发市场均价；卡尔加里为 2026 年 11 月本地超市均价，10 月 31 日更新；海斯为 2026 年 10 月本地均价；京都为 2026 年 10 月上旬批发价；大米、小麦价格来源见各城条目内注明（京都未查到）。汇率按 11 月 6 日人民币中间价：1 美元 = 6.7168 元，1 加元 = 4.7782 元，100 日元 = 4.2534 元。</p><h4>沈阳</h4><table class="price-table"><thead><tr><th>品类</th><th>本地价</th><th>约合人民币</th></tr></thead><tbody><tr><td>猪肉</td><td>15.05 元/公斤</td><td>约 7.53 元/斤</td></tr><tr><td>鸡蛋</td><td>9.49 元/公斤</td><td>约 4.75 元/斤</td></tr><tr><td>28 种蔬菜均价</td><td>4.02 元/公斤</td><td>约 2.01 元/斤</td></tr><tr><td>鲫鱼</td><td>19.04 元/公斤</td><td>—</td></tr><tr><td>鲤鱼</td><td>13.90 元/公斤</td><td>—</td></tr><tr><td>大米</td><td>5.77 元/公斤</td><td>约 2.89 元/斤</td></tr><tr><td>面粉（小麦）</td><td>3.15 元/公斤</td><td>约 1.58 元/斤</td></tr><tr><td>牛奶</td><td>未查到当日价格</td><td>—</td></tr></tbody></table><p class="p-src">大米、面粉为北京新发地 11 月 6 日批发价，农业农村部信息中心。</p><p class="p-wage"><b>对照</b>：2025 年沈阳城镇居民人均可支配收入 58,297 元/年（国家统计局沈阳调查队），折月均约 4,858 元；1 斤猪肉（批发价约 7.53 元）约占月均可支配收入的 0.16%，1 斤大米约 2.89 元约占 0.06%，1 斤面粉约 1.58 元约占 0.03%。</p><h4>鞍山</h4><table class="price-table"><thead><tr><th>品类</th><th>本地价</th><th>约合人民币</th></tr></thead><tbody><tr><td>猪肉</td><td>15.05 元/公斤</td><td>约 7.53 元/斤</td></tr><tr><td>鸡蛋</td><td>9.49 元/公斤</td><td>约 4.75 元/斤</td></tr><tr><td>28 种蔬菜均价</td><td>4.02 元/公斤</td><td>约 2.01 元/斤</td></tr><tr><td>鲫鱼</td><td>19.04 元/公斤</td><td>—</td></tr><tr><td>鲤鱼</td><td>13.90 元/公斤</td><td>—</td></tr><tr><td>大米</td><td>5.77 元/公斤</td><td>约 2.89 元/斤</td></tr><tr><td>面粉（小麦）</td><td>3.15 元/公斤</td><td>约 1.58 元/斤</td></tr><tr><td>牛奶</td><td>未查到当日价格</td><td>—</td></tr></tbody></table><p class="p-src">同上全国批发均价（鞍山当日当地零售价未查到）；大米、面粉为北京新发地 11 月 6 日批发价，农业农村部信息中心。</p><p class="p-wage"><b>对照</b>：2025 年鞍山城镇居民人均可支配收入 47,102 元/年（鞍山市统计局数据），折月均约 3,925 元；1 斤猪肉（批发价约 7.53 元）约占月均可支配收入的 0.19%，1 斤大米约 2.89 元约占 0.07%，1 斤面粉约 1.58 元约占 0.04%。</p><h4>卡尔加里</h4><table class="price-table"><thead><tr><th>品类</th><th>本地价</th><th>约合人民币</th></tr></thead><tbody><tr><td>牛奶</td><td>3.75 加元/升</td><td>约 17.92 元</td></tr><tr><td>鸡蛋</td><td>5.36 加元/12 个</td><td>约 25.61 元</td></tr><tr><td>鸡胸肉</td><td>20.06 加元/公斤</td><td>约 95.85 元</td></tr><tr><td>牛肉</td><td>28.09 加元/公斤</td><td>约 134.22 元</td></tr><tr><td>西红柿</td><td>7.40 加元/公斤</td><td>约 35.36 元</td></tr><tr><td>土豆</td><td>4.22 加元/公斤</td><td>约 20.16 元</td></tr><tr><td>大米</td><td>4.47 加元/磅（约 9.85 加元/公斤）</td><td>约 47.07 元/公斤</td></tr><tr><td>面粉（小麦）</td><td>5.99 加元/2.5 公斤（约 2.40 加元/公斤）</td><td>约 11.45 元/公斤</td></tr><tr><td>鱼</td><td>未查到当日价格</td><td>—</td></tr></tbody></table><p class="p-src">livingcost.net 卡尔加里 2026 年 11 月超市均价；大米为 livingcost.net 2026 年 11 月数据；面粉为 Real Canadian Superstore 在售价，11 月（卡尔加里 No Frills 同价，11 月 7 日）。</p><p class="p-wage"><b>对照</b>：阿尔伯塔省平均周薪 1,404.59 加元（2026 年 8 月，加拿大统计局月度薪资调查），折月均约 6,087 加元（约 29,085 元）；1 公斤牛肉约 28.09 加元，约占月均工资的 0.46%，1 公斤大米约 9.85 加元约占 0.16%，1 公斤面粉约 2.40 加元约占 0.04%。</p><h4>海斯</h4><table class="price-table"><thead><tr><th>品类</th><th>本地价</th><th>约合人民币</th></tr></thead><tbody><tr><td>牛奶</td><td>0.83 美元/升</td><td>约 5.57 元</td></tr><tr><td>鸡蛋</td><td>2.05 美元/12 个</td><td>约 13.77 元</td></tr><tr><td>牛肉（圆牛排）</td><td>13.30 美元/公斤</td><td>约 89.33 元</td></tr><tr><td>大米</td><td>4.41 美元/公斤</td><td>约 29.62 元</td></tr><tr><td>面粉（小麦）</td><td>0.55 美元/磅（约 1.20 美元/公斤）</td><td>约 8.07 元/公斤</td></tr><tr><td>蔬菜、鱼、鸡肉</td><td>未查到当日价格</td><td>—</td></tr></tbody></table><p class="p-src">citycost.org 海斯 2026 年 10 月均价；大米为 Numbeo 海斯，2026 年 10 月 2 日更新；面粉为美国全国均价，BLS 2026 年 9 月（海斯本地面粉价未查到）。</p><p class="p-wage"><b>对照</b>：海斯市家庭收入中位数 58,459 美元/年（2020–2024 年美国社区调查，美国人口普查局），折月均约 4,872 美元（约 32,722 元）；1 公斤牛肉约 13.30 美元，约占家庭月收入中位数的 0.27%，1 公斤大米约 4.41 美元约占 0.09%，1 公斤面粉约 1.20 美元约占 0.02%。</p><h4>京都</h4><table class="price-table"><thead><tr><th>品类</th><th>本地价</th><th>约合人民币</th></tr></thead><tbody><tr><td>白菜</td><td>151 日元/公斤</td><td>约 6.42 元</td></tr><tr><td>黄瓜</td><td>525 日元/公斤</td><td>约 22.33 元</td></tr><tr><td>西红柿、土豆、鱼、肉、蛋、奶</td><td>未查到当日价格</td><td>—</td></tr><tr><td>大米、小麦（面粉）</td><td>未查到</td><td>—</td></tr></tbody></table><p class="p-src">京都市中央批发市场 2026 年 10 月上旬旬均价，农林水产省旬别调查，11 月最近可查。</p><p class="p-wage"><b>对照</b>：京都府平均月给 36.7 万日元（2025 年，厚生劳动省“賃金構造基本統計調査”，一般劳动者），折合人民币约 15,610 元；1 公斤黄瓜约 525 日元，约占月均工资的 0.14%（大米、小麦未查到，无法比较）。</p></div>
 </section>
 <!-- 今日要闻 -->
 <section class="blk" id="s-headlines">
@@ -1114,11 +1137,11 @@
 </section>
 <section class="blk" id="s-highlights">
 <div class="blk-head"><span class="no">其五</span><h2>今日看点</h2></div>
-<div class="hl-grid"><article class="hl"><h3>抖音热搜（今日，官方接口读取失败，改用搜索汇总）</h3><ol><li><b>黄仁勋承认出轨，英伟达董事会启动独立调查</b>——详见“娱乐圈八卦”第 1 条。</li><li><b>AI 漫剧《非妖哉》爆火，单集获 306 万赞</b>—— AI 漫剧正在成为短视频的新流量密码，《非妖哉》单集点赞破 300 万，登上百度热搜和必应热点。结合今天 AI 板块的消息看，AI 做内容已经从"能看"走向"爆款"，值得一看。（来源：<a href="https://www.redianba.com/daily" target="_blank" rel="noopener noreferrer">热点吧·全网热搜汇总</a>，11月9日）</li><li><b>"喜欢吃烤红薯的人天塌了"冲上热搜</b>—— 天一冷烤红薯摊就火了，有博主发视频称街边烤红薯"老远闻着香、吃着却不甜"，可能是香精泡过，话题迅速冲上热搜。冬天最后一点快乐到底能不能保住，评论区吵翻了天，值得一看。（来源：<a href="https://finance.sina.cn/2026-11-07/detail-inixwhsn5194812.d.html" target="_blank" rel="noopener noreferrer">新浪财经</a>，11月7日）</li></ol></article><article class="hl"><h3>推特热搜（华语地区）</h3><ol><li><b>台湾趋势榜首是 #BBFanFest2026inKaohsiung</b>—— 高雄粉丝见面会相关话题登顶台湾 X 趋势榜，同榜还有 #FreenVelvetDreamLucid 等饭圈话题，说明今天台湾 X 圈的热度集中在娱乐活动上。（来源：<a href="https://www.trendingsoup.com/xtrends/tw" target="_blank" rel="noopener noreferrer">TrendingSoup 台湾 X 趋势</a>（需翻墙），截至 11 月 8 日 15:38 UTC）</li><li><b>黄仁勋道歉信在华语区刷屏</b>——详见“娱乐圈八卦”第 1 条。</li><li><b>马斯克突爆孙正义猛料</b>—— 微博热搜显示，"马斯克称软银涡轮机订单违约"等话题今日多次上榜，马斯克与孙正义之间的爆料往来成了科技圈吃瓜新素材，值得一看。（来源：<a href="https://whatshot.top/news/weibo/today" target="_blank" rel="noopener noreferrer">什么火了·微博热榜</a>，11月9日）</li></ol></article><article class="hl"><h3>全球 AI 热点资讯（11月9日）</h3><ol><li><b>Thinking Machines 发布小模型 Inkling 2 Small</b>—— Mira Murati 的新公司 Thinking Machines 11 月 5 日推出小模型 Inkling 2 Small，在中国境外公开权重模型中得分最高、价格更低。小模型开始拼性价比，AI 落地成本有望继续下降，值得一看。（来源：<a href="https://kimkj.com/daily-briefing/?mod=document&amp;uid=21185" target="_blank" rel="noopener noreferrer">全球 AI 简报 kimkj.com</a>（需翻墙），11月9日）</li><li><b>Anthropic 给 Claude 接上银行账户：推出"个人金融"功能</b>—— 11 月 5 日，Anthropic 为美国付费用户推出 Claude 个人金融功能，通过 Plaid 连接最多 16 个银行、信用卡、贷款和投资账户，可以问它自己的支出情况（只读，不能转钱）。AI 助手正在从"聊天"走向"管钱"，值得一看。（来源：<a href="https://kimkj.com/daily-briefing/?mod=document&amp;uid=21185" target="_blank" rel="noopener noreferrer">全球 AI 简报 kimkj.com</a>（需翻墙），11月9日）</li><li><b>智元机器人第 1 万台个人用人形机器人下线，阿里 Qwen4 即将发布</b>—— 智元机器人 11 月 8 日迎来第 1 万台个人用人形机器人下线；阿里巴巴下一代大模型 Qwen4 系列（Max、Plus、Flash、27B 端侧版）也即将公开。中国 AI 在机器人和大模型两条线同时加速，值得一看。（来源：<a href="https://kimkj.com/daily-briefing/?mod=document&amp;uid=21185" target="_blank" rel="noopener noreferrer">全球 AI 简报 kimkj.com</a>（需翻墙），11月9日）</li></ol></article></div>
+<div class="hl-grid"><article class="hl"><h3>抖音热搜（今日，据当日搜索汇总）</h3><ol><li><b>黄仁勋承认出轨，英伟达董事会启动独立调查</b>——详见“娱乐圈八卦”第 1 条。</li><li><b>AI 漫剧《非妖哉》爆火，单集获 306 万赞</b>—— AI 漫剧正在成为短视频的新流量密码，《非妖哉》单集点赞破 300 万，登上百度热搜和必应热点。结合今天 AI 板块的消息看，AI 做内容已经从"能看"走向"爆款"，值得一看。（来源：<a href="https://www.redianba.com/daily" target="_blank" rel="noopener noreferrer">热点吧·全网热搜汇总</a>，11月9日）</li><li><b>"喜欢吃烤红薯的人天塌了"冲上热搜</b>—— 天一冷烤红薯摊就火了，有博主发视频称街边烤红薯"老远闻着香、吃着却不甜"，可能是香精泡过，话题迅速冲上热搜。冬天最后一点快乐到底能不能保住，评论区吵翻了天，值得一看。（来源：<a href="https://finance.sina.cn/2026-11-07/detail-inixwhsn5194812.d.html" target="_blank" rel="noopener noreferrer">新浪财经</a>，11月7日）</li></ol></article><article class="hl"><h3>X 热搜（台湾/华语地区）</h3><ol><li><b>台湾趋势榜首是 #BBFanFest2026inKaohsiung</b>—— 高雄粉丝见面会相关话题登顶台湾 X 趋势榜，同榜还有 #FreenVelvetDreamLucid 等饭圈话题，说明今天台湾 X 圈的热度集中在娱乐活动上。（来源：<a href="https://www.trendingsoup.com/xtrends/tw" target="_blank" rel="noopener noreferrer">TrendingSoup 台湾 X 趋势</a>（需翻墙），截至 11 月 8 日 15:38 UTC）</li><li><b>黄仁勋道歉信在华语区刷屏</b>——详见“娱乐圈八卦”第 1 条。</li><li><b>马斯克突爆孙正义猛料</b>—— 微博热搜显示，"马斯克称软银涡轮机订单违约"等话题今日多次上榜，马斯克与孙正义之间的爆料往来成了科技圈吃瓜新素材，值得一看。（来源：<a href="https://whatshot.top/news/weibo/today" target="_blank" rel="noopener noreferrer">什么火了·微博热榜</a>，11月9日）</li></ol></article><article class="hl"><h3>全球 AI 热点资讯（11月9日）</h3><ol><li><b>Thinking Machines 发布小模型 Inkling 2 Small</b>—— Mira Murati 的新公司 Thinking Machines 11 月 5 日推出小模型 Inkling 2 Small，在中国境外公开权重模型中得分最高、价格更低。小模型开始拼性价比，AI 落地成本有望继续下降，值得一看。（来源：<a href="https://kimkj.com/daily-briefing/?mod=document&amp;uid=21185" target="_blank" rel="noopener noreferrer">全球 AI 简报 kimkj.com</a>（需翻墙），11月9日）</li><li><b>Anthropic 给 Claude 接上银行账户：推出"个人金融"功能</b>—— 11 月 5 日，Anthropic 为美国付费用户推出 Claude 个人金融功能，通过 Plaid 连接最多 16 个银行、信用卡、贷款和投资账户，可以问它自己的支出情况（只读，不能转钱）。AI 助手正在从"聊天"走向"管钱"，值得一看。（来源：<a href="https://kimkj.com/daily-briefing/?mod=document&amp;uid=21185" target="_blank" rel="noopener noreferrer">全球 AI 简报 kimkj.com</a>（需翻墙），11月9日）</li><li><b>智元机器人第 1 万台个人用人形机器人下线，阿里 Qwen4 即将发布</b>—— 智元机器人 11 月 8 日迎来第 1 万台个人用人形机器人下线；阿里巴巴下一代大模型 Qwen4 系列（Max、Plus、Flash、27B 端侧版）也即将公开。中国 AI 在机器人和大模型两条线同时加速，值得一看。（来源：<a href="https://kimkj.com/daily-briefing/?mod=document&amp;uid=21185" target="_blank" rel="noopener noreferrer">全球 AI 简报 kimkj.com</a>（需翻墙），11月9日）</li></ol></article></div>
 </section>
 <section class="blk" id="s-events">
 <div class="blk-head"><span class="no">其六</span><h2>今日活动预告</h2></div>
-<div class="hl"><ol><li><b>金鸡奖颁奖典礼明晚举行</b>——详见"娱乐圈八卦"第 4 条。</li><li><b>COP31 今日开幕</b>（11 月 9–20 日，土耳其安塔利亚）：第 31 届联合国气候变化大会今日在安塔利亚会展中心开幕，聚焦减排、气候融资与适应韧性，11 月 11–12 日举行领导人峰会。（来源：<a href="https://www.trtworld.com/article/80e31443493f/amp" target="_blank" rel="noopener noreferrer">TRT World</a>）</li><li><b>FHSU 女篮主场揭幕战</b>（海斯当地 11 月 9 日 17:30，Gross Memorial Coliseum，北京时间 11 月 10 日上午）：富特海斯州立大学女篮新赛季主场揭幕战对阵塔博学院，球队在 MIAA 季前投票中排名第二。（来源：<a href="https://fhsuathletics.com/news/2026/11/6/mens-basketball-basketball-season-is-here-season-and-single-game-tickets-available.aspx" target="_blank" rel="noopener noreferrer">FHSU 体育部</a>）</li><li><b>第 35 个全国消防日</b>（11 月 9 日，全国）：今年消防日主题为"全民消防、生命至上——提高自防自救能力"，各地消防站向公众开放体验，集中开展疏散自救演练，入冬用火用电多，可顺手检查家中插线板和取暖器。（来源：<a href="https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202610/t20261014_735615.shtml" target="_blank" rel="noopener noreferrer">国家消防救援局</a>）</li><li><b>海斯退伍军人节纪念活动</b>（11 月 11 日，周三）：美国退伍军人节将至，海斯 VFW 9076 分会按传统在 11 月 11 日 11 时举行纪念仪式并设免费自助餐，FHSU 也将于 11 月 11 日 11:00 在 Memorial Union 旁举行年度退伍军人节仪式，公众均可参加。（来源：<a href="http://hayspost.com/posts/055a930c-6de9-419b-a65e-ddab56a2763d" target="_blank" rel="noopener noreferrer">Hays Post</a>、Fort Hays VFW Post 9076）</li></ol></div>
+<div class="hl"><ol><li><b>第 39 届金鸡奖颁奖典礼明晚举行</b>（11 月 10 日晚）：209 部影片报名参评，《南京照相馆》《镖人：风起大漠》以 7 项提名并列领跑（详见"娱乐圈八卦"第 4 条）。</li><li><b>COP31 今日开幕</b>（11 月 9–20 日，土耳其安塔利亚）：第 31 届联合国气候变化大会今日在安塔利亚会展中心开幕，聚焦减排、气候融资与适应韧性，11 月 11–12 日举行领导人峰会。（来源：<a href="https://www.trtworld.com/article/80e31443493f/amp" target="_blank" rel="noopener noreferrer">TRT World</a>）</li><li><b>FHSU 女篮主场揭幕战</b>（海斯当地 11 月 9 日 17:30，Gross Memorial Coliseum，北京时间 11 月 10 日上午）：富特海斯州立大学女篮新赛季主场揭幕战对阵塔博学院，球队在 MIAA 季前投票中排名第二。（来源：<a href="https://fhsuathletics.com/news/2026/11/6/mens-basketball-basketball-season-is-here-season-and-single-game-tickets-available.aspx" target="_blank" rel="noopener noreferrer">FHSU 体育部</a>）</li><li><b>第 35 个全国消防日</b>（11 月 9 日，全国）：今年消防日主题为"全民消防、生命至上——提高自防自救能力"，各地消防站向公众开放体验，集中开展疏散自救演练，入冬用火用电多，可顺手检查家中插线板和取暖器。（来源：<a href="https://www.mem.gov.cn/gk/zfxxgkpt/fdzdgknr/202610/t20261014_735615.shtml" target="_blank" rel="noopener noreferrer">国家消防救援局</a>）</li><li><b>海斯退伍军人节纪念活动</b>（11 月 11 日，周三）：美国退伍军人节将至，海斯 VFW 9076 分会按传统在 11 月 11 日 11 时举行纪念仪式并设免费自助餐，FHSU 也将于 11 月 11 日 11:00 在 Memorial Union 旁举行年度退伍军人节仪式，公众均可参加。（来源：<a href="http://hayspost.com/posts/055a930c-6de9-419b-a65e-ddab56a2763d" target="_blank" rel="noopener noreferrer">Hays Post</a>、Fort Hays VFW Post 9076）</li></ol></div>
 </section>
 <section class="blk" id="s-finance">
 <div class="blk-head"><span class="no">其七</span><h2>金融市场早报</h2></div>
@@ -1132,9 +1155,9 @@
 </section>
 <section class="blk" id="s-sports">
 <div class="blk-head"><span class="no">其八</span><h2>体育速递</h2></div>
-<article class="sport"><h3>NBA（11月8日，美国当地周日；北京时间 11月9日上午）</h3><ul><li><b>湖人 vs 活塞（进行中）</b>：比赛于北京时间今晨 06:00 在底特律开打，半场结束时湖人 61-48 领先活塞，首节湖人 38-14 打出高潮。比赛尚未结束，最终比分以完赛后为准。（来源：<a href="https://sportradar.com/?q=4223886910262397964" target="_blank" rel="noopener noreferrer">Sportradar 直播页</a>（需翻墙））</li><li><b>周日其余场次</b>：公牛 vs 76 人、独行侠 vs 篮网等场次在北京时间今晨陆续开打，写稿时赛果尚未确认，不写比分。</li><li><b>上一比赛日回顾</b>：11 月 7 日（美国当地周六），勇士加时 126-119 胜魔术，库里 41 分率队七连胜；马刺 125-103 胜开拓者，文班亚马 29 分，杨瀚森 12 分 10 篮板生涯首个两双；尼克斯 109-97 胜骑士。详见昨日简报。</li></ul></article>
-<article class="sport"><h3>足球</h3><ul><li><b>英超（11月8日，欧洲当地）</b>：曼联 4-4 战平阿斯顿维拉。老特拉福德上演进球大战，两队合进 8 球握手言和，曼联主场没能拿下三分，维拉客场抢到宝贵一分。（来源：<a href="https://sportradar.com/?q=2187463355060193733" target="_blank" rel="noopener noreferrer">Sportradar</a>（需翻墙）、微博热搜“曼联 4 比 4 阿斯顿维拉”）</li><li><b>西甲（11月8日，欧洲当地）</b>：马德里竞技 1-2 巴塞罗那。朱利安诺·西蒙尼第 10 分钟为主队先拔头筹，费尔明·洛佩斯第 45 分钟扳平、第 66 分钟接亚马尔助攻完成梅开二度，巴萨客场逆转取胜。积分榜上巴萨 33 分继续领跑，领先皇马 3 分，马竞 28 分排第三；下一轮巴萨主场对黄潜，马竞客场对赫塔费。（来源：<a href="https://www.gmx.ch/magazine/sport/fussball/international/flicks-fc-barcelona-gewinnt-topspiel-madrid-42925614" target="_blank" rel="noopener noreferrer">GMX 体育</a>（需翻墙）、<a href="https://www.cybersport.ru/tags/football/barselona-spravilas-s-atletiko-madrid-v-chempionate-ispanii-po-futbolu" target="_blank" rel="noopener noreferrer">Cybersport.ru</a>（需翻墙））</li><li><b>中超收官（11月8日）</b>：大连英博 3-1 天津津门虎夺冠，山东泰山 3-2 成都蓉城，上海海港 6-1 辽宁铁人。详见“五城近期新闻”沈阳第 3 条。</li></ul></article>
-<article class="sport"><h3>卡尔加里火焰队</h3><ul><li><b>今晚（卡尔加里当地 11月8日周日 18:00）</b>：主场迎战费城飞人，“冰球抗癌之夜”。写稿时（北京时间 08:10，卡尔加里 18:10）比赛刚刚开打，比分尚未产生，以完赛后为准。门将德文·库利伤愈复出，预计首发。</li><li><b>上一场（卡尔加里当地 11月6日周五）</b>：主场 3-5 不敌安纳海姆鸭队，终结五连胜。鸭队高 tier 在终场前 1 分 34 秒打入制胜球，火焰队法拉比、斯特罗姆格伦、汉利各入一球，战绩 7 胜 9 负 1 加时负。</li><li><b>伤病</b>：后卫凯文·巴尔跟腱断裂、赛季报销（详见“五城近期新闻”卡尔加里第 1 条）；球队已召回帕查尔补缺。接下来一周是季末主场比赛与青年球员证明自己的关键期。（来源：<a href="https://www.nhl.com/flames/news/5-things-flames-vs-flyers-08-11-26" target="_blank" rel="noopener noreferrer">NHL 官网</a>（需翻墙）、<a href="https://thehockeywriters.com/flames-week-ahead-schedule-storylines-bahl-injury-goaltending-youth-talent-and-more/" target="_blank" rel="noopener noreferrer">The Hockey Writers</a>（需翻墙））</li></ul></article>
+<article class="sport"><h3>NBA（11月8日，美国当地周日；北京时间 11月9日上午）</h3><ul><li><b>湖人 121-116 胜活塞</b>：湖人客场 121-116 击败活塞。首节湖人 38-14 打出高潮，半场 61-48 领先；东契奇因腰部紧张缺阵，里夫斯砍下 43 分带队取胜，湖人战绩 9 胜 2 负。（来源：<a href="https://www.reuters.com/sports/basketball/austin-reaves-scores-43-with-luka-doncic-out-lakers-detroit--flm-2026-11-09/" target="_blank" rel="noopener noreferrer">Reuters</a>（需翻墙）、<a href="https://www.usatoday.com/story/sports/nba/lakers/2026/11/09/lakers-austin-reaves-luka-doncic-pistons/92686948007/" target="_blank" rel="noopener noreferrer">USA Today</a>（需翻墙））</li><li><b>周日其余场次</b>：公牛 vs 76 人、独行侠 vs 篮网等场次在北京时间今晨陆续开打，写稿时赛果尚未确认，不写比分。</li><li><b>上一比赛日回顾</b>：11 月 7 日（美国当地周六），勇士加时 126-119 胜魔术，库里 41 分率队七连胜；马刺 125-103 胜开拓者，文班亚马 29 分，杨瀚森 12 分 10 篮板生涯首个两双；尼克斯 109-97 胜骑士。详见昨日简报。</li></ul></article>
+<article class="sport"><h3>足球</h3><ul><li><b>英超（11月8日，欧洲当地）</b>：曼联 4-4 战平阿斯顿维拉。老特拉福德上演进球大战，两队合进 8 球握手言和，曼联主场没能拿下三分，维拉客场抢到宝贵一分。（来源：<a href="https://sportradar.com/?q=2187463355060193733" target="_blank" rel="noopener noreferrer">Sportradar</a>（需翻墙）、微博热搜“曼联 4 比 4 阿斯顿维拉”）</li><li><b>西甲（11月8日，欧洲当地）</b>：马德里竞技 1-2 巴塞罗那。朱利安诺·西蒙尼第 10 分钟为主队先拔头筹，费尔明·洛佩斯第 45 分钟扳平、第 66 分钟接亚马尔助攻完成梅开二度，巴萨客场逆转取胜。积分榜上巴萨 33 分继续领跑，领先皇马 3 分，马竞 28 分排第三；下一轮巴萨主场对黄潜，马竞客场对赫塔费。（来源：<a href="https://www.gmx.ch/magazine/sport/fussball/international/flicks-fc-barcelona-gewinnt-topspiel-madrid-42925614" target="_blank" rel="noopener noreferrer">GMX 体育</a>（需翻墙）、<a href="https://www.cybersport.ru/tags/football/barselona-spravilas-s-atletiko-madrid-v-chempionate-ispanii-po-futbolu" target="_blank" rel="noopener noreferrer">Cybersport.ru</a>（需翻墙））</li><li><b>中超收官（11月8日）</b>：大连英博 3-1 天津津门虎夺冠，山东泰山 3-2 成都蓉城，上海海港 6-1 辽宁铁人。</li></ul></article>
+<article class="sport"><h3>卡尔加里火焰队</h3><ul><li><b>火焰队 4-3 加时胜飞人</b>（卡尔加里当地 11月8日周日 18:00，主场，“冰球抗癌之夜”）：火焰队三度落后三度追平，加时 4 分 08 秒科罗纳托打入制胜球，4-3 击败费城飞人。帕雷赫、怀特克劳德、法拉比各入一球，门将库利伤愈复出首发、扑救 31 次。战绩 8 胜 9 负 1 加时负。（来源：<a href="https://www.nhl.com/flames/news/flames-rally-to-beat-flyers-in-ot" target="_blank" rel="noopener noreferrer">NHL 官网</a>（需翻墙）、<a href="https://www.tsn.ca/nhl/article/coronato-scores-overtime-winner-as-flames-beat-flyers/" target="_blank" rel="noopener noreferrer">TSN</a>（需翻墙））</li><li><b>上一场（卡尔加里当地 11月6日周五）</b>：主场 3-5 不敌安纳海姆鸭队，终结五连胜。鸭队前锋卡特·戈捷（Cutter Gauthier）在终场前 1 分 34 秒打入制胜球，火焰队法拉比、斯特罗姆格伦、汉利各入一球，战绩 7 胜 9 负 1 加时负。</li><li><b>伤病</b>：后卫凯文·巴尔跟腱断裂、赛季报销，球队已召回帕查尔补缺（详见“卡尔加里新闻”第 1 条）。</li></ul></article>
 </section>
 <section class="blk" id="s-gossip">
 <div class="blk-head"><span class="no">其九</span><h2>娱乐圈八卦</h2></div>
@@ -1169,8 +1192,8 @@
 <p class="tarot-star" aria-hidden="true">✦</p>
 <div class="tarot-name">教皇 <span class="en">The Hierophant</span></div>
 <span class="tarot-pos">正位</span>
-<p class="tarot-text">教皇代表<b>传统、学习和请教有经验的人</b>：遇到拿不准的事，别自己硬扛，问问走过这条路的人。今天是新月又是周一，适合定个规矩、学点新东西。</p>
-<div class="advice"><p><b>今日建议</b></p><p>今天向一位你信任的长辈或朋友请教一个最近困扰你的问题，把对方的建议记下来，照着试一次。</p></div>
+<p class="tarot-text">教皇代表<b>传统、学习和规矩</b>：新月又是周一，适合定个规矩、学点新东西，把一件想学的事写进计划，今天就开始第一步。</p>
+<div class="advice"><p><b>今日建议</b></p><p>今天给自己定一条新规矩——比如每天固定学 30 分钟新东西，或者把一件拖了很久的小事写进待办、今天就做完；规矩立住了，这一周就顺了。</p></div>
 <p class="folk">西方占卜内容，仅供参考。</p>
 </article>
 </section>
@@ -1242,14 +1265,14 @@
 <section class="blk" id="s-anime">
 <div class="blk-head"><span class="no">其二十一</span><h2>每日一漫</h2></div>
 <div class="anime">
-<p class="ttl">今日推荐：《摇曳露营△》（TV 动画 3 季，2018–2024 年，已完结）</p>
+<p class="ttl">今日推荐：《冰菓》（TV 动画 22 集，2012 年，已完结）</p>
 <p><b>本周主题：冬日治愈</b>（一周的推荐都围绕“冬天里让人心里暖起来的番”）</p>
-<p>讲几个女生在冬天露营、煮暖锅、看富士山的故事，剧情没什么大起大落，全是“今天吃什么、去哪里看星星”的小事。理由：立冬后看一群人顶着冷风在户外吃热腾腾的暖锅，比窝在被窝里更治愈；每一集都像一杯热茶，适合睡前看一集放松；这周主题是冬日治愈，它负责把暖意从屏幕里带到被窝里。今晚先看第 1 集《富士山与咖喱面》。</p>
+<p>京阿尼出品，讲节能主义少年折木奉太郎被好奇心旺盛的千反田爱瑠拉进古典文学部，一起解开校园里一个个小谜题的故事。理由：没有大起大落，全是放学后的阳光、社团活动室的安静和“解开一个小谜底”的小确幸，冬夜里看正合适；这周主题是冬日治愈，它负责把日常过出暖意；今晚先看第 1 集《传统古典部的再生》。</p>
 </div>
 </section>
 <div class="issue-tools issue-tools-bottom"><button class="copy-link-btn" type="button" data-copy-date="2026-11-09">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-09" data-share-title="每日晨间简报 · 2026年11月9日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-09&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%889%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-09">微信</button></div>
 <nav class="issue-nav" aria-label="期次导航"><button class="issue-nav-btn prev" type="button" data-nav-date="2026-11-08" aria-label="上一期：11月8日 周日">&larr; 上一期 &middot; 11月8日 周日</button><button class="issue-nav-btn to-archive back-archive" type="button">返回归档</button><button class="issue-nav-btn next is-disabled" type="button" disabled aria-disabled="true">下一期 &middot; 已是最新一期 &rarr;</button></nav>
-<p class="src">简报完。天气与榜单数据截至今日 08:10 前后；A 股、美股、黄金为 11 月 6 日最近交易日收盘数据。湖人 vs 活塞、火焰队 vs 飞人两场比赛写稿时尚未完赛，比分以完赛后为准。</p>
+<p class="src">简报完。天气与榜单数据截至今日 08:10 前后；A 股、美股、黄金为 11 月 6 日最近交易日收盘数据。湖人 vs 活塞、火焰队 vs 飞人两场比赛已按完赛后的最终比分更新。</p>
 </div>
 
 <div id="view-2026-11-08" class="issue-panel" role="tabpanel" hidden>
@@ -1352,7 +1375,7 @@
 </section>
 <section class="blk" id="d1108-highlights">
 <div class="blk-head"><span class="no">其五</span><h2>今日看点</h2></div>
-<div class="hl-grid"><article class="hl"><h3>抖音热搜（截至 17:07 刷新）</h3><ol><li><b>泰山主场迎战成都蓉城</b>（热搜第 1）—— 中超收官轮的争冠焦点战，今晚的胜负直接决定冠军归属，值得一看。</li><li><b>开拓者惨败马刺，杨瀚森首次两双</b>（热搜第 2）——详见“体育速递·NBA”一节。</li><li><b>最后一位开国将军王扶之逝世</b>（热搜第 20）—— 开国将军全部离世，一代人的历史正式落幕，值得铭记。</li></ol></article><article class="hl"><h3>推特热搜（华语地区，截至 16:03 刷新）</h3><ol><li><b>Nasdaq 冲上中国大陆趋势第 10</b>—— 美股纳斯达克周五反弹 1.09%，但全周仍跌 3.4%，华语圈也在热议美股波动。</li><li><b>Jensen Huang 登上台湾趋势第 15</b>——详见本节“全球 AI 热点资讯”第 3 条。</li><li><b>Start of Winter（立冬）上榜中国大陆第 8</b>—— 昨天 11 月 7 日已交立冬节气，华语圈都在聊冬天来了，与今天东北的寒潮正好呼应。</li></ol></article><article class="hl"><h3>全球 AI 热点资讯（11月8日，今日已刷新 80 条）</h3><ol><li><b>美国人开始担忧 AI 繁荣破灭</b>（The Washington Post，11月8日）—— 美国民众对 AI 热潮能否持续感到焦虑，与本周美股因 AI 估值担忧大跌直接相关，是理解当前市场情绪的一手材料。</li><li><b>Anthropic 用 AI 加速 AI 研发，报告引发研究者担忧</b>（<a href="https://www.theverge.com/ai-artificial-intelligence/1029126/anthropic-metr-report-accelerating-ai-development" target="_blank" rel="noopener noreferrer">The Verge</a>（需翻墙），11月7日）—— 一份新报告显示 Anthropic 的模型改进速度比一年前快约一倍，AI 自我加速研发的前景让研究者感到不安。</li><li><b>美情报备忘录称中国国安招募高管监视黄仁勋</b>（<a href="https://techcrunch.com/2026/11/07/chinese-exec-was-recruited-to-spy-on-nvidia-ceo-according-to-us-intelligence-memo/" target="_blank" rel="noopener noreferrer">TechCrunch</a>（需翻墙），11月7日）—— 备忘录指称中国国安部门招募了 Megaspeed 公司高管监视英伟达 CEO，同时美方质疑英伟达 H200 芯片对华销售的审查漏洞，芯片管制话题再升温。</li></ol></article></div>
+<div class="hl-grid"><article class="hl"><h3>抖音热搜（截至 17:07 刷新）</h3><ol><li><b>泰山主场迎战成都蓉城</b>（热搜第 1）—— 中超收官轮的争冠焦点战，今晚的胜负直接决定冠军归属，值得一看。</li><li><b>开拓者惨败马刺，杨瀚森首次两双</b>（热搜第 2）——详见“体育速递·NBA”一节。</li><li><b>最后一位开国将军王扶之逝世</b>（热搜第 20）—— 开国将军全部离世，一代人的历史正式落幕，值得铭记。</li></ol></article><article class="hl"><h3>X 热搜（台湾/华语地区，截至 16:03 刷新）</h3><ol><li><b>Nasdaq 冲上中国大陆趋势第 10</b>—— 美股纳斯达克周五反弹 1.09%，但全周仍跌 3.4%，华语圈也在热议美股波动。</li><li><b>Jensen Huang 登上台湾趋势第 15</b>——详见本节“全球 AI 热点资讯”第 3 条。</li><li><b>Start of Winter（立冬）上榜中国大陆第 8</b>—— 昨天 11 月 7 日已交立冬节气，华语圈都在聊冬天来了，与今天东北的寒潮正好呼应。</li></ol></article><article class="hl"><h3>全球 AI 热点资讯（11月8日，今日已刷新 80 条）</h3><ol><li><b>美国人开始担忧 AI 繁荣破灭</b>（The Washington Post，11月8日）—— 美国民众对 AI 热潮能否持续感到焦虑，与本周美股因 AI 估值担忧大跌直接相关，是理解当前市场情绪的一手材料。</li><li><b>Anthropic 用 AI 加速 AI 研发，报告引发研究者担忧</b>（<a href="https://www.theverge.com/ai-artificial-intelligence/1029126/anthropic-metr-report-accelerating-ai-development" target="_blank" rel="noopener noreferrer">The Verge</a>（需翻墙），11月7日）—— 一份新报告显示 Anthropic 的模型改进速度比一年前快约一倍，AI 自我加速研发的前景让研究者感到不安。</li><li><b>美情报备忘录称中国国安招募高管监视黄仁勋</b>（<a href="https://techcrunch.com/2026/11/07/chinese-exec-was-recruited-to-spy-on-nvidia-ceo-according-to-us-intelligence-memo/" target="_blank" rel="noopener noreferrer">TechCrunch</a>（需翻墙），11月7日）—— 备忘录指称中国国安部门招募了 Megaspeed 公司高管监视英伟达 CEO，同时美方质疑英伟达 H200 芯片对华销售的审查漏洞，芯片管制话题再升温。</li></ol></article></div>
 </section>
 <section class="blk" id="d1108-events">
 <div class="blk-head"><span class="no">其六</span><h2>今日活动预告</h2></div>
@@ -1760,7 +1783,7 @@
 <!-- 民生 -->
 <section class="blk" id="d1102-livelihood">
 <div class="blk-head"><span class="no">其三</span><h2>民生</h2></div>
-<div class="news-grid"><article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>沈阳疾控提醒：流感不是"重感冒"，科学防护要牢记 <span class="from">来源：<a href="https://feng.ifeng.com/c/8xhXTPd3vdu" target="_blank" rel="noopener noreferrer">沈阳市政府网"百姓关注"</a>，11月2日</span></h4><p>沈阳市 65 岁及以上老年人、3~6 岁儿童及农村义务教育阶段中小学生可免费接种一剂次三价流感病毒裂解疫苗，可扫码查询就近接种门诊。</p></div></article><article class="news-col"><h3>鞍山</h3><p class="col-note">今日无相关民生消息（当日无可查的鞍山民生消息；11 月 1 日的供热与冷空气消息见 11 月 1 日一节）。</p></article><article class="news-col"><h3>卡尔加里（当地 11月1日）</h3><p class="col-note">今日无相关民生消息。</p></article><article class="news-col"><h3>海斯（当地 11月1日）</h3><p class="col-note">今日无相关民生消息。</p></article><article class="news-col"><h3>京都（11月2日）</h3><p class="col-note">今日无相关民生消息。</p></article></div><div class="prices"><h3>菜价 / 肉蛋奶价格</h3><p class="p-note">---</p><ul><li><b>沈阳 / 鞍山</b>：沈阳本地当日零售价未查到；以下为全国批发价——农业农村部 11 月 2 日监测，全国农产品批发市场猪肉均价 15.15 元/公斤；鸡蛋批发周均价 9.34 元/公斤（第 44 周监测）；10 月 30 日至 11 月 5 日当周，黄瓜 3.77 元/公斤、西红柿 3.67 元/公斤（全国农产品批发市场一周价格行情监测）；大米、面粉为 10 月 26 日至 11 月 1 日当周 36 个大中城市零售均价（商务部商务预报，11 月 5 日发布）：大米 6.43 元/公斤（约 3.22 元/斤）、面粉 5.99 元/公斤（约 3.00 元/斤）。对照：沈阳城镇居民人均可支配收入 58,297 元/年（2025 年，沈阳市统计公报），月均约 4,858 元，1 公斤猪肉批发价约占月均的 0.3%；鞍山城镇居民人均可支配收入 47,102 元/年（2025 年，聚汇数据引自鞍山统计局），月均约 3,925 元，1 公斤猪肉批发价约占月均的 0.4%；1 公斤大米约占沈阳月均收入的 0.1%、鞍山的 0.2%，1 公斤面粉同样约占沈阳月均的 0.1%、鞍山的 0.2%。</li><li><b>卡尔加里</b>：牛奶 2.79 加元/升（约 13.35 元）、鸡蛋 5.39 加元/12 枚（约 25.79 元）、鸡柳 15.57 加元/公斤（约 74.49 元）、牛排 25.25 加元/公斤（约 120.81 元）、白米 8.25 加元/公斤（约 39.47 元）、西红柿 5.64 加元/公斤（约 26.98 元）、土豆 4.14 加元/公斤（约 19.81 元）、洋葱 4.27 加元/公斤（约 20.43 元）；鱼价及小麦粉（面粉）未查到（CityCost 卡尔加里生活成本，11 月 2 日更新；汇率按 11 月 2 日中间价 1 加元=4.7844 元换算）。对照：卡尔加里全市收入中位数约 63,700 加元/年（约 5,308 加元/月，Economy of Alberta 2025 年对比，引自加拿大统计局等来源），1 公斤牛肉约占月收入中位数的 0.5%，1 公斤白米约占月收入中位数的 0.2%。</li><li><b>海斯</b>：海斯本地当日价格未查到；以下为美国全国平均——牛奶 4.05 美元/加仑（约 27.19 元）、鸡蛋 3.40 美元/12 枚（约 22.83 元）、牛肉碎 5.80 美元/磅（约 38.94 元）、鸡胸 4.20 美元/磅（约 28.20 元）、大米（白米长粒，未煮）1.12 美元/磅（约 7.51 元）、面粉（白色通用）0.55 美元/磅（约 3.66 元），蔬菜价未查到（美国劳工统计局 BLS 平均零售价，2026 年 9 月最新月度数据；汇率按 11 月 2 日中间价 1 美元=6.7146 元换算）。对照：海斯家庭收入中位数 58,459 美元/年（约 4,872 美元/月，美国人口普查局 2024 年 ACS 五年估计），1 磅牛肉碎约占家庭月收入中位数的 0.1%，1 磅大米约占家庭月收入中位数的 0.02%，1 磅面粉约占 0.01%。</li><li><b>京都</b>：鸡蛋 319 日元/10 枚装（约 13.53 元）、牛奶 264 日元/升（约 11.20 元）、鸡肉 167 日元/100 克（约 70.85 元/公斤）、卷心菜 201 日元/公斤（约 8.53 元）、土豆 509 日元/公斤（约 21.59 元）、西红柿 1,030 日元/公斤（约 43.70 元）、大米（越光米，5kg 袋装）4,025 日元/袋（约 170.76 元，折合 805 日元/公斤、约 34.15 元/公斤）、小麦粉（薄力粉，1kg 袋装）京都市价未查到（日本全国平均 365 日元/袋，约 15.48 元）；鱼价未查到，京都 11 月当日价格未查到，以上为日本总务省小卖物价统计 2026 年 9 月京都市数据（11 月 2 日发布；汇率按 11 月 2 日中间价 100 日元=4.2424 元换算）。对照：京都府全日制劳动者月均所定内给与 366,800 日元（2025 年 6 月，厚生劳动省 2025 年工资结构基本统计调查，税前、含加班费），1 公斤鸡肉约占月均工资的 0.5%，1 公斤大米约占月均工资的 0.2%，1 公斤小麦粉（全国平均价）约占 0.1%。</li></ul></div>
+<div class="news-grid"><article class="news-col"><h3>沈阳</h3><div class="news-item"><h4>沈阳疾控提醒：流感不是"重感冒"，科学防护要牢记 <span class="from">来源：<a href="https://feng.ifeng.com/c/8xhXTPd3vdu" target="_blank" rel="noopener noreferrer">沈阳市政府网"百姓关注"</a>，11月2日</span></h4><p>沈阳市 65 岁及以上老年人、3~6 岁儿童及农村义务教育阶段中小学生可免费接种一剂次三价流感病毒裂解疫苗，可扫码查询就近接种门诊。</p></div></article><article class="news-col"><h3>鞍山</h3><p class="col-note">今日无相关民生消息（当日无可查的鞍山民生消息；11 月 1 日的供热与冷空气消息见 11 月 1 日一节）。</p></article><article class="news-col"><h3>卡尔加里（当地 11月1日）</h3><p class="col-note">今日无相关民生消息。</p></article><article class="news-col"><h3>海斯（当地 11月1日）</h3><p class="col-note">今日无相关民生消息。</p></article><article class="news-col"><h3>京都（11月2日）</h3><p class="col-note">今日无相关民生消息。</p></article></div><div class="prices"><h3>本周菜价 / 肉蛋奶价格</h3><h4>沈阳 / 鞍山</h4><table class="price-table"><thead><tr><th>品类</th><th>本地价</th><th>约合人民币</th></tr></thead><tbody><tr><td>猪肉</td><td>15.15 元/公斤</td><td>—</td></tr><tr><td>鸡蛋</td><td>9.34 元/公斤</td><td>—</td></tr><tr><td>黄瓜</td><td>3.77 元/公斤</td><td>—</td></tr><tr><td>西红柿</td><td>3.67 元/公斤</td><td>—</td></tr><tr><td>大米</td><td>6.43 元/公斤</td><td>约 3.22 元/斤</td></tr><tr><td>面粉</td><td>5.99 元/公斤</td><td>约 3.00 元/斤</td></tr></tbody></table><p class="p-src">沈阳本地当日零售价未查到；以下为全国批发价——猪肉为农业农村部 11 月 2 日监测的全国农产品批发市场均价；鸡蛋为批发周均价（第 44 周监测）；黄瓜、西红柿为 10 月 30 日至 11 月 5 日当周全国农产品批发市场一周价格行情监测；大米、面粉为 10 月 26 日至 11 月 1 日当周 36 个大中城市零售均价（商务部商务预报，11 月 5 日发布）。</p><p class="p-wage"><b>对照</b>：沈阳城镇居民人均可支配收入 58,297 元/年（2025 年，沈阳市统计公报），月均约 4,858 元，1 公斤猪肉批发价约占月均的 0.3%，1 公斤大米约占 0.1%，1 公斤面粉约占 0.1%；鞍山城镇居民人均可支配收入 47,102 元/年（2025 年，聚汇数据引自鞍山统计局），月均约 3,925 元，1 公斤猪肉批发价约占月均的 0.4%，1 公斤大米约占 0.2%，1 公斤面粉约占 0.2%。</p><h4>卡尔加里</h4><table class="price-table"><thead><tr><th>品类</th><th>本地价</th><th>约合人民币</th></tr></thead><tbody><tr><td>牛奶</td><td>2.79 加元/升</td><td>约 13.35 元</td></tr><tr><td>鸡蛋</td><td>5.39 加元/12 枚</td><td>约 25.79 元</td></tr><tr><td>鸡柳</td><td>15.57 加元/公斤</td><td>约 74.49 元</td></tr><tr><td>牛排</td><td>25.25 加元/公斤</td><td>约 120.81 元</td></tr><tr><td>白米</td><td>8.25 加元/公斤</td><td>约 39.47 元</td></tr><tr><td>西红柿</td><td>5.64 加元/公斤</td><td>约 26.98 元</td></tr><tr><td>土豆</td><td>4.14 加元/公斤</td><td>约 19.81 元</td></tr><tr><td>洋葱</td><td>4.27 加元/公斤</td><td>约 20.43 元</td></tr><tr><td>鱼、小麦粉（面粉）</td><td>未查到</td><td>—</td></tr></tbody></table><p class="p-src">CityCost 卡尔加里生活成本，11 月 2 日更新；汇率按 11 月 2 日中间价 1 加元 = 4.7844 元换算。</p><p class="p-wage"><b>对照</b>：卡尔加里全市收入中位数约 63,700 加元/年（约 5,308 加元/月，Economy of Alberta 2025 年对比，引自加拿大统计局等来源），1 公斤牛肉约占月收入中位数的 0.5%，1 公斤白米约占月收入中位数的 0.2%。</p><h4>海斯</h4><table class="price-table"><thead><tr><th>品类</th><th>本地价</th><th>约合人民币</th></tr></thead><tbody><tr><td>牛奶</td><td>4.05 美元/加仑</td><td>约 27.19 元</td></tr><tr><td>鸡蛋</td><td>3.40 美元/12 枚</td><td>约 22.83 元</td></tr><tr><td>牛肉碎</td><td>5.80 美元/磅</td><td>约 38.94 元</td></tr><tr><td>鸡胸</td><td>4.20 美元/磅</td><td>约 28.20 元</td></tr><tr><td>大米（白米长粒，未煮）</td><td>1.12 美元/磅</td><td>约 7.51 元</td></tr><tr><td>面粉（白色通用）</td><td>0.55 美元/磅</td><td>约 3.66 元</td></tr><tr><td>蔬菜</td><td>未查到</td><td>—</td></tr></tbody></table><p class="p-src">海斯本地当日价格未查到；以下为美国全国平均——美国劳工统计局 BLS 平均零售价，2026 年 9 月最新月度数据；汇率按 11 月 2 日中间价 1 美元 = 6.7146 元换算。</p><p class="p-wage"><b>对照</b>：海斯家庭收入中位数 58,459 美元/年（约 4,872 美元/月，美国人口普查局 2024 年 ACS 五年估计），1 磅牛肉碎约占家庭月收入中位数的 0.1%，1 磅大米约占家庭月收入中位数的 0.02%，1 磅面粉约占 0.01%。</p><h4>京都</h4><table class="price-table"><thead><tr><th>品类</th><th>本地价</th><th>约合人民币</th></tr></thead><tbody><tr><td>鸡蛋</td><td>319 日元/10 枚装</td><td>约 13.53 元</td></tr><tr><td>牛奶</td><td>264 日元/升</td><td>约 11.20 元</td></tr><tr><td>鸡肉</td><td>167 日元/100 克</td><td>约 70.85 元/公斤</td></tr><tr><td>卷心菜</td><td>201 日元/公斤</td><td>约 8.53 元</td></tr><tr><td>土豆</td><td>509 日元/公斤</td><td>约 21.59 元</td></tr><tr><td>西红柿</td><td>1,030 日元/公斤</td><td>约 43.70 元</td></tr><tr><td>大米（越光米，5kg 袋装）</td><td>4,025 日元/袋（折合 805 日元/公斤）</td><td>约 170.76 元/袋（约 34.15 元/公斤）</td></tr><tr><td>小麦粉（薄力粉，1kg 袋装）</td><td>京都市价未查到（日本全国平均 365 日元/袋）</td><td>约 15.48 元</td></tr><tr><td>鱼</td><td>未查到</td><td>—</td></tr></tbody></table><p class="p-src">京都 11 月当日价格未查到，以上为日本总务省小卖物价统计 2026 年 9 月京都市数据（11 月 2 日发布）；汇率按 11 月 2 日中间价 100 日元 = 4.2424 元换算。</p><p class="p-wage"><b>对照</b>：京都府全日制劳动者月均所定内给与 366,800 日元（2025 年 6 月，厚生劳动省 2025 年工资结构基本统计调查，税前、含加班费），1 公斤鸡肉约占月均工资的 0.5%，1 公斤大米约占月均工资的 0.2%，1 公斤小麦粉（全国平均价）约占 0.1%。</p></div>
 </section>
 <!-- 今日要闻 -->
 <section class="blk" id="d1102-headlines">
@@ -2939,7 +2962,7 @@
           </div>
           <div class="date-jump">
             <label for="date-jump-input">按日期查看</label>
-            <input type="date" id="date-jump-input" min="2026-11-01" />
+            <input type="date" id="date-jump-input" min="2026-11-01" lang="zh-CN" />
             <span class="date-jump-note" id="date-jump-note" hidden>这一天没有简报</span>
           </div>
           <div class="arch-list">
@@ -3013,7 +3036,7 @@
 
     <footer>
       <div class="f-title">每日晨间简报</div>
-      <p>每日 08:10（北京时间）刊发 · 沈阳 / 鞍山 / 卡尔加里 / 海斯 / 京都五城天气与新闻、金融市场、体育、月相卦象与娱乐资讯<br />本期（2026 年 11 月 9 日）天气与榜单数据截至当日 08:10 前后；A 股、美股、黄金为 11 月 6 日最近交易日收盘数据。</p>
+      <p>每日 08:10（北京时间）刊发 · 沈阳 / 鞍山 / 卡尔加里 / 海斯 / 京都五城天气与新闻、金融市场、体育、月相卦象与娱乐资讯<br />本期（<span id="footer-issue-date">2026 年 11 月 9 日（星期一）</span>）天气与榜单数据截至当日 08:10 前后。</p>
     </footer>
 
     <button id="back-to-top" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
@@ -3140,41 +3163,15 @@
           wrap.appendChild(btn);
           wrap.appendChild(panel);
           nav.appendChild(wrap);
-          /* Quiet ◀ ▶ paging buttons at the ends of the bar, outside
-             the scrolling strip: each tap pages the strip sideways by
-             about one screenful of links. They scroll only the strip,
-             never the page, and leave the pill/scrollspy wiring (which
-             keys off the strip itself) untouched. */
-          var prev = document.createElement('button');
-          prev.type = 'button';
-          prev.className = 'secnav-arrow';
-          prev.setAttribute('aria-label', '向左滚动栏目导航');
-          prev.textContent = '◀';
-          var next = document.createElement('button');
-          next.type = 'button';
-          next.className = 'secnav-arrow';
-          next.setAttribute('aria-label', '向右滚动栏目导航');
-          next.textContent = '▶';
-          nav.insertBefore(prev, scroller);
-          nav.insertBefore(next, wrap);
-          /* The ▶ button and the 「目录」 control share one fixed cluster
-             at the bar's right end, outside the scrolling strip: the
-             strip's links slide beneath its own edge only, and no button
-             ever sits on top of a section name. */
+          /* No ◀ ▶ paging buttons (removed in the 2026-11-09 review
+             pass): however they were placed they ended up covering
+             section names. The strip is swipe/scroll only, and the
+             「目录」 control sits in its own fixed cluster outside
+             the strip, so nothing ever overlaps a section name. */
           var tools = document.createElement('div');
           tools.className = 'secnav-tools';
           nav.appendChild(tools);
-          tools.appendChild(next);
           tools.appendChild(wrap);
-          var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-          function pageStrip(dir) {
-            var step = Math.max(160, Math.round(scroller.clientWidth * 0.85));
-            var target = scroller.scrollLeft + dir * step;
-            if (target < 0) { target = 0; }
-            scroller.scrollTo({ left: target, behavior: smooth ? 'smooth' : 'auto' });
-          }
-          prev.addEventListener('click', function () { pageStrip(-1); });
-          next.addEventListener('click', function () { pageStrip(1); });
         }
       })();
     </script>
@@ -3853,6 +3850,10 @@
         function buildPanel(panel, box) {
           panel.innerHTML = '';
           if (!box) { return; }
+          var hint = document.createElement('div');
+          hint.className = 'toc-hint';
+          hint.textContent = '本期 21 节 · 在此面板内向下滚动可查看全部';
+          panel.appendChild(hint);
           var groups = box.querySelectorAll('.cat-group');
           var n = 0;
           for (var g = 0; g < groups.length; g++) {
@@ -3938,6 +3939,169 @@
             if (open) { closePanel(); open.btn.focus(); }
           }
         });
+      })();
+    </script>
+    <script>
+      /* Cross-reference links 2026-11-09b (additive): turns plain-text
+         「详见“某节”第 X 条」 references inside each issue into real
+         links to that section of the same issue (or, for 「详见昨日
+         简报」/「详见 11 月 X 日那期」, a link that opens that issue).
+         Runs last, after the search index has been built from the same
+         text, so search snippets are unaffected. */
+      (function () {
+        var KEYBYNO = ['weather', 'news', 'livelihood', 'headlines', 'highlights',
+          'events', 'finance', 'sports', 'gossip', 'astro', 'tarot', 'history',
+          'wellness', 'meal', 'english', 'poem', 'ai', 'quote', 'reading', 'song', 'anime'];
+        var DIG = { '一': 1, '二': 2, '三': 3, '四': 4, '五': 5, '六': 6, '七': 7, '八': 8, '九': 9 };
+        function cnNum(t) {
+          if (t === '十') { return 10; }
+          if (t.charAt(0) === '十') { return 10 + (DIG[t.charAt(1)] || 0); }
+          if (t.charAt(t.length - 1) === '十') { return (DIG[t.charAt(0)] || 0) * 10; }
+          return DIG[t] || 0;
+        }
+        function keyFor(text) {
+          if (/娱乐圈八卦/.test(text)) { return 'gossip'; }
+          if (/体育速递/.test(text)) { return 'sports'; }
+          if (/金融市场/.test(text)) { return 'finance'; }
+          if (/今日要闻/.test(text)) { return 'headlines'; }
+          if (/今日活动预告/.test(text)) { return 'events'; }
+          if (/五城近期新闻|五城新闻|卡尔加里新闻/.test(text)) { return 'news'; }
+          if (/全球 AI 热点资讯/.test(text)) { return 'highlights'; }
+          if (/民生/.test(text)) { return 'livelihood'; }
+          var m = text.match(/第([一二三四五六七八九十]+)节/);
+          if (m) { var n = cnNum(m[1]); if (n >= 1 && n <= 21) { return KEYBYNO[n - 1]; } }
+          return null;
+        }
+        var RE = /详见[^。；]{0,36}|详情见“[^”]{2,26}”[^。；]{0,10}|见“(今日活动预告|民生|体育速递[^”]*)”[^。；]{0,10}/g;
+        function issueBox(node) {
+          var b = node.parentNode;
+          while (b && b !== document.body) {
+            if (b.id === 'view-latest' || (b.classList && b.classList.contains('issue-panel'))) { return b; }
+            b = b.parentNode;
+          }
+          return null;
+        }
+        function issueDate(box) {
+          var btn = box.querySelector('.copy-link-btn[data-copy-date]');
+          return btn ? btn.getAttribute('data-copy-date') : null;
+        }
+        function sectionId(box, key) {
+          var secs = box.querySelectorAll('section.blk[id]');
+          for (var i = 0; i < secs.length; i++) {
+            var id = secs[i].id;
+            if (id === 's-' + key || id.slice(id.length - key.length - 1) === '-' + key) { return id; }
+          }
+          return null;
+        }
+        function makeLink(text, href, gotoDate) {
+          var a = document.createElement('a');
+          a.className = 'xref';
+          a.href = href;
+          a.textContent = text;
+          if (gotoDate) {
+            a.setAttribute('data-goto-date', gotoDate);
+            a.addEventListener('click', function (e) {
+              e.preventDefault();
+              var item = document.querySelector('.arch-item[data-open-date="' + gotoDate + '"]');
+              if (item) { item.click(); }
+            });
+          }
+          return a;
+        }
+        function linkify(node) {
+          var text = node.nodeValue;
+          RE.lastIndex = 0;
+          var m, last = 0, frag = null;
+          while ((m = RE.exec(text)) !== null) {
+            var raw = m[0];
+            var trail = '';
+            var tm = raw.match(/[。）]+$/);
+            if (tm) { trail = tm[0]; raw = raw.slice(0, raw.length - trail.length); }
+            if (!raw) { continue; }
+            var box = issueBox(node);
+            if (!box) { return; }
+            var link = null;
+            var dm = raw.match(/详见\s*11\s*月\s*(\d+)\s*日那期/);
+            if (/详见昨日简报/.test(raw)) {
+              var d0 = issueDate(box);
+              if (d0) {
+                var dt = new Date(Number(d0.slice(0, 4)), Number(d0.slice(5, 7)) - 1, Number(d0.slice(8, 10)) - 1);
+                var gd = dt.getFullYear() + '-' + ('0' + (dt.getMonth() + 1)).slice(-2) + '-' + ('0' + dt.getDate()).slice(-2);
+                link = makeLink(raw, '#' + gd, gd);
+              }
+            } else if (dm) {
+              var gd2 = '2026-11-' + ('0' + dm[1]).slice(-2);
+              link = makeLink(raw, '#' + gd2, gd2);
+            } else {
+              var key = keyFor(raw);
+              if (!key) { continue; }
+              var id = sectionId(box, key);
+              if (!id) { continue; }
+              link = makeLink(raw, '#' + id, null);
+            }
+            if (!link) { continue; }
+            if (!frag) { frag = document.createDocumentFragment(); }
+            frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+            frag.appendChild(link);
+            if (trail) { frag.appendChild(document.createTextNode(trail)); }
+            last = m.index + m[0].length;
+          }
+          if (frag) {
+            frag.appendChild(document.createTextNode(text.slice(last)));
+            node.parentNode.replaceChild(frag, node);
+          }
+        }
+        var boxes = [];
+        var latest = document.getElementById('view-latest');
+        if (latest) { boxes.push(latest); }
+        var panels = document.querySelectorAll('.issue-panel');
+        for (var p = 0; p < panels.length; p++) { boxes.push(panels[p]); }
+        for (var b = 0; b < boxes.length; b++) {
+          var walker = document.createTreeWalker(boxes[b], NodeFilter.SHOW_TEXT, {
+            acceptNode: function (n) {
+              if (!/详见|详情见|见“/.test(n.nodeValue)) { return NodeFilter.FILTER_REJECT; }
+              var el = n.parentNode;
+              while (el && el !== boxes[b]) {
+                if (el.tagName === 'A' || el.tagName === 'SCRIPT' || el.tagName === 'BUTTON') { return NodeFilter.FILTER_REJECT; }
+                el = el.parentNode;
+              }
+              return NodeFilter.FILTER_ACCEPT;
+            }
+          });
+          var nodes = [];
+          while (walker.nextNode()) { nodes.push(walker.currentNode); }
+          for (var t = 0; t < nodes.length; t++) { linkify(nodes[t]); }
+        }
+      })();
+    </script>
+    <script>
+      /* Per-issue footer date 2026-11-09b (additive): the page footer
+         names the issue currently open, so an archive issue no longer
+         carries the latest issue's date. Follows the same clicks the
+         view switcher uses (archive entries, prev/next buttons, the
+         最新简报 tab, and #YYYY-MM-DD deep links). */
+      (function () {
+        var el = document.getElementById('footer-issue-date');
+        if (!el) { return; }
+        var WD = ['日', '一', '二', '三', '四', '五', '六'];
+        function fmt(ds) {
+          var p = ds.split('-');
+          var d = new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
+          if (isNaN(d.getTime())) { return; }
+          el.textContent = p[0] + ' 年 ' + Number(p[1]) + ' 月 ' + Number(p[2]) + ' 日（星期' + WD[d.getDay()] + '）';
+        }
+        document.addEventListener('click', function (e) {
+          var t = e.target;
+          if (!t.closest) { return; }
+          var item = t.closest('[data-open-date]') || t.closest('[data-nav-date]');
+          if (item) {
+            fmt(item.getAttribute('data-open-date') || item.getAttribute('data-nav-date'));
+            return;
+          }
+          if (t.closest('#tab-latest')) { fmt('2026-11-09'); }
+        });
+        var m = window.location.hash.match(/^#(\d{4}-\d{2}-\d{2})$/);
+        if (m) { fmt(m[1]); }
       })();
     </script>
   </body>
