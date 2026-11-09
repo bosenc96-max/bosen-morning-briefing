@@ -2029,9 +2029,13 @@
       /* Section nav: single-row sticky bar — highlight the tapped link, scroll it
          to the middle of the bar, and show a right-edge fade while more links
          remain off-screen. Anchor jumps use the sections' scroll-margin-top,
-         calibrated to this bar's fixed 52px height. */
+         calibrated to this bar's fixed 52px height.
+         Scrollspy: while the reader scrolls the page, the highlight follows the
+         section currently under the reading line (just below the sticky bar)
+         and the bar scrolls sideways so the active link stays in view. */
       (function () {
         var navs = document.querySelectorAll('.secnav');
+        var LINE = 90; /* reading line: 52px bar + its margins, with a small buffer */
         function updateFade(nav) {
           var more = nav.scrollWidth - nav.clientWidth > 4 &&
             nav.scrollLeft + nav.clientWidth < nav.scrollWidth - 4;
@@ -2042,25 +2046,70 @@
           if (target < 0) { target = 0; }
           nav.scrollTo({ left: target, behavior: 'smooth' });
         }
+        /* Scroll the bar only when the active link is (partly) out of view. */
+        function revealLink(nav, link) {
+          var left = link.offsetLeft;
+          var right = left + link.offsetWidth;
+          var viewL = nav.scrollLeft;
+          var viewR = viewL + nav.clientWidth;
+          if (left < viewL + 4 || right > viewR - 4) { centerLink(nav, link); }
+        }
+        function setActive(nav, links, link) {
+          if (link.classList.contains('active')) { return false; }
+          for (var k = 0; k < links.length; k++) { links[k].classList.remove('active'); }
+          link.classList.add('active');
+          return true;
+        }
+        var states = [];
         for (var n = 0; n < navs.length; n++) {
           (function (nav) {
             var links = nav.querySelectorAll('a');
+            var state = { nav: nav, links: links, targets: [], clickedAt: 0 };
             for (var i = 0; i < links.length; i++) {
               (function (link) {
+                var id = link.getAttribute('href').slice(1);
+                state.targets.push(document.getElementById(id));
                 link.addEventListener('click', function () {
-                  for (var k = 0; k < links.length; k++) { links[k].classList.remove('active'); }
-                  link.classList.add('active');
+                  state.clickedAt = Date.now();
+                  setActive(nav, links, link);
                   centerLink(nav, link);
                 });
               })(links[i]);
             }
             nav.addEventListener('scroll', function () { updateFade(nav); }, { passive: true });
             updateFade(nav);
+            states.push(state);
           })(navs[n]);
         }
+        function spy() {
+          var doc = document.documentElement;
+          var atBottom = window.innerHeight + window.scrollY >= doc.scrollHeight - 4;
+          for (var s = 0; s < states.length; s++) {
+            var st = states[s];
+            if (st.nav.getClientRects().length === 0) { continue; } /* hidden issue panel */
+            if (Date.now() - st.clickedAt < 650) { continue; } /* let a tap's smooth jump land first */
+            var current = 0;
+            for (var i = 0; i < st.targets.length; i++) {
+              var t = st.targets[i];
+              if (t && t.getBoundingClientRect().top <= LINE) { current = i; }
+            }
+            if (atBottom) { current = st.links.length - 1; }
+            var link = st.links[current];
+            if (link && setActive(st.nav, st.links, link)) { revealLink(st.nav, link); }
+          }
+        }
+        var ticking = false;
+        window.addEventListener('scroll', function () {
+          if (!ticking) {
+            ticking = true;
+            window.requestAnimationFrame(function () { ticking = false; spy(); });
+          }
+        }, { passive: true });
         window.addEventListener('resize', function () {
           for (var n = 0; n < navs.length; n++) { updateFade(navs[n]); }
+          spy();
         });
+        spy();
       })();
     </script>
   </body>
