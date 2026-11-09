@@ -3849,6 +3849,54 @@
             scroller.addEventListener('wheel', markUser, { passive: true });
             scroller.addEventListener('touchstart', markUser, { passive: true });
             scroller.addEventListener('pointerdown', markUser, { passive: true });
+            /* Batch-9: the settler above only ever runs off the
+               strip's own scroll events, so a geometry change while
+               the strip is at rest silently invalidates the resting
+               position and the snap "intermittently" never triggers:
+               a late webfont swap (this page loads Noto Sans SC with
+               display=swap; on a slow connection the swap can land
+               seconds after the reader scrolled) widens every link,
+               and a viewport resize or zoom changes the strip's
+               clientWidth — neither fires a scroll event on the
+               strip, so the strip stayed on a half-cut name
+               indefinitely (reproduced in Chromium: rest at a clean
+               target, swap the nav font / narrow the window, and
+               5s later the left edge still cut a name mid-character).
+               Re-run the very same settle check when the geometry
+               changes — a font load finishing, or the scroller's
+               own box resizing (a ResizeObserver also fires when a
+               hidden issue panel is shown). The guard below keeps
+               this repair-only: it runs the settle ONLY when the
+               left edge actually cuts a name. A strip resting with
+               a whole left edge is never moved by a geometry change
+               — in particular the strip still rests at 0 on load,
+               even though the scroll-driven settle (which also
+               polices the right edge) would prefer a later target
+               once the reader scrolls. A spurious call is harmless:
+               it arms the same timers a scroll event arms, so the
+               in-flight and watchdog logic above applies unchanged. */
+            function leftEdgeCut() {
+              var max = scroller.scrollWidth - scroller.clientWidth;
+              var cur = scroller.scrollLeft;
+              if (cur <= 0 || cur >= max - 0.5) { return false; }
+              for (var i = 0; i < links.length; i++) {
+                var ls = links[i].offsetLeft;
+                if (ls + 4 < cur && cur < ls + links[i].offsetWidth - 4) { return true; }
+                if (ls >= cur) { break; }
+              }
+              return false;
+            }
+            function requestSettle() {
+              if (!leftEdgeCut()) { return; }
+              if (snapTimer) { clearTimeout(snapTimer); }
+              snapTimer = setTimeout(snapNow, 130);
+              if (settleTimer) { clearTimeout(settleTimer); }
+              settleTimer = setTimeout(snapNow, 750);
+            }
+            state.requestSettle = requestSettle;
+            if (window.ResizeObserver) {
+              new ResizeObserver(function () { requestSettle(); }).observe(scroller);
+            }
             fitEndPadding(scroller, links);
             updateFade(scroller);
             states.push(state);
@@ -3904,10 +3952,22 @@
           }
         }
         window.addEventListener('resize', function () {
-          for (var n = 0; n < states.length; n++) { updateFade(states[n].scroller); }
+          for (var n = 0; n < states.length; n++) { updateFade(states[n].scroller); states[n].requestSettle(); }
           spy();
           reseatPills();
         });
+        /* Batch-9 (see requestSettle above): a font load finishing
+           changes every link's width without firing a scroll event;
+           re-settle every bar when one lands, including the initial
+           display=swap landing that may complete after this script
+           ran (fonts.ready covers that in-flight case). */
+        function settleAllBars() {
+          for (var s = 0; s < states.length; s++) { states[s].requestSettle(); }
+        }
+        if (document.fonts && document.fonts.addEventListener) {
+          document.fonts.addEventListener('loadingdone', settleAllBars);
+          if (document.fonts.ready && document.fonts.ready.then) { document.fonts.ready.then(settleAllBars); }
+        }
         window.addEventListener('load', reseatPills);
         spy();
       })();
