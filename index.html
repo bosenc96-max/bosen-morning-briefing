@@ -164,12 +164,23 @@
       .secnav {
         position: sticky; top: 0; z-index: 20;
         background: var(--bg); border-bottom: 1px solid var(--line);
+        display: flex; flex-wrap: nowrap; align-items: stretch; gap: 0;
+        height: 52px; margin: 14px 0 22px;
+      }
+      /* The 19 section links live in their own horizontally scrolling
+         strip inside the bar; the 「目录」 control (injected by script)
+         sits outside that strip at the bar's right end, so it stays
+         pinned in the sticky bar however far the reader scrolls — both
+         down the page and sideways through the strip. */
+      .secnav-scroll {
+        position: relative; flex: 1 1 auto; min-width: 0;
         display: flex; flex-wrap: nowrap; align-items: center; gap: 4px;
-        height: 52px; overflow-x: auto; overflow-y: hidden;
-        padding: 7px 2px 8px; margin: 14px 0 22px;
+        overflow-x: auto; overflow-y: hidden;
+        padding: 7px 2px 8px;
         scrollbar-width: none; -webkit-overflow-scrolling: touch;
       }
-      .secnav::-webkit-scrollbar { display: none; }
+      .secnav-scroll::-webkit-scrollbar { display: none; }
+      .secnav .toc-wrap { margin: 0 6px 0 4px; align-self: center; }
       .secnav a {
         position: relative; z-index: 1;
         color: var(--ink-2); text-decoration: none; font-size: 13.5px; font-weight: 700;
@@ -195,12 +206,12 @@
         .secnav .pill, .secnav a { transition: none; }
       }
       /* right-edge fade hint while more links can be scrolled into view (class set by script) */
-      .secnav::after {
+      .secnav-scroll::after {
         content: ""; display: none; flex: 0 0 26px; align-self: stretch;
         margin-left: -26px; position: sticky; right: 0; pointer-events: none;
         background: linear-gradient(to right, transparent, var(--bg) 85%);
       }
-      .secnav.more::after { display: block; }
+      .secnav-scroll.more::after { display: block; }
 
       section.blk { margin-bottom: 34px; scroll-margin-top: 68px; }
       .blk-head {
@@ -668,8 +679,8 @@
       /* Dark-mode toggle in the tabs row (top-right) */
       .theme-toggle {
         appearance: none; border: 1px solid var(--line); background: var(--surface);
-        color: var(--ink-2); font: inherit; font-size: 16px; line-height: 1;
-        width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+        color: var(--ink-2); font: inherit; font-size: 15px; line-height: 1;
+        width: 32px; height: 32px; border-radius: 50%; cursor: pointer; flex: 0 0 auto;
         display: inline-flex; align-items: center; justify-content: center;
       }
       .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
@@ -683,7 +694,11 @@
       .copy-link-btn:hover { border-color: var(--accent); color: var(--accent); }
       .copy-link-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
       .copy-link-btn.copied { color: var(--green); border-color: var(--green); }
-      .issue-tools { display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin: 0 0 12px; }
+      /* One single row of issue controls (theme, copy, share, Weibo,
+         WeChat): never wraps, tightened so all five fit at 390px. */
+      .issue-tools { display: flex; flex-wrap: nowrap; justify-content: flex-end; align-items: center; gap: 6px; margin: 0 0 12px; }
+      .issue-head .issue-tools { margin: 0; }
+      .issue-tools .copy-link-btn, .issue-tools .share-btn { padding: 5px 11px; }
       /* Archive date quick-jump */
       .date-jump {
         display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
@@ -817,6 +832,33 @@
         font-family: "Noto Serif SC", serif; font-size: 20px; font-weight: 900; letter-spacing: .05em;
       }
       .cat-head .cat-range { font-size: 12.5px; color: var(--ink-3); white-space: nowrap; }
+
+      /* ---------- WeChat share control + toast (additive) ---------- */
+      /* WeChat has no public web share URL, so the 「微信」 control copies
+         the issue link and a toast tells the reader to paste it into
+         WeChat. Styled as a quiet text link, like 微博 beside it. */
+      .wechat-btn {
+        appearance: none; background: none; border: none; font: inherit;
+        font-size: 12.5px; font-weight: 700; color: var(--ink-3);
+        cursor: pointer; padding: 0 2px; white-space: nowrap; align-self: center;
+      }
+      .wechat-btn:hover { color: var(--accent); }
+      .wechat-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+      .wechat-btn.copied { color: var(--green); }
+      #wx-toast {
+        position: fixed; left: 50%; bottom: 84px; z-index: 70;
+        transform: translate(-50%, 8px);
+        max-width: calc(100vw - 32px); text-align: center;
+        background: var(--ink); color: var(--bg);
+        font-size: 13px; font-weight: 700; line-height: 1.5;
+        padding: 9px 16px; border-radius: 999px; box-shadow: var(--shadow);
+        opacity: 0; visibility: hidden; pointer-events: none;
+        transition: opacity .25s ease, transform .25s ease, visibility .25s ease;
+      }
+      #wx-toast.show { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+      @media (prefers-reduced-motion: reduce) {
+        #wx-toast { transition: none; }
+      }
     </style>
   </head>
   <body>
@@ -841,19 +883,14 @@
         <input type="search" id="site-search-input" placeholder="搜索简报…" aria-label="搜索简报" autocomplete="off" />
         <div class="site-search-panel" id="site-search-panel" role="listbox" aria-label="搜索结果" hidden></div>
       </div>
-      <div class="toc-wrap">
-        <button class="toc-btn" type="button" id="toc-btn" aria-haspopup="true" aria-expanded="false" aria-controls="toc-panel"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="2.4" cy="3.4" r="1" fill="currentColor" stroke="none" /><circle cx="2.4" cy="8" r="1" fill="currentColor" stroke="none" /><circle cx="2.4" cy="12.6" r="1" fill="currentColor" stroke="none" /><path d="M6 3.4h7.6M6 8h7.6M6 12.6h7.6" /></svg>目录</button>
-        <div class="toc-panel" id="toc-panel" role="menu" aria-label="本期目录" hidden></div>
-      </div>
       <span class="upd">本期数据截至 11 月 9 日 08:10 前后</span>
-      <button class="theme-toggle" type="button" id="theme-toggle" aria-label="切换到深色模式" title="切换到深色模式">☾</button>
     </div>
 
     <main class="wrap">
       <!-- ================= 最新简报 ================= -->
             <div id="view-latest" role="tabpanel" aria-labelledby="tab-latest">
 
-        <div class="issue-tools"><button class="copy-link-btn" type="button" data-copy-date="2026-11-09">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-09" data-share-title="每日晨间简报 · 2026年11月9日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-09&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%889%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a></div>
+        <div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式">☾</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-09">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-09" data-share-title="每日晨间简报 · 2026年11月9日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-09&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%889%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-09">微信</button></div>
         <div class="strip" aria-label="五城气温速览">
           <div class="cell">
             <div class="big">6°<small> / -5°</small></div>
@@ -1109,7 +1146,7 @@
             <div class="issue-date serif">2026 年 11 月 8 日（星期日）</div>
             <p class="issue-sub">农历丙午年九月三十 · 立冬次日，寒潮过境</p>
           </div>
-          <button class="tab-btn back-archive" type="button">← 返回归档</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-08">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-08" data-share-title="每日晨间简报 · 2026年11月8日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-08&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%888%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a>
+          <button class="tab-btn back-archive" type="button">← 返回归档</button><div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式">☾</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-08">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-08" data-share-title="每日晨间简报 · 2026年11月8日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-08&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%888%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-08">微信</button></div>
         </div>
 
         <div class="strip" aria-label="五城气温速览">
@@ -1367,7 +1404,7 @@
             <div class="issue-date serif">2026 年 11 月 1 日（星期日）</div>
             <p class="issue-sub">农历丙午年九月廿三 · 霜降节气 · 全省正式开栓供热 · 补档版（2026 年 11 月 8 日晚补写）</p>
           </div>
-          <button class="tab-btn back-archive" type="button">← 返回归档</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-01">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-01" data-share-title="每日晨间简报 · 2026年11月1日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-01&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%881%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a>
+          <button class="tab-btn back-archive" type="button">← 返回归档</button><div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式">☾</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-01">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-01" data-share-title="每日晨间简报 · 2026年11月1日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-01&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%881%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-01">微信</button></div>
         </div>
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">12.7°<small> / -0.3°</small></div><div class="meta"><b>沈阳</b><br />毛毛雨转多云<br />西北风阵风 43 km/h</div></div><div class="cell"><div class="big">15.1°<small> / 1.0°</small></div><div class="meta"><b>鞍山</b><br />毛毛雨，降水约 3.3 毫米<br />西北风阵风 44 km/h</div></div><div class="cell"><div class="big">4.2°<small> / -2.8°</small></div><div class="meta"><b>卡尔加里</b><br />当地 10 月 31 日 · 阴<br />湿度约 87%，体感偏冷</div></div><div class="cell"><div class="big">15.7°<small> / 12.3°</small></div><div class="meta"><b>海斯</b><br />当地 10 月 31 日 · 毛毛雨<br />降水约 2.8 毫米</div></div><div class="cell"><div class="big">18.7°<small> / 9.2°</small></div><div class="meta"><b>京都</b><br />阴 · 全天无降水<br />早晚 9°C，昼夜温差大</div></div></div>
         
@@ -1595,7 +1632,7 @@
             <div class="issue-date serif">2026 年 11 月 2 日（星期一）</div>
             <p class="issue-sub">农历丙午年九月廿四 · 霜降节气 · 下弦月 · 补档版（2026 年 11 月 8 日晚补写）</p>
           </div>
-          <button class="tab-btn back-archive" type="button">← 返回归档</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-02">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-02" data-share-title="每日晨间简报 · 2026年11月2日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-02&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%882%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a>
+          <button class="tab-btn back-archive" type="button">← 返回归档</button><div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式">☾</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-02">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-02" data-share-title="每日晨间简报 · 2026年11月2日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-02&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%882%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-02">微信</button></div>
         </div>
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">8.5°<small> / -2.7°</small></div><div class="meta"><b>沈阳</b><br />阴 · 全天无降水<br />AQI 约 162（中度污染）</div></div><div class="cell"><div class="big">10.8°<small> / -2.1°</small></div><div class="meta"><b>鞍山</b><br />阴 · 全天无降水<br />AQI 约 158（中度污染）</div></div><div class="cell"><div class="big">5.2°<small> / -3.0°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 1 日 · 阴<br />阿尔伯塔省起实行永久“阿尔伯塔时间”</div></div><div class="cell"><div class="big">18.0°<small> / 13.0°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 1 日 · 毛毛雨<br />东南风阵风 53 km/h</div></div><div class="cell"><div class="big">17.4°<small> / 12.1°</small></div><div class="meta"><b>京都</b><br />小雨 · 全天降水约 7.8 毫米<br />带伞穿防风外套</div></div></div>
         
@@ -1823,7 +1860,7 @@
             <div class="issue-date serif">2026 年 11 月 3 日（星期二）</div>
             <p class="issue-sub">农历丙午年九月廿五 · 霜降节气 · 补档版（2026 年 11 月 8 日晚补写）</p>
           </div>
-          <button class="tab-btn back-archive" type="button">← 返回归档</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-03">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-03" data-share-title="每日晨间简报 · 2026年11月3日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-03&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%883%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a>
+          <button class="tab-btn back-archive" type="button">← 返回归档</button><div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式">☾</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-03">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-03" data-share-title="每日晨间简报 · 2026年11月3日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-03&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%883%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-03">微信</button></div>
         </div>
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">11.6°<small> / 2.6°</small></div><div class="meta"><b>沈阳</b><br />多云 · 全天无降水<br />AQI 约 111（轻度污染）</div></div><div class="cell"><div class="big">14.0°<small> / 4.0°</small></div><div class="meta"><b>鞍山</b><br />晴 · 全天无降水<br />台安县发布大雾黄色预警</div></div><div class="cell"><div class="big">7.2°<small> / -3.8°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 2 日 · 大部晴<br />创新周开幕</div></div><div class="cell"><div class="big">25.4°<small> / 12.5°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 2 日 · 中雨<br />南风阵风 69 km/h</div></div><div class="cell"><div class="big">19.6°<small> / 10.9°</small></div><div class="meta"><b>京都</b><br />阴 · 全天无降水<br />最高近 20°C</div></div></div>
         
@@ -2049,7 +2086,7 @@
             <div class="issue-date serif">2026 年 11 月 4 日（星期三）</div>
             <p class="issue-sub">农历丙午年九月廿六 · 霜降节气 · 降温前回暖 · 补档版（2026 年 11 月 8 日晚补写）</p>
           </div>
-          <button class="tab-btn back-archive" type="button">← 返回归档</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-04">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-04" data-share-title="每日晨间简报 · 2026年11月4日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-04&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%884%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a>
+          <button class="tab-btn back-archive" type="button">← 返回归档</button><div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式">☾</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-04">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-04" data-share-title="每日晨间简报 · 2026年11月4日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-04&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%884%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-04">微信</button></div>
         </div>
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">18.2°<small> / 7.1°</small></div><div class="meta"><b>沈阳</b><br />阴 · 南风阵风 58 km/h<br />降温前的回暖，明日骤降</div></div><div class="cell"><div class="big">18.9°<small> / 9.5°</small></div><div class="meta"><b>鞍山</b><br />阴 · 南风阵风 56 km/h<br />11 月里难得的暖和天</div></div><div class="cell"><div class="big">11.9°<small> / -0.9°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 3 日 · 阴<br />本周最暖的一天</div></div><div class="cell"><div class="big">14.4°<small> / 6.1°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 3 日 · 中雨<br />降水约 15.6 毫米，阵风 70 km/h</div></div><div class="cell"><div class="big">19.1°<small> / 9.7°</small></div><div class="meta"><b>京都</b><br />毛毛雨 · 降水约 1.6 毫米<br />早晚 10°C 左右</div></div></div>
         
@@ -2275,7 +2312,7 @@
             <div class="issue-date serif">2026 年 11 月 5 日（星期四）</div>
             <p class="issue-sub">农历丙午年九月廿七 · 霜降节气 · 冷锋过境 · 补档版（2026 年 11 月 8 日晚补写）</p>
           </div>
-          <button class="tab-btn back-archive" type="button">← 返回归档</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-05">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-05" data-share-title="每日晨间简报 · 2026年11月5日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-05&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%885%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a>
+          <button class="tab-btn back-archive" type="button">← 返回归档</button><div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式">☾</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-05">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-05" data-share-title="每日晨间简报 · 2026年11月5日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-05&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%885%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-05">微信</button></div>
         </div>
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">6.7°<small> / -0.9°</small></div><div class="meta"><b>沈阳</b><br />白天气温 · 冷锋过境<br />凌晨锋前曾达 13.8°C</div></div><div class="cell"><div class="big">10.9°<small> / 0.5°</small></div><div class="meta"><b>鞍山</b><br />白天气温 · 冷锋过境<br />凌晨曾达 14.5°C</div></div><div class="cell"><div class="big">6.4°<small> / -2.2°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 4 日 · 多云<br />全市用水限制今日生效</div></div><div class="cell"><div class="big">17.1°<small> / 4.3°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 4 日 · 大部晴朗<br />早晚仅 4°C，昼夜温差大</div></div><div class="cell"><div class="big">23.3°<small> / 13.8°</small></div><div class="meta"><b>京都</b><br />小雨 · 降水约 3.9 毫米<br />本周最暖，最高 23°C</div></div></div>
         
@@ -2504,7 +2541,7 @@
             <div class="issue-date serif">2026 年 11 月 6 日（星期五）</div>
             <p class="issue-sub">农历丙午年九月廿八 · 霜降最后一天 · 晴冷 · 补档版（2026 年 11 月 8 日晚补写）</p>
           </div>
-          <button class="tab-btn back-archive" type="button">← 返回归档</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-06">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-06" data-share-title="每日晨间简报 · 2026年11月6日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-06&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%886%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a>
+          <button class="tab-btn back-archive" type="button">← 返回归档</button><div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式">☾</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-06">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-06" data-share-title="每日晨间简报 · 2026年11月6日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-06&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%886%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-06">微信</button></div>
         </div>
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">2.4°<small> / -2.8°</small></div><div class="meta"><b>沈阳</b><br />晴 · 全天无降水<br />西北风阵风 45 km/h</div></div><div class="cell"><div class="big">5.0°<small> / -2.5°</small></div><div class="meta"><b>鞍山</b><br />晴 · 全天无降水<br />北风阵风 41 km/h</div></div><div class="cell"><div class="big">10.0°<small> / -1.6°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 5 日 · 毛毛雨<br />西风阵风 40 km/h</div></div><div class="cell"><div class="big">14.6°<small> / 4.0°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 5 日 · 阴<br />北风阵风 36 km/h</div></div><div class="cell"><div class="big">20.9°<small> / 12.9°</small></div><div class="meta"><b>京都</b><br />毛毛雨 · 降水约 0.2 毫米<br />西北风阵风 44 km/h</div></div></div>
         
@@ -2731,7 +2768,7 @@
             <div class="issue-date serif">2026 年 11 月 7 日（星期六）</div>
             <p class="issue-sub">农历丙午年九月廿九 · 立冬节气 · 补档版（2026 年 11 月 8 日晚补写）</p>
           </div>
-          <button class="tab-btn back-archive" type="button">← 返回归档</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-07">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-07" data-share-title="每日晨间简报 · 2026年11月7日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-07&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%887%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a>
+          <button class="tab-btn back-archive" type="button">← 返回归档</button><div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式">☾</button><button class="copy-link-btn" type="button" data-copy-date="2026-11-07">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-07" data-share-title="每日晨间简报 · 2026年11月7日" aria-label="分享本期简报">↗ 分享</button><a class="weibo-link" href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fbosenc96-max.github.io%2Fbosen-morning-briefing%2F%232026-11-07&title=%E6%AF%8F%E6%97%A5%E6%99%A8%E9%97%B4%E7%AE%80%E6%8A%A5%20%C2%B7%202026%E5%B9%B411%E6%9C%887%E6%97%A5" target="_blank" rel="noopener noreferrer">微博</a><button class="wechat-btn" type="button" data-wechat-date="2026-11-07">微信</button></div>
         </div>
         <div class="strip" aria-label="五城气温速览"><div class="cell"><div class="big">0.5°<small> / -4.7°</small></div><div class="meta"><b>沈阳</b><br />阴 · 立冬当日<br />寒潮持续，北风不大</div></div><div class="cell"><div class="big">2.1°<small> / -4.4°</small></div><div class="meta"><b>鞍山</b><br />阴 · 立冬当日<br />寒潮持续</div></div><div class="cell"><div class="big">10.2°<small> / -0.1°</small></div><div class="meta"><b>卡尔加里</b><br />当地 11 月 6 日 · 阴<br />西南风阵风 62 km/h</div></div><div class="cell"><div class="big">9.1°<small> / 1.7°</small></div><div class="meta"><b>海斯</b><br />当地 11 月 6 日 · 阴<br />本周最冷，最高仅 9°C</div></div><div class="cell"><div class="big">15.3°<small> / 9.7°</small></div><div class="meta"><b>京都</b><br />阴 · 立冬当日<br />西北风阵风近 50 km/h</div></div></div>
         
@@ -3041,14 +3078,16 @@
     </footer>
 
     <button id="back-to-top" type="button" aria-label="回到顶部" title="回到顶部">↑</button>
+    <div id="wx-toast" role="status" aria-live="polite"></div>
 
     <script>
       /* Category group dividers (additive): runs before the view-tab,
          section-nav and search scripts below, so those pick up the grouped
          structure. Each issue's 19 sections are wrapped, in their existing
-         order, into six groups; the issue's nav is rewritten to the six
-         category names, pointing at the group containers (the section-nav
-         script's scrollspy then tracks the six groups). No section, heading
+         order, into six groups. The nav is not touched: it keeps its 19
+         per-section links and the section-nav scrollspy tracks the 19
+         sections; the groups serve as page dividers and as the 目录
+         panel's grouping only. No section, heading
          or line of briefing text is changed — sections are only moved into
          group wrappers. Groups are plain visual dividers: every section
          stays visible and the page reads as one continuous scroll. */
@@ -3118,21 +3157,49 @@
                 if (sec) { groups[g].body.appendChild(sec); }
               }
             }
-            /* Rewrite this issue's nav to the six categories. The links
-               are plain anchors to the group dividers; the section-nav
-               script's scrollspy/pill track the groups as the reader
-               scrolls the continuous page. */
-            var nav = box.querySelector('.secnav');
-            if (nav) {
-              var html = '';
-              for (g = 0; g < groups.length; g++) {
-                html += '<a href="#' + groups[g].group.id + '">' + groups[g].cat.name + '</a>';
-              }
-              nav.innerHTML = html;
-            }
+            /* The issue's nav keeps its 19 per-section links exactly as
+               authored in the HTML; the groups are only visual dividers
+               on the page and the grouping used by the 目录 panel. */
           })(containers[c]);
         }
 
+      })();
+    </script>
+    <script>
+      /* Sticky-bar layout (additive): wrap each issue nav's 19 section
+         links in a horizontally scrolling strip and pin a 「目录」
+         control at the bar's right end, outside the strip. The bar is
+         sticky, so the 目录 button stays at the top of the screen for
+         the whole read — no scrolling back up to reach it. Runs before
+         the section-nav script below, which then wires the strip. */
+      (function () {
+        var ICON = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="2.4" cy="3.4" r="1" fill="currentColor" stroke="none" /><circle cx="2.4" cy="8" r="1" fill="currentColor" stroke="none" /><circle cx="2.4" cy="12.6" r="1" fill="currentColor" stroke="none" /><path d="M6 3.4h7.6M6 8h7.6M6 12.6h7.6" /></svg>目录';
+        var navs = document.querySelectorAll('.secnav');
+        for (var i = 0; i < navs.length; i++) {
+          var nav = navs[i];
+          var scroller = document.createElement('div');
+          scroller.className = 'secnav-scroll';
+          var links = nav.querySelectorAll('a');
+          nav.insertBefore(scroller, nav.firstChild);
+          for (var j = 0; j < links.length; j++) { scroller.appendChild(links[j]); }
+          var wrap = document.createElement('div');
+          wrap.className = 'toc-wrap';
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'toc-btn';
+          btn.setAttribute('aria-haspopup', 'true');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-label', '打开本期目录');
+          btn.innerHTML = ICON;
+          var panel = document.createElement('div');
+          panel.className = 'toc-panel';
+          panel.setAttribute('role', 'menu');
+          panel.setAttribute('aria-label', '本期目录');
+          panel.hidden = true;
+          wrap.appendChild(btn);
+          wrap.appendChild(panel);
+          nav.appendChild(wrap);
+        }
       })();
     </script>
     <script>
@@ -3248,12 +3315,13 @@
         var states = [];
         for (var n = 0; n < navs.length; n++) {
           (function (nav) {
-            var links = nav.querySelectorAll('a');
+            var scroller = nav.querySelector('.secnav-scroll') || nav;
+            var links = scroller.querySelectorAll('a');
             var pill = document.createElement('span');
             pill.className = 'pill no-anim';
             pill.setAttribute('aria-hidden', 'true');
-            nav.insertBefore(pill, nav.firstChild);
-            var state = { nav: nav, links: links, targets: [], clickedAt: 0, pill: pill, placed: false, activeLink: null };
+            scroller.insertBefore(pill, scroller.firstChild);
+            var state = { nav: nav, scroller: scroller, links: links, targets: [], clickedAt: 0, pill: pill, placed: false, activeLink: null };
             for (var i = 0; i < links.length; i++) {
               (function (link) {
                 var id = link.getAttribute('href').slice(1);
@@ -3261,12 +3329,12 @@
                 link.addEventListener('click', function () {
                   state.clickedAt = Date.now();
                   setActive(state, link);
-                  centerLink(nav, link);
+                  centerLink(scroller, link);
                 });
               })(links[i]);
             }
-            nav.addEventListener('scroll', function () { updateFade(nav); }, { passive: true });
-            updateFade(nav);
+            scroller.addEventListener('scroll', function () { updateFade(scroller); }, { passive: true });
+            updateFade(scroller);
             states.push(state);
           })(navs[n]);
         }
@@ -3284,7 +3352,7 @@
             }
             if (atBottom) { current = st.links.length - 1; }
             var link = st.links[current];
-            if (link && setActive(st, link)) { revealLink(st.nav, link); }
+            if (link && setActive(st, link)) { revealLink(st.scroller, link); }
           }
         }
         var ticking = false;
@@ -3303,7 +3371,7 @@
           }
         }
         window.addEventListener('resize', function () {
-          for (var n = 0; n < navs.length; n++) { updateFade(navs[n]); }
+          for (var n = 0; n < states.length; n++) { updateFade(states[n].scroller); }
           spy();
           reseatPills();
         });
@@ -3352,25 +3420,28 @@
         var root = document.documentElement;
 
         /* ---------- dark mode toggle ---------- */
-        var themeBtn = document.getElementById('theme-toggle');
+        /* One toggle per issue, in that issue's one-row controls strip;
+           all of them drive the same page theme and stay in sync. */
+        var themeBtns = document.querySelectorAll('.theme-toggle');
         function effectiveTheme() { return root.classList.contains('dark') ? 'dark' : 'light'; }
         function paintThemeBtn() {
-          if (!themeBtn) { return; }
           var dark = effectiveTheme() === 'dark';
-          themeBtn.textContent = dark ? '☀' : '☾';
-          themeBtn.setAttribute('aria-label', dark ? '切换到浅色模式' : '切换到深色模式');
-          themeBtn.title = dark ? '切换到浅色模式' : '切换到深色模式';
+          for (var t = 0; t < themeBtns.length; t++) {
+            themeBtns[t].textContent = dark ? '☀' : '☾';
+            themeBtns[t].setAttribute('aria-label', dark ? '切换到浅色模式' : '切换到深色模式');
+            themeBtns[t].title = dark ? '切换到浅色模式' : '切换到深色模式';
+          }
         }
-        if (themeBtn) {
-          themeBtn.addEventListener('click', function () {
+        for (var t = 0; t < themeBtns.length; t++) {
+          themeBtns[t].addEventListener('click', function () {
             var dark = effectiveTheme() !== 'dark';
             root.classList.toggle('dark', dark);
             root.classList.toggle('light', !dark);
             try { localStorage.setItem('briefing-theme', dark ? 'dark' : 'light'); } catch (e) {}
             paintThemeBtn();
           });
-          paintThemeBtn();
         }
+        paintThemeBtn();
 
         /* ---------- reading progress + back-to-top (one rAF-throttled listener) ---------- */
         var bar = document.getElementById('read-progress');
@@ -3682,21 +3753,75 @@
       })();
     </script>
     <script>
-      /* Table of contents 2026-11-09 (additive): the 「目录」 button in the
-         tabs row opens a drop-down panel listing all 19 sections of the
+      /* WeChat share 2026-11-09 (additive): WeChat offers no public web
+         share URL (unlike Weibo's share.php) and its JS-SDK needs an
+         Official Account appId plus a server-side signature, which a
+         static page cannot provide. So the 「微信」 control copies the
+         issue's own link — the same URL its 复制链接 button copies —
+         and shows a short toast telling the reader to paste it into
+         WeChat for a friend or for Moments. */
+      (function () {
+        var toast = document.getElementById('wx-toast');
+        var toastTimer = null;
+        function showToast(ok) {
+          if (!toast) { return; }
+          toast.textContent = ok
+            ? '链接已复制，打开微信粘贴给朋友或分享到朋友圈'
+            : '复制失败，请再试一次';
+          toast.classList.add('show');
+          if (toastTimer) { clearTimeout(toastTimer); }
+          toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2600);
+        }
+        function fallbackCopy(text) {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed'; ta.style.top = '0'; ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          return ok;
+        }
+        var btns = document.querySelectorAll('.wechat-btn');
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener('click', function () {
+            var btn = this;
+            var url = window.location.href.split('#')[0] + '#' + btn.getAttribute('data-wechat-date');
+            var done = function (ok) {
+              if (btn.dataset.timer) { clearTimeout(Number(btn.dataset.timer)); }
+              btn.classList.toggle('copied', ok);
+              btn.dataset.timer = String(setTimeout(function () {
+                btn.classList.remove('copied');
+              }, 2000));
+              showToast(ok);
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(url).then(function () { done(true); },
+                function () { done(fallbackCopy(url)); });
+            } else {
+              done(fallbackCopy(url));
+            }
+          });
+        }
+      })();
+    </script>
+    <script>
+      /* Table of contents 2026-11-09 (additive): the 「目录」 button pinned
+         at the right end of the sticky section nav opens a drop-down panel listing all 19 sections of the
          issue currently on screen, grouped under the six categories (read
          from that issue's .cat-group wrappers, so it always matches the
          open issue). Every section is always visible, so tapping one
          simply closes the panel and smooth-scrolls the section into
          view — its scroll-margin-top leaves it clear of the 52px sticky
          nav, and the nav's scrollspy pill follows the scroll to the
-         section's group. Tapping the button again, tapping outside, or
+         section. Tapping the button again, tapping outside, or
          pressing Escape closes the panel. */
       (function () {
-        var btn = document.getElementById('toc-btn');
-        var panel = document.getElementById('toc-panel');
-        if (!btn || !panel) { return; }
-        var wrap = btn.parentNode;
+        var wraps = document.querySelectorAll('.toc-wrap');
+        if (!wraps.length) { return; }
+        var pairs = [];
 
         var NUMS = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十',
           '十一', '十二', '十三', '十四', '十五', '十六', '十七', '十八', '十九'];
@@ -3723,9 +3848,18 @@
           }
           return latest;
         }
-        function buildPanel() {
+        /* The issue whose sticky bar holds this 目录 control. */
+        function boxOf(wrap) {
+          var box = wrap;
+          while (box && box !== document.body) {
+            if (box.id === 'view-latest' ||
+              (box.classList && box.classList.contains('issue-panel'))) { return box; }
+            box = box.parentNode;
+          }
+          return currentBox();
+        }
+        function buildPanel(panel, box) {
           panel.innerHTML = '';
-          var box = currentBox();
           if (!box) { return; }
           var groups = box.querySelectorAll('.cat-group');
           var n = 0;
@@ -3768,27 +3902,48 @@
             sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }, 40);
         }
-        function openPanel() {
-          buildPanel();
+        function closePanel() {
+          for (var i = 0; i < pairs.length; i++) {
+            pairs[i].panel.hidden = true;
+            pairs[i].btn.setAttribute('aria-expanded', 'false');
+          }
+        }
+        function anyOpen() {
+          for (var i = 0; i < pairs.length; i++) {
+            if (!pairs[i].panel.hidden) { return pairs[i]; }
+          }
+          return null;
+        }
+        function openPanel(pair) {
+          var wasHidden = pair.panel.hidden;
+          closePanel();
+          if (!wasHidden) { return; } /* tapping the button again closes it */
+          buildPanel(pair.panel, boxOf(pair.wrap));
           var sp = document.getElementById('site-search-panel');
           if (sp) { sp.hidden = true; } /* never stack the two panels */
-          panel.hidden = false;
-          btn.setAttribute('aria-expanded', 'true');
+          pair.panel.hidden = false;
+          pair.btn.setAttribute('aria-expanded', 'true');
         }
-        function closePanel() {
-          panel.hidden = true;
-          btn.setAttribute('aria-expanded', 'false');
+        for (var w = 0; w < wraps.length; w++) {
+          (function (wrap) {
+            var pair = {
+              wrap: wrap,
+              btn: wrap.querySelector('.toc-btn'),
+              panel: wrap.querySelector('.toc-panel')
+            };
+            if (!pair.btn || !pair.panel) { return; }
+            pairs.push(pair);
+            pair.btn.addEventListener('click', function () { openPanel(pair); });
+          })(wraps[w]);
         }
-        btn.addEventListener('click', function () {
-          if (panel.hidden) { openPanel(); } else { closePanel(); }
-        });
         document.addEventListener('click', function (e) {
-          if (!panel.hidden && wrap && !wrap.contains(e.target)) { closePanel(); }
+          var open = anyOpen();
+          if (open && !open.wrap.contains(e.target)) { closePanel(); }
         });
         document.addEventListener('keydown', function (e) {
-          if (e.key === 'Escape' && !panel.hidden) {
-            closePanel();
-            btn.focus();
+          if (e.key === 'Escape') {
+            var open = anyOpen();
+            if (open) { closePanel(); open.btn.focus(); }
           }
         });
       })();
