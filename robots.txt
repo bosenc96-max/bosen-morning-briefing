@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bosenc96-max.github.io/bosen-morning-briefing/sitemap.xml
