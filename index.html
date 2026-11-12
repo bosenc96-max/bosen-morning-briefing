@@ -1240,6 +1240,25 @@
       .brk-list li:last-child { margin-bottom: 0; }
       .brk-list b { color: var(--ink); }
 
+      /* 号外合集列表式（2026-11-12）：进合集先看列表——一行一篇
+         （号外徽章 + 标题 + 日期 + 一句话摘要），点哪篇才展开
+         哪篇全文，全文上下各有一个「← 返回号外合集」。列表行
+         沿用合集 .coll-item 的同一套样式，只另加下面几条。 */
+      #breaking-list[hidden], #breaking-detail[hidden] { display: none; }
+      .brk-row .brk-badge { flex: 0 0 auto; }
+      .brk-back { margin: 0 0 14px; }
+      .brk-back-b { margin: 14px 0 0; }
+      /* 返回条吸顶（2026-11-13）：号外全文长达数千像素，读者读到
+         中段时，顶部的返回按钮早已滚出画面，体感就是「回不去」。
+         详情打开期间，顶部返回条 sticky 在视口顶端常驻，滚到哪
+         都能一键回到合集列表；文末的返回按钮保持原样。 */
+      .brk-backbar {
+        position: sticky; top: 0; z-index: 15;
+        background: var(--bg); padding: 10px 0 8px; margin: 0 0 8px;
+        border-bottom: 1px solid var(--line);
+      }
+      .brk-backbar .brk-back { margin: 0; }
+
       /* Collections + weekly review: rows reuse the archive card look. */
       .coll-h { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin: 22px 0 10px; }
       .coll-h:first-child { margin-top: 2px; }
@@ -4737,17 +4756,37 @@
 
       <!-- ================= 号外合集 =================
            突发新闻号外（加急短讯）的独立合集，与读过 / 听过 / 看过
-           合集分开收录。条目按时间倒序（最新在最前），每条为
-           一张卡片：红色「号外」徽章 + 标题 + 时间 + 正文与
-           背景 + 来源链接，样式与站内其他条目一致。 -->
+           合集分开收录。2026-11-12 起改为列表式：条目按时间倒序
+           （最新在最前），一篇一行，只显示红色「号外」徽章 +
+           标题 + 日期 + 一句话摘要（行样式与合集 .coll-item
+           同一套）；点哪篇才展开哪篇全文（#breaking-detail，
+           全文仍是 .brk-item 卡片，上下各有一个「← 返回号外
+           合集」，其中顶部那个装在吸顶条 .brk-backbar 里，全文
+           再长也常驻在视口顶端，随时能点回列表）。新增号外时：
+           在 #breaking-list 里照样加一行
+           （data-brk-open 指向新文章的 id），并把新文章
+           <article class="brk-item" id="brk-日期"> 放进
+           #breaking-root，两处都按最新在最前排列。 -->
       <div id="view-breaking" role="tabpanel" aria-labelledby="tab-breaking" hidden>
         <section class="blk">
           <div class="blk-head">
             <h2 class="serif">号外合集</h2>
             <span class="note">突发新闻号外 · 最新在最前</span>
           </div>
-          <div id="breaking-root">
-                                    <article class="brk-item">
+          <div id="breaking-list" class="coll-list">
+            <button type="button" class="coll-item brk-row" data-brk-open="brk-2026-11-12" aria-controls="breaking-detail">
+              <span class="brk-badge">号外</span>
+              <span class="coll-main">
+                <span class="coll-line"><span class="coll-title">黄仁勋辞职：英伟达十四天风暴全记录（超详细版）</span><span class="coll-date">2026 年 11 月 12 日</span></span>
+                <span class="coll-sub">英伟达创始人黄仁勋辞去总裁、首席执行官及董事会成员职务，立即生效；本篇按时间顺序写全这十四天的经过、原话与数字，未核实之处照实列明。</span>
+              </span>
+              <span class="coll-go">阅读全文 →</span>
+            </button>
+          </div>
+          <div id="breaking-detail" hidden>
+            <div class="brk-backbar"><button class="tab-btn brk-back" type="button">← 返回号外合集</button></div>
+            <div id="breaking-root">
+            <article class="brk-item" id="brk-2026-11-12">
               <div class="brk-head">
                 <span class="brk-badge">号外</span>
                 <h3 class="brk-title">黄仁勋辞职：英伟达十四天风暴全记录（超详细版）</h3>
@@ -4825,12 +4864,19 @@
               </ul>
 
               <h4 class="brk-sub">十一、尾声：人走了，至少六件事还没完</h4>
-              <p class="brk-body"><b>① 永久 CEO。</b>董事会已启动遴选，内外候选人都考虑，Kress 过渡；彭博社 11 日报道外部猎头已在行动，但人选与时间表都没有公布。<b>② 财报。</b>11 月 17 日（周二）太平洋时间约 13:20 发财报、14:00 电话会——33 年来第一份没有黄仁勋的英伟达财报。<b>③ 国会简报。</b>11 月 18 日瑞本大楼 2172 室的闭门简报是否照常、黄仁勋是否以「前 CEO」身份出席、传票是否会发（信只是请求，截至 12 日无传票发出；共和党 1 月交权后其传票可能失效），全部待定。<b>④ 董事会调查。</b>Wachtell 律所与 Joon H. Kim 的独立调查无时间表、无已公布发现；「机密到底有没有泄露」这个全案最核心的问题，答案仍是未知；董事会 11 月 8 日那句「没有理由相信已泄露」只是调查开始前的表态。<b>⑤ 政府调查多线并行。</b>据《华尔街日报》，美国司法部在主导多项相关调查，特朗普称 FBI 也在查；Megaspeed 案已由商务部移交司法部；实体清单之争未决；参议员 Elizabeth Warren 与 Chris Coons 已要求行政当局（致信对象包括商务部长 Lutnick、国务卿 Rubio 与 Stephen Miller）保存与英伟达对华芯片出口及此事相关的全部文件。<b>⑥ 诉讼与新加坡线。</b>股东集体诉讼刚立案，首席原告之争要到 2027 年 1 月 8 日才见分晓；新加坡警方对 Megaspeed 的调查仍在进行，国际数据中心运营商已在终止或重估与 Megaspeed 的租约。</p>
+              <ul class="brk-list">
+                <li><b>永久 CEO。</b>董事会已启动遴选，内外候选人都考虑，Kress 过渡；彭博社 11 日报道外部猎头已在行动，但人选与时间表都没有公布。</li>
+                <li><b>财报。</b>11 月 17 日（周二）太平洋时间约 13:20 发财报、14:00 电话会——33 年来第一份没有黄仁勋的英伟达财报。</li>
+                <li><b>国会简报。</b>11 月 18 日瑞本大楼 2172 室的闭门简报是否照常、黄仁勋是否以「前 CEO」身份出席、传票是否会发（信只是请求，截至 12 日无传票发出；共和党 1 月交权后其传票可能失效），全部待定。</li>
+                <li><b>董事会调查。</b>Wachtell 律所与 Joon H. Kim 的独立调查无时间表、无已公布发现；「机密到底有没有泄露」这个全案最核心的问题，答案仍是未知；董事会 11 月 8 日那句「没有理由相信已泄露」只是调查开始前的表态。</li>
+                <li><b>政府调查多线并行。</b>据《华尔街日报》，美国司法部在主导多项相关调查，特朗普称 FBI 也在查；Megaspeed 案已由商务部移交司法部；实体清单之争未决；参议员 Elizabeth Warren 与 Chris Coons 已要求行政当局（致信对象包括商务部长 Lutnick、国务卿 Rubio 与 Stephen Miller）保存与英伟达对华芯片出口及此事相关的全部文件。</li>
+                <li><b>诉讼与新加坡线。</b>股东集体诉讼刚立案，首席原告之争要到 2027 年 1 月 8 日才见分晓；新加坡警方对 Megaspeed 的调查仍在进行，国际数据中心运营商已在终止或重估与 Megaspeed 的租约。</li>
+              </ul>
               <p class="brk-body"><b>最后收个尾。</b>把 14 天的因果链拉直了看：没有 2024 年末就开始的 Megaspeed 调查，就没有对 Alice Huang 的监视与「去掩码」；没有《纽约时报》10 月 29 日的报道，这些就永远锁在保密渠道里；没有黄仁勋 11 月 8 日那封全员信，事件也许还停在「国家安全疑云」，是他亲手承认出轨、把它变成了董事会的信任危机；没有 11 月 11 日上午的第二段婚外情报道、下午 5 点的国会死线和 5:30 的罢免消息三连击，董事会未必在当天落槌。而全案最吊诡之处始终没变：闹出这么大动静的「间谍」指控，到今天没有一页实锤被公开——但对一家 4 万亿美元的公司来说，光是「无法排除」四个字，就足够终结一个 33 年的时代了。</p>
               <p class="brk-src">主要来源汇总：<a href="https://www.globenewswire.com/news-release/2026/11/12/3401635/0/en/nvidia-announces-ceo-transition.html" target="_blank" rel="noopener noreferrer">英伟达 11 月 12 日公告</a> · <a href="https://www.globenewswire.com/news-release/2026/11/08/3398017/0/en/statement-from-nvidia-board-of-directors.html" target="_blank" rel="noopener noreferrer">英伟达 11 月 8 日董事会声明</a> · <a href="https://nvidianews.nvidia.com/news/a-message-to-our-company" target="_blank" rel="noopener noreferrer">英伟达新闻室员工信</a> · <a href="https://foreignaffairs.house.gov/sites/evo-subsites/republicans-foreignaffairs.house.gov/files/evo-media-document/11.4.26nvidialetter.pdf" target="_blank" rel="noopener noreferrer">众议院三主席信函 PDF</a> · <a href="https://www.nytimes.com/2026/10/29/us/politics/nvidia-china-jensen-huang-trump.html" target="_blank" rel="noopener noreferrer">《纽约时报》10 月 29 日</a> · <a href="https://www.nytimes.com/2026/11/11/technology/jensen-huang-nvidia-affair.html" target="_blank" rel="noopener noreferrer">《纽约时报》11 月 11 日</a> · <a href="https://www.wsj.com/tech/ai/a-mystery-businessman-introduced-jensen-huang-to-his-paramourher-husband-1ec3b581" target="_blank" rel="noopener noreferrer">《华尔街日报》康伟报道</a> · <a href="https://www.reuters.com/business/retail-consumer/nvidia-ceo-jensen-huang-step-down-big-blow-ai-boom-2026-11-12/" target="_blank" rel="noopener noreferrer">路透社辞职报道</a> · <a href="https://techcrunch.com/2026/11/09/the-race-is-on-to-sue-nvidia/" target="_blank" rel="noopener noreferrer">TechCrunch 诉讼报道</a> · <a href="https://www.wsj.com/tech/ai/how-jensen-huangs-affair-spiraled-into-a-national-security-nightmare-d9b43304" target="_blank" rel="noopener noreferrer">《华尔街日报》Megaspeed 与司法部调查全景</a> · <a href="https://www.reuters.com/world/china/senior-us-democratic-senators-urge-administration-preserve-nvidia-export-records-2026-11-12/" target="_blank" rel="noopener noreferrer">路透社（Warren 与 Coons 致信要求保存文件）</a> · <a href="https://biz.chosun.com/en/en-international/2026/11/11/IILWD5J6MBHCPAPSC6JTHHDATA/" target="_blank" rel="noopener noreferrer">朝鲜日报英文版（转《金融时报》：数据中心运营商终止或重估与 Megaspeed 的租约）</a>（以上均需翻墙）</p>
             </article>
-
-
+            </div>
+            <button class="tab-btn brk-back brk-back-b" type="button">← 返回号外合集</button>
           </div>
         </section>
       </div>
@@ -7574,6 +7620,62 @@
           });
         }
 
+      })();
+    </script>
+    <script>
+      /* 号外合集列表式 2026-11-12 (additive): the 号外合集 view
+         opens on the list (#breaking-list, one row per extra:
+         badge + title + date + one-line summary). Tapping a row
+         swaps the list for that extra's full text
+         (#breaking-detail, only the tapped .brk-item shown);
+         the 「← 返回号外合集」 buttons above and below the
+         article swap back. Re-clicking the 号外合集 tab (top tabs
+         or the floating menu, which clicks the same tab) always
+         lands back on the list.
+         2026-11-13 hardening: all clicks inside the view are
+         handled by ONE delegated listener on #view-breaking, so
+         the rows and both back buttons (and any future extra's)
+         can never end up unwired; and the top back button sits in
+         a sticky bar (.brk-backbar) that stays pinned to the top
+         of the viewport for the whole article, so the way back to
+         the list is on screen at every scroll depth. */
+      (function () {
+        var view = document.getElementById('view-breaking');
+        var list = document.getElementById('breaking-list');
+        var detail = document.getElementById('breaking-detail');
+        if (!view || !list || !detail) { return; }
+        var items = detail.querySelectorAll('.brk-item');
+        function showList() {
+          detail.hidden = true;
+          list.hidden = false;
+        }
+        function openItem(id) {
+          var found = false;
+          for (var i = 0; i < items.length; i++) {
+            var on = items[i].id === id;
+            items[i].hidden = !on;
+            if (on) { found = true; }
+          }
+          if (!found) { return; }
+          list.hidden = true;
+          detail.hidden = false;
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        view.addEventListener('click', function (e) {
+          var t = e.target;
+          while (t && t !== view) {
+            if (t.classList && t.classList.contains('brk-back')) {
+              showList();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              return;
+            }
+            var openId = (t.getAttribute && t.getAttribute('data-brk-open')) || null;
+            if (openId) { openItem(openId); return; }
+            t = t.parentNode;
+          }
+        });
+        var tab = document.getElementById('tab-breaking');
+        if (tab) { tab.addEventListener('click', showList); }
       })();
     </script>
     <script>
