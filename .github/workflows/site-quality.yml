@@ -1,0 +1,30 @@
+name: Site Quality (read-only)
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout proposed changes
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Unit tests for structural audit
+        run: python -m unittest discover -s tests -v
+      - name: Offline structural audit
+        run: python scripts/site_quality.py --root . --report quality-report.json
+      - name: Upload structured audit report
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: site-quality-report
+          path: quality-report.json
+          if-no-files-found: warn
