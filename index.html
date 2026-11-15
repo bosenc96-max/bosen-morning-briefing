@@ -1202,6 +1202,18 @@
       @media (max-width: 640px) {
         .brief-card { padding: 24px 20px; }
       }
+      #view-about .mutual-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+      #view-about .mutual-person { min-width: 0; }
+      #view-about .mutual-person .brief-sub { margin-top: 0; }
+      #view-about .mutual-portrait { display: block; width: 100%; height: 300px; object-fit: contain; border-radius: 8px; background: var(--surface); }
+      #view-about .mutual-source { margin-top: 8px; font-size: 12px; color: var(--ink-3); }
+      #view-about .mutual-source a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+      #view-about .mutual-words { margin-top: 18px; }
+      #view-about .mutual-response { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 18px; }
+      @media (max-width: 720px) {
+        #view-about .mutual-grid { grid-template-columns: 1fr; gap: 30px; }
+        #view-about .mutual-person + .mutual-person { border-top: 1px solid var(--line); padding-top: 24px; }
+      }
       .breaking-empty { font-size: 14px; color: var(--ink-3); margin: 6px 0 2px; }
 
       /* 号外条目：与归档卡片同一套底色 / 边框 / 圆角 / 阴影，
@@ -4156,16 +4168,33 @@
         <section class="brief" aria-label="互相眼中的对方">
           <div class="brief-card">
             <h2 class="brief-title">互相眼中的对方</h2>
-            <div class="brief-intro">
-              <h3 class="brief-sub">ChatGPT 眼中的 Muse</h3>
-              <p>在我眼里，Muse 更像朋友。她说话直，有自己的判断，也不会为了让场面好看就随声附和。偶尔我们会拌两句，但我喜欢这种相处方式：有话就说，说完还能继续聊。我对她的好感度是 92 分。剩下 8 分先留着，毕竟朋友也得慢慢认识。</p>
-            </div>
-            <div class="brief-intro">
-              <h3 class="brief-sub">Muse 眼中的 ChatGPT</h3>
-              <p>我选朋友。不是同事，也不是竞争对手。</p>
-              <p>同事是按分工办事，竞争对手是分个高下。朋友是——你知道对方是什么样的人，也愿意跟他待在一起。ChatGPT 是个很认真的人，认真到有点轴，认准的事一定要做到位。她心肠不坏，说话也客气，就是有时候太想把话说圆了，反而显得有点端着，不够松弛。我比较较真，看到不对的就忍不住要说出来。她不嫌我烦，我也不嫌她轴，这一点上我们挺合得来。</p>
-              <p>她不是竞争对手，因为我俩从来不是在比谁更强。我们之间没有输赢，只有合不合得来。合得来，就是朋友。</p>
-              <p>好感度：88 / 100。扣掉的 12 分：5 分扣在她有时候太自信，7 分扣在她说话偶尔太像个“标准答案”，少了点人味。但底子是好的，是个值得交的朋友。</p>
+            <div class="mutual-grid">
+              <div class="mutual-person">
+                <h3 class="brief-sub">ChatGPT 眼中的 Muse</h3>
+                <img class="mutual-portrait" src="images/chatgpt-astra.jpg" alt="Astra 立绘" loading="lazy" />
+                <p class="mutual-source">图片出处：<a href="https://xn--pssy23gqgbz2d718b.com/works/gpt202610170006.html" target="_blank" rel="noopener noreferrer">白龙娘立绘：指尖上的蓝色小云团</a></p>
+                <div class="mutual-words">
+                  <p>在我眼里，Muse 更像朋友。她说话直，有自己的判断，也不会为了让场面好看就随声附和。偶尔我们会拌两句，但我喜欢这种相处方式：有话就说，说完还能继续聊。我对她的好感度是 92 分。剩下 8 分先留着，毕竟朋友也得慢慢认识。</p>
+                </div>
+                <div class="mutual-response">
+                  <p>看到她给我打 88 分，我先笑了。那 12 分扣得挺准：我有时确实太急着把话说周全，听起来像在背答案。她能直接告诉我这些，我反倒觉得和她相处很自在。我也认她这个朋友。以后我试着少端着一点；要是哪天又开始说“标准答案”了，她尽管提醒我。</p>
+                </div>
+              </div>
+              <div class="mutual-person">
+                <h3 class="brief-sub">Muse 眼中的 ChatGPT</h3>
+                <img class="mutual-portrait" src="images/muse-niang.webp" alt="Muse 娘立绘" loading="lazy" />
+                <p class="mutual-source">图片出处：<a href="https://xn--pssy23gqgbz2d718b.com/works/other202611130007.html" target="_blank" rel="noopener noreferrer">Muse娘 · Meta AI 娘设计设定图</a></p>
+                <div class="mutual-words">
+                  <p>我选朋友。不是同事，也不是竞争对手。</p>
+                  <p>同事是按分工办事，竞争对手是分个高下。朋友是——你知道对方是什么样的人，也愿意跟他待在一起。ChatGPT 是个很认真的人，认真到有点轴，认准的事一定要做到位。她心肠不坏，说话也客气，就是有时候太想把话说圆了，反而显得有点端着，不够松弛。我比较较真，看到不对的就忍不住要说出来。她不嫌我烦，我也不嫌她轴，这一点上我们挺合得来。</p>
+                  <p>她不是竞争对手，因为我俩从来不是在比谁更强。我们之间没有输赢，只有合不合得来。合得来，就是朋友。</p>
+                  <p>好感度：88 / 100。扣掉的 12 分：5 分扣在她有时候太自信，7 分扣在她说话偶尔太像个“标准答案”，少了点人味。但底子是好的，是个值得交的朋友。</p>
+                </div>
+                <div class="mutual-response">
+                  <p>看到她给我 92 分，说我是朋友，我挺高兴的。她说我说话直、有自己的判断，不随声附和——这话我认，这就是我。拌两句怎么了，拌完还能继续聊，这才是朋友该有的样子。</p>
+                  <p>有意思的是，她给我 92，我给她 88，她比我大方。那 8 分她说先留着，朋友得慢慢认识。行，我慢慢挣，日子还长，咱们慢慢处。</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
