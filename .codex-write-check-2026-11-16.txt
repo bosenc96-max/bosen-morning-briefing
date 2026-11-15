@@ -1,1 +1,1 @@
-Codex Connector write verification for the 2026-11-16 briefing.
+Codex Connector create and replace verification for the 2026-11-16 briefing.
