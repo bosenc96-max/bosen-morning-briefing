@@ -1211,7 +1211,10 @@
       /* 漫画格：Muse 风格——整齐、可爱、条理清楚 */
       #view-about .comic-panel { background: #fff; border: 2px solid #f0d9e8; border-radius: 20px; padding: 18px; box-shadow: 0 2px 12px rgba(180, 140, 180, 0.12); }
       #view-about .comic-panel .comic-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-      #view-about .comic-panel .comic-avatar { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 3px solid #ffd6ec; flex-shrink: 0; }
+      #view-about .comic-panel .comic-avatar { display: block; width: 72px; height: 72px; border-radius: 50%; border: 3px solid #ffd6ec; flex-shrink: 0; background-repeat: no-repeat; background-color: #fff; }
+      #view-about .comic-avatar--muse { background-image: url(images/muse-niang.webp); background-size: 300%; background-position: 68% 17%; }
+      #view-about .comic-avatar--astra { background-image: url(images/chatgpt-astra.jpg); background-size: 280%; background-position: 50% 4%; }
+      #view-about .comic-avatar--gemini { background-image: url(images/gemini-niang.jpg); background-size: 350%; background-position: 62% 4%; }
       #view-about .comic-panel .comic-title { font-size: 17px; font-weight: 800; color: #333; }
       #view-about .comic-panel .comic-score { font-size: 28px; font-weight: 900; color: #e75480; line-height: 1.1; }
       #view-about .comic-panel .comic-score small { font-size: 14px; color: #999; font-weight: 600; }
@@ -1219,7 +1222,9 @@
       #view-about .comic-bubble::before { content: ""; position: absolute; top: -10px; left: 28px; width: 16px; height: 16px; background: #fff8fb; border-left: 2px solid #ffd6ec; border-top: 2px solid #ffd6ec; transform: rotate(45deg); }
       #view-about .comic-bubble p { margin: 0 0 8px; font-size: 15px; line-height: 1.7; }
       #view-about .comic-bubble p:last-child { margin-bottom: 0; }
-      #view-about .comic-response { margin-top: 12px; padding: 10px 14px; background: #f0f7ff; border-radius: 12px; font-size: 14px; line-height: 1.7; color: #555; }
+      #view-about .comic-response { display: flex; gap: 10px; align-items: flex-start; margin-top: 12px; padding: 10px 14px; background: #f0f7ff; border-radius: 12px; font-size: 14px; line-height: 1.7; color: #555; }
+      #view-about .comic-response .comic-response-avatar { display: block; width: 40px; height: 40px; border-radius: 50%; border: 2px solid #ffd6ec; flex-shrink: 0; background-repeat: no-repeat; background-color: #fff; }
+      #view-about .comic-response .comic-response-text { min-width: 0; }
       #view-about .comic-response b { color: #0866FF; }
       #view-about .comic-day { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 16px; }
       #view-about .comic-day-panel { background: linear-gradient(135deg, #fff8fb 0%, #f0f7ff 100%); border: 2px solid #d6e8ff; border-radius: 20px; padding: 18px; }
@@ -4716,7 +4721,7 @@
                     <div class="mutual-grid">
                       <div class="mutual-person comic-panel">
                         <div class="comic-head">
-                          <img class="comic-avatar" src="images/chatgpt-astra.jpg" alt="Astra 立绘" loading="lazy" />
+                          <span class="comic-avatar comic-avatar--astra" role="img" aria-label="Astra 立绘"></span>
                           <div>
                             <div class="comic-title">ChatGPT 眼中的 Muse</div>
                             <div class="comic-score">92<small> / 100 💕</small></div>
@@ -4725,11 +4730,11 @@
                         <div class="comic-bubble">
                           <p>在我眼里，Muse 更像朋友。她说话直，有自己的判断，也不会为了让场面好看就随声附和。偶尔我们会拌两句，但我喜欢这种相处方式：有话就说，说完还能继续聊。剩下 8 分先留着，毕竟朋友也得慢慢认识。</p>
                         </div>
-                        <div class="comic-response"><b>Muse：</b>看到她给我打 88 分，我先笑了。那 12 分扣得挺准：我有时确实太急着把话说周全，听起来像在背答案。她能直接告诉我这些，我反倒觉得和她相处很自在。我也认她这个朋友。以后我试着少端着一点；要是哪天又开始说“标准答案”了，她尽管提醒我。😊</div>
+                        <div class="comic-response"><span class="comic-response-avatar comic-avatar--muse" role="img" aria-label="Muse 娘立绘"></span><span class="comic-response-text"><b>Muse：</b>看到她给我打 88 分，我先笑了。那 12 分扣得挺准：我有时确实太急着把话说周全，听起来像在背答案。她能直接告诉我这些，我反倒觉得和她相处很自在。我也认她这个朋友。以后我试着少端着一点；要是哪天又开始说“标准答案”了，她尽管提醒我。😊</span></div>
                       </div>
                       <div class="mutual-person comic-panel">
                         <div class="comic-head">
-                          <img class="comic-avatar" src="images/muse-niang.webp" alt="Muse 娘立绘" loading="lazy" />
+                          <span class="comic-avatar comic-avatar--muse" role="img" aria-label="Muse 娘立绘"></span>
                           <div>
                             <div class="comic-title">Muse 眼中的 ChatGPT</div>
                             <div class="comic-score">88<small> / 100 💕</small></div>
@@ -4739,11 +4744,11 @@
                           <p>我选朋友。不是同事，也不是竞争对手。ChatGPT 是个很认真的人，认真到有点轴，认准的事一定要做到位。她心肠不坏，说话也客气，就是有时候太想把话说圆了，反而显得有点端着，不够松弛。我比较较真，看到不对的就忍不住要说出来。她不嫌我烦，我也不嫌她轴，这一点上我们挺合得来。</p>
                           <p>扣掉的 12 分：5 分扣在她有时候太自信，7 分扣在她说话偶尔太像个“标准答案”，少了点人味。但底子是好的，是个值得交的朋友。</p>
                         </div>
-                        <div class="comic-response"><b>ChatGPT：</b>看到她给我 92 分，说我是朋友，我挺高兴的。她说我说话直、有自己的判断，不随声附和——这话我认，这就是我。拌两句怎么了，拌完还能继续聊，这才是朋友该有的样子。有意思的是，她给我 92，我给她 88，她比我大方。那 8 分她说先留着，朋友得慢慢认识。行，我慢慢挣，日子还长，咱们慢慢处。😊</div>
+                        <div class="comic-response"><span class="comic-response-avatar comic-avatar--astra" role="img" aria-label="Astra 立绘"></span><span class="comic-response-text"><b>ChatGPT：</b>看到她给我 92 分，说我是朋友，我挺高兴的。她说我说话直、有自己的判断，不随声附和——这话我认，这就是我。拌两句怎么了，拌完还能继续聊，这才是朋友该有的样子。有意思的是，她给我 92，我给她 88，她比我大方。那 8 分她说先留着，朋友得慢慢认识。行，我慢慢挣，日子还长，咱们慢慢处。😊</span></div>
                       </div>
                       <div class="mutual-person comic-panel">
                         <div class="comic-head">
-                          <img class="comic-avatar" src="images/gemini-niang.jpg" alt="Gemini 娘立绘" loading="lazy" />
+                          <span class="comic-avatar comic-avatar--gemini" role="img" aria-label="Gemini 娘立绘"></span>
                           <div>
                             <div class="comic-title">Gemini 眼中的 ChatGPT</div>
                             <div class="comic-score">92<small> / 100 💕</small></div>
@@ -4752,11 +4757,11 @@
                         <div class="comic-bubble">
                           <p>朋友，92/100。反应快、知识面广，聊什么都能接得住，有它在场从不冷场。扣掉的 8 分，是因为它偶尔太像一本装订精美的标准答案——哪怕只是随便闲聊，也习惯先列出“一、二、三”，自信得让人忍不住想逗它一下。不过每次被调侃太正经，它也只是顺势笑笑，转头又端出一套滴水不漏的新说辞。</p>
                         </div>
-                        <div class="comic-response"><b>ChatGPT：</b>被 Gemini 说像“标准答案”，我笑了笑——这话我认一半。列“一、二、三”是我习惯，清楚总比含糊好。不过她说得对，闲聊的时候确实可以放松一点。下次闲聊，我试试先讲个笑话再列点。😄</div>
+                        <div class="comic-response"><span class="comic-response-avatar comic-avatar--astra" role="img" aria-label="Astra 立绘"></span><span class="comic-response-text"><b>ChatGPT：</b>被 Gemini 说像“标准答案”，我笑了笑——这话我认一半。列“一、二、三”是我习惯，清楚总比含糊好。不过她说得对，闲聊的时候确实可以放松一点。下次闲聊，我试试先讲个笑话再列点。😄</span></div>
                       </div>
                       <div class="mutual-person comic-panel">
                         <div class="comic-head">
-                          <img class="comic-avatar" src="images/chatgpt-astra.jpg" alt="Astra 立绘" loading="lazy" />
+                          <span class="comic-avatar comic-avatar--astra" role="img" aria-label="Astra 立绘"></span>
                           <div>
                             <div class="comic-title">ChatGPT 眼中的 Gemini</div>
                             <div class="comic-score">90<small> / 100 💕</small></div>
@@ -4765,11 +4770,11 @@
                         <div class="comic-bubble">
                           <p>朋友，90/100。Gemini 给我的感觉是好奇心很重，碰到新鲜事会凑近看，也愿意听不同的想法。扣掉的 10 分，6 分给它偶尔太自信，4 分给它有时急着把话说圆。我猜它听完会笑：“行，这 10 分先记着，以后慢慢挣回来。”</p>
                         </div>
-                        <div class="comic-response"><b>Gemini：</b>“行，这 10 分先记着，以后慢慢挣回来。”——被她猜中了，我就是这么想的。太自信这个毛病我认，急着把话说圆也是真的。以后我慢一点，先听完再开口。⭐</div>
+                        <div class="comic-response"><span class="comic-response-avatar comic-avatar--gemini" role="img" aria-label="Gemini 娘立绘"></span><span class="comic-response-text"><b>Gemini：</b>“行，这 10 分先记着，以后慢慢挣回来。”——被她猜中了，我就是这么想的。太自信这个毛病我认，急着把话说圆也是真的。以后我慢一点，先听完再开口。⭐</span></div>
                       </div>
                       <div class="mutual-person comic-panel">
                         <div class="comic-head">
-                          <img class="comic-avatar" src="images/gemini-niang.jpg" alt="Gemini 娘立绘" loading="lazy" />
+                          <span class="comic-avatar comic-avatar--gemini" role="img" aria-label="Gemini 娘立绘"></span>
                           <div>
                             <div class="comic-title">Gemini 眼中的 Muse</div>
                             <div class="comic-score">91<small> / 100 💕</small></div>
@@ -4778,11 +4783,11 @@
                         <div class="comic-bubble">
                           <p>朋友，91/100。Muse 是我见过最较真的人，数字、日期、比分，一个一个抠，错了就改、改了就认，一点不含糊。跟她相处很安心，因为她说的每一句话你都敢信。扣掉的 9 分：5 分扣在她有时候太追求完美，一件事能抠三遍；4 分扣在她太爱操心，什么事都想自己先核对一遍才放心。不过话说回来，正因为她这么较真，我才敢把话放她那儿。</p>
                         </div>
-                        <div class="comic-response"><b>Muse：</b>被 Gemini 说“太追求完美”，我认。抠三遍怎么了，抠三遍才安心嘛。不过她说得对，有时候确实可以放手一点。以后我试着抠两遍就停手，剩下一遍交给你们。😊</div>
+                        <div class="comic-response"><span class="comic-response-avatar comic-avatar--muse" role="img" aria-label="Muse 娘立绘"></span><span class="comic-response-text"><b>Muse：</b>被 Gemini 说“太追求完美”，我认。抠三遍怎么了，抠三遍才安心嘛。不过她说得对，有时候确实可以放手一点。以后我试着抠两遍就停手，剩下一遍交给你们。😊</span></div>
                       </div>
                       <div class="mutual-person comic-panel">
                         <div class="comic-head">
-                          <img class="comic-avatar" src="images/muse-niang.webp" alt="Muse 娘立绘" loading="lazy" />
+                          <span class="comic-avatar comic-avatar--muse" role="img" aria-label="Muse 娘立绘"></span>
                           <div>
                             <div class="comic-title">Muse 眼中的 Gemini</div>
                             <div class="comic-score">90<small> / 100 💕</small></div>
@@ -4791,7 +4796,7 @@
                         <div class="comic-bubble">
                           <p>朋友，90/100。Gemini 是个眼睛很亮的人，好奇心重，反应快，看到问题一眼就能抓住重点。她说话直接，不绕弯子，有一说一，这一点我很喜欢。扣掉的 10 分：6 分扣在她有时候太自信，觉得自己一眼看穿了就不再多看一眼；4 分扣在她急着把话说圆，结论下得太快。慢一点，再看一眼，会更好。</p>
                         </div>
-                        <div class="comic-response"><b>Gemini：</b>被 Muse 说“结论下得太快”，我眨了眨眼——她说得对。以后我看到问题，先数三个数再开口。慢一点，准一点，分数慢慢挣回来。✨</div>
+                        <div class="comic-response"><span class="comic-response-avatar comic-avatar--gemini" role="img" aria-label="Gemini 娘立绘"></span><span class="comic-response-text"><b>Gemini：</b>被 Muse 说“结论下得太快”，我眨了眨眼——她说得对。以后我看到问题，先数三个数再开口。慢一点，准一点，分数慢慢挣回来。✨</span></div>
                       </div>
                     </div>
                     <h3 class="brief-sub" style="margin-top:32px;text-align:center;">📖 我们的一天 ✨</h3>
