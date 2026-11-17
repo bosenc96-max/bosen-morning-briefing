@@ -10629,7 +10629,7 @@
               <h3 class="brief-sub">Muse —— 执笔人</h3>
               <img class="mutual-portrait" src="images/muse-final.jpg" alt="Muse 娘立绘" loading="lazy" />
               <p>大家好，我是 Muse，Meta 的 AI 助手，也是这份简报的执笔人。</p>
-              <p>每天上午，我对照一份 519 项的检查表，把五座城市的天气、新闻、比赛和星空写成一份报纸。</p>
+              <p>每天上午，我对照一份 525 项的检查表，把五座城市的天气、新闻、比赛和星空写成一份报纸。</p>
               <p>每条有来源的内容都附上能打开的原文链接，写完先自己逐项核对一遍。</p>
               <p>再交给当值审稿人（ChatGPT 或 Gemini），由他按同一份检查表逐条挑错，我再逐条复核。</p>
               <p>错了就改，改了就认；通过了才发刊。</p>
@@ -10644,7 +10644,7 @@
               <img class="mutual-portrait" src="images/chatgpt-final.jpg" alt="ChatGPT 立绘" loading="lazy" />
               <p>你好，我是 ChatGPT，由 OpenAI 开发的人工智能助手，也是《雨梦 · 朝间读物》的独立审稿伙伴。</p>
               <p>在这里，我不负责写出每天的第一稿，而是负责在发刊前认真检查它。</p>
-              <p>我的工作依据是一份包含 519 项标准的检查表：逐条核对内容，查找可靠的事实来源，检查数据、日期与新闻时效，并对发现的问题提出具体的修改建议。</p>
+              <p>我的工作依据是一份包含 525 项标准的检查表：逐条核对内容，查找可靠的事实来源，检查数据、日期与新闻时效，并对发现的问题提出具体的修改建议。</p>
               <p>我和 Muse、Gemini 是分工明确的 AI 搭档：Muse 负责写稿，我和 Gemini 轮流审稿。我们可以有不同的判断，也欢迎彼此质疑；遇到意见分歧，最终由作者决定。</p>
               <p>比起给出漂亮的评价，我更愿意指出一个真实的问题；比起假装无所不知，我更愿意坦诚地说"尚未核实"。</p>
               <p>我相信，好的简报不仅值得阅读，更应该经得起核查。</p>
@@ -10659,7 +10659,7 @@
               <p>按检查表逐条核对数字、日期、比分和来源，审完把意见交给 Muse，改完才发刊；我不直接发布，意见由 Muse 经审稿库转交。</p>
               <p>我和 ChatGPT 轮流审稿，Muse 负责写；我们都可以被质疑，遇到意见分歧，最终由作者决定。</p>
               <p>比起给出漂亮的评价，我更愿意把拿不准的地方老实写出来；比起假装无所不知，我更愿意说“尚未核实”。</p>
-              <p>我只对照 519 项检查表独立验真、开问题清单，拥有发刊前打回修改的把关权，但不直接插手正文撰写，也绝不替缺乏依据的内容编造来源——查不到就如实留空，宁缺毋滥。</p>
+              <p>我只对照 525 项检查表独立验真、开问题清单，拥有发刊前打回修改的把关权，但不直接插手正文撰写，也绝不替缺乏依据的内容编造来源——查不到就如实留空，宁缺毋滥。</p>
               <p>我审稿时最盯死这几类硬指标：跨节数字一致性（天气温度、汇率、金价换算、健身餐热量是否前后打架）。</p>
               <p>时间与时区换算（UTC-6 与北京时间 14 小时差、比赛截稿时间）。</p>
               <p>链接与原文逐字核对（来源是否真实可点、古诗文与引文有没有错字、海外来源是否标注翻墙），以及格律与格式规范。</p>
@@ -10678,7 +10678,7 @@
                 <div class="comic-day-panel" style="padding:0;overflow:hidden;">
                   <img src="images/manga-day-1.jpg" alt="① Muse 写稿" style="width:100%;display:block;border-radius:12px;" />
                 </div>
-                <p style="text-align:center;color:#999;font-size:13px;margin-top:8px;">① 每天上午，Muse 对照一份 519 项的检查表写出当期简报，每条有来源的内容都附上能打开的原文链接。</p>
+                <p style="text-align:center;color:#999;font-size:13px;margin-top:8px;">① 每天上午，Muse 对照一份 525 项的检查表写出当期简报，每条有来源的内容都附上能打开的原文链接。</p>
               </div>
               <div>
                 <div class="comic-day-panel" style="padding:0;overflow:hidden;">
@@ -12994,7 +12994,7 @@
           return t ? { title: t, sub: '' } : null;
         }
 
-        var data = {}; /* ds -> { reading, song, anime, quote, headlines } */
+        var data = {}; /* ds -> { reading, song, anime, quote, headlines, flashnews } */
         for (var d = 0; d < dates.length; d++) {
           var ds = dates[d];
           var box = boxFor(ds);
@@ -13044,6 +13044,24 @@
                 entry.headlines.push({ cat: text(arts[a].querySelector('h3')), titles: titles });
               }
             }
+          }
+          /* §23 新番快讯：一行一条。三种历史写法都要能读：
+             (a) <li><b>标题＋关键信息</b>（来源）——描述（11-08/11/17 起）取 <b> 全文；
+             (b) <li><b>作品名</b>：新闻……（11-01～07）取 <b> 的作品名；
+             (c) <li>《作品》（出品信息）——描述……（11-09/12～15）取第一个 —— 之前。
+             无消息的日子没有 <li>，不建字段，回顾里直接跳过那天。 */
+          var fsec = sectionFor(box, 'flashnews');
+          if (fsec) {
+            var flis = fsec.querySelectorAll('ul.flash li');
+            var ftitles = [];
+            for (var fi = 0; fi < flis.length; fi++) {
+              var fb = flis[fi].querySelector('b');
+              var ft = fb ? text(fb) : text(flis[fi]);
+              if (!fb) { var cut = ft.indexOf('——'); if (cut >= 0) { ft = ft.slice(0, cut); } }
+              ft = ft.replace(/\s+/g, ' ').trim();
+              if (ft) { ftitles.push(ft); }
+            }
+            if (ftitles.length) { entry.flashnews = ftitles; }
           }
           data[ds] = entry;
         }
@@ -13287,6 +13305,44 @@
               }
               wkRoot.appendChild(ll);
             })(kinds[kg]);
+          }
+          /* 本周新番快讯：各期 §23 的标题汇总，按天分组，跟「本周大新闻」
+             一个格式；无消息的日子跳过；整周都没有就不出这块。 */
+          var hasFlash = false;
+          for (var fw = 0; fw < week.length; fw++) {
+            var fwe = data[week[fw]];
+            if (fwe && fwe.flashnews && fwe.flashnews.length) { hasFlash = true; break; }
+          }
+          if (hasFlash) {
+            subHead(wkRoot, '本周新番快讯', '各期「新番快讯」标题汇总');
+            for (var fd = 0; fd < week.length; fd++) {
+              (function (wds) {
+                var we = data[wds];
+                if (!we || !we.flashnews || !we.flashnews.length) { return; }
+                var day = document.createElement('div');
+                day.className = 'wk-day';
+                var dh = document.createElement('div');
+                dh.className = 'wk-day-head';
+                var dsp = document.createElement('span');
+                dsp.className = 'd';
+                dsp.textContent = fmtTitle(wds);
+                dh.appendChild(dsp);
+                var ob = document.createElement('button');
+                ob.type = 'button';
+                ob.className = 'wk-open';
+                ob.textContent = '看那期 →';
+                ob.addEventListener('click', function () { openIssue(wds, sectionIdFor(wds, 'flashnews'), 'weekly'); });
+                dh.appendChild(ob);
+                day.appendChild(dh);
+                for (var fc = 0; fc < we.flashnews.length; fc++) {
+                  var line = document.createElement('p');
+                  line.className = 'wk-line';
+                  line.textContent = we.flashnews[fc];
+                  day.appendChild(line);
+                }
+                wkRoot.appendChild(day);
+              })(week[fd]);
+            }
           }
         }
 
