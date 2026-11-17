@@ -10531,15 +10531,15 @@
            link re-keys it via showIssue on load). */
         window.__scrollMemory = window.__scrollMemory || {};
         window.__scrollView = window.__scrollView || 'view-latest';
-        function rememberScroll() {
+        window.rememberScroll = function () {
           if (window.__scrollView) { window.__scrollMemory[window.__scrollView] = window.scrollY; }
-        }
-        function settleScroll(key) {
+        };
+        window.settleScroll = function (key) {
           var y = window.__scrollMemory[key];
           window.__scrollView = key;
           if (typeof y === 'number') { window.scrollTo(0, y); }
           else { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-        }
+        };
         function showLatest() {
           rememberScroll();
           hideAll(); viewLatest.hidden = false; setTabs(true);
