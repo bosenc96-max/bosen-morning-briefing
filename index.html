@@ -1328,6 +1328,11 @@
       .coll-item .coll-sub { font-size: 13.5px; color: var(--ink-2); overflow-wrap: anywhere; }
       .coll-item .coll-date { font-size: 12.5px; color: var(--ink-3); white-space: nowrap; }
       .coll-item .coll-go { flex: 0 0 auto; align-self: center; color: var(--accent); font-weight: 700; font-size: 13px; white-space: nowrap; }
+      @media (max-width: 640px) {
+        .brk-row { align-items: flex-start; }
+        .brk-row .coll-line { flex-direction: column; align-items: flex-start; gap: 2px; }
+        .brk-row .coll-go { align-self: flex-start; }
+      }
       .wk-day { padding: 10px 0 12px; border-bottom: 1px solid var(--line); }
       .wk-day-head { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 2px; }
       .wk-day-head .d { font-family: "Songti SC", "STSong", "SimSun", serif; font-weight: 900; font-size: 16px; }
