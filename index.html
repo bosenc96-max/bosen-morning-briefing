@@ -1329,9 +1329,10 @@
       .coll-item .coll-date { font-size: 12.5px; color: var(--ink-3); white-space: nowrap; }
       .coll-item .coll-go { flex: 0 0 auto; align-self: center; color: var(--accent); font-weight: 700; font-size: 13px; white-space: nowrap; }
       @media (max-width: 640px) {
-        .brk-row { align-items: flex-start; }
+        .brk-row { align-items: flex-start; flex-wrap: wrap; }
         .brk-row .coll-line { flex-direction: column; align-items: flex-start; gap: 2px; }
-        .brk-row .coll-go { align-self: flex-start; }
+        .brk-row .coll-main { flex: 1 1 0; min-width: 0; }
+        .brk-row .coll-go { flex: 0 0 100%; text-align: right; }
       }
       .wk-day { padding: 10px 0 12px; border-bottom: 1px solid var(--line); }
       .wk-day-head { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 2px; }
