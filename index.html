@@ -10524,20 +10524,39 @@
           tabLatest.setAttribute('aria-selected', latestActive ? 'true' : 'false');
           tabArchive.setAttribute('aria-selected', latestActive ? 'false' : 'true');
         }
+        /* Scroll memory 2026-11-17 (additive): remember each view's scroll
+           position; returning to a view restores it, first visit goes to
+           top. Shared on window so the collections/breaking scripts use
+           the same map. The landing view is view-latest (a #date deep
+           link re-keys it via showIssue on load). */
+        window.__scrollMemory = window.__scrollMemory || {};
+        window.__scrollView = window.__scrollView || 'view-latest';
+        function rememberScroll() {
+          if (window.__scrollView) { window.__scrollMemory[window.__scrollView] = window.scrollY; }
+        }
+        function settleScroll(key) {
+          var y = window.__scrollMemory[key];
+          window.__scrollView = key;
+          if (typeof y === 'number') { window.scrollTo(0, y); }
+          else { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        }
         function showLatest() {
+          rememberScroll();
           hideAll(); viewLatest.hidden = false; setTabs(true);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          settleScroll('view-latest');
         }
         function showArchive() {
+          rememberScroll();
           hideAll(); viewArchive.hidden = false; setTabs(false);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          settleScroll('view-archive');
         }
         function showIssue(date) {
           if (date === '2026-11-16') { showLatest(); return; }
           var p = document.getElementById('view-' + date);
           if (!p) { showArchive(); return; }
+          rememberScroll();
           hideAll(); p.hidden = false; setTabs(false);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          settleScroll('view-' + date);
         }
         tabLatest.addEventListener('click', showLatest);
         tabArchive.addEventListener('click', showArchive);
@@ -12818,6 +12837,7 @@
           if (tabAbout) { tabAbout.setAttribute('aria-selected', 'false'); }
         }
         function showMine(view, tab) {
+          rememberScroll();
           hideMine();
           viewLatest.hidden = true;
           viewArchive.hidden = true;
@@ -12826,7 +12846,7 @@
           tabArchive.setAttribute('aria-selected', 'false');
           view.hidden = false;
           tab.setAttribute('aria-selected', 'true');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          settleScroll(view.id);
         }
         if (tabColl && viewColl) {
           tabColl.addEventListener('click', function () { showMine(viewColl, tabColl); });
@@ -12908,16 +12928,18 @@
             if (on) { found = true; }
           }
           if (!found) { return; }
+          rememberScroll();
           list.hidden = true;
           detail.hidden = false;
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          settleScroll('brk-detail:' + id);
         }
         view.addEventListener('click', function (e) {
           var t = e.target;
           while (t && t !== view) {
             if (t.classList && t.classList.contains('brk-back')) {
+              rememberScroll();
               showList();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+              settleScroll('view-breaking');
               return;
             }
             var openId = (t.getAttribute && t.getAttribute('data-brk-open')) || null;
