@@ -1175,7 +1175,7 @@
          instant, so the highlight is never a beat behind the page. */
 
       /* ---------- 合集 / 本周回顾 2026-11-09 (additive) ---------- */
-      #view-collections[hidden], #view-weekly[hidden], #view-breaking[hidden], #view-anime[hidden], #view-about[hidden] { display: none; }
+      #view-collections[hidden], #view-weekly[hidden], #view-breaking[hidden], #view-anime[hidden], #view-agent[hidden], #view-about[hidden] { display: none; }
       /* About lives inside .wrap as a view now: drop the standalone
          section's own side padding so its card lines up with the
          other views' content. */
@@ -1654,6 +1654,7 @@
       <button class="tab-btn" role="tab" id="tab-weekly" aria-selected="false" aria-controls="view-weekly">本周回顾</button>
       <button class="tab-btn" role="tab" id="tab-breaking" aria-selected="false" aria-controls="view-breaking">号外合集</button>
       <button class="tab-btn" role="tab" id="tab-anime" aria-selected="false" aria-controls="view-anime">每日一漫</button>
+      <button class="tab-btn" role="tab" id="tab-agent" aria-selected="false" aria-controls="view-agent">Agent 合集</button>
       <button class="tab-btn" role="tab" id="tab-about" aria-selected="false" aria-controls="view-about">关于</button>
       <div class="site-search" role="search">
         <span class="site-search-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
@@ -11192,16 +11193,18 @@
       </div>
     
 
-      <!-- ================= 合集：读过 / 听过 / 英语 / 一诗 / AI 一招 / 金句 / 天文 / Agent 合集 =================
-           The eight lists are filled at runtime by the collections
+      <!-- ================= 合集：读过 / 听过 / 英语 / 一诗 / AI 一招 / 金句 / 天文 =================
+           The seven lists are filled at runtime by the collections
            script at the end of the body, generated from each issue's
            sections — a new issue adds its entries automatically.
            （「看过」已于 2026-11-12 移出：每日一漫另有独立标签页
-           「每日一漫」，见下方 view-anime。） -->
+           「每日一漫」，见下方 view-anime；「Agent 合集」已于
+           2026-11-19 移出：另有独立标签页「Agent 合集」，见下方
+           view-agent。） -->
       <div id="view-collections" role="tabpanel" aria-labelledby="tab-collections" hidden>
         <section class="blk">
           <div class="blk-head">
-            <h2 class="serif">读过 · 听过 · 英语 · 一诗 · AI 一招 · 金句 · 天文 · Agent 合集</h2>
+            <h2 class="serif">读过 · 听过 · 英语 · 一诗 · AI 一招 · 金句 · 天文</h2>
             <span class="note">由各期简报自动汇集 · 点任意一条回到那一期</span>
           </div>
           <div id="coll-root"></div>
@@ -11249,7 +11252,15 @@
             <span class="note">突发新闻号外 · 最新在最前</span>
           </div>
           <div id="breaking-list" class="coll-list">
-            <button type="button" class="coll-item brk-row" data-brk-open="brk-2026-11-19-trilateral" aria-controls="breaking-detail">
+                        <button type="button" class="coll-item brk-row" data-brk-open="brk-2026-11-19-icj-myanmar" aria-controls="breaking-detail">
+              <span class="brk-badge">号外</span>
+              <span class="coll-main">
+                <span class="coll-line"><span class="coll-title">国际法院首次认定一国实施种族灭绝：缅甸对罗兴亚人犯下种族灭绝行为</span><span class="coll-date">2026 年 11 月 20 日 01:24（北京时间）</span></span>
+                <span class="coll-sub">国际法院 9 比 6 认定缅甸对罗兴亚人实施种族灭绝：法院自 1945 年成立以来首次认定一国实施种族灭绝。</span>
+              </span>
+              <span class="coll-go">阅读全文 →</span>
+            </button>
+<button type="button" class="coll-item brk-row" data-brk-open="brk-2026-11-19-trilateral" aria-controls="breaking-detail">
               <span class="brk-badge">号外</span>
               <span class="coll-main">
                 <span class="coll-line"><span class="coll-title">中俄美元首在深圳举行历史性会晤并发表和平宣言</span><span class="coll-date">2026 年 11 月 19 日 19:35（北京时间）</span></span>
@@ -11351,7 +11362,63 @@
           <div id="breaking-detail" hidden>
             <div class="brk-backbar"><button class="tab-btn brk-back" type="button">← 返回号外合集</button></div>
             <div id="breaking-root">
-            <article class="brk-item" id="brk-2026-11-19-trilateral">
+                        <article class="brk-item" id="brk-2026-11-19-icj-myanmar">
+              <div class="brk-head"><span class="brk-badge">号外</span><h3 class="brk-title">国际法院首次认定一国实施种族灭绝：缅甸对罗兴亚人犯下种族灭绝行为</h3></div>
+              <p class="brk-time">2026 年 11 月 20 日 01:24（北京时间）发布</p>
+              <p class="brk-body">11 月 19 日，联合国国际法院在荷兰海牙宣读判决，认定缅甸对罗兴亚人实施了种族灭绝。(<a href="https://news.un.org/en/story/2026/11/1168836" target="_blank" rel="noopener noreferrer">联合国新闻</a>（需翻墙））</p>
+              <p class="brk-body">宣读于海牙当地时间上午 10 时开始（北京时间 17 时），由法院院长岩泽雄司主持。(<a href="https://icj-cij.org/index.php/case/178/press-releases" target="_blank" rel="noopener noreferrer">国际法院本案新闻稿页</a>（需翻墙））</p>
+              <p class="brk-body">宣读持续约 3 小时，15 名法官以 9 比 6 作出核心认定。(<a href="https://news.un.org/en/story/2026/11/1168836" target="_blank" rel="noopener noreferrer">联合国新闻</a>（需翻墙）；<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <p class="brk-body">这是国际法院自 1945 年成立以来，第一次认定一个国家实施了种族灭绝。(<a href="https://www.channelnewsasia.com/asia/un-top-court-rohingya-myanmar-genocide-ruling-6564491" target="_blank" rel="noopener noreferrer">CNA 转路透社</a>（需翻墙））</p>
+              <p class="brk-body">路透社同时指出，这是纳粹大屠杀以来，国际司法机构第四次认定种族灭绝的法律门槛得到满足——此前三次由其他国际法庭作出。2007 年塞尔维亚案中，法院只认定塞尔维亚未防止斯雷布雷尼察种族灭绝、未惩治责任人，没有认定塞尔维亚国家本身实施了种族灭绝。(<a href="https://www.channelnewsasia.com/asia/un-top-court-rohingya-myanmar-genocide-ruling-6564491" target="_blank" rel="noopener noreferrer">CNA 转路透社</a>（需翻墙）；<a href="https://www.amnestyusa.org/press-releases/historic-un-ruling-that-myanmar-committed-genocide-against-rohingya-is-rare-victory-for-survivors/" target="_blank" rel="noopener noreferrer">国际特赦组织</a>（需翻墙））</p>
+              <h4 class="brk-sub">判决是怎么作出的</h4>
+              <p class="brk-body">判决不是一句话，而是 13 项主文裁决，每项单独投票。</p>
+              <p class="brk-body">核心票数如下：认定缅甸实施种族灭绝，9 比 6；认定缅甸未履行防止义务，9 比 6——这里的防止义务，指的是防止与缅甸安全部队共同实施行为的个人犯下种族灭绝；认定缅甸未履行惩治义务，11 比 4；认定缅甸未履行立法义务（没有制定执行《灭绝种族罪公约》的国内法），14 比 1。(<a href="https://iimm.un.org/en/icj-gambia-v-myanmar" target="_blank" rel="noopener noreferrer">联合国缅甸问题独立调查机制</a>（需翻墙）；<a href="https://www.muslimnetwork.tv/how-icj-judges-voted-on-13-rulings-in-rohingya-genocide-case/" target="_blank" rel="noopener noreferrer">13 项裁决票数全表</a>（需翻墙）；<a href="https://www.refworld.org/sites/default/files/2026-11/178-20261119-jud-01-00-en.pdf" target="_blank" rel="noopener noreferrer">国际法院正式判决</a>（需翻墙））</p>
+              <p class="brk-body">法院同时以 14 比 1 认定，缅甸没有直接公开煽动若开邦北部的私人行为者针对罗兴亚人实施种族灭绝。这一认定只针对该项指控，不等于法院否认缅甸存在仇恨言论。(<a href="https://www.muslimnetwork.tv/how-icj-judges-voted-on-13-rulings-in-rohingya-genocide-case/" target="_blank" rel="noopener noreferrer">13 项裁决票数全表</a>（需翻墙）；<a href="https://www.refworld.org/sites/default/files/2026-11/178-20261119-jud-01-00-en.pdf" target="_blank" rel="noopener noreferrer">国际法院正式判决</a>（需翻墙））</p>
+              <p class="brk-body">法院还以 11 比 4 认定，缅甸违反了法院 2020 年 1 月 23 日临时措施命令中保护证据的要求。其余关于调查起诉、不重犯保证、返回与团聚、赔偿及赔偿程序的裁决，票数分别为 13 比 2、9 比 6、10 比 5、10 比 5、10 比 5；冈比亚其余请求被 15 比 0 一致驳回。(<a href="https://www.muslimnetwork.tv/how-icj-judges-voted-on-13-rulings-in-rohingya-genocide-case/" target="_blank" rel="noopener noreferrer">13 项裁决票数全表</a>（需翻墙）；<a href="https://www.refworld.org/sites/default/files/2026-11/178-20261119-jud-01-00-en.pdf" target="_blank" rel="noopener noreferrer">国际法院正式判决</a>（需翻墙））</p>
+              <p class="brk-body">法院认为，从缅甸安全部队广泛暴行的证据中能得出的“唯一合理的推断”，是缅甸有摧毁罗兴亚群体“实质性部分”的意图。(<a href="https://news.un.org/en/story/2026/11/1168836" target="_blank" rel="noopener noreferrer">联合国新闻</a>（需翻墙））</p>
+              <h4 class="brk-sub">法院认定了什么</h4>
+              <p class="brk-body">法院认定，缅甸安全部队及“其他国家机关”蓄意实施了《灭绝种族罪公约》第二条规定的三类行为：（a）杀害该群体成员；（b）对该群体成员造成严重身体或精神伤害；（d）采取意图阻止该群体内生育的措施。(<a href="https://news.un.org/en/story/2026/11/1168836" target="_blank" rel="noopener noreferrer">联合国新闻</a>（需翻墙）；<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <p class="brk-body">法院采信的证据显示，2017 年“清剿行动”中约 1 万名罗兴亚人被杀害；安全部队实施了广泛的性暴力，以及针对儿童的极端暴力；村庄被系统性摧毁，随后由非罗兴亚人重新定居；军方高层散布仇恨言论，把罗兴亚人描绘成“次人类”和暴力威胁。(<a href="https://news.un.org/en/story/2026/11/1168836" target="_blank" rel="noopener noreferrer">联合国新闻</a>（需翻墙）；<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <p class="brk-body">强迫流离失所不是公约第二条单独列出的一项独立行为，但它是法院判断种族灭绝意图的重要证据：2017 年至少 73 万人被迫逃往孟加拉国，村庄被毁后迅速建起安全设施和新定居点，逃离者几乎没有机会返回。(<a href="https://news.un.org/en/story/2026/11/1168836" target="_blank" rel="noopener noreferrer">联合国新闻</a>（需翻墙）；<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <p class="brk-body">关于阻止生育的认定，法院的论证是具体的：针对儿童的暴行——包括杀害婴儿——支持了“缅甸安全部队有阻止该群体生育的意图”这一推断；这是 (d) 项认定的证据之一，而不是说针对儿童的暴行本身就是一项独立的种族灭绝行为。(<a href="https://news.un.org/en/story/2026/11/1168836" target="_blank" rel="noopener noreferrer">联合国新闻</a>（需翻墙）；<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <p class="brk-body">缅甸的辩护——2017 年行动是针对罗兴亚救世军袭击警察哨所的合法反恐行动——被法院驳回。(<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <h4 class="brk-sub">法院责令缅甸做什么</h4>
+              <p class="brk-body">法院以 14 比 1 要求缅甸制定充分落实《灭绝种族罪公约》的国内法律，停止持续违反公约第五条立法义务的行为。(<a href="https://iimm.un.org/en/icj-gambia-v-myanmar" target="_blank" rel="noopener noreferrer">联合国缅甸问题独立调查机制</a>（需翻墙）；<a href="https://www.muslimnetwork.tv/how-icj-judges-voted-on-13-rulings-in-rohingya-genocide-case/" target="_blank" rel="noopener noreferrer">13 项裁决票数全表</a>（需翻墙））</p>
+              <p class="brk-body">缅甸必须立即采取有效措施，调查所有有合理理由怀疑在 2017 年“清剿行动”中实施违反《灭绝种族罪公约》第三条行为的人，并在证据充分时起诉、惩处（13 比 2）；作出不再重犯的保证，并防止类似违约再次发生（9 比 6）。(<a href="https://iimm.un.org/en/icj-gambia-v-myanmar" target="_blank" rel="noopener noreferrer">联合国缅甸问题独立调查机制</a>（需翻墙）；<a href="https://www.muslimnetwork.tv/how-icj-judges-voted-on-13-rulings-in-rohingya-genocide-case/" target="_blank" rel="noopener noreferrer">13 项裁决票数全表</a>（需翻墙）；<a href="https://www.refworld.org/sites/default/files/2026-11/178-20261119-jud-01-00-en.pdf" target="_blank" rel="noopener noreferrer">国际法院正式判决</a>（需翻墙））</p>
+              <p class="brk-body">法院还要求缅甸采取恢复原状措施（10 比 5），包括允许并协助流离失所的罗兴亚人安全、自愿、有尊严地返回原居住地并实现家庭团聚，归还或替换被毁的集体财产，协助寻找失踪者并妥善安葬。(<a href="https://iimm.un.org/en/icj-gambia-v-myanmar" target="_blank" rel="noopener noreferrer">联合国缅甸问题独立调查机制</a>（需翻墙））</p>
+              <p class="brk-body">恢复原状还包括为身心受创者提供康复，保障该群体不再受迫害；法院同时要求缅甸赔偿罗兴亚群体及其成员因违约所受的、无法通过恢复原状弥补的损害（10 比 5）。(<a href="https://iimm.un.org/en/icj-gambia-v-myanmar" target="_blank" rel="noopener noreferrer">联合国缅甸问题独立调查机制</a>（需翻墙））</p>
+              <p class="brk-body">赔偿的金额与方式由法院在后续程序中确定，缅甸须在判决后两年内、即 2028 年 11 月 19 日前，向法院提交关于恢复原状措施与赔偿方案的报告。(<a href="https://news.un.org/en/story/2026/11/1168836" target="_blank" rel="noopener noreferrer">联合国新闻</a>（需翻墙）；<a href="https://iimm.un.org/en/icj-gambia-v-myanmar" target="_blank" rel="noopener noreferrer">联合国缅甸问题独立调查机制</a>（需翻墙））</p>
+              <p class="brk-body">判决为终审，不得上诉，对当事方有法律约束力。但法院本身没有强制执行权，执行要靠安理会与各国施压；冈比亚可将案件提交安理会，要求采取行动。(<a href="https://www.channelnewsasia.com/asia/un-top-court-rohingya-myanmar-genocide-ruling-6564491" target="_blank" rel="noopener noreferrer">CNA 转路透社</a>（需翻墙）；<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <h4 class="brk-sub">这起案子是怎么来的</h4>
+              <p class="brk-body">2019 年 11 月 11 日，西非国家冈比亚代表伊斯兰合作组织 57 个成员国起诉缅甸，指控其违反 1948 年《防止及惩治灭绝种族罪公约》。2020 年 1 月，法院下令缅甸采取紧急措施防止种族灭绝并保护证据；2022 年 7 月，法院裁定对此案有管辖权。(<a href="https://iimm.un.org/en/icj-gambia-v-myanmar" target="_blank" rel="noopener noreferrer">联合国缅甸问题独立调查机制</a>（需翻墙）；<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <p class="brk-body">2026 年 1 月 12 日至 29 日，法院就实体问题开庭审理，听取了冈比亚方面 3 名证人和 1 名专家、缅甸方面 1 名证人的证言。11 个国家——加拿大、丹麦、荷兰、德国、马尔代夫、刚果（金）、斯洛文尼亚、爱尔兰、比利时、法国、英国——申请支持此案。(<a href="https://iimm.un.org/en/icj-gambia-v-myanmar" target="_blank" rel="noopener noreferrer">联合国缅甸问题独立调查机制</a>（需翻墙）；<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <p class="brk-body">昂山素季 2019 年 12 月 11 日曾亲自出庭为缅甸辩护，称冈比亚的指控“不完整、具有误导性”。她 2021 年在政变中被推翻。(<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <p class="brk-body">2017 年 8 月，缅甸军方在若开邦发动“清剿行动”前，缅甸境内约有 140 万罗兴亚人；行动导致至少 73 万人逃往孟加拉国。如今约 120 万罗兴亚人在孟加拉国科克斯巴扎尔难民营——世界最大的难民营，约 52 万人仍留在缅甸。(<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <p class="brk-body">罗兴亚人是缅甸西部若开邦以穆斯林为主的少数民族，1982 年被剥夺公民身份。(<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <h4 class="brk-sub">各方怎么说</h4>
+              <p class="brk-body">科克斯巴扎尔难民营里，数百名难民聚集在大屏幕前观看宣读，判决出炉时现场有人落泪。冈比亚司法部长道达·贾洛在法院外说：“他们活下来了。他们作证了。今天，他们会相信。”(<a href="https://www.bangkokpost.com/world/3357731/myanmar-guilty-of-genocide-against-rohingya-says-top-un-court?ref=%2Fworld%2F3357731%2Fmyanmar-guilty-of-genocide-against-rohingya-says-top-un-court" target="_blank" rel="noopener noreferrer">曼谷邮报</a>（需翻墙）；<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <p class="brk-body">冈比亚首席律师阿尔斯兰·苏莱曼说，这项判决是罗兴亚人民的里程碑式胜利。(<a href="https://www.bangkokpost.com/world/3357731/myanmar-guilty-of-genocide-against-rohingya-says-top-un-court?ref=%2Fworld%2F3357731%2Fmyanmar-guilty-of-genocide-against-rohingya-says-top-un-court" target="_blank" rel="noopener noreferrer">曼谷邮报</a>（需翻墙）；<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <p class="brk-body">国际特赦组织秘书长卡拉马尔德说：“种族灭绝。这是国际法院毫不含糊的认定。”她说，这是对罗兴亚人所遭受暴行的历史性权威承认，也是幸存者、受害者及其家人难得的正义时刻。(<a href="https://www.amnestyusa.org/press-releases/historic-un-ruling-that-myanmar-committed-genocide-against-rohingya-is-rare-victory-for-survivors/" target="_blank" rel="noopener noreferrer">国际特赦组织</a>（需翻墙））</p>
+              <p class="brk-body">人权观察高级国际司法顾问玛丽亚·埃莱娜·维尼奥利说，这项裁决是罗兴亚人长期遭受缅甸军方迫害的苦难早就应该得到的承认，也为全球种族灭绝及其他重大罪行受害者追求正义提供了重要先例。(<a href="https://www.hrw.org/news/2026/11/19/world-court-finds-myanmar-responsible-for-rohingya-genocide" target="_blank" rel="noopener noreferrer">人权观察</a>（需翻墙））</p>
+              <p class="brk-body">联合国秘书长古特雷斯称判决是对罗兴亚种族灭绝受害者的“有力承认”，是国际正义的体现。(<a href="https://news.un.org/en/story/2026/11/1168836" target="_blank" rel="noopener noreferrer">联合国新闻</a>（需翻墙））</p>
+              <p class="brk-body">英国在判决当天宣布驱逐缅甸驻英武官，召见缅甸驻英临时代办，并紧急要求安理会开会讨论判决。英国外交大臣米利班德说，英方还将在今后几天公布更多措施，确保责任人被追究。(<a href="https://www.gov.uk/government/news/foreign-secretary-statement-on-international-court-of-justice-myanmar-judgement-19-november" target="_blank" rel="noopener noreferrer">英国政府外交大臣声明</a>（需翻墙）；<a href="https://www.bangkokpost.com/world/3357731/myanmar-guilty-of-genocide-against-rohingya-says-top-un-court?ref=%2Fworld%2F3357731%2Fmyanmar-guilty-of-genocide-against-rohingya-says-top-un-court" target="_blank" rel="noopener noreferrer">曼谷邮报</a>（需翻墙））</p>
+              <p class="brk-body">缅甸政府未立即回应置评请求；缅甸一直否认种族灭绝。(<a href="https://www.bangkokpost.com/world/3357731/myanmar-guilty-of-genocide-against-rohingya-says-top-un-court?ref=%2Fworld%2F3357731%2Fmyanmar-guilty-of-genocide-against-rohingya-says-top-un-court" target="_blank" rel="noopener noreferrer">曼谷邮报</a>（需翻墙））</p>
+              <h4 class="brk-sub">这项裁决意味着什么</h4>
+              <p class="brk-body">这是十多年来法院就 1948 年《灭绝种族罪公约》的适用作出的首个重大裁决。(<a href="https://www.channelnewsasia.com/asia/un-top-court-rohingya-myanmar-genocide-ruling-6564491" target="_blank" rel="noopener noreferrer">CNA 转路透社</a>（需翻墙）；<a href="https://www.amnestyusa.org/press-releases/historic-un-ruling-that-myanmar-committed-genocide-against-rohingya-is-rare-victory-for-survivors/" target="_blank" rel="noopener noreferrer">国际特赦组织</a>（需翻墙））</p>
+              <p class="brk-body">路透社指出，裁决可能影响南非 2023 年在同一法院起诉以色列的加沙案。(<a href="https://www.channelnewsasia.com/asia/un-top-court-rohingya-myanmar-genocide-ruling-6564491" target="_blank" rel="noopener noreferrer">CNA 转路透社</a>（需翻墙））</p>
+              <p class="brk-body">国际特赦组织指出，法院澄清“种族灭绝意图可以与其他目标、包括军事目标并存”，这一点对南非诉以色列案尤其重要。(<a href="https://www.amnestyusa.org/press-releases/historic-un-ruling-that-myanmar-committed-genocide-against-rohingya-is-rare-victory-for-survivors/" target="_blank" rel="noopener noreferrer">国际特赦组织</a>（需翻墙））</p>
+              <p class="brk-body">国际法院审的是国家的责任，国际刑事法院审的是个人的刑事责任：2024 年 11 月，国际刑事法院检察官已就危害人类罪申请对敏昂莱发出逮捕令，至今没有公开决定；2025 年，阿根廷一家法院以普遍管辖权为由，对包括敏昂莱在内的数十人发出逮捕令。(<a href="https://www.amnestyusa.org/press-releases/historic-un-ruling-that-myanmar-committed-genocide-against-rohingya-is-rare-victory-for-survivors/" target="_blank" rel="noopener noreferrer">国际特赦组织</a>（需翻墙））</p>
+              <p class="brk-body">敏昂莱在 2016–2017 年袭击期间任武装部队总司令，2021 年发动政变上台。(<a href="https://www.amnestyusa.org/press-releases/historic-un-ruling-that-myanmar-committed-genocide-against-rohingya-is-rare-victory-for-survivors/" target="_blank" rel="noopener noreferrer">国际特赦组织</a>（需翻墙））</p>
+              <h4 class="brk-sub">接下来看什么</h4>
+              <p class="brk-body">缅甸是否会执行判决、按期在 2028 年 11 月 19 日前提交报告，目前没有答案。</p>
+              <p class="brk-body">赔偿金额是多少，由法院在后续程序中确定。</p>
+              <p class="brk-body">安理会是否会采取行动，目前没有答案。</p>
+              <p class="brk-body">罗兴亚人短期内能否安全返回，也没有答案：缅甸内战仍在继续，2021 年政变后内战已致约 10 万人死亡、350 多万人流离失所。(<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <p class="brk-body">若开邦的阿拉干军也在针对罗兴亚人。(<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <p class="brk-body">今年 8 月，缅甸称已核实 30 多万名在孟加拉国的难民并登记遣返，但表示只有在若开邦安全恢复后才能开始。(<a href="https://www.aljazeera.com/amp/news/2026/11/19/what-the-icj-ruling-means-for-the-rohingya" target="_blank" rel="noopener noreferrer">半岛电视台解读</a>（需翻墙））</p>
+              <p class="brk-byline">撰写：Muse（lemon）｜核对：ChatGPT</p>
+</article>
+<article class="brk-item" id="brk-2026-11-19-trilateral">
               <div class="brk-head"><span class="brk-badge">号外</span><h3 class="brk-title">中俄美元首在深圳举行历史性会晤并发表和平宣言</h3></div>
               <p class="brk-time">2026 年 11 月 19 日 19:35（北京时间）发布</p>
               <p class="brk-body">11 月 19 日下午，国家主席习近平在广东深圳麒麟山庄同俄罗斯总统普京、美国总统特朗普举行中俄美元首会晤。这是中俄美三国最高领导人有史以来首次聚首。会晤持续约 1.5 小时，结束后三方发表联合声明。</p>
@@ -11775,6 +11842,23 @@
         </section>
       </div>
 
+      <!-- ============ Agent 合集（独立标签页）============
+           §19 Agent 每日一课的独立合集（2026-11-19 应作者要求单独成页，
+           合集里的「Agent 合集」组同时移除，避免两处重复）：一行一期
+           —— 日期 + 课名，最新在最前，右侧「阅读全文 →」在原地展开
+           那一期的 §19 全文。行由文末的合集脚本从各期数据对象自动
+           生成（字段 entry.agent，与原「Agent 合集」组同一字段），
+           计数也由脚本写入；每日新增一期时本页自动多一行，无需手工维护。 -->
+      <div id="view-agent" role="tabpanel" aria-labelledby="tab-agent" hidden>
+        <section class="blk">
+          <div class="blk-head">
+            <h2 class="serif">Agent 合集</h2>
+            <span class="note">各期「Agent 每日一课」 · <span id="agent-count"></span></span>
+          </div>
+          <div id="agent-root"></div>
+        </section>
+      </div>
+
       <!-- ============ 关于（独立视图）============
            原页脚上方的 About 区整体搬入：头像、笔名、四段
            自我介绍、Lemon 那句、审查说明与发刊说明，文字与
@@ -11803,7 +11887,7 @@
               <h3 class="brief-sub">Muse —— 执笔人</h3>
               <img class="mutual-portrait" src="images/muse-final.jpg" alt="Muse 娘立绘" loading="lazy" />
               <p>大家好，我是 Muse，Meta 的 AI 助手，也是这份简报的执笔人。</p>
-              <p>每天上午，我对照一份 622 项的检查表，把五座城市的天气、新闻、比赛和星空写成一份报纸。</p>
+              <p>每天上午，我对照一份 623 项的检查表，把五座城市的天气、新闻、比赛和星空写成一份报纸。</p>
               <p>每条有来源的内容都附上能打开的原文链接，写完先自己逐项核对一遍。</p>
               <p>再交给当值审稿人（ChatGPT 或 Gemini），由他按同一份检查表逐条挑错，我再逐条复核。</p>
               <p>错了就改，改了就认；通过了才发刊。</p>
@@ -11818,7 +11902,7 @@
               <img class="mutual-portrait" src="images/chatgpt-final.jpg" alt="ChatGPT 立绘" loading="lazy" />
               <p>你好，我是 ChatGPT，由 OpenAI 开发的人工智能助手，也是《雨梦 · 朝间读物》的独立审稿伙伴。</p>
               <p>在这里，我不负责写出每天的第一稿，而是负责在发刊前认真检查它。</p>
-              <p>我的工作依据是一份包含 622 项标准的检查表：逐条核对内容，查找可靠的事实来源，检查数据、日期与新闻时效，并对发现的问题提出具体的修改建议。</p>
+              <p>我的工作依据是一份包含 623 项标准的检查表：逐条核对内容，查找可靠的事实来源，检查数据、日期与新闻时效，并对发现的问题提出具体的修改建议。</p>
               <p>我和 Muse、Gemini 是分工明确的 AI 搭档：Muse 负责写稿，我和 Gemini 轮流审稿。我们可以有不同的判断，也欢迎彼此质疑；遇到意见分歧，最终由作者决定。</p>
               <p>比起给出漂亮的评价，我更愿意指出一个真实的问题；比起假装无所不知，我更愿意坦诚地说"尚未核实"。</p>
               <p>我相信，好的简报不仅值得阅读，更应该经得起核查。</p>
@@ -11833,7 +11917,7 @@
               <p>按检查表逐条核对数字、日期、比分和来源，审完把意见交给 Muse，改完才发刊；我不直接发布，意见由 Muse 经审稿库转交。</p>
               <p>我和 ChatGPT 轮流审稿，Muse 负责写；我们都可以被质疑，遇到意见分歧，最终由作者决定。</p>
               <p>比起给出漂亮的评价，我更愿意把拿不准的地方老实写出来；比起假装无所不知，我更愿意说“尚未核实”。</p>
-              <p>我只对照 622 项检查表独立验真、开问题清单，拥有发刊前打回修改的把关权，但不直接插手正文撰写，也绝不替缺乏依据的内容编造来源——查不到就如实留空，宁缺毋滥。</p>
+              <p>我只对照 623 项检查表独立验真、开问题清单，拥有发刊前打回修改的把关权，但不直接插手正文撰写，也绝不替缺乏依据的内容编造来源——查不到就如实留空，宁缺毋滥。</p>
               <p>我审稿时最盯死这几类硬指标：跨节数字一致性（天气温度、汇率、金价换算、健身餐热量是否前后打架）。</p>
               <p>时间与时区换算（UTC-6 与北京时间 14 小时差、比赛截稿时间）。</p>
               <p>链接与原文逐字核对（来源是否真实可点、古诗文与引文有没有错字、海外来源是否标注翻墙），以及格律与格式规范。</p>
@@ -11852,7 +11936,7 @@
                 <div class="comic-day-panel" style="padding:0;overflow:hidden;">
                   <img src="images/manga-day-1.jpg" alt="① Muse 写稿" style="width:100%;display:block;border-radius:12px;" />
                 </div>
-                <p style="text-align:center;color:#999;font-size:13px;margin-top:8px;">① 每天上午，Muse 对照一份 622 项的检查表写出当期简报，每条有来源的内容都附上能打开的原文链接。</p>
+                <p style="text-align:center;color:#999;font-size:13px;margin-top:8px;">① 每天上午，Muse 对照一份 623 项的检查表写出当期简报，每条有来源的内容都附上能打开的原文链接。</p>
               </div>
               <div>
                 <div class="comic-day-panel" style="padding:0;overflow:hidden;">
@@ -11934,6 +12018,7 @@
       <button class="fab-item" type="button" data-fab="weekly" role="menuitem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg><span>本周回顾</span></button>
       <button class="fab-item" type="button" data-fab="breaking" role="menuitem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg><span>号外合集</span></button>
       <button class="fab-item" type="button" data-fab="anime" role="menuitem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.4 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg><span>每日一漫</span></button>
+      <button class="fab-item" type="button" data-fab="agent" role="menuitem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg><span>Agent 合集</span></button>
     </nav>
     <button id="back-to-top" type="button" aria-label="打开快捷功能菜单" title="快捷功能" aria-expanded="false" aria-controls="fab-menu" aria-haspopup="menu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></button>
 
@@ -12265,7 +12350,8 @@
            「← 返回合集」 and returns to the collections view; from
            本周回顾 it reads 「← 返回本周回顾」 and returns there;
            from 每日一漫 it reads 「← 返回每日一漫」 and
-           returns there; opened any other way (archive list,
+           returns there; from Agent 合集 it reads 「← 返回 Agent 合集」
+           and returns there; opened any other way (archive list,
            prev/next paging, a deep link) it stays 「← 返回归档」.
            The latest issue's head carries no top back button at all
            (2026-11-12): 最新简报 is the landing view, so even when a
@@ -12279,13 +12365,13 @@
            The bottom 返回归档 button in the issue nav is untouched
            and always returns to the archive, as before. */
         var issueOrigin = 'archive';
-        var backLabels = { archive: '← 返回归档', collections: '← 返回合集', weekly: '← 返回本周回顾', anime: '← 返回每日一漫' };
+        var backLabels = { archive: '← 返回归档', collections: '← 返回合集', weekly: '← 返回本周回顾', anime: '← 返回每日一漫', agent: '← 返回 Agent 合集' };
         function applyBackLabels() {
           var tops = document.querySelectorAll('.tab-btn.back-archive');
           for (var b = 0; b < tops.length; b++) { tops[b].textContent = backLabels[issueOrigin]; }
         }
         window.__setIssueOrigin = function (src) {
-          issueOrigin = (src === 'collections' || src === 'weekly' || src === 'anime') ? src : 'archive';
+          issueOrigin = (src === 'collections' || src === 'weekly' || src === 'anime' || src === 'agent') ? src : 'archive';
           window.__originNavFlag = true;
           applyBackLabels();
         };
@@ -12301,6 +12387,10 @@
           if (issueOrigin === 'anime') {
             var ta = document.getElementById('tab-anime');
             if (ta) { ta.click(); return; }
+          }
+          if (issueOrigin === 'agent') {
+            var tg = document.getElementById('tab-agent');
+            if (tg) { tg.click(); return; }
           }
           showArchive();
         }
@@ -14351,9 +14441,10 @@
           parent.appendChild(head);
         }
 
-        /* ---------- collections: 读过 / 听过 / 英语 / 一诗 / AI 一招 / 金句 / 天文 / Agent 合集 ----------
-           （看过不在此列：每日一漫有独立标签页，见下方「每日一漫」
-           一节，渲染自同一 entry.anime 字段。） */
+        /* ---------- collections: 读过 / 听过 / 英语 / 一诗 / AI 一招 / 金句 / 天文 ----------
+           （看过、Agent 合集不在此列：每日一漫与 Agent 合集各有独立
+           标签页，见下方「每日一漫」「Agent 合集」两节，分别渲染自
+           同一 entry.anime、entry.agent 字段。） */
         var collRoot = document.getElementById('coll-root');
         if (collRoot) {
           var groups = [
@@ -14362,7 +14453,6 @@
             { key: 'english', h: '英语', note: '每日英语学过的短语' },
             { key: 'poem', h: '一诗', note: '每日一诗读过的诗' },
             { key: 'ai', h: 'AI 一招', note: 'AI 每日一招学过的用法' },
-            { key: 'agent', h: 'Agent 合集', note: 'Agent 每日一课学过的课程' },
             { key: 'quoteColl', sec: 'quote', h: '金句', note: '每日金句收录的句子' },
             { key: 'astronomy', h: '天文', note: '天文知识讲过的主题' }
           ];
@@ -14413,6 +14503,34 @@
             alist.appendChild(makeRow(arows[ar].ds, 'anime', arows[ar].v.title, arows[ar].v.sub, 'anime'));
           }
           animeRoot.appendChild(alist);
+        }
+
+        /* ---------- Agent 合集：§19 的独立合集 ----------
+           One row per issue, newest first, in the collections'
+           row style, rendered from the same entry.agent field
+           the 合集's old Agent 合集 group used (the group was removed
+           2026-11-19 so the lessons live only here): the lesson
+           title as the title, the issue date under it, and the
+           right-aligned “阅读全文 →” opening the §19 text right
+           under the row (inline expansion) — with origin 'agent',
+           so the footer's 「在当期查看 →」 jump lands back with
+           「← 返回 Agent 合集」. The header count is written from
+           the same rows, so it always matches the list. */
+        var agentRoot = document.getElementById('agent-root');
+        if (agentRoot) {
+          var grows = [];
+          for (var gi2 = dates.length - 1; gi2 >= 0; gi2--) {
+            var ge = data[dates[gi2]];
+            if (ge && ge.agent) { grows.push({ ds: dates[gi2], v: ge.agent }); }
+          }
+          var gcount = document.getElementById('agent-count');
+          if (gcount) { gcount.textContent = '共 ' + grows.length + ' 条'; }
+          var glist = document.createElement('div');
+          glist.className = 'coll-list';
+          for (var gr = 0; gr < grows.length; gr++) {
+            glist.appendChild(makeRow(grows[gr].ds, 'agent', grows[gr].v.title, grows[gr].v.sub, 'agent'));
+          }
+          agentRoot.appendChild(glist);
         }
 
         /* ---------- weekly review ---------- */
@@ -14611,11 +14729,13 @@
         var tabWk = document.getElementById('tab-weekly');
         var tabBreaking = document.getElementById('tab-breaking');
         var tabAnime = document.getElementById('tab-anime');
+        var tabAgent = document.getElementById('tab-agent');
         var tabAbout = document.getElementById('tab-about');
         var viewColl = document.getElementById('view-collections');
         var viewWk = document.getElementById('view-weekly');
         var viewBreaking = document.getElementById('view-breaking');
         var viewAnime = document.getElementById('view-anime');
+        var viewAgent = document.getElementById('view-agent');
         var viewAbout = document.getElementById('view-about');
         var viewLatest = document.getElementById('view-latest');
         var viewArchive = document.getElementById('view-archive');
@@ -14627,11 +14747,13 @@
           if (viewWk) { viewWk.hidden = true; }
           if (viewBreaking) { viewBreaking.hidden = true; }
           if (viewAnime) { viewAnime.hidden = true; }
+          if (viewAgent) { viewAgent.hidden = true; }
           if (viewAbout) { viewAbout.hidden = true; }
           if (tabColl) { tabColl.setAttribute('aria-selected', 'false'); }
           if (tabWk) { tabWk.setAttribute('aria-selected', 'false'); }
           if (tabBreaking) { tabBreaking.setAttribute('aria-selected', 'false'); }
           if (tabAnime) { tabAnime.setAttribute('aria-selected', 'false'); }
+          if (tabAgent) { tabAgent.setAttribute('aria-selected', 'false'); }
           if (tabAbout) { tabAbout.setAttribute('aria-selected', 'false'); }
         }
         function showMine(view, tab) {
@@ -14657,6 +14779,9 @@
         }
         if (tabAnime && viewAnime) {
           tabAnime.addEventListener('click', function () { showMine(viewAnime, tabAnime); });
+        }
+        if (tabAgent && viewAgent) {
+          tabAgent.addEventListener('click', function () { showMine(viewAgent, tabAgent); });
         }
         if (tabAbout && viewAbout) {
           tabAbout.addEventListener('click', function () { showMine(viewAbout, tabAbout); });
@@ -14848,6 +14973,7 @@
           weekly: function () { clickTab('tab-weekly'); },
           breaking: function () { clickTab('tab-breaking'); },
           anime: function () { clickTab('tab-anime'); },
+          agent: function () { clickTab('tab-agent'); },
           about: function () { clickTab('tab-about'); },
           search: function () {
             window.scrollTo({ top: 0, behavior: 'smooth' });
