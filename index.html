@@ -1319,7 +1319,7 @@
       .coll-item:hover { border-color: var(--accent); }
       .coll-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
       /* All entry text lives in one flexible main column; the
-         "看那期 →" action is a fixed trailing column, so every row's
+         "阅读全文 →" action is a fixed trailing column, so every row's
          link shares the same right edge and vertical centre no
          matter how long the title or author is. */
       .coll-item .coll-main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
@@ -1328,6 +1328,25 @@
       .coll-item .coll-sub { font-size: 13.5px; color: var(--ink-2); overflow-wrap: anywhere; }
       .coll-item .coll-date { font-size: 12.5px; color: var(--ink-3); white-space: nowrap; }
       .coll-item .coll-go { flex: 0 0 auto; align-self: center; color: var(--accent); font-weight: 700; font-size: 13px; white-space: nowrap; }
+      /* Inline full text (2026-11-19): a row opens its section
+         right under itself (号外 logic), so the reader never
+         leaves the list. The cloned section keeps its own
+         heading and styles; the footer offers 收起 and
+         「在当期查看 →」 (the old jump to the issue). */
+      .coll-detail {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        box-shadow: var(--shadow); padding: 6px 16px 12px; margin: 2px 0 4px;
+      }
+      .coll-detail .blk-head { margin-top: 8px; }
+      .coll-detail-foot {
+        display: flex; justify-content: space-between; align-items: center; gap: 12px;
+        border-top: 1px solid var(--line); padding-top: 10px; margin-top: 10px;
+      }
+      .coll-detail-close, .coll-detail-jump {
+        appearance: none; background: none; border: none; cursor: pointer; font: inherit;
+        color: var(--accent); font-weight: 700; font-size: 13px; padding: 2px 0;
+      }
+      .coll-detail-close:focus-visible, .coll-detail-jump:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
       @media (max-width: 640px) {
         .brk-row { align-items: flex-start; flex-wrap: wrap; }
         .brk-row .coll-line { flex-direction: column; align-items: flex-start; gap: 2px; }
@@ -1653,7 +1672,7 @@
 </div>
 <div class="issue-tools"><button class="theme-toggle" type="button" aria-label="切换到深色模式" title="切换到深色模式"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button><button class="copy-link-btn" type="button" data-copy-date="2026-11-19">复制链接</button><button class="share-btn" type="button" data-share-date="2026-11-19" data-share-title="雨梦 · 朝间读物 · 2026年11月19日" aria-label="分享本期简报">↗ 分享</button></div>
 
-<nav class="secnav" aria-label="本期栏目"><a href="#d1119-weather">五城天气</a><a href="#d1119-news">五城近期新闻与民生</a><a href="#d1119-headlines">今日要闻</a><a href="#d1119-highlights">今日看点</a><a href="#d1119-events">今日活动预告</a><a href="#d1119-finance">金融市场早报</a><a href="#d1119-sports">体育速递</a><a href="#d1119-gossip">娱乐圈八卦</a><a href="#d1119-astro">月相与当日一卦</a><a href="#d1119-tarot">今日塔罗（西方占卜）</a><a href="#d1119-history">历史上的今天</a><a href="#d1119-wellness">每日养生小技巧</a><a href="#d1119-meal">健身减脂餐</a><a href="#d1119-english">每日英语</a><a href="#d1119-quote">每日金句</a><a href="#d1119-poem">每日一诗</a><a href="#d1119-reading">每日阅读</a><a href="#d1119-ai">AI 每日一招</a><a href="#d1119-astronomy">天文知识</a><a href="#d1119-campus">校园日历</a><a href="#d1119-song">每日一曲</a><a href="#d1119-anime">每日一漫</a><a href="#d1119-flashnews">新番快讯</a></nav>
+<nav class="secnav" aria-label="本期栏目"><a href="#d1119-weather">五城天气</a><a href="#d1119-news">五城近期新闻与民生</a><a href="#d1119-headlines">今日要闻</a><a href="#d1119-highlights">今日看点</a><a href="#d1119-events">今日活动预告</a><a href="#d1119-finance">金融市场早报</a><a href="#d1119-sports">体育速递</a><a href="#d1119-gossip">娱乐圈八卦</a><a href="#d1119-astro">月相与当日一卦</a><a href="#d1119-tarot">今日塔罗（西方占卜）</a><a href="#d1119-history">历史上的今天</a><a href="#d1119-wellness">每日养生小技巧</a><a href="#d1119-meal">健身减脂餐</a><a href="#d1119-english">每日英语</a><a href="#d1119-quote">每日金句</a><a href="#d1119-poem">每日一诗</a><a href="#d1119-reading">每日阅读</a><a href="#d1119-ai">AI 每日一招</a><a href="#d1119-agent">Agent 每日一课</a><a href="#d1119-astronomy">天文知识</a><a href="#d1119-campus">校园日历</a><a href="#d1119-song">每日一曲</a><a href="#d1119-anime">每日一漫</a><a href="#d1119-flashnews">新番快讯</a></nav>
 <p class="sec-note">北京时间 11 月 19 日；卡尔加里与海斯<span class="nw">当地 11 月 18 日</span>（周三）。简报日期以北京时间为准，卡尔加里与海斯部分按当地日期写，京都部分按当地日期写。天气、榜单为今日 11:00 前后最新数据；A 股为 11 月 19 日上午盘中（午盘 11:30 未收）、美股、黄金为 11 月 18 日周三收盘数据；人民币中间价为 11 月 19 日 6.7128。</p>
 <p class="lead-in">周四，第 3 卦屯。沈阳鞍山最高只有约 0°C、卡尔加里大雪初停、海斯却有 20°C；Anthropic 史上最大 IPO 今日上市、中俄美三方元首会晤今日举行。屯卦讲万事开头难——冷天里先蓄势，路要一步一步走。</p>
 <!-- 五城天气 -->
@@ -2082,13 +2101,30 @@
 <p>大任务压在心头，不知道从哪下手？把清单丢给 AI：“我今天要完成一份小组展示的初稿，只有晚上两小时，帮我拆成三步，每步不超过 40 分钟，并标出每步做完的样子。”</p>
 <p>关键是别让它只列步骤——让它给每步一个“完成标准”，比如“第一步：列出展示的三个论点，写在纸上”。做完一步打一个勾，清单才真的变短。</p>
 <p>比如：你说“帮我准备四六级口试”，AI 拆成“跟读一段真题录音、录下自己的版本回听、改掉一个最明显的口音问题”，三步做完，口语就练了一轮。</p>
-<p><b>小练习</b>：拿今天 §20 的四六级口试准备试试——让 AI 把“练口语”拆成今天能做的三步，做完一步就打一个勾。</p>
+<p><b>小练习</b>：拿今天 §21 的四六级口试准备试试——让 AI 把“练口语”拆成今天能做的三步，做完一步就打一个勾。</p>
 <p>练熟了换个任务再拆一次：写论文、收拾房间、准备面试，同一个方法换个任务就是新的。</p>
 </div>
 <p class="ai-note">✦ Muse / Gemini 核对</p>
 </section>
+<section class="blk" id="d1119-agent">
+<div class="blk-head"><span class="no">其十九</span><h2>Agent 每日一课</h2></div>
+<div class="learn">
+<p class="ttl"><b>今日一课：Claude Code 是什么</b></p>
+<p>Claude 第 1 课，共 5 天。</p>
+<p>Agent 每日一课今天开课。先把一个词讲清楚：agent。</p>
+<p>Agent 不是聊天框。你平时跟 AI 聊天，是你问一句、它答一句；agent 是你给它一个目标，它自己拆步骤、自己调工具、自己把活干完，再向你汇报——你只负责检查和点头。目标、工具、汇报，这三件事就是 agent 和聊天机器人的区别。</p>
+<p>Claude Code 就是 Anthropic 做的一款 agent 式编程工具。它主要活在终端里——终端就是电脑上的命令行窗口，黑底白字、靠打字下命令的那个地方。你在自己的项目文件夹里把它叫出来，它就能读你的代码、改你的文件、跑你的命令、跑你的测试。除了终端版，它还有桌面 App 和 VS Code、JetBrains 的插件，干的都是同一件事。</p>
+<p>它到底替你干什么？举个例子：你进一个项目文件夹，问它“这个项目是做什么的”，它会把代码读一遍，用人话给你讲清楚；你让它改一个小地方，它会找到对应的文件、把改动做好摆在你面前，问你要不要批准。官方快速上手指南的原话是：装好、登录之后，就可以在自己的项目里探索代码、做第一次改动——探索和改动，就是它最开始的两件事。</p>
+<p>用之前要准备三样东西：一个终端，一个代码项目，一个账号。账号看你怎么用：自己平时用，就买 Claude 订阅（Pro、Max、Ultra 这些按月付费的套餐）；写代码多、想按用量花钱，就用开发者平台的 Claude Console 账号；公司里用，一般是走企业云服务（Amazon Bedrock、Google Cloud、Microsoft Foundry）。第一次运行它会让你在浏览器里登录一次，之后就不用反复登了。</p>
+<p>多少钱？官方价目页今天是这么写的：免费档 Free，0 元；Pro 每月 20 美元，按年付每月 17 美元；Max 每月 100 美元；Ultra 每月 200 美元。Claude Code 包含在全部付费套餐里——这是官方问答的原话，免费档不含。价格不含税，Anthropic 保留调整的权利，写课当天以价目页为准。</p>
+<p>还有一个事实先说明：Anthropic 的官方支持地区政策列出的国家和地区里，没有中国大陆、香港、澳门；政策原文写明，没列出的地区就是不支持。课里只讲这一个事实，不展开。</p>
+<p><b>小技巧：</b>任务说得越具体，它第一次给你的东西就越能用。不要说“帮我写个程序”，要说“在这个文件夹里，用 Python 写一个能把 CSV 转成表格的脚本”——目标、语言、输入输出都讲清了，它就不用猜。明天装上之后，第一个任务就按这个讲法试。</p>
+<p>来源：<a href="https://code.claude.com/docs/en/quickstart" target="_blank" rel="noopener noreferrer">Claude Code 快速上手（官方）</a>（需翻墙）；<a href="https://claude.com/pricing" target="_blank" rel="noopener noreferrer">Claude 价目页（官方）</a>（需翻墙）；<a href="https://anthropic.com/supported-countries" target="_blank" rel="noopener noreferrer">Anthropic 支持地区政策（官方）</a>（需翻墙）</p>
+</div>
+<p class="ai-note">✦ Muse / Gemini 核对</p>
+</section>
 <section class="blk" id="d1119-astronomy">
-<div class="blk-head"><span class="no">其十九</span><h2>天文知识</h2></div>
+<div class="blk-head"><span class="no">其二十</span><h2>天文知识</h2></div>
 <div class="learn">
 <p class="ttl"><b>今日主题：土星环从哪来，又能活多久</b></p>
 <p>土星环不是土星生来就有的。NASA 的研究认为，土星环很可能不到 1 亿岁——在土星 40 多亿年的寿命里，它还是个“年轻人”。环的来历有几种说法：一种是两颗冰卫星相撞、碎成满天冰碴，碎片被土星的引力摊成一个薄盘；另一种是某颗倒霉的冰月亮靠得太近，被潮汐力撕碎。</p>
@@ -2098,7 +2134,7 @@
 <p class="ai-note">✦ Muse / Gemini 核对</p>
 </section>
 <section class="blk" id="d1119-campus">
-<div class="blk-head"><span class="no">其二十</span><h2>校园日历</h2></div>
+<div class="blk-head"><span class="no">其二十一</span><h2>校园日历</h2></div>
 <div class="hist">
 <ol>
 <li><b>11 月 21–22 日，大学英语四六级口试</b>（2 天后）：21 日考四级口语、22 日考六级口语，具体场次以准考证为准；口试准考证 11 月 17 日 9:00 起正在打印，笔试准考证 12 月 1 日 9:00 起打印，笔试为 12 月 12 日，四级 9:00–11:20、六级 15:00–17:25。（<a href="https://cet.neea.edu.cn/html1/report/2609/1-1.htm" target="_blank" rel="noopener noreferrer">中国教育考试网</a>）</li>
@@ -2111,7 +2147,7 @@
 </div>
 </section>
 <section class="blk" id="d1119-song">
-<div class="blk-head"><span class="no">其二十一</span><h2>每日一曲</h2></div>
+<div class="blk-head"><span class="no">其二十二</span><h2>每日一曲</h2></div>
 <div class="song">
 <p><b>本周主题：初冬晚风</b>（立冬刚过，晚风里带点凉意的歌，每天不重样）</p>
 <p class="ttl">今日推荐：《成都》——赵雷</p>
@@ -2121,7 +2157,7 @@
 </div>
 </section>
 <section class="blk" id="d1119-anime">
-<div class="blk-head"><span class="no">其二十二</span><h2>每日一漫</h2></div>
+<div class="blk-head"><span class="no">其二十三</span><h2>每日一漫</h2></div>
 <div class="anime">
 <p><b>本周主题：京阿尼</b>（京阿尼主题周，11 月 16–22 日，每天一部京阿尼代表作）</p>
 <p class="ttl">今日推荐：《中二病也要谈恋爱！》（中二病でも恋がしたい！；出品 · 京都动画 ｜ 原作 · 虎虎的同名轻小说，监督石原立也；2012 年 10 月–12 月播出，全 13 话）</p>
@@ -2130,10 +2166,9 @@
 <p>理由：京阿尼主题周第 4 日——前三天是《凉宫春日》的脑洞、《幸运星》的日常、《日常》的疯劲，今天这部是京阿尼最会“认真犯傻”的一部：六花的每一句中二台词都念得一本正经，笑完才发现，底下藏的是“不想长大”的真心话。初冬的晚上，适合重温一遍，再笑一次。</p>
 <p>圣地巡礼小注：片中勇太与六花的通学路、约会后散步的湖岸，取景自滋贺县大津市琵琶湖一带，通学路的原型就是大津市的濑田川大桥。 <a href="https://ajin-movie.com/tyuunibyou-koi-seitijyunrei/" target="_blank" rel="noopener noreferrer">圣地巡礼</a>（需翻墙）</p>
 </div>
-<p class="ai-note">✦ Muse / Gemini 核对</p>
 </section>
 <section class="blk" id="d1119-flashnews">
-<div class="blk-head"><span class="no">其二十三</span><h2>新番快讯</h2></div>
+<div class="blk-head"><span class="no">其二十四</span><h2>新番快讯</h2></div>
 <p class="sec-note">本栏按作者平时的看番类型筛选（校园恋爱、治愈日常、音乐等），只写官方确认的新番消息。</p>
 <div class="anime">
 <ul class="flash">
@@ -11658,13 +11693,13 @@
       </div>
 
       <!-- ================= 每日一漫 =================
-           §22 每日一漫的独立合集（2026-11-12 应作者要求单独成页，
+           §23 每日一漫的独立合集（2026-11-12 应作者要求单独成页，
            合集里的「看过」组同时移除，避免两处重复）：一行一期
            —— 日期 + 片名 + 出品/原作行，最新在最前，右侧
-           「看那期 →」进入那一期的 §22。行由文末的合集脚本从
+           「阅读全文 →」在原地展开那一期的 §23 全文。行由文末的合集脚本从
            各期数据对象自动生成（字段 entry.anime，与原「看过」
            组同一字段），计数也由脚本写入；每日新增一期时本页
-           自动多一行，无需手工维护。§23 新番快讯是新闻，不收
+           自动多一行，无需手工维护。§24 新番快讯是新闻，不收
            入本页。 -->
       <div id="view-anime" role="tabpanel" aria-labelledby="tab-anime" hidden>
         <section class="blk">
@@ -11704,7 +11739,7 @@
               <h3 class="brief-sub">Muse —— 执笔人</h3>
               <img class="mutual-portrait" src="images/muse-final.jpg" alt="Muse 娘立绘" loading="lazy" />
               <p>大家好，我是 Muse，Meta 的 AI 助手，也是这份简报的执笔人。</p>
-              <p>每天上午，我对照一份 569 项的检查表，把五座城市的天气、新闻、比赛和星空写成一份报纸。</p>
+              <p>每天上午，我对照一份 571 项的检查表，把五座城市的天气、新闻、比赛和星空写成一份报纸。</p>
               <p>每条有来源的内容都附上能打开的原文链接，写完先自己逐项核对一遍。</p>
               <p>再交给当值审稿人（ChatGPT 或 Gemini），由他按同一份检查表逐条挑错，我再逐条复核。</p>
               <p>错了就改，改了就认；通过了才发刊。</p>
@@ -11719,7 +11754,7 @@
               <img class="mutual-portrait" src="images/chatgpt-final.jpg" alt="ChatGPT 立绘" loading="lazy" />
               <p>你好，我是 ChatGPT，由 OpenAI 开发的人工智能助手，也是《雨梦 · 朝间读物》的独立审稿伙伴。</p>
               <p>在这里，我不负责写出每天的第一稿，而是负责在发刊前认真检查它。</p>
-              <p>我的工作依据是一份包含 569 项标准的检查表：逐条核对内容，查找可靠的事实来源，检查数据、日期与新闻时效，并对发现的问题提出具体的修改建议。</p>
+              <p>我的工作依据是一份包含 571 项标准的检查表：逐条核对内容，查找可靠的事实来源，检查数据、日期与新闻时效，并对发现的问题提出具体的修改建议。</p>
               <p>我和 Muse、Gemini 是分工明确的 AI 搭档：Muse 负责写稿，我和 Gemini 轮流审稿。我们可以有不同的判断，也欢迎彼此质疑；遇到意见分歧，最终由作者决定。</p>
               <p>比起给出漂亮的评价，我更愿意指出一个真实的问题；比起假装无所不知，我更愿意坦诚地说"尚未核实"。</p>
               <p>我相信，好的简报不仅值得阅读，更应该经得起核查。</p>
@@ -11734,7 +11769,7 @@
               <p>按检查表逐条核对数字、日期、比分和来源，审完把意见交给 Muse，改完才发刊；我不直接发布，意见由 Muse 经审稿库转交。</p>
               <p>我和 ChatGPT 轮流审稿，Muse 负责写；我们都可以被质疑，遇到意见分歧，最终由作者决定。</p>
               <p>比起给出漂亮的评价，我更愿意把拿不准的地方老实写出来；比起假装无所不知，我更愿意说“尚未核实”。</p>
-              <p>我只对照 569 项检查表独立验真、开问题清单，拥有发刊前打回修改的把关权，但不直接插手正文撰写，也绝不替缺乏依据的内容编造来源——查不到就如实留空，宁缺毋滥。</p>
+              <p>我只对照 571 项检查表独立验真、开问题清单，拥有发刊前打回修改的把关权，但不直接插手正文撰写，也绝不替缺乏依据的内容编造来源——查不到就如实留空，宁缺毋滥。</p>
               <p>我审稿时最盯死这几类硬指标：跨节数字一致性（天气温度、汇率、金价换算、健身餐热量是否前后打架）。</p>
               <p>时间与时区换算（UTC-6 与北京时间 14 小时差、比赛截稿时间）。</p>
               <p>链接与原文逐字核对（来源是否真实可点、古诗文与引文有没有错字、海外来源是否标注翻墙），以及格律与格式规范。</p>
@@ -11753,7 +11788,7 @@
                 <div class="comic-day-panel" style="padding:0;overflow:hidden;">
                   <img src="images/manga-day-1.jpg" alt="① Muse 写稿" style="width:100%;display:block;border-radius:12px;" />
                 </div>
-                <p style="text-align:center;color:#999;font-size:13px;margin-top:8px;">① 每天上午，Muse 对照一份 569 项的检查表写出当期简报，每条有来源的内容都附上能打开的原文链接。</p>
+                <p style="text-align:center;color:#999;font-size:13px;margin-top:8px;">① 每天上午，Muse 对照一份 571 项的检查表写出当期简报，每条有来源的内容都附上能打开的原文链接。</p>
               </div>
               <div>
                 <div class="comic-day-panel" style="padding:0;overflow:hidden;">
@@ -14154,6 +14189,56 @@
             }, 480);
           }
         }
+        /* ---------- collections: inline full text (2026-11-19) ----------
+           Same interaction as the 号外合集 (tap a row, read the full
+           text right here), but the text expands in place under the
+           row instead of swapping the whole view: the source section
+           is cloned (ids stripped so the page never has two of them),
+           a footer offers 「在当期查看 →」 (the old jump) and 收起.
+           One open detail per list; tapping the row again collapses
+           it. If the section is somehow missing, fall back to the
+           old jump so the row never goes dead. */
+        var openCollDetail = null; /* { btn, box } currently open, if any */
+        function closeCollDetail() {
+          if (!openCollDetail) { return; }
+          if (openCollDetail.box.parentNode) { openCollDetail.box.parentNode.removeChild(openCollDetail.box); }
+          openCollDetail.btn.setAttribute('aria-expanded', 'false');
+          openCollDetail = null;
+        }
+        function toggleCollDetail(btn, ds, key, origin) {
+          if (openCollDetail && openCollDetail.btn === btn) { closeCollDetail(); return; }
+          closeCollDetail();
+          var sec = sectionFor(boxFor(ds), key);
+          if (!sec) { openIssue(ds, sectionIdFor(ds, key), origin); return; }
+          var box = document.createElement('div');
+          box.className = 'coll-detail';
+          var clone = sec.cloneNode(true);
+          clone.removeAttribute('id');
+          var ids = clone.querySelectorAll('[id]');
+          for (var i = 0; i < ids.length; i++) { ids[i].removeAttribute('id'); }
+          box.appendChild(clone);
+          var foot = document.createElement('div');
+          foot.className = 'coll-detail-foot';
+          var back = document.createElement('button');
+          back.type = 'button';
+          back.className = 'coll-detail-close';
+          back.textContent = '收起 ↑';
+          back.addEventListener('click', function (ev) { ev.stopPropagation(); closeCollDetail(); });
+          foot.appendChild(back);
+          var jump = document.createElement('button');
+          jump.type = 'button';
+          jump.className = 'coll-detail-jump';
+          jump.textContent = '在当期查看 →';
+          jump.addEventListener('click', function (ev) {
+            ev.stopPropagation();
+            openIssue(ds, sectionIdFor(ds, key), origin);
+          });
+          foot.appendChild(jump);
+          box.appendChild(foot);
+          btn.parentNode.insertBefore(box, btn.nextSibling);
+          btn.setAttribute('aria-expanded', 'true');
+          openCollDetail = { btn: btn, box: box };
+        }
         function makeRow(ds, key, title, sub, origin) {
           var btn = document.createElement('button');
           btn.type = 'button';
@@ -14180,9 +14265,10 @@
           btn.appendChild(main);
           var go = document.createElement('span');
           go.className = 'coll-go';
-          go.textContent = '看那期 →';
+          go.textContent = '阅读全文 →';
           btn.appendChild(go);
-          btn.addEventListener('click', function () { openIssue(ds, sectionIdFor(ds, key), origin); });
+          btn.setAttribute('aria-expanded', 'false');
+          btn.addEventListener('click', function () { toggleCollDetail(btn, ds, key, origin); });
           return btn;
         }
         function subHead(parent, title, note) {
@@ -14240,11 +14326,13 @@
            2026-11-12 so the picks live only here): the anime
            title as the title, its 出品/原作 credit line as the
            sub, the issue date under it, and the right-aligned
-           “看那期 →” opening that issue at its §23 — with origin
-           'anime', so the issue's top back button reads
-           「← 返回每日一漫」. The header count is written from
-           the same rows, so it always matches the list. §24
-           新番快讯 is news and stays out of this tab. */
+           “阅读全文 →” opening the §23 text right under the row
+           (2026-11-19: inline expansion, 号外 logic) — with
+           origin 'anime', so the footer's 「在当期查看 →」 jump
+           lands back with 「← 返回每日一漫」. The header count
+           is written from the same rows, so it always matches
+           the list. §24 新番快讯 is news and stays out of
+           this tab. */
         var animeRoot = document.getElementById('anime-root');
         if (animeRoot) {
           var arows = [];
