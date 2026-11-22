@@ -12337,7 +12337,15 @@
             <span class="note">突发新闻号外 · 最新在最前</span>
           </div>
           <div id="breaking-list" class="coll-list">
-            <button type="button" class="coll-item brk-row" data-brk-open="brk-2026-11-19-icj-myanmar" aria-controls="breaking-detail">
+                        <button type="button" class="coll-item brk-row" data-brk-open="brk-2026-11-21-riemann" aria-controls="breaking-detail">
+              <span class="brk-badge">号外</span>
+              <span class="coll-main">
+                <span class="coll-line"><span class="coll-title">黎曼猜想证明通过独立验证：AI 辅助证明获 Lean 与 Mathlib 认证</span><span class="coll-date">2026 年 11 月 22 日 12:22（北京时间）</span></span>
+                <span class="coll-sub">Lean 与 Mathlib 社区认证阿尔珀格与 Claude 合作完成的黎曼猜想证明正确，167 年难题首次通过独立验证。</span>
+              </span>
+              <span class="coll-go">阅读全文 →</span>
+            </button>
+<button type="button" class="coll-item brk-row" data-brk-open="brk-2026-11-19-icj-myanmar" aria-controls="breaking-detail">
               <span class="brk-badge">号外</span>
               <span class="coll-main">
                 <span class="coll-line"><span class="coll-title">国际法院首次认定一国实施种族灭绝：缅甸对罗兴亚人犯下种族灭绝行为</span><span class="coll-date">2026 年 11 月 20 日 01:24（北京时间）</span></span>
@@ -12471,7 +12479,49 @@
           <div id="breaking-detail" hidden>
             <div class="brk-backbar"><button class="tab-btn brk-back" type="button">← 返回号外合集</button></div>
             <div id="breaking-root">
-                        <article class="brk-item" id="brk-2026-11-19-icj-myanmar">
+                        <article class="brk-item" id="brk-2026-11-21-riemann">
+              <div class="brk-head"><span class="brk-badge">号外</span><h3 class="brk-title">黎曼猜想证明通过独立验证：AI 辅助证明获 Lean 与 Mathlib 认证</h3></div>
+              <p class="brk-time">2026 年 11 月 22 日 12:22（北京时间）发布</p>
+              <p class="brk-body">11 月 21 日 21:55（北京时间），Lean 与 Mathlib 社区发表联合声明，认证 Anthropic 数学家莱文特·阿尔珀格（Levent Alpöge）与 AI 模型 Claude 合作完成的黎曼猜想证明正确。声明写道：“我们完全相信，阿尔珀格的黎曼猜想证明是正确的……我们特此认证，黎曼猜想的陈述与证明都是正确的。”（<a href="https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" target="_blank" rel="noopener noreferrer">Lean 与 Mathlib 联合声明</a>（需翻墙））</p>
+              <p class="brk-body">11 月 22 日 00:45（北京时间），《科学美国人》更新报道称：“数学家们现在确信，这份由人工智能创造的、震撼人心的黎曼猜想证明是真实的。”（<a href="https://www.scientificamerican.com/article/the-ai-riemann-hypothesis-proof-is-almost-certainly-true-independent-mathematicians-attest/" target="_blank" rel="noopener noreferrer">《科学美国人》</a>（需翻墙））</p>
+              <p class="brk-body">11 月 21 日晨报刊出时，这一证明还只是“尚未最终确认”的主张；独立验证的完成是在此后。这是 1859 年德国数学家伯恩哈德·黎曼提出该猜想以来，167 年间第一次有人宣称证明并通过独立验证。黎曼猜想被认为是数学中最重要的未解问题。（<a href="https://www.scientificamerican.com/article/the-ai-riemann-hypothesis-proof-is-almost-certainly-true-independent-mathematicians-attest/" target="_blank" rel="noopener noreferrer">《科学美国人》</a>（需翻墙）；<a href="https://www.nacionale.com/en/articles/when-will-we-know-riemann-hypothesis-proof-verified-alpoge-claude-lean-what-happens-next" target="_blank" rel="noopener noreferrer">nacionale 梳理</a>（需翻墙））</p>
+              <h4 class="brk-sub">证明是怎么被验证的</h4>
+              <p class="brk-body">11 月 20 日（美国当地时间），阿尔珀格在个人网站发布四页说明《Remark》与 Lean 证明代码库——14 个分卷，约 1700 万行代码、175,187 个模块。（<a href="https://alpo.ge/remark.pdf" target="_blank" rel="noopener noreferrer">阿尔珀格说明《Remark》</a>（需翻墙）；<a href="https://math.mit.edu/~drew/grh/" target="_blank" rel="noopener noreferrer">麻省理工学院萨瑟兰验证页</a>（需翻墙））</p>
+              <p class="brk-body">联合声明列出四项标准，称全部满足：第一，陈述正确——该陈述是 Mathlib 数学库中已有的、经 Lean 与数论专家审定的黎曼猜想表述；第二，代码库无错编译——到声明发布时，已有数十人独立编译并复现了同一份证明导出文件。</p>
+              <p class="brk-body">第三，代码证明的正是该陈述——社区加入了一个只引用 Mathlib 的文件，把黎曼猜想的陈述单独隔离出来，再用 comparator 与 con-leche –compare 两个独立工具比对，确认阿尔珀格代码库证明的定理正是 Mathlib 的黎曼猜想表述。</p>
+              <p class="brk-body">第四，证明有效——导出的原始证明已被多个证明检查器接受，包括 Lean 官方内核、con-leche、con-ron 以及多个由第三方用不同编程语言编写的独立检查器；检查是在与源代码隔离的惰性导出文件上进行的。（<a href="https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" target="_blank" rel="noopener noreferrer">Lean 与 Mathlib 联合声明</a>（需翻墙））</p>
+              <p class="brk-body">麻省理工学院数学家安德鲁·萨瑟兰独立编译并复核了这一结果：全部 175,187 个模块零错误编译，五个核心定理仅依赖三条标准公理（propext、Classical.choice、Quot.sound）。他说：“任何可疑之处的可能性大约为零。”（<a href="https://math.mit.edu/~drew/grh/" target="_blank" rel="noopener noreferrer">萨瑟兰验证页</a>（需翻墙）；<a href="https://www.scientificamerican.com/article/the-ai-riemann-hypothesis-proof-is-almost-certainly-true-independent-mathematicians-attest/" target="_blank" rel="noopener noreferrer">《科学美国人》</a>（需翻墙））</p>
+              <p class="brk-body">作为一项不依赖 Mathlib 的 zeta 函数定义的独立检验，证明还与罗宾（Robin）与拉加里亚斯（Lagarias）关于约数和的两条不等式结合验证通过。（<a href="https://math.mit.edu/~drew/grh/" target="_blank" rel="noopener noreferrer">萨瑟兰验证页</a>（需翻墙））</p>
+              <h4 class="brk-sub">黎曼猜想是什么</h4>
+              <p class="brk-body">1859 年，黎曼提出：素数的分布背后存在隐藏的模式。猜想断言，黎曼 zeta 函数的所有非平凡零点，实部均为 1/2——也就是说，它们全都落在同一条“临界线”上。（<a href="https://www.scientificamerican.com/article/the-ai-riemann-hypothesis-proof-is-almost-certainly-true-independent-mathematicians-attest/" target="_blank" rel="noopener noreferrer">《科学美国人》</a>（需翻墙））</p>
+              <p class="brk-body">这一猜想是数论的核心问题，也是克雷数学研究所 2000 年列出的七大千禧年大奖难题之一，悬赏 100 万美元。（<a href="https://www.claymath.org/millennium/riemann-hypothesis/" target="_blank" rel="noopener noreferrer">克雷数学研究所</a>（需翻墙））</p>
+              <h4 class="brk-sub">这次到底证明了什么</h4>
+              <p class="brk-body">阿尔珀格提交的五个定理中，第一个就是黎曼猜想本身（按 Mathlib 的定义：除平凡零点 -2、-4、-6……之外，zeta 函数所有零点的实部均为 1/2）；第二个是同一陈述的另一种写法；第三、第四、第五个是狄利克雷 L 函数的广义黎曼猜想，覆盖全部模数与全部特征标。（<a href="https://math.mit.edu/~drew/grh/" target="_blank" rel="noopener noreferrer">萨瑟兰验证页</a>（需翻墙））</p>
+              <p class="brk-body">范围需要说清楚：此次验证的“广义黎曼猜想”仅指狄利克雷 L 函数；戴德金 zeta 函数、赫克 L 函数与一般的自守 L 函数，不在此次验证的范围之内。（<a href="https://math.mit.edu/~drew/grh/" target="_blank" rel="noopener noreferrer">萨瑟兰验证页</a>（需翻墙））</p>
+              <p class="brk-body">阿尔珀格在说明中称，他的方法“很容易进一步推广”，解决了广义黎曼猜想，并预期“有更多时间”也能解决扩展黎曼猜想。（<a href="https://alpo.ge/remark.pdf" target="_blank" rel="noopener noreferrer">阿尔珀格说明《Remark》</a>（需翻墙））</p>
+              <h4 class="brk-sub">证明是怎么来的</h4>
+              <p class="brk-body">阿尔珀格是 Anthropic 的数学家。他在说明中写道：“我相信，我与 Claude 合作，发现了黎曼猜想的证明”，“Claude 与我也在无假设的前提下形式化了这些论证”。（<a href="https://alpo.ge/remark.pdf" target="_blank" rel="noopener noreferrer">阿尔珀格说明《Remark》</a>（需翻墙））</p>
+              <p class="brk-body">说明所附的时间线（据称由 Claude 整理，阿尔珀格提醒部分描述可能需要修正）显示，关键步骤集中于 10 月 6 日至 11 月 16 日（美国当地时间），最后一项 11 月 16 日仅写着“GRH”。他写道，突破发生在“周日深夜”——11 月 15 日正是周日。（<a href="https://alpo.ge/remark.pdf" target="_blank" rel="noopener noreferrer">阿尔珀格说明《Remark》</a>（需翻墙））</p>
+              <p class="brk-body">他没有发表人类可读的论文：证明只以 Lean 代码形式发布。他说，论证“目前长得惊人”，完整书面版“会超过 25 万页”，不愿贴出“没人能读的”长文；他打算努力理解并阐释这一论证、作报告、写出正式版本。（<a href="https://alpo.ge/remark.pdf" target="_blank" rel="noopener noreferrer">阿尔珀格说明《Remark》</a>（需翻墙）；<a href="https://www.nacionale.com/en/articles/when-will-we-know-riemann-hypothesis-proof-verified-alpoge-claude-lean-what-happens-next" target="_blank" rel="noopener noreferrer">nacionale 梳理</a>（需翻墙））</p>
+              <p class="brk-body">保留项也要写明：验证依赖于 Lean 内核与 Mathlib 定义本身无误；萨瑟兰的验证页注明，本次构建未在沙箱中运行。（<a href="https://math.mit.edu/~drew/grh/" target="_blank" rel="noopener noreferrer">萨瑟兰验证页</a>（需翻墙））</p>
+              <h4 class="brk-sub">另一份证明主张（未核实）</h4>
+              <p class="brk-body">11 月 21 日 02:18（北京时间），美国数学会主席、斯坦福大学数学家拉维·瓦基尔在博客上发布了另一份广义黎曼猜想证明草稿——斯坦福博士后亚历山德罗·马苏洛的 940 页手稿《素数的乐章》。瓦基尔称其“完全是人写的，没有 AI”，数学家布莱恩·康拉德“几个月来一直在仔细审阅”，“目前看来不错”，但强调这只是当前草稿、不是已验证的证明，请大家检查并形式化。（<a href="https://math216.wordpress.com/2026/11/20/hurried-announcement-alessandro-masullo-grh/" target="_blank" rel="noopener noreferrer">瓦基尔博客</a>（需翻墙））</p>
+              <p class="brk-body">11 月 21 日 10:54（北京时间），瓦基尔在同一篇博文追加更新：已有多人联系他报告手稿中的问题（“在不同 AI 模型的协助下发现”），所有问题须得到学界满意解决才能被接受；他对证明策略的正确性“不作任何宣称”。康拉德称手稿“正在大幅修改中”，其他数学家对其有效性持怀疑态度。（<a href="https://math216.wordpress.com/2026/11/20/hurried-announcement-alessandro-masullo-grh/" target="_blank" rel="noopener noreferrer">瓦基尔博客</a>（需翻墙）；<a href="https://www.nacionale.com/en/articles/when-will-we-know-riemann-hypothesis-proof-verified-alpoge-claude-lean-what-happens-next" target="_blank" rel="noopener noreferrer">nacionale 梳理</a>（需翻墙））</p>
+              <p class="brk-body">这份手稿与阿尔珀格的 Lean 证明是两个独立的主张；Lean 与 Mathlib 的认证只针对后者，马苏洛手稿的正确性尚未得到验证。</p>
+              <h4 class="brk-sub">百万美元奖金尚未颁发</h4>
+              <p class="brk-body">克雷数学研究所主席马丁·布里德森称这是“具有历史意义的宣布”，但表示通往“真正理解之地的路还很长很艰难”；宣布数小时后，克雷研究所网站仍将黎曼猜想列为未解。（<a href="https://www.wcmu.org/national-world-news/2026-11-21/anthropic-worker-claims-to-have-solved-a-holy-grail-of-math-problems-with-the-help-of-ai" target="_blank" rel="noopener noreferrer">美联社通稿（WCMU 转载）</a>（需翻墙）；<a href="https://www.claymath.org/millennium/riemann-hypothesis/" target="_blank" rel="noopener noreferrer">克雷数学研究所</a>（需翻墙））</p>
+              <p class="brk-body">按克雷规则，解法须先发表在合格刊物、至少两年后才予考虑，并须获得“全球数学界的普遍接受”；即便合格书面版即刻问世，最早也要到 2028 年底才能考虑。个人网页与代码下载不符合发表规则。（<a href="https://www.claymath.org/millennium-problems/rules/" target="_blank" rel="noopener noreferrer">克雷数学研究所奖金规则</a>（需翻墙））</p>
+              <p class="brk-body">Anthropic 未回应美联社的置评请求。（<a href="https://www.wcmu.org/national-world-news/2026-11-21/anthropic-worker-claims-to-have-solved-a-holy-grail-of-math-problems-with-the-help-of-ai" target="_blank" rel="noopener noreferrer">美联社通稿（WCMU 转载）</a>（需翻墙））</p>
+              <h4 class="brk-sub">证明正确，不等于已被理解</h4>
+              <p class="brk-body">这是人工智能第一次辅助证明千禧年大奖难题，也是数学史上悬置最久的重大问题之一。今年 8 月，Anthropic 曾报告研究版 Claude 将已证明位于临界线上的 zeta 零点比例从 41.6% 提高到 67.2%，当时明确表示那不是证明。（<a href="https://www.anthropic.com/research/riemann-zeta" target="_blank" rel="noopener noreferrer">Anthropic 研究文章</a>（需翻墙））</p>
+              <p class="brk-body">但“证明正确”不等于“已被理解”：联合声明也表示，期待学界接下来的工作“帮助解释这一证明中的新思想”。数学家陶哲轩预计，“消化过程需要一些时间”。（<a href="https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" target="_blank" rel="noopener noreferrer">Lean 与 Mathlib 联合声明</a>（需翻墙）；<a href="https://terrytao.wordpress.com/2026/11/20/unforced-euler-singularity-unforced-navier-stokes-singularity-and-the-generalized-riemann-hypothesis/" target="_blank" rel="noopener noreferrer">陶哲轩博客</a>（需翻墙））</p>
+              <h4 class="brk-sub">接下来看什么</h4>
+              <p class="brk-body">数学界对证明思路的阐释与简化——阿尔珀格预计更短的论证会“很快出现”，并承诺写出人类可读的论文或预印本（<a href="https://alpo.ge/remark.pdf" target="_blank" rel="noopener noreferrer">阿尔珀格说明《Remark》</a>（需翻墙））。</p>
+              <p class="brk-body">接下来还要看克雷研究所的后续表态（<a href="https://www.claymath.org/millennium/riemann-hypothesis/" target="_blank" rel="noopener noreferrer">克雷数学研究所</a>（需翻墙）），以及马苏洛手稿的检查与修改结果（<a href="https://math216.wordpress.com/2026/11/20/hurried-announcement-alessandro-masullo-grh/" target="_blank" rel="noopener noreferrer">瓦基尔博客</a>（需翻墙））。</p>
+              <p class="brk-src">来源：<a href="https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" target="_blank" rel="noopener noreferrer">Lean 与 Mathlib 联合声明</a>（需翻墙） · <a href="https://www.scientificamerican.com/article/the-ai-riemann-hypothesis-proof-is-almost-certainly-true-independent-mathematicians-attest/" target="_blank" rel="noopener noreferrer">《科学美国人》</a>（需翻墙） · <a href="https://alpo.ge/remark.pdf" target="_blank" rel="noopener noreferrer">阿尔珀格说明《Remark》</a>（需翻墙） · <a href="https://math.mit.edu/~drew/grh/" target="_blank" rel="noopener noreferrer">麻省理工学院萨瑟兰验证页</a>（需翻墙） · <a href="https://www.anthropic.com/research/riemann-zeta" target="_blank" rel="noopener noreferrer">Anthropic 研究文章：Claude 改进 zeta 零点下界</a>（需翻墙） · <a href="https://terrytao.wordpress.com/2026/11/20/unforced-euler-singularity-unforced-navier-stokes-singularity-and-the-generalized-riemann-hypothesis/" target="_blank" rel="noopener noreferrer">陶哲轩博客：三项新结果点评</a>（需翻墙） · <a href="https://www.claymath.org/millennium/riemann-hypothesis/" target="_blank" rel="noopener noreferrer">克雷数学研究所：黎曼猜想</a>（需翻墙） · <a href="https://www.claymath.org/millennium-problems/rules/" target="_blank" rel="noopener noreferrer">克雷数学研究所：奖金规则</a>（需翻墙） · <a href="https://math216.wordpress.com/2026/11/20/hurried-announcement-alessandro-masullo-grh/" target="_blank" rel="noopener noreferrer">瓦基尔博客：马苏洛广义黎曼猜想证明草稿</a>（需翻墙） · <a href="https://www.wcmu.org/national-world-news/2026-11-21/anthropic-worker-claims-to-have-solved-a-holy-grail-of-math-problems-with-the-help-of-ai" target="_blank" rel="noopener noreferrer">美联社通稿（WCMU 转载）</a>（需翻墙） · <a href="https://www.nacionale.com/en/articles/when-will-we-know-riemann-hypothesis-proof-verified-alpoge-claude-lean-what-happens-next" target="_blank" rel="noopener noreferrer">nacionale 梳理</a>（需翻墙）</p>
+              <p class="brk-byline">撰写：Muse（lemon）｜核对：Gemini</p>
+            </article>
+<article class="brk-item" id="brk-2026-11-19-icj-myanmar">
               <div class="brk-head"><span class="brk-badge">号外</span><h3 class="brk-title">国际法院首次认定一国实施种族灭绝：缅甸对罗兴亚人犯下种族灭绝行为</h3></div>
               <p class="brk-time">2026 年 11 月 20 日 01:24（北京时间）发布</p>
               <p class="brk-body">11 月 19 日，联合国国际法院在荷兰海牙宣读判决，认定缅甸对罗兴亚人实施了种族灭绝。（<a href="https://news.un.org/en/story/2026/11/1168836" target="_blank" rel="noopener noreferrer">联合国新闻</a>（需翻墙））</p>
