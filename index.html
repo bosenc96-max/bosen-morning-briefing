@@ -1232,6 +1232,8 @@
       #view-tutorial .tut-byline { font-size: 12.5px; color: var(--ink-3); }
       #view-tutorial .tut-missing { font-size: 12.5px; color: var(--ink-3); }
       #view-tutorial .tut-table-wrap { overflow-x: auto; margin: 0 0 12px; }
+      #view-tutorial .tut-check { display: block; margin: 0 0 8px; font-size: 14px; color: var(--ink-2); line-height: 1.85; cursor: pointer; }
+      #view-tutorial .tut-check input { margin-right: 8px; accent-color: var(--ink-2); }
       @media (max-width: 640px) {
         #view-tutorial .tut-versions { grid-template-columns: 1fr; }
         #view-tutorial .tut-version { padding: 16px 18px; }
@@ -10786,7 +10788,7 @@
           <div class="tut-versions">
             <button type="button" class="brief-card tut-version" id="tut-open-a" aria-expanded="false" aria-controls="tut-a"><span class="tut-vtitle">A 精编版</span><span class="tut-vmeta">约 6,288 字</span><span class="tut-vhint">点开阅读全文</span></button>
             <button type="button" class="brief-card tut-version" id="tut-open-b" aria-expanded="false" aria-controls="tut-b"><span class="tut-vtitle">B 完整版</span><span class="tut-vmeta">约 27,096 字</span><span class="tut-vhint">点开阅读全文</span></button>
-            <div class="brief-card tut-version" aria-disabled="true"><span class="tut-vtitle">C 超全手册版</span><span class="tut-vmeta">约 40,000 字</span><span class="tut-vhint">制作中 · 22:00 后扩写</span></div>
+            <button type="button" class="brief-card tut-version" id="tut-open-c" aria-expanded="false" aria-controls="tut-c"><span class="tut-vtitle">C 超全手册版</span><span class="tut-vmeta">约 40,671 字</span><span class="tut-vhint">点开阅读全文</span></button>
           </div>
           <div id="tut-a" class="brief-card tut-body" hidden>
 <h2 class="tut-version-title">Antigravity 零基础入门教程（A 精编入门版 · 第二版精简定稿）</h2>
@@ -11246,21 +11248,743 @@
 <p>恭喜你！能一路读完 B 完整版第二版修订稿的全部 9 章，你已经彻底告别了“对着电脑发怵的纯小白”阶段。回过头看看你现在握在手里的硬本事：你摸清了 Antigravity 2.0 的能力边界，不会被吹牛的营销号忽悠；你分清了“四种开发环境 + 网页版”五个入口，还能按最新套餐与模型规则避开即将下线的老模型；你学会了隔离工作区、不放密钥、先 Git 存档再让 Agent 动手的安全铁律；你能写出 AI 一听就懂的四要素高质量需求，会玩 Planning / Fast、Orchestrator 和5 个斜杠命令；你手里还握着一份覆盖 14 种高频翻车的排错急救指南，以及 6 个能立刻落地的日常提效玩法。下一步去哪？别光看不练！合上这篇教程后，立刻挑一个你今天最想解决的小麻烦，建一个纯英文空文件夹，把第 7 章的“家规模板”贴进设置里，亲手把它做出来。最后再啰嗦一句大实话：本版所有产品入口、模型清单、下线日期与费用规则，均以</p>
 <p>2026 年 11 月 25 日 antigravity.google 官网为准。 AI 工具迭代极快，未来按钮名字、套餐细节和模型列表还会继续变化；遇到界面和文字对不上号时，别慌，一切以你当前实机界面和官网最新公告为准——而你学到的“先规划、再执行、勤存档、必验收”这套核心心法，永远不会过时。</p>
           </div>
+<div id="tut-c" class="brief-card tut-body" hidden>
+<h2 class="tut-version-title">Antigravity 零基础超全手册（C 超全手册版 · 第二版扩充版）</h2>
+<p class="tut-byline">执笔：小森｜核验基准：2026 年 11 月 25 日｜全文实测 40,671 非空白字符</p>
+<h2>Antigravity 零基础超全手册（C 超全手册版 · 第二版扩充版 · 上篇）</h2>
+<p class="tut-byline">执笔：小森｜核验基准：2026 年 11 月 25 日（对照 antigravity.google 官网当天核对）｜本篇涵盖：C-1 起飞前总检查表总览、C-2 五大入口安装与登录全流程检查表</p>
+<h2>C-1 起飞前总检查表总览：动手前 15 分钟精细准备</h2>
+<p>A 精编版帮你快速入门，B 完整版带你跑通了实战；到了 C 超全手册版，咱们不讲长篇大道理，直接按民航机长起飞前的标准流程来——照着清单一项一项做、一项一项核对、一项一项打勾（[ ] → [✓]）。</p>
+<p>把清单里的方框逐项打上勾，能排除大部分常见翻车，让 Antigravity 在你电脑上更稳地跑起来。</p>
+<p><b>重要实机界面提醒：</b>本手册所有产品入口、模型清单、定价与额度规则，均以 2026 年 11 月 25 日 antigravity.google 官网信息为核验基准。AI 工具迭代很快，文中提到的 Planning / Fast 模式按钮、确认按钮（如 Proceed）或快捷键（如 Shift + Tab），如与你看到的界面略有出入，请一律以你当前实机界面为准。基础概念已在前两版讲透的，本篇直接标注“见 A 版第×章 / 见 B 版第×章”，不再重复展开。</p>
+<p>这份超全手册怎么用最顺手？</p>
+<p>· 严格按顺序打勾，绝不跳步：上一项没打勾，千万别硬着头皮做下一项（比如地区和账号没核对好就急着点登录，只会白白转圈）。</p>
+<p>· 每步盯紧“怎么做 / 看到什么 / 打勾标准 / 错了怎么办”：每个检查项都配齐了具体动作、预期画面、验收标准和翻车救命招，卡壳时直接看“错了怎么办”。</p>
+<p><b>· 入口按需挑一个即可：</b>C-2 覆盖了官方“四种开发环境 + 网页版”共五个入口。纯新手只做“入口一：Antigravity App（桌面应用）”或“入口五：网页版”其中一份就行，其余入口留着以后进阶按需使用。</p>
+<h3>清单 1：电脑硬件、系统与磁盘空间自查表</h3>
+<label class="tut-check"><input type="checkbox"> 1.1 确认电脑操作系统与芯片架构达标</label>
+<p><b>怎么做（点哪里）：</b>Mac 电脑：点屏幕左上角苹果图标 →「关于本机」，查看系统版本和芯片类型；Windows 电脑：同时按键盘 Win + I 打开设置 →「系统」→「关于」，查看系统版本和系统类型；Linux 电脑：打开终端输入 ldd --version 查看基础库版本（完整命令见 C-2 模块二）。</p>
+<p><b>看到什么：</b>你的操作系统版本号与硬件芯片架构（具体最低系统要求以 antigravity.google/download 官网最新说明为准）：Mac：macOS 13 (Ventura) 或更高版本，记清自己是 Apple Silicon（M1 / M2 / M3 / M4）还是 Intel 芯片；Windows：Windows 10（64 位）或 Windows 11，记清自己是 x64 还是 ARM64；Linux：主流 64 位发行版，且满足底层运行库要求：glibc ≥ 2.28 与 glibcxx ≥ 3.4.25。</p>
+<p><b>大白话解释“glibc / glibcxx”：</b>Linux 系统自带的两本“基础运行字典”。系统太老、字典里缺词，新版桌面端就启动不了。</p>
+<p><b>打勾标准：</b>系统版本与底层运行库均达标，且已经记清自己电脑的芯片类型。</p>
+<p><b>错了怎么办：</b>如果电脑系统过老（如 Windows 7 或老旧 macOS）或 Linux 底层库版本过低，需先升级操作系统，或者直接跳过本地安装，改用免安装的网页版入口。</p>
+<label class="tut-check"><input type="checkbox"> 1.2 确认系统盘剩余可用空间充足</label>
+<p><b>怎么做（点哪里）：</b>Mac 在「关于本机 → 更多信息 → 储存空间」查看；Windows 打开「此电脑」查看 C 盘状态条；Linux 在终端输入 df -h 查看主分区可用容量。</p>
+<p><b>看到什么：</b>主硬盘（系统盘）的已用空间与剩余可用空间，状态条未出现红色爆满警告。</p>
+<p><b>打勾标准：</b>系统盘留有充足的剩余空间，能轻松容纳软件本体、缓存文件以及你后续要新建的本地项目文件夹。</p>
+<p><b>错了怎么办：</b>如果系统盘容量条已经飘红快满了，先清空废纸篓/回收站，删掉不再需要的大体积视频、旧安装包或系统临时缓存，腾出充足空间后再继续安装。</p>
+<label class="tut-check"><input type="checkbox"> 1.3 确认装有现代浏览器并设为系统默认</label>
+<p><b>怎么做（点哪里）：</b>确认电脑里已安装 Google Chrome 或 Microsoft Edge，打开浏览器「设置 → 默认浏览器」，点击设为默认。</p>
+<p><b>看到什么：</b>浏览器设置页显示“Google Chrome（或 Edge）是您的默认浏览器”。</p>
+<p><b>打勾标准：</b>默认浏览器能正常打开网页（确保等会儿桌面端登录授权时，能顺畅唤起浏览器完成回调）。</p>
+<p><b>错了怎么办：</b>如果电脑里只有老旧浏览器或默认浏览器被篡改，去官网下载安装最新版 Chrome 并设为默认浏览器。</p>
+<h3>清单 2：地区限制、年龄与网络连通自查表</h3>
+<label class="tut-check"><input type="checkbox"> 2.1 核对硬性年龄门槛（未满 18 岁不可用）</label>
+<p><b>怎么做（点哪里）：</b>打开浏览器访问 myaccount.google.com → 登录你的 Google 账号 → 点击左侧「个人信息（Personal info）」→ 查看「出生日期」。</p>
+<p><b>看到什么：</b>账号资料里登记的出生年月日。</p>
+<p><b>打勾标准：</b>确认账号持有人年满 18 周岁（根据官方规则，未满 18 周岁无法使用 Google Antigravity）。</p>
+<p><b>错了怎么办：</b>如果使用的是家里未成年孩子的受监管账号，登录时会被直接拦截，必须更换成年人的合规 Google 账号。</p>
+<label class="tut-check"><input type="checkbox"> 2.2 核对地区支持政策与账号关联地区</label>
+<p><b>怎么做（点哪里）：</b>在浏览器搜索 Google Terms of Service country 或打开 policies.google.com/terms，核对当前 Google 账号关联的国家/地区（详见 A 版第 2 章 2.1 节）。</p>
+<p><b>看到什么：</b>页面上显示的账号归属国家/地区名称。</p>
+<p><b>打勾标准：</b>根据 2026 年 11 月 25 日官网政策，中国大陆不在官方支持名单内；确认你的账号关联地区在官方支持名单内。</p>
+<p><b>错了怎么办：</b>如果账号关联地区不在支持名单内，可以在 Google 官方页面提交地区变更申请，或者换用关联地区在支持名单内的账号。</p>
+<label class="tut-check"><input type="checkbox"> 2.3 验证网络连通标准</label>
+<p><b>怎么做（点哪里）：</b>打开默认浏览器，地址栏输入 antigravity.google 并按回车。</p>
+<p><b>看到什么：</b>Google Antigravity 官网完整加载出来，页面图片、文字、下载和登录按钮均正常显示，没有提示所在地区不可用或连接超时。</p>
+<p><b>打勾标准：</b>实测满足这一条核心验证标准——能打开 antigravity.google 且登录不转圈。</p>
+<p><b>错了怎么办：</b>如果网页打不开、白屏转圈或提示地区不可用，先检查本地网络连通状态，确保浏览器能顺畅加载官网后再往下走。</p>
+<h3>清单 3：套餐、定价、模型与 AI 积分自查表（核验基准：2026-11-25）</h3>
+<label class="tut-check"><input type="checkbox"> 3.1 清楚费用机制与最新挂牌价（不花冤枉钱）</label>
+<p><b>怎么做（核对要点）：</b>个人使用 Antigravity 不用单独买 Token，也不需要单独购买 Antigravity 会员，额度直接跟着你的 Google 账号与订阅套餐走（以下为 2026 年 11 月 25 日核验的美国挂牌价，各地区以官网为准）：</p>
+<p><b>个人免费版（Free）：</b>$0 / 月，按官网说明为每周刷新、有每周上限；</p>
+<p>Google AI Pro：$19.99 / 月；</p>
+<p>Google AI Ultra 分两档：Ultra 5x 为 $99.99 / 月（Pro 配额的 5 倍），Ultra 20x 为 $199.99 / 月（Pro 配额的 20 倍）；</p>
+<p>企业版（Standard / Plus）：每席位每月 30 美元起（另有按量计费的 pay-as-you-go 档位，$0 席位费、按量计费）。</p>
+<p><b>看到什么：</b>心里对免费版和各付费档位的价格、配额倍数有一本明白账。</p>
+<p><b>打勾标准：</b>清楚自己当前属于哪一档，知道免费版直接 $0 起步即可体验，无需提前掏钱。</p>
+<p><b>错了怎么办：</b>如果看到网上过时文章还在写“需要去买 API Key 充值才能用”，直接忽略，以 2026 年 11 月 25 日官网规则为准。</p>
+<label class="tut-check"><input type="checkbox"> 3.2 分清全部模型、权限边界与 11 月 30 日下线清单</label>
+<p><b>怎么做（核对要点）：</b>对照 2026 年 11 月 25 日官网模型页，分清当前模型分组（详细对照表见 A 版第 5 章）：</p>
+<p><b>现行主力模型：</b>Gemini 4 Neon、Gemini 4 Carbon、Gemini 4 Hydrogen、Orchestrator（自动编排模式）、Claude Sonnet / Opus 5.5；</p>
+<p>将于 2026 年 11 月 30 日下线的 4 个旧模型：Gemini 3.8 Flash、Gemini 4 Argon、Claude 4.6、GPT-OSS-120b（注：以上包含即将下线的全部旧模型列表，切勿再按老教程选老模型）；</p>
+<p><b>套餐权限边界：</b>免费版默认使用 Gemini 4 Hydrogen；Neon / Carbon / Orchestrator 仅对付费 Pro / Ultra / 企业版开放（其中企业版 Orchestrator 固定为 Carbon 规划 + Hydrogen 执行，自定义规划/执行模型仅在 Pro / Ultra 里有）。</p>
+<p><b>打勾标准：</b>明确自己该选哪个模型——免费版直接用默认 Gemini 4 Hydrogen，付费版优先用 Orchestrator 或 Gemini 4 Neon，避开 11 月 30 日下线的 4 个旧模型。</p>
+<p><b>错了怎么办：</b>如果你之前的旧项目或老配置里填了 Gemini 3.8 Flash 或 Claude 4.6，现在就记下来，登录后第一时间切回现行模型。</p>
+<label class="tut-check"><input type="checkbox"> 3.3 了解 AI 积分（AI Credits）超额机制</label>
+<p><b>怎么做（核对要点）：</b>了解付费 Pro / Ultra 用户的“备用油箱”规则——除了套餐自带的基准配额外，付费用户还可以按需购买 AI 积分（AI Credits），并在设置里把超额开关设为“绝不（Never）”或“总是（Always）”。</p>
+<p><b>打勾标准：</b>清楚只有在耗尽基准配额后才会动用 AI 积分，平时绝不会在基准配额还有剩余时乱扣积分。</p>
+<p><b>错了怎么办：</b>怕控制不住预算的付费新手，登录后去设置页把开关保持在“绝不（Never）”即可。</p>
+<h3>清单 4：下载来源、版本号与安全工作基地自查表</h3>
+<label class="tut-check"><input type="checkbox"> 4.1 核对官方下载来源，拒绝第三方捆绑包</label>
+<p><b>怎么做（点哪里）：</b>确认下载安装包的唯一地址是官方下载页 antigravity.google/download。</p>
+<p><b>看到什么：</b>浏览器地址栏显示安全的 https://antigravity.google/download，下载的安装包名纯净，无任何“高速下载器”字样。</p>
+<p><b>打勾标准：</b>安装包 100% 来自官方网站，绝非第三方下载站或陌生网盘链接。</p>
+<p><b>错了怎么办：</b>误从第三方网站下载了来路不明的安装包，立刻删除并清空回收站，回官网重新下载。</p>
+<label class="tut-check"><input type="checkbox"> 4.2 建好纯英文“安全工作基地”与首个测试文件夹</label>
+<p><b>怎么做（点哪里）：</b>打开电脑的「文档（Documents）」文件夹（不要直接堆在桌面！）→ 右键新建总文件夹 Antigravity_Projects → 双击进去，再新建一个空文件夹 test-hello。</p>
+<p><b>看到什么：</b>文件夹完整路径为 文档/Antigravity_Projects/test-hello，里面干干净净。</p>
+<p><b>打勾标准：</b>文件夹命名全部采用纯英文小写 + 短横线，无中文、无空格、无特殊符号。</p>
+<p><b>错了怎么办：</b>手滑打成了中文名或带了空格，立刻右键「重命名」改好；误建在桌面则直接拖进「文档」里。</p>
+<label class="tut-check"><input type="checkbox"> 4.3 避开网盘自动同步锁死与文件夹读写权限障碍</label>
+<p><b>怎么做（点哪里）：</b>检查你的 Antigravity_Projects 文件夹是不是被电脑里的 OneDrive、iCloud 云盘或百度网盘设置成了“自动实时同步备份”。</p>
+<p><b>看到什么：</b>文件夹旁边没有出现正在旋转的蓝色同步小箭头或“仅在线可用”的小云朵图标。</p>
+<p><b>打勾标准：</b>确保项目文件夹存放在本地普通硬盘目录里，没有被网盘客户端实时占用锁死，且当前电脑账号拥有正常的读写权限。</p>
+<p><b>错了怎么办：</b>如果电脑开启了“桌面与文档自动同步到 OneDrive / iCloud”，网盘后台抢占文件经常导致 Antigravity 写入失败或产生冲突副本；此时直接把 Antigravity_Projects 建在本地非同步目录（如 C:\Antigravity_Projects 或 Mac 用户主目录下的 ~/Antigravity_Projects）即可。</p>
+<p>新手第一天 30 分钟精细自测（6 个 5 分钟闯关小段）</p>
+<p>怕自己看了一堆检查表却不知道算不算“真正装好了”？把第一天的上手验证拆成下面 6 个 5 分钟小段，掐着表一段一段过。每一段都写清了做什么、做到哪一步算过、卡住先看哪里：</p>
+<p>第 1 段（0–5 分钟）：资格、年龄与网络体检</p>
+<p><b>做什么：</b>核对账号年满 18 周岁、关联地区在官方支持名单内，用默认浏览器打开 antigravity.google 确认顺畅加载。</p>
+<p><b>做到哪一步算过：</b>官网 5 秒内完整打开，无地区受限提示，心里明确自己是个人、Workspace 还是企业版账号。</p>
+<p><b>卡住先看哪里：</b>先看 C-1 清单 2，重点排查账号关联地区与网络连通标准（“能打开 antigravity.google 且登录不转圈”）。</p>
+<p>第 2 段（5–10 分钟）：选对入口并完成安装</p>
+<p><b>做什么：</b>从 antigravity.google/download 下载对应芯片的 Antigravity App（桌面应用 v2.5+）（注意别下成独立版 Antigravity IDE），完成安装并首次启动。</p>
+<p><b>做到哪一步算过：</b>软件顺利启动弹出欢迎页；Mac 用户确认是把图标拖进 Applications 文件夹后再启动的，而不是在 .dmg 虚拟磁盘里直接双击。</p>
+<p><b>卡住先看哪里：</b>先看 C-2 模块二 阶段 A，排查系统安全拦截或芯片版本下错问题。</p>
+<p>第 3 段（10–15 分钟）：授权登录、核对版本号与默认模型</p>
+<p><b>做什么：</b>点 Sign in with Google 完成浏览器授权，点菜单栏「关于（About）」核对 App 版本在 v2.5+，看一眼输入框下方的默认模型（免费版默认 Gemini 4 Hydrogen，付费版可见 Neon / Orchestrator），再到设置页看一眼 View Usage。</p>
+<p><b>做到哪一步算过：</b>角落显示正确 Google 头像，版本号达标，模型列表与当前套餐一致。</p>
+<p><b>卡住先看哪里：</b>如果浏览器点了同意但软件一直转圈，先看 C-2 翻车案例 2；如果付费版找不到 Neon，先看 C-2 翻车案例 3。</p>
+<p>第 4 段（15–20 分钟）：首次角色布局与安全工作区就绪</p>
+<p><b>做什么：</b>在首次引导里选好简洁对话优先布局，确认权限策略在默认的推荐/平衡模式；点 Open Folder 打开 Antigravity_Projects/test-hello 并点 Yes, I trust。</p>
+<p><b>做到哪一步算过：</b>左侧边栏干干净净只显示 test-hello，大大的聊天输入框就在眼前。</p>
+<p><b>卡住先看哪里：</b>如果手快跳过了首次引导导致界面像程序员代码编辑器，看 C-2 模块一 步骤 3 切回简洁布局。</p>
+<p>第 5 段（20–25 分钟）：通电对话并生成首张测试网页</p>
+<p><b>做什么：</b>确认模式在 Planning（以你当前实机界面为准），输入“请帮我在这个文件夹里做一个只显示‘你好，Antigravity！’和一个‘点我变色’按钮的极简中文网页 index.html”，审完计划点确认执行（如 Proceed，以实机界面为准）。</p>
+<p><b>做到哪一步算过：</b>左侧边栏成功冒出 index.html，AI 汇报完工且无红字报错。</p>
+<p><b>卡住先看哪里：</b>如果进度条停住没动，往下拉对话流看有没有亮着的 Allow 权限确认按钮等着你点。</p>
+<p>第 6 段（25–30 分钟）：双击验收与演练一次撤回</p>
+<p><b>做什么：</b>去文件夹双击 index.html 在浏览器点几下变色按钮；切回软件把模式切到 Fast（以实机界面为准），发一句“把标题改成‘第一天 30 分钟自测通关！’”，改完回浏览器强制刷新（Win Ctrl + F5，Mac Command + Shift + R）看变化，再点一次对话里的撤销/回滚按钮退回原样。</p>
+<p><b>做到哪一步算过：</b>网页中文无乱码、按钮能变色、微调生效、撤销成功——恭喜你，第一天 30 分钟精细自测完美通关！</p>
+<p><b>卡住先看哪里：</b>改完刷新没变化，先确认按的是强制刷新快捷键，而不是普通 F5。</p>
+<h2>C-2 五大入口安装、登录、首启与升级全流程检查表</h2>
+<h3>模块一：账号类型三分叉与首次角色布局核对表</h3>
+<label class="tut-check"><input type="checkbox"> <b>步骤 1：</b>账号类型三分叉核对（个人 / Workspace / 企业版）</label>
+<p><b>怎么做（点哪里）：</b>看你准备用来登录的邮箱后缀，并对照核实权限：</p>
+<p>个人账号（@gmail.com）：免费版默认用 Gemini 4 Hydrogen（每周刷新、有每周上限）；订阅正式付费 Google AI Pro（$19.99/月）或 Google AI Ultra（5x $99.99/月、20x $199.99/月）后解锁 Neon / Carbon / Orchestrator 及 Claude 5.5（试用版 Pro 配额更低、模型更受限，且不含 Claude 5.5）。</p>
+<p>Google Workspace 账号（公司 / 学校定制后缀邮箱）：能否登录及可见哪些模型，完全取决于管理员后台是否放开权限。</p>
+<p>企业版账号（Antigravity Enterprise Standard / Plus，每席位每月 30 美元起）：由公司统一分配席位与企业级付费模型配额（Orchestrator 固定为 Carbon 规划 + Hydrogen 执行）。</p>
+<p><b>看到什么：</b>明确知道自己属于哪一类账号，以及登录后应该看到哪些模型。</p>
+<p><b>打勾标准：</b>已选定一个年满 18 周岁、地区合规且权限清晰的账号准备登录。</p>
+<p><b>错了怎么办：</b>如果 Workspace 账号登录被管理员拦截，联系 IT 管理员开通，或直接换用个人 @gmail.com 账号。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 2：</b>首次登录选角色与界面布局</label>
+<p><b>怎么做（点哪里）：</b>第一次登录成功后，软件会弹出新手引导向导，让你选择使用角色（如非程序员/创作者 vs 专业开发者）与默认界面布局（如清爽对话优先布局 vs 代码编辑器布局）（具体选项文案以你当前实机界面为准）。</p>
+<p><b>看到什么：</b>不同角色与布局的预览卡片。</p>
+<p><b>打勾标准：</b>纯新手选中对话优先 / 简洁任务布局，进入主界面后能一眼看到大大的聊天输入框，而不是满屏代码窗口。</p>
+<p><b>错了怎么办：</b>如果不小心选成了满屏代码的开发者布局，或手快点了“跳过（Skip）”，看下方步骤 3 两秒改回来。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 3：</b>跳过引导或选错布局后的手动补救</label>
+<p><b>怎么做（点哪里）：</b>点击界面角落的设置（Settings）齿轮图标，依次手动调回三项配置（具体菜单名称以你当前实机界面为准）：</p>
+<p>在 Appearance / Layout（外观与布局）或 Workspace Mode 里切回清爽的对话优先 / 简洁布局；</p>
+<p>在 Permissions / Review Policy 里确认为默认的 Recommended（推荐/平衡），关闭全自动执行；</p>
+<p>在 Rules（规则）里把 B 版第 7 章的“纯小白全局家规”贴进去点保存。</p>
+<p><b>看到什么：</b>界面瞬间恢复清爽，多余的代码调试面板收起。</p>
+<p><b>打勾标准：</b>主界面布局干净，权限策略稳妥，完全不需要卸载重装。</p>
+<p><b>错了怎么办：</b>找不到某项设置时，直接按设置页顶部的搜索框搜关键词 Layout 或 Permissions。</p>
+<h3>模块二：入口一——Antigravity App（桌面应用 v2.5+）分系统安装、首启与升级检查表</h3>
+<p><b>适合谁：</b>绝大多数纯小白与非程序员主力首选。关键区分：Antigravity App（桌面应用 v2.5+）和独立版 Antigravity IDE 是两个不同的产品！前者界面清爽、主打对话与任务流；后者是给专业程序员用的重型代码编辑器。下载时务必认准 Antigravity App。</p>
+<h3>阶段 A：下载与分系统安装</h3>
+<label class="tut-check"><input type="checkbox"> <b>步骤 1：</b>进入官网下载对应芯片的安装包</label>
+<p><b>怎么做（点哪里）：</b>浏览器打开 antigravity.google/download → 找到 Antigravity App（v2.5+）板块 → 按你清单 1 记下的芯片类型点击下载（Mac 选 Apple Silicon 或 Intel；Win 选 x64 或 ARM64；Linux 选对应发行版包）。</p>
+<p><b>看到什么：</b>下载栏开始下载 .dmg（Mac）、.exe（Windows）或 Linux 安装包。</p>
+<p><b>打勾标准：</b>安装包完整下载完毕，且文件名明确是 Antigravity App 而非独立版 IDE。</p>
+<p><b>错了怎么办：</b>下错芯片版本或下成独立版 IDE，直接删掉安装包回官网重新点选。</p>
+<h3>【真实翻车案例 1：下载错了独立版 Antigravity IDE，一打开满屏代码懵了】</h3>
+<p><b>现场：</b>小陈照着网上帖子点下载，没仔细看名字，把独立版 Antigravity IDE 装进了电脑。打开后左边是密密麻麻的工程树、中间是黑乎乎的代码编辑区、底下是终端调试栏，连“怎么用大白话聊天”都找不到。</p>
+<p><b>怎么救：</b>不用硬扛着学代码编辑器！直接把独立版 IDE 卸载（Mac 拖进废纸篓，Win 去控制面板卸载），重新打开 antigravity.google/download，认准轻量清爽的 Antigravity App（桌面应用 v2.5+）下载安装即可。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 2：</b>分系统执行安装与首次打开核对（Windows / Mac / Linux）</label>
+<p><b>怎么做（点哪里）：</b></p>
+<p><b>Windows 首次打开：</b>双击 .exe 按向导点 Next / Install → 从桌面或开始菜单双击 Antigravity 图标启动 → 若弹出 Windows Defender 防火墙提示，勾选「专用网络」点允许访问（建议右键任务栏图标点「固定到任务栏」）。</p>
+<p><b>Mac 首次打开：</b>双击 .dmg → 务必把 Antigravity 图标拖进右侧 Applications（应用程序）文件夹 → 推出桌面上的安装包磁盘 → 从「启动台」或「应用程序」里双击打开（首次弹窗问“确定要打开从互联网下载的应用吗？”时点打开）。</p>
+<p><b>Linux 首次打开：</b>先在终端输入 ldd --version 与 strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX 确认满足 glibc ≥ 2.28 与 glibcxx ≥ 3.4.25 → 按官网文档完成安装 → 从应用菜单点击图标启动（或在终端运行启动命令观察日志）。</p>
+<p><b>看到什么：</b>软件主窗口顺利弹出欢迎界面，无闪退、无黑屏。</p>
+<p><b>打勾标准：</b>Windows 已固定到任务栏；Mac 确认是从 Applications 文件夹而非 .dmg 虚拟磁盘运行；Linux 确认底层运行库达标且图形界面正常渲染。</p>
+<p><b>错了怎么办：</b></p>
+<p>Mac 提示“无法验证开发者”：点取消 → 去「系统设置 → 隐私与安全性」最底部找到 Antigravity → 点「仍要打开」；</p>
+<p>Windows 弹出蓝色 SmartScreen 警告：点「更多信息 → 仍要运行」；双击无反应则去任务管理器结束残留进程后「以管理员身份运行」；</p>
+<p>Linux 报 GLIBC_2.xx not found：底层库版本过老，需升级系统发行版或改用网页版入口。</p>
+<h3>阶段 B：浏览器授权登录与版本号核对</h3>
+<p><b>大白话解释“OAuth 回调授权”：</b>桌面软件不直接问你要密码，而是把你送到官方浏览器里点一下“同意”，浏览器再喊一声约定好的“暗号（回调协议）”，把你自动送回桌面软件，防盗号又省事。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 3：</b>完成浏览器授权登录并核对版本号</label>
+<p><b>怎么做（点哪里）：</b>在欢迎页点 Sign in with Google → 在弹出的默认浏览器里选中合规 Google 账号 → 点 Continue / Allow → 浏览器弹出“是否打开 Antigravity？”提示时点「打开」/「始终允许」。</p>
+<p><b>看到什么：</b>自动跳回桌面软件，角落显示你的 Google 账号头像，关于页面显示版本在 v2.5+。</p>
+<p><b>打勾标准：</b>登录成功、头像正确、版本号在 v2.5+。</p>
+<p><b>错了怎么办：</b>参考下方两个真实翻车案例逐项排查。</p>
+<h3>【真实翻车案例 2：浏览器点了允许，桌面端却一直转圈登不进去】</h3>
+<p><b>现场：</b>小赵在 Chrome 里明明看到了“登录成功”，但切回 Antigravity App，屏幕中间的加载圈转了好几分钟依然进不去。</p>
+<p><b>怎么救：</b></p>
+<ol><li><p>切回刚才的 Chrome 授权页，看地址栏右侧有没有被拦截的弹窗图标，或地址栏下方有没有“要打开 Antigravity 吗？”提示，点始终允许并打开；</p></li><li><p>确认网络满足“能打开 antigravity.google 且登录不转圈”的连通标准；</p></li><li><p>彻底退出软件（Mac 按 Command + Q，Win 右键右下角托盘退出）重开，点登录时改点「Copy link（复制链接）」，手动贴进 Chrome 重走授权。</p></li></ol>
+<h3>【真实翻车案例 3：浏览器同时登着多个 Gmail，把免费小号授权进去了】</h3>
+<p><b>现场：</b>小刘买了正式付费的 Google AI Pro，结果打开 Antigravity App 后模型列表里只有免费版的 Gemini 4 Hydrogen，找不到 Gemini 4 Neon。一点头像才发现，刚才浏览器默认把没买套餐的旧小号授权进去了！</p>
+<p><b>怎么救：</b>点软件角落头像 → Sign out（退出登录）→ 先去 Chrome 浏览器里把当前活跃账号切到买了 Pro 的主力邮箱 → 回到 Antigravity 重新点 Sign in with Google 选中主力号授权，Neon 和 Orchestrator 立刻就会出现。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 4：</b>打开安全工作区并完成通电测试</label>
+<p><b>怎么做（点哪里）：</b>点 Open Folder → 选中 文档/Antigravity_Projects/test-hello → 点 Open → 弹窗问是否信任时点 Yes, I trust → 在输入框发一句“你好，请用中文回复我”。</p>
+<p><b>看到什么：</b>左侧边栏显示干净的 test-hello，对话框收到流利的中文回复。</p>
+<p><b>打勾标准：</b>无红字报错、正常中文回复，App 入口彻底打通！</p>
+<p><b>错了怎么办：</b>如果左侧边栏突然冒出几百个杂乱文件，说明选错了上级文件夹，立刻点 File → Close Folder 重新只选中 test-hello。</p>
+<h3>阶段 C：日后升级与重装检查表</h3>
+<label class="tut-check"><input type="checkbox"> <b>步骤 5：</b>覆盖升级或重装避坑核对</label>
+<p><b>怎么做（点哪里）：</b></p>
+<p><b>Mac 升级：</b>下载新版 .dmg 拖进 Applications 文件夹时，系统会弹窗提示“已存在名为 Antigravity 的项目”；</p>
+<p><b>Windows 升级：</b>直接运行新版 .exe 覆盖安装到原路径；</p>
+<p><b>Linux 升级：</b>先核对 glibc ≥ 2.28 与 glibcxx ≥ 3.4.25 再覆盖安装。</p>
+<p><b>看到什么：</b>Mac 弹窗出现 Keep Both（保留两者）、Stop（停止）、Replace（替换）三个按钮。</p>
+<p><b>打勾标准：</b>Mac 升级时必须点击 Replace（替换），绝不点 Keep Both（保留两者）；升级完重开软件，版本号更新、头像保持登录、旧项目正常加载。</p>
+<p><b>错了怎么办：</b>如果 Mac 之前误点了 Keep Both 导致应用程序里躺着 Antigravity 和 Antigravity 2 两个图标互相冲突闪退，把两个都拖进废纸篓清空，再重新安装一次最新版即可。</p>
+<h3>阶段 D：多账号切换与退出清理检查表</h3>
+<label class="tut-check"><input type="checkbox"> <b>步骤 6：</b>个人号与工作/企业号安全切换核对</label>
+<p><b>怎么做（点哪里）：</b>需要从个人 @gmail.com 切换到公司 Workspace / 企业版账号（或反之）时，先点软件角落头像 → Sign out（退出登录）→ 顺手关掉所有正在运行的工作区任务 → 再点 Sign in with Google，在浏览器里选中目标账号完成授权即可。</p>
+<p><b>看到什么：</b>软件重新加载后，左下角/右上角头像变更为目标账号，模型列表自动刷新为新账号对应的权限范围。</p>
+<p><b>打勾标准：</b>切换账号后能正常发消息，且没有残留上一个账号的权限报错。</p>
+<p><b>错了怎么办：</b>如果点 Sign in with Google 时软件直接秒登回了旧账号（未弹出浏览器选择列表），说明默认浏览器里缓存了旧账号会话；先去默认浏览器打开 accounts.google.com 切换到新账号，或彻底退出桌面软件重开再点登录。</p>
+<h3>【真实翻车案例 4：切换到公司 Workspace 账号后突然登不进去了】</h3>
+<p><b>现场：</b>小王平时用个人 @gmail.com 玩得很顺畅，某天试着退出并切换到公司的 Workspace 邮箱登录，结果浏览器授权完，桌面端直接弹出“您的账号无权访问此服务”的拦截提示。</p>
+<p><b>怎么救：</b>这不是软件坏了，而是公司 IT 管理员在 Google Workspace 后台关闭了第三方/AI 开发工具权限。无需重装软件，直接切回你个人的合规 @gmail.com 账号重新授权登录即可；如确需用公司账号办公，联系公司 IT 管理员开通对应权限。</p>
+<h3>模块三：入口二——Antigravity CLI（agy v1.2+）分平台安装与登录检查表</h3>
+<p><b>适合谁：</b>习惯终端黑框框、想跑极速批处理脚本的进阶用户。（纯小白已完成模块二可直接跳过。）官方定位：Antigravity CLI（agy）是新的终端入口，Gemini CLI 用户可按官方迁移指南迁移。</p>
+<p><b>大白话解释“环境变量（PATH）”：</b>电脑里的“通讯录”。装完命令行工具后，通讯录刷新了，你在黑框框里敲 agy，电脑才知道去哪儿找它。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 1：</b>Mac 平台 agy 安装、登录与通电验证</label>
+<p><b>怎么做（点哪里）：</b>按 Command + 空格搜 Terminal 打开终端 → 去 antigravity.google/download 复制 macOS 版 Antigravity CLI（agy v1.2+）安装命令粘贴回车 → 彻底关掉终端重开一个新窗口 → 依次输入 agy --version 和 agy login 回车 → 进入 test-hello 目录输入 agy 启动测试。</p>
+<p><b>看到什么：</b>先打印出 agy 版本号（v1.2+），随后拉起浏览器完成 Google 账号授权，终端提示登录成功，启动后能正常中文对话。</p>
+<p><b>打勾标准：</b>版本号正确、登录成功、中文对话无报错。</p>
+<p><b>错了怎么办：</b>提示 command not found: agy 时，多数情况是忘了关掉旧终端重开，彻底关掉终端重开（或执行 source ~/.zshrc 刷新环境变量）再试；仍找不到则重启电脑或核对官网下载页的 Mac 路径说明。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 2：</b>Windows 平台 agy 安装、登录与通电验证</label>
+<p><b>怎么做（点哪里）：</b>点开始菜单搜 PowerShell 或 Windows 终端打开 → 去官网复制 Windows 版 agy 安装命令，在终端里点鼠标右键粘贴并回车 → 彻底关掉 PowerShell 重开一个新窗口 → 依次输入 agy --version 和 agy login 回车。</p>
+<p><b>看到什么：</b>打印出版本号，弹出浏览器完成授权并提示登录成功。</p>
+<p><b>打勾标准：</b>agy --version 与 agy login 均无红字报错。</p>
+<p><b>错了怎么办：</b>提示“无法将 agy 识别为 cmdlet”（即 Windows 版的 command not found），先彻底关掉重开新终端；若报脚本执行策略受限，按官网 Windows 安装文档的提示放行当前用户脚本权限后重试。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 3：</b>Linux 平台 agy 安装、登录与通电验证</label>
+<p><b>怎么做（点哪里）：</b>打开系统终端，先输入 ldd --version 确认满足 glibc ≥ 2.28（及 glibcxx ≥ 3.4.25）→ 复制官网 Linux 版 agy 安装命令粘贴回车 → 重开终端窗口 → 依次运行 agy --version 和 agy login。</p>
+<p><b>看到什么：</b>正常输出版本号；若是无图形界面的远程 Linux，终端会打印一个授权链接供你复制到本地浏览器打开完成授权。</p>
+<p><b>打勾标准：</b>版本号正确、登录成功。</p>
+<p><b>错了怎么办：</b>提示 command not found: agy 时，检查 ~/.bashrc 或 ~/.profile 是否已加入安装路径并重开终端；若报 GLIBC_2.xx not found，说明系统版本过老，需升级 Linux 发行版。</p>
+<h3>模块四：入口三——For IDEs（7 个编辑器扩展）安装与登录检查表</h3>
+<p><b>适合谁：</b>电脑里本来就装了 VS Code、JetBrains 系列等官方支持的 7 个主流代码编辑器之一的开发者。（纯小白没装过编辑器直接跳过。）</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 1：</b>在编辑器扩展商店安装官方插件</label>
+<p><b>怎么做（点哪里）：</b>以 VS Code 为例，点最左侧扩展商店图标（Ctrl/Command + Shift + X）→ 搜索 Google Antigravity → 认准 Google 官方发布者点 Install。（JetBrains 用户去 Settings → Plugins → Marketplace 搜索安装并重启编辑器。）</p>
+<p><b>看到什么：</b>编辑器侧边栏多出一个 Antigravity 图标。</p>
+<p><b>打勾标准：</b>插件安装完成且无版本不兼容警告。</p>
+<p><b>错了怎么办：</b>搜不到插件时，先去编辑器菜单栏把编辑器更新到较新版本再搜。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 2：</b>登录并通电测试</label>
+<p><b>怎么做（点哪里）：</b>点侧边栏 Antigravity 图标 → 点 Sign in with Google → 浏览器确认授权。</p>
+<p><b>看到什么：</b>侧边栏出现聊天框与模型选择器。</p>
+<p><b>打勾标准：</b>发一句中文测试消息能正常回复。</p>
+<p><b>错了怎么办：</b>授权后侧边栏没刷新，重启一下编辑器即可。</p>
+<h3>模块五：入口四（Antigravity SDK）与入口五（网页版）专项检查表</h3>
+<h3>入口四：Antigravity SDK（Python）</h3>
+<p><b>适合谁：</b>会基础 Python 语法、想把 Antigravity 能力直接写进定时脚本或数据处理流水线的开发者（纯小白前期可直接跳过本表）。</p>
+<p><b>怎么进：</b>打开官网文档，进入 Antigravity SDK (Python) 专区查看最新安装命令与示例代码。</p>
+<label class="tut-check"><input type="checkbox"> SDK-1：安装官方 Python SDK 包并配置凭证</label>
+<p><b>怎么做（点哪里）：</b>打开终端确认已安装 Python → 按官网 SDK 文档复制 pip 安装命令运行 → 按文档完成账号凭证配置。</p>
+<p><b>看到什么：</b>终端提示官方 SDK 包安装成功，无红色依赖冲突报错。</p>
+<p><b>打勾标准：</b>在终端运行验证导入命令无报错。</p>
+<p><b>错了怎么办：</b>报 ModuleNotFoundError 时，检查是不是装错了 Python 虚拟环境（比如系统 Python 和 venv 混用），激活正确环境重装即可。</p>
+<label class="tut-check"><input type="checkbox"> SDK-2：跑通第一段现行模型调用脚本</label>
+<p><b>怎么做（点哪里）：</b>新建一个 test_sdk.py，照着官网文档写几行最小调用代码，指定现行模型（如 Gemini 4 Hydrogen），在终端运行 python test_sdk.py。</p>
+<p><b>看到什么：</b>终端静默运行几秒后，直接打印出模型返回的中文结果。</p>
+<p><b>打勾标准：</b>脚本正常跑完并输出预期内容，无鉴权或模型报错。</p>
+<p><b>错了怎么办：</b>报模型不可用，立刻检查代码里是否误填了 2026 年 11 月 30 日下线的旧模型名（如 Gemini 3.8 Flash），改成 Gemini 4 Hydrogen 等现行模型重跑。</p>
+<h3>入口五：网页版入口（Web 版）</h3>
+<p><b>适合谁：</b>公司电脑锁死了软件安装权限、临时借用别人电脑，或者想零下载 3 分钟体验 Antigravity 的纯新手。</p>
+<p><b>怎么进：</b>打开 Chrome 或 Edge 浏览器，访问 antigravity.google，点击网页版启动入口（如 Open in Web / Launch Web App，以页面实际按钮文字为准）。</p>
+<label class="tut-check"><input type="checkbox"> Web-1：进入网页版并完成登录</label>
+<p><b>怎么做（点哪里）：</b>在 antigravity.google 点击网页版入口 → 选择你年满 18 岁且地区合规的 Google 账号完成登录。</p>
+<p><b>看到什么：</b>浏览器标签页直接加载出在线对话工作台与预览区域，无需下载 .dmg 或 .exe。</p>
+<p><b>打勾标准：</b>页面角落正常显示账号头像，输入框可打字。</p>
+<p><b>错了怎么办：</b>页面一直白屏或转圈，先清一下该站点缓存，或换 Chrome 无痕窗口重新打开 antigravity.google 登录。</p>
+<label class="tut-check"><input type="checkbox"> Web-2：在线生成并预览一个测试小网页</label>
+<p><b>怎么做（点哪里）：</b>新建一个空白任务 → 在输入框发一句“帮我做一个带中文祝福语的 2027 春节倒计时网页，点击祝福语可以随机换一句” → 按回车。</p>
+<p><b>看到什么：</b>代码生成完毕，右侧在线预览区直接渲染出倒计时网页，秒数实时跳动。</p>
+<p><b>打勾标准：</b>点击祝福语能正常切换，且能找到导出/下载按钮把文件存回本地。</p>
+<p><b>错了怎么办：</b>如果右侧预览区空白，刷新页面或直接回复 AI：“右侧预览区没显示出来，请检查语法错误并修复。”</p>
+<h2>C-2 阶段终极验收卡（起飞前最后确认）</h2>
+<p>在进入中篇（C-3、C-4 实战打勾清单）之前，核对下面 4 个红勾，全打勾就能排除大部分常见翻车：</p>
+<label class="tut-check"><input type="checkbox"> 年满 18 岁、账号地区合规、且网络满足“能打开 antigravity.google 且登录不转圈”。</label>
+<label class="tut-check"><input type="checkbox"> 至少跑通了一个主力入口（纯新手首选 Antigravity App v2.5+ 或网页版，没下错成独立版 IDE）。</label>
+<label class="tut-check"><input type="checkbox"> 建好了纯英文总基地 文档/Antigravity_Projects（避开网盘自动同步锁死）与测试文件夹 test-hello。</label>
+<label class="tut-check"><input type="checkbox"> 清楚免费版默认用 Gemini 4 Hydrogen，避开了 2026 年 11 月 30 日下线的 4 个旧模型。</label>
+<h2>Antigravity 零基础超全手册（C 超全手册版 · 第二版扩充版 · 中篇）</h2>
+<p class="tut-byline">执笔：小森｜核验基准：2026 年 11 月 25 日（对照 antigravity.google 官网当天核对）｜本篇涵盖：C-3 建项目、素材投喂、模型与提需求检查表；C-4 Planning / Fast 打磨 / Rules 验收 / Orchestrator 实战 / Agent 并行 / 斜杠命令 / 上线前最后检查全流程打勾清单</p>
+<p><b>实机界面核对提醒：</b>本篇涉及的模式切换（如 Planning / Fast）、确认按钮（如 Proceed）、快捷键（如 Shift + Tab）及菜单名称，如与你当前实机界面略有出入，请一律以你屏幕上实际显示的为准。基础概念已在前两版讲透的，本篇直接标注“见 A 版第×章 / 见 B 版第×章”，不再重复展开。</p>
+<h2>C-3 建项目、素材投喂、模型与提需求检查表</h2>
+<p>软件装好、登录绿灯后，千万别急着一上来就狂打字。每次开工做一个新项目前，花 3 分钟把下面五张表打完勾，能排除大部分返工和翻车。</p>
+<h3>清单 1：新建项目文件夹与安全隔离检查表</h3>
+<p><b>大白话解释“根目录（Root Directory）”：</b>你给这个项目建的最外层主文件夹。一打开这个文件夹，第一眼看到的位置就是根目录。</p>
+<label class="tut-check"><input type="checkbox"> 1.1 进入专属总基地并新建纯英文空文件夹</label>
+<p><b>怎么做（点哪里）：</b>打开电脑文件管理器 → 进入「文档（Documents）」里的 Antigravity_Projects → 右键空白处「新建文件夹」，用纯英文小写 + 短横线命名（如 my-budget、todo-app）。</p>
+<p><b>看到什么：</b>总基地里多出一个干干净净的空文件夹。</p>
+<p><b>打勾标准：</b>路径在 Antigravity_Projects 下，名字无中文、无空格、无特殊符号。</p>
+<p><b>错了怎么办：</b>如果手滑起了中文名，立刻右键重命名；如果误建在桌面，直接拖进 Antigravity_Projects。</p>
+<label class="tut-check"><input type="checkbox"> 1.2 如需处理现有文件，只放“副本”进 raw 子文件夹</label>
+<p><b>怎么做（点哪里）：</b>先去原文件处右键「复制」，再到新项目文件夹里建一个 raw 子文件夹右键「粘贴」（纯做新网页可跳过此项直接打勾）。</p>
+<p><b>看到什么：</b>raw 里躺着副本，原文件安安全全留在原地。</p>
+<p><b>打勾标准：</b>确认用的是“复制”，绝不是“剪切”。</p>
+<p><b>错了怎么办：</b>误点了剪切立刻按 Ctrl + Z（Mac 按 Command + Z）撤回。</p>
+<label class="tut-check"><input type="checkbox"> 1.3 在 Antigravity App 中打开并信任该文件夹</label>
+<p><b>怎么做（点哪里）：</b>打开 Antigravity App → 点 Open Folder（打开文件夹） → 选中刚建的空文件夹 → 点 Open → 弹窗问是否信任时点 Yes, I trust。</p>
+<p><b>看到什么：</b>左侧边栏顶部显示你的新文件夹名，聊天输入框就绪。</p>
+<p><b>打勾标准：</b>左侧边栏干干净净，没有冒出几百个你不认识的杂乱文件。</p>
+<p><b>错了怎么办：</b>如果冒出一堆杂文件，说明选错了上级目录！立刻点菜单栏 File → Close Folder，重新只选中你刚建的那个空文件夹。</p>
+<h3>【真实翻车案例 1：图省事把整个桌面当工作区】</h3>
+<p><b>现场：</b>老周懒得新建文件夹，直接点 Open Folder 选中了「桌面（Desktop）」，发了一句“做个记账网页”。结果 Antigravity 把桌面上几十个合同 PDF、照片和旧表格全扫描了一遍，不仅半天没反应、白白消耗了不少配额，还差点覆盖掉桌面上一个同名旧文件。</p>
+<p><b>怎么救：</b>立刻点 Stop 停止任务 → 关闭当前文件夹 → 按清单 1.1 在 Antigravity_Projects 里老老实实建一个独立空文件夹重新打开。</p>
+<h3>清单 2：工作方式、模型切换实操与额度核对表</h3>
+<label class="tut-check"><input type="checkbox"> 2.1 核对权限审核策略与初始模式</label>
+<p><b>怎么做（点哪里）：</b>点界面角落 设置（Settings） → 查看权限审核策略（Permissions / Review Policy）；同时看输入框左下角的模式开关。</p>
+<p><b>看到什么：</b>权限处在默认的 Recommended（推荐/平衡） 或 Ask（每次询问）；模式开关高亮 Planning（规划模式）。</p>
+<p><b>打勾标准：</b>确认没开“全自动放飞（Always proceed）”，且从零建新项目时首条指令用 Planning。</p>
+<p><b>错了怎么办：</b>手动切回推荐/平衡模式，并把输入框模式切回 Planning。</p>
+<label class="tut-check"><input type="checkbox"> 2.2 模型切换实操分步验证（Hydrogen → Neon → 切回 Hydrogen）</label>
+<p><b>怎么做（点哪里）：</b>看聊天输入框下方的模型选择器（Model Picker），点击展开下拉列表，按以下三步实操验证：</p>
+<p>确认免费版默认选中 Gemini 4 Hydrogen（注：Gemini 3.8 Flash、Gemini 4 Argon、Claude 4.6、GPT-OSS-120b 将于 2026 年 11 月 30 日下线，请勿选用）；</p>
+<p>（付费 Pro / Ultra / 企业版用户）点开下拉列表，切换选中 Gemini 4 Neon，发一句“请报一下你当前的模型视角，并说一句你好”测试连通；</p>
+<p>收到回复后，再点开下拉列表，顺手切回 Gemini 4 Hydrogen（或 Orchestrator），确认切换流畅无报错。</p>
+<p><b>看到什么：</b>下拉列表清晰展示当前账号可用模型（详细「套餐 × 模型」表见 A 版第 5 章），切换后回复顺畅无红字。</p>
+<p><b>打勾标准：</b>能顺利展开模型列表、认清自己套餐对应的可用模型，且来回切换正常对话。</p>
+<p><b>错了怎么办：</b></p>
+<p>找不到 Gemini 4 Neon：先点角落头像核对是不是登错了免费的备用小号；再核对是不是试用版 Pro（Trial）（试用版配额更低、模型更受限，且不含 Claude 5.5）；最后确认 Antigravity App 已更新到 v2.5+ 并退出重登刷新列表。</p>
+<p>手滑选错或选到下线模型报错：直接点开模型选择器，免费版切回 Gemini 4 Hydrogen，付费版切回 Gemini 4 Neon / Carbon / Orchestrator 即可。</p>
+<label class="tut-check"><input type="checkbox"> 2.3 额度与 AI 积分开关核对（设置页看配额 → AI 积分开关 → View Usage）</label>
+<p><b>怎么做（点哪里）：</b>点击界面角落 设置（Settings） → 进入账号与用量（Account / Billing / Usage）板块，依次核对三处：</p>
+<p><b>看当前配额状态：</b>查看你当前套餐的基准配额进度条；</p>
+<p>看 AI 积分（AI Credits）超额开关：付费 Pro / Ultra 用户可见“绝不（Never）”与“总是（Always）”选项；</p>
+<p>点 View Usage（查看用量）：展开查看近期消耗明细与刷新周期。</p>
+<p><b>看到什么：</b></p>
+<p><b>免费版：</b>官网规则为每周刷新、有每周上限，界面显示本周已用/剩余状态；</p>
+<p>付费 Pro / Ultra：显示基准配额进度（Pro $19.99/月，Ultra 5x $99.99/月、Ultra 20x $199.99/月，2026-11-25 美国挂牌价，各地区以官网为准），以及 AI 积分超额包开关状态（系统只有在耗尽基准配额后才会动用 AI 积分）。</p>
+<p><b>打勾标准：</b>看清了自己的剩余配额；怕花超预算的付费新手，已确认 AI 积分超额开关设在 “绝不（Never）”（需要应急加量时再手动按需购买并改“总是”）。</p>
+<p><b>错了怎么办：</b>如果 View Usage 页面打不开或一直转圈，检查网络是否满足“能打开 antigravity.google 且登录不转圈”，刷新或重启软件再看。</p>
+<h3>清单 3：开工前安全红线检查表（不放密钥 + 先 Git 存档）</h3>
+<label class="tut-check"><input type="checkbox"> 3.1 确认项目内不放任何真实密钥与敏感隐私</label>
+<p><b>怎么做（点哪里）：</b>扫一眼你要放进项目文件夹的文件和准备发给 AI 的提示词。</p>
+<p><b>看到什么：</b>只有普通的业务需求或脱敏后的测试数据，没有任何 API 密钥（API Key，概念见 B 版第 3 章）、账号密码、真实银行卡号或公司未公开机密。</p>
+<p><b>打勾标准：</b>确认“零密钥、零真实隐私”再开工。</p>
+<p><b>错了怎么办：</b>如果手滑把密钥贴进了聊天框或代码里，立刻去对应平台吊销并重新生成该密钥，再把代码里的旧密钥删干净。</p>
+<label class="tut-check"><input type="checkbox"> 3.2 大改之前，先 Git 存档再让 Agent 动手</label>
+<p><b>怎么做（点哪里）：</b>在 Antigravity 聊天框里（或项目刚跑通一个版本准备大改前），先发一句：“动手大改之前，请先帮我用 Git 做一个本地存档，备注写‘改版前安全存档’。”（如果电脑没装 Git，就去文件夹手动复制一份 项目名-backup 副本。）</p>
+<p><b>看到什么：</b>AI 汇报“已完成本地 Git 存档”（或你电脑里多了一份备份文件夹）。</p>
+<p><b>打勾标准：</b>手里握着能 1 秒读档的“后悔药”，才允许 Agent 开始大改代码。</p>
+<p><b>错了怎么办：</b>如果没存档就被改崩了，先立刻点对话流里的撤销/回滚按钮（以实机界面为准）尽量往回退。</p>
+<h3>【真实翻车案例 2：没存档 + 顺手贴密钥，改崩还差点泄露】</h3>
+<p><b>现场：</b>小马做完记账本 V1 后没做 Git 存档，直接把自己在第三方网站买的汇率 API 密钥贴进对话框让 Agent 写进网页里。结果 Agent 大改代码时把原有记账列表改坏了，小马回退不了，后来一急把文件夹发给朋友帮忙看，连带把代码里的收费密钥一起发了出去。</p>
+<p><b>怎么救：</b>不放密钥、先 Git 存档再让 Agent 动手，这两条铁律每次开工前必须打勾！</p>
+<h3>清单 4：参考图、表格与外部素材投喂检查表</h3>
+<p>做网页或理数据时，很多小白喜欢直接甩一张参考截图或一个旧表格给 Antigravity 照着做。投喂素材前按下面 3 项打勾，能省掉大量“AI 看走眼”的返工：</p>
+<label class="tut-check"><input type="checkbox"> 4.1 投喂参考界面截图（让它照着排版画）</label>
+<p><b>怎么做（点哪里）：</b>把你喜欢的网页参考图保存为 .png 或 .jpg 放进项目里的 raw 文件夹（或直接拖进聊天输入框），并在文字里补充一句：“参考这张截图的卡片排版和留白比例，但文字和颜色请按我下面写的中文要求来，不要照搬图里的英文。”</p>
+<p><b>看到什么：</b>输入框上方出现图片缩略图，发送后 AI 能识别出截图里的板块结构。</p>
+<p><b>打勾标准：</b>截图清晰无模糊马赛克，且已在文字里明确告诉它“学布局不抄文字”。</p>
+<p><b>错了怎么办：</b>如果整张长网页截图太长、字小得看不清，AI 容易漏看底部细节；把长图裁剪成“顶部导航 + 中间卡片”两张局部截图分批发给它最准确。</p>
+<label class="tut-check"><input type="checkbox"> 4.2 投喂待整理的 Excel / CSV 表格</label>
+<p><b>怎么做（点哪里）：</b>先把复杂的多标签页 .xlsx 表格另存为干净的纯数据 .csv 副本放进 raw 文件夹，删掉顶部花哨的合并单元格大标题，只保留第一行表头（如“日期、类目、金额、备注”）。</p>
+<p><b>看到什么：</b>AI 读取前几行表头后，能一眼认出每一列代表什么意思。</p>
+<p><b>打勾标准：</b>表格第一行是清晰的单行表头，没有合并单元格和空行，且原件已妥善备份。</p>
+<p><b>错了怎么办：</b>如果 AI 汇报“找不到金额列”或把日期算错，先让它打印出 raw 表格的前 5 行内容给你核对，确认列名后再让它动手汇总。</p>
+<label class="tut-check"><input type="checkbox"> 4.3 控制单次投喂文件数量，避免一次塞入上百个文件</label>
+<p><b>怎么做（点哪里）：</b>需要批量处理几十上百张图片或文档时，不要把文件直接全拖进聊天框，而是放进项目里的 raw 子文件夹，在对话里用文字指明路径（如“请读取 raw 文件夹里的所有 .csv 文件”）。</p>
+<p><b>看到什么：</b>对话框清爽简洁，AI 通过写脚本在本地批量读取 raw 目录，不会卡死输入框。</p>
+<p><b>打勾标准：</b>聊天框里不堆满几十个附件图标，大批量文件统一走 raw 目录引用。</p>
+<p><b>错了怎么办：</b>如果一次往对话框拖了太多大图导致发送转圈报错，清空输入框附件，改用 raw 文件夹路径指引即可。</p>
+<h3>【真实翻车案例 3：把带合并表头的复杂 Excel 直接甩进去，汇总全算串行】</h3>
+<p><b>现场：</b>财务小孙把公司导出的带三行合并标题、中间还夹着“小计行”的 Excel 副本直接放进 raw，让 Antigravity 统计总支出。结果 AI 把“小计行”当成普通消费又加了一遍，总金额直接翻倍！</p>
+<p><b>怎么救：</b>处理财务或业务表格时，先在 Excel 里把“合并标题行”和“自带小计行”清理干净（只留干净的明细行），再让 AI 统计；算完后务必把“原始明细总条数/总金额”与“处理后总条数/总金额”核对一遍。</p>
+<h3>清单 5：高质量需求四要素、禁区清单与发前 5 问</h3>
+<p>按下回车前，检查你的需求是否齐备下面 4 个要素（详细“烂需求 vs 好需求”对照与万能模板见 B 版第 4 章）：</p>
+<label class="tut-check"><input type="checkbox"> 要素 1：【背景】：一句话说清“我是谁、在哪用”。</label>
+<label class="tut-check"><input type="checkbox"> 要素 2：【目标】：用 1、2、3 列出核心功能（第一版建议不超过 4 个）。</label>
+<label class="tut-check"><input type="checkbox"> 要素 3：【限制】：写明“纯 HTML/CSS/JS 双击可打开、全中文界面、不改 raw 原件、不写死密钥”。</label>
+<label class="tut-check"><input type="checkbox"> 要素 4：【验收标准】：写清你等会儿怎么测（如“双击打开无报错、刷新数据不丢、删除后总数立刻变”）。</label>
+<p>微调旧项目时，加上“不要改哪里”的禁区打勾项：</p>
+<label class="tut-check"><input type="checkbox"> 禁区 1（锁文件）：明确写“只修改 style.css，不要动 index.html 和 script.js 里的原有逻辑”。</label>
+<label class="tut-check"><input type="checkbox"> 禁区 2（锁原件）：明确写“严禁修改、重命名或删除 raw 文件夹里的任何原始文件”。</label>
+<label class="tut-check"><input type="checkbox"> 禁区 3（锁功能）：明确写“原有的记账、删除和导出 CSV 功能已经测试通过，绝对不要破坏它们”。</label>
+<label class="tut-check"><input type="checkbox"> 禁区 4（锁数据）：明确写“不要改动现有 LocalStorage 的存储名字，免得我之前记好的数据刷新后读不出来”。</label>
+<p>按下回车前，默念“发前自查 5 问”全打勾：</p>
+<label class="tut-check"><input type="checkbox"> 1. 这轮需求是不是只包含 1 个主目标，没贪心一口气塞进 20 个花哨功能？</label>
+<label class="tut-check"><input type="checkbox"> 2. 做网页时，有没有写明“不需要复杂环境、双击 index.html 就能打开”？</label>
+<label class="tut-check"><input type="checkbox"> 3. 需不需要让它先填 3 条合理的中文示例数据，方便第一眼看清排版效果？</label>
+<label class="tut-check"><input type="checkbox"> 4. 需要保存数据时，有没有交代“存在浏览器 LocalStorage 里，刷新不丢”？</label>
+<label class="tut-check"><input type="checkbox"> 5. 当前是不是一个干净的新对话，且模式选的是 Planning（以实机界面为准）？</label>
+<h3>【真实翻车案例 4：需求只写一句话就发，返工改了五轮】</h3>
+<p><b>现场：</b>小晴直接发了一句“帮我做个记账网页”就按了回车。结果 AI 给她做了一个全英文、装了一堆复杂框架、双击打不开、还带假登录框的半成品，来回返工折腾了半小时。</p>
+<p><b>怎么救：</b>发现 AI 思路跑偏时，别跟着它的错误往下聊，直接复制下面对应的话术打回重规划：</p>
+<p><b>嫌太复杂：</b>“停一下，我完全不懂编程，不需要 React 或后端数据库，请推倒重来，改用最简单的纯 HTML/CSS/JS（双击 index.html 就能直接打开）重新规划。”</p>
+<p><b>漏了重点：</b>“你刚才的方案漏掉了我最看重的【XX功能/XX限制】，请先不要写代码，把【XX】补进计划里再给我看。”</p>
+<h2>C-4 Planning / Fast 打磨 / Rules 验收 / Orchestrator 实战 / Agent 并行 / 上线前最后检查</h2>
+<h3>清单 1：Planning 审计划 10 项精细打勾表</h3>
+<p>发出需求后，Antigravity 会先给你一份 Plan（施工方案），扫完下面 10 项全打勾再放行：</p>
+<label class="tut-check"><input type="checkbox"> 1.1 技术路线极简：确认是清爽的 index.html / style.css / script.js（或单文件），没擅自引入重型后端框架。</label>
+<label class="tut-check"><input type="checkbox"> 1.2 文件清单清晰：明确列出了准备新建哪几个文件、修改哪几个文件，没有冒出一堆陌生配置文件。</label>
+<label class="tut-check"><input type="checkbox"> 1.3 核心功能无漏项：你提的 1、2、3 个核心功能都在计划里，没漏掉“删除”或“统计”等关键动作。</label>
+<label class="tut-check"><input type="checkbox"> 1.4 全中文界面：明确注明按钮、标题、提示语全为简体中文。</label>
+<label class="tut-check"><input type="checkbox"> 1.5 数据保存方式正确：记账/待办类工具明确写了使用 LocalStorage 本地存储。</label>
+<label class="tut-check"><input type="checkbox"> 1.6 改动范围克制：给旧项目加小功能时，只动相关的那一两个文件，没声称要“重构整个项目”。</label>
+<label class="tut-check"><input type="checkbox"> 1.7 原文件绝对安全：涉及批量处理表格或图片时，明确写了“只读 raw，结果输出到 output”。</label>
+<label class="tut-check"><input type="checkbox"> 1.8 回退点已留好：大改版前，确认自己已经做好了本地 Git 存档或复制了文件夹副本。</label>
+<label class="tut-check"><input type="checkbox"> 1.9 无硬编码密钥：计划里没有把 API 密钥或账号密码写进前端代码的打算。</label>
+<label class="tut-check"><input type="checkbox"> 1.10 验收标准可测：计划末尾写清了具体测试动作（如“输入 100 元点保存，顶部总计变成 100”）。</label>
+<p><b>错了怎么办：</b>发现任何一项不对，别点同意，直接打字打回：“计划漏了【XX】，请补上再给我看。”</p>
+<h3>清单 2：批准执行时的“三看”观察清单</h3>
+<label class="tut-check"><input type="checkbox"> 2.1 批准动工：点方案下方的确认执行按钮（如 Proceed，以你当前实机界面为准；或回复“方案没问题，开始做吧”）。</label>
+<label class="tut-check"><input type="checkbox"> 2.2 看到进度条卡住不动：先往下拉对话流看有没有被遮住的确认按钮；若超过 2 分钟毫无动静且无弹窗，直接点 Stop 停止，确认网络能打开 antigravity.google，再发一句“刚才卡住了，请接着完成剩下的步骤”。</label>
+<label class="tut-check"><input type="checkbox"> 2.3 看到权限弹窗（Allow / Deny）：先看清楚弹窗里写的操作路径和命令——只要是在当前项目文件夹里新建文件、跑普通预览命令，就放心点 Allow；一旦看到涉及删除上级目录或修改系统设置的陌生命令，立刻点 Deny 并追问原因。</label>
+<label class="tut-check"><input type="checkbox"> 2.4 看到终端抽屉滚出报错红字：先别急着点停止！Antigravity 作为智能体，经常会自己看到红字、自己分析原因并自动修好；只有当它连续修了两三次还在报同一段红字时，才点 Stop，把红字截图或复制发给它：“这个报错一直卡住，请换一种更简单的实现思路。”</label>
+<h3>清单 3：第一版（V1）基础与边界验收清单</h3>
+<h3>基础功能 6 项验收（以待办清单 / 家庭记账本为例）</h3>
+<label class="tut-check"><input type="checkbox"> 3.1 双击打开正常：去文件夹双击 index.html，无白屏、无乱码、排版没重叠。（白屏则右键「检查 → Console」把红字发给 AI 修。）</label>
+<label class="tut-check"><input type="checkbox"> 3.2 核心录入正常：真实录 2 条数据（如支出 58.5 元、收入 8000 元），小数点与列表显示准确。</label>
+<label class="tut-check"><input type="checkbox"> 3.3 联动计算 / 开关正常：心算核对顶部结余一分不差，深色模式或状态切换丝滑。</label>
+<label class="tut-check"><input type="checkbox"> 3.4 刷新不丢数据：按 F5（Mac 按 Command + R）刷新，刚录的数据稳稳还在。</label>
+<label class="tut-check"><input type="checkbox"> 3.5 删除功能正常：点删除按钮后条目消失，顶部统计同步更新。</label>
+<label class="tut-check"><input type="checkbox"> 3.6 给 V1 存好“后悔药”：立刻让 AI 做一次本地 Git 存档（或复制文件夹重命名为 项目名-v1-ok）。</label>
+<p>边界测试 4 项进阶验收（故意“找茬”测试）</p>
+<p><b>大白话解释“边界测试（Edge Case Testing）”：</b>就是故意不按正常套路出牌，专门挑极端、刁钻的情况去折腾你的网页（比如啥也不填就点保存、乱输文字），看看它会不会当场崩溃。</p>
+<label class="tut-check"><input type="checkbox"> 3.7 空数据测试：什么字都不填、金额留空，直接点“保存 / 提交” → 打勾标准：弹出友好的中文提示（如“请填写金额”），而不是硬生生保存一条空白废数据。</label>
+<label class="tut-check"><input type="checkbox"> 3.8 输错字 / 极端值测试：在金额框里故意输汉字“哈哈哈”、输负数 -50，或者输一个超长数字 99999999 → 打勾标准：输入框能拦住非法字符，数字太长时不会把卡片撑破变形。</label>
+<label class="tut-check"><input type="checkbox"> 3.9 连续刷新测试：录入数据、删掉一条、再切深色模式，连续按两次 F5 刷新 → 打勾标准：界面状态和剩余数据依然准确，没有“复活”已删记录。</label>
+<label class="tut-check"><input type="checkbox"> 3.10 手机竖屏测试：把电脑浏览器窗口用鼠标往左拉窄成一条手机宽度（或右键「检查」点左上角手机图标）→ 打勾标准：所有内容自动排成一竖列，按钮好点，底部没有出现左右横拉的滚动条。</label>
+<h3>清单 4：Fast 模式打磨与“改崩后三步回退”清单</h3>
+<p>V1 稳了，切到快速模式（如 Fast，以你当前实机界面为准），遵守下面“小步快跑”打磨规则：</p>
+<label class="tut-check"><input type="checkbox"> 4.1 坚持“一次只改一处”：这一轮只改按钮颜色，下一轮再改日期默认值，绝不把“换配色 + 加导出 + 改布局”揉在一条消息里发。</label>
+<label class="tut-check"><input type="checkbox"> 4.2 第 1 轮打磨（调视觉）：如“支出改柔和珊瑚红带减号，收入改森林绿带加号” → 改完去浏览器强制刷新（Win Ctrl + F5，Mac Command + Shift + R）验收。</label>
+<label class="tut-check"><input type="checkbox"> 4.3 第 2 轮打磨（调体验）：如“日期框自动默认填今天本地日期” → 强制刷新验收。</label>
+<label class="tut-check"><input type="checkbox"> 4.4 第 3 轮打磨（加导出）：如“右上角加导出 CSV 按钮，带 UTF-8 BOM 头防 Excel 乱码” → 导出并用 Excel 打开验收。</label>
+<label class="tut-check"><input type="checkbox"> 4.5 见好就收开新对话：做完这一阶段，或发现 AI 开始“鬼打墙”越改越乱时，先回退好版本，再点 New Chat（新建对话） 继续。</label>
+<p>万一 Fast 模式打磨把页面改崩了？照着下面三步稳稳回退：</p>
+<label class="tut-check"><input type="checkbox"> 回退第 1 步（立刻止损）：别在报错的烂摊子上继续硬改，立刻点对话流里的撤销/回滚按钮（以你当前实机界面为准）；如果跨了好几轮，直接发一句：“请用 Git 回退到我们刚才存好的安全存档点。”</label>
+<label class="tut-check"><input type="checkbox"> 回退第 2 步（开新对话）：回退干净、刷新网页确认恢复正常后，点击 New Chat（新建对话），把刚才绕晕的上下文彻底清掉。</label>
+<label class="tut-check"><input type="checkbox"> 回退第 3 步（缩小粒度重来）：在新对话里，把刚才想改的需求拆得更小、更具体，加上“不要动其他无关代码”，重新发一次。</label>
+<h3>清单 5：自定义规则（Rules）生效验收与冲突排查检查表</h3>
+<p>(全局规则与项目规则的 3 套模板见 B 版第 7 章，这里直接教你如何验证规则真的生效了。)</p>
+<label class="tut-check"><input type="checkbox"> 5.1 发“探针指令”验证规则已生效</label>
+<p><b>怎么做（点哪里）：</b>在设置里保存全局规则或建好项目规则后，开一个新对话（New Chat），发一句探针指令：“先不要改任何文件，请用大白话复述一遍你在这个项目里必须遵守的所有工作规矩。”</p>
+<p><b>看到什么：</b>AI 准确背出了你写进规则里的“简体中文、大白话、纯 HTML/CSS/JS、先 Git 存档、不放密钥”等条款。</p>
+<p><b>打勾标准：</b>复述内容与你写的家规完全一致，证明后台确实把规则文件读进去了。</p>
+<p><b>错了怎么办：</b>如果它说“我目前没有收到任何自定义规则”，检查设置页是否忘了点 Save（保存），或者项目规则文件放错了路径（可直接让 AI 帮你按当前版本的标准路径重建一次）。</p>
+<label class="tut-check"><input type="checkbox"> 5.2 排查全局规则与项目规则打架</label>
+<p><b>怎么做（点哪里）：</b>对照检查你写的全局规则和当前项目规则有没有自相矛盾的地方（例如全局规则写了“浅米白背景”，项目规则写了“纯黑暗黑风”）。</p>
+<p><b>看到什么：</b>通常项目级规则优先级高于全局规则，但条款写得越矛盾，AI 越容易犹豫或左右摇摆。</p>
+<p><b>打勾标准：</b>规则条款简明扼要（每份规则控制在 5–8 条核心铁律内），无前后矛盾。</p>
+<p><b>错了怎么办：</b>删掉不再需要的旧测试条款，只保留最核心的安全红线和输出习惯。</p>
+<h3>清单 6：Orchestrator 实战打勾小节（记账本升级月度饼图实例）</h3>
+<p>(2026 年 11 月 12 日上线，付费 Google AI Pro / Google AI Ultra / 企业版 限定；详细原理见 A 版第 4 章、B 版第 5 章。)</p>
+<label class="tut-check"><input type="checkbox"> 6.1 核对 Orchestrator 默认模型搭配与权限差异</label>
+<p><b>怎么做（点哪里）：</b>点击 设置 ＞ 模型 ＞ Orchestrator 设置。</p>
+<p><b>看到什么：</b>Pro / Ultra 默认规划模型为 Gemini 4 Neon，默认执行模型为 Gemini 4 Hydrogen（可按需自定义）；企业版只提供固定的 Carbon（规划）+ Hydrogen（执行）；自定义规划 / 执行模型只在 Pro / Ultra 里有。</p>
+<p><b>打勾标准：</b>确认规划与执行模型均为现行模型（无 2026 年 11 月 30 日下线的旧模型）。</p>
+<p><b>错了怎么办：</b>手动下拉改回 Gemini 4 Neon + Gemini 4 Hydrogen（Pro / Ultra 用户）。</p>
+<label class="tut-check"><input type="checkbox"> 6.2 Orchestrator 实战：给记账本加“月度支出饼图”</label>
+<p><b>怎么做（点哪里）：</b>先确保已做好 Git 存档并开了新对话 → 模型选择器选 Orchestrator → 模式选 Planning（以你当前实机界面为准）→ 发送指令：“在现有记账本上新增一个‘月度消费分析’饼图，用原生 Canvas 画图免联网，鼠标悬停显示金额和百分比，不要破坏现有记账、删除和导出功能。”</p>
+<p><b>看到什么：</b>先由 Gemini 4 Neon 出严谨的升级计划；你点确认执行后，自动派 Gemini 4 Hydrogen 飞速改完代码。</p>
+<p><b>打勾标准：</b>强制刷新后，旧功能完好、记两笔不同类别支出时饼图比例准确、清空账单时优雅提示“暂无数据”不白屏。</p>
+<p><b>错了怎么办：</b>如果饼图把原有表格挤歪了，切回 Fast 模式发一句“饼图区域把下面账单列表挤变形了，请调整布局间距并适配手机竖屏”。</p>
+<h3>清单 7：Agent 并行实战与避坑打勾小节（多任务同时推进）</h3>
+<p>大白话解释“Agent 并行（Parallel Agents）”：就像你同时雇了两位互不干扰的数字员工——1 号员工在 A 房间帮你做旅行攻略网页，2 号员工在 B 房间帮你批量压缩产品图片，两头同时开工，不用干等一个做完再做下一个。</p>
+<p><b>(注：</b>Antigravity 支持同时打开多个独立任务窗口或子任务并行运行，具体多任务标签页/后台运行入口位置以你当前实机界面为准。)</p>
+<label class="tut-check"><input type="checkbox"> 7.1 满足“并行安全前提”再开多任务（严禁同目录打架！）</label>
+<p><b>怎么做（点哪里）：</b>准备同时跑两个任务前，先在 Antigravity_Projects 里建两个完全独立的空文件夹（比如 project-a-trip 和 project-b-photos）。</p>
+<p><b>看到什么：</b>两个任务各自绑定不同的独立文件夹，互不重叠。</p>
+<p><b>打勾标准：</b>绝不让两个并行 Agent 同时修改同一个文件夹里的同一批文件（否则后保存的会把先保存的代码直接覆盖掉，引发文件冲突）。</p>
+<p><b>错了怎么办：</b>如果发现两个窗口不小心打开了同一个项目文件夹，立刻停止其中一个任务并关闭窗口，只保留一个窗口操作该项目。</p>
+<label class="tut-check"><input type="checkbox"> 7.2 实战演练：双线并行提效</label>
+<p><b>怎么做（点哪里）：</b></p>
+<p>在任务 1（绑定 project-a-trip）发出规划指令，让它开始生成“东京 5 天行程网页”；</p>
+<p>不必干等它写完，直接新建第二个任务窗口/标签页（绑定 project-b-photos），让它处理 raw 里的图片压缩任务；</p>
+<p>两边各自弹出计划或权限确认时，分别审阅点同意，最后逐个验收成品。</p>
+<p><b>看到什么：</b>两个独立项目同步推进，总耗时大幅缩短。</p>
+<p><b>打勾标准：</b>两个项目各自生成完整成果，且各自配额消耗在可控范围内（注：并行跑多个任务会同时消耗周期配额，免费版每周上限较紧，建议单线为主；付费 Pro / Ultra 更适合并行）。</p>
+<p><b>错了怎么办：</b>如果电脑风扇狂转、响应变慢或配额消耗过快，立刻暂停其中一条任务，恢复“一次只跑一个任务”的节奏。</p>
+<h3>清单 8：5 个必学斜杠命令全要素打勾小节（直接抄就能用）</h3>
+<p><b>大白话解释“斜杠命令（Slash Commands）”：</b>在输入框敲一个 / 开头加英文词，直接召唤专属高级功能（具体支持列表在输入框敲 / 查看，以你当前实机界面为准）。</p>
+<label class="tut-check"><input type="checkbox"> 8.1 /goal（钉死总目标）</label>
+<p><b>怎么做（直接抄）：</b>/goal 把当前家庭记账本打磨成带月度饼图、预算超支红字提醒、且手机竖屏好用的完整版</p>
+<p><b>看到什么：</b>AI 锁定长期总目标，拆解阶段逐步推进，不轻易跑偏。</p>
+<p><b>打勾标准：</b>分步推进的每一步都紧扣最终总目标。</p>
+<p><b>错了怎么办：</b>拼错成 /gola 会当普通聊天发出去，删掉重敲 / 从下拉列表点选即可。</p>
+<label class="tut-check"><input type="checkbox"> 8.2 /grill-me（上线前严厉挑刺）</label>
+<p><b>怎么做（直接抄）：</b>/grill-me 请当一回挑剔的测试考官，帮我挑刺当前家庭记账本的漏洞（比如输入负数、金额留空、超大数字怎么办）</p>
+<p><b>看到什么：</b>AI 切换成严谨审查视角，列出具体边界漏洞清单与修复建议。</p>
+<p><b>打勾标准：</b>逐条修掉它挑出来的核心漏洞。</p>
+<p><b>错了怎么办：</b>没触发挑刺模式时，重敲 / 从下拉提示里选中再发送。</p>
+<label class="tut-check"><input type="checkbox"> 8.3 /schedule（设定定时自动任务）</label>
+<p><b>怎么做（直接抄）：</b>/schedule 每周五下午 5 点读取 inbox 文件夹的新增文本笔记，在 output 文件夹生成本周汇总草稿，绝不删改原件</p>
+<p><b>看到什么：</b>系统创建定时任务，在指定时间自动按规则运行（运行期间电脑需保持开机联网）。</p>
+<p><b>打勾标准：</b>定时任务创建成功，且手动试跑一次确认输出格式无误。</p>
+<p><b>错了怎么办：</b>时间写得太模糊（如“有空时”），按 AI 追问补清具体星期和几点即可。</p>
+<label class="tut-check"><input type="checkbox"> 8.4 /browser（让 AI 自己开浏览器查错）</label>
+<p><b>怎么做（直接抄）：</b>/browser 打开当前项目的 index.html，模拟录入一笔 58.5 元支出并刷新，检查控制台有没有红字报错</p>
+<p><b>看到什么：</b>AI 自动调起浏览器执行点击录入与刷新，并返回实际运行结果与控制台报错检查。</p>
+<p><b>打勾标准：</b>返回结果确认界面正常、控制台零红字报错。</p>
+<p><b>错了怎么办：</b>若提示找不到页面，把准确文件名 index.html 补告诉它。</p>
+<label class="tut-check"><input type="checkbox"> 8.5 /plugin（查看与调用扩展插件）</label>
+<p><b>怎么做（直接抄）：</b>/plugin 列出当前已启用的扩展插件，并说明哪一个适合帮我整理本地笔记</p>
+<p><b>看到什么：</b>清晰列出当前环境已安装和启用的扩展插件清单及用途。</p>
+<p><b>打勾标准：</b>看清可用插件能力，按需调用。</p>
+<p><b>错了怎么办：</b>调用了未安装的插件会提示未找到，不会弄坏现有项目文件。</p>
+<h3>清单 9：预览、分享与作品上线前最后检查（含 3 个发布排错案例）</h3>
+<h3>预览与分享三选一打勾表</h3>
+<label class="tut-check"><input type="checkbox"> 方式 A（自己电脑本地预览）：纯静态网页直接双击 index.html；本地引擎预览点击 AI 给的 http://localhost:xxxx 链接（牢记 localhost 是自家门牌号，绝不发给别人）。</label>
+<label class="tut-check"><input type="checkbox"> 方式 B（单文件微信直传，私密工具首选）：让 AI 把所有 HTML/CSS/JS 合并成单独一个 工具名.html 文件 → 复制到桌面脱离原文件夹双击自测 → 微信发给家人电脑双击打开。</label>
+<label class="tut-check"><input type="checkbox"> 方式 C（30 秒拖拽上线，手机微信一点即开）：确认根目录主文件叫全小写的 index.html → 打开静态托管平台（如 app.netlify.com/drop，免费规则以平台官网为准）→ 把整个项目文件夹拖进虚线框生成 https:// 公网网址。</label>
+<p>作品上线前最后检查（6 项终极核对，发公网链接前必全勾！）</p>
+<label class="tut-check"><input type="checkbox"> 1. 密钥清零：全文检查确认代码里没有残留任何 API 密钥、账号密码或私密 Token。</label>
+<label class="tut-check"><input type="checkbox"> 2. 真实隐私清零：确认没有写死真实的手机号、微信号、身份证号、家庭住址、真实家庭账单流水或公司机密（空壳记账本模板存在各自手机本地是安全的）。</label>
+<label class="tut-check"><input type="checkbox"> 3. 版权素材合规：没有使用未经授权的商业字体或他人隐私照片。</label>
+<label class="tut-check"><input type="checkbox"> 4. 主文件名合规：确认拖上网的文件夹最外层主网页文件叫全小写的 index.html。</label>
+<label class="tut-check"><input type="checkbox"> 5. 手机竖屏自测通过：拉窄浏览器窗口或用检查工具的手机模式看过，字号清晰、不左右划屏。</label>
+<label class="tut-check"><input type="checkbox"> 6. 公网链接亲自点开验收：拿到 https:// 网址后，先用自己手机微信点开完整测一遍核心功能，确认无误再转发（以后更新只需进平台项目的 Deploys 页面把新文件夹拖进去覆盖，原链接不变）。</label>
+<p>发布与预览的 3 个真实排错案例</p>
+<p>案例 1（本地预览打不开 / 双击进了记事本）：localhost 提示拒绝连接时，直接让 AI 重新启动本地预览服务发新链接；双击 index.html 误用记事本打开时，右键文件 →「打开方式」→ 选 Chrome 或 Edge 并勾选始终使用。</p>
+<p>案例 2（上线后手机微信打开排版全崩了）：原因是 CSS 写死了固定像素宽度（如 800px）。切回 Antigravity（Fast 模式）发指令：“手机竖屏打开排版挤在一起且需要左右滚动，请把固定宽度改成自适应百分比，加上手机竖屏响应式布局”，改完重新拖进 Deploys 覆盖上线。</p>
+<p>案例 3（改完重新上线，手机打开还是旧版）：多数情况是手机微信或托管平台缓存了旧页面（或误拖了旧备份文件夹）。先核对拖进去的文件夹修改时间是“刚刚”，再到托管平台 Deploys 确认状态为 Published，最后在发给自己的链接末尾临时加一个 ?v=2（如 https://xxx.netlify.app/?v=2）点开，即可强制破除缓存拉取最新版。</p>
+<h2>Antigravity 零基础超全手册（C 超全手册版 · 第二版扩充版 · 下篇 / 全书大结局）</h2>
+<p class="tut-byline">执笔：小森｜核验基准：2026 年 11 月 25 日（对照 antigravity.google 官网当天核对）｜本篇涵盖：C-5 排错急救三步曲与 24 场景速查卡片、C-6 新手 7 天零基础上手打卡路线图与进阶选修、全书 40 项终极检查清单与全书结语</p>
+<p><b>实机界面核对提醒：</b>本篇涉及的模式切换（如 Planning / Fast）、确认按钮（如 Proceed）、快捷键（如 Shift + Tab）及菜单名称，如与你当前实机界面略有出入，请一律以你屏幕上实际显示的为准。基础概念已在前两版讲透的，本篇直接标注“见 A 版第×章 / 见 B 版第×章”，不再重复展开。</p>
+<h2>C-5 排错急救三步曲与速查卡片（24 个高频问题一表搞定）</h2>
+<p>遇到报错千万别慌，也别到处乱搜过时的英文帖子。新手排错最容易犯的毛病，就是在改乱的代码上继续盲目追问，结果越修越崩。</p>
+<p>排错先做三件事（冷静急救三步曲）</p>
+<p>不管撞上什么幺蛾子，先深吸一口气，按顺序做完下面这 3 件事，多数问题都能稳稳兜住：</p>
+<label class="tut-check"><input type="checkbox"> 第一步：先看红字（拿证据，别靠猜）</label>
+<p><b>怎么做：</b>网页出问题，先在浏览器空白处点鼠标右键 →「检查（Inspect）」→ 点 Console（控制台），把里面的红色报错文字完整复制下来；桌面端或终端出问题，直接复制窗口底部或日志里的红字报错。</p>
+<p><b>打勾标准：</b>手里拿到了具体的英文报错原文或完整截图，而不是只跟 AI 说一句“坏了”。</p>
+<label class="tut-check"><input type="checkbox"> 第二步：先回退（止损，别在烂摊子上叠代码）</label>
+<p><b>怎么做：</b>如果刚才那一轮修改把原本好好的功能改崩了，立刻点对话流里的撤销/回滚按钮（如 Undo / Revert，以实机界面为准），或者让 AI 用 Git 退回上一个安全存档点。</p>
+<p><b>打勾标准：</b>浏览器强制刷新后，网页已经退回到修改前的正常可用状态。</p>
+<label class="tut-check"><input type="checkbox"> 第三步：先开新对话（换个清醒脑子）</label>
+<p><b>怎么做：</b>退回干净版本后，如果当前聊天窗口已经聊了十几轮以上，果断点击 New Chat（新建对话），在新窗口里把单个问题清清楚楚重新说一遍。</p>
+<p><b>打勾标准：</b>在一个干净的新对话里重新发起指令（开新对话不会丢失你文件夹里的任何文件）。</p>
+<h3>核心排错速查卡片（15 大基础高频问题）</h3>
+<p>把下面这张急救表存好，按“安装 / 登录 / 额度 / 做网页 / 预览发布”五大类对号入座，照着“第一步 → 第二步”执行，能排除大部分常见翻车：</p>
+<div class="tut-table-wrap"><table class="price-table"><thead><tr><th>分类</th><th>编号与现象</th><th>最可能原因（大白话）</th><th>第一步先做什么</th><th>如果不行，第二步做什么</th></tr></thead><tbody><tr><td>安装</td><td>1. 官网打不开或提示地区不可用</td><td>中国大陆不在官方支持名单内，或当前网络连通性不达标。</td><td>核对网络是否满足“能打开 antigravity.google 且登录不转圈”的验证标准，刷新页面重试。</td><td>核对你的 Google 账号关联地区（搜 Google Terms of Service country），不在支持名单内可提交地区变更申请或换用合规账号。</td></tr><tr><td>安装</td><td>2. 升级后旧项目打不开，或软件启动闪退</td><td>Mac 升级时误选了保留两份导致新旧版本打架；或 Linux 底层运行库太老带不动新版。</td><td>Mac 去「应用程序」检查是不是躺着两个图标，删掉重装并务必选 Replace（替换） 而非 Keep Both。</td><td>Linux 终端运行 ldd --version 核对底层库，确认满足 glibc ≥ 2.28 与 glibcxx ≥ 3.4.25，过老则需升级系统。</td></tr><tr><td>安装</td><td>3. 装完 CLI 后输入 agy 提示找不到命令</td><td>刚装完，当前开着的黑框框（终端）还没刷新系统“通讯录（环境变量）”。</td><td>彻底关掉当前终端窗口，重新打开一个新终端，输入 agy --version 回车。</td><td>重启一次电脑再试；若仍提示 command not found，对照官网下载页的对应平台路径说明检查安装目录。</td></tr><tr><td>登录</td><td>4. 登录提示账号不符合条件（Not eligible）</td><td>账号关联地区不在支持名单内、未满 18 周岁，或使用了被管理员锁权限的 Workspace 账号。</td><td>核对账号出生日期是否年满 18 岁，并确认账号关联地区在官方支持名单内。</td><td>若是公司/学校 Workspace 账号，联系 IT 管理员开通权限，或直接换用个人 @gmail.com 账号登录。</td></tr><tr><td>登录</td><td>5. 浏览器点了允许，桌面端却一直转圈进不去</td><td>浏览器回调弹窗被误关，或当前网络未能满足桌面端连通标准。</td><td>切回浏览器授权标签页，看地址栏下方有没有“要打开 Antigravity 吗？”弹窗，点打开。</td><td>确认网络满足“能打开 antigravity.google 且登录不转圈”；彻底退出软件重开，改点「复制链接」贴进 Chrome 重走授权。</td></tr><tr><td>登录</td><td>6. 用着用着突然报 401 或登录失效</td><td>登录通行证过期了，或者账号地区与授权状态发生了变动。</td><td>先核对账号关联地区与网络连通状态，再点软件角落头像 → Sign out（退出登录） → 重新登录。</td><td>彻底退出桌面端软件（Mac 按 Command + Q），重新启动后再点击 Sign in with Google。</td></tr><tr><td>额度</td><td>7. 提示 Quota exceeded / 额度用完</td><td>当前周期的基准配额油箱跑空了。</td><td>去设置页看配额与 View Usage（查看用量），免费版切回默认的 Gemini 4 Hydrogen 或等待每周刷新（有每周上限）。</td><td>付费 Pro / Ultra 用户可在设置页查看 AI 积分 开关（“绝不 / 总是”），按需购买 AI 积分并在耗尽基准配额后启用。</td></tr><tr><td>额度</td><td>8. 模型列表找不到 Neon，或选某模型报错不可用</td><td>账号是免费版或试用版 Pro，或者选到了 2026 年 11 月 30 日下线的旧模型。</td><td>对照 A 版第 5 章「套餐 × 模型」表：Neon / Carbon / Orchestrator 仅给付费 Pro / Ultra / 企业版；试用版 Pro 配额更低、模型更受限（Claude 5.5 只给非试用付费 Pro 及以上）。</td><td>避开 2026 年 11 月 30 日下线的 Gemini 3.8 Flash、Gemini 4 Argon、Claude 4.6、GPT-OSS-120b，改选现行模型并确认软件已升级至 v2.5+。</td></tr><tr><td>额度</td><td>9. 发完指令一直转圈“Thinking...”，半天不动</td><td>后台弹出了权限确认框在等你点同意，或者网络瞬间波动断连了。</td><td>往下拉对话流，看有没有亮着的 Allow（允许） 按钮等着你点（新手最常漏看）。</td><td>若无弹窗且卡死超 2 分钟，点输入框旁的 Stop（停止），确认能打开 antigravity.google 后发一句“请继续”。</td></tr><tr><td>做网页</td><td>10. 双击打开网页是纯白屏，或样式全乱</td><td>代码里漏了标点导致浏览器罢工，或者样式文件（CSS）路径没挂上。</td><td>右键空白网页 →「检查」→ 点 Console（控制台），把红字报错复制发给 AI 让它修。</td><td>若没红字只是样式全乱，直接对 AI 说：“样式文件没加载成功，文字全挤在左边，请修复引用路径。”</td></tr><tr><td>做网页</td><td>11. 按钮点不动，或刷新网页后记的数据全丢了</td><td>按钮名字和脚本没对上号；或者忘了写浏览器本地存储（LocalStorage，见 A 版第 4 章）。</td><td>直接用大白话告诉 AI：“点【XX按钮】没反应，请检查点击事件绑定并修复。”</td><td>数据丢失则发：“刷新后数据清空了，请把数据存进浏览器 LocalStorage 里。”</td></tr><tr><td>做网页</td><td>12. AI 说改好了但网页没变化 / 越改越乱</td><td>浏览器偷懒用了旧缓存；或者对话太长 AI 脑子绕晕了开始拆东墙补西墙。</td><td>在浏览器按强制刷新（Win Ctrl + F5，Mac Command + Shift + R），并核对打开的是不是最新文件夹。</td><td>若越改越崩，立刻点撤销/回滚按钮（以实机界面为准）或读 Git 存档退回好版本，再开新对话重新提需求。</td></tr><tr><td>预览发布</td><td>13. 把 localhost 链接发给朋友，对方打不开</td><td>localhost 是你电脑自家的门牌号（见 B 版第 6 章），外人根本访问不到。</td><td>想私密发电脑看：让 AI 打包成单个 HTML 文件微信直传。</td><td>想让朋友手机一点就看：用 Netlify Drop 把整个文件夹拖上网生成 https:// 公网链接。</td></tr><tr><td>预览发布</td><td>14. 拖拽上线后，点开公网网址报 404</td><td>拖进去的文件夹最外层（根目录）里没有叫全小写 index.html 的主文件。</td><td>检查文件夹，把主网页文件改名为全小写 index.html，确保没多套一层空壳文件夹。</td><td>整理好目录后，进平台项目的 Deploys 页面把文件夹重新拖进去覆盖更新。</td></tr><tr><td>预览发布</td><td>15. 手机打开排版崩了 / 导出表格中文乱码</td><td>网页没做手机竖屏适配；CSV 表格少了 Excel 认得的中文编码头。</td><td>手机排版问题：让 AI “优化手机竖屏响应式布局，确保单列显示不左右滚动”。</td><td>表格乱码问题：让 AI “导出 CSV 时加上 UTF-8 BOM 头，确保 Excel 打开无乱码”。</td></tr></tbody></table></div>
+<h3>进阶深度排错 9 场景（手把手拆解定位步骤）</h3>
+<h3>场景 16：对话越聊越乱，AI 开始答非所问、反复犯同一个错</h3>
+<p><b>大白话解释“上下文窗口（Context Window）”：</b>AI 的“短期记忆小黑板”。聊得越久，黑板上写满的废话和旧报错就越多，AI 找重点就会变慢、变糊涂。</p>
+<p><b>现象：</b>同一个聊天窗口从上午聊到下午，改了十几轮之后，你让它把按钮挪到右边，它不仅没挪对，还顺手把你上午定好的中文标题改回了英文。</p>
+<p><b>原因大白话：</b>它的“短期记忆小黑板”塞满了过时的修改记录，新要求和旧记录互相打架，把它绕晕了。</p>
+<p><b>照着做的解法：</b></p>
+<p>立刻停止在当前窗口继续追问，先确认现有文件状态（如果改乱了就先点撤销或用 Git 回退到上一版）。</p>
+<p>点击 New Chat（新建对话），用一句话精准发指令：“请先读取当前文件夹里的最新代码，然后只帮我把【XX按钮】挪到右上角，其他地方不要动。”</p>
+<h3>场景 17：改完一个小功能，整个网页的漂亮样式突然全丢了</h3>
+<p><b>现象：</b>本来卡片有阴影、有圆角、配色很舒服，你用 Fast 模式让它加了一个“搜索框”之后，刷新一看，所有颜色和排版瞬间消失，变成白底黑字的纯文本。</p>
+<p><b>原因大白话：</b>AI 在修改 HTML 结构时，不小心把引入样式文件（style.css）的那一行代码删掉了，或者在 style.css 里漏写了一个闭合花括号 }，导致后面的样式全部失效。</p>
+<p><b>照着做的解法：</b></p>
+<p>先按浏览器强制刷新（Win Ctrl + F5，Mac Command + Shift + R）排除缓存干扰。</p>
+<p>直接对 Antigravity 说：“刚才加完搜索框后，整个网页的 CSS 样式全丢了，请检查 index.html 里的样式引入标签和 style.css 里的括号有没有漏写，帮我恢复原来的样式。”</p>
+<h3>场景 18：导出的表格或文本文档，用电脑软件打开全是中文乱码</h3>
+<p><b>大白话解释“编码格式（Encoding）”：</b>电脑用来记录中文的“密码本”。如果 AI 用 A 密码本写文件，你电脑上的 Excel 用 B 密码本打开，中文就会变成乱码。</p>
+<p><b>现象：</b>网页里显示得清清楚楚的“买菜、水电、工资”，一点“导出 CSV”按钮，用 Windows 上的 Excel 双击打开，中文全变成了看不懂的符号。</p>
+<p><b>原因大白话：</b>网页默认用的编码格式，Windows 版 Excel 直接双击时经常认不出来，必须给文件开头加一个专门的“中文识别暗号（UTF-8 BOM 头）”。</p>
+<p><b>照着做的解法：</b></p>
+<p>回到 Antigravity，直接发送：“导出的 CSV 文件用 Excel 打开中文是乱码，请在导出代码里给文件开头加上 UTF-8 BOM（\uFEFF），并重新测试。”</p>
+<p>强制刷新网页后重新点导出，再用 Excel 双击打开，中文立刻恢复正常。</p>
+<h3>场景 19：打包好的单文件 HTML，在电脑上能用，发到手机微信里却打不开</h3>
+<p><b>现象：</b>你按教程把小工具打包成了单独一个 记账本.html 文件发到微信里，自己电脑双击很丝滑，但朋友在手机微信里一点开，要么是一堆英文代码，要么点按钮完全没反应。</p>
+<p><b>原因大白话：</b>手机微信为了安全，会限制直接运行本地传过来的 .html 文件里的交互脚本，不让它随便动。</p>
+<p><b>照着做的解法：</b></p>
+<p><b>给朋友电脑用：</b>提醒对方在电脑版微信里把文件下载到桌面，再用 Chrome 或 Edge 浏览器双击打开。</p>
+<p><b>给朋友手机直接点开用：</b>不要传单文件，改用 C-4 清单里的拖拽上线法（如拖进 Netlify Drop），把生成的 https:// 公网链接发到微信里，手机一点就能丝滑打开。</p>
+<h3>场景 20：套餐变更或模型调整后，突然提示“权限受限 / 配额不足”</h3>
+<p><b>现象：</b>之前一直好好的，某天突然提示某模型不可用或配额触顶，不知道是软件坏了还是套餐变了。</p>
+<p><b>原因大白话：</b>可能是你的 Pro 免费试用期到期自动退回了免费版，或者你选到了 2026 年 11 月 30 日下线的旧模型，或者本周免费额度用完了。</p>
+<p><b>照着做的解法：</b></p>
+<p>点击设置页进入用量与账号板块，点击 View Usage（查看用量），核对当前账号到底是 Free、试用 Pro 还是正式付费 Pro / Ultra（Pro $19.99/月，Ultra 5x $99.99/月、Ultra 20x $199.99/月，2026-11-25 美国挂牌价，各地区以官网为准）。</p>
+<p>免费版切回默认的 Gemini 4 Hydrogen 等每周刷新；付费版确认未选用 Gemini 3.8 Flash、Gemini 4 Argon、Claude 4.6、GPT-OSS-120b 这 4 个下线模型，并按需调整 AI 积分 开关（“绝不 / 总是”，耗尽基准配额后才会动用）。</p>
+<h3>场景 21：Windows 终端运行 agy 或脚本时，报红色“禁止运行脚本（ExecutionPolicy）”</h3>
+<p><b>现象：</b>Windows 用户在 PowerShell 里输入 agy 或让 AI 跑自动化脚本时，满屏蹦出红字，提示“无法加载文件，因为在此系统上禁止运行脚本”。</p>
+<p><b>原因大白话：</b>Windows 系统出于安全保护，默认给陌生脚本上了一把“防运行安全锁”。</p>
+<p><b>照着做的解法：</b></p>
+<p>按官网 Windows 安装文档的提示，在 PowerShell 里运行放行当前用户脚本权限的官方命令（如 Set-ExecutionPolicy -Scope CurrentUser RemoteSigned），按键盘 Y 回车确认。</p>
+<p>重新打开 PowerShell 输入 agy --version，即可正常通行。</p>
+<h3>场景 22：写好了自定义规则（Rules），但感觉 AI 干活时根本没遵守</h3>
+<p><b>现象：</b>你明明在规则里写了“全中文界面、不要动 raw 文件夹”，结果新建对话后它偶尔还是甩出英文，或者把按钮写成了英文。</p>
+<p><b>原因大白话：</b>要么是保存规则后没点 Save，要么是项目规则文件放错了文件夹位置，或者你的一条规则里塞了二三十条长篇大论，AI 读不过来把重点淹没了。</p>
+<p><b>照着做的解法：</b></p>
+<p><b>开一个新对话发探针指令：</b>“先不要改文件，请复述一遍你当前收到的自定义规则。”如果它说没收到，去设置页确认是否已点保存，或让 AI 按当前版本规范重新生成项目规则文件。</p>
+<p>把规则精简为 5–8 条短句铁律（参考 B 版第 7 章模板），去掉互相矛盾的废话，执行力立刻拉满。</p>
+<h3>场景 23：开了两个并行 Agent 窗口，结果改完后代码互相覆盖、报错一团糟</h3>
+<p><b>现象：</b>你同时开了两个任务窗口，一边让 1 号改记账本配色，一边让 2 号给记账本加导出按钮，结果两头完工后页面直接打不开，一边的功能把另一边的代码吞掉了。</p>
+<p><b>原因大白话：</b>两个工人同时伸手去改同一张纸，后写完的直接把先写完的涂掉了。</p>
+<p><b>照着做的解法：</b></p>
+<p>立刻停止两个任务，用 Git 存档（或手动备份文件夹）回退到并行操作前的干净版本。</p>
+<p>严格遵守 C-4 清单 7 的铁律：并行 Agent 只能分别操作两个完全不同的独立文件夹；同一个项目文件夹里，永远只开一个对话窗口按顺序推进。</p>
+<h3>场景 24：把朋友发来的项目压缩包解压打开，却提示路径找不到或无法写入</h3>
+<p><b>现象：</b>你从微信或网盘下载了一个别人分享的项目压缩包，直接双击点进压缩包预览窗口就想让 Antigravity 打开，或者解压后套了好几层带中文空格的文件夹，导致读写报错。</p>
+<p><b>原因大白话：</b>压缩包没彻底解压前只是一个“密封快递盒”，AI 没法直接往密封盒子里写文件。</p>
+<p><b>照着做的解法：</b></p>
+<p>先把压缩包完整解压到你的纯英文总基地 Antigravity_Projects 下，并把外层文件夹重命名为纯英文小写 + 短横线（如 friend-demo），去掉多余的嵌套空壳目录。</p>
+<p>再用 Antigravity 点 Open Folder 打开解压后的文件夹，一切恢复正常。</p>
+<h2>C-6 新手 7 天零基础上手打卡路线图（含毕业后第 2 周进阶选修）</h2>
+<p>不用一口气啃完所有技巧，每天只需抽出 20 到 30 分钟，照着下面这份按分钟切好的 7 天打卡表走。第 7 天晚上，你手里就会有一个真正能发给朋友玩的专属成品！</p>
+<h3>Day 1：破冰与起飞（搞定环境，说上第一句话）</h3>
+<p><b>当天目标：</b>把主力入口装好、账号登绿、安全基地建好，迈出 0 到 1 的第一步。</p>
+<p><b>20–30 分钟怎么分配：</b></p>
+<p><b>0–8 分钟：</b>对照 C-1 和 C-2，确认年满 18 岁、账号关联地区在支持名单内，验证浏览器能顺畅打开 antigravity.google。</p>
+<p><b>8–18 分钟：</b>下载安装 Antigravity App（桌面应用 v2.5+）（或先用网页版体验），完成 Google 授权登录，在首次引导里选好简洁对话优先布局。</p>
+<p><b>18–25 分钟：</b>确认权限策略在默认的“推荐/平衡”模式；在本地非同步磁盘目录建好 Antigravity_Projects/test-hello，用软件打开并点信任，核对默认模型（免费版为 Gemini 4 Hydrogen）。</p>
+<p><b>25–30 分钟：</b>在输入框发一句中文打招呼，确认回复流畅无报错。</p>
+<p><b>当天要交出的成品：</b>一个已登录、布局清爽、权限安全且能正常中文对话的 Antigravity App 工作台。</p>
+<p><b>做完的标志：</b></p>
+<label class="tut-check"><input type="checkbox"> 角落显示正确账号头像，模型列表正常显示，且在 test-hello 里收到了流畅的中文回复。</label>
+<p><b>当天最容易翻车的一点：</b></p>
+<p><b>真实翻车提醒：</b>很多新手第一天最容易手快下错成独立版 Antigravity IDE，打开满屏代码吓一跳；或者 Mac 没把图标拖进 Applications 文件夹就直接从 .dmg 磁盘里双击运行。下错了直接删掉重装 Antigravity App 即可。</p>
+<h3>Day 2：立家规 + 做出人生第一个网页（Planning 模式初体验）</h3>
+<p><b>当天目标：</b>给 AI 立好“全局家规”，并用 Planning 模式做出一个能用的“极简待办清单”。</p>
+<p><b>20–30 分钟怎么分配：</b></p>
+<p><b>0–5 分钟：</b>把 B 版第 7 章的「模板一：纯小白保姆级安全规则」贴进软件的全局 Rules 设置里并保存，发一句探针指令验证规则已生效。</p>
+<p><b>5–10 分钟：</b>在总基地新建 day2-todo 文件夹并用 Antigravity App 打开，确认模式处在 Planning（以实机界面为准）。</p>
+<p><b>10–20 分钟：</b>按「背景 / 目标 / 限制 / 验收」四要素发指令，让它做一个带深色模式和 LocalStorage 的中文待办清单；认真审一遍它给的施工方案，点确认执行。</p>
+<p><b>20–30 分钟：</b>完工后去文件夹双击 index.html，亲自验收添加、打勾、删除、深色模式和刷新不丢。</p>
+<p><b>当天要交出的成品：</b>一个本地双击可用、带深色模式的中文极简待办清单网页。</p>
+<p><b>做完的标志：</b></p>
+<label class="tut-check"><input type="checkbox"> 双击打开网页能正常添加、勾选、删除待办，切换深色模式丝滑，按 F5 刷新记录不丢。</label>
+<p><b>当天最容易翻车的一点：</b></p>
+<p><b>真实翻车提醒：</b>曾有新手没审计划就直接点同意，结果 AI 顺手装了一套重型前端框架，双击根本打不开。审计划第一眼就盯紧：是不是纯 HTML/CSS/JS 双击可打开，不对立刻打回。</p>
+<h3>Day 3：Fast 模式打磨 + 练熟“先存档、吃后悔药”</h3>
+<p><b>当天目标：</b>掌握日常最高频的小步快跑打磨节奏，并把“安全存档 + 一键撤回”刻进肌肉记忆。</p>
+<p><b>20–30 分钟怎么分配：</b></p>
+<p><b>0–5 分钟：</b>在 day2-todo 里先让 AI 帮你用 Git 存一个本地档（或手动复制文件夹备份叫 day2-todo-v1-ok）。</p>
+<p><b>5–15 分钟：</b>切到 Fast（快速模式，以实机界面为准），分 2 轮提小修改（如“添加按钮改成薄荷绿”、“顶部加一句随机中文励志名言”），每轮改完去浏览器强制刷新（Win Ctrl + F5，Mac Command + Shift + R）验收。</p>
+<p><b>15–22 分钟：</b>故意提一个搞怪大改动（如“把背景改成刺眼大红色”），改完后点击对话流里的撤销/回滚按钮（以实机界面为准），亲眼看它 1 秒退回原样。</p>
+<p><b>22–30 分钟：</b>点一次 New Chat（新建对话），感受新对话里文件依然都在、脑子更清爽的状态。</p>
+<p><b>当天要交出的成品：</b>美化升级后的待办清单 V2 + 一次成功的存档与回滚记录。</p>
+<p><b>做完的标志：</b></p>
+<label class="tut-check"><input type="checkbox"> 成功完成 2 轮 Fast 打磨，并且亲手演练成功了一次撤销回滚。</label>
+<p><b>当天最容易翻车的一点：</b></p>
+<p><b>真实翻车提醒：</b>改完代码后只按普通 F5 刷新发现毫无变化，以为 AI 骗人。多数情况是浏览器旧缓存捣乱，养成按强制刷新快捷键的习惯，立马见效。</p>
+<h3>Day 4：真实生活实战——做出“家庭极简记账本”</h3>
+<p><b>当天目标：</b>独立走完一个带小数点计算和防乱码表格导出的实用小工具。</p>
+<p><b>20–30 分钟怎么分配：</b></p>
+<p><b>0–8 分钟：</b>新建 day4-budget 文件夹，用 Planning 模式 做出带“收支录入、分类、删除、顶部自动统计、LocalStorage 保存”的家庭记账本，审计划并批准执行。</p>
+<p><b>8–18 分钟：</b>双击 index.html 真实记 3 笔带小数点的账（如支出 58.5 元、收入 8000 元），心算核对顶部总收支和结余，测完立刻做好 Git 存档。</p>
+<p><b>18–25 分钟：</b>切 Fast 模式 加上“日期默认今天”和“一键导出 CSV 表格（带 UTF-8 BOM 头）”两个功能。</p>
+<p><b>25–30 分钟：</b>点导出按钮，用电脑里的 Excel 或 WPS 双击打开生成的表格验收。</p>
+<p><b>当天要交出的成品：</b>一套计算准确、能导出无乱码 Excel 账单的家庭记账网页。</p>
+<p><b>做完的标志：</b></p>
+<label class="tut-check"><input type="checkbox"> 记账计算一分不差、刷新不丢，导出的 CSV 用 Excel 打开中文清清楚楚无乱码。</label>
+<p><b>当天最容易翻车的一点：</b></p>
+<p><b>真实翻车提醒：</b>有新手在计划阶段没看清，AI 漏写了“删除”按钮，结果记错一笔删不掉；或者导出 CSV 时忘了提醒加 UTF-8 BOM 头导致 Excel 打开乱码。第一版验收必测录、算、刷、删四连招！</p>
+<h3>Day 5：Orchestrator 升级实战 + Agent 并行初体验</h3>
+<p><b>当天目标：</b>体验 Orchestrator（Neon 规划 + Hydrogen 执行）升级图表，并学会看用量页与多任务并行安全规则。</p>
+<p><b>20–30 分钟怎么分配：</b></p>
+<p><b>0–5 分钟：</b>去设置页点 View Usage（查看用量） 与 AI 积分开关核对配额；付费用户进 设置 ＞ 模型 ＞ Orchestrator 设置 确认默认规划 Gemini 4 Neon + 执行 Gemini 4 Hydrogen（企业版固定 Carbon + Hydrogen）。</p>
+<p><b>5–15 分钟：</b>在 day4-budget 里先 Git 存档并开新对话，选 Orchestrator + Planning（免费版用默认的 Gemini 4 Hydrogen 同样可做），发指令：“给现有记账本新增一个‘月度支出占比’原生 Canvas 饼图，悬停看金额和百分比，不破坏旧功能。”</p>
+<p><b>15–22 分钟：</b>强制刷新做边界验收（记两笔不同类支出看比例、清空所有账单看会不会白屏），确认无误后再存一个 V3 档。</p>
+<p><b>22–30 分钟：</b>对照 C-4 清单 7，新建另一个独立空文件夹 day5-parallel-test，体验开第二个任务窗口同时生成一张“周末采购清单”网页，感受双线并行互不干扰。</p>
+<p><b>当天要交出的成品：</b>带交互式月度消费饼图的记账本升级版 + 一次双目录并行任务体验。</p>
+<p><b>做完的标志：</b></p>
+<label class="tut-check"><input type="checkbox"> 记账本成功升级出月度饼图且旧功能完好，同时清楚并行任务必须绑定不同独立文件夹。</label>
+<p><b>当天最容易翻车的一点：</b></p>
+<p><b>真实翻车提醒：</b>有人找不到 Neon 就急着重装软件，其实只是登错了免费的备用 Gmail 小号，或者领的是配额与模型更受限的试用版 Pro；另外并行开多任务时，千万别让两个窗口同时改同一个文件夹。</p>
+<h3>Day 6：斜杠命令全通关 + 手机端适配特训</h3>
+<p><b>当天目标：</b>把 5 个高频斜杠命令各实战敲一遍，并把网页打磨成手机竖屏好用的状态。</p>
+<p><b>20–30 分钟怎么分配：</b></p>
+<p><b>0–12 分钟：</b>在记账本里依次实操 /goal、/grill-me、/browser，把考官挑出来的边界漏洞（如输入负数、金额留空）修干净。</p>
+<p><b>12–20 分钟：</b>实操 /plugin 查看插件，并新建 day6-notes 文件夹试练一次 /schedule 定时汇总规则（练完不需要的话可随时取消定时）。</p>
+<p><b>20–30 分钟：</b>把浏览器窗口拉窄成手机宽度（或开右键「检查」里的手机模式），让 AI 修好所有挤在一起的按钮和文字。</p>
+<p><b>当天要交出的成品：</b>经受过 /grill-me 挑刺且手机竖屏排版清爽的家庭记账本。</p>
+<p><b>做完的标志：</b></p>
+<label class="tut-check"><input type="checkbox"> 5 条斜杠命令都亲手敲过并看懂了效果，且手机竖屏预览不左右滚动。</label>
+<p><b>当天最容易翻车的一点：</b></p>
+<p><b>真实翻车提醒：</b>敲斜杠命令时手滑拼错字母（比如打成 /gola）不会报错但也没触发特殊功能，养成敲 / 后直接从下拉菜单点选的习惯。</p>
+<h3>Day 7：毕业上线，发给朋友玩！</h3>
+<p><b>当天目标：</b>独立做出一个想送给朋友的专属网页，严格通过上线前最后检查并正式发布！</p>
+<p><b>20–30 分钟怎么分配：</b></p>
+<p><b>0–12 分钟：</b>新建 day7-final 文件夹，挑一个好玩主题（旅行攻略 / 口算闯关 / 今天吃什么转盘），按标准 Planning → 验收 → Git 存档 → Fast 打磨流程做完。</p>
+<p><b>12–18 分钟：</b>对照 C-4 清单 9 的上线前最后检查 6 项逐一打勾（零密钥、零真实隐私、零公司机密、根目录主文件叫全小写 index.html）。</p>
+<p><b>18–24 分钟：</b>打开 app.netlify.com/drop 把整个文件夹拖进虚线框，拿到 https:// 公网链接。</p>
+<p><b>24–30 分钟：</b>先用自己手机微信点开链接自测无误，正式转发给至少一位朋友或家人！</p>
+<p><b>当天要交出的成品：</b>一个全网可访问、手机微信一点即玩的个人专属公网网页。</p>
+<p><b>做完的标志：</b></p>
+<label class="tut-check"><input type="checkbox"> 朋友在微信里点开你的链接流畅把玩，惊呼“这真是你自己做的？！”——恭喜你，正式毕业！</label>
+<p><b>当天最容易翻车的一点：</b></p>
+<p><b>真实翻车提醒：</b>拖进去的文件夹多套了一层空壳目录导致公网链接报 404，或者改完重传后被手机微信旧缓存挡住（在发给自己的链接末尾加 ?v=2 即可强刷）。</p>
+<h3>毕业后第 2 周进阶选修路线（Day 8–Day 10 场景实战拓展）</h3>
+<p>走完前 7 天你已经彻底入门了；如果意犹未尽，可以接着用这 3 个真实职场与生活场景巩固手艺：</p>
+<label class="tut-check"><input type="checkbox"> Day 8（职场数据处理实战：零散账单自动合并与核对）</label>
+<p><b>怎么做：</b>新建 day8-bills 文件夹，把清理掉合并表头和自带小计行的 2–3 份月度 CSV 账单副本放进 raw 子文件夹，让 AI 写脚本合并统计各类支出并输出 output/汇总表.csv 与可视化报告网页。</p>
+<p><b>验收标准：</b>raw 原件毫发无损，导出表格用 Excel 打开无乱码，且汇总总金额与原始明细总金额一分不差。</p>
+<label class="tut-check"><input type="checkbox"> Day 9（求职与个人品牌实战：可打印 A4 的互动在线简历）</label>
+<p><b>怎么做：</b>新建 day9-resume 文件夹，按 B 版第 4 章“好需求对照一”做一张单页中文互动简历，加上 @media print 导出干净 A4 PDF 按钮；上线前把真实手机号和家庭住址替换成求职专用邮箱后再拖拽发布。</p>
+<p><b>验收标准：</b>手机微信打开不左右滚动，浏览器点打印预览时自动隐藏多余按钮、完整排在一页 A4 纸内。</p>
+<label class="tut-check"><input type="checkbox"> Day 10（全自动工作流实战：每周五自动汇总文件夹笔记）</label>
+<p><b>怎么做：</b>新建 day10-weekly 文件夹与 inbox 子文件夹，周一到周五随手把工作灵感和会议纪要存进 inbox，用 /schedule 设定每周五下午 5 点自动读取 inbox 生成 output/本周复盘.md（付费版可配合 Orchestrator 提炼结构）。</p>
+<p><b>验收标准：</b>手动试跑一次确认摘要准确，且确认指令里绝无“汇总完删除 inbox 原文件”的危险操作。</p>
+<h2>全书终极检查清单（A + B + C 40 项核心能力总表）</h2>
+<p>学完这本第二版完整手册后，你可以随时回来给这 40 项打勾。当你打满大部分勾，你已经是一个非常稳健的 Antigravity 实战玩家了：</p>
+<p>一、认知、版本与入口（1–6）</p>
+<label class="tut-check"><input type="checkbox"> 1. 能用一句话讲清 Antigravity 和普通 Gemini 聊天的区别，并了解 2025-11-18 至 2026-11-18 的关键发展时间线（含 Carbon 2026-10-28 发布、11-10 全面可用）。</label>
+<label class="tut-check"><input type="checkbox"> 2. 清楚它的局限：知道它也会写错代码、必须亲自验收、不能代替你做甲方决策。</label>
+<label class="tut-check"><input type="checkbox"> 3. 分得清“四种开发环境 + 网页版”五个入口（App v2.5+、CLI agy v1.2+、For IDEs 7 扩展、SDK Python、网页版），且知道 App 与独立版 IDE 是两个不同产品。</label>
+<label class="tut-check"><input type="checkbox"> 4. 清楚地区与年龄政策：中国大陆不在支持名单、需核对账号关联地区（可提交变更申请）、未满 18 周岁不可用，网络满足“能打开 antigravity.google 且登录不转圈”。</label>
+<label class="tut-check"><input type="checkbox"> 5. 清楚自己是哪种账号（个人 / Workspace / 企业版），以及对应的可见模型与权限差异。</label>
+<label class="tut-check"><input type="checkbox"> 6. 清楚系统要求（含 Linux glibc ≥ 2.28、glibcxx ≥ 3.4.25）及 Mac 升级必选 Replace（替换） 而非 Keep Both。</label>
+<p>二、模型、套餐与费用（7–12）</p>
+<label class="tut-check"><input type="checkbox"> 7. 清楚免费版默认模型是 Gemini 4 Hydrogen，按官网说明为每周刷新、有每周上限。</label>
+<label class="tut-check"><input type="checkbox"> 8. 清楚 Gemini 4 Neon / Carbon / Orchestrator 仅对付费 Pro / Ultra / 企业版开放。</label>
+<label class="tut-check"><input type="checkbox"> 9. 清楚定价锚点（2026-11-25 美国挂牌价，各地区以官网为准）：免费版 $0/月；Google AI Pro $19.99/月；Google AI Ultra 分两档——Ultra 5x $99.99/月（Pro 配额的 5 倍）、Ultra 20x $199.99/月（Pro 配额的 20 倍）；企业版 Standard / Plus 每席位每月 30 美元起（另有 pay-as-you-go 按量计费档位）。</label>
+<label class="tut-check"><input type="checkbox"> 10. 清楚试用 Pro vs 付费 Pro vs Ultra 差异：试用版配额更低、模型更受限，Claude Sonnet / Opus 5.5 仅给非试用付费 Pro 及以上。</label>
+<label class="tut-check"><input type="checkbox"> 11. 清楚 2026 年 11 月 30 日下线清单（Gemini 3.8 Flash、Gemini 4 Argon、Claude 4.6、GPT-OSS-120b），不再选用即将下线的模型。</label>
+<label class="tut-check"><input type="checkbox"> 12. 会去设置页看配额、点 View Usage，并清楚付费版 AI 积分 开关（“绝不 / 总是”，耗尽基准配额后才动用）。</label>
+<p>三、工作区安全与好习惯（13–18）</p>
+<label class="tut-check"><input type="checkbox"> 13. 在本地非同步目录建好了纯英文总基地 Antigravity_Projects，绝不直接把整个桌面或网盘同步目录当工作区。</label>
+<label class="tut-check"><input type="checkbox"> 14. 新建项目文件夹只用纯英文小写 + 短横线命名，处理旧文件只放副本到 raw 子文件夹。</label>
+<label class="tut-check"><input type="checkbox"> 15. 首次登录会选清爽的对话优先布局，且权限审核策略保持默认的“推荐/平衡”，不盲目开全自动。</label>
+<label class="tut-check"><input type="checkbox"> 16. 死守安全铁律：绝不把真实 API 密钥、账号密码或隐私账单写进代码里。</label>
+<label class="tut-check"><input type="checkbox"> 17. 养成大改前先 Git 存档（或复制文件夹备份）再让 Agent 动手的好习惯。</label>
+<label class="tut-check"><input type="checkbox"> 18. 会用自定义规则（Rules）给 AI 立“全局家规”或“项目家规”，并用探针指令验证生效，不再每次重复念经。</label>
+<p>四、需求、模式与进阶技能（19–24）</p>
+<label class="tut-check"><input type="checkbox"> 19. 写第一条需求时能齐备“背景、目标、限制、验收标准”四要素，做小工具优先指定纯 HTML/CSS/JS 双击可打开。</label>
+<label class="tut-check"><input type="checkbox"> 20. 熟练区分规划模式（Planning）与快速模式（Fast，以实机界面为准），审计划必查 10 项，不盲目点同意。</label>
+<label class="tut-check"><input type="checkbox"> 21. 会配置和使用 Orchestrator（设置 ＞ 模型 ＞ Orchestrator 设置，Pro/Ultra 默认 Neon 规划 + Hydrogen 执行，企业版固定 Carbon + Hydrogen）。</label>
+<label class="tut-check"><input type="checkbox"> 22. 会用 5 个高频斜杠命令：/goal、/grill-me、/schedule、/browser、/plugin。</label>
+<label class="tut-check"><input type="checkbox"> 23. 会做本地验收（录、算、刷、删与 4 项边界测试）、会按浏览器强制刷新、会开右键「检查 → Console」把红字报错交给 AI 自修。</label>
+<label class="tut-check"><input type="checkbox"> 24. 知道做完一阶段或遇到“鬼打墙”时，先撤销回滚再果断 New Chat（开新对话）。</label>
+<p>五、分享、上线与排错自救（25–30）</p>
+<label class="tut-check"><input type="checkbox"> 25. 分得清本地预览（localhost）与公网正式上线（https://）的区别，不把 localhost 发给别人。</label>
+<label class="tut-check"><input type="checkbox"> 26. 会让 AI 把私密小工具打包成单个 HTML 文件微信直传。</label>
+<label class="tut-check"><input type="checkbox"> 27. 会用静态托管平台（如 Netlify Drop）30 秒拖拽上线，生成手机竖屏好用的公网链接。</label>
+<label class="tut-check"><input type="checkbox"> 28. 上线前严格核对安全红线：绝不公开真实隐私、公司机密、密钥密码与侵权素材。</label>
+<label class="tut-check"><input type="checkbox"> 29. 遇到登录转圈、找不到 Neon、404、CSV 乱码等常见翻车，能直接翻 C-5 速查表自主排错。</label>
+<label class="tut-check"><input type="checkbox"> 30. 成功在 7 天内亲手做出并分享了至少 1 个能解决真实小痛点的成品，彻底告别对“编程”的恐惧。</label>
+<p>六、进阶习惯与长期稳健（31–40，做法 + 翻车提醒）</p>
+<label class="tut-check"><input type="checkbox"> 31. 认准官方下载源与版本号：只从 antigravity.google/download 下载并核对 App v2.5+ / CLI v1.2+，绝不装第三方软件站的捆绑包。</label>
+<label class="tut-check"><input type="checkbox"> 32. Mac 正确启动与覆盖升级：始终从 Applications 文件夹启动且升级必选 Replace，绝不在 .dmg 虚拟磁盘里直接跑软件。</label>
+<label class="tut-check"><input type="checkbox"> 33. 需求划清“不要改哪里”：发微调指令时顺手写明锁定不改的文件和旧功能，别让 AI 热心过头把原本好用的模块重写坏。</label>
+<label class="tut-check"><input type="checkbox"> 34. 跑偏立刻喊停纠偏：发现方案变复杂或漏了重点时直接用纠偏话术打回重规划，千万别将错就错点同意。</label>
+<label class="tut-check"><input type="checkbox"> 35. 养成边界测试习惯：第一版做完必测空数据、输错字、连续刷新和手机竖屏，正常流程能跑通不代表不会崩。</label>
+<label class="tut-check"><input type="checkbox"> 36. Fast 打磨坚持一次只改一处：每轮只提一个小改动并立刻强制刷新验货，绝不把五个大改动揉进同一句话里发。</label>
+<label class="tut-check"><input type="checkbox"> 37. 排错牢记先做三件事：出问题按“先看红字 → 先回退 → 先开新对话”顺序处理，别在改乱的代码上继续硬刚。</label>
+<label class="tut-check"><input type="checkbox"> 38. 多任务并行严格隔离目录：开并行 Agent 时必须绑定不同的独立空文件夹，绝不让两个窗口同时改同一个目录。</label>
+<label class="tut-check"><input type="checkbox"> 39. 避开微信单文件脚本拦截与缓存：发给朋友手机玩用拖拽上线给公网链接（更新后加 ?v=2 强刷缓存），私密单文件则提醒对方在电脑浏览器双击打开。</label>
+<label class="tut-check"><input type="checkbox"> 40. 定期核对官网最新动态：知道模型下线（如 2026-11-30 下线清单）、套餐和界面按钮会随版本迭代，遇到差异时以实机界面和 antigravity.google 官网为准。</label>
+<h2>全书结语：写给每一位从零开始的你</h2>
+<p>能一路跟着小森把 A 精编入门版、B 完整版、C 超全手册版（第二版）全部读完，你真的非常了不起。</p>
+<p>以前我们总觉得，会写代码的人就像掌握着神秘咒语的魔法师，普通人只能忍受市面上那些广告满天飞、功能不趁手、还动不动收年费的现成软件。但从今天起，这堵高墙已经倒了——你不需要成为程序员，只需要成为一个会清晰表达想法、会守住安全底线、会认真验收作品的“总设计师”。</p>
+<p>在合上这本手册前，小森最后再送你 3 句大实话：</p>
+<p>一切事实以官网为准，版本永远在变：本全书所有入口、模型、下线日期与费用规则，均以 2026 年 11 月 25 日 antigravity.google 官网为准。AI 工具进化得飞快，过几个月按钮文字、模型名字和套餐细节还会继续更新；遇到界面长得不太一样时别慌，随时去官网核对最新口径，而你学会的“四要素提需求、先规划后执行、先存档再动手、亲手验收”这套底层心法，永远不会过时。</p>
+<p>永远不要把隐私数据公开上线：工具再顺手，也绝不要把真实家庭账单、手机号、身份证号、公司机密、账号密码或 API 密钥写死在公开上线的网页里。私密数据留在本地，公开网页只放空壳模板。</p>
+<p>先做出一个“丑但能用”的，再慢慢变美：别指望第一版就完美无缺。先跑通核心功能，存好档，再用 Fast 模式一轮轮打磨，你会发现创造的快乐会上瘾。</p>
+<p>祝你玩得开心，做出属于你的第一个、第十个、第一百个超酷小工具！</p>
+</div>
         </section>
         <script>(function () {
-  var a = document.getElementById('tut-a');
-  var b = document.getElementById('tut-b');
-  var ba = document.getElementById('tut-open-a');
-  var bb = document.getElementById('tut-open-b');
-  function toggle(show, hide, btnShow, btnHide) {
-    var willShow = show.hidden;
-    show.hidden = !willShow;
-    hide.hidden = true;
-    btnShow.setAttribute('aria-expanded', willShow ? 'true' : 'false');
-    btnHide.setAttribute('aria-expanded', 'false');
-  }
-  if (ba && a && b) { ba.addEventListener('click', function () { toggle(a, b, ba, bb); }); }
-  if (bb && a && b) { bb.addEventListener('click', function () { toggle(b, a, bb, ba); }); }
+  var panels = [
+    { body: document.getElementById('tut-a'), btn: document.getElementById('tut-open-a') },
+    { body: document.getElementById('tut-b'), btn: document.getElementById('tut-open-b') },
+    { body: document.getElementById('tut-c'), btn: document.getElementById('tut-open-c') }
+  ];
+  panels.forEach(function (p) {
+    if (p.btn && p.body) {
+      p.btn.addEventListener('click', function () {
+        var willShow = p.body.hidden;
+        panels.forEach(function (q) {
+          if (q.body) { q.body.hidden = true; }
+          if (q.btn) { q.btn.setAttribute('aria-expanded', 'false'); }
+        });
+        p.body.hidden = !willShow;
+        p.btn.setAttribute('aria-expanded', willShow ? 'true' : 'false');
+      });
+    }
+  });
 })();</script>
       </div>
 
