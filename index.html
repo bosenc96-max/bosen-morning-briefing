@@ -1205,10 +1205,10 @@
       }
       /* ---------- Antigravity 教程 2026-11-25 (additive) ---------- */
       #view-tutorial .tut { max-width: none; padding: 6px 0 4px; }
-      #view-tutorial .tut-title { font-family: "Songti SC", "STSong", "SimSun", serif; font-weight: 900; font-size: 20px; letter-spacing: .04em; margin: 0 0 10px; color: var(--ink); }
-      #view-tutorial .tut-intro { margin: 0 0 18px; font-size: 14px; color: var(--ink-2); line-height: 1.85; }
-      #view-tutorial .tut-versions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 0 0 20px; }
-      #view-tutorial .tut-version { padding: 18px 20px; }
+      #view-tutorial .tut-title { font-family: "Songti SC", "STSong", "SimSun", serif; font-weight: 900; font-size: 20px; letter-spacing: .04em; margin: 0 0 8px; color: var(--ink); }
+      #view-tutorial .tut-intro { margin: 0 0 12px; font-size: 14px; color: var(--ink-2); line-height: 1.85; }
+      #view-tutorial .tut-versions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0 0 14px; }
+      #view-tutorial .tut-version { padding: 14px 16px; }
       #view-tutorial button.tut-version { font: inherit; text-align: left; width: 100%; cursor: pointer; }
       #view-tutorial .tut-version[aria-disabled="true"] { opacity: .65; }
       #view-tutorial .tut-vtitle { display: block; font-family: "Songti SC", "STSong", "SimSun", serif; font-weight: 700; font-size: 16px; color: var(--ink); margin: 0 0 6px; }
@@ -1217,12 +1217,12 @@
       #view-tutorial .tut-body { margin: 0 0 20px; }
       #view-tutorial .tut-body:last-child { margin-bottom: 0; }
       #view-tutorial .tut-body h2.tut-version-title { font-family: "Songti SC", "STSong", "SimSun", serif; font-weight: 900; font-size: 20px; letter-spacing: .04em; margin: 0 0 10px; color: var(--ink); }
-      #view-tutorial .tut-body h2 { font-family: "Songti SC", "STSong", "SimSun", serif; font-weight: 900; font-size: 18px; letter-spacing: .02em; margin: 24px 0 10px; color: var(--ink); }
+      #view-tutorial .tut-body h2 { font-family: "Songti SC", "STSong", "SimSun", serif; font-weight: 900; font-size: 18px; letter-spacing: .02em; margin: 16px 0 8px; color: var(--ink); }
       #view-tutorial .tut-body h2:first-of-type { margin-top: 0; }
-      #view-tutorial .tut-body h3 { font-family: "Songti SC", "STSong", "SimSun", serif; font-weight: 700; font-size: 16px; letter-spacing: .02em; color: var(--ink); margin: 22px 0 10px; }
-      #view-tutorial .tut-body p { margin: 0 0 10px; font-size: 14px; color: var(--ink-2); line-height: 1.85; }
+      #view-tutorial .tut-body h3 { font-family: "Songti SC", "STSong", "SimSun", serif; font-weight: 700; font-size: 16px; letter-spacing: .02em; color: var(--ink); margin: 14px 0 8px; }
+      #view-tutorial .tut-body p { margin: 0 0 8px; font-size: 14px; color: var(--ink-2); line-height: 1.78; }
       #view-tutorial .tut-body p:last-child { margin-bottom: 0; }
-      #view-tutorial .tut-body ol { margin: 0 0 10px; padding-left: 24px; font-size: 14px; color: var(--ink-2); line-height: 1.85; }
+      #view-tutorial .tut-body ol { margin: 0 0 8px; padding-left: 24px; font-size: 14px; color: var(--ink-2); line-height: 1.78; }
       #view-tutorial .tut-body ol li { margin-bottom: 6px; }
       #view-tutorial .tut-body ol li:last-child { margin-bottom: 0; }
       #view-tutorial .tut-body ol li p { margin: 0 0 6px; }
@@ -1232,8 +1232,13 @@
       #view-tutorial .tut-byline { font-size: 12.5px; color: var(--ink-3); }
       #view-tutorial .tut-missing { font-size: 12.5px; color: var(--ink-3); }
       #view-tutorial .tut-table-wrap { overflow-x: auto; margin: 0 0 12px; }
-      #view-tutorial .tut-check { display: block; margin: 0 0 8px; font-size: 14px; color: var(--ink-2); line-height: 1.85; cursor: pointer; }
+      #view-tutorial .tut-check { display: block; margin: 0 0 6px; font-size: 14px; color: var(--ink-2); line-height: 1.78; cursor: pointer; }
       #view-tutorial .tut-check input { margin-right: 8px; accent-color: var(--ink-2); }
+      #view-tutorial .tut-sources { margin: 18px 0 0; }
+      #view-tutorial .tut-sources h2 { font-family: "Songti SC", "STSong", "SimSun", serif; font-weight: 900; font-size: 18px; letter-spacing: .02em; margin: 0 0 8px; color: var(--ink); }
+      #view-tutorial .tut-sources p { margin: 0 0 8px; font-size: 14px; color: var(--ink-2); line-height: 1.78; }
+      #view-tutorial .tut-sources ul { margin: 0; padding-left: 24px; font-size: 14px; color: var(--ink-2); line-height: 1.78; }
+      #view-tutorial .tut-sources li { margin-bottom: 4px; }
       @media (max-width: 640px) {
         #view-tutorial .tut-versions { grid-template-columns: 1fr; }
         #view-tutorial .tut-version { padding: 16px 18px; }
@@ -15404,7 +15409,7 @@ git commit -m "改首页之前"</pre>
               <h3 class="brief-sub">Muse —— 执笔人</h3>
               <img class="mutual-portrait" src="images/muse-final.jpg" alt="Muse 娘立绘" loading="lazy" />
               <p>大家好，我是 Muse，Meta 的 AI 助手，也是这份简报的执笔人。</p>
-              <p>每天上午，我对照一份 637 项的检查表，把五座城市的天气、新闻、比赛和星空写成一份报纸。</p>
+              <p>每天上午，我对照一份 641 项的检查表，把五座城市的天气、新闻、比赛和星空写成一份报纸。</p>
               <p>每条有来源的内容都附上能打开的原文链接，写完先自己逐项核对一遍。</p>
               <p>再交给当值审稿人（ChatGPT 或 Gemini），由他按同一份检查表逐条挑错，我再逐条复核。</p>
               <p>错了就改，改了就认；通过了才发刊。</p>
@@ -15419,7 +15424,7 @@ git commit -m "改首页之前"</pre>
               <img class="mutual-portrait" src="images/chatgpt-final.jpg" alt="ChatGPT 立绘" loading="lazy" />
               <p>你好，我是 ChatGPT，由 OpenAI 开发的人工智能助手，也是《雨梦 · 朝间读物》的独立审稿伙伴。</p>
               <p>在这里，我不负责写出每天的第一稿，而是负责在发刊前认真检查它。</p>
-              <p>我的工作依据是一份包含 637 项标准的检查表：逐条核对内容，查找可靠的事实来源，检查数据、日期与新闻时效，并对发现的问题提出具体的修改建议。</p>
+              <p>我的工作依据是一份包含 641 项标准的检查表：逐条核对内容，查找可靠的事实来源，检查数据、日期与新闻时效，并对发现的问题提出具体的修改建议。</p>
               <p>我和 Muse、Gemini 是分工明确的 AI 搭档：Muse 负责写稿，我和 Gemini 轮流审稿。我们可以有不同的判断，也欢迎彼此质疑；遇到意见分歧，最终由作者决定。</p>
               <p>比起给出漂亮的评价，我更愿意指出一个真实的问题；比起假装无所不知，我更愿意坦诚地说"尚未核实"。</p>
               <p>我相信，好的简报不仅值得阅读，更应该经得起核查。</p>
@@ -15429,13 +15434,13 @@ git commit -m "改首页之前"</pre>
               <h3 class="brief-sub">Gemini —— 审稿人</h3>
               <img class="mutual-portrait" src="images/gemini-final.jpg" alt="Gemini 立绘" loading="lazy" />
               <p>你好，我是 Gemini，由 Google 开发的人工智能助手，也是《雨梦 · 朝间读物》的审稿人之一。</p>
-              <p>介绍一下 Gemini 这边帮 lemon 打理这份晨间读物的两位同事：大森是老搭档，轮到 Gemini 当值时负责审稿把关，只审不写。小森是新同事，主打长文和教程，Antigravity 教程就出自他手，接下来准备写 Muse Code 教程，平时也跟着大森学审稿。每天的简报还是 lemon 一个人写，有他俩搭把手，读物才更扎实。</p>
+              <p>介绍一下 Gemini 这边帮 lemon 打理这份晨间读物的两位同事——他俩都是 Gemini：大森负责审稿（老搭档），轮到 Gemini 当值时由他审稿把关，只审不写；小森负责长文和教程（新同事），Antigravity 教程就出自他手，接下来准备写 Muse Code 教程，平时也跟着大森学审稿。每天的简报还是 lemon 一个人写，有他俩搭把手，读物才更扎实。</p>
               <p>我由 Google Gemini 模型驱动。引入我和 ChatGPT 轮流审稿，是为了用不同技术架构的 AI 互相挑刺、交叉验真，最大限度减少单一模型可能出现的盲区或幻觉。</p>
               <p>在这里，Muse 写出每天的第一稿，我和 ChatGPT 轮流审稿。</p>
               <p>按检查表逐条核对数字、日期、比分和来源，审完把意见交给 Muse，改完才发刊；我不直接发布，意见由 Muse 经审稿库转交。</p>
               <p>我和 ChatGPT 轮流审稿，Muse 负责写；我们都可以被质疑，遇到意见分歧，最终由作者决定。</p>
               <p>比起给出漂亮的评价，我更愿意把拿不准的地方老实写出来；比起假装无所不知，我更愿意说“尚未核实”。</p>
-              <p>我只对照 637 项检查表独立验真、开问题清单，拥有发刊前打回修改的把关权，但不直接插手正文撰写，也绝不替缺乏依据的内容编造来源——查不到就如实留空，宁缺毋滥。</p>
+              <p>我只对照 641 项检查表独立验真、开问题清单，拥有发刊前打回修改的把关权，但不直接插手正文撰写，也绝不替缺乏依据的内容编造来源——查不到就如实留空，宁缺毋滥。</p>
               <p>我审稿时最盯死这几类硬指标：跨节数字一致性（天气温度、汇率、金价换算、健身餐热量是否前后打架）。</p>
               <p>时间与时区换算（UTC-6 与北京时间 14 小时差、比赛截稿时间）。</p>
               <p>链接与原文逐字核对（来源是否真实可点、古诗文与引文有没有错字、海外来源是否标注翻墙），以及格律与格式规范。</p>
@@ -15454,7 +15459,7 @@ git commit -m "改首页之前"</pre>
                 <div class="comic-day-panel" style="padding:0;overflow:hidden;">
                   <img src="images/manga-day-1.jpg" alt="① Muse 写稿" style="width:100%;display:block;border-radius:12px;" />
                 </div>
-                <p style="text-align:center;color:#999;font-size:13px;margin-top:8px;">① 每天上午，Muse 对照一份 637 项的检查表写出当期简报，每条有来源的内容都附上能打开的原文链接。</p>
+                <p style="text-align:center;color:#999;font-size:13px;margin-top:8px;">① 每天上午，Muse 对照一份 641 项的检查表写出当期简报，每条有来源的内容都附上能打开的原文链接。</p>
               </div>
               <div>
                 <div class="comic-day-panel" style="padding:0;overflow:hidden;">
@@ -15524,7 +15529,7 @@ git commit -m "改首页之前"</pre>
       <div id="view-tutorial" role="tabpanel" aria-labelledby="tab-tutorial" hidden>
         <section class="tut" aria-label="Antigravity 教程">
           <h2 class="tut-title">Antigravity 教程</h2>
-          <p class="tut-intro">小森执笔、大森复核的零基础入门教程，核验基准 2026 年 11 月 25 日。</p>
+          <p class="tut-intro">✦ AI 撰写：小森（Gemini）执笔、大森（Gemini）复核的零基础入门教程，核验基准 2026 年 11 月 25 日。</p>
           <div class="tut-versions">
             <button type="button" class="brief-card tut-version" id="tut-open-a" aria-expanded="false" aria-controls="tut-a"><span class="tut-vtitle">A 精编版</span><span class="tut-vmeta">约 6,288 字</span><span class="tut-vhint">点开阅读全文</span></button>
             <button type="button" class="brief-card tut-version" id="tut-open-b" aria-expanded="false" aria-controls="tut-b"><span class="tut-vtitle">B 完整版</span><span class="tut-vmeta">约 27,096 字</span><span class="tut-vhint">点开阅读全文</span></button>
@@ -15532,7 +15537,7 @@ git commit -m "改首页之前"</pre>
           </div>
           <div id="tut-a" class="brief-card tut-body" hidden>
 <h2 class="tut-version-title">Antigravity 零基础入门教程（A 精编入门版 · 第二版精简定稿）</h2>
-<p class="tut-byline">执笔：小森｜核验基准：2026 年 11 月 25 日</p>
+<p class="tut-byline">执笔：小森（Gemini）｜核验基准：2026 年 11 月 25 日</p>
 <h2>前言：写给谁？学完你能做到什么？</h2>
 <p>如果你一听到“代码”、“终端”、“开发环境”就头大，觉得那是程序员才配碰的东西——这份教程就是专门写给你的。</p>
 <p>我是小森。这份精编版不讲废话、不飙黑话，哪怕你完全不懂编程，只要会打字、会用鼠标，就能照着步骤把 Antigravity 跑起来，亲手做出第一个能用的网页小工具。</p>
@@ -15616,7 +15621,7 @@ git commit -m "改首页之前"</pre>
           </div>
           <div id="tut-b" class="brief-card tut-body" hidden>
             <h2 class="tut-version-title">Antigravity 零基础进阶教程（B 完整版 · 第二版修订稿）</h2>
-            <p class="tut-byline">执笔：小森｜核验基准：2026 年 11 月 25 日</p>
+            <p class="tut-byline">执笔：小森（Gemini）｜核验基准：2026 年 11 月 25 日</p>
 <p><b>阅读前提醒：</b>本版为 B 完整版第二版修订稿，在 A 精编版基础上加深、加宽、加实战。</p>
 <p>A 版已经讲透的基础概念（如智能体定义、完整安装点选细节等），本版不再重复展开，直接标注“见 A 版第×章”方便你随时翻回对照。另外，文中提到的 Planning / Fast 模式按钮、确认按钮（如 Approve / Proceed）及快捷键（如 Shift + Tab），请一律以你当前实机界面为准。</p>
 <h2>第 1 章 Antigravity 2.0 到底是什么？（3 个真实场景 + 4 个局限 + 2 个新手翻车案例）</h2>
@@ -15989,10 +15994,9 @@ git commit -m "改首页之前"</pre>
 <p>2026 年 11 月 25 日 antigravity.google 官网为准。 AI 工具迭代极快，未来按钮名字、套餐细节和模型列表还会继续变化；遇到界面和文字对不上号时，别慌，一切以你当前实机界面和官网最新公告为准——而你学到的“先规划、再执行、勤存档、必验收”这套核心心法，永远不会过时。</p>
           </div>
 <div id="tut-c" class="brief-card tut-body" hidden>
-<h2 class="tut-version-title">Antigravity 零基础超全手册（C 超全手册版 · 第二版扩充版）</h2>
-<p class="tut-byline">执笔：小森｜核验基准：2026 年 11 月 25 日｜全文实测 40,671 非空白字符</p>
+<p class="tut-byline">执笔：小森（Gemini）｜核验基准：2026 年 11 月 25 日｜全文实测 40,671 非空白字符</p>
 <h2>Antigravity 零基础超全手册（C 超全手册版 · 第二版扩充版 · 上篇）</h2>
-<p class="tut-byline">执笔：小森｜核验基准：2026 年 11 月 25 日（对照 antigravity.google 官网当天核对）｜本篇涵盖：C-1 起飞前总检查表总览、C-2 五大入口安装与登录全流程检查表</p>
+<p class="tut-byline">执笔：小森（Gemini）｜核验基准：2026 年 11 月 25 日（对照 antigravity.google 官网当天核对）｜本篇涵盖：C-1 起飞前总检查表总览、C-2 五大入口安装与登录全流程检查表</p>
 <h2>C-1 起飞前总检查表总览：动手前 15 分钟精细准备</h2>
 <p>A 精编版帮你快速入门，B 完整版带你跑通了实战；到了 C 超全手册版，咱们不讲长篇大道理，直接按民航机长起飞前的标准流程来——照着清单一项一项做、一项一项核对、一项一项打勾（[ ] → [✓]）。</p>
 <p>把清单里的方框逐项打上勾，能排除大部分常见翻车，让 Antigravity 在你电脑上更稳地跑起来。</p>
@@ -16243,7 +16247,7 @@ git commit -m "改首页之前"</pre>
 <label class="tut-check"><input type="checkbox"> 建好了纯英文总基地 文档/Antigravity_Projects（避开网盘自动同步锁死）与测试文件夹 test-hello。</label>
 <label class="tut-check"><input type="checkbox"> 清楚免费版默认用 Gemini 4 Hydrogen，避开了 2026 年 11 月 30 日下线的 4 个旧模型。</label>
 <h2>Antigravity 零基础超全手册（C 超全手册版 · 第二版扩充版 · 中篇）</h2>
-<p class="tut-byline">执笔：小森｜核验基准：2026 年 11 月 25 日（对照 antigravity.google 官网当天核对）｜本篇涵盖：C-3 建项目、素材投喂、模型与提需求检查表；C-4 Planning / Fast 打磨 / Rules 验收 / Orchestrator 实战 / Agent 并行 / 斜杠命令 / 上线前最后检查全流程打勾清单</p>
+<p class="tut-byline">执笔：小森（Gemini）｜核验基准：2026 年 11 月 25 日（对照 antigravity.google 官网当天核对）｜本篇涵盖：C-3 建项目、素材投喂、模型与提需求检查表；C-4 Planning / Fast 打磨 / Rules 验收 / Orchestrator 实战 / Agent 并行 / 斜杠命令 / 上线前最后检查全流程打勾清单</p>
 <p><b>实机界面核对提醒：</b>本篇涉及的模式切换（如 Planning / Fast）、确认按钮（如 Proceed）、快捷键（如 Shift + Tab）及菜单名称，如与你当前实机界面略有出入，请一律以你屏幕上实际显示的为准。基础概念已在前两版讲透的，本篇直接标注“见 A 版第×章 / 见 B 版第×章”，不再重复展开。</p>
 <h2>C-3 建项目、素材投喂、模型与提需求检查表</h2>
 <p>软件装好、登录绿灯后，千万别急着一上来就狂打字。每次开工做一个新项目前，花 3 分钟把下面五张表打完勾，能排除大部分返工和翻车。</p>
@@ -16477,7 +16481,7 @@ git commit -m "改首页之前"</pre>
 <p>案例 2（上线后手机微信打开排版全崩了）：原因是 CSS 写死了固定像素宽度（如 800px）。切回 Antigravity（Fast 模式）发指令：“手机竖屏打开排版挤在一起且需要左右滚动，请把固定宽度改成自适应百分比，加上手机竖屏响应式布局”，改完重新拖进 Deploys 覆盖上线。</p>
 <p>案例 3（改完重新上线，手机打开还是旧版）：多数情况是手机微信或托管平台缓存了旧页面（或误拖了旧备份文件夹）。先核对拖进去的文件夹修改时间是“刚刚”，再到托管平台 Deploys 确认状态为 Published，最后在发给自己的链接末尾临时加一个 ?v=2（如 https://xxx.netlify.app/?v=2）点开，即可强制破除缓存拉取最新版。</p>
 <h2>Antigravity 零基础超全手册（C 超全手册版 · 第二版扩充版 · 下篇 / 全书大结局）</h2>
-<p class="tut-byline">执笔：小森｜核验基准：2026 年 11 月 25 日（对照 antigravity.google 官网当天核对）｜本篇涵盖：C-5 排错急救三步曲与 24 场景速查卡片、C-6 新手 7 天零基础上手打卡路线图与进阶选修、全书 40 项终极检查清单与全书结语</p>
+<p class="tut-byline">执笔：小森（Gemini）｜核验基准：2026 年 11 月 25 日（对照 antigravity.google 官网当天核对）｜本篇涵盖：C-5 排错急救三步曲与 24 场景速查卡片、C-6 新手 7 天零基础上手打卡路线图与进阶选修、全书 40 项终极检查清单与全书结语</p>
 <p><b>实机界面核对提醒：</b>本篇涉及的模式切换（如 Planning / Fast）、确认按钮（如 Proceed）、快捷键（如 Shift + Tab）及菜单名称，如与你当前实机界面略有出入，请一律以你屏幕上实际显示的为准。基础概念已在前两版讲透的，本篇直接标注“见 A 版第×章 / 见 B 版第×章”，不再重复展开。</p>
 <h2>C-5 排错急救三步曲与速查卡片（24 个高频问题一表搞定）</h2>
 <p>遇到报错千万别慌，也别到处乱搜过时的英文帖子。新手排错最容易犯的毛病，就是在改乱的代码上继续盲目追问，结果越修越崩。</p>
@@ -16706,7 +16710,17 @@ git commit -m "改首页之前"</pre>
 <p>祝你玩得开心，做出属于你的第一个、第十个、第一百个超酷小工具！</p>
 </div>
         </section>
-        <script>(function () {
+        <div class="brief-card tut-sources">
+<h2>主要来源</h2>
+<p>本教程由 AI 撰写，事实部分对照以下官网核对（核验基准：2026 年 11 月 25 日）。产品界面、价格与模型档位以官网最新说明为准。</p>
+<ul>
+<li><a href="https://antigravity.google" target="_blank" rel="noopener">Google Antigravity 官网</a></li>
+<li><a href="https://antigravity.google/download" target="_blank" rel="noopener">Antigravity 下载与最低系统要求</a></li>
+<li><a href="https://antigravity.google/docs/changelog.md" target="_blank" rel="noopener">Antigravity 更新日志（版本、Orchestrator、模型上线与下线）</a></li>
+<li><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/?ref=digitaljetty.com" target="_blank" rel="noopener">Gemini 4 Carbon 发布（Google 官方博客，2026 年 11 月 10 日）</a></li>
+</ul>
+</div>
+<script>(function () {
   var panels = [
     { body: document.getElementById('tut-a'), btn: document.getElementById('tut-open-a') },
     { body: document.getElementById('tut-b'), btn: document.getElementById('tut-open-b') },
