@@ -17542,14 +17542,19 @@ git commit -m "改首页之前"</pre>
          it does the opposite: any top back button found in its head
          (e.g. reintroduced by a future build's markup) is removed
          before it can ever be wired or shown. The bottom 返回归档
-         button in each issue's prev/next nav is a separate control
-         and is not touched here. */
+         button in each issue's prev/next nav is removed from
+         #view-latest too (2026-11-26: the newest issue is the
+         landing page, so a 'back to archive' link under it reads
+         as a stray); dated issues keep theirs. */
       (function () {
         var latestBox = document.getElementById('view-latest');
         if (latestBox) {
           var latestHead = latestBox.querySelector('.issue-head');
           var stray = latestHead ? latestHead.querySelector('.tab-btn.back-archive') : null;
           if (stray && stray.parentNode) { stray.parentNode.removeChild(stray); }
+          var latestNav = latestBox.querySelector('.issue-nav');
+          var navBack = latestNav ? latestNav.querySelector('.issue-nav-btn.to-archive.back-archive') : null;
+          if (navBack && navBack.parentNode) { navBack.parentNode.removeChild(navBack); }
         }
         var boxes = [];
         var panelBoxes = document.querySelectorAll('.issue-panel');
