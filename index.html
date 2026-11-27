@@ -16894,7 +16894,7 @@ git commit -m "改首页之前"</pre>
 <p>【新手常见翻车点 2：Fast 微调把页面改崩了】</p>
 <p><b>现象：</b>比如你在第 3 轮加导出按钮时，顺口让它“顺便把顶部排版调紧凑一点”，结果刷新一看，整个记账表单错位了，连保存按钮都点不动了。</p>
 <p><b>错了怎么办：</b>别跟它在报错的基础上继续硬改！ 立刻用以下任一招吃“后悔药”：</p>
-<ol><li><p>点击对话流里刚才那一步旁边的撤销/回滚按钮（以你当前实机界面为准），直接退回微调前的状态；</p></li><li><p>或者在输入框直接说：“刚才这轮改动把页面改崩了，请帮我用 Git 回退到‘V1 基础记账完成’那个存档点，把刚才的改动全部丢弃。”回退干净后，开一个新对话（New Chat），只提“加导出 CSV 按钮”这一个单一需求。</p></li></ol>
+<ol><li><p>点击对话流里刚才那一步旁边的撤销/回滚按钮（以你当前实机界面为准），直接退回微调前的状态；</p></li><li><p>或者在输入框直接说：“刚才这轮改动把页面改崩了，请帮我用 Git 回退到‘V1 基础记账完成’那个存档点，把刚才的改动全部丢弃。”回退干净后，开一个新对话（+ New Conversation），只提“加导出 CSV 按钮”这一个单一需求。</p></li></ol>
 <h3>5.4 Orchestrator 专节：让 Neon 规划、Hydrogen 执行（附完整升级实例）</h3>
 <p>如果你是付费 Google AI Pro / Google AI Ultra / 企业版 用户，做稍微复杂一点的升级功能时，强烈推荐打开 Orchestrator 模式（基础原理见 A 版第 4 章 4.2 节）。</p>
 <p><b>默认黄金搭档：</b>默认规划模型是 Gemini 4 Neon（大脑最清醒，擅长拆解复杂结构），默认执行模型是 Gemini 4 Hydrogen（手速快、干活利索、更省配额）。</p>
@@ -16902,7 +16902,7 @@ git commit -m "改首页之前"</pre>
 <p><b>企业版特别说明：</b>企业版只提供固定的Carbon（规划）+ Hydrogen（执行）；自</p>
 <p>定义规划 / 执行模型只在 Pro / Ultra 里有。</p>
 <p><b>完整实例：</b>给家庭记账本升级“月度支出饼图看板”</p>
-<p>咱们接着上面的 family-budget 项目，先点 New Chat（开一个新对话），并确保已经做好了前面的 Git 存档：</p>
+<p>咱们接着上面的 family-budget 项目，先点 + New Conversation（开一个新对话），并确保已经做好了前面的 Git 存档：</p>
 <h3>第 1 步：选 Orchestrator，让 Gemini 4 Neon 出计划</h3>
 <p><b>点哪里：</b>在输入框模型选择器里选中 Orchestrator，模式选 Planning（以你当前实机界面为准），输入发送：请在现有 family-budget 记账本的基础上，新增一个“月度消费分析”区域：1. 用一个直观的饼图展示本月各类别（餐饮、买菜、交通等）的支出占比；2. 鼠标悬停在饼图色块上能看到具体金额和百分比；3. 依然保持纯前端双击可打开，不要破坏我现有的记账、删除和导出 CSV 功能。</p>
 <p><b>看到什么：</b>界面显示正在由 Gemini 4 Neon 进行规划，几秒后它给出一份详细的升级方案（比如说明用轻量原生 Canvas 画饼图，避免联网加载图表库失败，并列出只改动哪几个位置）。</p>
@@ -17025,7 +17025,7 @@ git commit -m "改首页之前"</pre>
 <p><b>原因大白话：</b>对话拖得太长，AI 脑子绕成浆糊了，开始拆东墙补西墙。</p>
 <p><b>照着做的解法：</b>立刻停手，别再跟它硬刚！</p>
 <ol><li><p>点对话流里的撤销/回滚按钮（以你当前实机界面为准），或者用你之前存好的 Git 存档 / 文件夹副本，先退回“好用的那一版”。</p></li></ol>
-<p>点击 New Chat（开一个全新对话），把你的单个小需求清清楚楚重新说一遍，通常很快就能修好。</p>
+<p>点击 + New Conversation（开一个全新对话），把你的单个小需求清清楚楚重新说一遍，通常很快就能修好。</p>
 <p>场景 9：网页或导出的表格里，中文全变成了“锟斤拷”或问号（中文乱码）</p>
 <p><b>现象：</b>原本该写着“买菜、餐饮”的地方，变成了一堆看不懂的乱码符号。</p>
 <p><b>原因大白话：</b>电脑存文字有不同的“密码本（编码）”，写文件用的密码本和打开文件用的密码本对不上号。</p>
@@ -18351,9 +18351,9 @@ git commit -m "改首页之前"</pre>
 <p>官方更新迭代极快，许多新功能按钮、CLI 参数和报错信息依然以英文原词呈现。看到生词先翻这本词典：一句话大白话解释，加对应正文章节，3 秒消除畏难情绪。部分词条的官方中文译名以你当前实机界面与官网为准。</p>
 <div class="tut-table-wrap"><table class="price-table"><thead><tr><th>英文原词</th><th>界面常见译法</th><th>一句话大白话解释</th><th>对应正文章节</th></tr></thead><tbody><tr><td>Orchestrator</td><td>自动编排</td><td>不是单个模型，是一套规划 + 执行自动分工模式</td><td>C-1 3.2a / C-1 3.2b / C-4 清单 6</td></tr><tr><td>Thinking level / xhigh</td><td>思考级别</td><td>模型动脑深度档位，Low / Medium / High / Extra（CLI 里 Extra 对应 xhigh）</td><td>C-1 3.2a / C-3 清单 2 2.2a</td></tr><tr><td>Worktree</td><td>工作树 / 隔离分支</td><td>基于 Git 拉出的隔离目录与分支，实验改动不碰主分支</td><td>C-3 清单 1 1.4 / C-4 清单 12 12.8</td></tr><tr><td>Artifact</td><td>产物卡片</td><td>AI 生成的结构化成果卡片（如实施计划、网页预览）</td><td>C-4 清单 1</td></tr><tr><td>Implementation Plan</td><td>实施计划</td><td>Planning 模式下 AI 先出的施工方案，审完再点确认执行</td><td>C-4 清单 1</td></tr><tr><td>Frontmatter</td><td>前置元数据</td><td>写在 Markdown 文件顶部的 YAML 配置块，用来声明规则触发器</td><td>C-4 清单 5 开头</td></tr><tr><td>Trigger（always_on / model_decision / glob / manual）</td><td>触发器</td><td>模块化规则什么时候生效：始终生效 / 模型按需调用 / 按文件类型 / 手动触发</td><td>C-4 清单 5 开头</td></tr><tr><td>Sandbox（Terminal sandbox）</td><td>沙盒</td><td>把终端命令关进隔离区，只能动工作区内的东西</td><td>C-3 清单 2 2.1 / C-4 清单 5 5.3</td></tr><tr><td>Allowlist / Denylist</td><td>白名单 / 黑名单</td><td>允许或拦截浏览器 Agent 访问的域名清单</td><td>C-4 清单 5 5.3</td></tr><tr><td>ADC</td><td>应用默认凭据</td><td>无头环境（服务器 / 容器 / CI）里免浏览器登录的凭证方式</td><td>C-2 模块一 步骤 6 / C-4 清单 10 10.1</td></tr><tr><td>SSO（SAML / OIDC）</td><td>单点登录</td><td>企业版用公司账号一次登录，到处通用</td><td>C-2 模块一 步骤 6</td></tr><tr><td>ACP</td><td>智能体客户端协议</td><td>第三方编辑器接入 Antigravity 的通用协议</td><td>C-4 清单 11 11.1</td></tr><tr><td>BYOK</td><td>自带密钥</td><td>用自己的 API 密钥换额度；订阅套餐不支持，CLI / SDK 可走直连</td><td>C-4 清单 12 12.4</td></tr><tr><td>AI Credit Overages</td><td>超额 AI 额度</td><td>基准配额耗尽后是否自动按量扣费的开关（Never / Always）</td><td>C-1 3.3 / C-3 清单 2 2.3 / C-4 清单 12 12.4</td></tr><tr><td>Core Web Vitals（LCP / CLS / INP）</td><td>核心网页指标</td><td>衡量网页加载、稳定、交互速度的三项体检分数</td><td>C-4 清单 8 8.6 / 8.8</td></tr><tr><td>Local Permissions</td><td>本地权限</td><td>四档预设：Request Review / Default / Auto / Turbo</td><td>C-3 清单 2 2.1</td></tr><tr><td>Automations</td><td>自动化任务</td><td>侧边栏里管理的持久定时任务（/automation 创建）</td><td>C-1 30 分钟自测 / C-4 清单 8 8.3、8.4</td></tr><tr><td>Customizations</td><td>自定义中心</td><td>集中管理 Rules、Skills、插件市场与已安装的入口</td><td>C-1 30 分钟自测</td></tr><tr><td>Background Tasks</td><td>后台任务</td><td>Agent 在后台启动的本地开发服务器等长驻进程</td><td>C-3 清单 2 2.2b</td></tr><tr><td>VCS Review</td><td>版本控制审阅</td><td>三视图（未提交 / 分支对比 / Agent 改动）逐块验收改动的面板</td><td>C-4 清单 4 4.7</td></tr><tr><td>Checkpoint / Revert</td><td>检查点 / 回退</td><td>对话级一键回退，把整个工作区退回本轮执行前</td><td>C-4 清单 4 4.6</td></tr><tr><td>Diff View</td><td>改动对比视图</td><td>红删绿增的对比框，逐块接受或拒绝改动</td><td>C-4 清单 4 4.7</td></tr><tr><td>MCP</td><td>模型上下文协议</td><td>给 Antigravity 接外部工具的通用 USB 接口</td><td>C-4 清单 8 8.8</td></tr><tr><td>Skill</td><td>技能</td><td>可复用的标准化能力包（触发描述 + 执行脚本 + 参考文件）</td><td>C-4 清单 5 5.4 / C-4 清单 11 11.6</td></tr><tr><td>Rules</td><td>自定义规则</td><td>给 AI 立的全局或项目家规</td><td>C-4 清单 5</td></tr><tr><td>Remote Agent</td><td>托管隔离环境</td><td>在 Google 云端隔离环境里跑任务，不占本地算力</td><td>C-4 清单 10 10.3</td></tr><tr><td>Remote Control</td><td>远程控制</td><td>手机浏览器远程遥控家里电脑上的会话</td><td>C-6 Day 11</td></tr><tr><td>/learn</td><td>学习沉淀命令</td><td>让 AI 把本轮纠错自动提炼成持久规则或 Skill</td><td>C-4 清单 5 5.4</td></tr><tr><td>/context</td><td>上下文占用</td><td>查看当前对话占了多少上下文小黑板</td><td>C-3 清单 5 交接小节</td></tr><tr><td>/model</td><td>切换模型</td><td>在 CLI 里切换当前模型（含 Orchestrator 搭档）</td><td>C-1 3.2a / C-4 清单 10 10.1</td></tr><tr><td>Nano Banana 2</td><td>生图模型</td><td>后台自动调用的专用图像生成模型，不用手动选</td><td>C-1 3.2a 补充 / C-3 清单 4 4.5</td></tr><tr><td>Planning / Fast</td><td>规划模式 / 快速模式</td><td>先出方案审完再动手 / 小步快跑直接改</td><td>C-3 清单 2 2.1 / C-4 清单 1、清单 4</td></tr><tr><td>GEMINI_API_KEY</td><td>Gemini API 密钥</td><td>CLI / SDK 走 Gemini API 直连时用的密钥，不走订阅配额</td><td>C-4 清单 10 10.4 / C-4 清单 12 12.4</td></tr></tbody></table></div>
 <h2>Antigravity 零基础超全手册（C 超全手册版 · 第二版扩充版 · 下篇 / 全书大结局）</h2>
-<p class="tut-byline">执笔：小森（Gemini）｜核验基准：2026 年 11 月 25 日（对照 antigravity.google 官网当天核对）｜本篇涵盖：C-5 排错急救三步曲与 25 场景速查卡片、C-6 新手 7 天零基础上手打卡路线图与进阶选修、全书 50 项终极检查清单与全书结语</p>
+<p class="tut-byline">执笔：小森（Gemini）｜核验基准：2026 年 11 月 25 日（对照 antigravity.google 官网当天核对）｜本篇涵盖：C-5 排错急救三步曲与 15 场景速查卡片、C-6 新手 7 天零基础上手打卡路线图与进阶选修、全书 50 项终极检查清单与全书结语</p>
 <p><b>实机界面核对提醒：</b>本篇涉及的模式切换（如 Planning / Fast）、确认按钮（如 Proceed）、快捷键（如 Shift + Tab）及菜单名称，如与你当前实机界面略有出入，请一律以你屏幕上实际显示的为准。基础概念已在前两版讲透的，本篇直接标注“见 A 版第×章 / 见 B 版第×章”，不再重复展开。</p>
-<h2>C-5 排错急救三步曲与速查卡片（25 个高频问题一表搞定）</h2>
+<h2>C-5 排错急救三步曲与速查卡片（15 个高频问题一表搞定）</h2>
 <p>遇到报错千万别慌，也别到处乱搜过时的英文帖子。新手排错最容易犯的毛病，就是在改乱的代码上继续盲目追问，结果越修越崩。</p>
 <p>排错先做三件事（冷静急救三步曲）</p>
 <p>不管撞上什么幺蛾子，先深吸一口气，按顺序做完下面这 3 件事，多数问题都能稳稳兜住：</p>
