@@ -20196,7 +20196,10 @@ git commit -m "改首页之前"</pre>
            a footer offers 「在当期查看 →」 (the old jump) and 收起.
            One open detail per list; tapping the row again collapses
            it. If the section is somehow missing, fall back to the
-           old jump so the row never goes dead. */
+           old jump so the row never goes dead. Weekly day blocks
+           (2026-11-27) reuse this for their 「阅读全文 →」 buttons,
+           passing the day div as anchor so the detail lands below
+           the whole day block instead of inside its header row. */
         var openCollDetail = null; /* { btn, box } currently open, if any */
         function closeCollDetail() {
           if (!openCollDetail) { return; }
@@ -20204,7 +20207,7 @@ git commit -m "改首页之前"</pre>
           openCollDetail.btn.setAttribute('aria-expanded', 'false');
           openCollDetail = null;
         }
-        function toggleCollDetail(btn, ds, key, origin) {
+        function toggleCollDetail(btn, ds, key, origin, anchor) {
           if (openCollDetail && openCollDetail.btn === btn) { closeCollDetail(); return; }
           closeCollDetail();
           var sec = sectionFor(boxFor(ds), key);
@@ -20234,7 +20237,8 @@ git commit -m "改首页之前"</pre>
           });
           foot.appendChild(jump);
           box.appendChild(foot);
-          btn.parentNode.insertBefore(box, btn.nextSibling);
+          var host = anchor || btn; /* weekly day blocks pass their day div */
+          host.parentNode.insertBefore(box, host.nextSibling);
           btn.setAttribute('aria-expanded', 'true');
           openCollDetail = { btn: btn, box: box };
         }
@@ -20429,6 +20433,7 @@ git commit -m "改首页之前"</pre>
         var wkPicker = document.getElementById('wk-picker');
         var allWks = allWindows();
         function renderWeek(week, isLatest) {
+          closeCollDetail(); /* a detail opened under the old week dies with its rows; drop the stale reference */
           if (wkRange) {
             wkRange.textContent = fmtDayW(week[0]) + ' – ' + fmtDayW(week[week.length - 1]) +
               (isLatest ? ' · 最近一个完整周，新一周完成时自动更新' : ' · 往期回顾');
@@ -20450,8 +20455,9 @@ git commit -m "改首页之前"</pre>
               var ob = document.createElement('button');
               ob.type = 'button';
               ob.className = 'wk-open';
-              ob.textContent = '看那期 →';
-              ob.addEventListener('click', function () { openIssue(wds, sectionIdFor(wds, 'headlines'), 'weekly'); });
+              ob.textContent = '阅读全文 →';
+              ob.setAttribute('aria-expanded', 'false');
+              ob.addEventListener('click', function () { toggleCollDetail(ob, wds, 'headlines', 'weekly', day); });
               dh.appendChild(ob);
               day.appendChild(dh);
               for (var c = 0; c < we.headlines.length; c++) {
@@ -20522,8 +20528,9 @@ git commit -m "改首页之前"</pre>
                 var ob = document.createElement('button');
                 ob.type = 'button';
                 ob.className = 'wk-open';
-                ob.textContent = '看那期 →';
-                ob.addEventListener('click', function () { openIssue(wds, sectionIdFor(wds, 'flashnews'), 'weekly'); });
+                ob.textContent = '阅读全文 →';
+                ob.setAttribute('aria-expanded', 'false');
+                ob.addEventListener('click', function () { toggleCollDetail(ob, wds, 'flashnews', 'weekly', day); });
                 dh.appendChild(ob);
                 day.appendChild(dh);
                 for (var fc = 0; fc < we.flashnews.length; fc++) {
