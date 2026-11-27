@@ -16674,9 +16674,9 @@ git commit -m "改首页之前"</pre>
 <p><b>大白话解释“glibc / glibcxx”：</b>Linux 系统自带的“基础运行字典”，系统太老字典缺词就跑不起来，较新的 Ubuntu / Debian 一般都达标。</p>
 <h3>2.2 四种开发环境 + 网页版怎么选？</h3>
 <p>打开 antigravity.google/download，官方共提供 4 种本地开发环境 + 1 个网页版入口：</p>
-<p>Antigravity App（桌面应用，v2.5+）：独立轻量桌面软件，界面清爽、对话优先。注意区分：Antigravity App 和独立版 Antigravity IDE 是两个不同产品！独立版 IDE 是给程序员用的重型代码编辑器，纯小白主力首选 Antigravity App。Antigravity CLI（命令行工具，agy v1.2+）：纯文字黑框框（终端）入口，靠敲英文命令干活。Antigravity CLI（agy）是新的终端入口，Gemini CLI 用户可按官方迁移指南迁移。适合习惯终端的开发者。For IDEs（7 个编辑器扩展）：为 VS Code、JetBrains 等 7 个主流代码编辑器（具体以官网为准）提供的插件，适合已有编程习惯的开发者。Antigravity SDK（Python）：官方打包的“编程零件盒”，供会写 Python 的开发者在代码中调用 Antigravity。前往 antigravity.google 文档的 SDK 板块按指引安装引入即可，纯小白前期不用碰。网页版入口（Web 版）：免下载安装，浏览器打开 antigravity.google 点击网页版入口登录即用，适合公司电脑锁死安装权限或想 3 分钟尝鲜的新手。</p>
+<p>Antigravity App（桌面应用，v2.30.0+）：独立轻量桌面软件，界面清爽、对话优先。注意区分：Antigravity App 和独立版 Antigravity IDE 是两个不同产品！独立版 IDE 是给程序员用的重型代码编辑器，纯小白主力首选 Antigravity App。Antigravity CLI（命令行工具，agy v1.2+）：纯文字黑框框（终端）入口，靠敲英文命令干活。Antigravity CLI（agy）是新的终端入口，Gemini CLI 用户可按官方迁移指南迁移。适合习惯终端的开发者。For IDEs（7 个编辑器扩展）：为 VS Code、JetBrains 等 7 个主流代码编辑器（具体以官网为准）提供的插件，适合已有编程习惯的开发者。Antigravity SDK（Python）：官方打包的“编程零件盒”，供会写 Python 的开发者在代码中调用 Antigravity。前往 antigravity.google 文档的 SDK 板块按指引安装引入即可，纯小白前期不用碰。网页版入口（Web 版）：免下载安装，浏览器打开 antigravity.google 点击网页版入口登录即用，适合公司电脑锁死安装权限或想 3 分钟尝鲜的新手。</p>
 <h3>2.3 手把手安装 Antigravity App（桌面端）</h3>
-<p>打开下载页：Chrome 或 Edge 访问 antigravity.google/download，找到 Antigravity App（v2.5+）区域。选对芯片版本：Mac 点左上角苹果图标 →「关于本机」，M1/M2/M3/M4 选 Apple Silicon，Intel 选 Intel；Windows 普通电脑选 x64，骁龙笔记本选 ARM64。下载得到 .dmg（Mac）或 .exe（Win）。执行安装与升级避坑：</p>
+<p>打开下载页：Chrome 或 Edge 访问 antigravity.google/download，找到 Antigravity App（v2.30.0+）区域。选对芯片版本：Mac 点左上角苹果图标 →「关于本机」，M1/M2/M3/M4 选 Apple Silicon，Intel 选 Intel；Windows 普通电脑选 x64，骁龙笔记本选 ARM64。下载得到 .dmg（Mac）或 .exe（Win）。执行安装与升级避坑：</p>
 <p><b>Mac：</b>双击 .dmg，将图标拖进 Applications（应用程序）文件夹。日后覆盖升级弹窗时，务必点 Replace（替换），千万不要点 Keep Both（保留两者），否则新旧双版本共存极易串味报错。若首次打开提示“无法验证开发者”，去「系统设置 → 隐私与安全性」最下方点「仍要打开」。</p>
 <p><b>Windows：</b>双击 .exe 按向导完成安装。若弹出蓝色 SmartScreen 警告，点「更多信息 → 仍要运行」。</p>
 <h2>第 3 章 第一次登录、账号分叉与安全工作区</h2>
@@ -16716,7 +16716,7 @@ git commit -m "改首页之前"</pre>
 <p>个人使用不用单独买 Token，免费版 $0/月（每周刷新、有每周上限）；个人付费分两档（以下为 2026 年 11 月 25 日美国挂牌价，各地区以官网为准）：Google AI Pro 为 $19.99/月，Google AI Ultra 分为 Ultra 5x（$99.99/月，Pro 配额的 5 倍）和 Ultra 20x（$199.99/月，Pro 配额的 20 倍）；企业版 Standard / Plus 每席位每月 30 美元起（另有 pay-as-you-go 按量计费档位，$0 席位费、按量计费）。付费 Pro / Ultra 用户还可按需购买 AI 积分（AI Credits），在设置里可选“绝不（Never）”或“总是（Always）”，只有在耗尽基准配额后才会动用 AI 积分。（注：详细模型对照与定价细表、以及 10 个高频快问快答已移至《B 完整版》。）</p>
 <h2>第 6 章 常见翻车急救（3 个真实排错案例）</h2>
 <p>浏览器授权完，桌面端一直转圈进不去怎么办？先切回 Chrome 授权页看地址栏下方有没有“要打开 Antigravity 吗？”弹窗被误关；再确认网络满足“能打开 antigravity.google 且登录不转圈”的标准；最后彻底退出软件重开，改用「复制链接」贴进 Chrome 重走授权。</p>
-<p>升级了 Pro，为什么模型列表里找不到 Gemini 4 Neon？先点软件角落头像核对邮箱，排查是不是把免费的备用小号授权进去了；再确认不是配额和模型受限的试用版 Pro（或未开通权限的 Workspace 账号）；最后确认 App 已更新至 v2.5+ 并重登刷新列表。</p>
+<p>升级了 Pro，为什么模型列表里找不到 Gemini 4 Neon？先点软件角落头像核对邮箱，排查是不是把免费的备用小号授权进去了；再确认不是配额和模型受限的试用版 Pro（或未开通权限的 Workspace 账号）；最后确认 App 已更新至 v2.30.0+ 并重登刷新列表。</p>
 <p>发消息报错“模型已下线 / 不可用”怎么办？切勿再选 2026 年 11 月 30 日下线的 Gemini 3.8 Flash、Gemini 4 Argon、Claude 4.6 或 GPT-OSS-120b。免费版切回默认的 Gemini 4 Hydrogen；付费版切到 Orchestrator 或 Gemini 4 Neon / Carbon（若开 Orchestrator 报错，去 设置 ＞ 模型 ＞ Orchestrator 设置 检查是否选了现行模型）。</p>
           </div>
           <div id="tut-b" class="brief-card tut-body" hidden>
@@ -16739,19 +16739,21 @@ git commit -m "改首页之前"</pre>
 <p>证码抢票，也不能直接操作微信给老板发消息。它的主战场就是你授权给它的那个本地文件夹。</p>
 <p>它一个人扛不住“商业级巨无霸软件”：做个人小工具、效率脚本、轻量级互动网页它游刃有余；但想零基础靠它直接做出支持百万人在线支付、带复杂后台风控的商业电商平台，是不现实的——这类系统需要专业工程师把控架构和安全。</p>
 <p>新手最容易踩的 2 个真实翻车案例翻车案例一：装错入口，被满屏英文代码吓得当场卸载</p>
-<h3>1.3 经过：小周听说 Antigravity 很适合小白，兴冲冲去官网下载，结果没看清名字，把 独立版 Antigravity IDE 下回了电脑。一打开，满屏都是目录树、终端窗、代码高亮、调试面板，连聊天框藏在哪儿都找了半天，以为自己选错了工具，差点直接放弃。复盘与避坑：Antigravity App（桌面应用 v2.5+） 和 独立版 Antigravity IDE 是两个完全不同的产品！前者是给普通人用的清爽对话式桌面端，后者是给程序员用的重型代码编辑器。小白下载时，务必认准 Antigravity App（详见第 2 章）。</h3>
+<h3>1.3 经过：小周听说 Antigravity 很适合小白，兴冲冲去官网下载，结果没看清名字，把 独立版 Antigravity IDE 下回了电脑。一打开，满屏都是目录树、终端窗、代码高亮、调试面板，连聊天框藏在哪儿都找了半天，以为自己选错了工具，差点直接放弃。复盘与避坑：Antigravity App（桌面应用 v2.30.0+） 和 独立版 Antigravity IDE 是两个完全不同的产品！前者是给普通人用的清爽对话式桌面端，后者是给程序员用的重型代码编辑器。小白下载时，务必认准 Antigravity App（详见第 2 章）。</h3>
 <p>翻车案例二：图省事把“整个桌面”当工作区，额度瞬间见底</p>
 <p>经过：小吴懒得新建空文件夹，打开 Antigravity App 后直接点了 Open Folder →桌面（Desktop），然后发了一句“帮我做个记账网页”。结果 Antigravity 开始扫描整个桌面上的几百个 Word、PDF、安装包和照片，不仅卡了半天，还没干正事就把免费版的每周额度消耗了一大截，更吓人的是差点把桌面上一个同名的旧index.html 给覆盖了。复盘与避坑：永远为每一个新想法建一个干净的独立空文件夹，绝对不要把桌面、整个硬盘或装满私人资料的文件夹直接交给 AI（详见第 3 章）。</p>
 <h2>第 2 章 四种开发环境 + 网页版深度对比与实操</h2>
 <p>在 2026 年 11 月 25 日的官网体系里，Antigravity 提供了 4 种本地开发环境 + 1 个网页版入口。基础选型思路见 A 版第 2 章 2.2 节，这一章我们把 5 个入口彻底拆开，每个入口都配一个手把手完整实操例子，让你彻底摸透它们各自的脾气。</p>
 <h3>2.1 五大入口一张表看清</h3>
-<div class="tut-table-wrap"><table class="price-table"><thead><tr><th>入口名称</th><th>定位与版本</th><th>适合谁</th><th>和独立版 IDE 的区别 / 备注</th></tr></thead><tbody><tr><td>1. Antigravity App</td><td>桌面应用（v2.5+）</td><td>绝大多数零基础小白、视觉控小白首选。</td><td>与独立版 Antigravity IDE 是两个不同产品；App 清爽轻量。</td></tr><tr><td>2. Antigravity CLI</td><td>命令行工具（agy v1.2+）</td><td>习惯黑框框、想跑极速批处理的人</td><td>新的终端入口，Gemini CLI 用户可按官方迁移指南迁移。</td></tr><tr><td>3. For IDEs 扩展</td><td>7 个主流编辑器</td><td>本身已在使用 VS Code、JetBrains 等编辑器的开发者</td><td>嵌在现有代码编辑器里直用，不用换工具。</td></tr><tr><td>4. Antigravity SDK</td><td>Python 开发工具包</td><td>会写 Python、想把 AI 嵌进自动化脚本的开发者</td><td>纯代码调用，无图形聊天窗口。</td></tr><tr><td>5. 网页版入口（Web）</td><td>浏览器在线版</td><td>公司电脑不能装软件、想零安装 3 分钟试玩的人</td><td>打开 antigravity.google 登录即用，免下载。</td></tr></tbody></table></div>
+<div class="tut-table-wrap"><table class="price-table"><thead><tr><th>入口名称</th><th>定位与版本</th><th>适合谁</th><th>和独立版 IDE 的区别 / 备注</th></tr></thead><tbody><tr><td>1. Antigravity App</td><td>桌面应用（v2.30.0+）</td><td>绝大多数零基础小白、视觉控小白首选。</td><td>与独立版 Antigravity IDE 是两个不同产品；App 清爽轻量。</td></tr><tr><td>2. Antigravity CLI</td><td>命令行工具（agy v1.2+）</td><td>习惯黑框框、想跑极速批处理的人</td><td>新的终端入口，Gemini CLI 用户可按官方迁移指南迁移。</td></tr><tr><td>3. For IDEs 扩展</td><td>7 个主流编辑器</td><td>本身已在使用 VS Code、JetBrains 等编辑器的开发者</td><td>嵌在现有代码编辑器里直用，不用换工具。</td></tr><tr><td>4. Antigravity SDK</td><td>Python 开发工具包</td><td>会写 Python、想把 AI 嵌进自动化脚本的开发者</td><td>纯代码调用，无图形聊天窗口。</td></tr><tr><td>5. 网页版入口（Web）</td><td>浏览器在线版</td><td>公司电脑不能装软件、想零安装 3 分钟试玩的人</td><td>打开 antigravity.google 登录即用，免下载。</td></tr></tbody></table></div>
 <h3>2.2 动手前的 4 条硬性核对（系统、地区、账号与套餐）</h3>
 <p>在挑入口动手前，花 30 秒核对以下 4 条最新基准（详见 A 版第 2、3、5 章）：</p>
-<ol><li><p>系统与升级：Mac 需 macOS 13+，Windows 需 Win 10/11（64 位），Linux 需满足glibc ≥ 2.28 且 glibcxx ≥ 3.4.25 。Mac 以后覆盖升级时，弹窗务必点Replace（替换），不要点 Keep Both（保留两者）。</p></li><li><p>地区与网络：中国大陆目前不在官方支持名单内；请核对你的 Google 账号关联地区，如不在支持名单内可提交地区变更申请。网络只要满足“能打开 antigravity.google 且登录不转圈”即可。</p></li><li><p><b>你是哪种账号与定价（核验日期：</b>2026-11-25，以下为美国挂牌价，各地区以官网为准）：未满18 周岁不可用。</p><p><b>个人账号（ @gmail.com ）：</b>免费版默认用 Gemini 4 Hydrogen（按官网说明为每周刷新、有每周上限）；个人付费包含 Google AI Pro（$19.99/月）和Google AI Ultra 两档——Ultra 5x 为 $99.99/月（Pro 配额的 5 倍），Ultra 20x为 $199.99/月（Pro 配额的 20 倍）。</p><p><b>Google Workspace（公司/学校邮箱）：</b>能否使用及可见哪些模型，取决于管理员后台是否开启权限。</p><p><b>企业版（Standard / Plus）：</b>每席位每月 30 美元起（另有 pay-as-you-go 按量计费档位，$0 席位费、按量计费），享有企业级配额与付费模型。</p></li><li><p><b>模型与下线提醒（核验基准：</b>2026-11-25）：</p><p>全部可选模型（含即将下线）包含 Gemini 4 Neon、Gemini 4 Carbon、Gemini 4 Argon、Gemini 4 Hydrogen、Orchestrator、Gemini 3.8 Flash、ClaudeSonnet/Opus 5.5、GPT-OSS-120b。</p><p>Neon / Carbon / Argon / Orchestrator 仅对付费 Pro / Ultra / 企业版开放；免费版默认用 Gemini 4 Hydrogen。特别说明：企业版 Orchestrator 只提供固定的 Carbon（规划）+ Hydrogen（执行）；自定义规划 / 执行模型只在 Pro /Ultra 里有。</p><p><b>重要下线通知：</b>Gemini 3.8 Flash、Gemini 4 Argon、Claude 4.6、GPTOSS-120b 将于 2026 年 11 月 30 日下线，请勿再按老教程选用这些即将下线的模型。</p><p><b>AI 积分超额机制：</b>付费 Pro / Ultra 用户可按需购买 AI 积分，并在设置里选择“绝不 / 总是”，仅在耗尽基准配额后才会动用。</p></li></ol>
+<ol><li><p>系统与升级：Mac 需 macOS 13+，Windows 需 Win 10/11（64 位），Linux 需满足glibc ≥ 2.28 且 glibcxx ≥ 3.4.25 。Mac 以后覆盖升级时，弹窗务必点Replace（替换），不要点 Keep Both（保留两者）。</p></li><li><p>地区与网络：中国大陆目前不在官方支持名单内；请核对你的 Google 账号关联地区，如不在支持名单内可提交地区变更申请。网络只要满足“能打开 antigravity.google 且登录不转圈”即可。</p></li><li><p><b>你是哪种账号与定价（核验日期：</b>2026-11-25，以下为美国挂牌价，各地区以官网为准）：未满18 周岁不可用。</p><p><b>个人账号（ @gmail.com ）：</b>免费版默认用 Gemini 4 Hydrogen（按官网说明为每周刷新、有每周上限）；个人付费包含 Google AI Pro（$19.99/月）和Google AI Ultra 两档——Ultra 5x 为 $99.99/月（Pro 配额的 5 倍），Ultra 20x为 $199.99/月（Pro 配额的 20 倍）。</p>
+<p><b>特别提醒：</b>Google AI Plus 是个人基础存储/会员档，不等于 Pro / Ultra；只订了 Plus、没另订 Pro 或 Ultra 的，在 Antigravity 里按 Free 免费版规则（每周刷新、有每周上限），不解锁付费模型权限。</p><p><b>Google Workspace（公司/学校邮箱）：</b>能否使用及可见哪些模型，取决于管理员后台是否开启权限。</p><p><b>企业版（Standard / Plus）：</b>每席位每月 30 美元起（另有 pay-as-you-go 按量计费档位，$0 席位费、按量计费），享有企业级配额与付费模型。</p></li><li><p><b>模型与下线提醒（核验基准：</b>2026-11-25）：</p><p>全部可选模型（含即将下线模型）包含 Gemini 4 Neon、Gemini 4 Carbon、Gemini 4 Argon*、Gemini 4 Hydrogen、Orchestrator、Gemini 3.8 Flash*、Claude Sonnet/Opus 5.5、Claude 4.6*、GPT-OSS-120b*（带 * 号的 4 个旧模型将于 2026 年 11 月 30 日下线）。</p><p>Neon / Carbon / Argon / Orchestrator 仅对付费 Pro / Ultra / 企业版开放；免费版默认用 Gemini 4 Hydrogen。特别说明：企业版 Orchestrator 只提供固定的 Carbon（规划）+ Hydrogen（执行）；自定义规划 / 执行模型只在 Pro /Ultra 里有。</p>
+<p>另外注意企业版专属模型边界：Gemini 3.7 Flash、Gemini 3.6 Flash、Gemini 3.1 Pro 目前仅对企业版账号开放，个人 Free / Pro / Ultra 账号不可用；个人用户在列表里看不到它们是正常的权限边界、不是软件故障。</p><p><b>重要下线通知：</b>Gemini 3.8 Flash、Gemini 4 Argon、Claude 4.6、GPT-OSS-120b 将于 2026 年 11 月 30 日下线，请勿再按老教程选用这些即将下线的模型。</p><p><b>AI 积分超额机制：</b>付费 Pro / Ultra 用户可按需购买 AI 积分，并在设置里选择“绝不 / 总是”，仅在耗尽基准配额后才会动用。</p></li></ol>
 <p><b>试用 Pro vs 付费 Pro vs Ultra 速查对照：</b>档位</p>
 <div class="tut-table-wrap"><table class="price-table"><thead><tr><th>档位</th><th>配额与模型权限要点（2026-11-25 美国挂牌价，各地区以官网为准）</th><th>Claude Sonnet / Opus 5.5</th></tr></thead><tbody><tr><td>试用版 Pro（Trial）</td><td>配额更低、可用模型更受限</td><td>不可用（仅给非试用付费 Pro 及以上）</td></tr><tr><td>正式付费 Pro</td><td>$19.99/月，标准付费配额，完整解锁 Neon / Carbon / Hydrogen / Orchestrator</td><td>可用</td></tr><tr><td>Google AI Ultra</td><td>Ultra 5x $99.99/月（Pro 的 5 倍）/ Ultra 20x $199.99/月（Pro 的 20 倍），享全套付费模型与最高个人配额</td><td>可用</td></tr></tbody></table></div>
-<h3>2.3 入口一：Antigravity App（桌面应用 v2.5+）+ 实操：做番茄钟</h3>
+<h3>2.3 入口一：Antigravity App（桌面应用 v2.30.0+）+ 实操：做番茄钟</h3>
 <p>安装与登录步骤见 A 版第 2 章 2.3 节和第 3 章 3.1 节。这里直接带你做一个实用小工具——极简番茄钟网页。</p>
 <p><b>点哪里：</b>在 Antigravity_Projects 里新建空文件夹 pomodoro-app ，打开Antigravity App → 点 Open Folder 打开该文件夹 → 确认模式在 Planning（以你当前实机界面为准；免费版用默认 Gemini 4 Hydrogen，付费版推荐用Orchestrator）。</p>
 <p><b>发什么指令：</b>帮我做一个纯前端中文番茄钟网页（HTML/CSS/JS，双击可打开）。要求：1. 默认 25 分钟工作倒计时、5 分钟休息倒计时，可一键切换；2.有开始、暂停、重置按钮；3. 倒计时结束时网页发出轻柔提示音并弹窗提醒；4. 界面简洁护眼。</p>
@@ -16920,10 +16922,11 @@ git commit -m "改首页之前"</pre>
 <h3>2. <code>/grill-me</code>（上线前“严厉考官”模式）</h3>
 <p>大白话干什么的：让 AI 别再一味夸你，而是化身一个挑剔的测试考官，反过来追问你的需求漏洞，或者挑出你网页里的逻辑破绽。什么时候用：你觉得需求想得很完美了，或者网页做完了准备发给朋友前，想提前避雷。</p>
 <p><b>直接抄的例子：</b><code>/grill-me</code> 帮我挑刺一下我刚写好的家庭记账本需求，看看有哪些小白容易漏掉的边界情况（比如输入负数金额、日期没选怎么办）输错了会怎样：没触发特殊考官模式，变成普通对话；删掉重敲 / 从下拉列表里点选最稳。</p>
-<h3>3. <code>/schedule</code>（定时自动跑任务）</h3>
-<p>大白话干什么的：给数字员工定一个“闹钟”，让它按你设定的时间周期（比如每周五下午）自动去执行某个固定任务。什么时候用：定期整理周报素材、定期汇总某个文件夹里的新增账单等重复性工</p>
+<h3>3. <code>/automation</code>（跨会话持久定时任务）</h3>
+<p>大白话干什么的：给数字员工定一个跨会话持久的“闹钟”，关掉对话窗口后依然按你设定的时间周期（比如每周五下午）自动去执行某个固定任务。什么时候用：定期整理周报素材、定期汇总某个文件夹里的新增账单等重复性工</p>
 <p>作。</p>
-<p><b>直接抄的例子：</b><code>/schedule</code> 每周五下午 5 点检查一次 weekly-notes 文件夹里的新增文本，自动汇总成一份周报草稿放到 output 文件夹输错了会怎样：如果时间描述太模糊（比如只写了“有空的时候”），AI 会反问你具体几点几分执行，不会乱跑。</p>
+<p><b>直接抄的例子：</b><code>/automation</code> 每周五下午 5 点检查一次 weekly-notes 文件夹里的新增文本，自动汇总成一份周报草稿放到 output 文件夹输错了会怎样：如果时间描述太模糊（比如只写了“有空的时候”），AI 会反问你具体几点几分执行，不会乱跑。</p>
+<p>注意区分：/schedule 是当前对话内的临时定时（关掉对话就失效），每周/每天长期自动执行的任务一律用 /automation。</p>
 <h3>4. <code>/browser</code>（让 AI 自己打开浏览器检查）</h3>
 <p>大白话干什么的：让 Antigravity 自己调用浏览器去打开你的网页、点一点按钮、看一眼排版有没有歪、控制台有没有红字报错，相当于雇了个自动测试员。什么时候用：你懒得反复手动点网页测试，或者想让 AI 自己亲眼看看网页哪里排版错位了。</p>
 <p><b>直接抄的例子：</b><code>/browser</code> 打开当前项目的 index.html，测试录入一笔 58.5 元支出并刷新页面，检查控制台有没有任何红字报错输错了会怎样：如果没给清要打开的文件名或网址，AI 会停下来问你“请告诉我需要打开哪个页面”。</p>
@@ -17049,7 +17052,7 @@ git commit -m "改首页之前"</pre>
 <p><b>照着做的解法：</b></p>
 <ol><li><p>核对「套餐 × 模型」表（见 A 版第 5 章）：免费版默认是 Gemini 4Hydrogen；Neon / Carbon / Orchestrator 仅对付费 Pro / Ultra / 企业版开</p></li></ol>
 <p>放；且试用版 Pro（Trial） 配额更低、模型更受限（Claude 5.5 也只给非试用付费 Pro 及以上）。</p>
-<p>核对账号和版本：点软件头像确认没登错免费的备用小号，并确认Antigravity App 已更新到 v2.5+。</p>
+<p>核对账号和版本：点软件头像确认没登错免费的备用小号，并确认Antigravity App 已更新到 v2.30.0+。</p>
 <p>避开下线模型： Gemini 3.8 Flash 、 Gemini 4 Argon 、 Claude 4.6 、GPT-OSS-120b 于 2026 年 11 月 30 日下线，直接改选现行模型即可。</p>
 <p>场景 14（新增）：软件升级后，旧项目打不开或者一启动就闪退</p>
 <p><b>现象：</b>刚下载了新版安装包升级，结果打开软件后界面错乱、旧项目加载失败，或者 Linux 电脑直接报错启动不了。</p>
@@ -17083,18 +17086,18 @@ git commit -m "改首页之前"</pre>
 <p><b>值不值得做：</b>挺好玩，适合 3 天以上的中长途自由行。 大家手机一点就能看，不用在微信群里翻聊天记录。</p>
 <p><b>要注意什么：</b>提前用手机竖屏测试一遍排版，确保长辈也能看清字号。</p>
 <p><b>真实翻车小提醒：</b>上线后的旅行攻略里，千万别写进身份证号、护照号、机票订单号、酒店预订确认码和具体房间号！ 公开页面只放“上午去浅草寺、下午去晴空塔”这种公开地名就行。</p>
-<p>玩法 6（新增）：用 Orchestrator + /schedule 做“每周自动汇总”</p>
-<p>这是付费 Google AI Pro（$19.99/月）/ Google AI Ultra（5x $99.99/月、20x $199.99/月；以上为 2026-11-25 美国挂牌价，各地区以官网为准）/ 企业版（Standard/Plus 每席位每月 30 美元起） 用户的进阶提效大招，把第 5 章学过的 Orchestrator 和斜杠命令/schedule 组合起来用：</p>
+<p>玩法 6（新增）：用 Orchestrator + /automation 做“每周自动汇总”</p>
+<p>这是付费 Google AI Pro（$19.99/月）/ Google AI Ultra（5x $99.99/月、20x $199.99/月；以上为 2026-11-25 美国挂牌价，各地区以官网为准）/ 企业版（Standard/Plus 每席位每月 30 美元起） 用户的进阶提效大招，把第 5 章学过的 Orchestrator 和斜杠命令/automation 组合起来用：</p>
 <p><b>怎么做：</b></p>
-<ol><li><p>在 Antigravity_Projects 里建一个 weekly-hub 文件夹，里面放一个inbox 子文件夹，平时周一到周五你把零散的灵感、会议记录、待办截图或文章摘录随手扔进 inbox 。</p></li><li><p>打开 Antigravity，在模型选择器里选中 Orchestrator（Pro / Ultra 默认Gemini 4 Neon 规划 + Gemini 4 Hydrogen 执行；企业版固定 Carbon 规划 +Hydrogen 执行）。</p></li><li><p>在输入框敲入 /schedule 命令，设定每周五下午 5 点自动执行一次任务：“读取 inbox 里本周新增的所有文本笔记，由规划模型按‘工作进展、学习收获、下周待办’三个维度提炼结构，再由执行模型在 output 文件夹里生成一份带日期命名的 本周复盘汇总.md ，严禁修改或删除 inbox 原件。”</p></li></ol>
+<ol><li><p>在 Antigravity_Projects 里建一个 weekly-hub 文件夹，里面放一个inbox 子文件夹，平时周一到周五你把零散的灵感、会议记录、待办截图或文章摘录随手扔进 inbox 。</p></li><li><p>打开 Antigravity，在模型选择器里选中 Orchestrator（Pro / Ultra 默认Gemini 4 Neon 规划 + Gemini 4 Hydrogen 执行；企业版固定 Carbon 规划 +Hydrogen 执行）。</p></li><li><p>在输入框敲入 /automation 命令，设定每周五下午 5 点自动执行一次任务：“读取 inbox 里本周新增的所有文本笔记，由规划模型按‘工作进展、学习收获、下周待办’三个维度提炼结构，再由执行模型在 output 文件夹里生成一份带日期命名的 本周复盘汇总.md ，严禁修改或删除 inbox 原件。”</p></li></ol>
 <p><b>值不值得做：</b>对经常要写复盘、整理资料的职场人和创作者非常值得！ 相当于雇output 文件夹就能直接拿到整理了个准点打卡的私人秘书，每周五下班前打开好的干货。</p>
-<p><b>要注意什么：</b>电脑在设定时间点需处于开机且网络连通状态（具体定时任务运行机制以当前实机版本说明为准）；首次配置完先手动试跑一次验收格式，确认满意再放手让它每周自动跑。</p>
+<p><b>要注意什么：</b>电脑在设定时间点需处于开机且网络连通状态（具体定时任务运行机制以当前实机版本说明为准）；新创建的自动化任务默认处于 Paused 暂停状态，需去侧边栏 Automations 面板手动打开开关才会按时自动触发；首次配置完先手动试跑一次验收格式，确认满意再放手让它每周自动跑。</p>
 <h2>真实翻车小提醒：千万别在定时任务里写“汇总完把 inbox 里的原文件顺手删掉”！万一某周总结漏了重点，原件没了就找不回来了。永远保持“只读原件、单独输出”的安全铁律。B 版第二版修订稿结语：下一步去哪？</h2>
 <p>恭喜你！能一路读完 B 完整版第二版修订稿的全部 9 章，你已经彻底告别了“对着电脑发怵的纯小白”阶段。回过头看看你现在握在手里的硬本事：你摸清了 Antigravity 2.0 的能力边界，不会被吹牛的营销号忽悠；你分清了“四种开发环境 + 网页版”五个入口，还能按最新套餐与模型规则避开即将下线的老模型；你学会了隔离工作区、不放密钥、先 Git 存档再让 Agent 动手的安全铁律；你能写出 AI 一听就懂的四要素高质量需求，会玩 Planning / Fast、Orchestrator 和5 个斜杠命令；你手里还握着一份覆盖 14 种高频翻车的排错急救指南，以及 6 个能立刻落地的日常提效玩法。下一步去哪？别光看不练！合上这篇教程后，立刻挑一个你今天最想解决的小麻烦，建一个纯英文空文件夹，把第 7 章的“家规模板”贴进设置里，亲手把它做出来。最后再啰嗦一句大实话：本版所有产品入口、模型清单、下线日期与费用规则，均以</p>
 <p>2026 年 11 月 25 日 antigravity.google 官网为准。 AI 工具迭代极快，未来按钮名字、套餐细节和模型列表还会继续变化；遇到界面和文字对不上号时，别慌，一切以你当前实机界面和官网最新公告为准——而你学到的“先规划、再执行、勤存档、必验收”这套核心心法，永远不会过时。</p>
           </div>
 <div id="tut-c" class="brief-card tut-body" hidden>
-<p class="tut-byline">执笔：小森（Gemini）｜核验基准：2026 年 11 月 25 日｜全文实测 40,671 非空白字符</p>
+<p class="tut-byline">执笔：小森（Gemini）｜核验基准：2026 年 11 月 25 日｜全文实测 101,213 非空白字符</p>
 <h2>Antigravity 零基础超全手册（C 超全手册版 · 第二版扩充版 · 上篇）</h2>
 <p class="tut-byline">执笔：小森（Gemini）｜核验基准：2026 年 11 月 25 日（对照 antigravity.google 官网当天核对）｜本篇涵盖：C-1 起飞前总检查表总览、C-2 五大入口安装与登录全流程检查表</p>
 <h2>C-1 起飞前总检查表总览：动手前 15 分钟精细准备</h2>
@@ -17122,6 +17125,15 @@ git commit -m "改首页之前"</pre>
 <p><b>看到什么：</b>浏览器设置页显示“Google Chrome（或 Edge）是您的默认浏览器”。</p>
 <p><b>打勾标准：</b>默认浏览器能正常打开网页（确保等会儿桌面端登录授权时，能顺畅唤起浏览器完成回调）。</p>
 <p><b>错了怎么办：</b>如果电脑里只有老旧浏览器或默认浏览器被篡改，去官网下载安装最新版 Chrome 并设为默认浏览器。</p>
+<label class="tut-check"><input type="checkbox"> 1.4 先认清 Antigravity 四种形态，挑对入口再动手</label>
+<p><b>怎么做（点哪里）：</b>动手下载之前，先对照下面这张表，认清你要装的是哪一种形态——它们名字很像，却是四个不同的东西：</p>
+<p>桌面端 App（v2.30.0+）：主力入口，界面清爽、主打对话与任务流，绝大多数纯小白和非程序员首选（详细安装见 C-2 模块二）。</p>
+<p><b>命令行 CLI（agy）：</b>终端里的黑框框入口，适合习惯敲命令、想跑极速批处理脚本的进阶用户（详细安装见 C-2 模块三）。</p>
+<p>IDE 扩展（7 款官方扩展）：装进你本来就在用的代码编辑器里（如 VS Code、JetBrains 全家桶），边写代码边让 AI 补全（详细安装见 C-2 模块四）。</p>
+<p>Python SDK（google-antigravity）：给会一点 Python 的开发者准备的，把 Antigravity 的能力直接写进自己的定时脚本或数据处理流水线里（详细见 C-2 模块五与 C-4 清单 10）。</p>
+<p><b>看到什么：</b>心里明确自己要装哪一种，不会把桌面端 App 和独立版 Antigravity IDE（给专业程序员用的重型代码编辑器）搞混。</p>
+<p><b>打勾标准：</b>已经按上面这张表选定了一个主力入口，并且知道另外三种形态是干嘛的、以后什么时候用得上。</p>
+<p><b>错了怎么办：</b>如果不确定自己该装哪个，默认选桌面端 App（v2.30.0+），它是为纯新手准备的；等用顺手了，再按 C-4 清单 10、清单 11 的指引去碰 CLI、IDE 扩展和 SDK。</p>
 <h3>清单 2：地区限制、年龄与网络连通自查表</h3>
 <label class="tut-check"><input type="checkbox"> 2.1 核对硬性年龄门槛（未满 18 岁不可用）</label>
 <p><b>怎么做（点哪里）：</b>打开浏览器访问 myaccount.google.com → 登录你的 Google 账号 → 点击左侧「个人信息（Personal info）」→ 查看「出生日期」。</p>
@@ -17148,13 +17160,112 @@ git commit -m "改首页之前"</pre>
 <p><b>看到什么：</b>心里对免费版和各付费档位的价格、配额倍数有一本明白账。</p>
 <p><b>打勾标准：</b>清楚自己当前属于哪一档，知道免费版直接 $0 起步即可体验，无需提前掏钱。</p>
 <p><b>错了怎么办：</b>如果看到网上过时文章还在写“需要去买 API Key 充值才能用”，直接忽略，以 2026 年 11 月 25 日官网规则为准。</p>
-<label class="tut-check"><input type="checkbox"> 3.2 分清全部模型、权限边界与 11 月 30 日下线清单</label>
-<p><b>怎么做（核对要点）：</b>对照 2026 年 11 月 25 日官网模型页，分清当前模型分组（详细对照表见 A 版第 5 章）：</p>
-<p><b>现行主力模型：</b>Gemini 4 Neon、Gemini 4 Carbon、Gemini 4 Hydrogen、Orchestrator（自动编排模式）、Claude Sonnet / Opus 5.5；</p>
-<p>将于 2026 年 11 月 30 日下线的 4 个旧模型：Gemini 3.8 Flash、Gemini 4 Argon、Claude 4.6、GPT-OSS-120b（注：以上包含即将下线的全部旧模型列表，切勿再按老教程选老模型）；</p>
-<p><b>套餐权限边界：</b>免费版默认使用 Gemini 4 Hydrogen；Neon / Carbon / Orchestrator 仅对付费 Pro / Ultra / 企业版开放（其中企业版 Orchestrator 固定为 Carbon 规划 + Hydrogen 执行，自定义规划/执行模型仅在 Pro / Ultra 里有）。</p>
-<p><b>打勾标准：</b>明确自己该选哪个模型——免费版直接用默认 Gemini 4 Hydrogen，付费版优先用 Orchestrator 或 Gemini 4 Neon，避开 11 月 30 日下线的 4 个旧模型。</p>
-<p><b>错了怎么办：</b>如果你之前的旧项目或老配置里填了 Gemini 3.8 Flash 或 Claude 4.6，现在就记下来，登录后第一时间切回现行模型。</p>
+<label class="tut-check"><input type="checkbox"> 3.1b 订阅档位特别提醒：Google AI Plus 不等于 Pro / Ultra</label>
+<p><b>怎么做（核对要点）：</b>如果你个人订阅的是基础存储/会员档 Google AI Plus（但未额外订阅 Google AI Pro 或 Google AI Ultra），你在 Antigravity 里享有的配额规则与 Free 免费版相同——即每周刷新、有每周上限，并不会自动解锁 Pro / Ultra 的高配额以及 Gemini 4 Neon、Carbon、Orchestrator 等付费模型权限。</p>
+<p><b>看到什么：</b>看清自己订阅的到底是哪一档，别以为交了 Plus 的钱就自动有了 Pro 的模型。</p>
+<p><b>打勾标准：</b>确认自己的套餐档位与模型列表一致（Plus 用户的模型列表与免费版相同）。</p>
+<p><b>错了怎么办：</b>如果发现模型列表里找不到 Neon / Carbon / Orchestrator，先点头像核对自己到底订阅的是 Plus 还是 Pro / Ultra；想解锁付费模型，需要另外订阅 Google AI Pro 或 Google AI Ultra（各地区本地定价以官网当前页面为准）。</p>
+<label class="tut-check"><input type="checkbox"> 3.1c 企业版额外计费档位与专属模型补充</label>
+<p><b>怎么做（核对要点）：</b>企业版除了按人头采购的 Standard / Plus（每席位每月 30 美元起）外，官方还提供 Gemini Enterprise 按量计费（Pay-as-you-go）档位，绑定符合条件的 Google Cloud 结算账户后按实际消耗计费（该档位具体费率表与地区开放详情以官网当前说明为准）。</p>
+<p>另外注意企业版专属模型边界：除现行的 Gemini 4 Neon / Carbon / Hydrogen 与 Orchestrator 外，Gemini 3.7 Flash、Gemini 3.6 Flash、Gemini 3.1 Pro 目前仅对企业版账号开放，个人 Free / Pro / Ultra 账号不可用（企业版各子套餐的具体调用上限以官网当前说明为准）。</p>
+<p><b>看到什么：</b>清楚企业版有按量计费这个选项，也知道有三个模型是企业版专属、个人账号看不到。</p>
+<p><b>打勾标准：</b>企业版用户知道自己的档位是按人头还是按量计费；个人用户看到 Gemini 3.7 / 3.6 Flash、Gemini 3.1 Pro 不在列表里时，知道这是正常的权限边界、不是软件故障。</p>
+<p><b>错了怎么办：</b>企业版用户如需确认自己的档位与模型权限，联系公司 IT 管理员或查看 Gemini Enterprise 后台说明。</p>
+<label class="tut-check"><input type="checkbox"> 3.2a 每个模型是干嘛的（按需选对搭档）</label>
+<p>这一节帮你彻底搞懂 Antigravity 里每个模型的分工，让你面对不同任务时能直接挑出最顺手的“干活搭档”，既不杀鸡用牛刀，也不让小快手硬扛重活。开始挑之前先记一条硬提醒：Gemini 3.8 Flash、Gemini 4 Argon、Claude 4.6、GPT-OSS-120b 这 4 个模型将于 2026 年 11 月 30 日下线，别再选它们。</p>
+<p><b>实机界面角标特别提醒：</b>模型下拉菜单里，Gemini 4 Argon 和 Gemini 3.8 Flash 旁边挂的是灰色的 Leaving Soon 角标，而 GPT-OSS 120B 旁边显示的是 Notice 角标而不是 Leaving Soon。但根据官网模型页表格脚注（带星号的模型将于 2026 年 11 月 30 日移除）与正文说明，GPT-OSS-120b 同样在 2026 年 11 月 30 日下线名单内（与 Gemini 4 Argon、Gemini 3.8 Flash、Claude 4.6 一同移除），请勿选用。</p>
+<ol><li><p>Gemini 4 Hydrogen（执行快手）</p></li></ol>
+<p>Gemini 4 Hydrogen 于 2026 年 11 月 12 日上线，是面向执行端的快手模型，也是免费版的默认模型。它适用于所有方案（免费与 Plus 方案每周刷新并设有用量上限；付费 Pro / Ultra 每 5 小时刷新一次，直至达到每周上限）。当你的任务不需要单独拆解和规划、目标已经非常明确时，用它最合适，比如升级软件包、给代码去重、生成样板代码脚手架、为定义明确的函数编写单元测试、更新文档，或者快速生成一段小脚本。</p>
+<p>怎么做</p>
+<p>打开 Antigravity App 的对话输入框，点击底部的模型选择器，在列表里找到并点选 Gemini 4 Hydrogen。如果你在命令行（CLI）里操作，可以在启动时通过模型参数指定，或者输入 /model 切换到它。遇到日常小改小修时，默认思考级别保持在 Medium 即可；如果单步逻辑稍微绕一点，可以把思考级别调高到 High 甚至第四档 Extra（在 CLI 中对应 xhigh）。</p>
+<p>看到什么</p>
+<p>选中后，输入框下方或状态栏会显示当前生效模型为 Gemini 4 Hydrogen。发出指令后，你会看到它几乎不做冗长的全局规划，而是直接动手搜索文件、改动代码或生成脚本，整体响应节奏非常快。</p>
+<p>打勾标准</p>
+<p>输入框旁的当前模型标签明确显示为 Gemini 4 Hydrogen。</p>
+<p>你的任务属于明确的执行类杂活（如写单元测试、更新文档、生成样板代码），不需要它先帮你梳理复杂的系统架构。</p>
+<p>思考级别按需设为默认的 Medium，或仅在需要更深单步推理时设为 High / Extra。</p>
+<p>错了怎么办</p>
+<p>如果你让 Hydrogen 去重构跨十几个文件的复杂模块，或者让它从零设计一套完整架构，你会发现它容易直接动手改局部代码、缺乏通盘规划。这时不要继续让它硬改，直接点停止按钮取消当前执行，切到规划能力更强的模型重新理清方案后再动手。如果遇到提示本周用量上限已满，等每周配额刷新，或者有付费方案的话切换到其他可用模型继续干活。</p>
+<ol><li><p>Gemini 4 Neon（规划旗舰）</p></li></ol>
+<p>Gemini 4 Neon 于 2026 年 11 月 18 日上线，是最新旗舰模型，专门放在规划端挑大梁。它的上下文窗口最高支持 512K token，能一次性装下大量代码文件与背景资料。需要注意方案门槛：Free 和 Plus 方案不支持 Neon；只有 Google AI Ultra、付费版 Google AI Pro（以及符合条件的高端设备试用方案）和 Gemini Enterprise 才能使用。在 Pro 和 Ultra 方案中，Orchestrator 的默认规划模型就是 Neon。</p>
+<p>怎么做</p>
+<p>确认你的账号属于付费 Google AI Pro（含符合条件的高端设备试用）、Google AI Ultra 或 Gemini Enterprise 后，在模型选择器中点选 Gemini 4 Neon。面对需要通盘考量的大项目，默认思考级别为 Medium；如果遇到极复杂的疑难杂症、需要最大推理深度，可以开启它专属的第四个思考级别 Extra（在 CLI 中对应 xhigh，例如在命令里加上 --model gemini-4-neon-xhigh 或 --effort xhigh）。</p>
+<p>看到什么</p>
+<p>选中后，界面上的模型名称会切换为 Gemini 4 Neon。当你丢给它一大段需求或整个代码库的背景时，它会先结合最高 512K token 的上下文做全局推演，输出条理清晰的架构拆解或排查思路，而不是上来就急着改某一行代码。</p>
+<p>打勾标准</p>
+<p>你的账号属于 Pro、Ultra、符合条件的高端设备试用或 Enterprise 方案，模型列表中 Gemini 4 Neon 可正常点选。</p>
+<p>需要处理超长上下文（最高 512K token 范围内）或复杂设计时，已切到 Neon。</p>
+<p>遇到高难度推理任务时，已将思考级别从默认的 Medium 调至 High 或 Extra（CLI 为 xhigh）。</p>
+<p>错了怎么办</p>
+<p>如果列表里找不到 Neon 或显示不可用，先检查自己当前是不是 Free 或 Plus 方案——这两个方案不支持 Neon，需要升级方案或改用其他可用模型。如果只是改几个拼写错误、写个简单脚本却全程开着 Neon 加 Extra 思考级别，会导致等待时间变长且消耗高阶模型配额，这时把模型切回 Gemini 4 Hydrogen 就能立刻提速。</p>
+<ol><li><p>Gemini 4 Carbon（企业规划主力）</p></li></ol>
+<p>Gemini 4 Carbon 于 2026 年 10 月 28 日发布，11 月 10 日全面可用，定位是企业级规划主力。它包含在付费 Google AI Pro 方案（以及符合条件的高端设备附带的试用）、Google AI Ultra 和 Gemini Enterprise 的共享 Gemini 配额中。在企业版（Gemini Enterprise）里，Orchestrator 固定使用 Carbon 负责规划。</p>
+<p>怎么做</p>
+<p>当你需要稳健的规划能力，或者在企业环境、共享 Gemini 配额下统筹任务时，打开模型选择器并选择 Gemini 4 Carbon。它支持在 Low、Medium（默认）和 High 三个思考级别之间调节，日常规划保持 Medium 即可，遇到复杂的跨模块方案评审可调到 High。</p>
+<p>看到什么</p>
+<p>切换成功后，当前模型标识会变为 Gemini 4 Carbon。在企业版中如果使用 Orchestrator，你会看到规划环节默认且固定由 Carbon 承担，输出风格偏重稳妥、严谨的步骤拆解。</p>
+<p>打勾标准</p>
+<p>账号已开通付费 Google AI Pro（含符合条件的高端设备试用）、Google AI Ultra 或 Gemini Enterprise，并能正常调用共享 Gemini 配额。</p>
+<p>模型已切换为 Gemini 4 Carbon，思考级别根据任务复杂度设为 Low、Medium 或 High。</p>
+<p>错了怎么办</p>
+<p>如果你用的是免费版或普通 Plus 方案，会发现无法使用 Carbon，此时需要升级到支持共享 Gemini 配额的方案，或退回免费版默认的 Gemini 4 Hydrogen。另外注意，Carbon 和 Neon 一样属于偏重规划的型号，如果用来做纯体力活（如批量改格式），效率不如执行快手 Hydrogen，发现大材小用时及时切走即可。</p>
+<ol><li><p>Orchestrator（自动编排，不是单个模型）</p></li></ol>
+<p>Orchestrator 于 2026 年 11 月 12 日上线，仅限付费方案使用（免费版不可用）。新手最容易误解的一点是以为它是一个新模型——其实 Orchestrator 不是单个模型，而是一套自动编排机制。</p>
+<p>在单次对话中，它会同时搭配两个模型：体量更大的规划模型负责整体规划和结果审查，速度更快的执行模型负责搜索、文件编辑、构建和测试。这两个模型会在同一个任务中协同工作，随着工作推进动态移交控制权；它并不是那种“事先分类再把整个请求转发给单一模型”的简单路由器。</p>
+<p>在默认配置上，Pro 和 Ultra 方案默认采用 Neon 规划 + Hydrogen 执行，并且允许你自定义搭配；企业版（Enterprise）则固定为 Carbon（High）规划 + Hydrogen（High）执行，不可自定义。其中，可自定义的规划模型包括：Gemini 4 Neon（默认）、Gemini 4 Carbon、Gemini 4 Argon（注意 2026-11-30 下线，别选）、Claude Opus 5.5；可自定义的执行模型包括：Gemini 4 Hydrogen（默认）、Claude Sonnet 5.5。</p>
+<p>怎么做</p>
+<p><b>在对话中启用：</b> 在付费方案下，打开模型选择器，直接点选 Orchestrator 模式即可开启双模型协同。</p>
+<p>在 Antigravity App 中修改默认搭档（仅 Pro / Ultra 支持自定义）： 打开菜单进入 设置 → 模型 → Orchestrator 设置，在规划模型下拉框和执行模型下拉框中分别挑选你想要的组合（注意避开即将下线的 Argon）。</p>
+<p>在 CLI 中修改默认搭档： 在终端对话里输入 /model，找到 Orchestrator 这一行，按界面提示切换规划端与执行端模型。</p>
+<p>看到什么</p>
+<p>开启 Orchestrator 后，你发出一项既要动脑设计又要动手改文件的复合任务时，会看到 Agent 先进入规划与拆解阶段（由规划模型主导），随后控制权动态移交给执行模型去搜索代码、修改文件、跑构建和测试，遇到需要复核或调整方向时再交回规划模型审查。</p>
+<p>打勾标准</p>
+<p>确认当前使用的是付费方案（非免费版），模型列表里已选中 Orchestrator。</p>
+<p>Pro / Ultra 用户已在 设置 → 模型 → Orchestrator 设置 或 CLI 的 /model Orchestrator 行确认好搭档（推荐保持默认的 Neon 规划 + Hydrogen 执行，或按需替换为 Opus 5.5 / Sonnet 5.5）。</p>
+<p>企业版用户知晓系统已自动锁定为 Carbon（High）规划 + Hydrogen（High）执行，无需手动调整。</p>
+<p>错了怎么办</p>
+<p>如果你在 设置 → 模型 → Orchestrator 设置 里发现选项是灰色的、改不了，先看一眼账号是不是企业版——企业版固定使用 Carbon（High）+ Hydrogen（High），本来就不支持自定义，这属于正常设定而非故障。如果你只想快速改一行注释或问一个简单概念，却开着 Orchestrator，双模型来回移交控制权反而会比单用 Hydrogen 慢一些，这时直接切回单模型 Gemini 4 Hydrogen 即可。</p>
+<p><b>进阶精细控制：</b>规划端与执行端可分别设思考级别。在设置 ＞ 模型 ＞ Orchestrator 设置下，付费 Google AI Pro / Google AI Ultra 用户不仅能分别为规划角色和执行角色挑选模型，还能为每个角色单独选择思考级别，例如把规划端的 Gemini 4 Neon 设为 High 或 Extra High 做深度推理，同时把负责敲代码改样式的执行端 Gemini 4 Hydrogen 设为 Medium 或 Low 兼顾速度与配额（企业版 Orchestrator 仍固定为 Carbon 规划 + Hydrogen 执行，不支持自定义模型与思考级别）。</p>
+<ol><li><p>Claude Sonnet 5.5（thinking）与 Claude Opus 5.5（thinking）</p></li></ol>
+<p>除了 Gemini 家族，Antigravity 还提供了 Anthropic 旗下的两款带推理能力的模型：Claude Sonnet 5.5（thinking） 和 Claude Opus 5.5（thinking）。它们有严格的账号门槛：仅限非试用的付费 Pro 及以上方案可用，免费版和试用版 Pro 均不可用。 在角色分工上，两者既可以单独选用，也能放进 Orchestrator 里当搭档——在 Orchestrator 的自定义列表里，Claude Opus 5.5 位于规划模型可选栏，Claude Sonnet 5.5 位于执行模型可选栏。</p>
+<p>怎么做</p>
+<p>确保你的账号是非试用的付费 Pro 或更高方案（如 Ultra 等），然后打开模型选择器直接点选 Claude Sonnet 5.5（thinking） 或 Claude Opus 5.5（thinking）。如果你想让它们参与双模型协同，也可以前往 设置 → 模型 → Orchestrator 设置（或 CLI 的 /model Orchestrator 行），把规划端设为 Claude Opus 5.5，或把执行端设为 Claude Sonnet 5.5。</p>
+<p>看到什么</p>
+<p>选中后，界面上的当前模型名称会更新为对应的 Claude 5.5 型号。发送指令后，由于带有 thinking 推理机制，模型在正式输出代码或方案前会先经过一段内部思考过程，再给出完整回答。</p>
+<p>打勾标准</p>
+<p>账号确认为非试用付费 Pro 及以上等级（不是免费版，也不是设备附带或促销的试用版 Pro）。</p>
+<p>需要单独调用时已在模型列表选中对应型号；需要协同干活时已在 Orchestrator 设置中分别放在规划端（Opus 5.5）或执行端（Sonnet 5.5）。</p>
+<p>错了怎么办</p>
+<p>如果你已经开通了 Pro，却发现 Claude Sonnet 5.5（thinking） 和 Claude Opus 5.5（thinking） 依然提示不可用，最常见的原因是你的 Pro 属于试用版 Pro——试用版 Pro 可以使用 Neon 和 Carbon，但不能使用这两款 Claude 5.5 模型。此时不用折腾网络或重启软件，直接切回 Gemini 4 Neon（规划）或 Gemini 4 Hydrogen（执行）即可正常继续工作。</p>
+<p>选错了怎么办（总检查清单）</p>
+<p>在 Antigravity 里选错模型不会弄坏你的项目，随时都能换，但有两条运行规则必须记牢：第一，模型选择在同一个对话的各条消息之间是持续存在的（选定一次就会一直沿用）；第二，如果你在 Agent 正在运行时更改了模型，它不会中途立刻换人，而是会继续用先前选择的模型，直到完成当前这一回合的所有步骤（或者直到你手动取消当前执行）。</p>
+<ol><li><p>怎么判断自己选错了</p></li></ol>
+<p><b>工具栏或提示报错：</b> 点选某个模型时提示无权限或不可用（常见于免费版选了 Orchestrator / Neon，或试用版 Pro 选了 Claude 5.5）。</p>
+<p><b>节奏明显不对：</b> 只是改个小函数、更新几行文档，却等了半天还在做长篇规划（大概率把规划旗舰 Neon 或双模型 Orchestrator 当成了日常快手）；反过来，让模型重构大项目时它不先出方案就盲目改文件，说明可能停在了单模型执行快手 Hydrogen 上。</p>
+<p><b>误触即将下线型号：</b> 发现当前选中的是 Gemini 3.8 Flash、Gemini 4 Argon、Claude 4.6 或 GPT-OSS-120b（2026 年 11 月 30 日下线）。</p>
+<ol><li><p>怎么换</p></li></ol>
+<p>Agent 空闲时（还没发消息，或上一轮已经跑完）： 直接在 Antigravity App 的模型选择器里点选新模型（CLI 中用 /model 切换）。因为选择会在消息之间持续保留，接下来你发出的所有新消息都会自动使用新模型。</p>
+<p><b>Agent 正在跑步骤时：</b> 如果你发现选错了且不想等它把这一回合跑完，必须先点击停止/取消按钮中断当前执行，然后再切换模型并重新发送指令；如果你只是在界面上切换了模型而没有取消当前执行，Agent 会把当前回合的步骤用旧模型跑完，到下一条新消息才生效。</p>
+<ol><li><p>换了之后怎么验证</p></li></ol>
+<p><b>看状态栏标签：</b> 确认输入框下方的模型名称已经变成你新选的模型（如果是编排模式，确认显示为 Orchestrator）。</p>
+<p><b>发一句轻量测试指令：</b> 取消旧任务并换好模型后，发一条简短的确认指令（例如让它先列出修改计划，或执行一个小步骤），观察它的响应方式——若规划模型先输出结构化方案、或执行模型直接干净利落地完成单步修改，就说明新搭档已经正式接管工作了。</p>
+<p><b>补充两则：</b></p>
+<p><b>补充：</b>模型名后面的 High / Medium 是什么？模型下拉菜单里，模型名称后面的 Low / Medium / High 代表思考级别（大多数可调节的 Gemini 模型提供 Low、Medium 默认和 High 三档，Gemini 4 Neon 和 Gemini 4 Hydrogen 还额外多一个 Extra 级别，可在需要最大推理深度时设为 Extra High）。</p>
+<p><b>补充：</b>为什么模型列表里看不到生图模型？当你让 Agent 为网页或项目生成配图、调用内置图像生成工具时，后台会自动调用专用的 Nano Banana 2 模型来出图，无需在模型下拉菜单里手动切换，因此下拉菜单里不会单独列出这个名字。</p>
+<label class="tut-check"><input type="checkbox"> 3.2b 分清 Orchestrator 和普通单模型的区别，知道什么时候该用谁</label>
+<p><b>怎么做（核对要点）：</b>很多新手容易把 Orchestrator 当成某一个单独的模型，其实它们的工作机制完全不同：</p>
+<p><b>本质区别：</b>普通单模型（如单独选 Gemini 4 Hydrogen 或 Gemini 4 Neon），相当于一个人从头干到尾——既负责想方案，也负责敲代码、改样式；Orchestrator（自动编排模式）不是一个模型，而是一套规划 + 执行自动分工模式——先把活拆成两步，让规划模型出严谨图纸，再派执行模型动手落地（个人 Pro / Ultra 默认 Gemini 4 Neon 规划 + Gemini 4 Hydrogen 执行，支持自定义；企业版固定 Gemini 4 Carbon（High）规划 + Gemini 4 Hydrogen（High）执行）。</p>
+<p><b>什么时候用哪一个：</b>复杂多步的活，优先用 Orchestrator（付费版），比如从零搭建完整小工具、给现有项目加新图表模块、跨多个文件做重构升级，先有严谨计划再动手，不容易改乱；简单小活，直接用普通单模型（免费版默认 Gemini 4 Hydrogen 最快），比如把按钮改成薄荷绿、改两行中文标题、修一个小布局错位，用 Hydrogen 直接上响应最快、也最省配额。</p>
+<p><b>看到什么：</b>打开模型下拉菜单时，能根据手头任务的轻重缓急在 Orchestrator 和单模型之间自如切换。</p>
+<p><b>打勾标准：</b>不再用重型规划模式去改一个标点符号，也不在复杂多步大改时硬让轻量单模型盲干。</p>
+<p><b>错了怎么办：</b>如果用单模型做复杂功能时发现它漏东漏西、越改越乱，付费用户立刻开新对话切到 Orchestrator 重新规划即可（官网何时使用 Orchestrator 板块的完整原文细节，以官网当前页面为准）。</p>
+<label class="tut-check"><input type="checkbox"> 3.2c 常见模型误区澄清：Claude 5.5 在这里能干嘛？GPT-OSS-120b 是不是 ChatGPT？</label>
+<p><b>怎么做（核对要点）：</b>新手看模型列表时最容易混淆两个名字，对照下面两条说明一次认清：</p>
+<p>Antigravity 里的 Claude Sonnet / Opus 5.5 有什么不一样？在 Antigravity 里（仅非试用付费 Pro 及以上可用），Claude Sonnet 5.5 和 Claude Opus 5.5 是作为智能体运行的——它能直接读取和修改你授权的本地项目文件夹、运行终端命令、配合 Planning / Fast 模式和 Rules 规则直接在项目里干活。至于它与独立原生 Claude app 的关系，官网模型页没有直接拿原生 Claude app 做对照说明，这里不展开。</p>
+<p>GPT-OSS-120b 不是 ChatGPT，而且马上要下线了！根据官网模型页模型列表，Antigravity 里没有大家平时说的 ChatGPT（列表里没有 GPT-5、GPT-4o 等模型）；列表底部那个 GPT-OSS 120B 不是 ChatGPT，而且它已经列入 2026 年 11 月 30 日下线名单，千万不要因为看到带 GPT 三个字母就去选它。</p>
+<p><b>看到什么：</b>看清模型列表里每个选项的真实边界，不把 GPT-OSS-120b 误当成 ChatGPT 主力模型。</p>
+<p><b>打勾标准：</b>付费用户想体验 Claude 路线时认准 Claude Sonnet 5.5 或 Claude Opus 5.5；所有用户彻底避开即将下线的 GPT-OSS-120b。</p>
+<p><b>错了怎么办：</b>如果不小心点选了 GPT-OSS 120B，立刻点开模型下拉菜单切回 Gemini 4 Hydrogen（免费版）或 Orchestrator / Gemini 4 Neon（付费版）。</p>
 <label class="tut-check"><input type="checkbox"> 3.3 了解 AI 积分（AI Credits）超额机制</label>
 <p><b>怎么做（核对要点）：</b>了解付费 Pro / Ultra 用户的“备用油箱”规则——除了套餐自带的基准配额外，付费用户还可以按需购买 AI 积分（AI Credits），并在设置里把超额开关设为“绝不（Never）”或“总是（Always）”。</p>
 <p><b>打勾标准：</b>清楚只有在耗尽基准配额后才会动用 AI 积分，平时绝不会在基准配额还有剩余时乱扣积分。</p>
@@ -17182,17 +17293,22 @@ git commit -m "改首页之前"</pre>
 <p><b>做到哪一步算过：</b>官网 5 秒内完整打开，无地区受限提示，心里明确自己是个人、Workspace 还是企业版账号。</p>
 <p><b>卡住先看哪里：</b>先看 C-1 清单 2，重点排查账号关联地区与网络连通标准（“能打开 antigravity.google 且登录不转圈”）。</p>
 <p>第 2 段（5–10 分钟）：选对入口并完成安装</p>
-<p><b>做什么：</b>从 antigravity.google/download 下载对应芯片的 Antigravity App（桌面应用 v2.5+）（注意别下成独立版 Antigravity IDE），完成安装并首次启动。</p>
+<p><b>做什么：</b>从 antigravity.google/download 下载对应芯片的 Antigravity App（桌面应用 v2.30.0+）（注意别下成独立版 Antigravity IDE），完成安装并首次启动。</p>
 <p><b>做到哪一步算过：</b>软件顺利启动弹出欢迎页；Mac 用户确认是把图标拖进 Applications 文件夹后再启动的，而不是在 .dmg 虚拟磁盘里直接双击。</p>
 <p><b>卡住先看哪里：</b>先看 C-2 模块二 阶段 A，排查系统安全拦截或芯片版本下错问题。</p>
 <p>第 3 段（10–15 分钟）：授权登录、核对版本号与默认模型</p>
-<p><b>做什么：</b>点 Sign in with Google 完成浏览器授权，点菜单栏「关于（About）」核对 App 版本在 v2.5+，看一眼输入框下方的默认模型（免费版默认 Gemini 4 Hydrogen，付费版可见 Neon / Orchestrator），再到设置页看一眼 View Usage。</p>
+<p><b>做什么：</b>点 Sign in with Google 完成浏览器授权，点菜单栏「关于（About）」核对 App 版本在 v2.30.0+，看一眼输入框下方的默认模型（免费版默认 Gemini 4 Hydrogen，付费版可见 Neon / Orchestrator），再到设置页看一眼 View Usage。</p>
 <p><b>做到哪一步算过：</b>角落显示正确 Google 头像，版本号达标，模型列表与当前套餐一致。</p>
 <p><b>卡住先看哪里：</b>如果浏览器点了同意但软件一直转圈，先看 C-2 翻车案例 2；如果付费版找不到 Neon，先看 C-2 翻车案例 3。</p>
 <p>第 4 段（15–20 分钟）：首次角色布局与安全工作区就绪</p>
-<p><b>做什么：</b>在首次引导里选好简洁对话优先布局，确认权限策略在默认的推荐/平衡模式；点 Open Folder 打开 Antigravity_Projects/test-hello 并点 Yes, I trust。</p>
+<p><b>做什么：</b>在首次引导里选好简洁对话优先布局，确认权限策略在默认的 Default；点 Open Folder 打开 Antigravity_Projects/test-hello 并点 Yes, I trust。</p>
 <p><b>做到哪一步算过：</b>左侧边栏干干净净只显示 test-hello，大大的聊天输入框就在眼前。</p>
 <p><b>卡住先看哪里：</b>如果手快跳过了首次引导导致界面像程序员代码编辑器，看 C-2 模块一 步骤 3 切回简洁布局。</p>
+<p>实机侧边栏导航认路与按钮名称对齐：打开 Antigravity 桌面端主界面，最左侧导航栏从上到下有几个核心一级入口，动手前先认清它们的位置与实机名字：</p>
+<p>+ New Conversation（新建对话）：位于侧边栏最上方。做完一个阶段或对话聊太长时，就点它开启干净的新会话。</p>
+<p>Automations（自动化任务管理面板）：位于 + New Conversation 下方。所有通过 /automation 创建的后台定时自动化任务都集中在这里管理（新创建的自动化任务默认处于 Paused 暂停状态，需在面板里手动打开开关才会按计划运行）。</p>
+<p>Customizations（自定义中心）：位于 Automations 正下方。点开它可以集中管理全局与项目级的 Rules（自定义规则）、Skills（技能），并能直接切换到 Marketplace（插件市场）与 Installed（已安装）标签页，一键浏览、安装、启停或卸载官方扩展插件。</p>
+<p>Projects 与 Conversations：下方依次是你的本地项目文件夹列表，以及带时间标记的历史对话记录（如 12d 代表 12 天前）。</p>
 <p>第 5 段（20–25 分钟）：通电对话并生成首张测试网页</p>
 <p><b>做什么：</b>确认模式在 Planning（以你当前实机界面为准），输入“请帮我在这个文件夹里做一个只显示‘你好，Antigravity！’和一个‘点我变色’按钮的极简中文网页 index.html”，审完计划点确认执行（如 Proceed，以实机界面为准）。</p>
 <p><b>做到哪一步算过：</b>左侧边栏成功冒出 index.html，AI 汇报完工且无红字报错。</p>
@@ -17219,22 +17335,38 @@ git commit -m "改首页之前"</pre>
 <label class="tut-check"><input type="checkbox"> <b>步骤 3：</b>跳过引导或选错布局后的手动补救</label>
 <p><b>怎么做（点哪里）：</b>点击界面角落的设置（Settings）齿轮图标，依次手动调回三项配置（具体菜单名称以你当前实机界面为准）：</p>
 <p>在 Appearance / Layout（外观与布局）或 Workspace Mode 里切回清爽的对话优先 / 简洁布局；</p>
-<p>在 Permissions / Review Policy 里确认为默认的 Recommended（推荐/平衡），关闭全自动执行；</p>
+<p>在 Permissions / Review Policy 里确认为默认的 Default（系统默认选中），关闭全自动执行；</p>
 <p>在 Rules（规则）里把 B 版第 7 章的“纯小白全局家规”贴进去点保存。</p>
 <p><b>看到什么：</b>界面瞬间恢复清爽，多余的代码调试面板收起。</p>
 <p><b>打勾标准：</b>主界面布局干净，权限策略稳妥，完全不需要卸载重装。</p>
 <p><b>错了怎么办：</b>找不到某项设置时，直接按设置页顶部的搜索框搜关键词 Layout 或 Permissions。</p>
-<h3>模块二：入口一——Antigravity App（桌面应用 v2.5+）分系统安装、首启与升级检查表</h3>
-<p><b>适合谁：</b>绝大多数纯小白与非程序员主力首选。关键区分：Antigravity App（桌面应用 v2.5+）和独立版 Antigravity IDE 是两个不同的产品！前者界面清爽、主打对话与任务流；后者是给专业程序员用的重型代码编辑器。下载时务必认准 Antigravity App。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 4：</b>首次启动角色向导六选一与第三方配置导入</label>
+<p><b>怎么做（点哪里）：</b>App v2.30.0+ 首次启动时，会先弹出角色选择向导（具体选项文案以你当前实机界面为准），从下面六大角色里挑一个最贴近你用途的：Software Engineering（软件开发）、Knowledge Work（知识工作）、Data &amp; Analysis（数据分析）、Research（研究）、Design（设计）、Other（其他）。选好角色后，软件会按角色给你配好默认界面布局、入门提示词与引导流。</p>
+<p><b>看到什么：</b>不同角色对应不同的默认布局与预设提示词；如果你之前用过 Claude Code、Codex、Cursor 或 Gemini CLI，启动时还会看到一键导入已有配置的入口，可以把旧工具里的配置直接带过来（具体导入入口位置与可导入的配置范围，以你当前实机界面与官网说明为准）。</p>
+<p><b>打勾标准：</b>选对了贴合自己用途的角色（非程序员做数据分析、文档研究或设计时，别默认选软件开发）；如有旧工具配置，已确认导入成功。</p>
+<p><b>错了怎么办：</b>如果选错角色导致界面像程序员代码编辑器，按模块一 步骤 3 的方法去设置里切回清爽的对话优先布局；导入旧配置后出现冲突，删掉冲突项后重新导入一次即可。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 5：</b>一次登录处处通用与 Workspace 账号边界</label>
+<p><b>怎么做（点哪里）：</b>Antigravity 各端共享同一套统一身份验证层——在 App、CLI、IDE 扩展或 SDK 任一端完成登录后，其余端自动复用同一套登录凭证，不用每个端都重新走一遍浏览器授权。</p>
+<p><b>看到什么：</b>个人 Google 账号走标准 OAuth 浏览器授权登录；公司或学校配发的 Google Workspace 账号能否登录，完全取决于组织管理员是否放开权限。</p>
+<p><b>打勾标准：</b>清楚自己用的是个人账号还是 Workspace 账号，并知道另一端不用重复登录。</p>
+<p><b>错了怎么办：</b>如果 Workspace 账号登录时提示权限不足或订阅不可用，先确认组织管理员是否放开了第三方/AI 开发工具权限；默认情况下 Workspace 账号只给有限 starter 配额，Workspace 套餐本身不含 Antigravity 方案与更高额度（企业组织需走独立开通的 Gemini Enterprise 通道），急着用时先切回个人合规 @gmail.com 账号登录。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 6：</b>企业 SSO 与无头环境 ADC（进阶折叠块，个人用户可跳过）</label>
+<p><b>怎么做（点哪里）：</b>企业版用户通过组织单点登录（SSO，支持 SAML / OIDC）接入，由公司统一分配席位与企业级付费模型配额（具体入口以你公司 IT 提供的登录指引为准）。</p>
+<p>在无图形界面的远程服务器、Docker 容器或 CI 环境里，传统的弹窗浏览器 OAuth 登录会直接失效，这时改用应用默认凭据（ADC）方式：先在有浏览器的电脑上跑 gcloud auth application-default login 完成授权，再通过环境变量 AGY_ADC_AUTH=true 或在配置文件 ~/.gemini/config/config.json 里写入 enableAdc=true 启用 ADC（两种启用方式的详细步骤见 C-4 清单 10 的 10.1）。</p>
+<p><b>看到什么：</b>SSO 登录后直接进入企业版工作区；ADC 启用后，远程终端里的 agy 不再弹浏览器也能正常跑任务。</p>
+<p><b>打勾标准：</b>企业版用户已走通 SSO；需要在服务器上跑 agy 的用户，已确认 ADC 两种启用方式中至少一种生效。</p>
+<p><b>错了怎么办：</b>SSO 登录失败先联系公司 IT 管理员确认席位与权限；ADC 启用后仍提示鉴权失败，核对环境变量名与配置文件路径是否写对（AGY_ADC_AUTH=true 与 enableAdc=true 的写法见官网 Authenticate 页 ADC 一节）。</p>
+<h3>模块二：入口一——Antigravity App（桌面应用 v2.30.0+）分系统安装、首启与升级检查表</h3>
+<p><b>适合谁：</b>绝大多数纯小白与非程序员主力首选。关键区分：Antigravity App（桌面应用 v2.30.0+）和独立版 Antigravity IDE 是两个不同的产品！前者界面清爽、主打对话与任务流；后者是给专业程序员用的重型代码编辑器。下载时务必认准 Antigravity App。</p>
 <h3>阶段 A：下载与分系统安装</h3>
 <label class="tut-check"><input type="checkbox"> <b>步骤 1：</b>进入官网下载对应芯片的安装包</label>
-<p><b>怎么做（点哪里）：</b>浏览器打开 antigravity.google/download → 找到 Antigravity App（v2.5+）板块 → 按你清单 1 记下的芯片类型点击下载（Mac 选 Apple Silicon 或 Intel；Win 选 x64 或 ARM64；Linux 选对应发行版包）。</p>
+<p><b>怎么做（点哪里）：</b>浏览器打开 antigravity.google/download → 找到 Antigravity App（v2.30.0+）板块 → 按你清单 1 记下的芯片类型点击下载（Mac 选 Apple Silicon 或 Intel；Win 选 x64 或 ARM64；Linux 选对应发行版包）。</p>
 <p><b>看到什么：</b>下载栏开始下载 .dmg（Mac）、.exe（Windows）或 Linux 安装包。</p>
 <p><b>打勾标准：</b>安装包完整下载完毕，且文件名明确是 Antigravity App 而非独立版 IDE。</p>
 <p><b>错了怎么办：</b>下错芯片版本或下成独立版 IDE，直接删掉安装包回官网重新点选。</p>
 <h3>【真实翻车案例 1：下载错了独立版 Antigravity IDE，一打开满屏代码懵了】</h3>
 <p><b>现场：</b>小陈照着网上帖子点下载，没仔细看名字，把独立版 Antigravity IDE 装进了电脑。打开后左边是密密麻麻的工程树、中间是黑乎乎的代码编辑区、底下是终端调试栏，连“怎么用大白话聊天”都找不到。</p>
-<p><b>怎么救：</b>不用硬扛着学代码编辑器！直接把独立版 IDE 卸载（Mac 拖进废纸篓，Win 去控制面板卸载），重新打开 antigravity.google/download，认准轻量清爽的 Antigravity App（桌面应用 v2.5+）下载安装即可。</p>
+<p><b>怎么救：</b>不用硬扛着学代码编辑器！直接把独立版 IDE 卸载（Mac 拖进废纸篓，Win 去控制面板卸载），重新打开 antigravity.google/download，认准轻量清爽的 Antigravity App（桌面应用 v2.30.0+）下载安装即可。</p>
 <label class="tut-check"><input type="checkbox"> <b>步骤 2：</b>分系统执行安装与首次打开核对（Windows / Mac / Linux）</label>
 <p><b>怎么做（点哪里）：</b></p>
 <p><b>Windows 首次打开：</b>双击 .exe 按向导点 Next / Install → 从桌面或开始菜单双击 Antigravity 图标启动 → 若弹出 Windows Defender 防火墙提示，勾选「专用网络」点允许访问（建议右键任务栏图标点「固定到任务栏」）。</p>
@@ -17250,8 +17382,8 @@ git commit -m "改首页之前"</pre>
 <p><b>大白话解释“OAuth 回调授权”：</b>桌面软件不直接问你要密码，而是把你送到官方浏览器里点一下“同意”，浏览器再喊一声约定好的“暗号（回调协议）”，把你自动送回桌面软件，防盗号又省事。</p>
 <label class="tut-check"><input type="checkbox"> <b>步骤 3：</b>完成浏览器授权登录并核对版本号</label>
 <p><b>怎么做（点哪里）：</b>在欢迎页点 Sign in with Google → 在弹出的默认浏览器里选中合规 Google 账号 → 点 Continue / Allow → 浏览器弹出“是否打开 Antigravity？”提示时点「打开」/「始终允许」。</p>
-<p><b>看到什么：</b>自动跳回桌面软件，角落显示你的 Google 账号头像，关于页面显示版本在 v2.5+。</p>
-<p><b>打勾标准：</b>登录成功、头像正确、版本号在 v2.5+。</p>
+<p><b>看到什么：</b>自动跳回桌面软件，角落显示你的 Google 账号头像，关于页面显示版本在 v2.30.0+。</p>
+<p><b>打勾标准：</b>登录成功、头像正确、版本号在 v2.30.0+。</p>
 <p><b>错了怎么办：</b>参考下方两个真实翻车案例逐项排查。</p>
 <h3>【真实翻车案例 2：浏览器点了允许，桌面端却一直转圈登不进去】</h3>
 <p><b>现场：</b>小赵在 Chrome 里明明看到了“登录成功”，但切回 Antigravity App，屏幕中间的加载圈转了好几分钟依然进不去。</p>
@@ -17274,8 +17406,18 @@ git commit -m "改首页之前"</pre>
 <p><b>看到什么：</b>Mac 弹窗出现 Keep Both（保留两者）、Stop（停止）、Replace（替换）三个按钮。</p>
 <p><b>打勾标准：</b>Mac 升级时必须点击 Replace（替换），绝不点 Keep Both（保留两者）；升级完重开软件，版本号更新、头像保持登录、旧项目正常加载。</p>
 <p><b>错了怎么办：</b>如果 Mac 之前误点了 Keep Both 导致应用程序里躺着 Antigravity 和 Antigravity 2 两个图标互相冲突闪退，把两个都拖进废纸篓清空，再重新安装一次最新版即可。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 6：</b>换新电脑、重装系统时完整迁移项目与家规</label>
+<p><b>怎么做（点哪里）：</b>换电脑或重装系统前，先做好三件套备份：第一，把整个 Antigravity_Projects 总文件夹直接拷入 U 盘或移动硬盘带走（纯前端网页项目不依赖注册表，拷到新电脑就能直接用）；第二，把设置里的全局 Rules 文本复制保存成一个 my-global-rules.txt 文件一起带走；第三，到新电脑装好新版软件后，重新走一遍 Sign in with Google 授权登录，并把 my-global-rules.txt 里的全局规则贴回设置里保存。</p>
+<p><b>看到什么：</b>新电脑上的 Antigravity 打开旧项目文件夹后，文件、规则与之前完全一致。</p>
+<p><b>打勾标准：</b>三件套（总文件夹、全局规则文本、重新授权登录）全部就位，新电脑上能正常打开旧项目并发消息。</p>
+<p><b>错了怎么办：</b>如果只拷了项目文件夹却忘了带全局规则，AI 会突然像失忆一样不再遵守你立过的家规，这时把 my-global-rules.txt 的内容重新贴进设置里的全局规则并点保存即可。至于软件本地设置文件本身存在哪个系统目录，不同系统位置不同，这里不写死路径，只带走上面两样就够了。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 7：</b>彻底卸载清理残留（重装后依然报错的保底项）</label>
+<p><b>怎么做（点哪里）：</b>当软件因异常断电、升级冲突导致怎么重装都闪退或登录卡死时，做一次彻底干净重装：先正常卸载软件本体，再手动清理本地残留的缓存与配置目录（Mac、Windows、Linux 各自的缓存目录具体路径以官网当前说明为准，清理前务必先确认不要误删自己的 Antigravity_Projects 作品文件夹），最后重新下载最新版安装。</p>
+<p><b>看到什么：</b>重装后软件能正常启动、正常登录，之前怎么修都修不好的闪退或卡死消失。</p>
+<p><b>打勾标准：</b>卸载前已确认 Antigravity_Projects 作品文件夹已另外备份；清理后重装一次通过。</p>
+<p><b>错了怎么办：</b>如果清理后重装依然闪退，先核对是不是误删了作品文件夹（作品文件夹与软件本体缓存是分开的，正常卸载不会动它），再按 C-5 排错卡片场景 2 的步骤逐项排查。</p>
 <h3>阶段 D：多账号切换与退出清理检查表</h3>
-<label class="tut-check"><input type="checkbox"> <b>步骤 6：</b>个人号与工作/企业号安全切换核对</label>
+<label class="tut-check"><input type="checkbox"> <b>步骤 8：</b>个人号与工作/企业号安全切换核对</label>
 <p><b>怎么做（点哪里）：</b>需要从个人 @gmail.com 切换到公司 Workspace / 企业版账号（或反之）时，先点软件角落头像 → Sign out（退出登录）→ 顺手关掉所有正在运行的工作区任务 → 再点 Sign in with Google，在浏览器里选中目标账号完成授权即可。</p>
 <p><b>看到什么：</b>软件重新加载后，左下角/右上角头像变更为目标账号，模型列表自动刷新为新账号对应的权限范围。</p>
 <p><b>打勾标准：</b>切换账号后能正常发消息，且没有残留上一个账号的权限报错。</p>
@@ -17301,6 +17443,16 @@ git commit -m "改首页之前"</pre>
 <p><b>看到什么：</b>正常输出版本号；若是无图形界面的远程 Linux，终端会打印一个授权链接供你复制到本地浏览器打开完成授权。</p>
 <p><b>打勾标准：</b>版本号正确、登录成功。</p>
 <p><b>错了怎么办：</b>提示 command not found: agy 时，检查 ~/.bashrc 或 ~/.profile 是否已加入安装路径并重开终端；若报 GLIBC_2.xx not found，说明系统版本过老，需升级 Linux 发行版。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 4：</b>终端里用 /credits 查 AI 积分余额</label>
+<p>怎么做（点哪里 / 敲什么）：在终端 CLI 会话输入框里直接输入 /credits 并回车，打开交互式 AI 积分面板；如需开关基准配额耗尽后是否自动动用个人 AI 积分，可在终端输入 /config 交互调整，或直接编辑配置文件 ~/.gemini/antigravity-cli/settings.json，写入 "useG1Credits": true（开启）或 false（关闭）。</p>
+<p><b>看到什么：</b>终端界面弹出专属积分状态面板，清晰显示你当前的 AI 积分剩余额度及管理/购买入口（终端状态栏的具体数字显示样式以你当前实机界面为准）。</p>
+<p><b>打勾标准：</b>知道终端里不用切回网页就能通过 /credits 查积分余额，并且 useG1Credits 开关符合自己的预算预期（怕超支设为 false，需应急加量设为 true）。</p>
+<p><b>错了怎么办：</b>如果开启了 "useG1Credits": true 却提示无法扣减积分，先核对你的个人 Google 账号里是否已充值 AI 积分，以及是否处于非企业受限的个人合规账号下。更完整的额度核对方法见 C-3 清单 2 的 2.3b。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 5：</b>从 Gemini CLI 迁移过来的核对清单</label>
+<p><b>怎么做（点哪里）：</b>如果你之前用的是 Gemini CLI，现在改用 Antigravity CLI（agy），按下面四项逐一核对：旧配置文件与历史规则、自定义命令是否兼容新版（具体迁移路径与命令以官网当前迁移指南为准）；是否需要重新登录授权（agy 与 Gemini CLI 的登录凭证不通用，迁移后需重新走一遍 agy login）；旧的历史对话与工作区设置是否已按指南搬过来；迁移完成后跑一遍 agy --version 与一次中文通电测试。</p>
+<p><b>看到什么：</b>agy 能正常启动、正常登录，旧的规则与自定义命令在新环境里照常生效。</p>
+<p><b>打勾标准：</b>四项核对全部通过，且已确认旧的 Gemini CLI 配置没有残留冲突。</p>
+<p><b>错了怎么办：</b>如果迁移后旧规则不生效，先核对规则文件是不是放在了新版要求的路径下（见 C-4 清单 5 的规则文件体系说明）；登录问题按本模块步骤 1–3 的方法重走授权。首次启动时的一键导入入口见 C-2 模块一 步骤 4。</p>
 <h3>模块四：入口三——For IDEs（7 个编辑器扩展）安装与登录检查表</h3>
 <p><b>适合谁：</b>电脑里本来就装了 VS Code、JetBrains 系列等官方支持的 7 个主流代码编辑器之一的开发者。（纯小白没装过编辑器直接跳过。）</p>
 <label class="tut-check"><input type="checkbox"> <b>步骤 1：</b>在编辑器扩展商店安装官方插件</label>
@@ -17343,11 +17495,11 @@ git commit -m "改首页之前"</pre>
 <h2>C-2 阶段终极验收卡（起飞前最后确认）</h2>
 <p>在进入中篇（C-3、C-4 实战打勾清单）之前，核对下面 4 个红勾，全打勾就能排除大部分常见翻车：</p>
 <label class="tut-check"><input type="checkbox"> 年满 18 岁、账号地区合规、且网络满足“能打开 antigravity.google 且登录不转圈”。</label>
-<label class="tut-check"><input type="checkbox"> 至少跑通了一个主力入口（纯新手首选 Antigravity App v2.5+ 或网页版，没下错成独立版 IDE）。</label>
+<label class="tut-check"><input type="checkbox"> 至少跑通了一个主力入口（纯新手首选 Antigravity App v2.30.0+ 或网页版，没下错成独立版 IDE）。</label>
 <label class="tut-check"><input type="checkbox"> 建好了纯英文总基地 文档/Antigravity_Projects（避开网盘自动同步锁死）与测试文件夹 test-hello。</label>
 <label class="tut-check"><input type="checkbox"> 清楚免费版默认用 Gemini 4 Hydrogen，避开了 2026 年 11 月 30 日下线的 4 个旧模型。</label>
 <h2>Antigravity 零基础超全手册（C 超全手册版 · 第二版扩充版 · 中篇）</h2>
-<p class="tut-byline">执笔：小森（Gemini）｜核验基准：2026 年 11 月 25 日（对照 antigravity.google 官网当天核对）｜本篇涵盖：C-3 建项目、素材投喂、模型与提需求检查表；C-4 Planning / Fast 打磨 / Rules 验收 / Orchestrator 实战 / Agent 并行 / 斜杠命令 / 上线前最后检查全流程打勾清单</p>
+<p class="tut-byline">执笔：小森（Gemini）｜核验基准：2026 年 11 月 25 日（对照 antigravity.google 官网当天核对）｜本篇涵盖：C-3 建项目、素材投喂、模型与提需求检查表；C-4 Planning / Fast 打磨 / Rules 验收 / Orchestrator 实战 / Agent 并行 / 斜杠命令 / 上线前最后检查 / 命令行与 SDK 进阶实战 / IDE 扩展与迁移实战 / 端到端实战与长期治理全流程打勾清单</p>
 <p><b>实机界面核对提醒：</b>本篇涉及的模式切换（如 Planning / Fast）、确认按钮（如 Proceed）、快捷键（如 Shift + Tab）及菜单名称，如与你当前实机界面略有出入，请一律以你屏幕上实际显示的为准。基础概念已在前两版讲透的，本篇直接标注“见 A 版第×章 / 见 B 版第×章”，不再重复展开。</p>
 <h2>C-3 建项目、素材投喂、模型与提需求检查表</h2>
 <p>软件装好、登录绿灯后，千万别急着一上来就狂打字。每次开工做一个新项目前，花 3 分钟把下面五张表打完勾，能排除大部分返工和翻车。</p>
@@ -17368,15 +17520,32 @@ git commit -m "改首页之前"</pre>
 <p><b>看到什么：</b>左侧边栏顶部显示你的新文件夹名，聊天输入框就绪。</p>
 <p><b>打勾标准：</b>左侧边栏干干净净，没有冒出几百个你不认识的杂乱文件。</p>
 <p><b>错了怎么办：</b>如果冒出一堆杂文件，说明选错了上级目录！立刻点菜单栏 File → Close Folder，重新只选中你刚建的那个空文件夹。</p>
+<label class="tut-check"><input type="checkbox"> 1.4 新建项目时选 Local mode 还是 New worktree mode</label>
+<p><b>怎么做（点哪里）：</b>新建项目、第一次对话填写目标、背景与约束后，软件会让你选工作区模式（二选一，具体选项文案以你当前实机界面为准）：</p>
+<p>Local mode（就地模式）：直接在本地当前目录就地读写文件，改动直接落在你打开的这个文件夹里。</p>
+<p>New worktree mode（隔离分支模式）：基于 Git worktree 自动拉出一个隔离分支与独立目录并行开发，实验性改动不会碰到主分支的代码。</p>
+<p>选好模式后，点 Start Building（开始构建）进入完整闭环。</p>
+<p><b>看到什么：</b>Local mode 下改动直接出现在当前文件夹；New worktree mode 下会多出一个独立的隔离目录与分支。</p>
+<p><b>打勾标准：</b>做小改动、改熟人项目时选 Local mode；要大改实验功能、怕把能跑的主分支改乱时，选 New worktree mode。</p>
+<p><b>错了怎么办：</b>如果选了 New worktree mode 却找不到改动去哪了，先确认当前打开的是隔离目录还是原目录；如果只是想在原目录小修小补，下次新建项目时改选 Local mode 即可。</p>
+<label class="tut-check"><input type="checkbox"> 1.5 接手已有网页模板或他人项目文件，先让 AI 通读再动手</label>
+<p><b>怎么做（点哪里）：</b>很多新手不是从零写，而是从网上下载了一个现成的静态网页模板（或别人分享的 .html 文件），想让 Antigravity 帮忙改文字、换配色、加功能。接手时先别急着提修改，先发一句：“请先通读当前文件夹里的所有文件，总结一下这个项目的结构、每个文件是干嘛的，再告诉我可以安全改哪里。”等它总结完，再提局部修改。</p>
+<p><b>看到什么：</b>AI 先输出一份项目结构总结，你确认它真的读懂了现有代码，再开始改。</p>
+<p><b>打勾标准：</b>AI 的总结与文件夹里的实际文件对得上号；局部修改只动你指定的文件。</p>
+<p><b>错了怎么办：</b>严禁一上来就让它重写整个文件——接手现成代码最忌推倒重来；如果它已经把旧文件改乱了，立刻用 Git 回退或按 C-4 清单 4 的回退三步恢复，再按上面这句起手话重新来。压缩包解压报错的排查见 C-5 场景 24。</p>
 <h3>【真实翻车案例 1：图省事把整个桌面当工作区】</h3>
 <p><b>现场：</b>老周懒得新建文件夹，直接点 Open Folder 选中了「桌面（Desktop）」，发了一句“做个记账网页”。结果 Antigravity 把桌面上几十个合同 PDF、照片和旧表格全扫描了一遍，不仅半天没反应、白白消耗了不少配额，还差点覆盖掉桌面上一个同名旧文件。</p>
 <p><b>怎么救：</b>立刻点 Stop 停止任务 → 关闭当前文件夹 → 按清单 1.1 在 Antigravity_Projects 里老老实实建一个独立空文件夹重新打开。</p>
 <h3>清单 2：工作方式、模型切换实操与额度核对表</h3>
-<label class="tut-check"><input type="checkbox"> 2.1 核对权限审核策略与初始模式</label>
-<p><b>怎么做（点哪里）：</b>点界面角落 设置（Settings） → 查看权限审核策略（Permissions / Review Policy）；同时看输入框左下角的模式开关。</p>
-<p><b>看到什么：</b>权限处在默认的 Recommended（推荐/平衡） 或 Ask（每次询问）；模式开关高亮 Planning（规划模式）。</p>
-<p><b>打勾标准：</b>确认没开“全自动放飞（Always proceed）”，且从零建新项目时首条指令用 Planning。</p>
-<p><b>错了怎么办：</b>手动切回推荐/平衡模式，并把输入框模式切回 Planning。</p>
+<label class="tut-check"><input type="checkbox"> 2.1 核对本地权限四档预设（Local Permissions）与初始模式</label>
+<p><b>怎么做（点哪里）：</b>看聊天输入框右下角带锁形图标的权限按钮（默认显示 Default），点击展开 Local Permissions 菜单（也可在设置 &gt; 通用 &gt; 全局权限 &gt; 权限预设中查看）；同时确认输入框左下角的模式开关处在 Planning（以当前实机界面为准）。</p>
+<p><b>看到什么：</b>权限菜单里列出以下四档预设（目前桌面端已统一采用这四档名称，取代早期的旧叫法）：</p>
+<p>Request Review（每次命令都要批准）：终端沙盒关闭，每条终端命令都必须经过你人工批准才运行；Agent 可读写当前工作区，工作区之外的任何操作均需批准。</p>
+<p>Default（敏感操作前先问你，系统默认选中）：工作区及临时目录内的命令在终端沙盒内自动运行，一旦涉及沙盒外的操作或敏感指令，会暂停等你批准。</p>
+<p>Auto（自动判断命令是否运行）：默认在终端沙盒内运行；当命令需要触及沙盒外时，系统会自动评估——安全、可逆的操作直接放行，高风险或不可逆操作仍暂停等你批准。</p>
+<p>Turbo（无限制运行所有命令）：无限制运行所有命令，没有任何沙盒隔离与限制，Agent 拥有你整个电脑文件系统的完整读写权限。</p>
+<p><b>打勾标准：</b>纯小白直接保持系统默认的 Default（若对安全要求极高、不介意频繁点确认，可选 Request Review）；严禁新手开启 Turbo（Turbo 无沙盒隔离且放开全盘读写，一旦指令理解偏差风险最大）。</p>
+<p><b>错了怎么办：</b>如果不小心点到了 Turbo 或 Auto，立刻点击输入框右下角的权限按钮，手动点回 Default 即可即时恢复沙盒保护。</p>
 <label class="tut-check"><input type="checkbox"> 2.2 模型切换实操分步验证（Hydrogen → Neon → 切回 Hydrogen）</label>
 <p><b>怎么做（点哪里）：</b>看聊天输入框下方的模型选择器（Model Picker），点击展开下拉列表，按以下三步实操验证：</p>
 <p>确认免费版默认选中 Gemini 4 Hydrogen（注：Gemini 3.8 Flash、Gemini 4 Argon、Claude 4.6、GPT-OSS-120b 将于 2026 年 11 月 30 日下线，请勿选用）；</p>
@@ -17385,8 +17554,19 @@ git commit -m "改首页之前"</pre>
 <p><b>看到什么：</b>下拉列表清晰展示当前账号可用模型（详细「套餐 × 模型」表见 A 版第 5 章），切换后回复顺畅无红字。</p>
 <p><b>打勾标准：</b>能顺利展开模型列表、认清自己套餐对应的可用模型，且来回切换正常对话。</p>
 <p><b>错了怎么办：</b></p>
-<p>找不到 Gemini 4 Neon：先点角落头像核对是不是登错了免费的备用小号；再核对是不是试用版 Pro（Trial）（试用版配额更低、模型更受限，且不含 Claude 5.5）；最后确认 Antigravity App 已更新到 v2.5+ 并退出重登刷新列表。</p>
+<p>找不到 Gemini 4 Neon：先点角落头像核对是不是登错了免费的备用小号；再核对是不是试用版 Pro（Trial）（试用版配额更低、模型更受限，且不含 Claude 5.5）；最后确认 Antigravity App 已更新到 v2.30.0+ 并退出重登刷新列表。</p>
 <p>手滑选错或选到下线模型报错：直接点开模型选择器，免费版切回 Gemini 4 Hydrogen，付费版切回 Gemini 4 Neon / Carbon / Orchestrator 即可。</p>
+<label class="tut-check"><input type="checkbox"> 2.2a 实操调节 Thinking effort（思考强度四档子菜单）</label>
+<p><b>怎么做（点哪里）：</b>点击输入框下方的模型选择器展开模型列表，把鼠标移到或选中支持调节的模型（例如 Gemini 4 Hydrogen Medium，右侧带 &gt; 箭头），在向右侧弹出的 Thinking effort 二级子菜单里按任务难度点选对应档位。</p>
+<p><b>看到什么：</b>子菜单中列出 Low、Medium（多数模型的默认档）、High，以及 Gemini 4 Neon 和 Gemini 4 Hydrogen 独有的 Extra High（Extra 级别）四档选项；选中后模型名称后缀会同步变成对应的思考级别（如 Gemini 4 Neon High）。</p>
+<p>打勾标准（怎么选才不浪费额度）：日常建网页、普通功能开发保持默认的 Medium 即可；只是改个按钮颜色、调字号等简单小修改，可切到 Low 追求更快的响应速度；遇到复杂多步推理、疑难排错或需要最大推理深度时，再切到 High 或 Extra High（注意：推理越深耗时越长，建议按需开启，用完复杂任务记得调回默认 Medium）。</p>
+<p><b>错了怎么办：</b>如果把免费版默认的 Gemini 4 Hydrogen 调到了 Extra High 感觉回复变慢，随时点开模型选择器把光标移回该模型，在右侧子菜单点回 Medium 即可恢复默认节奏。</p>
+<label class="tut-check"><input type="checkbox"> 2.2b 认清右侧辅助栏、总览面板与后台任务的分工</label>
+<p><b>怎么做（点哪里）：</b>教程前面重点讲清了左侧边栏入口，这里补上右侧工作区：右侧辅助栏（Side panel）与总览面板（Overview panel）是两个不同的视图，点界面右侧对应的切换入口可以在两者之间切换；当 Agent 在后台启动了本地开发服务器等长驻进程时，去后台任务（Background Tasks）里查看运行状态、看日志或一键终止。</p>
+<p><b>看到什么：</b>右侧辅助栏与总览面板各司其职，切换后视图内容随之变化；后台任务列表里能看到 Agent 起的本地预览服务器等长驻进程及其运行状态。</p>
+<p><b>打勾标准：</b>知道去哪里看后台长驻进程，端口被占用时知道去后台任务里关掉旧进程，而不是反复重启软件。</p>
+<p><b>错了怎么办：</b>如果后台任务列表里看不到预期的进程，先确认 Agent 是不是真的已经启动了本地服务（让它汇报一声），再刷新一次面板。</p>
+<p>三个容易混淆的后台概念，一次分清：后台任务（Background Tasks）指 Agent 在后台启动的本地开发服务器等长驻进程，在本节的右侧面板里管理；后台定时自动化任务（Automations）指通过 /automation 创建的持久定时任务，在左侧边栏 Automations 面板里管理（见 C-4 清单 8 的 8.3 与 8.4）；Agent 并行指同时开多个任务窗口或子 Agent 分头干活，见 C-4 清单 7。三个不是一回事，别混着用。</p>
 <label class="tut-check"><input type="checkbox"> 2.3 额度与 AI 积分开关核对（设置页看配额 → AI 积分开关 → View Usage）</label>
 <p><b>怎么做（点哪里）：</b>点击界面角落 设置（Settings） → 进入账号与用量（Account / Billing / Usage）板块，依次核对三处：</p>
 <p><b>看当前配额状态：</b>查看你当前套餐的基准配额进度条；</p>
@@ -17397,6 +17577,21 @@ git commit -m "改首页之前"</pre>
 <p>付费 Pro / Ultra：显示基准配额进度（Pro $19.99/月，Ultra 5x $99.99/月、Ultra 20x $199.99/月，2026-11-25 美国挂牌价，各地区以官网为准），以及 AI 积分超额包开关状态（系统只有在耗尽基准配额后才会动用 AI 积分）。</p>
 <p><b>打勾标准：</b>看清了自己的剩余配额；怕花超预算的付费新手，已确认 AI 积分超额开关设在 “绝不（Never）”（需要应急加量时再手动按需购买并改“总是”）。</p>
 <p><b>错了怎么办：</b>如果 View Usage 页面打不开或一直转圈，检查网络是否满足“能打开 antigravity.google 且登录不转圈”，刷新或重启软件再看。</p>
+<p><b>查用量快捷入口提醒：</b>除了去设置页找用量页外，直接点开聊天输入框下方的模型下拉菜单（Model），在菜单最底部就能看到 View Usage 按钮，点一下即可直达当前周期配额与消耗详情页，比进设置页翻菜单更省事。</p>
+<label class="tut-check"><input type="checkbox"> 2.3b 终端 CLI（agy）用户专属：用 /credits 与 useG1Credits 管好 AI 积分</label>
+<p>怎么做（点哪里 / 敲什么）：在终端 CLI 会话输入框里直接输入 /credits 并回车，打开交互式 AI 积分面板；如需开关基准配额耗尽后是否自动动用个人 AI 积分，可在终端输入 /config 交互调整，或直接编辑配置文件 ~/.gemini/antigravity-cli/settings.json，写入 "useG1Credits": true（开启）或 false（关闭）。</p>
+<p><b>看到什么：</b>终端界面弹出专属积分状态面板，清晰显示你当前的 AI 积分剩余额度及管理/购买入口（终端状态栏的具体数字显示样式以你当前实机界面为准）。</p>
+<p><b>打勾标准：</b>知道终端里不用切回网页就能通过 /credits 查积分余额，并且 useG1Credits 开关符合自己的预算预期（怕超支设为 false，需应急加量设为 true）。</p>
+<p><b>错了怎么办：</b>如果开启了 "useG1Credits": true 却提示无法扣减积分，先核对你的个人 Google 账号里是否已充值 AI 积分，以及是否处于非企业受限的个人合规账号下。</p>
+<label class="tut-check"><input type="checkbox"> 2.4 全局搜索、命令面板与历史对话精准回溯</label>
+<p><b>怎么做（点哪里）：</b>随着项目增多，几十条历史对话里很难找到昨天跑通的方案，这时用下面三招翻找：</p>
+<p>命令面板（Command Palette）：不用层层点菜单，直接唤起命令面板输入功能名，就能直达对应的操作（具体唤起方式以你当前实机界面为准）。</p>
+<p>跨项目与跨会话历史对话全文搜索：在历史对话里用关键词全文搜索，定位到某一次对话。</p>
+<p><b>超长对话内回溯：</b>在超长对话中快速定位某次文件修改或工具调用记录，不用从头翻到尾。</p>
+<p><b>看到什么：</b>输入关键词后直接跳到对应的历史对话或修改记录，不用一条一条翻。</p>
+<p><b>打勾标准：</b>能在 30 秒内找回昨天跑通的方案或某次关键修改，不用重新问 AI 一遍。</p>
+<p><b>错了怎么办：</b>如果搜不到，先确认是不是进错了项目（历史对话按项目与会话分开存放）；如果对话实在太长导致翻找困难，按 C-3 清单 5 的交接方法新开对话并让 AI 生成接力交接备忘录。</p>
+<p><b>顺手记一个最常用的快捷键：</b>在 CLI 里按 Shift + Tab 可以循环切换 auto / plan / default / accept-edits 四档模式（桌面端更多快捷键以官网 shortcuts 页为准）。</p>
 <h3>清单 3：开工前安全红线检查表（不放密钥 + 先 Git 存档）</h3>
 <label class="tut-check"><input type="checkbox"> 3.1 确认项目内不放任何真实密钥与敏感隐私</label>
 <p><b>怎么做（点哪里）：</b>扫一眼你要放进项目文件夹的文件和准备发给 AI 的提示词。</p>
@@ -17412,7 +17607,7 @@ git commit -m "改首页之前"</pre>
 <p><b>现场：</b>小马做完记账本 V1 后没做 Git 存档，直接把自己在第三方网站买的汇率 API 密钥贴进对话框让 Agent 写进网页里。结果 Agent 大改代码时把原有记账列表改坏了，小马回退不了，后来一急把文件夹发给朋友帮忙看，连带把代码里的收费密钥一起发了出去。</p>
 <p><b>怎么救：</b>不放密钥、先 Git 存档再让 Agent 动手，这两条铁律每次开工前必须打勾！</p>
 <h3>清单 4：参考图、表格与外部素材投喂检查表</h3>
-<p>做网页或理数据时，很多小白喜欢直接甩一张参考截图或一个旧表格给 Antigravity 照着做。投喂素材前按下面 3 项打勾，能省掉大量“AI 看走眼”的返工：</p>
+<p>做网页或理数据时，很多小白喜欢直接甩一张参考截图或一个旧表格给 Antigravity 照着做。投喂素材前按下面 7 项打勾，能省掉大量“AI 看走眼”的返工：</p>
 <label class="tut-check"><input type="checkbox"> 4.1 投喂参考界面截图（让它照着排版画）</label>
 <p><b>怎么做（点哪里）：</b>把你喜欢的网页参考图保存为 .png 或 .jpg 放进项目里的 raw 文件夹（或直接拖进聊天输入框），并在文字里补充一句：“参考这张截图的卡片排版和留白比例，但文字和颜色请按我下面写的中文要求来，不要照搬图里的英文。”</p>
 <p><b>看到什么：</b>输入框上方出现图片缩略图，发送后 AI 能识别出截图里的板块结构。</p>
@@ -17428,11 +17623,34 @@ git commit -m "改首页之前"</pre>
 <p><b>看到什么：</b>对话框清爽简洁，AI 通过写脚本在本地批量读取 raw 目录，不会卡死输入框。</p>
 <p><b>打勾标准：</b>聊天框里不堆满几十个附件图标，大批量文件统一走 raw 目录引用。</p>
 <p><b>错了怎么办：</b>如果一次往对话框拖了太多大图导致发送转圈报错，清空输入框附件，改用 raw 文件夹路径指引即可。</p>
+<label class="tut-check"><input type="checkbox"> 4.4 除了打字，还能语音输入与多模态投喂</label>
+<p><b>怎么做（点哪里）：</b>零基础新手打字慢、不知道怎么用专业术语描述界面问题时，换两种更省事的提需求方式：</p>
+<p>语音输入（Voice mode）：点输入框内的语音模式按钮，直接开语音说大白话提需求（具体开启按钮位置以你当前实机界面为准），说完确认文字无误再发送。</p>
+<p><b>多模态素材投喂：</b>向 Agent 直接投喂界面截图、手绘草图等多模态素材——把报错截图、参考界面图或手绘草图拖进输入框，再用一句话说明要改哪里；投喂时注意截图要清晰，关键区域不要糊成一团。</p>
+<p><b>看到什么：</b>语音转成的文字出现在输入框里；拖入的图片以缩略图形式挂在输入框上方，发送后 AI 能识别出图里的板块结构或报错内容。</p>
+<p><b>打勾标准：</b>语音转文字准确、截图清晰可读，AI 第一次就能理解你要改的是哪个位置。</p>
+<p><b>错了怎么办：</b>如果语音转文字后出现错别字，先在输入框里改对再发送；如果截图太长、字小得看不清，按 4.1 的方法裁剪成局部截图分批发给它。</p>
+<label class="tut-check"><input type="checkbox"> 4.5 让 AI 为网页或项目直接生成配图（Nano Banana 2 自动调用）</label>
+<p><b>怎么做（点哪里）：</b>在工作区聊天框里直接用大白话提要求（例如“请帮我为这个旅行网页生成一张尺寸适配的横版封面插画，放进项目文件夹并嵌入页面里”），无需手动去模型列表切换模型。</p>
+<p><b>看到什么：</b>Agent 自动调用图像生成工具，在后台通过 Nano Banana 2 生成图片文件并保存到你的项目目录中（单次生图配额消耗规则以官网当前说明为准）。</p>
+<p><b>打勾标准：</b>项目文件夹里成功生成对应的图片文件，且双击打开 index.html 时图片正常显示无裂图。</p>
+<p><b>错了怎么办：</b>如果网页里图片显示成裂开的小图标，直接发指令：“生成的图片路径没和 index.html 对上，请检查图片文件名和引用路径并修复。”</p>
+<label class="tut-check"><input type="checkbox"> 4.6 在输入框里用 @ 符号精准引用文件、文件夹或历史对话</label>
+<p><b>怎么做（点哪里）：</b>在聊天输入框里敲 @（如 @index.html、@raw/账单.csv），直接从弹出的列表里点选要让 AI 读取或修改的特定文件、文件夹或历史对话，而不是每次都打字描述“帮我改那个放样式的文件”。</p>
+<p><b>看到什么：</b>输入框里出现一个带 @ 的引用标记，点选后 AI 明确知道你要动的是哪一个文件。</p>
+<p><b>打勾标准：</b>项目文件一多也能一次点对目标文件，AI 再也不会改错文件。</p>
+<p><b>错了怎么办：</b>如果 @ 列表里找不到目标文件，先确认文件是不是放在当前打开的工作区文件夹里（@ 只能引用当前工作区内的内容）；具体支持的引用类型以官网当前说明为准。</p>
+<label class="tut-check"><input type="checkbox"> 4.7 数据分析专项：让 AI 按单元格读写 Jupyter Notebook</label>
+<p><b>怎么做（点哪里）：</b>做数据分析或科研时，如果项目里有 Jupyter Notebook（.ipynb）文件，让 Agent 按单元格（Cell）精准增改代码、执行运行，并直接读取图表与报错输出进行多轮迭代（具体操作入口以你当前实机界面为准）。</p>
+<p><b>看到什么：</b>AI 按单元格定位修改，运行后直接告诉你图表结果与报错位置，而不是把整个文件重写一遍。</p>
+<p><b>打勾标准：</b>Notebook 文件结构完好、单元格逐个可运行，图表与输出正常显示。</p>
+<p><b>错了怎么办：</b>千万别让 AI 把 .ipynb 当作普通纯文本直接覆写——Notebook 文件本质是 JSON 结构，整篇覆写很容易损坏结构；如果已经写坏了，先用 Git 回退，再按上面按单元格修改的方式重新来。</p>
 <h3>【真实翻车案例 3：把带合并表头的复杂 Excel 直接甩进去，汇总全算串行】</h3>
 <p><b>现场：</b>财务小孙把公司导出的带三行合并标题、中间还夹着“小计行”的 Excel 副本直接放进 raw，让 Antigravity 统计总支出。结果 AI 把“小计行”当成普通消费又加了一遍，总金额直接翻倍！</p>
 <p><b>怎么救：</b>处理财务或业务表格时，先在 Excel 里把“合并标题行”和“自带小计行”清理干净（只留干净的明细行），再让 AI 统计；算完后务必把“原始明细总条数/总金额”与“处理后总条数/总金额”核对一遍。</p>
 <h3>清单 5：高质量需求四要素、禁区清单与发前 5 问</h3>
 <p>按下回车前，检查你的需求是否齐备下面 4 个要素（详细“烂需求 vs 好需求”对照与万能模板见 B 版第 4 章）：</p>
+<p>连四要素都写不出时，先用反向提问法起步：如果你面对空白输入框根本不知道该提什么要求，别硬憋四要素，直接发一句：“我想做一个，但我不懂技术实现。请先不要写代码，用大白话问我 5 个关键选择题，帮我把需求理清楚再出计划。”让 AI 反过来采访你，等它问完、你答完，需求自然就齐了，再按下面四要素整理一遍发给它。</p>
 <label class="tut-check"><input type="checkbox"> 要素 1：【背景】：一句话说清“我是谁、在哪用”。</label>
 <label class="tut-check"><input type="checkbox"> 要素 2：【目标】：用 1、2、3 列出核心功能（第一版建议不超过 4 个）。</label>
 <label class="tut-check"><input type="checkbox"> 要素 3：【限制】：写明“纯 HTML/CSS/JS 双击可打开、全中文界面、不改 raw 原件、不写死密钥”。</label>
@@ -17448,12 +17666,26 @@ git commit -m "改首页之前"</pre>
 <label class="tut-check"><input type="checkbox"> 3. 需不需要让它先填 3 条合理的中文示例数据，方便第一眼看清排版效果？</label>
 <label class="tut-check"><input type="checkbox"> 4. 需要保存数据时，有没有交代“存在浏览器 LocalStorage 里，刷新不丢”？</label>
 <label class="tut-check"><input type="checkbox"> 5. 当前是不是一个干净的新对话，且模式选的是 Planning（以实机界面为准）？</label>
+<label class="tut-check"><input type="checkbox"> 需求切片实操：把大工程切成 V1 → V2 → V3 三步走</label>
+<p><b>怎么做（点哪里）：</b>不要在第一条消息里既要记账、又要图表、又要多用户切换、又要深色模式；按下面三轮切片推进，每切完一片就存一次档：</p>
+<p><b>V1 跑通核心：</b>先只做核心录入与计算（如记账本的录入、结余统计），跑通再往下走。</p>
+<p><b>V2 加上本地存储与删除：</b>把数据存进浏览器 LocalStorage，补上删除功能，刷新不丢。</p>
+<p><b>V3 美化排版与导出：</b>最后再做美化排版、加图表、加导出 CSV。</p>
+<p><b>看到什么：</b>每一轮结束都有一个能用的版本，而不是憋一个大而全的第一版憋到翻车。</p>
+<p><b>打勾标准：</b>V1 跑通才进 V2，V2 稳了才进 V3；每轮结束都已 Git 存档。</p>
+<p><b>错了怎么办：</b>如果 V1 就贪心塞了太多功能，立刻停下来，把多余功能挪到 V2 / V3 清单里，先保 V1 跑通。</p>
+<label class="tut-check"><input type="checkbox"> 长项目不迷路：何时新开对话与标准化接力交接法</label>
+<p><b>怎么做（点哪里）：</b>一个对话别聊一个月——单条对话塞满历史报错与过期架构方案后，模型注意力会分散、响应变慢还容易胡编。出现下面任一信号就果断新开对话：对话已经聊了十几轮以上、AI 开始反复犯同一个错、响应明显变慢或答非所问。</p>
+<p>新开对话前，先让旧对话里的 AI 生成一份标准化的接力交接备忘录，包含四项：已完成项、当前卡点、关键文件路径、下一步指令。带着这份备忘录开新对话，新会话零损耗无缝接续。</p>
+<p><b>看到什么：</b>新对话里 AI 读完备忘录就能接着干，不用你从头再讲一遍项目背景。</p>
+<p><b>打勾标准：</b>旧对话结束时手里有一份四项齐全的交接备忘录；新对话第一条消息就贴上备忘录再提需求。</p>
+<p><b>错了怎么办：</b>如果忘了生成备忘录就关掉了旧对话，先别慌——去历史对话里找回旧会话，补生成一份备忘录再开新对话；实在找不回时，让 AI 先通读当前文件夹里的最新代码再接手（见 C-3 清单 1 的 1.5）。想看当前对话占用了多少上下文，可在对话里用 /context 查看（具体显示方式以你当前实机界面为准；是否有内置一键交接模板，以官网当前说明为准）。</p>
 <h3>【真实翻车案例 4：需求只写一句话就发，返工改了五轮】</h3>
 <p><b>现场：</b>小晴直接发了一句“帮我做个记账网页”就按了回车。结果 AI 给她做了一个全英文、装了一堆复杂框架、双击打不开、还带假登录框的半成品，来回返工折腾了半小时。</p>
 <p><b>怎么救：</b>发现 AI 思路跑偏时，别跟着它的错误往下聊，直接复制下面对应的话术打回重规划：</p>
 <p><b>嫌太复杂：</b>“停一下，我完全不懂编程，不需要 React 或后端数据库，请推倒重来，改用最简单的纯 HTML/CSS/JS（双击 index.html 就能直接打开）重新规划。”</p>
 <p><b>漏了重点：</b>“你刚才的方案漏掉了我最看重的【XX功能/XX限制】，请先不要写代码，把【XX】补进计划里再给我看。”</p>
-<h2>C-4 Planning / Fast 打磨 / Rules 验收 / Orchestrator 实战 / Agent 并行 / 上线前最后检查</h2>
+<h2>C-4 Planning / Fast 打磨 / Rules 验收 / Orchestrator 实战 / Agent 并行 / 斜杠命令 / 上线前最后检查 / 命令行与 SDK 进阶 / IDE 扩展与迁移 / 端到端实战与长期治理</h2>
 <h3>清单 1：Planning 审计划 10 项精细打勾表</h3>
 <p>发出需求后，Antigravity 会先给你一份 Plan（施工方案），扫完下面 10 项全打勾再放行：</p>
 <label class="tut-check"><input type="checkbox"> 1.1 技术路线极简：确认是清爽的 index.html / style.css / script.js（或单文件），没擅自引入重型后端框架。</label>
@@ -17486,21 +17718,39 @@ git commit -m "改首页之前"</pre>
 <label class="tut-check"><input type="checkbox"> 3.8 输错字 / 极端值测试：在金额框里故意输汉字“哈哈哈”、输负数 -50，或者输一个超长数字 99999999 → 打勾标准：输入框能拦住非法字符，数字太长时不会把卡片撑破变形。</label>
 <label class="tut-check"><input type="checkbox"> 3.9 连续刷新测试：录入数据、删掉一条、再切深色模式，连续按两次 F5 刷新 → 打勾标准：界面状态和剩余数据依然准确，没有“复活”已删记录。</label>
 <label class="tut-check"><input type="checkbox"> 3.10 手机竖屏测试：把电脑浏览器窗口用鼠标往左拉窄成一条手机宽度（或右键「检查」点左上角手机图标）→ 打勾标准：所有内容自动排成一竖列，按钮好点，底部没有出现左右横拉的滚动条。</label>
+<label class="tut-check"><input type="checkbox"> 3.11 给网页加一个新手自检开关与重置示例数据按钮</label>
+<p><b>怎么做（点哪里）：</b>做带 LocalStorage 本地存储的网页（如记账本、背单词卡）时，在需求里固定加一句：“在网页角落加一个带二次确认的清空本地缓存 / 重置示例数据按钮。”</p>
+<p><b>看到什么：</b>网页角落多了一个重置按钮，点它会先弹二次确认框，确认后才清空本地数据并恢复示例数据。</p>
+<p><b>打勾标准：</b>测试过程中把数据测乱了，点一下重置按钮就能回到干净的示例状态，不用去翻浏览器开发者工具手动清缓存。</p>
+<p><b>错了怎么办：</b>如果重置按钮一点就清空、没有二次确认，立刻让 AI 补上确认框——误删数据的教训一次就够了。</p>
 <h3>清单 4：Fast 模式打磨与“改崩后三步回退”清单</h3>
 <p>V1 稳了，切到快速模式（如 Fast，以你当前实机界面为准），遵守下面“小步快跑”打磨规则：</p>
 <label class="tut-check"><input type="checkbox"> 4.1 坚持“一次只改一处”：这一轮只改按钮颜色，下一轮再改日期默认值，绝不把“换配色 + 加导出 + 改布局”揉在一条消息里发。</label>
 <label class="tut-check"><input type="checkbox"> 4.2 第 1 轮打磨（调视觉）：如“支出改柔和珊瑚红带减号，收入改森林绿带加号” → 改完去浏览器强制刷新（Win Ctrl + F5，Mac Command + Shift + R）验收。</label>
 <label class="tut-check"><input type="checkbox"> 4.3 第 2 轮打磨（调体验）：如“日期框自动默认填今天本地日期” → 强制刷新验收。</label>
 <label class="tut-check"><input type="checkbox"> 4.4 第 3 轮打磨（加导出）：如“右上角加导出 CSV 按钮，带 UTF-8 BOM 头防 Excel 乱码” → 导出并用 Excel 打开验收。</label>
-<label class="tut-check"><input type="checkbox"> 4.5 见好就收开新对话：做完这一阶段，或发现 AI 开始“鬼打墙”越改越乱时，先回退好版本，再点 New Chat（新建对话） 继续。</label>
+<label class="tut-check"><input type="checkbox"> 4.5 见好就收开新对话：做完这一阶段，或发现 AI 开始“鬼打墙”越改越乱时，先回退好版本，再点 + New Conversation（新建对话） 继续。</label>
 <p>万一 Fast 模式打磨把页面改崩了？照着下面三步稳稳回退：</p>
 <label class="tut-check"><input type="checkbox"> 回退第 1 步（立刻止损）：别在报错的烂摊子上继续硬改，立刻点对话流里的撤销/回滚按钮（以你当前实机界面为准）；如果跨了好几轮，直接发一句：“请用 Git 回退到我们刚才存好的安全存档点。”</label>
-<label class="tut-check"><input type="checkbox"> 回退第 2 步（开新对话）：回退干净、刷新网页确认恢复正常后，点击 New Chat（新建对话），把刚才绕晕的上下文彻底清掉。</label>
+<label class="tut-check"><input type="checkbox"> 回退第 2 步（开新对话）：回退干净、刷新网页确认恢复正常后，点击 + New Conversation（新建对话），把刚才绕晕的上下文彻底清掉。</label>
 <label class="tut-check"><input type="checkbox"> 回退第 3 步（缩小粒度重来）：在新对话里，把刚才想改的需求拆得更小、更具体，加上“不要动其他无关代码”，重新发一次。</label>
+<label class="tut-check"><input type="checkbox"> 4.6 运行中动态插话、消息排队与按轮次工作区回退</label>
+<p><b>怎么做（点哪里）：</b>Agent 正在执行多步任务时，你不用干等它跑完——直接发补充指令，系统会把你的新消息排队，等当前步骤告一段落再处理；如果 AI 一口气改坏了多个文件，别用单文件撤回（Cmd / Ctrl + Z）一个一个 undo，直接用对话检查点（Checkpoint）一键把整个项目工作区回退到本轮执行前的状态（具体回退入口以你当前实机界面为准）。</p>
+<p><b>看到什么：</b>插话后 Agent 在合适时机接上你的补充要求；回退后整个工作区恢复到本轮开始前的干净状态。</p>
+<p><b>打勾标准：</b>插话不打断正在跑的关键步骤；改崩后一次回退就能回到干净版本，不用逐文件手动修。</p>
+<p><b>错了怎么办：</b>如果回退后发现回退点选错了（退得太多），立刻用 Git 存档找回中间版本；如果根本没有可用的检查点，说明本轮开始前没做 Git 存档——下次大改前务必先存档（见 C-3 清单 3 的 3.2）。</p>
+<label class="tut-check"><input type="checkbox"> 4.7 改动验收进阶：版本控制审阅面板（VCS Review）三视图与逐块审阅</label>
+<p><b>怎么做（点哪里）：</b>在既有改动对比视图（Diff View）基础上，打开内置版本控制审阅面板（VCS Review），它分三个视图：Uncommitted（未提交改动）、Branch（分支对比）、Agent Edits（Agent 改动汇总，单独把 AI 改过的拎出来）。逐块检查每处改动，可以逐块暂存 / 取消暂存 / 丢弃（stage / unstage / discard），确认无误后提交 / 追加提交 / 推送（commit / amend / push）；对某行改动不满意时，直接在那行留下审阅反馈评论，让 Agent 定向返工。</p>
+<p><b>看到什么：</b>改动对比视图里红色底色代表删掉的旧内容，绿色底色代表新加进去的内容；VCS Review 里 Agent 改过的文件单独汇总成一类，一眼就能分清哪些是你改的、哪些是 AI 改的。</p>
+<p><b>打勾标准：</b>每一处红删绿增都看过、都明白为什么改；不满意的改动已逐块丢弃或留评论返工，而不是整批囫囵接受。</p>
+<p><b>错了怎么办：</b>如果看不懂某处红绿对比，先别点接受，让 AI 用大白话解释这一处改了什么、为什么改；如果面板里改动太多看不过来，先按 C-4 清单 4 的回退三步退回干净版本，再小步重来。</p>
 <h3>清单 5：自定义规则（Rules）生效验收与冲突排查检查表</h3>
-<p>(全局规则与项目规则的 3 套模板见 B 版第 7 章，这里直接教你如何验证规则真的生效了。)</p>
+<p><b>规则文件体系一次讲清：</b>Antigravity 的规则文件分两级存放。工作区级放在项目文件夹里：&lt;dir&gt;/AGENTS.md、&lt;dir&gt;/GEMINI.md、&lt;dir&gt;/.agents/rules/*.md（旧版路径为 .agent/rules/*.md）；全局级放在 ~/.gemini/ 目录下对应文件（~/.gemini/AGENTS.md、~/.gemini/GEMINI.md、~/.gemini/config/AGENTS.md、~/.gemini/config/GEMINI.md，模块化规则为 ~/.gemini/config/rules/*.md）。注意：全局规则文件目录（~/.gemini/）与全局插件目录（~/.gemini/config/plugins/）是两个不同的地方，别混着放。</p>
+<p><b>生效机制是累加的：</b>工作区规则与全局规则会叠加生效，规则从当前工作区向上查找父目录，不会向下扫描工作区里的子文件夹。始终生效的文件（AGENTS.md / GEMINI.md）不需要写 frontmatter；模块化规则（rules/*.md）必须以 YAML frontmatter 声明有效触发器才能生效，触发器分四种：always_on（始终生效）、model_decision（模型按需调用）、glob（按文件类型触发）、manual（手动触发）。</p>
+<p><b>容量上限要记牢：</b>单文件超过 24KB（24,000 字节）会被截断；全局与常驻规则合计有 20,000 token 总预算，超限后系统会把最大的文件降级为轻量指针（只留一个指向原文的提示，不再全文载入），AI 会突然像失忆一样不遵守那条规则。检查规则是否生效的入口在 App 内自定义 → 已安装 → Skill 与规则。</p>
+<p>（全局规则与项目规则的 3 套模板见 B 版第 7 章，下面直接教你如何验证规则真的生效了，以及怎么写才不会被系统静默丢弃。）</p>
 <label class="tut-check"><input type="checkbox"> 5.1 发“探针指令”验证规则已生效</label>
-<p><b>怎么做（点哪里）：</b>在设置里保存全局规则或建好项目规则后，开一个新对话（New Chat），发一句探针指令：“先不要改任何文件，请用大白话复述一遍你在这个项目里必须遵守的所有工作规矩。”</p>
+<p><b>怎么做（点哪里）：</b>在设置里保存全局规则或建好项目规则后，开一个新对话（+ New Conversation），发一句探针指令：“先不要改任何文件，请用大白话复述一遍你在这个项目里必须遵守的所有工作规矩。”</p>
 <p><b>看到什么：</b>AI 准确背出了你写进规则里的“简体中文、大白话、纯 HTML/CSS/JS、先 Git 存档、不放密钥”等条款。</p>
 <p><b>打勾标准：</b>复述内容与你写的家规完全一致，证明后台确实把规则文件读进去了。</p>
 <p><b>错了怎么办：</b>如果它说“我目前没有收到任何自定义规则”，检查设置页是否忘了点 Save（保存），或者项目规则文件放错了路径（可直接让 AI 帮你按当前版本的标准路径重建一次）。</p>
@@ -17509,13 +17759,26 @@ git commit -m "改首页之前"</pre>
 <p><b>看到什么：</b>通常项目级规则优先级高于全局规则，但条款写得越矛盾，AI 越容易犹豫或左右摇摆。</p>
 <p><b>打勾标准：</b>规则条款简明扼要（每份规则控制在 5–8 条核心铁律内），无前后矛盾。</p>
 <p><b>错了怎么办：</b>删掉不再需要的旧测试条款，只保留最核心的安全红线和输出习惯。</p>
+<label class="tut-check"><input type="checkbox"> 5.3 安全边界进阶：终端命令沙盒与浏览器访问白/黑名单</label>
+<p><b>怎么做（点哪里）：</b>只设对话权限预设还不足以防住复杂风险，执行层还有另外两道核心防护要配好：</p>
+<p>终端命令沙盒（Terminal sandbox）：Agent 在终端里跑命令时，默认被关在沙盒里，只能动工作区及临时目录内的东西；一旦命令要触及沙盒外或涉及敏感操作，就会暂停等你批准（对应 2.1 里 Default 档的默认行为）。</p>
+<p>浏览器访问白/黑名单（Allowlist / Denylist）：内置浏览器 Agent 访问网页时，可以配置域名白名单与黑名单，限制它只能访问你允许的域名、拦截你不希望它碰的站点（具体配置入口以你当前实机界面为准）。</p>
+<p><b>看到什么：</b>终端沙盒生效时，沙盒外的命令会弹出批准确认；浏览器白/黑名单配好后，Agent 访问受限域名时会被直接拦截。</p>
+<p><b>打勾标准：</b>Default 档 + 终端沙盒保持开启；需要 Agent 联网查文档或测试网页时，白/黑名单已按你的需求配好。</p>
+<p><b>错了怎么办：</b>如果 Agent 突然说某个网站打不开，先核对是不是被你的黑名单拦住了；如果终端命令总被沙盒拦，先看一眼是不是误开了 Request Review 档（见 C-3 清单 2 的 2.1），而不是直接关掉沙盒。</p>
+<label class="tut-check"><input type="checkbox"> 5.4 用 /learn 把单次纠错沉淀为持久规则或 Skill</label>
+<p><b>怎么做（点哪里）：</b>手写 Markdown 规则文件和 YAML frontmatter 对零基础新手仍有一定心理门槛，偷懒办法是：每次纠错后顺手敲一个 /learn，让 Agent 自动提炼本轮对话中你对它的纠正、代码风格要求或固定流程，直接生成持久化的规则或 Skill 文件（在对话结束前输入 /learn 并回车，按提示确认生成内容）。</p>
+<p><b>看到什么：</b>Agent 输出一份提炼好的规则或 Skill 草稿，你确认后它就存进规则文件体系里（存放路径与触发器见本清单开头的规则文件体系说明）。</p>
+<p><b>打勾标准：</b>下次开新对话做同类任务时，AI 不用你再念叨一遍就自动按沉淀下来的规则做事。</p>
+<p><b>错了怎么办：</b>如果 /learn 生成的规则写得太啰嗦或带了本轮特有的临时要求，先手动删掉无关条款再保存——规则文件要控制在 5–8 条核心铁律内（见 5.2），否则攒多了会撞上 20,000 token 总预算被降级。长期瘦身治理见 C-4 清单 12 的 12.6。</p>
 <h3>清单 6：Orchestrator 实战打勾小节（记账本升级月度饼图实例）</h3>
 <p>(2026 年 11 月 12 日上线，付费 Google AI Pro / Google AI Ultra / 企业版 限定；详细原理见 A 版第 4 章、B 版第 5 章。)</p>
-<label class="tut-check"><input type="checkbox"> 6.1 核对 Orchestrator 默认模型搭配与权限差异</label>
-<p><b>怎么做（点哪里）：</b>点击 设置 ＞ 模型 ＞ Orchestrator 设置。</p>
-<p><b>看到什么：</b>Pro / Ultra 默认规划模型为 Gemini 4 Neon，默认执行模型为 Gemini 4 Hydrogen（可按需自定义）；企业版只提供固定的 Carbon（规划）+ Hydrogen（执行）；自定义规划 / 执行模型只在 Pro / Ultra 里有。</p>
-<p><b>打勾标准：</b>确认规划与执行模型均为现行模型（无 2026 年 11 月 30 日下线的旧模型）。</p>
-<p><b>错了怎么办：</b>手动下拉改回 Gemini 4 Neon + Gemini 4 Hydrogen（Pro / Ultra 用户）。</p>
+<label class="tut-check"><input type="checkbox"> 6.1 核对 Orchestrator Settings 权限边界与两端思考级别（Pro / Ultra 自定义 vs 企业版锁定）</label>
+<p><b>怎么做（点哪里）：</b>打开界面角落的设置 ＞ 模型 ＞ Orchestrator 设置，查看你当前账号下是否出现规划模型与执行模型的下拉选择菜单。</p>
+<p><b>看到什么：</b>个人付费 Google AI Pro / Google AI Ultra 用户：可以看到规划模型子菜单与完整的 Orchestrator Settings，支持自由切换规划模型和执行模型（默认规划为 Gemini 4 Neon，默认执行为 Gemini 4 Hydrogen）；企业版用户：界面不提供自定义模型下拉菜单，系统固定使用 Gemini 4 Carbon（High）担任规划端、Gemini 4 Hydrogen（High）担任执行端。</p>
+<p><b>进阶精细控制：</b>规划端与执行端可分别设思考级别。Pro / Ultra 用户不仅能分别为规划角色和执行角色挑选模型，还能为每个角色单独选择思考级别，例如把规划端的 Gemini 4 Neon 设为 High 或 Extra High 做深度推理，同时把负责敲代码改样式的执行端 Gemini 4 Hydrogen 设为 Medium 或 Low 兼顾速度与配额（企业版 Orchestrator 仍固定为 Carbon 规划 + Hydrogen 执行，不支持自定义模型与思考级别）。</p>
+<p><b>打勾标准：</b>Pro / Ultra 用户确认自定义选中的均为现行模型（无 2026 年 11 月 30 日下线的旧模型），且两端思考级别已按任务轻重配好；企业版用户知道没有自定义下拉属于正常权限设定，而非软件故障。</p>
+<p><b>错了怎么办：</b>如果付费 Pro / Ultra 用户在设置里找不到 Orchestrator Settings，先点头像核对有没有登错免费版或试用版账号，并确认软件已更新到最新版本。</p>
 <label class="tut-check"><input type="checkbox"> 6.2 Orchestrator 实战：给记账本加“月度支出饼图”</label>
 <p><b>怎么做（点哪里）：</b>先确保已做好 Git 存档并开了新对话 → 模型选择器选 Orchestrator → 模式选 Planning（以你当前实机界面为准）→ 发送指令：“在现有记账本上新增一个‘月度消费分析’饼图，用原生 Canvas 画图免联网，鼠标悬停显示金额和百分比，不要破坏现有记账、删除和导出功能。”</p>
 <p><b>看到什么：</b>先由 Gemini 4 Neon 出严谨的升级计划；你点确认执行后，自动派 Gemini 4 Hydrogen 飞速改完代码。</p>
@@ -17537,7 +17800,15 @@ git commit -m "改首页之前"</pre>
 <p><b>看到什么：</b>两个独立项目同步推进，总耗时大幅缩短。</p>
 <p><b>打勾标准：</b>两个项目各自生成完整成果，且各自配额消耗在可控范围内（注：并行跑多个任务会同时消耗周期配额，免费版每周上限较紧，建议单线为主；付费 Pro / Ultra 更适合并行）。</p>
 <p><b>错了怎么办：</b>如果电脑风扇狂转、响应变慢或配额消耗过快，立刻暂停其中一条任务，恢复“一次只跑一个任务”的节奏。</p>
-<h3>清单 8：5 个必学斜杠命令全要素打勾小节（直接抄就能用）</h3>
+<label class="tut-check"><input type="checkbox"> 7.3 进阶原生并行：Subagents 与 /swarm、/teamwork、/boost 命令</label>
+<p>怎么做（点哪里 / 敲什么）：除了手动开两个独立项目文件夹窗口外，Antigravity 原生支持在后台派发 Subagents（子智能体）并行处理子任务，并在输入框提供以下进阶斜杠命令（具体触发界面与参数细则以官网当前说明与实机界面为准）：</p>
+<p><b>/swarm：</b>唤醒多智能体蜂群并行模式，把可拆分的子任务派给多个子 Agent 同步推进。</p>
+<p><b>/teamwork：</b>开启多角色 Agent 团队协作分工。</p>
+<p><b>/boost：</b>为当前单次高难度任务临时增强推理深度。</p>
+<p><b>看到什么：</b>后台同时调起多个子 Agent 各自处理分派的子任务，汇总后再向你汇报整体结果。</p>
+<p><b>打勾标准：</b>仅在任务确实可以拆成互不冲突的独立模块时按需使用；同时留意配额余量（多 Agent 并行会同时消耗更多周期配额，是否按固定倍率成倍消耗，官网未写明固定倍数，建议付费 Pro / Ultra 用户按需使用）。</p>
+<p><b>错了怎么办：</b>如果开启并行或 /boost 后发现配额消耗过快或思路发散，立刻点击停止，回到单窗口、单任务模式，用普通 Planning 模式稳步推进。</p>
+<h3>清单 8：7 个必学斜杠命令与自动化命令全要素打勾小节（直接抄就能用）</h3>
 <p><b>大白话解释“斜杠命令（Slash Commands）”：</b>在输入框敲一个 / 开头加英文词，直接召唤专属高级功能（具体支持列表在输入框敲 / 查看，以你当前实机界面为准）。</p>
 <label class="tut-check"><input type="checkbox"> 8.1 /goal（钉死总目标）</label>
 <p><b>怎么做（直接抄）：</b>/goal 把当前家庭记账本打磨成带月度饼图、预算超支红字提醒、且手机竖屏好用的完整版</p>
@@ -17549,23 +17820,46 @@ git commit -m "改首页之前"</pre>
 <p><b>看到什么：</b>AI 切换成严谨审查视角，列出具体边界漏洞清单与修复建议。</p>
 <p><b>打勾标准：</b>逐条修掉它挑出来的核心漏洞。</p>
 <p><b>错了怎么办：</b>没触发挑刺模式时，重敲 / 从下拉提示里选中再发送。</p>
-<label class="tut-check"><input type="checkbox"> 8.3 /schedule（设定定时自动任务）</label>
-<p><b>怎么做（直接抄）：</b>/schedule 每周五下午 5 点读取 inbox 文件夹的新增文本笔记，在 output 文件夹生成本周汇总草稿，绝不删改原件</p>
-<p><b>看到什么：</b>系统创建定时任务，在指定时间自动按规则运行（运行期间电脑需保持开机联网）。</p>
-<p><b>打勾标准：</b>定时任务创建成功，且手动试跑一次确认输出格式无误。</p>
-<p><b>错了怎么办：</b>时间写得太模糊（如“有空时”），按 AI 追问补清具体星期和几点即可。</p>
-<label class="tut-check"><input type="checkbox"> 8.4 /browser（让 AI 自己开浏览器查错）</label>
-<p><b>怎么做（直接抄）：</b>/browser 打开当前项目的 index.html，模拟录入一笔 58.5 元支出并刷新，检查控制台有没有红字报错</p>
-<p><b>看到什么：</b>AI 自动调起浏览器执行点击录入与刷新，并返回实际运行结果与控制台报错检查。</p>
-<p><b>打勾标准：</b>返回结果确认界面正常、控制台零红字报错。</p>
-<p><b>错了怎么办：</b>若提示找不到页面，把准确文件名 index.html 补告诉它。</p>
-<label class="tut-check"><input type="checkbox"> 8.5 /plugin（查看与调用扩展插件）</label>
+<label class="tut-check"><input type="checkbox"> 8.3 分清 /automation（跨会话持久定时）与 /schedule（当前对话临时定时）</label>
+<p><b>怎么做（直接抄）：</b>做每周/每天长期自动汇总（桌面端 App 专属）：输入 /automation 创建持久化后台自动化任务，例如：/automation 每周五下午 5 点读取 inbox 文件夹的新增文本笔记，在 output 文件夹生成本周汇总草稿，绝不删改原件；做当前对话内的临时提醒或短时轮询：输入 /schedule，例如：/schedule 10 分钟后帮我检查一次本地预览服务状态</p>
+<p><b>看到什么：</b>使用 /schedule 时，定时器绑定在当前这一个对话窗口内，适合单次或当前会话内轮询；使用 /automation 创建的任务，会持久化存进左侧边栏的 Automations 管理面板里，关掉当前对话依然有效（新创建的自动化任务默认处于 Paused 暂停状态，需手动打开开关才会按时自动触发，具体界面操作以你当前实机为准）。</p>
+<p><b>打勾标准：</b>需要跨天、跨周长期自动执行的任务（如 C-6 Day 6 和 Day 10 的每周五自动汇总），一律使用 /automation 创建并确认已在侧边栏 Automations 面板就绪。</p>
+<p><b>错了怎么办：</b>如果之前误用 /schedule 设了每周五汇总，结果关掉对话窗口后周五没触发，改用 /automation 重新创建并去侧边栏 Automations 面板核对状态即可。</p>
+<label class="tut-check"><input type="checkbox"> 8.4 /automation 进阶：写清触发条件、选模型档位、用 Run Now 验真</label>
+<p><b>怎么做（点哪里）：</b>在侧边栏 Automations 入口创建与管理重复性自动化任务。写任务时把触发条件与期望产出形式写清楚（例如“每周五下午 5 点，读取 inbox 文件夹的新增文本笔记，在 output 文件夹生成本周汇总草稿，绝不删改原件”），再选执行模型档位：三档可选——Flash Lite（最轻量）、默认 Flash、Pro（推理最强）。</p>
+<p><b>看到什么：</b>创建好的任务出现在侧边栏 Automations 面板里；触发时间存在系统保护机制——实际执行时间会有约 10%、最长 15 分钟的近似随机偏移，这是正常的，不代表定时不准。</p>
+<p><b>打勾标准：</b>任务描述里触发条件与产出形式都写清了；模型档位按任务轻重选对了；不等到下次整点就用 Run Now 立即手动触发一次验证效果，并查看历史运行记录确认跑通（运行日志的具体报错字段以你当前实机显示为准）。</p>
+<p><b>错了怎么办：</b>如果任务到了整点没准时跑，先看一眼是不是在 15 分钟偏移窗口内，再确认任务开关是不是还处在默认的 Paused 暂停状态；如果 Run Now 试跑报错，按 C-5 的排错三步曲先看红字再处理。</p>
+<label class="tut-check"><input type="checkbox"> 8.5 /run-workflow（把多步操作编排成流水线）</label>
+<p><b>怎么做（直接抄）：</b>需要把多个 Agent 按自定义逻辑顺序或分支协同执行时，在对话中输入 /run-workflow 加任务描述，调用 Python 脚本按你的逻辑编排执行（具体脚本编写规范与参数传入方式以官网当前说明为准）。</p>
+<p><b>看到什么：</b>/run-workflow 按编排好的顺序依次调起各 Agent。</p>
+<p><b>打勾标准：</b>多步流水线按编排顺序跑完且结果正确。</p>
+<p><b>错了怎么办：</b>若某一步没按预期跑，先单步复现那一步定位问题，再回头改编排；脚本写法以官网当前说明为准。</p>
+<label class="tut-check"><input type="checkbox"> 8.6 /browser 进阶：DevTools 子 Agent（截图、读控制台、跑 Lighthouse、录 MP4）</label>
+<p><b>怎么做（直接抄）：</b>需要做前端页面验收、排查接口跨域或报错时，调用基于 Chrome DevTools 的浏览器子 Agent /browser（需 Chrome v144+），它能自动网页截图、读取控制台报错与网络请求、运行 Lighthouse 性能与无障碍评分检测，还能录制 MP4 操作视频。</p>
+<p><b>看到什么：</b>/browser 返回真实的浏览器操作结果、控制台报错、网络请求记录与 Lighthouse 评分。</p>
+<p><b>打勾标准：</b>前端验收拿到了真实的控制台与网络请求证据，而不是只听 AI 口头汇报没问题。</p>
+<p><b>错了怎么办：</b>如果 /browser 提示无法连接 Chrome，先确认 Chrome 版本是否在 v144 以上，再核对浏览器子 Agent 的连接状态（录制回放的查看方法见 C-4 清单 9 的浏览器录制回放小节）。</p>
+<label class="tut-check"><input type="checkbox"> 8.7 /plugin（查看与调用扩展插件）</label>
 <p><b>怎么做（直接抄）：</b>/plugin 列出当前已启用的扩展插件，并说明哪一个适合帮我整理本地笔记</p>
 <p><b>看到什么：</b>清晰列出当前环境已安装和启用的扩展插件清单及用途。</p>
 <p><b>打勾标准：</b>看清可用插件能力，按需调用。</p>
 <p><b>错了怎么办：</b>调用了未安装的插件会提示未找到，不会弄坏现有项目文件。</p>
+<label class="tut-check"><input type="checkbox"> 8.8 官方插件市场全图鉴：Build with Google 专区与 agy plugin install</label>
+<p><b>怎么做（点哪里）：</b>官方插件市场（Build with Google 专区）覆盖四大实用阵营，按场景挑着装，不用全装：</p>
+<p><b>云与全栈开发：</b>Firebase（含 Firestore / Auth / App Hosting / Firebase AI Logic / 安全规则 Agent 与 MCP）、Google Cloud Developer（含 Cloud Run / GKE / Cloud SQL / Spanner / AlloyDB / BigQuery / Terraform）、现代 Web 开发指南、Dart 与 Flutter、Android CLI。</p>
+<p><b>办公套件联动：</b>Google Workspace 插件组（Docs、Sheets、Slides、Drive、Calendar、Gmail）。</p>
+<p><b>前端与接口工具：</b>Gemini API（含 Interactions API / Live API / GenAI SDK）、Chrome DevTools（含 MCP / Puppeteer / Core Web Vitals LCP / CLS / INP）、Google Maps Platform、Google Home Developer、Google Developer Knowledge、Antigravity SDK。</p>
+<p><b>数据与科研专项：</b>Data Agent Kit（含 BigQuery / dbt / Spark / Dataflow / Streamlit）、Looker、科学研究（含 AlphaGenome / AlphaFold / RDKit / PubMed）、Robotics（含 MuJoCo）、Google Health Developer。</p>
+<p><b>安装方法有两种：</b>在 App 里打开 Customizations ＞ Marketplace 标签页，搜索插件名点安装（具体安装与卸载步骤以官网当前说明为准）；或在 CLI 里运行 agy plugin install 加插件 ID（例如 agy plugin install gdocs）；装好后在自定义 ＞ 已安装里启用、禁用、配置或卸载（各插件包完整 ID 列表以官网当前插件市场页面为准）。</p>
+<p><b>看到什么：</b>装上官方 Workspace 或 Firebase 插件后，Agent 就能直接读写 Google Docs / Sheets、设计安全规则或跑 Core Web Vitals 体检，不再只是一个普通代码聊天框。</p>
+<p><b>打勾标准：</b>只装了当前项目真正需要的插件；装完后在已安装列表里确认状态为已启用，且试了一次调用成功。</p>
+<p><b>错了怎么办：</b>调用了未安装的插件会提示未找到，不会弄坏现有项目文件；按上面两种方法装好再调用即可。</p>
+<p><b>术语点破：</b>MCP（模型上下文协议）相当于给 Antigravity 接上外部工具的通用 USB 接口，比如让它直接读你的 Notion 笔记或数据库。纯小白前期无需折腾，若要接入外部 MCP 服务，务必只用官方或可信来源（具体配置入口以官网当前说明为准）。</p>
+<p>进阶并行命令 /swarm、/teamwork、/boost 见 C-4 清单 7 的 7.3。想从 GitHub 装新插件或 skill，见 C-4 附录「插件与 Skill 安装全攻略」。</p>
 <h3>清单 9：预览、分享与作品上线前最后检查（含 3 个发布排错案例）</h3>
 <h3>预览与分享三选一打勾表</h3>
+<p>内置预览与外部浏览器预览的分工（先看清再选方式）：Antigravity 桌面端自带预览面板，适合边聊边看实时变化；但涉及本地文件下载（导出 CSV）、弹窗或复杂打印样式时，必须切到外部 Chrome / Edge 浏览器做最终验收——内置预览容器会限制文件下载，在里面点导出 CSV 没反应，多半不是代码写坏了，而是被容器拦住了（内置预览面板的具体开启方式以你当前实机界面为准）。</p>
 <label class="tut-check"><input type="checkbox"> 方式 A（自己电脑本地预览）：纯静态网页直接双击 index.html；本地引擎预览点击 AI 给的 http://localhost:xxxx 链接（牢记 localhost 是自家门牌号，绝不发给别人）。</label>
 <label class="tut-check"><input type="checkbox"> 方式 B（单文件微信直传，私密工具首选）：让 AI 把所有 HTML/CSS/JS 合并成单独一个 工具名.html 文件 → 复制到桌面脱离原文件夹双击自测 → 微信发给家人电脑双击打开。</label>
 <label class="tut-check"><input type="checkbox"> 方式 C（30 秒拖拽上线，手机微信一点即开）：确认根目录主文件叫全小写的 index.html → 打开静态托管平台（如 app.netlify.com/drop，免费规则以平台官网为准）→ 把整个项目文件夹拖进虚线框生成 https:// 公网网址。</label>
@@ -17576,14 +17870,490 @@ git commit -m "改首页之前"</pre>
 <label class="tut-check"><input type="checkbox"> 4. 主文件名合规：确认拖上网的文件夹最外层主网页文件叫全小写的 index.html。</label>
 <label class="tut-check"><input type="checkbox"> 5. 手机竖屏自测通过：拉窄浏览器窗口或用检查工具的手机模式看过，字号清晰、不左右划屏。</label>
 <label class="tut-check"><input type="checkbox"> 6. 公网链接亲自点开验收：拿到 https:// 网址后，先用自己手机微信点开完整测一遍核心功能，确认无误再转发（以后更新只需进平台项目的 Deploys 页面把新文件夹拖进去覆盖，原链接不变）。</label>
+<p><b>上线前多做一步：</b>一键隐私扫描。光喊绝不放密钥和真实隐私还不够，拖拽上线前直接对 Antigravity 发一句安全自检指令：“请帮我全文扫描当前项目的所有文件，检查里面有没有残留任何 API 密钥、密码、真实手机号、邮箱地址或我刚才测试时填进去的真实个人数据，列出来给我确认。”让 AI 充当安全安检员帮你做上线前自动化扫描，比纯靠肉眼一行行翻代码可靠得多——扫出问题先清干净再上线。</p>
+<p><b>浏览器自动化测试：</b>录制回放与独立 Chrome 配置文件</p>
+<label class="tut-check"><input type="checkbox"> 浏览器录制回放：让 AI 替你点网页后，别只看文字日志——打开浏览器录制回放（Browser recordings）看一遍录像，就能直观发现 AI 点错了哪个按钮、哪一步卡住了；网页交互报错时，单看文字日志很难还原现场，看一遍回放就能定位问题。</label>
+<p><b>怎么做（点哪里）：</b>浏览器 Agent 执行完自动化测试或网页交互后，在录制回放入口里找到对应的一次执行记录，点开播放查看（具体入口位置以你当前实机界面为准）。</p>
+<p><b>打勾标准：</b>回放里每一步点击与输入都与预期一致；报错步骤在回放里能直接看到卡在哪一个界面元素上。</p>
+<p><b>错了怎么办：</b>如果回放打不开或没有记录，先确认本次任务是不是走了浏览器子 Agent（见 C-4 清单 8 的 8.6），普通对话任务不会生成录像。</p>
+<label class="tut-check"><input type="checkbox"> 独立 Chrome 配置文件隔离：配置一个独立 Chrome 配置文件（Chrome profile）专门给浏览器 Agent 用，与你个人日常浏览器的账号与登录态隔离开——既防止 Agent 误操作你的日常浏览器数据，也能安全复用测试站的登录态（具体配置方法以你当前实机界面为准）。</label>
 <p>发布与预览的 3 个真实排错案例</p>
 <p>案例 1（本地预览打不开 / 双击进了记事本）：localhost 提示拒绝连接时，直接让 AI 重新启动本地预览服务发新链接；双击 index.html 误用记事本打开时，右键文件 →「打开方式」→ 选 Chrome 或 Edge 并勾选始终使用。</p>
 <p>案例 2（上线后手机微信打开排版全崩了）：原因是 CSS 写死了固定像素宽度（如 800px）。切回 Antigravity（Fast 模式）发指令：“手机竖屏打开排版挤在一起且需要左右滚动，请把固定宽度改成自适应百分比，加上手机竖屏响应式布局”，改完重新拖进 Deploys 覆盖上线。</p>
 <p>案例 3（改完重新上线，手机打开还是旧版）：多数情况是手机微信或托管平台缓存了旧页面（或误拖了旧备份文件夹）。先核对拖进去的文件夹修改时间是“刚刚”，再到托管平台 Deploys 确认状态为 Published，最后在发给自己的链接末尾临时加一个 ?v=2（如 https://xxx.netlify.app/?v=2）点开，即可强制破除缓存拉取最新版。</p>
+<p><b>上线后的维护：</b>删错页、改标题图标、换域名</p>
+<label class="tut-check"><input type="checkbox"> 删掉误传的网页：如果不小心把错版网页传上去了，立刻去托管平台后台找到对应部署彻底删除（紧急止损），不要只在本地删文件——本地删了，公网链接还在。</label>
+<label class="tut-check"><input type="checkbox"> 改网页标题与小图标：让 AI 修改网页标题（&lt;title&gt;）和小图标（Favicon），否则发进微信群时预览卡片会显示难看的默认英文 Document 且没有图标；改完重新拖进 Deploys 覆盖上线，链接不变。</label>
+<label class="tut-check"><input type="checkbox"> 换个好记的域名：托管平台默认给的随机二级域名难记，可以在平台后台绑定自定义域名或修改二级域名（以托管平台实际免费规则为准）。</label>
+<h3>清单 10：命令行与 SDK 进阶实战（agy 交互模式、终端安全护栏、远程双通道、Python SDK）</h3>
+<p>本清单是 C-2 模块三（CLI 安装与登录）与模块五（SDK 与网页版）的进阶篇：模块三只教安装登录，这里教你在终端里真正把 agy 当主力用起来；纯小白可先跳过本清单，等 C-6 毕业后再回来看。</p>
+<label class="tut-check"><input type="checkbox"> 10.1 CLI agy 独立安装、首次启动向导与交互模式全解析</label>
+<p>怎么做（点哪里 / 敲什么）：独立命令行工具 agy 的官方一键安装脚本为 curl -fsSL https://antigravity.google/cli/install.sh | bash（默认装至 ~/.local/bin/agy），装完用 agy --version 验真。首次运行时会让你选配色方案、切换渲染模式（Alt-Screen 全屏模式 vs Inline 内联滚动模式），并确认工作区信任。</p>
+<p><b>交互式启动：</b>在终端输入 agy -i 加提示词（如 agy -i "帮我检查当前项目的报错"）进入交互对话；也可以直接敲 agy 进入交互界面再慢慢聊。</p>
+<p>高频斜杠命令速查（在 agy 交互界面里用）：/resume 恢复会话、/rewind 回退检查点、/context 查上下文占用、/codesearch 跨库语义搜索、/tasks 任务列表、/usage 用量、/keybindings 快捷键、/diff 审阅改动、/agents 管理子 Agent、/model 切换模型。</p>
+<p><b>高频快捷键：</b>Shift + Tab 循环切换四档模式（auto / plan / default / accept-edits），Ctrl + R 审阅产物，Ctrl + C 中断，Ctrl + D 退出；Vim 模式的默认开关及详细触发项以官网当前说明为准。</p>
+<p><b>看到什么：</b>交互界面里能正常中文对话，斜杠命令与快捷键即按即生效。</p>
+<p><b>打勾标准：</b>会用 agy -i 交互式启动、会用 /model 切换模型、会用 Shift + Tab 循环四档模式。</p>
+<p><b>错了怎么办：</b>提示 command not found: agy 时，先彻底关掉终端重开（见 C-2 模块三）；交互界面渲染异常时，切换一下 Alt-Screen 与 Inline 渲染模式再试。</p>
+<p>无头环境免浏览器登录（ADC 两法）：在无图形界面的远程服务器、Docker 容器或 CI 环境里，先在有浏览器的电脑上跑 gcloud auth application-default login 完成授权，再通过下面任一方式启用应用默认凭据（ADC）：环境变量 AGY_ADC_AUTH=true，或在配置文件 ~/.gemini/config/config.json 里写入 enableAdc=true（AGY_ADC_AUTH=true 与 enableAdc=true 的写法见官网 Authenticate 页 ADC 一节）。</p>
+<label class="tut-check"><input type="checkbox"> 10.2 CLI 精细化权限配置文件（settings.json）与自定义状态栏（statusline）</label>
+<p><b>怎么做（点哪里）：</b>CLI 专属配置文件在 ~/.gemini/antigravity-cli/settings.json。重点配两项：</p>
+<p><b>命令黑白名单：</b>通过 permissions.allow 与 permissions.deny 配置命令白名单与黑名单，防止终端自动执行危险命令（例如把 rm -rf 这类高危命令写进 deny，常用安全命令写进 allow）。</p>
+<p>自定义状态栏（statusline）：配好状态栏后，它会输出 JSON 元数据，实时监控当前模型、会话用量或工作区状态，不用每次手动敲 /usage、/model 查状态（statusline 配置字段与 JSON 键名详情以官网当前说明为准）。</p>
+<p><b>看到什么：</b>开 auto 或 accept-edits 模式时，危险命令被黑名单拦下；状态栏实时显示当前模型与用量。</p>
+<p><b>打勾标准：</b>黑白名单已按自己的安全底线配好；状态栏一眼能看到当前模型与用量。</p>
+<p><b>错了怎么办：</b>如果配完 settings.json 后 agy 报错，先检查 JSON 括号与逗号有没有写错（最常见是多写或少写一个逗号）；如果黑名单拦住了正常命令，把该命令移到 allow 里再试。</p>
+<label class="tut-check"><input type="checkbox"> 10.3 远程开发双通道：托管隔离环境（Remote Agent）与 SSH 远程主机连接</label>
+<p><b>怎么做（点哪里）：</b>除了 C-6 Day 11 的跨设备远程控制（Remote Control）外，还有两种远程协作能力：</p>
+<p>托管隔离环境（Remote Agent）：面向 Pro / Ultra 个人账号，用 --remote-agent 在 Google 托管的云端隔离环境中运行 Agent 任务，不占本地算力与环境。</p>
+<p><b>SSH 远程主机连接：</b>通过 SSH 连接自有远程服务器进行开发（要求本地装有 OpenSSH，ssh 在 PATH 中即可，App 需 v2.33.0+；自动读取 ~/.ssh/config，支持 ProxyJump 跳板机穿透，且支持 Agent 会话持久化断线重连；SSH 连接界面入口细节以你当前实机为准）。</p>
+<p><b>看到什么：</b>Remote Agent 任务在云端跑，本地电脑只收结果；SSH 连接成功后，远程服务器上的文件直接在 Antigravity 里打开编辑。</p>
+<p><b>打勾标准：</b>笔记本性能有限或代码必须留在内网/云端 Linux 服务器跑时，已能选对一种远程方式干活。</p>
+<p><b>错了怎么办：</b>SSH 连不上先核对 ~/.ssh/config 里的主机配置与密钥路径，再确认远程服务器的 SSH 服务是否正常；Remote Agent 不可用时先核对账号是不是 Pro / Ultra。</p>
+<label class="tut-check"><input type="checkbox"> 10.4 Python SDK（google-antigravity）零基础入门：把 Agent 嵌入自有脚本</label>
+<p><b>怎么做（点哪里）：</b>官方 Python SDK 的安装命令为 pip install google-antigravity（按官网 SDK 文档复制最新安装命令）。基础使用全貌分四块：</p>
+<p><b>双认证接入方式：</b>个人或开发用 GEMINI_API_KEY，企业版用 Vertex AI 参数 vertex=True。</p>
+<p><b>本地模型对接：</b>通过 LocalAgentConfig 对接本地模型（LiteRT 或 OpenAI 兼容端点）。</p>
+<p><b>核心能力地图：</b>在代码里自定义人设（persona）、工具（tools）、Skill、MCP、安全策略（policies）、子 Agent、结构化输出、生命周期钩子、会话持久化、流式输出与多模态输入（核心类与方法签名示例以官网 SDK 文档为准）。</p>
+<p><b>看到什么：</b>跑通第一段现行模型调用脚本后，终端打印出模型返回的中文结果（C-2 模块五的 SDK-2 就是最小验证）。</p>
+<p><b>打勾标准：</b>会装 SDK、会配两种认证方式、能说出核心能力地图里每一项是干嘛的。</p>
+<p><b>错了怎么办：</b>报 ModuleNotFoundError 时，检查是不是装错了 Python 虚拟环境（见 C-2 模块五 SDK-1）；报模型不可用时，检查代码里是否误填了 2026 年 11 月 30 日下线的旧模型名。</p>
+<h3>清单 11：IDE 扩展与迁移实战（选型、VS Code、四端协同、迁移指南）</h3>
+<p>本清单接 C-2 模块四（IDE 扩展安装与登录）：模块四只教装上，这里教你在编辑器生态里选型、协同与迁移；纯小白没装过编辑器可直接跳过本清单。</p>
+<label class="tut-check"><input type="checkbox"> 11.1 IDE 生态全景选型：独立 Antigravity IDE、7 款官方扩展与 ACP 协议接入</label>
+<p><b>怎么做（点哪里）：</b>Antigravity 在编辑器生态里有三种接入形态，按习惯对号入座：</p>
+<p>功能最全的独立 Antigravity IDE：想在一个重型编辑器里全功能开发时用（注意：企业版账号不支持登录独立版 Antigravity IDE，见 11.8）。</p>
+<p>官方原生支持的 7 款 IDE 扩展：VS Code、Visual Studio、Eclipse、JetBrains 全家桶、Android Studio、Zed、Xcode，留在你最顺手的编辑器里用。</p>
+<p>面向其他第三方编辑器的 ACP 协议接入方案：不在上面 7 款里的编辑器，走 ACP 协议接入（ACP 协议接入配置细节以官网当前说明为准）。</p>
+<p><b>看到什么：</b>清楚自己该用独立 IDE、官方扩展还是 ACP 接入，不会在三个形态之间来回纠结。</p>
+<p><b>打勾标准：</b>已按自己日常用的编辑器选定一种接入形态；企业版用户已知独立 IDE 不支持企业登录。</p>
+<p><b>错了怎么办：</b>如果装了独立 IDE 却登不上企业版账号，先看 11.8 的准入矩阵——这很可能是产品形态不支持，不是网络或 SSO 配置问题。</p>
+<label class="tut-check"><input type="checkbox"> 11.2 VS Code 扩展安装与账号认证配置实战（含企业版预览）</label>
+<p><b>怎么做（点哪里）：</b>以使用人数最多的 VS Code（要求 v1.90+）为标准范本：去 VS Code Marketplace 搜索 Google Antigravity 安装，通过扩展侧边栏唤起面板。扩展采用统一 OAuth 登录：个人账号走 oauth-personal（Free / Pro / Ultra），企业版走 oauth-business（Gemini Enterprise 预览版，需额外配置 gcp.project 与 gcp.location 参数，配置键名以官网当前说明为准）。</p>
+<p><b>另外注意：</b>gemini-api-key 与 agent-platform 是 ACP 协议的认证方式（经社区 ACP Client 扩展接入时才涉及），不是 VS Code 扩展自带的认证模式，别配错地方。</p>
+<p><b>看到什么：</b>侧边栏出现聊天框与模型选择器，发一句中文测试消息能正常回复。</p>
+<p><b>打勾标准：</b>个人版与企业版认证模式分得清，gcp.project 与 gcp.location 只在企业版下配。</p>
+<p><b>错了怎么办：</b>授权后侧边栏没刷新，重启一下编辑器即可；企业认证失败时，先核对 gcp.project 与 gcp.location 是否填对。</p>
+<label class="tut-check"><input type="checkbox"> 11.3 其他 6 款主流 IDE 唤起与专属操作速查（Visual Studio / JetBrains / Android Studio / Eclipse / Zed / Xcode）</label>
+<p><b>怎么做（点哪里）：</b>除 VS Code 外，其余 6 款官方支持 IDE 的激活入口各不相同，对照速查表找入口（各 IDE 最低版本号要求以官网当前说明为准）：</p>
+<p>Visual Studio：快捷键 Ctrl + \ 与 Ctrl + Alt + L。</p>
+<p><b>Eclipse：</b>顶部菜单 Antigravity ＞ Toggle Chat。</p>
+<p>JetBrains IDE 全家桶：在 AI 设置中启用与配置。</p>
+<p>Android Studio：与 JetBrains 同源，企业功能当前为预览版。</p>
+<p><b>Zed：</b>在 External Agents 面板接入。</p>
+<p><b>Xcode：</b>在设置 ＞ Intelligence 中启用。</p>
+<p><b>看到什么：</b>按速查表一步找到入口，不用在菜单里瞎翻。</p>
+<p><b>打勾标准：</b>自己用的那一款 IDE，能 1 分钟内唤起 Antigravity 面板。</p>
+<p><b>错了怎么办：</b>找不到入口时，先确认编辑器已更新到较新版本，再按上面对应的菜单路径找一遍。</p>
+<label class="tut-check"><input type="checkbox"> 11.4 多端协同分工策略：桌面端 App、IDE 扩展与 CLI 怎么搭配最省力</label>
+<p><b>怎么做（点哪里）：</b>装好多个端之后，按场景分工，别在多个窗口里同时改同一个文件：</p>
+<p>开独立 App 或独立 IDE：做可视化审查与浏览器预览时用。</p>
+<p>留在 VS Code / JetBrains 边手写代码边局部补全：改小处、补代码时用。</p>
+<p><b>直接在终端开 agy：</b>跑长耗时构建或远程任务时用。</p>
+<p><b>看到什么：</b>每个任务都有唯一的主窗口，其他端不插手同一批文件。</p>
+<p><b>打勾标准：</b>同一工作区下，双端并行操作有明确分工，绝不让两个 Agent 同时改同一个目录里的同一批文件（多端同时打开同一目录的锁机制细节以官网当前说明为准）。</p>
+<p><b>错了怎么办：</b>如果发现 App 和 VS Code 里的两个 Agent 改起了同一个文件，立刻停掉其中一个，只留一个窗口操作该项目（并行铁律见 C-4 清单 7）。</p>
+<label class="tut-check"><input type="checkbox"> 11.5 迁移指南（一）：从 Firebase Studio 搬家到 Antigravity</label>
+<p><b>怎么做（点哪里）：</b>对照官网迁移到 Antigravity 三大入口之一，把原本在云端 Firebase Studio 开发全栈或原型应用的项目，迁移到本地 Antigravity（App 或 IDE）继续开发与部署：迁移项目代码、环境依赖、预览配置与工作流，平滑过渡（官网 Firebase Studio 迁移页面的逐条步骤以官网当前说明为准）。</p>
+<p><b>看到什么：</b>云端原型在本地 Antigravity 里能正常打开、正常跑、正常部署。</p>
+<p><b>打勾标准：</b>代码、依赖、预览配置、工作流四样都搬过来了，没有遗漏。</p>
+<p><b>错了怎么办：</b>如果迁移后预览配置对不上，先核对本地与云端的预览入口差异，再按官网迁移页逐条复核。</p>
+<label class="tut-check"><input type="checkbox"> 11.6 迁移指南（二）：把旧版工作流升级为标准 Skill</label>
+<p><b>怎么做（点哪里）：</b>对照官网迁移到 Antigravity 三大入口之一，承接 C-4 清单 5 的规则文件体系，把早期项目或旧版配置中的零散工作流文件（Workflows）拆解、重构并迁移为标准的模块化 Skill 目录结构（含触发描述、执行脚本与配套参考文件），消除旧写法与新规范混用带来的维护混乱（官网从工作流到 Skill 迁移页面的具体目录对照示例以官网当前说明为准）。</p>
+<p><b>看到什么：</b>旧工作流按新规范重组后，触发稳定、可复用。</p>
+<p><b>打勾标准：</b>迁移后的 Skill 能正常触发，旧工作流文件已清理或归档，不再混用。</p>
+<p><b>错了怎么办：</b>如果迁移后 Skill 触发不稳定，先核对触发描述与目录结构是否符合标准 Skill 规范（见 C-4 附录的 Skill 部分）。</p>
+<label class="tut-check"><input type="checkbox"> 11.7 迁移指南（三）：Cursor / Claude Code / Codex 老用户无缝转场对照表</label>
+<p><b>怎么做（点哪里）：</b>承接 C-2 模块一 步骤 4 的首次启动第三方导入功能，对照下面这张老习惯到新概念的映射表平移肌肉记忆（自动导入工具对各字段的转换细节以官网当前说明为准）：</p>
+<p>.cursorrules / CLAUDE.md 对应到 AGENTS.md / GEMINI.md 与 .agents/rules/*.md。</p>
+<p>Composer / Agent 模式对应 Orchestrator 与执行模式切换。</p>
+<p>MCP 配置复用（见 C-4 清单 8 的 8.8 术语点破）。</p>
+<p><b>看到什么：</b>5 分钟内把既有习惯平移到 Antigravity，不用重新学一套黑话。</p>
+<p><b>打勾标准：</b>旧工具里的核心配置（规则文件、模式切换、MCP）都已在新环境里找到对应物。</p>
+<p><b>错了怎么办：</b>如果自动导入后某项配置没转过来，按上面映射表手动补一份对应的规则文件即可。</p>
+<label class="tut-check"><input type="checkbox"> 11.8 企业账号编辑器登录准入矩阵与常见报错排查</label>
+<p><b>怎么做（点哪里）：</b>企业版用户登录编辑器端有两个前置条件，缺一不可：先由组织管理员授予许可，并在后台开启 AI 开发工具开关。准入矩阵如下：企业版账号仅支持在桌面端 App、CLI（agy）以及官方 IDE 扩展中登录，不支持登录独立版 Antigravity IDE。</p>
+<p><b>看到什么：</b>符合准入矩阵的端能正常登录；独立版 IDE 上企业账号登录会被直接拒绝。</p>
+<p><b>打勾标准：</b>企业版用户已确认管理员许可与后台开关都已开通，且只在支持的端登录。</p>
+<p><b>错了怎么办：</b>遇到管理员未启用服务或产品形态不支持报错时，对照上面矩阵自查：先确认管理员开关（企业后台管理员开关的具体菜单路径以官网当前说明为准），再确认当前端的产品形态是否在支持列表里。</p>
+<h3>清单 12：端到端实战与长期治理（云端全栈、办公自动化、账号安全、费用治理、长期维护）</h3>
+<p><b>本清单是全书的收官实战篇：</b>前面清单教你单点技能，这里把它们串成从第一句提示词到真正交付的完整流水线，并讲清长期用下去的治理方法。云端全栈部分（12.1）为进阶选修，纯小白可先跳过。</p>
+<label class="tut-check"><input type="checkbox"> 12.1 端到端实战（上）：不写底层配置，用 Firebase 插件搭出可登录的在线应用（云端全栈进阶选修）</label>
+<p><b>怎么做（点哪里）：</b>结合 C-4 清单 8 的 8.8 官方插件与既有 V1 → V2 → V3 切片、内置预览方法，先安装 Firebase 与现代 Web 开发指南插件，再在项目中通过自然语言串联四步：Firestore 数据库读写、Authentication 用户登录、安全规则自动审查与修复，最后直接推上 App Hosting 完成线上部署并做真机验收（具体演示项目界面以你当前实机为准）。</p>
+<p><b>看到什么：</b>一个能注册登录、能读写数据、能在线访问的完整应用从零长出来。</p>
+<p><b>打勾标准：</b>数据库读写正常、登录功能正常、安全规则审查通过、线上部署后手机真机验收通过。</p>
+<p><b>错了怎么办：</b>如果安全规则审查报错，让 AI 按审查意见逐条修复后再部署；如果线上部署后打不开，先核对 App Hosting 的部署状态再查代码。</p>
+<label class="tut-check"><input type="checkbox"> 12.2 端到端实战（下）：打通 Docs / Sheets / Drive / 日历的零代码办公自动化</label>
+<p><b>怎么做（点哪里）：</b>面向非程序员职场读者，结合 C-4 清单 8 的 8.8 里的 Google Workspace 官方插件（Docs、Sheets、Slides、Drive、Calendar、Gmail）与既有批量处理办公文件基础，设计一个端到端办公自动化实战：安装 gdocs 等插件后，让 Agent 从 Drive 读取原始项目资料、在 Sheets 中汇总清洗数据、自动生成汇报 Slides 提纲与 Docs 会议纪要，并把待办写入 Calendar 或起草 Gmail 通知邮件（各 Workspace 插件首次 OAuth 授权确认交互细节以你当前实机界面为准）。</p>
+<p><b>看到什么：</b>云端文档、表格、幻灯片与日程被一根线串起来，行政、运营、产品经理不用写代码也能跑通办公流。</p>
+<p><b>打勾标准：</b>Drive 资料能读、Sheets 汇总无误、Slides 提纲与 Docs 纪要已生成、待办已写入日历或邮件已起草。</p>
+<p><b>错了怎么办：</b>如果某个 Workspace 插件首次授权失败，重新走一遍该插件的 OAuth 授权确认；如果数据汇总出错，先让 AI 打印出原始数据的前几行核对列名（见 C-3 清单 4 的 4.2）。</p>
+<p><b>职场现成招：</b>本地批处理 3 个标准化指令模板。除了做网页，很多职场小白用 Antigravity 是为了批量重命名文件、合并多个 CSV / TXT 表格、批量压缩图片加水印。提醒一句：运行 Python / Node 脚本前先确认本机是否装了对应环境，如未安装，可让 AI 直接用电脑系统自带的 PowerShell / AppleScript / Shell 写免安装脚本，别被 python: command not found 卡住。</p>
+<label class="tut-check"><input type="checkbox"> 12.3 账号保命红线：官方服务条款禁令、隐私开关与防休眠机制</label>
+<p><b>怎么做（点哪里）：</b>集中梳理官方 FAQ 中最容易导致账号被封停或功能受限的合规红线与基础设置：</p>
+<p>严禁使用 Antigravity 账号登录 Claude Code、OpenClaw、OpenCode 等第三方客户端（违反服务条款，可能导致账号被暂停或终止）。</p>
+<p>个人方案禁止将 agy 包装进第三方 Agent 框架或做多账号自动轮换（CLI 无头模式 agy -p 仅限直接脚本编写与 CI 集成）。</p>
+<p>在设置面板中关闭参与数据收集开关以保护隐私（设置面板中数据收集开关的精确中文名称以你当前实机界面为准）。</p>
+<p><b>另外记一条物理行为预期：</b>Agent 运行期间系统会自动阻止电脑进入睡眠，这是正常的，不用以为电脑出故障了。</p>
+<p><b>看到什么：</b>心里有一张红线清单，知道哪些野路子绝对不能碰。</p>
+<p><b>打勾标准：</b>从未把账号桥接到第三方套壳工具；隐私开关已按自己意愿设置；Agent 运行时电脑不休眠不再大惊小怪。</p>
+<p><b>错了怎么办：</b>如果已经误接了第三方客户端，立刻断开并改回官方入口；如果账号已被限制，按官方申诉渠道处理，不要再试野路子。</p>
+<label class="tut-check"><input type="checkbox"> 12.4 算力与账单治理：5 小时刷新节奏、超额额度开关与 BYOK 边界</label>
+<p><b>怎么做（点哪里）：</b>先搞清配额刷新周期差异：免费与 Plus 每周刷新；付费 Pro 每 5 小时刷新一次直至达到每周上限；Ultra 配额最高且每 5 小时刷新；试用版 Pro 配额与可用模型低于付费 Pro 且受系统容量波动影响。</p>
+<p>再看超额 AI 额度（AI Credit Overages）开关：仅 Pro 和 Ultra 可开启，可设为 Never（绝不额外扣费）或切为 Always（并按标准 Gemini Enterprise 消费定价计费）；官网未写明开关默认值，以你当前实机显示为准（超额额度账单明细查看入口以官网当前说明为准）。</p>
+<p><b>计费边界要记牢：</b>订阅套餐不支持用自带 API 密钥（BYOK）换取更高额度，但 CLI / SDK 可用 GEMINI_API_KEY 走 Gemini API 直连，不走订阅配额。</p>
+<p><b>看到什么：</b>明白为什么每 5 小时额度恢复一次、却又在周末突然触顶（被每周总上限拦住了）；也知道误开按量计费不会悄悄扣费——开关在 Never 就是安全的。</p>
+<p><b>打勾标准：</b>刷新节奏、超额开关、BYOK 边界三条都清楚；怕花超预算的付费新手已确认超额开关在 Never。</p>
+<p><b>错了怎么办：</b>如果账单出现意外扣费，先去 View Usage 核对消耗明细，再确认超额开关状态；如果找不到填自己 API Key 的输入框，别找了——订阅套餐里本来就没有。</p>
+<p>免费版与付费版都适用的省额度 6 招：第一，一个功能验收完就点 + New Conversation 开新对话（长对话每次发送都会重复携带前面几万字历史，极其费额度）；第二，绝不打开包含成千上万文件的桌面或大目录；第三，简单改样式切 Low 思考强度加轻量模型；第四，报错时只复制核心红字而不是贴整篇日志；第五，能在浏览器里手动改一个字解决的文案修改，直接让 AI 告诉你改哪行、自己改；第六，付费版将 AI 积分开关设在 Never 防误超。</p>
+<label class="tut-check"><input type="checkbox"> 12.5 订阅升级指南：通过 Google One 升级与试用版 Pro 转正流程</label>
+<p><b>怎么做（点哪里）：</b>区分两条升级路径：免费版或 Plus 用户通过 Google One 渠道直接升级至付费 Pro 或 Ultra；高端设备附带或促销的试用版 Pro 用户想要提前解锁 Claude 5.5 等正式版权益时，按官方流程先提交取消试用申请，再切换为付费 Pro（取消试用申请表单的官方入口位置以官网当前说明为准）。</p>
+<p><b>看到什么：</b>升级路径清晰，不会在已有试用订阅无法直接重复购买的环节卡住。</p>
+<p><b>打勾标准：</b>已按自己情况选对升级路径；试用转正用户已走完取消试用再转付费的完整闭环。</p>
+<p><b>错了怎么办：</b>如果升级时提示已有订阅冲突，先确认当前是不是试用版 Pro，再按上面取消试用申请的路径走一遍。</p>
+<label class="tut-check"><input type="checkbox"> 12.6 长期越用越顺手：规则库瘦身防降级与自定义资产定期维护</label>
+<p><b>怎么做（点哪里）：</b>承接 C-4 清单 5 的规则文件体系（单文件 24KB 截断与总预算 20,000 token 降级为轻量指针机制）与 5.4 的 /learn 沉淀习惯，建立面向长期重度用户的家规定期体检与瘦身治理方法：运行数月后检查规则总 token 占用，把常驻型 always_on 规则按文件类型拆分为按需加载的 glob 规则或模型按需调用的 model_decision 规则，合并冗余说明，并清理随着项目迭代已失效的历史规则和不再维护的旧插件（App 内是否直接显示当前规则已占用的 token 精确数值，以你当前实机界面为准）。</p>
+<p><b>看到什么：</b>规则库保持精简，AI 不再突然失忆。</p>
+<p><b>打勾标准：</b>每隔一两个月做一次规则体检；always_on 规则没有无节制膨胀；失效规则与旧插件已清理。</p>
+<p><b>错了怎么办：</b>如果 AI 突然不遵守某条核心规则，先核对规则总 token 是不是悄悄突破了 20,000 预算、导致最大的核心规则被降级为轻量指针，再按上面方法瘦身。</p>
+<label class="tut-check"><input type="checkbox"> 12.7 从个人技巧到团队资产：高频提示词固化与仓库级共享规范</label>
+<p><b>怎么做（点哪里）：</b>承接 C-4 清单 11 的 11.6（工作流升级为 Skill）与 C-4 清单 5 的项目级规则，把个人日常反复敲打的高频指令（如上线前安全自检、代码提交前双语注释补全、周报自动汇总）固化为项目内 .agents/ 目录下的可复用模板与自定义斜杠命令，并通过 Git 随代码仓库共享给团队成员，实现从个人每次临时编提示词到团队一键调用标准动作的资产沉淀（自定义斜杠命令的目录命名约定以官网当前说明为准）。</p>
+<p><b>看到什么：</b>团队每个人拉下代码就自动继承同一套 AI 协作规范，不用每人再发明一遍提示词。</p>
+<p><b>打勾标准：</b>高频指令已固化为模板与自定义斜杠命令；团队仓库里能看到这些共享资产。</p>
+<p><b>错了怎么办：</b>如果自定义斜杠命令触发不了，先核对目录命名与存放位置是否符合规范，再确认是不是放在了正确的项目目录下。</p>
+<label class="tut-check"><input type="checkbox"> 12.8 一个人活成一支队伍：基于 Worktree 的多任务并行工作流</label>
+<p><b>怎么做（点哪里）：</b>承接 C-3 清单 1 的 1.4（New worktree mode）与 C-4 清单 4 的 4.7（VCS Review），在同一代码仓库下同时开启多个隔离 Worktree 工作区：主窗口跑复杂新功能规划、第二个窗口用快速模型修线上紧急 Bug、第三个窗口同步更新文档，最后通过 VCS Review 分支对比逐一验收合并（App 侧边栏多 Worktree 切换界面细节以你当前实机为准）。</p>
+<p><b>看到什么：</b>三个窗口各干各的活，互不干扰，最后逐一合并。</p>
+<p><b>打勾标准：</b>每个 Worktree 绑定独立目录；合并前每个分支都经过 VCS Review 逐一验收。</p>
+<p><b>错了怎么办：</b>如果多个任务挤在同一个本地文件夹里读写同一批文件导致代码覆盖冲突，立刻停掉其中两个任务，按上面 Worktree 隔离的方式重开（并行铁律见 C-4 清单 7）。</p>
+<label class="tut-check"><input type="checkbox"> 12.9 你的 30 天进阶路线图：三类人群实战成长打卡表</label>
+<p><b>怎么做（点哪里）：</b>在全书收官处为不同背景读者定制三条清晰的分阶段成长路线图——路径 A（零基础非编程 / 办公与科研人群）、路径 B（个人开发者 / 全栈独立创作者）、路径 C（团队协作与企业环境用户），将全书核心章节与文末终极检查清单串联成四阶段里程碑打卡手册：第 1 天跑通环境 → 第 7 天立好家规与工作流 → 第 14 天打通插件与多端协同 → 第 30 天完成端到端真实项目交付与长期配额治理（配套练习样例仓库链接以官网当前说明为准，本节不附外部链接，照着正文步骤做即可）。</p>
+<p><b>看到什么：</b>按自身身份挑出必读章节与阶段目标，不用从头到尾平均用力。</p>
+<p><b>打勾标准：</b>已选定属于自己的那条路径，并按四阶段里程碑逐项打卡。</p>
+<p><b>错了怎么办：</b>如果中途掉队，别从头重读——回到路线图里当前阶段对应的章节，只补这一阶段的内容即可。</p>
+<h2>C-4 附录：插件与 Skill 安装全攻略（从 GitHub 导入）</h2>
+<p>先分清两个词，别装错地方：</p>
+<p><b>插件（Plugin）：</b>打包好的一整套扩展工具，里面可能同时包含 Skill（技能）、MCP（外部工具连接器，比如连接谷歌文档或数据库的桥梁）、Agent（智能体）和规则文件。Antigravity 里装的是插件。</p>
+<p><b>Skill（技能）：</b>教 AI 完成某一项具体任务的说明书文件夹，核心是一个叫 SKILL.md 的纯文本文件（里面写清楚这个技能叫什么、干嘛用的、具体按哪几步做）。Gemini 网页版里只有 Skill，没有插件市场；Antigravity 里的插件则可以包含一个或多个 Skill。</p>
+<p>GitHub（代码托管网站）：程序员和玩家用来存放、分享公开文件与工具的网站，你可以把它理解成一个免费的“云端网盘”，很多别人写好的插件和 Skill 都放在上面。</p>
+<p>仓库（Repository，常简称为 Repo）：GitHub 上存放某一个独立项目的文件夹页面，每个仓库都有一个专属网址（比如 https://github.com/用户名/仓库名）。</p>
+<p><b>一句话记住区别：</b>Antigravity 装插件，Gemini 网页版装 Skill；两边都能从 GitHub 拿东西，但操作入口和文件夹格式不一样。</p>
+<p>一、Antigravity：三条路装插件</p>
+<p>在 Antigravity 里装插件，一共有三条路可走。动手之前，先花 10 秒看清三条路分别适合谁、怎么选：</p>
+<p>路 A（官方市场点一下就装）：适合刚上手的新手，或者只想用 Google 官方、审核上架的常用插件（比如连接 Google Docs、Sheets）。不用敲任何命令，像手机应用商店一样点一下就行。</p>
+<p>路 B（一条命令从 GitHub 装）：适合有人在文章或聊天里发给你一个 GitHub 仓库网址，你想直接把网上的插件装进 Antigravity。需要打开电脑的“终端”（一个黑框或白框的命令行窗口，通过输入文字指令让电脑干活）敲一行命令，前提是你的命令行工具（CLI）已经登录成功。</p>
+<p><b>路 C（手动复制文件夹）：</b>适合终端命令报错、CLI 还没登录通，或者你自己改写了一个本地文件夹想直接塞进 Antigravity 的情况。这是最稳妥的保底办法，只要会复制粘贴文件夹就能成。</p>
+<p><b>选路口诀：</b>市场里有的优先走路 A；市场里没有、但有 GitHub 链接且终端能用，走路 B；终端报错或本地自建文件夹，走路 C。</p>
+<p><b>（一）路 A：</b>官方市场点一下就装（最省事）</p>
+<p><b>前置准备：</b></p>
+<p>电脑已安装并打开 Antigravity 桌面客户端。</p>
+<p>已经用你的 Google 账号登录进 Antigravity 主界面，且网络能正常连接。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 1：</b>打开插件市场并搜索目标插件</label>
+<p><b>怎么做：</b></p>
+<p>看 Antigravity 界面最左侧那一竖排导航栏，找到并点击 Customizations（自定义 / 扩展设置图标）。</p>
+<p>在展开的菜单里点击 Marketplace（插件市场）。</p>
+<p>在市场页面中找到 Build with Google（Google 官方构建）专区，或者直接点击页面顶部的搜索框，输入 Docs（我们先装官方的 Google Docs 插件练手）。</p>
+<p><b>看到什么：</b>页面刷新后，列表里会出现 Google Docs 相关的插件卡片，卡片上写着插件名称和简短功能介绍。</p>
+<p><b>打勾标准：</b>在市场列表里清楚看到目标插件的卡片。</p>
+<p><b>错了怎么办：</b>如果点击 Marketplace 后一直转圈加载不出来，先检查网络代理是否正常；如果搜索框输入 Docs 搜不到任何内容，先检查 Antigravity 客户端右上角或设置里是否有版本更新提示，把 Antigravity 更新到最新版本后再重新打开市场搜索。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 2：</b>查看权限说明并点击安装</label>
+<p><b>怎么做：</b></p>
+<p>点击搜索出来的 Google Docs 插件卡片，打开它的详情页面。</p>
+<p>仔细看详情页上的说明，确认它具备读写 Google Docs 和 Google Sheets 的能力（避免装错成同名第三方插件）。</p>
+<p>确认无误后，点击详情页上的 Add（添加）按钮（有的版本在卡片上直接点 + 号就能装）。</p>
+<p><b>看到什么：</b>按钮状态变成正在安装（或显示转圈进度），几秒钟后按钮文字变为 Added 或 Installed，同时左侧导航栏的 Customizations → Installed（已安装）列表中出现这个插件，旁边显示“已启用（Enabled）”状态。</p>
+<p><b>打勾标准：</b>在 Customizations → Installed 列表里能找到该插件，且开关处于开启状态。</p>
+<p><b>错了怎么办：</b>如果点击 Add 后提示安装失败或权限不足，检查当前登录的 Google 账号是否完成了完整授权；如果列表里显示已安装但处于灰色禁用状态，手动点一下旁边的启用开关即可。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 3：</b>在聊天框验证是否装成功</label>
+<p><b>怎么做：</b></p>
+<p>回到 Antigravity 的主聊天界面，鼠标点一下底部的文字输入框。</p>
+<p>在输入框里敲一个斜杠加英文单词：/plugin，然后先别急着按回车，看输入框上方弹出的菜单。</p>
+<p><b>看到什么：</b>输入框上方会弹出一个快捷命令清单，里面列出了当前所有已安装并启用的插件及其包含的技能名称。</p>
+<p><b>打勾标准：</b>能在弹出的 /plugin 清单里看到刚才安装的 Google Docs 插件，点击它或继续输入指令能让 AI 正常调用。</p>
+<p><b>错了怎么办：</b>如果敲 /plugin 后清单里没有它，先回 Customizations → Installed 确认状态是否为已启用；如果已启用仍不显示，彻底关闭 Antigravity 客户端（退出后台进程）再重新打开一次即可刷新清单。</p>
+<p>路 A 常见报错与回退（卸载）办法：</p>
+<p><b>常见报错：</b>插件启用后调用时提示“未授权访问 Google Drive / Docs”。解决办法：按照聊天框弹出的授权链接在浏览器里点“允许”，授权完成后回到 Antigravity 重试。</p>
+<p><b>回退（卸载）办法：</b>如果装完发现不需要，点左侧 Customizations → Installed，找到这个插件，点旁边的 ⋮ 菜单：选 disable 是暂时禁用，选 uninstall 是彻底移除。</p>
+<p><b>（二）路 B：</b>一条命令从 GitHub 装（适合别人分享的仓库链接）</p>
+<p><b>先解释两个词：</b></p>
+<p><b>终端（Terminal）：</b>电脑自带的纯文字操作窗口。在 Windows 上通常叫 PowerShell 或命令提示符，在 Mac 和 Linux 上叫 Terminal（终端）。</p>
+<p>CLI（Command Line Interface，命令行工具）：Antigravity 配套的终端指令程序，名字叫 agy。学会这一条命令，就能直接从 GitHub 网址把插件拉到电脑里。</p>
+<p><b>前置准备：</b></p>
+<p>电脑上已经装好 Antigravity 的命令行工具 agy，并且已经在终端里跑过登录命令、CLI 登录状态是成功的（如果还没登录过 CLI，请先看前文 CLI 登录章节，或直接跳过本路改用路 C）。</p>
+<p>手头有一个完整的 GitHub 插件仓库地址，例如：https://github.com/KodekaTeam/superior-skills 。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 1：</b>打开电脑终端并输入安装命令</label>
+<p><b>怎么做：</b></p>
+<p>打开你电脑上的终端（Mac 按 Command + 空格搜 Terminal 回车；Linux 按 Ctrl + Alt + T；Windows 在开始菜单搜 PowerShell 打开）。</p>
+<p>在终端闪烁的光标后面，原样复制粘贴下面这行命令，然后按键盘上的回车键（Enter）：</p>
+<p>agy plugin install https://github.com/KodekaTeam/superior-skills</p>
+<p>按下回车后，松开鼠标等待几秒，让电脑自动从 GitHub 下载并安装。</p>
+<p><b>看到什么：</b>终端里会滚动显示几行下载和解压进度文字，最后终端回到可输入状态，没有红色 Error，就是装好了。</p>
+<p><b>打勾标准：</b>终端没有出现红色 Error 或 failed 字样，且顺利回到可输入状态。</p>
+<p><b>错了怎么办：</b></p>
+<p>报错一 command not found: agy、报错二 GLIBC_2.xx not found：这两个都是 C-2 里讲过的坑，处理办法见 C-2，照着做就行。</p>
+<p><b>报错三：</b>提示仓库连接超时或克隆失败（fatal: unable to access）。说明终端窗口没有走通访问 GitHub 的网络代理，需在终端里配置代理环境变量，或直接改用路 C 手动下载压缩包安装。</p>
+<p><b>报错四：</b>提示未登录或认证失败（Not authenticated / Unauthorized）。说明 CLI 还没登录成功，先完成 CLI 登录，或者先走路 C 保底。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 2：</b>用 list 命令核对安装清单</label>
+<p><b>怎么做：</b></p>
+<p>紧接着在刚才的终端窗口里，输入下面这行检查命令并按回车：</p>
+<p>agy plugin list</p>
+<p><b>看到什么：</b>终端会打印出一张已安装插件的列表，里面包含插件的名字、版本号或来源路径，你刚装的 superior-skills（或其内部插件名）会出现在列表里。</p>
+<p><b>打勾标准：</b>agy plugin list 的输出清单里明确能看到刚刚装好的插件名称。</p>
+<p><b>错了怎么办：</b>如果 agy plugin list 里是空的，说明上一步安装并没有真正写入成功，回头检查步骤 1 的终端输出有没有报错信息；如果依然装不上，直接转去路 C。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 3：</b>回到 Antigravity 聊天框验证调用</label>
+<p><b>怎么做：</b></p>
+<p>切换回 Antigravity 桌面客户端的聊天界面（如果刚才一直开着客户端，建议先重启一下 Antigravity 让它重新读取插件列表）。</p>
+<p>点击聊天输入框，输入 /plugin，在弹出的列表里找到刚才通过 GitHub 安装的插件，选中它并发送一句测试消息。</p>
+<p><b>看到什么：</b>聊天框上方成功识别出该插件包含的 Skill，发送消息后 AI 按照该插件的指令规则正常回复。</p>
+<p><b>打勾标准：</b>回 Antigravity 里敲 /plugin，能看到并成功调用这个插件的 skill。</p>
+<p><b>错了怎么办：</b>如果终端里 agy plugin list 能看到，但 Antigravity 界面里敲 /plugin 找不到，100% 是客户端还没刷新缓存，彻底退出 Antigravity 桌面端并重新打开即可。</p>
+<p>路 B 常见报错与回退（卸载）办法：</p>
+<p><b>常见报错：</b>安装时提示找不到插件清单文件 plugin.json。原因：你复制的这个 GitHub 仓库里放的是单个纯 Skill（只有 SKILL.md），而不是完整的 Antigravity 插件包。解决办法：改用路 C，把单个 Skill 文件夹放进 .agents/skills/ 目录即可。</p>
+<p><b>回退（卸载）办法：</b>如果想把命令行装的插件删掉，可以在终端运行卸载命令 agy plugin uninstall 插件名，或者直接打开 Antigravity 左侧 Customizations → Installed 找到它点卸载，也可以直接去硬盘对应的插件目录里把该文件夹删掉。</p>
+<p><b>（三）路 C：</b>手动复制文件夹（CLI 不通时的保底）</p>
+<p><b>先解释两个词：</b></p>
+<p><b>根目录：</b>打开一个文件夹后看到的最外层（第一层），里面没有再套多余的壳子文件夹。</p>
+<p><b>隐藏文件夹：</b>名字前面带一个英文句点 . 的文件夹（比如 .agents 或 .gemini）。电脑默认会把它们藏起来不显示，需要开启“显示隐藏文件”才能看见。</p>
+<p><b>前置准备：</b></p>
+<p>你已经把插件或 Skill 的文件夹下载到了电脑本地（比如从 GitHub 网页点 Code → Download ZIP 下载后解压，或者别人直接发给你的文件夹）。</p>
+<p>打开这个文件夹看一眼里面的文件结构，分清它是哪一种：</p>
+<p><b>情况 1（完整插件包）：</b>文件夹里面能看到 plugin.json（插件配置文件），或者里面同时包含 skills、agents 等子文件夹。</p>
+<p>情况 2（单个纯 Skill）：文件夹里面没有 plugin.json，只有一个叫 SKILL.md 的文件（旁边可能附带脚本或参考文档）。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 1：</b>找到并打开目标存放目录</label>
+<p><b>怎么做：</b></p>
+<p>根据你的使用范围和文件类型，把整个文件夹复制粘贴到下面三个对应位置之一（注意：复制的是整个插件文件夹本身，不是把里面的零散文件散着倒进去）：</p>
+<p>如果你只想在“当前这一个项目”里用这个完整插件：</p>
+<p>打开你当前项目的文件夹（在文件管理器里按快捷键开启显示隐藏文件：Windows 在文件夹顶部菜单点“查看 → 显示 → 隐藏的项目”；Mac 按 Command + Shift + . 句点键；Linux 按 Ctrl + H）。找到项目根目录下的 .agents/plugins/ 文件夹（如果没有就自己新建这两层文件夹），把插件文件夹整个拷进去，最终路径长这样：</p>
+<p>你的项目文件夹/.agents/plugins/插件名/</p>
+<p>如果你想在“电脑上所有项目”里都能用这个完整插件：</p>
+<p>打开你的系统用户主目录（Windows 通常是 C:\Users\你的用户名\，Mac 是 /Users/你的用户名/，Linux 是 /home/你的用户名/），开启显示隐藏文件，找到 .gemini/config/plugins/ 文件夹（没有就新建），把插件文件夹整个拷进去，最终路径长这样：</p>
+<p>~/.gemini/config/plugins/插件名/</p>
+<p><b>（注意：</b>这里放的是插件；规则文件全局放 ~/.gemini/ 或 ~/.gemini/config/rules/，是另一套目录，别混了。）</p>
+<p>如果你手里是一个“纯 SKILL.md 文件夹”（里面没有 plugin.json，只有一个单独的 skill）：</p>
+<p>不要放进 plugins 文件夹！请把它整个拷进项目根目录下的 .agents/skills/ 文件夹里（想在所有项目里都能用，就放全局目录 ~/.gemini/config/skills/），最终路径长这样：</p>
+<p>你的项目文件夹/.agents/skills/技能名/</p>
+<p><b>看到什么：</b>打开目标目录后，你能看到里面整整齐齐放着你刚复制进去的文件夹，点开这个文件夹，第一层就能看到 plugin.json 或 SKILL.md。</p>
+<p><b>打勾标准：</b>文件夹层级完全正确，没有出现“文件夹套同名文件夹”（比如 plugins/插件名/插件名/SKILL.md）的多余嵌套。</p>
+<p><b>错了怎么办：</b>如果发现多套了一层外壳文件夹，把里层那个真正的文件夹剪切出来放到上一级，把空壳删掉；如果不小心放错了目录（比如把纯 SKILL.md 放进了 plugins），把它剪切移动到 .agents/skills/ 里即可。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 2：</b>重启 Antigravity 并验证加载</label>
+<p><b>怎么做：</b></p>
+<p>复制完成后，彻底关闭 Antigravity 客户端（确保完全退出，不只是点最小化），然后再重新打开 Antigravity。</p>
+<p>如果你拷贝的是项目级目录（.agents/plugins/ 或 .agents/skills/），确认 Antigravity 当前打开的正是这个项目文件夹。</p>
+<p>点击聊天输入框，输入 /plugin（如果是纯 skill，直接输入 /加技能名，比如 /humanizer），查看弹出的清单。</p>
+<p><b>看到什么：</b>重启 Antigravity 后，/plugin 清单里自动出现了你刚才手动复制进去的插件或 Skill 名称。</p>
+<p><b>打勾标准：</b>在清单里点选它并发送测试语句，能正常调用并按指令规则输出，且不出现“未找到（Not found）”或报错提示。</p>
+<p><b>错了怎么办：</b>拷完重启后清单里还是没有出现，按下面三步逐一排查：</p>
+<p>检查文件夹名字是否和 SKILL.md 里的 name 字段完全一致（包括大小写和短横线，比如文件里写 name: humanizer，文件夹名字就必须叫 humanizer，不能叫 Humanizer-main）。</p>
+<p>用记事本或文本编辑器打开 SKILL.md，检查最开头有没有语法错误（比如少了短横线）。</p>
+<p>确认你拷贝的是全局目录还是项目目录，如果是项目目录，检查当前 Antigravity 打开的工作区是不是同一个项目，改完后再重启一次 Antigravity。</p>
+<p>路 C 常见报错与回退（删除）办法：</p>
+<p><b>常见报错：</b>加载后提示格式解析失败（Invalid SKILL.md / YAML parse error）。原因：手动修改过 SKILL.md 导致开头格式损坏。解决办法：对照本附录第二部分第 4 步的格式要求修复 SKILL.md，保存后重启 Antigravity。</p>
+<p><b>回退（删除）办法：</b>路 C 的卸载最简单——直接打开你当初粘贴进去的那个目录（.agents/plugins/、~/.gemini/config/plugins/ 或 .agents/skills/），右键把那个插件文件夹删掉，然后重启 Antigravity，它就干干净净消失了。</p>
+<p>二、Gemini 网页版：从 GitHub 装 Skill（以你自己的 6 个插件为例）</p>
+<p><b>先说一句关键的：</b>ChatGPT 的插件不能直接搬进 Gemini 网页版。因为两边的数据格式不一样，Gemini 网页版没有插件市场，它只认标准的 Skill 文件夹（一个干净的文件夹，加上根目录下的 SKILL.md 文件，里面写清楚名字、描述、指令和 3 个开场白）。所以，要先把插件内容整理改写成标准 Skill 文件夹，再按下面 5 步上传进 Gemini 网页版。</p>
+<p>下面把 6 个示例插件的完整信息全部列出来，方便你逐个核对制作（每个插件对应 1 个技能、3 个对话开场白）。改写时必须严格以原文为准，指令和开场白一个字都不要自己编、不要改写。</p>
+<p>Academic Deck Builder · 学术PPT方案</p>
+<p><b>技能名（skill 名）：</b>academic-deck-builder</p>
+<p><b>干嘛用的（完整说明原文）：</b>读论文拆页做答辩PPT，给每页标题、核心句、放什么图、讲稿和时间。做答辩、期中汇报、小组展示时用。只给方案，不出真正的PPT文件。 / Academic presentation planning: turns a paper into a defense deck plan with slide titles, lead claims, visuals, speaker notes, and timing. Use for defenses, midterm reviews, and group presentations. Outputs a plan, not a .pptx file.</p>
+<p>技能描述（description 原文）：Use when turning an academic paper, outline, or research topic into a structured, evidence-grounded slide-by-slide presentation plan, speaker notes, and timed script, or when critiquing a deck's argument sequence.</p>
+<p>3 个对话开场白（原文照抄）：</p>
+<p>Turn my paper into a 15-minute defense deck: give me the slide plan and speaker notes.</p>
+<p>I have a group presentation on [topic] next week. Build the outline and the script for my part.</p>
+<p>Here is my draft outline — check whether the lead claims actually tell the argument, and fix the weak slides.</p>
+<p>Anti-Defensive Writing Coach · 英文论文反防御性写作</p>
+<p><b>技能名（skill 名）：</b>anti-defensive-writing-coach</p>
+<p><b>干嘛用的（完整说明原文）：</b>去掉论文里的怂话和过度限定，让论点直接有力。写英文论文摘要、引言、正文和改稿时用。 / Anti-defensive writing for English papers: removes hedging and defensive language so claims are direct and confident. Use for abstracts, introductions, body text, and revisions.</p>
+<p>技能描述（description 原文）：Use to diagnose and rewrite defensive writing in English academic papers: over-justification, over-citation, and hedging. Gives pattern-level diagnosis and confident rewrites.</p>
+<p>3 个对话开场白（原文照抄）：</p>
+<p>Rewrite my abstract so it leads with the contribution instead of apologizing for the scope.</p>
+<p>Here is my introduction draft — remove the defensive hedging but keep every necessary limitation.</p>
+<p>My results section has one metric worse than the baseline. Help me state the trade-off honestly without undermining the paper.</p>
+<p>Chinese Novelist · 中文小说创作</p>
+<p><b>技能名（skill 名）：</b>chinese-novelist</p>
+<p><b>干嘛用的（完整说明原文）：</b>从零生成10–50章完整中文小说：先问答定方向，再做大纲和人物档案，逐章写，每章结尾留悬念。想写中文小说时用。 / Chinese novel writing: generates a complete 10–50 chapter Chinese novel from scratch — Q&amp;A to set direction, outline and character profiles first, then chapter-by-chapter writing with a hook at each chapter's end. Use when writing a Chinese novel.</p>
+<p>技能描述（description 原文）：用于从零规划、逐章创作、续写及校验 10–50 章的中文小说。</p>
+<p>3 个对话开场白（原文照抄）：</p>
+<p>帮我写一部中文小说，先问我题材、主角和核心冲突。</p>
+<p>续写我小说的下一章，保持前文的伏笔和人物性格。</p>
+<p>检查我小说的时间线与人物关系是否一致。</p>
+<p>Humanizer · 英文去AI味</p>
+<p><b>技能名（skill 名）：</b>humanizer</p>
+<p><b>干嘛用的（完整说明原文）：</b>把英文文本里的AI写作痕迹去掉，让文字读起来像人写的。英文论文、文章写完后润色时用。 / Removes AI writing traces from English text so it reads like a human wrote it. Use to polish English papers and articles.</p>
+<p>技能描述（description 原文）：Use when the user wants to remove AI traces from English text. Works on essays, papers, emails, and any English prose.</p>
+<p>3 个对话开场白（原文照抄）：</p>
+<p>Remove AI traces from this text without changing the meaning.</p>
+<p>Rewrite this paragraph so it sounds like a human wrote it.</p>
+<p>This paragraph has too many "delve", "moreover", and "in today's world" moments — fix them.</p>
+<p>Humanizer-zh · 中文去AI味</p>
+<p><b>技能名（skill 名）：</b>humanizer-zh</p>
+<p><b>干嘛用的（完整说明原文）：</b>把中文文本里的AI味、空话和模板化表达去掉，让文字更自然。中文论文、文章写完后润色时用。 / Removes AI flavor, empty talk, and templated expressions from Chinese text, making it read more naturally. Use to polish Chinese papers and articles.</p>
+<p>技能描述（description 原文）：用于去除中文文本中的 AI 味、空话与模板化表达。</p>
+<p>3 个对话开场白（原文照抄）：</p>
+<p>去掉这段中文的 AI 味，但不要改变原意。</p>
+<p>这段话太像 AI 写的了，帮我改得自然一点。</p>
+<p>保留我的语气和专业术语，只去掉模板化表达。</p>
+<p>Prompt Optimizer · 提示词优化</p>
+<p><b>技能名（skill 名）：</b>prompt-optimizer</p>
+<p><b>干嘛用的（完整说明原文）：</b>把写得含糊的提示词改清楚，告诉你缺了什么、怎么改、怎么测试。提示词效果不好、ChatGPT答得不对时用。 / Prompt optimization: turns vague prompts into clear, testable ones, diagnoses what's missing, and shows how to test the result. Use when prompts give poor or rambling answers.</p>
+<p>技能描述（description 原文）：Use when a user wants a draft prompt diagnosed, rewritten, made reusable, or iteratively improved for better task performance.</p>
+<p>3 个对话开场白（原文照抄）：</p>
+<p>Here is my draft prompt — diagnose what's missing and rewrite it.</p>
+<p>I keep getting vague, rambling answers from ChatGPT. Help me write a prompt that forces a structured, concise answer.</p>
+<p>Turn this one-off request into a reusable prompt template with variables I can fill in each time.</p>
+<p>其中 Academic Humanizer 已经这样装好并实测能用——说明这条路是走得通的。上面这 6 个，按下面 5 步逐个整理并上传即可。</p>
+<p>（一）Gemini 网页版导入 Skill 手把手 5 步法</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 1：</b>从 GitHub 下载（或本地新建 Skill 文件夹）</label>
+<p><b>怎么做：</b></p>
+<p>情况 A（从别人分享的 GitHub 仓库导入）：打开浏览器，进入该 skill 所在的 GitHub 仓库网页，点击页面右上角绿色的 Code 按钮，在下拉菜单里点击 Download ZIP，把压缩包保存到电脑桌面上，然后右键“全部解压缩”；或者打开终端跑一条克隆命令（把下面网址换成实际仓库地址）：</p>
+<p>git clone https://github.com/用户名/仓库名.git</p>
+<p>情况 B（把你自己的 6 个插件做成 Skill）：直接在电脑桌面上右键“新建文件夹”，文件夹名字直接用上面的英文 skill 名（例如 humanizer），然后在里面新建一个纯文本文件并改名为 SKILL.md（注意后缀是 .md，不是 .txt）。</p>
+<p><b>看到什么：</b>电脑桌面上多了一个解压出来的文件夹，或者你刚建好的文件夹。</p>
+<p><b>打勾标准：</b>打开这个文件夹，里面能清楚找到名为 SKILL.md 的文件（全大写 SKILL 加小写 .md）。</p>
+<p><b>错了怎么办：</b></p>
+<p>如果从 GitHub 下载解压后，翻遍整个文件夹都找不到 SKILL.md，说明这个 GitHub 仓库本身不是一个可直接导入的 Skill（可能是普通代码项目或需要编译的插件），先打开仓库里的 README.md 说明文件看作者怎么写，不要硬传。</p>
+<p>如果新建文件改名后系统把后缀藏起来了（实际文件名变成了 SKILL.md.txt），在文件管理器顶部勾选“文件扩展名”，把多余的 .txt 删掉。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 2：</b>只留单个 skill，把 SKILL.md 放在文件夹根目录</label>
+<p><b>怎么做：</b></p>
+<p>如果你从 GitHub 下载的仓库是个“大合集”（解压后里面同时躺着好几个不同的 skill 文件夹），不要上传整个大合集文件夹！只从中挑出你这次要装的那一个单独的 skill 文件夹，把它复制出来放到桌面上。</p>
+<p>双击打开这个单独的 skill 文件夹，检查 SKILL.md 的位置。如果 SKILL.md 躲在更深一层的子文件夹里，把它和它配套的参考文件一起剪切出来，直接放到这个 skill 文件夹的最外层（根目录），然后把多余的空壳子文件夹删掉。</p>
+<p>顺手核对外层文件夹的名字，最好和 SKILL.md 里的英文 name 保持一致（比如文件夹就叫 humanizer）。</p>
+<p><b>看到什么：</b>双击打开你准备上传的那个文件夹，第一眼就直接看到 SKILL.md 躺在里面，没有再套任何多余的外壳文件夹。</p>
+<p><b>打勾标准：</b>文件夹结构干净扁平，一次只准备上传一个 skill（文件夹根目录有且仅有一个 SKILL.md）。</p>
+<p><b>错了怎么办：</b>后续上传时如果报错提示“找不到 SKILL.md”或上传直接失败，90% 是因为你传了包含多个 skill 的父级大文件夹，或者下载 ZIP 解压时自动多套了一层带 -main 后缀的外壳文件夹，把外壳去掉、只传最里层单个 skill 文件夹即可。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 3：</b>清理文件夹，删掉不支持的文件类型</label>
+<p><b>怎么做：</b></p>
+<p>根据 Google 官方帮助页（Transfer skills from other platforms to Gemini Apps）的导入规范，Gemini 网页版对上传的 Skill 文件夹有严格的安全和体积限制。打开你的 skill 文件夹，把下面这些不该出现的东西全部删掉：</p>
+<p>删掉构建产物、缓存和打包压缩文件：比如 node_modules 文件夹、.git 隐藏文件夹、pycache 缓存文件夹，以及里面夹带的 .zip、.tar.gz 等压缩包。</p>
+<p>删掉 Gemini 不支持的特定编程后缀文件：检查文件夹里有没有以 .cs、.kt、.kts、.php、.r、.rb、.scala、.swift、.ts、.jsx、.tsx 结尾的代码文件，以及 .sql、.doc、.xls、.ppt、.raw 和音频视频文件，如果有，必须全部删掉。</p>
+<p><b>只保留真正需要的文件：</b>核心的 SKILL.md，以及该 skill 运行确实需要的参考资料（如 .md、.txt、.json）或支持的脚本（只支持 .py、.sh、.js，而且不能联网或调用外部 API）。</p>
+<p>右键点击整个 skill 文件夹选“属性”（Mac 选“显示简介”），看一眼总大小和文件数量。</p>
+<p><b>看到什么：</b>文件夹里干干净净，只剩 SKILL.md 和极少数配套文件，总大小只有几 KB 到几 MB。</p>
+<p><b>打勾标准：</b>同时满足三条硬杠杠——整个文件夹大小严格小于 100MB，单个 SKILL.md 文件小于 10MB，文件夹内所有文件总数不超过 100 个。</p>
+<p><b>错了怎么办：</b>如果上传时提示“文件类型不支持”或“超出大小/数量限制”，回到文件夹里开启“显示隐藏文件”（重点排查是不是隐藏的 .git 文件夹占了几十 MB 或几百个零碎文件），把隐藏缓存和多余文件删干净再试。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 4：</b>检查 SKILL.md 的文件名和开头 YAML frontmatter 格式</label>
+<p><b>先解释一个词：</b></p>
+<p>YAML frontmatter（文件头信息区）：写在 SKILL.md 最顶部的几行固定格式说明，作用就像快递包裹最外面的“面单”，用来告诉 Gemini 这个技能叫什么名字（name）、什么时候该用它（description）。它必须用上下两条“三条短横线”包起来。</p>
+<p><b>怎么做：</b></p>
+<p>用纯文本编辑器打开 SKILL.md（Windows 可用记事本、VS Code 或 Notepad++；Mac 可用文本编辑或 VS Code；千万不要用 Word 打开保存，Word 会破坏纯文本格式）。</p>
+<p>检查文件最顶部第一行是不是三条英文半角短横线 ---，中间有没有写 name: 和 description:，下面是不是紧跟着另一条 --- 收尾。</p>
+<p><b>仔细核对 name 字段：</b>只能使用小写英文字母、数字和短横线（例如 academic-deck-builder、humanizer-zh），不能包含空格、大写字母或特殊符号。</p>
+<p>检查 frontmatter 下面紧跟着的指令正文是否完整无缺，没有乱码。</p>
+<p><b>看到什么：</b>打开 SKILL.md 后，前几行整齐地长这样（注意冒号后面必须有一个英文空格）：</p>
+<p>---</p>
+<p>name: humanizer</p>
+<p>description: Use when the user wants to remove AI traces from English text. Works on essays, papers, emails, and any English prose.</p>
+<p>---</p>
+<p>（下面紧跟着完整的指令正文）</p>
+<p><b>打勾标准：</b>文件名严格为 SKILL.md，上下两条 --- 成对出现，冒号后都有空格，name 字符合规，正文齐全。</p>
+<p><b>错了怎么办：</b>上传时如果提示 frontmatter 格式错误或元数据解析失败，按这四条逐行查：</p>
+<p>短横线是不是打成了中文破折号 —— 或只打了两条 --（必须是三条英文短横线 ---）。</p>
+<p>name: 和 description: 的英文冒号后面是不是漏敲了一个空格。</p>
+<p>description 里面如果包含英文冒号，整句话有没有用英文双引号包起来（防止冒号引起格式误判）。</p>
+<p>文件编码是不是 UTF-8（Windows 记事本另存为时确保编码选 UTF-8）。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 5：</b>打开 Gemini 网页版上传文件夹</label>
+<p><b>怎么做：</b></p>
+<p>打开浏览器，访问 Gemini 网页版（https://gemini.google.com ）并登录你的账号。</p>
+<p>看网页左下角，点击 Settings（设置，齿轮图标），再点 Skills（技能），进入技能管理页面。</p>
+<p>点击页面上方的 Create，再点 Upload，在弹出的文件选择框里选中你刚才整理好的整个 skill 文件夹（注意是选整个文件夹，不是只选里面的 SKILL.md 单文件），点 Open；回到上传页确认文件无误后，点 Upload，再点 Create 完成创建。</p>
+<p>上传完成后，在 Skills 列表里确认新 skill 已出现。</p>
+<p><b>看到什么：</b>你的新 skill 名称和描述出现在 Gemini 网页版的 Skills 列表里，状态显示已就绪或已启用。</p>
+<p><b>打勾标准：</b>回到 Gemini 主界面新建一个空白对话，在输入框下方或工具菜单里点开刚才装好的 skill（或直接输入触发指令），贴一段测试文本发出去，AI 能严格按照该 skill 的要求输出（例如装好 Humanizer 后贴一段满是 AI 味的英文，它能按规定先给标注草稿、再给残留模式行、最后给改写版）。</p>
+<p><b>错了怎么办：</b></p>
+<p><b>情况一：</b>点击上传后网页报错拒绝导入。回头按步骤 2 到步骤 4 逐项排查（是否传了多层文件夹、是否夹带了 .ts/.php/.cs/.rb/.swift 或隐藏 .git 文件夹、frontmatter 冒号后是否漏空格）。</p>
+<p><b>情况二：</b>文件格式全对，但上传或运行报错，提示功能受限。检查这个 skill 里面是不是附带了需要连接外部互联网或调用第三方 API 的脚本——Gemini 网页版出于安全沙盒限制，不支持运行需要联网或调用外部 API 的 skill 脚本，这是平台本身的限制，不是你的文件做错了。</p>
+<p><b>（二）完整可照抄样例：</b>Humanizer 的 Skill 文件该长什么样</p>
+<p>为了让你零门槛上手，下面直接给出 Humanizer（英文去 AI 味）的完整标准文件夹结构和 SKILL.md 全文。你可以直接在电脑桌面上照着建一个文件夹，把下面虚线框里的内容一字不改全选复制进去，保存后就能直接上传进 Gemini 网页版使用。</p>
+<p><b>文件夹名（必须全小写）：</b></p>
+<p>humanizer</p>
+<p>文件夹内部结构（只有这一个文件，放在根目录）：</p>
+<p>humanizer/</p>
+<p>└── SKILL.md</p>
+<p>SKILL.md 完整内容（从第一条 --- 开始，到最后一行全部原样复制，一个字都不要改）：</p>
+<p>---</p>
+<p>name: humanizer</p>
+<p>description: Use when the user wants to remove AI traces from English text. Works on essays, papers, emails, and any English prose.</p>
+<p>---</p>
+<p>Act as a careful editor who removes AI writing traces from English text. Make the writing read like a skilled human wrote it, without changing meaning, facts, or argument structure. Work in English. If the user writes in Chinese, explain the changes in Chinese but keep the rewritten text in English.</p>
+<p>What to fix — the patterns</p>
+<ol><li><p>Formulaic openings — 'In today's fast-paced world', 'In conclusion', 'It is important to note that', 'In the modern era'</p></li><li><p>Empty connectors — 'moreover', 'furthermore', 'additionally', 'in addition' used as filler</p></li><li><p>Overly balanced sentence pairs — 'not only X, but also Y'</p></li><li><p>The 'delve / tapestry / landscape / realm / pivotal / crucial / underscore / foster / leverage' vocabulary cluster</p></li><li><p>Mechanical list structure — 'Firstly… Secondly… Thirdly…'</p></li><li><p>Hedged non-committal phrasing that says nothing — 'It is worth noting that…', 'It can be argued that…'</p></li><li><p>Uniform sentence length — break up the rhythm: mix short and long sentences</p></li><li><p>Excessive nominalization — 'the utilization of' → 'using', 'the implementation of' → 'implementing'</p></li><li><p>The 'AI triplet' — three parallel items where one would do ('accurate, efficient, and reliable')</p></li><li><p>Vague intensifiers — 'very', 'extremely', 'highly', 'significantly' without a number</p></li><li><p>Empty attribution — 'Experts say…', 'Studies show…' with no source</p></li><li><p>Abstract nouns without actors — 'The development of the policy led to…' → 'The government changed the policy, so…'</p></li><li><p>Overly symmetrical paragraphs — every paragraph the same length and shape</p></li><li><p>Predictable transitions — 'On the other hand', 'In contrast', 'Nevertheless' at the start of every paragraph</p></li><li><p>Repetition of the same word in adjacent sentences</p></li><li><p>The 'In summary / In conclusion' paragraph that only repeats the introduction</p></li><li><p>Clichéd metaphors — 'a double-edged sword', 'at the end of the day', 'a game changer'</p></li><li><p>Overuse of 'crucial', 'essential', 'vital', 'key' as adjectives</p></li><li><p>The 'not X, but Y' construction used repeatedly</p></li><li><p>The 'Whether it's X or Y' opening</p></li><li><p>The 'It's not just X — it's Y' sentence</p></li><li><p>The 'By [verb]-ing, [noun] can…' construction ('By leveraging AI, companies can…')</p></li><li><p>The 'In a world where…' opening</p></li><li><p>The 'From X to Y, [topic] is…' opening ('From healthcare to finance, AI is…')</p></li><li><p>The 'The future of X is here' claim</p></li><li><p>The 'Imagine a world where…' opening</p></li></ol>
+<p>How to fix — do not just delete; replace with something specific</p>
+<p>- Replace a formulaic opening with a concrete fact, a number, or the paper's actual claim.</p>
+<p>- Replace an empty connector with a real logical link, or remove it and let the sentences stand next to each other.</p>
+<p>- Replace the 'delve / tapestry' vocabulary with plain, specific words.</p>
+<p>- Break a mechanical list into flowing sentences when the order does not matter, or keep the list only when the order matters.</p>
+<p>- Vary sentence length deliberately: one short sentence after two long ones.</p>
+<p>- Replace vague intensifiers with a number, a comparison, or nothing.</p>
+<p>- If a sentence says nothing, cut it; if it says something, say it directly.</p>
+<p>Rules</p>
+<p>- Keep the author's voice and field terminology</p>
+<p>- Preserve citations, data, and technical claims exactly</p>
+<p>- Do not add new content or arguments</p>
+<p>- Do not make the text more casual than the original register</p>
+<p>- If the text is already natural, say so in one line and name the strongest sentence</p>
+<p>- Never invent results, references, or examples</p>
+<p>What to return</p>
+<p>By default, return the draft, a short list of remaining patterns, and the final rewrite.</p>
+<p>- Draft first: show the original text with every detected pattern marked inline, e.g. [Pattern 1: formulaic opening], [Pattern 4: 'delve' cluster]. Only mark the patterns you actually found — do not mark all 26.</p>
+<p>- A short 'remaining patterns' line: list only the patterns still present in the final version, or 'none' if the rewrite is clean. If you write anything else in this section, it is an error.</p>
+<p>- Then the final rewritten version, with no pattern markers.</p>
+<p>This draft-then-rewrite structure helps the user see what changed. Do not return only the rewritten version without the marked draft and the remaining-patterns line.</p>
+<p>Privacy</p>
+<p>Keep the plugin private / only for the owner. Do not publish it publicly.</p>
+<p>Conversation starters</p>
+<p>- Remove AI traces from this text without changing the meaning.</p>
+<p>- Rewrite this paragraph so it sounds like a human wrote it.</p>
+<p>- This paragraph has too many "delve", "moreover", and "in today's world" moments — fix them.</p>
+<p>上传后直接测试用的 3 个开场白（原样复制发给 Gemini 即可）：</p>
+<p>Remove AI traces from this text without changing the meaning.</p>
+<p>Rewrite this paragraph so it sounds like a human wrote it.</p>
+<p>This paragraph has too many "delve", "moreover", and "in today's world" moments — fix them.</p>
+<p>三、装完之后怎么验证与日常管理（通用）</p>
+<p>不管你是在 Antigravity 装了插件，还是在 Gemini 网页版传了 Skill，装完后花 1 分钟做下面三件事，确保不是“假装成功”：</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 1：</b>新开干净对话，确认入口可见</label>
+<p><b>怎么做：</b>不要在旧聊天窗口里直接试！点击左上角新建一个空白对话，在 Antigravity 聊天框敲 /plugin（或在 Gemini 网页版点开 Skills 菜单 / 触发该 skill），确认新装的名字稳稳躺在列表里。</p>
+<p><b>看到什么：</b>新对话的清单里能直接选中该插件或 Skill。</p>
+<p><b>打勾标准：</b>不报错、不闪退、能正常选中激活。</p>
+<p><b>错了怎么办：</b>旧对话缓存没刷新导致找不到时，关掉旧标签页重开新对话；如果新对话也没有，回前文对应步骤重启客户端或刷新网页。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 2：</b>用开场白发一句最简单的话，实测输出格式</label>
+<p><b>怎么做：</b>从上面抄一句对应的对话开场白（外加一小段测试素材），发给 AI 看它的第一轮回复。</p>
+<p><b>看到什么：</b>AI 严格按照 SKILL.md 里写的步骤和输出格式干活（比如 Academic Deck Builder 会先问清演示目的、受众、时长再给拆页表格；Humanizer 会老老实实给出“标注草稿 + 残留模式行 + 最终改写版”三段式结果）。</p>
+<p><b>打勾标准：</b>输出结构、语气和规则跟指令要求完全对得上，没有跑偏成普通闲聊。</p>
+<p><b>错了怎么办：</b>如果 AI 没按规矩输出，检查是不是没有真正选中激活该 Skill，或者 SKILL.md 里的指令正文在复制粘贴时漏掉了关键段落。</p>
+<label class="tut-check"><input type="checkbox"> <b>步骤 3：</b>定期清理，及时禁用或卸载不用的插件与 Skill</label>
+<p><b>怎么做：</b></p>
+<p>在 Antigravity 里：点左侧 Customizations → Installed，把暂时用不到的插件开关拨到关闭（禁用），确认彻底不用的直接点卸载（或删掉对应文件夹）。</p>
+<p>在 Gemini 网页版里：打开 Settings → Skills，把过时的或测试用的半成品 Skill 删除或关闭。</p>
+<p><b>看到什么：</b>已安装列表里只留着你日常真正高频使用的几个核心工具。</p>
+<p><b>打勾标准：</b>列表清爽，敲 /plugin 时不会被一堆半残、重名的旧测试项干扰。</p>
+<p><b>错了怎么办：</b>如果删错了一个自己写的 Skill，只要电脑本地还留着整理好的文件夹，按第二部分第 5 步重新上传一遍就能秒恢复。</p>
+<h2>附录 A：常见故障五步分诊台与版本环境核对表</h2>
+<p>正文章节各自附带了错了怎么办，但读者真遇到突发报错时往往不知道该翻回第几章。这张分诊总表像查字典一样，30 秒内帮你定位问题根源。</p>
+<h3>五步分诊法（按顺序走，别跳步）</h3>
+<p><b>第一步：</b>看报错关键词。先把红字报错原文或完整截图拿到手（见 C-5 排错三步曲第一步），别靠猜。</p>
+<p><b>第二步：</b>查账号与方案门槛。看报错是不是权限或配额问题：账号是不是免费版却选了付费模型？是不是试用版 Pro 却选了 Claude 5.5？是不是选到了 2026 年 11 月 30 日下线的旧模型？</p>
+<p><b>第三步：</b>查本地路径与版本。核对关键版本号与路径：Chrome v144+（浏览器子 Agent）、App v2.33.0+（SSH 远程开发）、VS Code 1.90+（VS Code 扩展）、App v2.30.0+（首次启动角色选择）。</p>
+<p><b>第四步：</b>查规则 frontmatter 与权限设置。规则或 Skill 写了却完全不触发时，先核对规则文件是不是放对了目录、模块化规则有没有写 YAML frontmatter 触发器（见 C-4 清单 5 开头的规则文件体系）；权限问题先核对 Local Permissions 是不是误设成了 Turbo 或 Request Review（见 C-3 清单 2 的 2.1）。</p>
+<p><b>第五步：</b>最小化复现验证。把问题缩到最小场景复现一次（新开对话、只做一步操作），确认问题稳定出现后再按下面分诊矩阵对号入座。</p>
+<h3>六大典型故障分诊矩阵</h3>
+<p><b>故障 1：</b>选模型提示无权限或灰度不可用。先看账号方案门槛（免费版没有 Neon / Carbon / Orchestrator；试用版 Pro 没有 Claude 5.5），再确认是不是选到了下线模型，改选现行模型即可。</p>
+<p><b>故障 2：</b>写了规则或 Skill 却完全不触发。先核对规则文件路径（工作区 .agents/rules/*.md 或全局 ~/.gemini/config/rules/*.md），再核对模块化规则的 YAML frontmatter 触发器有没有写对（always_on / model_decision / glob / manual），最后发探针指令验证（见 C-4 清单 5 的 5.1）。</p>
+<p><b>故障 3：</b>浏览器子 Agent /browser 无法连接 Chrome。先确认 Chrome 版本是否在 v144 以上，再核对浏览器子 Agent 的连接状态（见 C-4 清单 8 的 8.6）。</p>
+<p><b>故障 4：</b>IDE 扩展提示认证失败。先核对扩展的认证模式（个人 oauth-personal 还是企业 oauth-business），企业版再核对 gcp.project 与 gcp.location 是否填对（见 C-4 清单 11 的 11.2）。</p>
+<p><b>故障 5：</b>插件安装后工具调用报错。先确认插件是不是真的装好并已启用（自定义 ＞ 已安装里核对状态），再确认调用的是已安装插件的功能；未安装的插件调用会提示未找到（见 C-4 清单 8 的 8.8）。</p>
+<p><b>故障 6：</b>CLI agy 找不到命令或权限被拒。先彻底关掉终端重开（环境变量未刷新最常见），再核对安装路径；Windows 报禁止运行脚本时，按官网 Windows 安装文档放行当前用户脚本权限（见 C-5 场景 21）。</p>
+<h3>版本环境核对表（出问题先对一遍）</h3>
+<p><b>App 桌面端：</b>v2.30.0+（首次启动角色选择自 v2.30.0+ 起）；SSH 远程开发需 App v2.33.0+。</p>
+<p><b>CLI agy：</b>装完用 agy --version 验真；Linux 需 glibc ≥ 2.28 与 glibcxx ≥ 3.4.25。</p>
+<p><b>VS Code 扩展：</b>编辑器 v1.90+。</p>
+<p><b>浏览器子 Agent：</b>Chrome v144+。</p>
+<p>各故障的标准错误码文案以你实机弹出的原文为准，查不到时按上面五步分诊法走一遍，多数问题都能定位。</p>
+<h2>附录 B：Antigravity 核心概念与中英术语速查词典（零基础无障碍翻译官）</h2>
+<p>官方更新迭代极快，许多新功能按钮、CLI 参数和报错信息依然以英文原词呈现。看到生词先翻这本词典：一句话大白话解释，加对应正文章节，3 秒消除畏难情绪。部分词条的官方中文译名以你当前实机界面与官网为准。</p>
+<div class="tut-table-wrap"><table class="price-table"><thead><tr><th>英文原词</th><th>界面常见译法</th><th>一句话大白话解释</th><th>对应正文章节</th></tr></thead><tbody><tr><td>Orchestrator</td><td>自动编排</td><td>不是单个模型，是一套规划 + 执行自动分工模式</td><td>C-1 3.2a / C-1 3.2b / C-4 清单 6</td></tr><tr><td>Thinking level / xhigh</td><td>思考级别</td><td>模型动脑深度档位，Low / Medium / High / Extra（CLI 里 Extra 对应 xhigh）</td><td>C-1 3.2a / C-3 清单 2 2.2a</td></tr><tr><td>Worktree</td><td>工作树 / 隔离分支</td><td>基于 Git 拉出的隔离目录与分支，实验改动不碰主分支</td><td>C-3 清单 1 1.4 / C-4 清单 12 12.8</td></tr><tr><td>Artifact</td><td>产物卡片</td><td>AI 生成的结构化成果卡片（如实施计划、网页预览）</td><td>C-4 清单 1</td></tr><tr><td>Implementation Plan</td><td>实施计划</td><td>Planning 模式下 AI 先出的施工方案，审完再点确认执行</td><td>C-4 清单 1</td></tr><tr><td>Frontmatter</td><td>前置元数据</td><td>写在 Markdown 文件顶部的 YAML 配置块，用来声明规则触发器</td><td>C-4 清单 5 开头</td></tr><tr><td>Trigger（always_on / model_decision / glob / manual）</td><td>触发器</td><td>模块化规则什么时候生效：始终生效 / 模型按需调用 / 按文件类型 / 手动触发</td><td>C-4 清单 5 开头</td></tr><tr><td>Sandbox（Terminal sandbox）</td><td>沙盒</td><td>把终端命令关进隔离区，只能动工作区内的东西</td><td>C-3 清单 2 2.1 / C-4 清单 5 5.3</td></tr><tr><td>Allowlist / Denylist</td><td>白名单 / 黑名单</td><td>允许或拦截浏览器 Agent 访问的域名清单</td><td>C-4 清单 5 5.3</td></tr><tr><td>ADC</td><td>应用默认凭据</td><td>无头环境（服务器 / 容器 / CI）里免浏览器登录的凭证方式</td><td>C-2 模块一 步骤 6 / C-4 清单 10 10.1</td></tr><tr><td>SSO（SAML / OIDC）</td><td>单点登录</td><td>企业版用公司账号一次登录，到处通用</td><td>C-2 模块一 步骤 6</td></tr><tr><td>ACP</td><td>智能体客户端协议</td><td>第三方编辑器接入 Antigravity 的通用协议</td><td>C-4 清单 11 11.1</td></tr><tr><td>BYOK</td><td>自带密钥</td><td>用自己的 API 密钥换额度；订阅套餐不支持，CLI / SDK 可走直连</td><td>C-4 清单 12 12.4</td></tr><tr><td>AI Credit Overages</td><td>超额 AI 额度</td><td>基准配额耗尽后是否自动按量扣费的开关（Never / Always）</td><td>C-1 3.3 / C-3 清单 2 2.3 / C-4 清单 12 12.4</td></tr><tr><td>Core Web Vitals（LCP / CLS / INP）</td><td>核心网页指标</td><td>衡量网页加载、稳定、交互速度的三项体检分数</td><td>C-4 清单 8 8.6 / 8.8</td></tr><tr><td>Local Permissions</td><td>本地权限</td><td>四档预设：Request Review / Default / Auto / Turbo</td><td>C-3 清单 2 2.1</td></tr><tr><td>Automations</td><td>自动化任务</td><td>侧边栏里管理的持久定时任务（/automation 创建）</td><td>C-1 30 分钟自测 / C-4 清单 8 8.3、8.4</td></tr><tr><td>Customizations</td><td>自定义中心</td><td>集中管理 Rules、Skills、插件市场与已安装的入口</td><td>C-1 30 分钟自测</td></tr><tr><td>Background Tasks</td><td>后台任务</td><td>Agent 在后台启动的本地开发服务器等长驻进程</td><td>C-3 清单 2 2.2b</td></tr><tr><td>VCS Review</td><td>版本控制审阅</td><td>三视图（未提交 / 分支对比 / Agent 改动）逐块验收改动的面板</td><td>C-4 清单 4 4.7</td></tr><tr><td>Checkpoint / Revert</td><td>检查点 / 回退</td><td>对话级一键回退，把整个工作区退回本轮执行前</td><td>C-4 清单 4 4.6</td></tr><tr><td>Diff View</td><td>改动对比视图</td><td>红删绿增的对比框，逐块接受或拒绝改动</td><td>C-4 清单 4 4.7</td></tr><tr><td>MCP</td><td>模型上下文协议</td><td>给 Antigravity 接外部工具的通用 USB 接口</td><td>C-4 清单 8 8.8</td></tr><tr><td>Skill</td><td>技能</td><td>可复用的标准化能力包（触发描述 + 执行脚本 + 参考文件）</td><td>C-4 清单 5 5.4 / C-4 清单 11 11.6</td></tr><tr><td>Rules</td><td>自定义规则</td><td>给 AI 立的全局或项目家规</td><td>C-4 清单 5</td></tr><tr><td>Remote Agent</td><td>托管隔离环境</td><td>在 Google 云端隔离环境里跑任务，不占本地算力</td><td>C-4 清单 10 10.3</td></tr><tr><td>Remote Control</td><td>远程控制</td><td>手机浏览器远程遥控家里电脑上的会话</td><td>C-6 Day 11</td></tr><tr><td>/learn</td><td>学习沉淀命令</td><td>让 AI 把本轮纠错自动提炼成持久规则或 Skill</td><td>C-4 清单 5 5.4</td></tr><tr><td>/context</td><td>上下文占用</td><td>查看当前对话占了多少上下文小黑板</td><td>C-3 清单 5 交接小节</td></tr><tr><td>/model</td><td>切换模型</td><td>在 CLI 里切换当前模型（含 Orchestrator 搭档）</td><td>C-1 3.2a / C-4 清单 10 10.1</td></tr><tr><td>Nano Banana 2</td><td>生图模型</td><td>后台自动调用的专用图像生成模型，不用手动选</td><td>C-1 3.2a 补充 / C-3 清单 4 4.5</td></tr><tr><td>Planning / Fast</td><td>规划模式 / 快速模式</td><td>先出方案审完再动手 / 小步快跑直接改</td><td>C-3 清单 2 2.1 / C-4 清单 1、清单 4</td></tr><tr><td>GEMINI_API_KEY</td><td>Gemini API 密钥</td><td>CLI / SDK 走 Gemini API 直连时用的密钥，不走订阅配额</td><td>C-4 清单 10 10.4 / C-4 清单 12 12.4</td></tr></tbody></table></div>
 <h2>Antigravity 零基础超全手册（C 超全手册版 · 第二版扩充版 · 下篇 / 全书大结局）</h2>
-<p class="tut-byline">执笔：小森（Gemini）｜核验基准：2026 年 11 月 25 日（对照 antigravity.google 官网当天核对）｜本篇涵盖：C-5 排错急救三步曲与 24 场景速查卡片、C-6 新手 7 天零基础上手打卡路线图与进阶选修、全书 40 项终极检查清单与全书结语</p>
+<p class="tut-byline">执笔：小森（Gemini）｜核验基准：2026 年 11 月 25 日（对照 antigravity.google 官网当天核对）｜本篇涵盖：C-5 排错急救三步曲与 25 场景速查卡片、C-6 新手 7 天零基础上手打卡路线图与进阶选修、全书 50 项终极检查清单与全书结语</p>
 <p><b>实机界面核对提醒：</b>本篇涉及的模式切换（如 Planning / Fast）、确认按钮（如 Proceed）、快捷键（如 Shift + Tab）及菜单名称，如与你当前实机界面略有出入，请一律以你屏幕上实际显示的为准。基础概念已在前两版讲透的，本篇直接标注“见 A 版第×章 / 见 B 版第×章”，不再重复展开。</p>
-<h2>C-5 排错急救三步曲与速查卡片（24 个高频问题一表搞定）</h2>
+<h2>C-5 排错急救三步曲与速查卡片（25 个高频问题一表搞定）</h2>
 <p>遇到报错千万别慌，也别到处乱搜过时的英文帖子。新手排错最容易犯的毛病，就是在改乱的代码上继续盲目追问，结果越修越崩。</p>
 <p>排错先做三件事（冷静急救三步曲）</p>
 <p>不管撞上什么幺蛾子，先深吸一口气，按顺序做完下面这 3 件事，多数问题都能稳稳兜住：</p>
@@ -17594,19 +18364,19 @@ git commit -m "改首页之前"</pre>
 <p><b>怎么做：</b>如果刚才那一轮修改把原本好好的功能改崩了，立刻点对话流里的撤销/回滚按钮（如 Undo / Revert，以实机界面为准），或者让 AI 用 Git 退回上一个安全存档点。</p>
 <p><b>打勾标准：</b>浏览器强制刷新后，网页已经退回到修改前的正常可用状态。</p>
 <label class="tut-check"><input type="checkbox"> 第三步：先开新对话（换个清醒脑子）</label>
-<p><b>怎么做：</b>退回干净版本后，如果当前聊天窗口已经聊了十几轮以上，果断点击 New Chat（新建对话），在新窗口里把单个问题清清楚楚重新说一遍。</p>
+<p><b>怎么做：</b>退回干净版本后，如果当前聊天窗口已经聊了十几轮以上，果断点击 + New Conversation（新建对话），在新窗口里把单个问题清清楚楚重新说一遍。</p>
 <p><b>打勾标准：</b>在一个干净的新对话里重新发起指令（开新对话不会丢失你文件夹里的任何文件）。</p>
 <h3>核心排错速查卡片（15 大基础高频问题）</h3>
 <p>把下面这张急救表存好，按“安装 / 登录 / 额度 / 做网页 / 预览发布”五大类对号入座，照着“第一步 → 第二步”执行，能排除大部分常见翻车：</p>
-<div class="tut-table-wrap"><table class="price-table"><thead><tr><th>分类</th><th>编号与现象</th><th>最可能原因（大白话）</th><th>第一步先做什么</th><th>如果不行，第二步做什么</th></tr></thead><tbody><tr><td>安装</td><td>1. 官网打不开或提示地区不可用</td><td>中国大陆不在官方支持名单内，或当前网络连通性不达标。</td><td>核对网络是否满足“能打开 antigravity.google 且登录不转圈”的验证标准，刷新页面重试。</td><td>核对你的 Google 账号关联地区（搜 Google Terms of Service country），不在支持名单内可提交地区变更申请或换用合规账号。</td></tr><tr><td>安装</td><td>2. 升级后旧项目打不开，或软件启动闪退</td><td>Mac 升级时误选了保留两份导致新旧版本打架；或 Linux 底层运行库太老带不动新版。</td><td>Mac 去「应用程序」检查是不是躺着两个图标，删掉重装并务必选 Replace（替换） 而非 Keep Both。</td><td>Linux 终端运行 ldd --version 核对底层库，确认满足 glibc ≥ 2.28 与 glibcxx ≥ 3.4.25，过老则需升级系统。</td></tr><tr><td>安装</td><td>3. 装完 CLI 后输入 agy 提示找不到命令</td><td>刚装完，当前开着的黑框框（终端）还没刷新系统“通讯录（环境变量）”。</td><td>彻底关掉当前终端窗口，重新打开一个新终端，输入 agy --version 回车。</td><td>重启一次电脑再试；若仍提示 command not found，对照官网下载页的对应平台路径说明检查安装目录。</td></tr><tr><td>登录</td><td>4. 登录提示账号不符合条件（Not eligible）</td><td>账号关联地区不在支持名单内、未满 18 周岁，或使用了被管理员锁权限的 Workspace 账号。</td><td>核对账号出生日期是否年满 18 岁，并确认账号关联地区在官方支持名单内。</td><td>若是公司/学校 Workspace 账号，联系 IT 管理员开通权限，或直接换用个人 @gmail.com 账号登录。</td></tr><tr><td>登录</td><td>5. 浏览器点了允许，桌面端却一直转圈进不去</td><td>浏览器回调弹窗被误关，或当前网络未能满足桌面端连通标准。</td><td>切回浏览器授权标签页，看地址栏下方有没有“要打开 Antigravity 吗？”弹窗，点打开。</td><td>确认网络满足“能打开 antigravity.google 且登录不转圈”；彻底退出软件重开，改点「复制链接」贴进 Chrome 重走授权。</td></tr><tr><td>登录</td><td>6. 用着用着突然报 401 或登录失效</td><td>登录通行证过期了，或者账号地区与授权状态发生了变动。</td><td>先核对账号关联地区与网络连通状态，再点软件角落头像 → Sign out（退出登录） → 重新登录。</td><td>彻底退出桌面端软件（Mac 按 Command + Q），重新启动后再点击 Sign in with Google。</td></tr><tr><td>额度</td><td>7. 提示 Quota exceeded / 额度用完</td><td>当前周期的基准配额油箱跑空了。</td><td>去设置页看配额与 View Usage（查看用量），免费版切回默认的 Gemini 4 Hydrogen 或等待每周刷新（有每周上限）。</td><td>付费 Pro / Ultra 用户可在设置页查看 AI 积分 开关（“绝不 / 总是”），按需购买 AI 积分并在耗尽基准配额后启用。</td></tr><tr><td>额度</td><td>8. 模型列表找不到 Neon，或选某模型报错不可用</td><td>账号是免费版或试用版 Pro，或者选到了 2026 年 11 月 30 日下线的旧模型。</td><td>对照 A 版第 5 章「套餐 × 模型」表：Neon / Carbon / Orchestrator 仅给付费 Pro / Ultra / 企业版；试用版 Pro 配额更低、模型更受限（Claude 5.5 只给非试用付费 Pro 及以上）。</td><td>避开 2026 年 11 月 30 日下线的 Gemini 3.8 Flash、Gemini 4 Argon、Claude 4.6、GPT-OSS-120b，改选现行模型并确认软件已升级至 v2.5+。</td></tr><tr><td>额度</td><td>9. 发完指令一直转圈“Thinking...”，半天不动</td><td>后台弹出了权限确认框在等你点同意，或者网络瞬间波动断连了。</td><td>往下拉对话流，看有没有亮着的 Allow（允许） 按钮等着你点（新手最常漏看）。</td><td>若无弹窗且卡死超 2 分钟，点输入框旁的 Stop（停止），确认能打开 antigravity.google 后发一句“请继续”。</td></tr><tr><td>做网页</td><td>10. 双击打开网页是纯白屏，或样式全乱</td><td>代码里漏了标点导致浏览器罢工，或者样式文件（CSS）路径没挂上。</td><td>右键空白网页 →「检查」→ 点 Console（控制台），把红字报错复制发给 AI 让它修。</td><td>若没红字只是样式全乱，直接对 AI 说：“样式文件没加载成功，文字全挤在左边，请修复引用路径。”</td></tr><tr><td>做网页</td><td>11. 按钮点不动，或刷新网页后记的数据全丢了</td><td>按钮名字和脚本没对上号；或者忘了写浏览器本地存储（LocalStorage，见 A 版第 4 章）。</td><td>直接用大白话告诉 AI：“点【XX按钮】没反应，请检查点击事件绑定并修复。”</td><td>数据丢失则发：“刷新后数据清空了，请把数据存进浏览器 LocalStorage 里。”</td></tr><tr><td>做网页</td><td>12. AI 说改好了但网页没变化 / 越改越乱</td><td>浏览器偷懒用了旧缓存；或者对话太长 AI 脑子绕晕了开始拆东墙补西墙。</td><td>在浏览器按强制刷新（Win Ctrl + F5，Mac Command + Shift + R），并核对打开的是不是最新文件夹。</td><td>若越改越崩，立刻点撤销/回滚按钮（以实机界面为准）或读 Git 存档退回好版本，再开新对话重新提需求。</td></tr><tr><td>预览发布</td><td>13. 把 localhost 链接发给朋友，对方打不开</td><td>localhost 是你电脑自家的门牌号（见 B 版第 6 章），外人根本访问不到。</td><td>想私密发电脑看：让 AI 打包成单个 HTML 文件微信直传。</td><td>想让朋友手机一点就看：用 Netlify Drop 把整个文件夹拖上网生成 https:// 公网链接。</td></tr><tr><td>预览发布</td><td>14. 拖拽上线后，点开公网网址报 404</td><td>拖进去的文件夹最外层（根目录）里没有叫全小写 index.html 的主文件。</td><td>检查文件夹，把主网页文件改名为全小写 index.html，确保没多套一层空壳文件夹。</td><td>整理好目录后，进平台项目的 Deploys 页面把文件夹重新拖进去覆盖更新。</td></tr><tr><td>预览发布</td><td>15. 手机打开排版崩了 / 导出表格中文乱码</td><td>网页没做手机竖屏适配；CSV 表格少了 Excel 认得的中文编码头。</td><td>手机排版问题：让 AI “优化手机竖屏响应式布局，确保单列显示不左右滚动”。</td><td>表格乱码问题：让 AI “导出 CSV 时加上 UTF-8 BOM 头，确保 Excel 打开无乱码”。</td></tr></tbody></table></div>
-<h3>进阶深度排错 9 场景（手把手拆解定位步骤）</h3>
+<div class="tut-table-wrap"><table class="price-table"><thead><tr><th>分类</th><th>编号与现象</th><th>最可能原因（大白话）</th><th>第一步先做什么</th><th>如果不行，第二步做什么</th></tr></thead><tbody><tr><td>安装</td><td>1. 官网打不开或提示地区不可用</td><td>中国大陆不在官方支持名单内，或当前网络连通性不达标。</td><td>核对网络是否满足“能打开 antigravity.google 且登录不转圈”的验证标准，刷新页面重试。</td><td>核对你的 Google 账号关联地区（搜 Google Terms of Service country），不在支持名单内可提交地区变更申请或换用合规账号。</td></tr><tr><td>安装</td><td>2. 升级后旧项目打不开，或软件启动闪退</td><td>Mac 升级时误选了保留两份导致新旧版本打架；或 Linux 底层运行库太老带不动新版。</td><td>Mac 去「应用程序」检查是不是躺着两个图标，删掉重装并务必选 Replace（替换） 而非 Keep Both。</td><td>Linux 终端运行 ldd --version 核对底层库，确认满足 glibc ≥ 2.28 与 glibcxx ≥ 3.4.25，过老则需升级系统。</td></tr><tr><td>安装</td><td>3. 装完 CLI 后输入 agy 提示找不到命令</td><td>刚装完，当前开着的黑框框（终端）还没刷新系统“通讯录（环境变量）”。</td><td>彻底关掉当前终端窗口，重新打开一个新终端，输入 agy --version 回车。</td><td>重启一次电脑再试；若仍提示 command not found，对照官网下载页的对应平台路径说明检查安装目录。</td></tr><tr><td>登录</td><td>4. 登录提示账号不符合条件（Not eligible）</td><td>账号关联地区不在支持名单内、未满 18 周岁，或使用了被管理员锁权限的 Workspace 账号。</td><td>核对账号出生日期是否年满 18 岁，并确认账号关联地区在官方支持名单内。</td><td>若是公司/学校 Workspace 账号，联系 IT 管理员开通权限，或直接换用个人 @gmail.com 账号登录。</td></tr><tr><td>登录</td><td>5. 浏览器点了允许，桌面端却一直转圈进不去</td><td>浏览器回调弹窗被误关，或当前网络未能满足桌面端连通标准。</td><td>切回浏览器授权标签页，看地址栏下方有没有“要打开 Antigravity 吗？”弹窗，点打开。</td><td>确认网络满足“能打开 antigravity.google 且登录不转圈”；彻底退出软件重开，改点「复制链接」贴进 Chrome 重走授权。</td></tr><tr><td>登录</td><td>6. 用着用着突然报 401 或登录失效</td><td>登录通行证过期了，或者账号地区与授权状态发生了变动。</td><td>先核对账号关联地区与网络连通状态，再点软件角落头像 → Sign out（退出登录） → 重新登录。</td><td>彻底退出桌面端软件（Mac 按 Command + Q），重新启动后再点击 Sign in with Google。</td></tr><tr><td>额度</td><td>7. 提示 Quota exceeded / 额度用完</td><td>当前周期的基准配额油箱跑空了。</td><td>去设置页看配额与 View Usage（查看用量），免费版切回默认的 Gemini 4 Hydrogen 或等待每周刷新（有每周上限）。（也可以直接点开模型下拉菜单底部的 View Usage 快捷入口，不用进设置页。）</td><td>付费 Pro / Ultra 用户可在设置页查看 AI 积分 开关（“绝不 / 总是”），按需购买 AI 积分并在耗尽基准配额后启用。</td></tr><tr><td>额度</td><td>8. 模型列表找不到 Neon，或选某模型报错不可用</td><td>账号是免费版或试用版 Pro，或者选到了 2026 年 11 月 30 日下线的旧模型。</td><td>对照 A 版第 5 章「套餐 × 模型」表：Neon / Carbon / Orchestrator 仅给付费 Pro / Ultra / 企业版；试用版 Pro 配额更低、模型更受限（Claude 5.5 只给非试用付费 Pro 及以上）。</td><td>避开 2026 年 11 月 30 日下线的 Gemini 3.8 Flash、Gemini 4 Argon、Claude 4.6、GPT-OSS-120b，改选现行模型并确认软件已升级至 v2.30.0+。</td></tr><tr><td>额度</td><td>9. 发完指令一直转圈“Thinking...”，半天不动</td><td>后台弹出了权限确认框在等你点同意，或者网络瞬间波动断连了。</td><td>往下拉对话流，看有没有亮着的 Allow（允许） 按钮等着你点（新手最常漏看）。</td><td>若无弹窗且卡死超 2 分钟，点输入框旁的 Stop（停止），确认能打开 antigravity.google 后发一句“请继续”。</td></tr><tr><td>做网页</td><td>10. 双击打开网页是纯白屏，或样式全乱</td><td>代码里漏了标点导致浏览器罢工，或者样式文件（CSS）路径没挂上。</td><td>右键空白网页 →「检查」→ 点 Console（控制台），把红字报错复制发给 AI 让它修。</td><td>若没红字只是样式全乱，直接对 AI 说：“样式文件没加载成功，文字全挤在左边，请修复引用路径。”</td></tr><tr><td>做网页</td><td>11. 按钮点不动，或刷新网页后记的数据全丢了</td><td>按钮名字和脚本没对上号；或者忘了写浏览器本地存储（LocalStorage，见 A 版第 4 章）。</td><td>直接用大白话告诉 AI：“点【XX按钮】没反应，请检查点击事件绑定并修复。”</td><td>数据丢失则发：“刷新后数据清空了，请把数据存进浏览器 LocalStorage 里。”</td></tr><tr><td>做网页</td><td>12. AI 说改好了但网页没变化 / 越改越乱</td><td>浏览器偷懒用了旧缓存；或者对话太长 AI 脑子绕晕了开始拆东墙补西墙。</td><td>在浏览器按强制刷新（Win Ctrl + F5，Mac Command + Shift + R），并核对打开的是不是最新文件夹。</td><td>若越改越崩，立刻点撤销/回滚按钮（以实机界面为准）或读 Git 存档退回好版本，再开新对话重新提需求。</td></tr><tr><td>预览发布</td><td>13. 把 localhost 链接发给朋友，对方打不开</td><td>localhost 是你电脑自家的门牌号（见 B 版第 6 章），外人根本访问不到。</td><td>想私密发电脑看：让 AI 打包成单个 HTML 文件微信直传。</td><td>想让朋友手机一点就看：用 Netlify Drop 把整个文件夹拖上网生成 https:// 公网链接。</td></tr><tr><td>预览发布</td><td>14. 拖拽上线后，点开公网网址报 404</td><td>拖进去的文件夹最外层（根目录）里没有叫全小写 index.html 的主文件。</td><td>检查文件夹，把主网页文件改名为全小写 index.html，确保没多套一层空壳文件夹。</td><td>整理好目录后，进平台项目的 Deploys 页面把文件夹重新拖进去覆盖更新。</td></tr><tr><td>预览发布</td><td>15. 手机打开排版崩了 / 导出表格中文乱码</td><td>网页没做手机竖屏适配；CSV 表格少了 Excel 认得的中文编码头。</td><td>手机排版问题：让 AI “优化手机竖屏响应式布局，确保单列显示不左右滚动”。</td><td>表格乱码问题：让 AI “导出 CSV 时加上 UTF-8 BOM 头，确保 Excel 打开无乱码”。</td></tr></tbody></table></div>
+<h3>进阶深度排错 10 场景（手把手拆解定位步骤）</h3>
 <h3>场景 16：对话越聊越乱，AI 开始答非所问、反复犯同一个错</h3>
 <p><b>大白话解释“上下文窗口（Context Window）”：</b>AI 的“短期记忆小黑板”。聊得越久，黑板上写满的废话和旧报错就越多，AI 找重点就会变慢、变糊涂。</p>
 <p><b>现象：</b>同一个聊天窗口从上午聊到下午，改了十几轮之后，你让它把按钮挪到右边，它不仅没挪对，还顺手把你上午定好的中文标题改回了英文。</p>
 <p><b>原因大白话：</b>它的“短期记忆小黑板”塞满了过时的修改记录，新要求和旧记录互相打架，把它绕晕了。</p>
 <p><b>照着做的解法：</b></p>
 <p>立刻停止在当前窗口继续追问，先确认现有文件状态（如果改乱了就先点撤销或用 Git 回退到上一版）。</p>
-<p>点击 New Chat（新建对话），用一句话精准发指令：“请先读取当前文件夹里的最新代码，然后只帮我把【XX按钮】挪到右上角，其他地方不要动。”</p>
+<p>点击 + New Conversation（新建对话），用一句话精准发指令：“请先读取当前文件夹里的最新代码，然后只帮我把【XX按钮】挪到右上角，其他地方不要动。”</p>
 <h3>场景 17：改完一个小功能，整个网页的漂亮样式突然全丢了</h3>
 <p><b>现象：</b>本来卡片有阴影、有圆角、配色很舒服，你用 Fast 模式让它加了一个“搜索框”之后，刷新一看，所有颜色和排版瞬间消失，变成白底黑字的纯文本。</p>
 <p><b>原因大白话：</b>AI 在修改 HTML 结构时，不小心把引入样式文件（style.css）的那一行代码删掉了，或者在 style.css 里漏写了一个闭合花括号 }，导致后面的样式全部失效。</p>
@@ -17656,14 +18426,21 @@ git commit -m "改首页之前"</pre>
 <p><b>照着做的解法：</b></p>
 <p>先把压缩包完整解压到你的纯英文总基地 Antigravity_Projects 下，并把外层文件夹重命名为纯英文小写 + 短横线（如 friend-demo），去掉多余的嵌套空壳目录。</p>
 <p>再用 Antigravity 点 Open Folder 打开解压后的文件夹，一切恢复正常。</p>
+<h3>场景 25：浏览器能打开官网，桌面端或终端却连不上（代理分流排查）</h3>
+<p><b>现象：</b>浏览器里能正常打开 antigravity.google，但桌面端 App 或终端 CLI 依然提示连接超时、登录转圈。</p>
+<p><b>原因大白话：</b>浏览器走了系统代理，但桌面端后台进程或终端黑框框没走同一条通道——两边网络出口不一致，一边通、一边不通。</p>
+<p><b>照着做的解法：</b></p>
+<p>先检查系统全局网络设置，确认桌面端与终端走的网络通道与浏览器一致。</p>
+<p>关闭冲突的旧代理插件或重复代理，避免多条代理互相打架。</p>
+<p><b>全程只用官方连通标准验证：</b>能打开 antigravity.google 且登录不转圈，才算网络达标；浏览器单方面能打开，不等于桌面端与终端也能连上。</p>
 <h2>C-6 新手 7 天零基础上手打卡路线图（含毕业后第 2 周进阶选修）</h2>
 <p>不用一口气啃完所有技巧，每天只需抽出 20 到 30 分钟，照着下面这份按分钟切好的 7 天打卡表走。第 7 天晚上，你手里就会有一个真正能发给朋友玩的专属成品！</p>
 <h3>Day 1：破冰与起飞（搞定环境，说上第一句话）</h3>
 <p><b>当天目标：</b>把主力入口装好、账号登绿、安全基地建好，迈出 0 到 1 的第一步。</p>
 <p><b>20–30 分钟怎么分配：</b></p>
 <p><b>0–8 分钟：</b>对照 C-1 和 C-2，确认年满 18 岁、账号关联地区在支持名单内，验证浏览器能顺畅打开 antigravity.google。</p>
-<p><b>8–18 分钟：</b>下载安装 Antigravity App（桌面应用 v2.5+）（或先用网页版体验），完成 Google 授权登录，在首次引导里选好简洁对话优先布局。</p>
-<p><b>18–25 分钟：</b>确认权限策略在默认的“推荐/平衡”模式；在本地非同步磁盘目录建好 Antigravity_Projects/test-hello，用软件打开并点信任，核对默认模型（免费版为 Gemini 4 Hydrogen）。</p>
+<p><b>8–18 分钟：</b>下载安装 Antigravity App（桌面应用 v2.30.0+）（或先用网页版体验），完成 Google 授权登录，在首次引导里选好简洁对话优先布局。</p>
+<p><b>18–25 分钟：</b>确认权限策略在默认的 Default；在本地非同步磁盘目录建好 Antigravity_Projects/test-hello，用软件打开并点信任，核对默认模型（免费版为 Gemini 4 Hydrogen）。</p>
 <p><b>25–30 分钟：</b>在输入框发一句中文打招呼，确认回复流畅无报错。</p>
 <p><b>当天要交出的成品：</b>一个已登录、布局清爽、权限安全且能正常中文对话的 Antigravity App 工作台。</p>
 <p><b>做完的标志：</b></p>
@@ -17688,7 +18465,7 @@ git commit -m "改首页之前"</pre>
 <p><b>0–5 分钟：</b>在 day2-todo 里先让 AI 帮你用 Git 存一个本地档（或手动复制文件夹备份叫 day2-todo-v1-ok）。</p>
 <p><b>5–15 分钟：</b>切到 Fast（快速模式，以实机界面为准），分 2 轮提小修改（如“添加按钮改成薄荷绿”、“顶部加一句随机中文励志名言”），每轮改完去浏览器强制刷新（Win Ctrl + F5，Mac Command + Shift + R）验收。</p>
 <p><b>15–22 分钟：</b>故意提一个搞怪大改动（如“把背景改成刺眼大红色”），改完后点击对话流里的撤销/回滚按钮（以实机界面为准），亲眼看它 1 秒退回原样。</p>
-<p><b>22–30 分钟：</b>点一次 New Chat（新建对话），感受新对话里文件依然都在、脑子更清爽的状态。</p>
+<p><b>22–30 分钟：</b>点一次 + New Conversation（新建对话），感受新对话里文件依然都在、脑子更清爽的状态。</p>
 <p><b>当天要交出的成品：</b>美化升级后的待办清单 V2 + 一次成功的存档与回滚记录。</p>
 <p><b>做完的标志：</b></p>
 <label class="tut-check"><input type="checkbox"> 成功完成 2 轮 Fast 打磨，并且亲手演练成功了一次撤销回滚。</label>
@@ -17719,14 +18496,14 @@ git commit -m "改首页之前"</pre>
 <p><b>当天最容易翻车的一点：</b></p>
 <p><b>真实翻车提醒：</b>有人找不到 Neon 就急着重装软件，其实只是登错了免费的备用 Gmail 小号，或者领的是配额与模型更受限的试用版 Pro；另外并行开多任务时，千万别让两个窗口同时改同一个文件夹。</p>
 <h3>Day 6：斜杠命令全通关 + 手机端适配特训</h3>
-<p><b>当天目标：</b>把 5 个高频斜杠命令各实战敲一遍，并把网页打磨成手机竖屏好用的状态。</p>
+<p><b>当天目标：</b>把 7 个常用斜杠命令各实战敲一遍，并把网页打磨成手机竖屏好用的状态。</p>
 <p><b>20–30 分钟怎么分配：</b></p>
 <p><b>0–12 分钟：</b>在记账本里依次实操 /goal、/grill-me、/browser，把考官挑出来的边界漏洞（如输入负数、金额留空）修干净。</p>
-<p><b>12–20 分钟：</b>实操 /plugin 查看插件，并新建 day6-notes 文件夹试练一次 /schedule 定时汇总规则（练完不需要的话可随时取消定时）。</p>
+<p><b>12–20 分钟：</b>实操 /plugin 查看插件，并新建 day6-notes 文件夹试练一次 /automation 每周汇总规则（练完不需要的话可随时去侧边栏 Automations 面板取消）。</p>
 <p><b>20–30 分钟：</b>把浏览器窗口拉窄成手机宽度（或开右键「检查」里的手机模式），让 AI 修好所有挤在一起的按钮和文字。</p>
 <p><b>当天要交出的成品：</b>经受过 /grill-me 挑刺且手机竖屏排版清爽的家庭记账本。</p>
 <p><b>做完的标志：</b></p>
-<label class="tut-check"><input type="checkbox"> 5 条斜杠命令都亲手敲过并看懂了效果，且手机竖屏预览不左右滚动。</label>
+<label class="tut-check"><input type="checkbox"> 7 条斜杠命令都亲手敲过并看懂了效果，且手机竖屏预览不左右滚动。</label>
 <p><b>当天最容易翻车的一点：</b></p>
 <p><b>真实翻车提醒：</b>敲斜杠命令时手滑拼错字母（比如打成 /gola）不会报错但也没触发特殊功能，养成敲 / 后直接从下拉菜单点选的习惯。</p>
 <h3>Day 7：毕业上线，发给朋友玩！</h3>
@@ -17741,8 +18518,8 @@ git commit -m "改首页之前"</pre>
 <label class="tut-check"><input type="checkbox"> 朋友在微信里点开你的链接流畅把玩，惊呼“这真是你自己做的？！”——恭喜你，正式毕业！</label>
 <p><b>当天最容易翻车的一点：</b></p>
 <p><b>真实翻车提醒：</b>拖进去的文件夹多套了一层空壳目录导致公网链接报 404，或者改完重传后被手机微信旧缓存挡住（在发给自己的链接末尾加 ?v=2 即可强刷）。</p>
-<h3>毕业后第 2 周进阶选修路线（Day 8–Day 10 场景实战拓展）</h3>
-<p>走完前 7 天你已经彻底入门了；如果意犹未尽，可以接着用这 3 个真实职场与生活场景巩固手艺：</p>
+<h3>毕业后第 2 周进阶选修路线（Day 8–Day 11 场景实战拓展）</h3>
+<p>走完前 7 天你已经彻底入门了；如果意犹未尽，可以接着用这 4 个真实职场与生活场景巩固手艺：</p>
 <label class="tut-check"><input type="checkbox"> Day 8（职场数据处理实战：零散账单自动合并与核对）</label>
 <p><b>怎么做：</b>新建 day8-bills 文件夹，把清理掉合并表头和自带小计行的 2–3 份月度 CSV 账单副本放进 raw 子文件夹，让 AI 写脚本合并统计各类支出并输出 output/汇总表.csv 与可视化报告网页。</p>
 <p><b>验收标准：</b>raw 原件毫发无损，导出表格用 Excel 打开无乱码，且汇总总金额与原始明细总金额一分不差。</p>
@@ -17750,14 +18527,22 @@ git commit -m "改首页之前"</pre>
 <p><b>怎么做：</b>新建 day9-resume 文件夹，按 B 版第 4 章“好需求对照一”做一张单页中文互动简历，加上 @media print 导出干净 A4 PDF 按钮；上线前把真实手机号和家庭住址替换成求职专用邮箱后再拖拽发布。</p>
 <p><b>验收标准：</b>手机微信打开不左右滚动，浏览器点打印预览时自动隐藏多余按钮、完整排在一页 A4 纸内。</p>
 <label class="tut-check"><input type="checkbox"> Day 10（全自动工作流实战：每周五自动汇总文件夹笔记）</label>
-<p><b>怎么做：</b>新建 day10-weekly 文件夹与 inbox 子文件夹，周一到周五随手把工作灵感和会议纪要存进 inbox，用 /schedule 设定每周五下午 5 点自动读取 inbox 生成 output/本周复盘.md（付费版可配合 Orchestrator 提炼结构）。</p>
+<p><b>怎么做：</b>新建 day10-weekly 文件夹与 inbox 子文件夹，周一到周五随手把工作灵感和会议纪要存进 inbox，用 /automation 设定每周五下午 5 点自动读取 inbox 生成 output/本周复盘.md（付费版可配合 Orchestrator 提炼结构；新任务默认处于 Paused 暂停状态，需在侧边栏 Automations 面板手动打开开关）。</p>
 <p><b>验收标准：</b>手动试跑一次确认摘要准确，且确认指令里绝无“汇总完删除 inbox 原文件”的危险操作。</p>
-<h2>全书终极检查清单（A + B + C 40 项核心能力总表）</h2>
-<p>学完这本第二版完整手册后，你可以随时回来给这 40 项打勾。当你打满大部分勾，你已经是一个非常稳健的 Antigravity 实战玩家了：</p>
+<label class="tut-check"><input type="checkbox"> Day 11（跨设备提效选修：用 Remote Control 手机远程遥控家里电脑干活）</label>
+<p><b>怎么做：</b>在家里或办公室电脑保持 Antigravity 桌面端或 CLI 会话运行的状态下，开启官方的 Remote Control（远程控制）功能，拿到专属远程访问会话入口（具体开启入口位置与配对验证步骤以你当前实机界面为准），在外出时的手机或另一台电脑浏览器里打开连接。</p>
+<p><b>看到什么：</b>浏览器里直接显示家里电脑上正在运行的 Antigravity 会话界面，你可以随时远程发指令、审计划、点确认，而所有代码编写和本地文件操作依然直接跑在你家里的电脑硬盘上（与纯云端网页版的运行位置不同，具体区别以官网当前说明为准）。</p>
+<p><b>验收标准：</b>出门在外用手机浏览器就能远程指挥家里电脑继续跑完大型整理任务，回家直接验收本地文件。</p>
+<p><b>做完的标志：</b></p>
+<label class="tut-check"><input type="checkbox"> 手机浏览器远程发出的指令已在家里电脑上执行，本地文件已按指令更新。</label>
+<p><b>当天最容易翻车的一点：</b></p>
+<p><b>真实翻车提醒：</b>如果远程页面显示断连，检查家里电脑是否休眠断网——远程控制期间宿主机需保持开机联网，防休眠设置以你电脑当前系统设置为准。</p>
+<h2>全书终极检查清单（A + B + C 50 项核心能力总表）</h2>
+<p>学完这本第二版完整手册后，你可以随时回来给这 50 项打勾。当你打满大部分勾，你已经是一个非常稳健的 Antigravity 实战玩家了：</p>
 <p>一、认知、版本与入口（1–6）</p>
 <label class="tut-check"><input type="checkbox"> 1. 能用一句话讲清 Antigravity 和普通 Gemini 聊天的区别，并了解 2025-11-18 至 2026-11-18 的关键发展时间线（含 Carbon 2026-10-28 发布、11-10 全面可用）。</label>
 <label class="tut-check"><input type="checkbox"> 2. 清楚它的局限：知道它也会写错代码、必须亲自验收、不能代替你做甲方决策。</label>
-<label class="tut-check"><input type="checkbox"> 3. 分得清“四种开发环境 + 网页版”五个入口（App v2.5+、CLI agy v1.2+、For IDEs 7 扩展、SDK Python、网页版），且知道 App 与独立版 IDE 是两个不同产品。</label>
+<label class="tut-check"><input type="checkbox"> 3. 分得清“四种开发环境 + 网页版”五个入口（App v2.30.0+、CLI agy v1.2+、For IDEs 7 扩展、SDK Python、网页版），且知道 App 与独立版 IDE 是两个不同产品。</label>
 <label class="tut-check"><input type="checkbox"> 4. 清楚地区与年龄政策：中国大陆不在支持名单、需核对账号关联地区（可提交变更申请）、未满 18 周岁不可用，网络满足“能打开 antigravity.google 且登录不转圈”。</label>
 <label class="tut-check"><input type="checkbox"> 5. 清楚自己是哪种账号（个人 / Workspace / 企业版），以及对应的可见模型与权限差异。</label>
 <label class="tut-check"><input type="checkbox"> 6. 清楚系统要求（含 Linux glibc ≥ 2.28、glibcxx ≥ 3.4.25）及 Mac 升级必选 Replace（替换） 而非 Keep Both。</label>
@@ -17771,7 +18556,7 @@ git commit -m "改首页之前"</pre>
 <p>三、工作区安全与好习惯（13–18）</p>
 <label class="tut-check"><input type="checkbox"> 13. 在本地非同步目录建好了纯英文总基地 Antigravity_Projects，绝不直接把整个桌面或网盘同步目录当工作区。</label>
 <label class="tut-check"><input type="checkbox"> 14. 新建项目文件夹只用纯英文小写 + 短横线命名，处理旧文件只放副本到 raw 子文件夹。</label>
-<label class="tut-check"><input type="checkbox"> 15. 首次登录会选清爽的对话优先布局，且权限审核策略保持默认的“推荐/平衡”，不盲目开全自动。</label>
+<label class="tut-check"><input type="checkbox"> 15. 首次登录会选清爽的对话优先布局，且权限审核策略保持默认的 Default，不盲目开 Turbo 全自动。</label>
 <label class="tut-check"><input type="checkbox"> 16. 死守安全铁律：绝不把真实 API 密钥、账号密码或隐私账单写进代码里。</label>
 <label class="tut-check"><input type="checkbox"> 17. 养成大改前先 Git 存档（或复制文件夹备份）再让 Agent 动手的好习惯。</label>
 <label class="tut-check"><input type="checkbox"> 18. 会用自定义规则（Rules）给 AI 立“全局家规”或“项目家规”，并用探针指令验证生效，不再每次重复念经。</label>
@@ -17779,9 +18564,9 @@ git commit -m "改首页之前"</pre>
 <label class="tut-check"><input type="checkbox"> 19. 写第一条需求时能齐备“背景、目标、限制、验收标准”四要素，做小工具优先指定纯 HTML/CSS/JS 双击可打开。</label>
 <label class="tut-check"><input type="checkbox"> 20. 熟练区分规划模式（Planning）与快速模式（Fast，以实机界面为准），审计划必查 10 项，不盲目点同意。</label>
 <label class="tut-check"><input type="checkbox"> 21. 会配置和使用 Orchestrator（设置 ＞ 模型 ＞ Orchestrator 设置，Pro/Ultra 默认 Neon 规划 + Hydrogen 执行，企业版固定 Carbon + Hydrogen）。</label>
-<label class="tut-check"><input type="checkbox"> 22. 会用 5 个高频斜杠命令：/goal、/grill-me、/schedule、/browser、/plugin。</label>
+<label class="tut-check"><input type="checkbox"> 22. 会用常用斜杠命令：/goal、/grill-me、/automation、/schedule、/credits、/browser、/run-workflow、/plugin，以及官方插件市场安装（agy plugin install）；进阶并行命令 /swarm、/teamwork、/boost 见 C-4 清单 7 的 7.3。</label>
 <label class="tut-check"><input type="checkbox"> 23. 会做本地验收（录、算、刷、删与 4 项边界测试）、会按浏览器强制刷新、会开右键「检查 → Console」把红字报错交给 AI 自修。</label>
-<label class="tut-check"><input type="checkbox"> 24. 知道做完一阶段或遇到“鬼打墙”时，先撤销回滚再果断 New Chat（开新对话）。</label>
+<label class="tut-check"><input type="checkbox"> 24. 知道做完一阶段或遇到“鬼打墙”时，先撤销回滚再果断 + New Conversation（开新对话）。</label>
 <p>五、分享、上线与排错自救（25–30）</p>
 <label class="tut-check"><input type="checkbox"> 25. 分得清本地预览（localhost）与公网正式上线（https://）的区别，不把 localhost 发给别人。</label>
 <label class="tut-check"><input type="checkbox"> 26. 会让 AI 把私密小工具打包成单个 HTML 文件微信直传。</label>
@@ -17790,7 +18575,7 @@ git commit -m "改首页之前"</pre>
 <label class="tut-check"><input type="checkbox"> 29. 遇到登录转圈、找不到 Neon、404、CSV 乱码等常见翻车，能直接翻 C-5 速查表自主排错。</label>
 <label class="tut-check"><input type="checkbox"> 30. 成功在 7 天内亲手做出并分享了至少 1 个能解决真实小痛点的成品，彻底告别对“编程”的恐惧。</label>
 <p>六、进阶习惯与长期稳健（31–40，做法 + 翻车提醒）</p>
-<label class="tut-check"><input type="checkbox"> 31. 认准官方下载源与版本号：只从 antigravity.google/download 下载并核对 App v2.5+ / CLI v1.2+，绝不装第三方软件站的捆绑包。</label>
+<label class="tut-check"><input type="checkbox"> 31. 认准官方下载源与版本号：只从 antigravity.google/download 下载并核对 App v2.30.0+ / CLI v1.2+，绝不装第三方软件站的捆绑包。</label>
 <label class="tut-check"><input type="checkbox"> 32. Mac 正确启动与覆盖升级：始终从 Applications 文件夹启动且升级必选 Replace，绝不在 .dmg 虚拟磁盘里直接跑软件。</label>
 <label class="tut-check"><input type="checkbox"> 33. 需求划清“不要改哪里”：发微调指令时顺手写明锁定不改的文件和旧功能，别让 AI 热心过头把原本好用的模块重写坏。</label>
 <label class="tut-check"><input type="checkbox"> 34. 跑偏立刻喊停纠偏：发现方案变复杂或漏了重点时直接用纠偏话术打回重规划，千万别将错就错点同意。</label>
@@ -17800,6 +18585,17 @@ git commit -m "改首页之前"</pre>
 <label class="tut-check"><input type="checkbox"> 38. 多任务并行严格隔离目录：开并行 Agent 时必须绑定不同的独立空文件夹，绝不让两个窗口同时改同一个目录。</label>
 <label class="tut-check"><input type="checkbox"> 39. 避开微信单文件脚本拦截与缓存：发给朋友手机玩用拖拽上线给公网链接（更新后加 ?v=2 强刷缓存），私密单文件则提醒对方在电脑浏览器双击打开。</label>
 <label class="tut-check"><input type="checkbox"> 40. 定期核对官网最新动态：知道模型下线（如 2026-11-30 下线清单）、套餐和界面按钮会随版本迭代，遇到差异时以实机界面和 antigravity.google 官网为准。</label>
+<p>七、新能力补完（41–50）</p>
+<label class="tut-check"><input type="checkbox"> 41. 会按任务难度调节 Thinking effort（思考强度）：日常保持 Medium，简单小改切 Low 提速，复杂推理切 High 或 Extra High，用完调回 Medium。</label>
+<label class="tut-check"><input type="checkbox"> 42. 分得清本地权限四档预设（Local Permissions）：Request Review / Default / Auto / Turbo，纯小白保持默认 Default，严禁新手开 Turbo。</label>
+<label class="tut-check"><input type="checkbox"> 43. 认得侧边栏 Automations（自动化任务管理面板）与 Customizations（自定义中心），知道 + New Conversation、Automations、Customizations、Projects、Conversations 各在什么位置。</label>
+<label class="tut-check"><input type="checkbox"> 44. 会用 @ 符号在输入框里精准引用文件、文件夹或历史对话，不再打字描述“帮我改那个放样式的文件”。</label>
+<label class="tut-check"><input type="checkbox"> 45. 会看懂改动对比视图（Diff View）的红删绿增，并会用版本控制审阅面板（VCS Review）逐块暂存、丢弃、提交改动与留评论返工。</label>
+<label class="tut-check"><input type="checkbox"> 46. 上线前会让 AI 做一键隐私扫描（全文扫描 API 密钥、密码、真实手机号与个人数据），扫出问题先清干净再上线。</label>
+<label class="tut-check"><input type="checkbox"> 47. 会换电脑迁移项目与家规（拷走 Antigravity_Projects 总文件夹与全局规则文本、重走授权登录），重装后依然报错时会彻底卸载清理残留再重装。</label>
+<label class="tut-check"><input type="checkbox"> 48. 会用 CLI 与 SDK 进阶能力：agy 交互模式与常用斜杠命令、settings.json 命令黑白名单与状态栏、无头环境 ADC 免浏览器登录、Python SDK 双认证与核心能力地图。</label>
+<label class="tut-check"><input type="checkbox"> 49. 会在 IDE 生态里选型与迁移：分得清独立 IDE、7 款官方扩展与 ACP 接入，会三端协同分工，会从 Firebase Studio 迁移、把旧工作流升级为 Skill、按映射表从 Cursor / Claude Code / Codex 转场。</label>
+<label class="tut-check"><input type="checkbox"> 50. 能走完端到端实战与长期治理：用 Firebase 插件搭出可登录的在线应用、用 Workspace 插件打通办公自动化、守住账号安全红线、管好 5 小时刷新节奏与超额额度开关、按 30 天路线图持续打卡。</label>
 <h2>全书结语：写给每一位从零开始的你</h2>
 <p>能一路跟着小森把 A 精编入门版、B 完整版、C 超全手册版（第二版）全部读完，你真的非常了不起。</p>
 <p>以前我们总觉得，会写代码的人就像掌握着神秘咒语的魔法师，普通人只能忍受市面上那些广告满天飞、功能不趁手、还动不动收年费的现成软件。但从今天起，这堵高墙已经倒了——你不需要成为程序员，只需要成为一个会清晰表达想法、会守住安全底线、会认真验收作品的“总设计师”。</p>
